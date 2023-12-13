@@ -16,14 +16,12 @@ type Props = {
 
 export default function Index({ allPresentations }: Props) {
   return (
-    <>
       <Layout>
         <Head>
           <title>Elizabeth Poggie</title>
         </Head>
             <Text variant="h1">Elizabeth Poggie</Text>
       </Layout>
-    </>
   );
 }
 
