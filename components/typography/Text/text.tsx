@@ -27,20 +27,14 @@ const textVariants = {
 };
 
 type Props = {
-    variant?: string
-    children: string
-  }
+  variant?: string;
+  children: string;
+};
 
-const Text = ({variant, children}: Props) => {
+const Text = ({ variant, children }: Props) => {
   let Component = variant ? textVariants[variant] : "p";
   const textVariant = variant ? textVariantsStyles[variant] : styles.p;
-  return (
-    <Component
-      className={`${textVariant}`}
-    >
-      {children}
-    </Component>
-  );
+  return <Component className={`${textVariant}`}>{children}</Component>;
 };
 
 export default Text;

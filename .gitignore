@@ -3,3 +3,6 @@ node_modules
 
 # Optional REPL history
 .next
+
+# Settings
+.vscode

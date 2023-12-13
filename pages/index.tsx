@@ -1,4 +1,3 @@
-
 import Layout from "../components/templates/layout";
 import { getAllPresentations } from "../lib/api";
 import Head from "next/head";
@@ -13,20 +12,18 @@ type Props = {
   allPresentations: Presentation[];
 };
 
-
 export default function Index({ allPresentations }: Props) {
   return (
-      <Layout>
-        <Head>
-          <title>Elizabeth Poggie</title>
-        </Head>
-            <Text variant="h1">Elizabeth Poggie</Text>
-      </Layout>
+    <Layout>
+      <Head>
+        <title>Elizabeth Poggie</title>
+      </Head>
+      <Text variant="h1">Elizabeth Poggie</Text>
+    </Layout>
   );
 }
 
 export const getStaticProps = async () => {
-
   const allPresentations = getAllPresentations([
     "title",
     "date",
