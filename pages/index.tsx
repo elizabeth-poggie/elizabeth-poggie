@@ -1,10 +1,10 @@
-import Layout from "../components/templates/layout";
-import { getAllPresentations } from "../lib/api";
+import Layout from "../src/components/templates/layout";
+import { getAllPresentations } from "../src/services/api";
 import Head from "next/head";
-import Post from "../interfaces/post";
-import Note from "../interfaces/note";
-import Presentation from "../interfaces/presentation";
-import Text from "../components/typography/Text/text";
+import Post from "../src/interfaces/post";
+import Note from "../src/interfaces/note";
+import Presentation from "../src/interfaces/presentation";
+import Text from "../src/components/typography/Text/text";
 
 type Props = {
   allPosts: Post[];
@@ -22,6 +22,8 @@ export default function Index({ allPresentations }: Props) {
     </Layout>
   );
 }
+
+// TODO - set up a provider for global information
 
 export const getStaticProps = async () => {
   const allPresentations = getAllPresentations([
