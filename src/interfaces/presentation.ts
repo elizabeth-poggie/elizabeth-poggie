@@ -1,4 +1,4 @@
-type PresentationType = {
+export type Presentation = {
   slug: string;
   title: string;
   date: string;
@@ -9,5 +9,3 @@ type PresentationType = {
   };
   content: string;
 };
-
-export default PresentationType;

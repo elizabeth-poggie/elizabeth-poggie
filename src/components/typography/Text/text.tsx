@@ -1,6 +1,7 @@
+import { cs } from "../../../utils/helpers/classHelpers";
 import styles from "./text.module.scss";
 
-const variantToStyleMap = {
+const textVariantToStyleMap = {
   title: styles.title,
   subheading: styles.subheading,
   h1: styles.h1,
@@ -9,26 +10,42 @@ const variantToStyleMap = {
   p: styles.p,
 };
 
+const alignToStyleMap = {
+  left: null,
+  center: styles.center,
+  right: styles.right,
+};
+
 // TODO - Support the below types if i get bored
 
 // type colours = "default" | "grey";
 // type size = "default" | "xs" | "sm" | "md" | "lg";
 // type weight = "default" | "bold" | "thin";
 // type textTransform = "default" | "lowercase" | "uppercase" | "capitalize";
-// type align = "left" | "center" | "right";
+type TextAlign = "left" | "center" | "right";
 // type overflowWrap = "normal" | "anywhere" | "break-word";
-type variant = "title" | "subheading" | "h1" | "h2" | "h3" | "p";
+type TextVariant = "title" | "subheading" | "h1" | "h2" | "h3" | "p";
 
 interface Props {
+  children: string;
   /**
-   * Predefined style variants
+   * predefined style variants
    *
    * @example "title"
    */
-  variant?: variant;
-  children: string;
+  variant?: TextVariant;
+  /**
+   * text content alignment
+   *
+   * @example "center"
+   */
+  align?: TextAlign;
 }
 
-export function Text({ variant = "p", children }: Props) {
-  return <div className={`${variantToStyleMap[variant]}`}>{children}</div>;
+export function Text({ children, variant = "p", align = "left" }: Props) {
+  return (
+    <div className={cs(textVariantToStyleMap[variant], alignToStyleMap[align])}>
+      {children}
+    </div>
+  );
 }
