@@ -4,16 +4,23 @@ $color-gray: #b6b6b6;
 $color-white: #fff;
 
 // TYPOGRAPHY -------------------------------------------------------------------------------------------
-// style
 
-// size
+// Size
+$text-xxl: 6.25rem;
+$text-xl: 4.5rem;
+$text-lg: 2.25rem;
+$text-md: 2rem;
+$text-sm: 1rem;
+$text-xs: 0.5rem;
 
-// weight
+// Weight
+$text-weight-bold: 700;
+$text-wight-semi-bold: 500;
 
 // BREAKPOINTS ------------------------------------------------------------------------------------------
-// mobile
+// Mobile
 $bp-sm: 576px;
-// tablet
+// Tablet
 $bp-md: 768px;
-// desktop [992px+]
+// Desktop [992px+]
 $bp-lg: 992px;

@@ -1,37 +1,37 @@
+@import "../../../styles/variables.scss";
+
 .title {
-  font-size: 6.25rem;
-  padding-right: 2rem;
+  font-size: $text-xxl;
+  font-weight: $text-weight-bold;
   letter-spacing: -0.04em;
   line-height: 1.2;
-  font-weight: 700;
 }
 
 .h1 {
-  font-size: 4.5rem;
+  font-size: $text-xl;
+  font-weight: $text-weight-bold;
   letter-spacing: -0.04em;
   line-height: 1.2;
-  font-weight: 700;
 }
 
 .h2 {
+  font-size: $text-lg;
+  font-weight: $text-weight-bold;
   letter-spacing: -0.04em;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-  font-weight: 700;
 }
 
 .h3 {
-  font-size: 2.125rem;
-  font-weight: 500;
+  font-size: $text-md;
+  font-weight: $text-wight-semi-bold;
 }
 
 .subheading {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: $text-sm;
+  font-weight: $text-wight-semi-bold;
 }
 
 .p {
-  font-size: 1rem;
+  font-size: $text-sm;
 }
 
 .center {
