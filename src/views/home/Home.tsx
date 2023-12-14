@@ -10,7 +10,9 @@ export function Home() {
   return (
     <div>
       <Text variant="h1">Elizabeth Poggie</Text>
-      <img className={styles.centerFit} src={cover.src} />
+      <div className={styles.container}>
+        <img className={styles.centerFit} src={cover.src} />
+      </div>
       <Text variant="h1">Tech Enthusiast && Coordinator</Text>
     </div>
   );
