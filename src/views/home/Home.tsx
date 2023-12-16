@@ -6,9 +6,11 @@ import { Image } from "../../components/display/image/image";
 export function Home() {
   return (
     <div>
-      <Text variant="h1" align="center">
-        Elizabeth Poggie
-      </Text>
+      <div className={styles.title}>
+        <Text variant="h1" align="center">
+          Elizabeth Poggie
+        </Text>
+      </div>
       <Image src={cover.src} variant="cover" />
       <div className={styles.container}>
         <div className={styles.content}>

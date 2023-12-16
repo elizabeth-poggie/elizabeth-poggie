@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Text } from "../../typography/text/text";
+import { Link } from "../link/link";
 import styles from "./footer.module.scss";
 
 interface Props {}

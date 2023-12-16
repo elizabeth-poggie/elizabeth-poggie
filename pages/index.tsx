@@ -4,8 +4,6 @@ import Meta from "../src/views/meta/meta";
 import { Footer } from "../src/components/navigation/footer/footer";
 
 // TODO - set up a provider for global information
-// TODO - set up sticky header
-// TODO - set up sticky footer
 export default function Index() {
   return (
     <>

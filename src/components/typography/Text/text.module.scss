@@ -1,8 +1,9 @@
 @import "../../../styles/variables.scss";
 @import url(https://db.onlinewebfonts.com/c/02c5086e8616653dade6e7cb3a1f0498?family=LTC+Bodoni+175+W01+Regular);
+@import url(https://db.onlinewebfonts.com/c/97e03bc37a8450b75b402cc4e579b2ad?family=ITC+Galliard+Roman);
 
 @mixin text {
-  font-family: "LTC Bodoni 175 W01 Regular";
+  font-family: "ITC Galliard Roman";
   color: $color-black;
 }
 
@@ -16,15 +17,12 @@
 
 .h1 {
   font-size: $text-xl;
-  font-weight: $text-weight-bold;
-  letter-spacing: -0.04em;
-  line-height: 1.2;
+  letter-spacing: 0.05em;
   @include text;
 }
 
 .h2 {
   font-size: $text-lg;
-  font-weight: $text-weight-bold;
   letter-spacing: -0.04em;
   @include text;
 }
