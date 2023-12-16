@@ -6,16 +6,16 @@ $color-white: #fff;
 // TYPOGRAPHY -------------------------------------------------------------------------------------------
 
 // Size
-$text-xxl: 6.25rem;
-$text-xl: 4.5rem;
-$text-lg: 2.25rem;
+$text-xxl: 4rem;
+$text-xl: 3rem;
+$text-lg: 2rem;
 $text-md: 2rem;
-$text-sm: 1rem;
+$text-sm: 1.125rem;
 $text-xs: 0.5rem;
 
 // Weight
-$text-weight-bold: 700;
-$text-wight-semi-bold: 500;
+$text-weight-bold: 300;
+$text-wight-semi-bold: 150;
 
 // BREAKPOINTS ------------------------------------------------------------------------------------------
 // Mobile
@@ -24,3 +24,6 @@ $bp-sm: 576px;
 $bp-md: 768px;
 // Desktop [992px+]
 $bp-lg: 992px;
+
+// UTILS ------------------------------------------------------------------------------------------------
+$unit: 5px;

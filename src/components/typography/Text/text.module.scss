@@ -1,10 +1,17 @@
 @import "../../../styles/variables.scss";
+@import url(https://db.onlinewebfonts.com/c/02c5086e8616653dade6e7cb3a1f0498?family=LTC+Bodoni+175+W01+Regular);
+
+@mixin text {
+  font-family: "LTC Bodoni 175 W01 Regular";
+  color: $color-black;
+}
 
 .title {
   font-size: $text-xxl;
   font-weight: $text-weight-bold;
   letter-spacing: -0.04em;
   line-height: 1.2;
+  @include text;
 }
 
 .h1 {
@@ -12,26 +19,31 @@
   font-weight: $text-weight-bold;
   letter-spacing: -0.04em;
   line-height: 1.2;
+  @include text;
 }
 
 .h2 {
   font-size: $text-lg;
   font-weight: $text-weight-bold;
   letter-spacing: -0.04em;
+  @include text;
 }
 
 .h3 {
   font-size: $text-md;
   font-weight: $text-wight-semi-bold;
+  @include text;
 }
 
 .subheading {
   font-size: $text-sm;
   font-weight: $text-wight-semi-bold;
+  @include text;
 }
 
 .p {
   font-size: $text-sm;
+  @include text;
 }
 
 .center {

@@ -16,14 +16,7 @@ const alignToStyleMap = {
   right: styles.right,
 };
 
-// TODO - Support the below types if i get bored
-
-// type colours = "default" | "grey";
-// type size = "default" | "xs" | "sm" | "md" | "lg";
-// type weight = "default" | "bold" | "thin";
-// type textTransform = "default" | "lowercase" | "uppercase" | "capitalize";
 type TextAlign = "left" | "center" | "right";
-// type overflowWrap = "normal" | "anywhere" | "break-word";
 type TextVariant = "title" | "subheading" | "h1" | "h2" | "h3" | "p";
 
 interface Props {
