@@ -7,7 +7,7 @@ export function Home() {
   return (
     <div>
       <div className={styles.title}>
-        <Text variant="h1" align="center">
+        <Text variant="title" align="center">
           Elizabeth Poggie
         </Text>
       </div>

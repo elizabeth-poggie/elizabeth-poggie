@@ -1,47 +1,44 @@
 @import "../../../styles/variables.scss";
 @import url(https://db.onlinewebfonts.com/c/02c5086e8616653dade6e7cb3a1f0498?family=LTC+Bodoni+175+W01+Regular);
-@import url(https://db.onlinewebfonts.com/c/97e03bc37a8450b75b402cc4e579b2ad?family=ITC+Galliard+Roman);
+@import url(https://db.onlinewebfonts.com/c/e080040fab017e068ee2901a6cdb5ec4?family=Lato+Regular);
+@import url(https://db.onlinewebfonts.com/c/0033a2fbc0329740fb86c1cfd134cb94?family=Roboto);
 
-@mixin text {
-  font-family: "ITC Galliard Roman";
-  color: $color-black;
+@mixin header {
+  font-family: "LTC Bodoni 175 W01 Regular";
+  text-transform: uppercase;
+  color: $color-white;
+}
+
+@mixin body {
+  font-family: "Lato Regular";
+  color: $color-white;
 }
 
 .title {
-  font-size: $text-xxl;
-  font-weight: $text-weight-bold;
-  letter-spacing: -0.04em;
-  line-height: 1.2;
-  @include text;
+  font-size: $text-xl;
+  letter-spacing: 0.2em;
+  @include header;
 }
 
 .h1 {
-  font-size: $text-xl;
-  letter-spacing: 0.05em;
-  @include text;
+  @include header;
 }
 
 .h2 {
-  font-size: $text-lg;
-  letter-spacing: -0.04em;
-  @include text;
+  @include header;
 }
 
 .h3 {
-  font-size: $text-md;
-  font-weight: $text-wight-semi-bold;
-  @include text;
+  @include header;
 }
 
 .subheading {
-  font-size: $text-sm;
-  font-weight: $text-wight-semi-bold;
-  @include text;
+  @include header;
 }
 
 .p {
   font-size: $text-sm;
-  @include text;
+  @include body;
 }
 
 .center {
