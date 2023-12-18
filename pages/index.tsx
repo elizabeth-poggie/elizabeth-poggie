@@ -1,7 +1,7 @@
 import Head from "next/head";
-import { Home } from "../src/views/home/home";
 import Meta from "../src/views/meta/meta";
 import { Footer } from "../src/components/navigation/footer/footer";
+import { About } from "../src/views/about/about";
 
 // TODO - set up a provider for global information
 export default function Index() {
@@ -11,7 +11,7 @@ export default function Index() {
       <Head>
         <title>Elizabeth Poggie</title>
       </Head>
-      <Home />
+      <About />
       <Footer />
     </>
   );
