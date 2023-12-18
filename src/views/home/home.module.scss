@@ -1,0 +1,22 @@
+@import "../../styles/variables.scss";
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.content {
+  width: 50%;
+  padding: calc(12 * $unit) calc(8 * $unit) calc(12 * $unit) 0;
+}
+
+.titleContainer {
+  position: relative;
+}
+
+.title {
+  padding: calc(10 * $unit) 0 calc(3 * $unit) 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}

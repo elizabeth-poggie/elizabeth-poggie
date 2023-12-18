@@ -1,71 +1,50 @@
+@import "../../../styles/variables.scss";
+@import url(https://db.onlinewebfonts.com/c/02c5086e8616653dade6e7cb3a1f0498?family=LTC+Bodoni+175+W01+Regular);
+@import url(https://db.onlinewebfonts.com/c/e080040fab017e068ee2901a6cdb5ec4?family=Lato+Regular);
+@import url(https://db.onlinewebfonts.com/c/0033a2fbc0329740fb86c1cfd134cb94?family=Roboto);
+
+@mixin header {
+  font-family: "LTC Bodoni 175 W01 Regular";
+  text-transform: uppercase;
+  color: $color-white;
+}
+
+@mixin body {
+  font-family: "Lato Regular";
+  color: $color-white;
+}
+
+.title {
+  font-size: $text-xl;
+  letter-spacing: 0.2em;
+  @include header;
+}
+
 .h1 {
-  font-size: 6.25rem;
-  padding-right: 2rem;
-  letter-spacing: -0.04em;
-  line-height: 1.2;
-  font-weight: 700;
+  @include header;
 }
 
 .h2 {
-  font-size: 4.5rem;
-  letter-spacing: -0.04em;
-  line-height: 1.2;
-  font-weight: 700;
+  @include header;
 }
 
 .h3 {
-  letter-spacing: -0.04em;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-  font-weight: 700;
+  @include header;
 }
 
-.h4 {
-  font-size: 2.125rem;
-  font-weight: 500;
+.subheading {
+  @include header;
 }
 
-.h5 {
-  font-size: 1.5rem;
-  font-weight: 500;
+.p {
+  font-size: $text-sm;
+  @include body;
 }
 
-.h6 {
-  font-size: 1.25rem;
-  font-weight: 500;
+.center {
+  text-align: center;
 }
 
-.subheading1 {
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.subheading2 {
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.body1 {
-  font-size: 1rem;
-}
-
-.body1 {
-  font-size: 0.875rem;
-}
-
-@media screen and (max-width: 1024px) {
-  .h1 {
-    text-align: center;
-    font-size: 4.5rem;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.04em;
-  }
-
-  .h2 {
-    letter-spacing: -0.04em;
-    line-height: 1.2;
-    font-weight: 700;
-    font-size: 2.5rem;
-  }
+.right {
+  text-align: end;
 }

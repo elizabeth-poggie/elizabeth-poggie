@@ -1,40 +1,44 @@
+import { cs } from "../../../utils/helpers/classHelpers";
 import styles from "./text.module.scss";
 
-const textVariantsStyles = {
+const textVariantToStyleMap = {
+  title: styles.title,
+  subheading: styles.subheading,
   h1: styles.h1,
   h2: styles.h2,
   h3: styles.h3,
-  h4: styles.h4,
-  h5: styles.h5,
-  h6: styles.h6,
-  subheading1: styles.h5,
-  subheading2: styles.h5,
-  body1: styles.p,
-  body2: styles.p,
+  p: styles.p,
 };
 
-const textVariants = {
-  h1: "h1",
-  h2: "h2",
-  h3: "h3",
-  h4: "h4",
-  h5: "h5",
-  h6: "h6",
-  subheading1: "p",
-  subheading2: "p",
-  body1: "p",
-  body2: "p",
+const alignToStyleMap = {
+  left: null,
+  center: styles.center,
+  right: styles.right,
 };
 
-type Props = {
-  variant?: string;
+type TextAlign = "left" | "center" | "right";
+type TextVariant = "title" | "subheading" | "h1" | "h2" | "h3" | "p";
+
+interface Props {
   children: string;
-};
+  /**
+   * predefined style variants
+   *
+   * @example "title"
+   */
+  variant?: TextVariant;
+  /**
+   * text content alignment
+   *
+   * @example "center"
+   */
+  align?: TextAlign;
+}
 
-const Text = ({ variant, children }: Props) => {
-  let Component = variant ? textVariants[variant] : "p";
-  const textVariant = variant ? textVariantsStyles[variant] : styles.p;
-  return <Component className={`${textVariant}`}>{children}</Component>;
-};
-
-export default Text;
+export function Text({ children, variant = "p", align = "left" }: Props) {
+  return (
+    <div className={cs(textVariantToStyleMap[variant], alignToStyleMap[align])}>
+      {children}
+    </div>
+  );
+}

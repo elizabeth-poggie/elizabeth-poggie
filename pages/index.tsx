@@ -1,40 +1,18 @@
-import Layout from "../src/components/templates/layout";
-import { getAllPresentations } from "../src/utils/api";
 import Head from "next/head";
-import Post from "../src/interfaces/post";
-import Note from "../src/interfaces/note";
-import Presentation from "../src/interfaces/presentation";
-import Text from "../src/components/typography/Text/text";
+import { Home } from "../src/views/home/home";
+import Meta from "../src/views/meta/meta";
+import { Footer } from "../src/components/navigation/footer/footer";
 
-type Props = {
-  allPosts: Post[];
-  allNotes: Note[];
-  allPresentations: Presentation[];
-};
-
-export default function Index({ allPresentations }: Props) {
+// TODO - set up a provider for global information
+export default function Index() {
   return (
-    <Layout>
+    <>
+      <Meta />
       <Head>
         <title>Elizabeth Poggie</title>
       </Head>
-      <Text variant="h1">Hello world</Text>
-    </Layout>
+      <Home />
+      <Footer />
+    </>
   );
 }
-
-// TODO - set up a provider for global information
-
-export const getStaticProps = async () => {
-  const allPresentations = getAllPresentations([
-    "title",
-    "date",
-    "slug",
-    "coverImage",
-    "excerpt",
-  ]);
-
-  return {
-    props: { allPresentations },
-  };
-};
