@@ -1,3 +1,4 @@
+import { cs } from "../../../utils/helpers/classHelpers";
 import styles from "./image.module.scss";
 
 const imageVariantToStyleMap = {
@@ -10,6 +11,12 @@ const imageVariantToContainerStyleMap = {
   cover: styles.coverContainer,
 };
 
+const imageFilterToStyleMap = {
+  default: null,
+  darken: styles.darken,
+};
+
+type ImageFilter = "default" | "darken";
 type ImageVariant = "default" | "cover";
 
 interface Props {
@@ -23,13 +30,24 @@ interface Props {
    * @example "cover"
    */
   variant?: ImageVariant;
+  /**
+   * predefined image filters
+   *
+   * @example "darken"
+   */
+  filter?: ImageFilter;
 }
 
-// TODO - maybe make a proper 100vh cover variant
-export function Image({ src, variant = "default" }: Props) {
+export function Image({ src, variant = "default", filter = "default" }: Props) {
   return (
     <div className={imageVariantToContainerStyleMap[variant]}>
-      <img className={imageVariantToStyleMap[variant]} src={src} />
+      <img
+        className={cs(
+          imageVariantToStyleMap[variant],
+          imageFilterToStyleMap[filter]
+        )}
+        src={src}
+      />
     </div>
   );
 }
