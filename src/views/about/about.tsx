@@ -12,7 +12,7 @@ export function About() {
             Elizabeth Poggie
           </Text>
         </div>
-        <Image src={cover} variant="cover" filter="darken" />
+        <Image src={cover.src} variant="cover" filter="darken" />
       </div>
       <div className={styles.container}>
         <div className={styles.content}>
