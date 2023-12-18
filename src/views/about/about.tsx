@@ -1,9 +1,9 @@
 import { Text } from "../../components/typography/text/text";
-import styles from "./home.module.scss";
 import cover from "../../assets/personal/cover.jpeg";
 import { Image } from "../../components/display/image/image";
+import styles from "./about.module.scss";
 
-export function Home() {
+export function About() {
   return (
     <div>
       <div className={styles.titleContainer}>
