@@ -13,6 +13,7 @@
   color: $color-white;
 }
 
+// Styles and transformations
 .italics {
   font-style: italic;
 }
@@ -21,6 +22,7 @@
   text-transform: uppercase;
 }
 
+// Alignments
 .center {
   text-align: center;
 }
@@ -29,6 +31,7 @@
   text-align: end;
 }
 
+// Variants
 .title {
   font-size: $text-xl;
   letter-spacing: 0.2em;

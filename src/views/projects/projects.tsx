@@ -23,7 +23,7 @@ export function Projects({ allProjects }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.projectImage}>
-        <Image src={imageSrc} />
+        {imageSrc ? <Image src={imageSrc} variant="thumbnail" /> : null}
       </div>
       <div className={styles.projectsList}>
         <Text variant="title">Projects</Text>
