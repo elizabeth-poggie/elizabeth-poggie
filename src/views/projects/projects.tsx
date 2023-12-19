@@ -3,6 +3,8 @@ import { Image } from "../../components/display/image/image";
 import { Project, ProjectCategory } from "../../interfaces/project";
 import styles from "./projects.module.scss";
 import React from "react";
+import { Link } from "../../components/navigation/link/link";
+import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 
 interface Props {
   allProjects: Project[];
@@ -25,12 +27,11 @@ export function Projects({ allProjects }: Props) {
       </div>
       <div className={styles.projectsList}>
         <Text variant="title">Projects</Text>
-        <hr />
+        <HorizontalLine />
         {allProjects.map((project: Project, i: number) => {
           return (
-            <>
+            <Link key={project.slug} href={`/projects/${project.slug}`}>
               <div
-                key={project.slug}
                 className={styles.project}
                 onMouseEnter={() => onMouseEnter(i)}
                 onMouseLeave={onMouseLeave}
@@ -58,8 +59,8 @@ export function Projects({ allProjects }: Props) {
                   )}
                 </div>
               </div>
-              {i === allProjects.length - 1 ? null : <hr />}
-            </>
+              {i === allProjects.length - 1 ? null : <HorizontalLine />}
+            </Link>
           );
         })}
       </div>
