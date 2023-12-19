@@ -1,4 +1,4 @@
-type ProjectCategory =
+export type ProjectCategory =
   | "Coordination"
   | "Branding"
   | "Presentation"

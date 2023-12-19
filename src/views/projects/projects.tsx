@@ -1,6 +1,6 @@
 import { Text } from "../../components/typography/text/text";
 import { Image } from "../../components/display/image/image";
-import { Project } from "../../interfaces/project";
+import { Project, ProjectCategory } from "../../interfaces/project";
 import styles from "./projects.module.scss";
 
 interface Props {
@@ -16,7 +16,7 @@ export function Projects({ allProjects }: Props) {
       <div className={styles.projectsList}>
         <Text variant="title">Projects</Text>
         <hr />
-        {allProjects.map((project: Project) => {
+        {allProjects.map((project: Project, i: number) => {
           return (
             <>
               <div key={project.slug} className={styles.project}>
@@ -25,16 +25,25 @@ export function Projects({ allProjects }: Props) {
                   <Text variant="subheading">{project.year}</Text>
                 </div>
                 <div className={styles.projectCategories}>
-                  {project.categories.map((category) => {
-                    return (
-                      <Text variant="subheading" style="italics">
-                        {category}&#x2c; &nbsp;
-                      </Text>
-                    );
-                  })}
+                  {project.categories.map(
+                    (category: ProjectCategory, i: number) => {
+                      return (
+                        <>
+                          <Text variant="subheading" style="italics">
+                            {category}
+                          </Text>
+                          {i === project.categories.length - 1 ? null : (
+                            <Text variant="subheading" style="italics">
+                              , &nbsp;
+                            </Text>
+                          )}
+                        </>
+                      );
+                    }
+                  )}
                 </div>
               </div>
-              <hr />
+              {i === allProjects.length - 1 ? null : <hr />}
             </>
           );
         })}
