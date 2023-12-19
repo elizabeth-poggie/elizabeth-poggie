@@ -5,7 +5,6 @@
 
 @mixin header {
   font-family: "LTC Bodoni 175 W01 Regular";
-  text-transform: uppercase;
   color: $color-white;
 }
 
@@ -14,31 +13,12 @@
   color: $color-white;
 }
 
-.title {
-  font-size: $text-xl;
-  letter-spacing: 0.2em;
-  @include header;
+.italics {
+  font-style: italic;
 }
 
-.h1 {
-  @include header;
-}
-
-.h2 {
-  @include header;
-}
-
-.h3 {
-  @include header;
-}
-
-.subheading {
-  @include header;
-}
-
-.p {
-  font-size: $text-sm;
-  @include body;
+.uppercase {
+  text-transform: uppercase;
 }
 
 .center {
@@ -47,4 +27,26 @@
 
 .right {
   text-align: end;
+}
+
+.title {
+  font-size: $text-xl;
+  letter-spacing: 0.2em;
+  @extend .uppercase;
+  @include header;
+}
+
+.h1 {
+  font-size: $text-lg;
+  @include header;
+}
+
+.subheading {
+  font-size: $text-sm;
+  @include body;
+}
+
+.p {
+  font-size: $text-md;
+  @include body;
 }

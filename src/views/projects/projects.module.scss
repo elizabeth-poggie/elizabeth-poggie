@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  padding: 100px 40px 0 40px;
+}
+
+.projectsList {
+  padding-left: 40px;
+  width: 50%;
+}
+
+.projectImage {
+  max-width: 50%;
+}
+
+.project {
+  padding: 20px 0 20px 0;
+}
+
+.projectCategories {
+  display: flex;
+}
+
+.projectTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 5px;
+}

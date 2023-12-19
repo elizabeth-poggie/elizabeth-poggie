@@ -5,6 +5,7 @@ import { Projects } from "../src/views/projects/projects";
 import { getAllProjects } from "../src/utils/api";
 import { Project } from "../src/interfaces/project";
 import { Text } from "../src/components/typography/text/text";
+import { footerItems } from ".";
 
 interface Props {
   allProjects: Project[];
@@ -18,7 +19,7 @@ export default function ProjectsPage({ allProjects }: Props) {
         <title>Elizabeth Poggie</title>
       </Head>
       <Projects allProjects={allProjects} />
-      <Footer />
+      <Footer footerItems={footerItems} />
     </>
   );
 }

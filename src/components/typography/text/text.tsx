@@ -5,8 +5,6 @@ const textVariantToStyleMap = {
   title: styles.title,
   subheading: styles.subheading,
   h1: styles.h1,
-  h2: styles.h2,
-  h3: styles.h3,
   p: styles.p,
 };
 
@@ -16,9 +14,17 @@ const alignToStyleMap = {
   right: styles.right,
 };
 
-type TextAlign = "left" | "center" | "right";
-type TextVariant = "title" | "subheading" | "h1" | "h2" | "h3" | "p";
+const styleToStyleMap = {
+  normal: null,
+  italics: styles.italics,
+  uppercase: styles.uppercase,
+};
 
+type TextAlign = "left" | "center" | "right";
+type TextVariant = "title" | "subheading" | "h1" | "p";
+type TextStyle = "normal" | "italics" | "uppercase";
+
+// TODO - fix typing of the custom component to work with all text inputs
 interface Props {
   children: string;
   /**
@@ -33,11 +39,28 @@ interface Props {
    * @example "center"
    */
   align?: TextAlign;
+  /**
+   * set different font styles
+   *
+   * @example "italics"
+   */
+  style?: TextStyle;
 }
 
-export function Text({ children, variant = "p", align = "left" }: Props) {
+export function Text({
+  children,
+  variant = "p",
+  align = "left",
+  style = "normal",
+}: Props) {
   return (
-    <div className={cs(textVariantToStyleMap[variant], alignToStyleMap[align])}>
+    <div
+      className={cs(
+        textVariantToStyleMap[variant],
+        alignToStyleMap[align],
+        styleToStyleMap[style]
+      )}
+    >
       {children}
     </div>
   );
