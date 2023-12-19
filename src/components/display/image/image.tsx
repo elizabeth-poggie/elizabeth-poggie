@@ -2,7 +2,7 @@ import { cs } from "../../../utils/helpers/classHelpers";
 import styles from "./image.module.scss";
 
 const imageVariantToStyleMap = {
-  default: null,
+  default: styles.default,
   cover: styles.coverImage,
 };
 

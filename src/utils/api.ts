@@ -3,17 +3,17 @@ import { join } from "path";
 import matter from "gray-matter";
 
 // Get Directory Path
-const presentationsDirectory = join(process.cwd(), "_presentations");
+const directory = join(process.cwd(), "_content/projects/");
 
 // Read Directory Slugs
-export function getPresentationSlugs() {
-  return fs.readdirSync(presentationsDirectory);
+export function getSlugs() {
+  return fs.readdirSync(directory);
 }
 
 // Read MD Content
-export function getPresentationBySlugs(slug: string, fields: string[] = []) {
+export function getBySlugs(slug: string, fields: string[] = []) {
   const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(presentationsDirectory, `${realSlug}.md`);
+  const fullPath = join(directory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
@@ -40,10 +40,8 @@ export function getPresentationBySlugs(slug: string, fields: string[] = []) {
   return items;
 }
 
-export function getAllPresentations(fields: string[] = []) {
-  const slugs = getPresentationSlugs();
-  const presentations = slugs.map((slug) =>
-    getPresentationBySlugs(slug, fields)
-  );
+export function getAllProjects(fields: string[] = []) {
+  const slugs = getSlugs();
+  const presentations = slugs.map((slug) => getBySlugs(slug, fields));
   return presentations;
 }
