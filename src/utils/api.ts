@@ -2,16 +2,17 @@ import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 
-// Get Directory Path
-const directory = join(process.cwd(), "_content/projects/");
-
 // Read Directory Slugs
-export function getSlugs() {
+export function getSlugs(directory: string) {
   return fs.readdirSync(directory);
 }
 
 // Read MD Content
-export function getBySlugs(slug: string, fields: string[] = []) {
+export function getBySlugs(
+  slug: string,
+  fields: string[] = [],
+  directory: string
+) {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(directory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -41,7 +42,10 @@ export function getBySlugs(slug: string, fields: string[] = []) {
 }
 
 export function getAllProjects(fields: string[] = []) {
-  const slugs = getSlugs();
-  const presentations = slugs.map((slug) => getBySlugs(slug, fields));
-  return presentations;
+  const projectDirectory = join(process.cwd(), "_content/projects/");
+  const slugs = getSlugs(projectDirectory);
+  const sortedProjects = slugs
+    .map((slug) => getBySlugs(slug, fields, projectDirectory))
+    .sort((a, b) => parseFloat(b.year) - parseFloat(a.year));
+  return sortedProjects;
 }
