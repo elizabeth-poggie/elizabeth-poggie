@@ -11,6 +11,7 @@ import {
   ListItem,
   ListItemCategories,
 } from "../../components/display/list-item/list-item";
+import { ScrollableContainer } from "../../components/layout/scrollable-container/scrollable-container";
 
 interface Props {
   allProjects: Project[];
@@ -22,10 +23,23 @@ export function Projects({ allProjects }: Props) {
   const observedHeightRef = React.useRef(null);
   const imageRef = React.useRef(null);
 
-  React.useEffect(() => {
-    // custom scrolling behavior - prevent body from scrolling
-    document.body.style.overflow = "hidden";
+  /** 
+  TODO - Make it such that when there is a scroll event outside of this list (e.g. the body),
+  it is this list that is updated instead
 
+  similar to this behavior: https://magazine.ssense.com/
+
+  this might be the place to start => https://codepen.io/fcalderan/pen/qBYyRgE?editors=0010 
+  orrrr => https://stackoverflow.com/questions/9280258/prevent-body-scrolling-but-allow-overlay-scrolling
+  oooooorrrrrr google this => react scroll overaly and not body when scrolling
+
+  this might be the closest thing to what i want actually lol
+  or => https://jsfiddle.net/csdigitaldesign/NDx47/ or https://stackoverflow.com/questions/16094785/have-a-fixed-position-div-that-needs-to-scroll-if-content-overflows
+  
+  TODO - maybe also fix the scrollbar to be outside the div instead like this => https://stackoverflow.com/questions/74462846/place-scroll-bar-outside-div
+  */
+
+  React.useEffect(() => {
     // custom padding - configure div to match title and horizontal line height
     if (!observedHeightRef.current) {
       return;
@@ -41,9 +55,6 @@ export function Projects({ allProjects }: Props) {
     resizeObserver.observe(observedHeightRef.current);
 
     return () => {
-      // clean up custom scrolling behavior
-      document.body.style.overflow = "scroll";
-      // clean up resize observer
       resizeObserver.disconnect();
     };
   }, [observedHeightRef]);
@@ -57,8 +68,6 @@ export function Projects({ allProjects }: Props) {
     imageRef.current.classList.remove(styles.fade);
   };
 
-  // TODO - make a "ListItem" component that centralizes the project item logic in on
-  // TODO - add "hover" behavior
   return (
     <div className={styles.container}>
       <div
@@ -73,7 +82,7 @@ export function Projects({ allProjects }: Props) {
           <Text variant="title">Projects</Text>
           <HorizontalLine />
         </div>
-        <div className={styles.scrollableList}>
+        <ScrollableContainer heightMultiplier={120}>
           {allProjects.map((project: Project, i: number) => {
             return (
               <div
@@ -95,7 +104,7 @@ export function Projects({ allProjects }: Props) {
               </div>
             );
           })}
-        </div>
+        </ScrollableContainer>
       </div>
     </div>
   );

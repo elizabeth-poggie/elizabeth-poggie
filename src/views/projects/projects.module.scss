@@ -14,37 +14,15 @@
 .projectImage {
   width: 50%;
 
-  // TODO - maybe make this an image variant instead
+  // fade project image outwards
   visibility: hidden;
   opacity: 0;
   transition: all 250ms ease-out;
 }
 
-// TODO - maybe make this an image variant instead
 .fade {
+  // fade project image inwards
   visibility: visible;
   opacity: 1;
   transition: all 250ms ease-in;
-}
-
-.scrollableList {
-  /** 
-  TODO - Make it such that when there is a scroll event outside of this list (e.g. the body),
-  it is this list that is updated instead
-
-  similar to this behavior: https://magazine.ssense.com/
-
-  this might be the place to start => https://codepen.io/fcalderan/pen/qBYyRgE?editors=0010 
-  orrrr => https://stackoverflow.com/questions/9280258/prevent-body-scrolling-but-allow-overlay-scrolling
-  oooooorrrrrr google this => react scroll overaly and not body when scrolling
-
-  this might be the closest thing to what i want actually lol
-  or => https://jsfiddle.net/csdigitaldesign/NDx47/ or https://stackoverflow.com/questions/16094785/have-a-fixed-position-div-that-needs-to-scroll-if-content-overflows
-  */
-
-  max-height: 600px; // TODO - hardcoding this for now, ideally should extend to bottom tho
-  height: 100%;
-  overflow-y: scroll;
-
-  // TODO - maybe also fix the scrollbar to be outside the div instead like this => https://stackoverflow.com/questions/74462846/place-scroll-bar-outside-div
 }
