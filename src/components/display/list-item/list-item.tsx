@@ -5,14 +5,14 @@ import styles from "./list-item.module.scss";
 
 // TODO - add list item hover animation
 
-interface Props {
+interface IProps {
   title: string;
   rightContent?: React.ReactNode;
   subContent?: React.ReactNode;
   href?: string;
 }
 
-export function ListItem({ title, rightContent, subContent, href }: Props) {
+export function ListItem({ title, rightContent, subContent, href }: IProps) {
   return (
     <Link href={href}>
       <div className={styles.container}>

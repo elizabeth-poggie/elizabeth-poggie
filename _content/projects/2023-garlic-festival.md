@@ -7,7 +7,7 @@ categories: ["Coordination", "Branding"]
 
 # Details
 organization: "Marché Sainte-Anne"
-link: "https://www.facebook.com/festivaldelailSteAnne/"
+referenceLink: "https://www.facebook.com/festivaldelailSteAnne/"
 galleryFolder: "/assets/projects/2023-garlic-festival/gallery/"
 ---
 

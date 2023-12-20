@@ -3,7 +3,7 @@ import styles from "./scrollable-container.module.scss";
 
 // TODO - move the scrollbar outside of the container following this example => https://stackoverflow.com/questions/74462846/place-scroll-bar-outside-div
 
-interface Props {
+interface IProps {
   children: React.ReactNode;
   /**
    * Determines the height of the container as a function of 5px
@@ -15,7 +15,7 @@ interface Props {
 export function ScrollableContainer({
   children,
   heightMultiplier = 100,
-}: Props) {
+}: IProps) {
   React.useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {

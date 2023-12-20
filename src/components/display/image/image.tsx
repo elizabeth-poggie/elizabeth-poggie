@@ -21,7 +21,7 @@ const imageFilterToStyleMap = {
 type ImageFilter = "default" | "darken";
 type ImageVariant = "default" | "cover" | "thumbnail";
 
-interface Props {
+interface IProps {
   /**
    * path of the image
    */
@@ -40,7 +40,11 @@ interface Props {
   filter?: ImageFilter;
 }
 
-export function Image({ src, variant = "default", filter = "default" }: Props) {
+export function Image({
+  src,
+  variant = "default",
+  filter = "default",
+}: IProps) {
   return (
     <div className={imageVariantToContainerStyleMap[variant]}>
       <img

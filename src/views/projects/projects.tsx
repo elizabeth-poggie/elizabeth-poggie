@@ -1,12 +1,10 @@
 import { Text } from "../../components/typography/text/text";
 import { Image } from "../../components/display/image/image";
-import { Project } from "../../interfaces/project";
+import { IProject } from "../../interfaces/project";
 import styles from "./projects.module.scss";
 import React from "react";
-import { Link } from "../../components/navigation/link/link";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import { cs } from "../../utils/helpers/classHelpers";
-import { Category } from "../../interfaces/category";
 import {
   ListItem,
   ListItemCategories,
@@ -25,11 +23,11 @@ import { ScrollableContainer } from "../../components/layout/scrollable-containe
  * - .....or googling "react scroll overlay and not body when scrolling"
  */
 
-interface Props {
-  allProjects: Project[];
+interface IProps {
+  allProjects: IProject[];
 }
 
-export function Projects({ allProjects }: Props) {
+export function Projects({ allProjects }: IProps) {
   const [imageSrc, setImageSrc] = React.useState<string | null>(null);
   const [height, setHeight] = React.useState<number>(0);
   const observedHeightRef = React.useRef(null);
@@ -79,7 +77,7 @@ export function Projects({ allProjects }: Props) {
           <HorizontalLine />
         </div>
         <ScrollableContainer heightMultiplier={120}>
-          {allProjects.map((project: Project, i: number) => {
+          {allProjects.map((project: IProject, i: number) => {
             return (
               <div
                 key={project.slug}
