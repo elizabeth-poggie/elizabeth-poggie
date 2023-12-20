@@ -1,6 +1,7 @@
 .container {
   display: flex;
   padding: 100px 120px 0 120px;
+  height: 100%;
 }
 
 .projectsList {
@@ -25,4 +26,19 @@
   justify-content: space-between;
   align-items: flex-end;
   padding-bottom: 5px;
+}
+
+.scrollableList {
+  /** 
+  TODO - Make it such that when there is a scroll event outside of this list (e.g. the body),
+  it is this list that is updated instead
+
+  similar to this behavior: https://magazine.ssense.com/
+  */
+
+  max-height: 600px; // TODO - hardcoding this for now, ideally should extend to bottom tho
+  height: 100%;
+  overflow-y: scroll;
+
+  // TODO - maybe also fix the scrollbar to be outside the div instead like this => https://stackoverflow.com/questions/74462846/place-scroll-bar-outside-div
 }
