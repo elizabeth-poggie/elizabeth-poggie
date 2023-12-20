@@ -1,0 +1,9 @@
+@import "../../../styles/variables.scss";
+
+.horizontalLine {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 0.5px solid $color-white;
+  margin: 1em 0;
+}

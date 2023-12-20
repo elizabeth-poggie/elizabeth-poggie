@@ -2,13 +2,15 @@ import { cs } from "../../../utils/helpers/classHelpers";
 import styles from "./image.module.scss";
 
 const imageVariantToStyleMap = {
-  default: null,
-  cover: styles.coverImage,
+  default: styles.default,
+  cover: styles.cover,
+  thumbnail: styles.thumbnail,
 };
 
 const imageVariantToContainerStyleMap = {
   default: null,
   cover: styles.coverContainer,
+  thumbnail: styles.thumbnailContainer,
 };
 
 const imageFilterToStyleMap = {
@@ -17,7 +19,7 @@ const imageFilterToStyleMap = {
 };
 
 type ImageFilter = "default" | "darken";
-type ImageVariant = "default" | "cover";
+type ImageVariant = "default" | "cover" | "thumbnail";
 
 interface Props {
   /**

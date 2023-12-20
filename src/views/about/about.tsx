@@ -1,7 +1,9 @@
 import { Text } from "../../components/typography/text/text";
-import cover from "../../assets/personal/cover.jpeg";
 import { Image } from "../../components/display/image/image";
 import styles from "./about.module.scss";
+
+// Read more about static assets here => https://nextjs.org/docs/pages/building-your-application/optimizing/static-assets
+const coverSrc = "/assets/personal/cover.jpeg";
 
 export function About() {
   return (
@@ -12,7 +14,7 @@ export function About() {
             Elizabeth Poggie
           </Text>
         </div>
-        <Image src={cover.src} variant="cover" filter="darken" />
+        <Image src={coverSrc} variant="cover" filter="darken" />
       </div>
       <div className={styles.container}>
         <div className={styles.content}>

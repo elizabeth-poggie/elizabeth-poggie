@@ -1,0 +1,16 @@
+@import "../../../styles/variables.scss";
+
+.container {
+  padding: calc($unit * 4) 0 calc($unit * 4) 0;
+}
+
+.categories {
+  display: flex;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: $unit;
+}

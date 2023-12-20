@@ -2,18 +2,19 @@ import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 
-// Get Directory Path
-const presentationsDirectory = join(process.cwd(), "_presentations");
-
 // Read Directory Slugs
-export function getPresentationSlugs() {
-  return fs.readdirSync(presentationsDirectory);
+export function getSlugs(directory: string) {
+  return fs.readdirSync(directory);
 }
 
 // Read MD Content
-export function getPresentationBySlugs(slug: string, fields: string[] = []) {
+export function getBySlugs(
+  slug: string,
+  fields: string[] = [],
+  directory: string
+) {
   const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(presentationsDirectory, `${realSlug}.md`);
+  const fullPath = join(directory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
@@ -40,10 +41,11 @@ export function getPresentationBySlugs(slug: string, fields: string[] = []) {
   return items;
 }
 
-export function getAllPresentations(fields: string[] = []) {
-  const slugs = getPresentationSlugs();
-  const presentations = slugs.map((slug) =>
-    getPresentationBySlugs(slug, fields)
-  );
-  return presentations;
+export function getAllProjects(fields: string[] = []) {
+  const projectDirectory = join(process.cwd(), "_content/projects/");
+  const slugs = getSlugs(projectDirectory);
+  const sortedProjects = slugs
+    .map((slug) => getBySlugs(slug, fields, projectDirectory))
+    .sort((a, b) => parseFloat(b.year) - parseFloat(a.year));
+  return sortedProjects;
 }

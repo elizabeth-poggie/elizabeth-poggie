@@ -1,5 +1,4 @@
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
-import { Text } from "../../typography/text/text";
 import styles from "./link.module.scss";
 
 interface Props extends NextLinkProps {
