@@ -14,12 +14,11 @@ export function ProjectDetails({ projectDetails }: IProps) {
     <div className={styles.container}>
       <Image src={projectDetails.coverSrc} variant="lead" />
       <div className={styles.info}>
-        <div className={styles.title}>
-          <Text variant="h1">{projectDetails.title}</Text>
+        <div className={styles.leftContent}>
+          <div className={styles.title}>
+            <Text variant="title">{projectDetails.title}</Text>
+          </div>
           <Text variant="p">{projectDetails.organization}</Text>
-          <Link href={projectDetails.referenceLink}>
-            <Text variant="subheading">Read more here</Text>
-          </Link>
         </div>
         <div className={styles.contentContainer}>
           <div
