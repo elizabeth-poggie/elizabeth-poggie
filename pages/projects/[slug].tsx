@@ -2,7 +2,11 @@ import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
 import { ProjectDetails } from "../../src/views/project-details/project-details";
 import { markdownToHtml } from "../../src/utils/helpers/markdownToHtml";
-import { getBySlug, projectDirectory } from "../../src/utils/api";
+import {
+  getAllProjects,
+  getBySlug,
+  projectDirectory,
+} from "../../src/utils/api";
 import { IProjectDetails } from "../../src/interfaces/project";
 
 interface Props {
@@ -39,9 +43,11 @@ export async function getStaticProps({ params }: Params) {
       "organization",
       "referenceLink",
       "galleryFolder",
+      "content",
     ],
     projectDirectory
   );
+
   const content = await markdownToHtml(projectDetails.content || "");
 
   return {
@@ -51,5 +57,20 @@ export async function getStaticProps({ params }: Params) {
         content,
       },
     },
+  };
+}
+
+export async function getStaticPaths() {
+  const projects = getAllProjects(["slug"]);
+
+  return {
+    paths: projects.map((post) => {
+      return {
+        params: {
+          slug: post.slug,
+        },
+      };
+    }),
+    fallback: false,
   };
 }

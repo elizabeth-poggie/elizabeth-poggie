@@ -11,6 +11,11 @@
   display: flex;
 }
 
+.leadContainer {
+  width: 100vw;
+  height: 70vh;
+}
+
 // Variants
 .default {
   width: auto;
@@ -31,6 +36,10 @@
   height: inherit;
   width: inherit;
   object-fit: cover;
+}
+
+.lead {
+  @extend .cover;
 }
 
 // Filters

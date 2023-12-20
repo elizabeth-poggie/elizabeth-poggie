@@ -14,7 +14,7 @@ export function Footer({ footerItems }: IProps) {
     <div className={styles.footer}>
       {footerItems.map((item) => {
         return (
-          <Link href={item.href}>
+          <Link key={item.href} href={item.href}>
             <Text variant="h1">{item.name}</Text>
           </Link>
         );

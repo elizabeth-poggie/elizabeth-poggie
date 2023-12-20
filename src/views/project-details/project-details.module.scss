@@ -1,0 +1,19 @@
+@import "../../styles/variables.scss";
+
+.container {
+  padding-top: calc(12 * $unit);
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 20px 0 20px;
+}
+
+.title {
+  display: block;
+}
+
+.contentContainer {
+  width: 50%;
+}

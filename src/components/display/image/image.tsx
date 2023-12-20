@@ -5,12 +5,14 @@ const imageVariantToStyleMap = {
   default: styles.default,
   cover: styles.cover,
   thumbnail: styles.thumbnail,
+  lead: styles.lead,
 };
 
 const imageVariantToContainerStyleMap = {
   default: null,
   cover: styles.coverContainer,
   thumbnail: styles.thumbnailContainer,
+  lead: styles.leadContainer,
 };
 
 const imageFilterToStyleMap = {
@@ -19,7 +21,7 @@ const imageFilterToStyleMap = {
 };
 
 type ImageFilter = "default" | "darken";
-type ImageVariant = "default" | "cover" | "thumbnail";
+type ImageVariant = "default" | "cover" | "thumbnail" | "lead";
 
 interface IProps {
   /**
