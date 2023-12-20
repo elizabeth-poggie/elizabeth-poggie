@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .container {
   display: flex;
   padding: 100px 120px 0 120px;
@@ -18,21 +20,6 @@
   transition: all 250ms ease-out;
 }
 
-.project {
-  padding: 20px 0 20px 0;
-}
-
-.projectCategories {
-  display: flex;
-}
-
-.projectTitle {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 5px;
-}
-
 // TODO - maybe make this an image variant instead
 .fade {
   visibility: visible;
@@ -50,6 +37,9 @@
   this might be the place to start => https://codepen.io/fcalderan/pen/qBYyRgE?editors=0010 
   orrrr => https://stackoverflow.com/questions/9280258/prevent-body-scrolling-but-allow-overlay-scrolling
   oooooorrrrrr google this => react scroll overaly and not body when scrolling
+
+  this might be the closest thing to what i want actually lol
+  or => https://jsfiddle.net/csdigitaldesign/NDx47/ or https://stackoverflow.com/questions/16094785/have-a-fixed-position-div-that-needs-to-scroll-if-content-overflows
   */
 
   max-height: 600px; // TODO - hardcoding this for now, ideally should extend to bottom tho

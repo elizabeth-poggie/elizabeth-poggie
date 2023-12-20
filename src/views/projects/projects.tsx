@@ -1,11 +1,16 @@
 import { Text } from "../../components/typography/text/text";
 import { Image } from "../../components/display/image/image";
-import { Project, ProjectCategory } from "../../interfaces/project";
+import { Project } from "../../interfaces/project";
 import styles from "./projects.module.scss";
 import React from "react";
 import { Link } from "../../components/navigation/link/link";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import { cs } from "../../utils/helpers/classHelpers";
+import { Category } from "../../interfaces/category";
+import {
+  ListItem,
+  ListItemCategories,
+} from "../../components/display/list-item/list-item";
 
 interface Props {
   allProjects: Project[];
@@ -26,7 +31,10 @@ export function Projects({ allProjects }: Props) {
       return;
     }
     const resizeObserver = new ResizeObserver(() => {
-      if (observedHeightRef.current.offsetHeight !== height) {
+      if (
+        observedHeightRef.current &&
+        observedHeightRef.current.offsetHeight !== height
+      ) {
         setHeight(observedHeightRef.current.offsetHeight);
       }
     });
@@ -38,7 +46,7 @@ export function Projects({ allProjects }: Props) {
       // clean up resize observer
       resizeObserver.disconnect();
     };
-  }, [observedHeightRef.current]);
+  }, [observedHeightRef]);
 
   const onMouseEnter = (projectIndex: number) => {
     setImageSrc(allProjects[projectIndex].coverSrc);
@@ -49,6 +57,8 @@ export function Projects({ allProjects }: Props) {
     imageRef.current.classList.remove(styles.fade);
   };
 
+  // TODO - make a "ListItem" component that centralizes the project item logic in on
+  // TODO - add "hover" behavior
   return (
     <div className={styles.container}>
       <div
@@ -66,37 +76,23 @@ export function Projects({ allProjects }: Props) {
         <div className={styles.scrollableList}>
           {allProjects.map((project: Project, i: number) => {
             return (
-              <Link key={project.slug} href={`/projects/${project.slug}`}>
-                <div
-                  className={styles.project}
-                  onMouseEnter={() => onMouseEnter(i)}
-                  onMouseLeave={onMouseLeave}
-                >
-                  <div className={styles.projectTitle}>
-                    <Text variant="h1">{project.title}</Text>
+              <div
+                key={project.slug}
+                onMouseEnter={() => onMouseEnter(i)}
+                onMouseLeave={onMouseLeave}
+              >
+                <ListItem
+                  title={project.title}
+                  href={`/projects/${project.slug}`}
+                  rightContent={
                     <Text variant="subheading">{project.year}</Text>
-                  </div>
-                  <div className={styles.projectCategories}>
-                    {project.categories.map(
-                      (category: ProjectCategory, i: number) => {
-                        return (
-                          <>
-                            <Text variant="subheading" style="italics">
-                              {category}
-                            </Text>
-                            {i === project.categories.length - 1 ? null : (
-                              <Text variant="subheading" style="italics">
-                                , &nbsp;
-                              </Text>
-                            )}
-                          </>
-                        );
-                      }
-                    )}
-                  </div>
-                </div>
+                  }
+                  subContent={
+                    <ListItemCategories categories={project.categories} />
+                  }
+                />
                 {i === allProjects.length - 1 ? null : <HorizontalLine />}
-              </Link>
+              </div>
             );
           })}
         </div>

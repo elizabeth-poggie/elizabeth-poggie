@@ -1,14 +1,10 @@
-export type ProjectCategory =
-  | "Coordination"
-  | "Branding"
-  | "Presentation"
-  | "Development";
+import { Category } from "./category";
 
 export interface Project {
   slug: string;
   title: string;
   year: string;
   coverSrc: string;
-  categories: Array<ProjectCategory>;
+  categories: Array<Category>;
   content: string;
 }
