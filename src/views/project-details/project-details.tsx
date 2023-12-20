@@ -4,6 +4,7 @@ import { IProjectDetails } from "../../interfaces/project";
 import styles from "./project-details.module.scss";
 import markdownStyles from "../../styles/markdown-styles.module.scss";
 import { Link } from "../../components/navigation/link/link";
+import { ScrollableContainer } from "../../components/layout/scrollable-container/scrollable-container";
 
 interface IProps {
   projectDetails: IProjectDetails;
@@ -27,6 +28,12 @@ export function ProjectDetails({ projectDetails }: IProps) {
           />
         </div>
       </div>
+      <ScrollableContainer scrollDirection="horizontal" heightMultiplier={80}>
+        <Image src={projectDetails.coverSrc} />
+        <Image src={projectDetails.coverSrc} />
+        <Image src={projectDetails.coverSrc} />
+        <Image src={projectDetails.coverSrc} />
+      </ScrollableContainer>
     </div>
   );
 }

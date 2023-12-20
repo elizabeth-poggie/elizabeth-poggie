@@ -1,4 +1,11 @@
 .container {
   height: 100%;
+}
+
+.vertical {
   overflow-y: scroll;
+}
+
+.horizontal {
+  overflow-x: scroll;
 }

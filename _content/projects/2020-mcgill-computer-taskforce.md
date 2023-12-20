@@ -1,13 +1,11 @@
 ---
 # General Information
-title: "McGill Computer Taskforce"
+title: "Computer Taskforce"
 year: "2020"
 categories: ["Coordination", "Development", "Branding"]
 
 # Details
-organization: ""
+organization: "McGill University"
 referenceLink: ""
 galleryFolder: ""
 ---
-
-# Hello World

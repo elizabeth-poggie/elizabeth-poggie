@@ -1,7 +1,15 @@
 import React from "react";
 import styles from "./scrollable-container.module.scss";
+import { cs } from "../../../utils/helpers/classHelpers";
 
 // TODO - move the scrollbar outside of the container following this example => https://stackoverflow.com/questions/74462846/place-scroll-bar-outside-div
+
+const scrollDirectionToStyleMap = {
+  vertical: styles.vertical,
+  horizontal: styles.horizontal,
+};
+
+type ScrollDirection = "vertical" | "horizontal";
 
 interface IProps {
   children: React.ReactNode;
@@ -10,21 +18,33 @@ interface IProps {
    * @default 100
    */
   heightMultiplier?: number;
+  /**
+   * Determines the scroll direction for the container
+   * @default "vertical"
+   */
+  scrollDirection?: ScrollDirection;
 }
 
 export function ScrollableContainer({
   children,
+  scrollDirection = "vertical",
   heightMultiplier = 100,
 }: IProps) {
   React.useEffect(() => {
-    document.body.style.overflow = "hidden";
+    // TODO - for projects view
+    if (scrollDirection === "vertical") {
+      document.body.style.overflow = "hidden";
+    }
     return () => {
       document.body.style.overflow = "scroll";
     };
   }, []);
   return (
     <div
-      className={styles.container}
+      className={cs(
+        styles.container,
+        scrollDirectionToStyleMap[scrollDirection]
+      )}
       style={{ height: `calc(${heightMultiplier} * 5px)` }}
     >
       {children}

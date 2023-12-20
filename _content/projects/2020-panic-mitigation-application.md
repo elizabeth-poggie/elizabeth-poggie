@@ -9,5 +9,3 @@ organization: ""
 referenceLink: ""
 galleryFolder: ""
 ---
-
-# Hello World
