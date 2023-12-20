@@ -14,29 +14,23 @@ interface Props {
 export function Projects({ allProjects }: Props) {
   const [imageSrc, setImageSrc] = React.useState<string | null>(null);
   const [height, setHeight] = React.useState<number>(0);
-  const observedHeightDiv = React.useRef(null);
-
-  const scrollableDiv = React.useRef(null);
-  // what should we do when scrolling occurs
-  function runOnScroll(element) {
-    // not the most exciting thing, but a thing nonetheless
-    console.log(element);
-  }
+  const observedHeightRef = React.useRef(null);
+  const imageRef = React.useRef(null);
 
   React.useEffect(() => {
     // custom scrolling behavior - prevent body from scrolling
     document.body.style.overflow = "hidden";
 
     // custom padding - configure div to match title and horizontal line height
-    if (!observedHeightDiv.current) {
+    if (!observedHeightRef.current) {
       return;
     }
     const resizeObserver = new ResizeObserver(() => {
-      if (observedHeightDiv.current.offsetHeight !== height) {
-        setHeight(observedHeightDiv.current.offsetHeight);
+      if (observedHeightRef.current.offsetHeight !== height) {
+        setHeight(observedHeightRef.current.offsetHeight);
       }
     });
-    resizeObserver.observe(observedHeightDiv.current);
+    resizeObserver.observe(observedHeightRef.current);
 
     return () => {
       // clean up custom scrolling behavior
@@ -44,29 +38,32 @@ export function Projects({ allProjects }: Props) {
       // clean up resize observer
       resizeObserver.disconnect();
     };
-  }, [observedHeightDiv.current]);
+  }, [observedHeightRef.current]);
 
   const onMouseEnter = (projectIndex: number) => {
     setImageSrc(allProjects[projectIndex].coverSrc);
+    imageRef.current.classList.add(styles.fade);
   };
   const onMouseLeave = () => {
     setImageSrc(null);
+    imageRef.current.classList.remove(styles.fade);
   };
 
   return (
     <div className={styles.container}>
       <div
+        ref={imageRef}
         className={cs(styles.projectImage)}
         style={{ paddingTop: `${height}px` }}
       >
         {imageSrc ? <Image src={imageSrc} variant="thumbnail" /> : null}
       </div>
       <div className={styles.projectsList}>
-        <div ref={observedHeightDiv}>
+        <div ref={observedHeightRef}>
           <Text variant="title">Projects</Text>
           <HorizontalLine />
         </div>
-        <div ref={scrollableDiv} className={styles.scrollableList}>
+        <div className={styles.scrollableList}>
           {allProjects.map((project: Project, i: number) => {
             return (
               <Link key={project.slug} href={`/projects/${project.slug}`}>

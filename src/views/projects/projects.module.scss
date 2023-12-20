@@ -11,6 +11,11 @@
 
 .projectImage {
   width: 50%;
+
+  // TODO - maybe make this an image variant instead
+  visibility: hidden;
+  opacity: 0;
+  transition: all 250ms ease-out;
 }
 
 .project {
@@ -26,6 +31,13 @@
   justify-content: space-between;
   align-items: flex-end;
   padding-bottom: 5px;
+}
+
+// TODO - maybe make this an image variant instead
+.fade {
+  visibility: visible;
+  opacity: 1;
+  transition: all 250ms ease-in;
 }
 
 .scrollableList {
