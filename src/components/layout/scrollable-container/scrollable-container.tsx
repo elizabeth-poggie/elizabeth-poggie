@@ -31,7 +31,7 @@ export function ScrollableContainer({
   heightMultiplier = 100,
 }: IProps) {
   React.useEffect(() => {
-    // TODO - for projects view
+    // TODO - maybe come up with a better solution for the 'Projects' view
     if (scrollDirection === "vertical") {
       document.body.style.overflow = "hidden";
     }

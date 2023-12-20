@@ -11,6 +11,6 @@ export interface IProject {
 export interface IProjectDetails extends IProject {
   organization: string;
   referenceLink: string;
-  galleryFolder: string;
+  gallerySrcs: Array<string>;
   content: string;
 }

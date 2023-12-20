@@ -28,20 +28,15 @@ export function ProjectDetails({ projectDetails }: IProps) {
           />
         </div>
       </div>
-      <ScrollableContainer scrollDirection="horizontal" heightMultiplier={80}>
-        <div>
-          <Image src={projectDetails.coverSrc} />
-        </div>
-        <div>
-          <Image src={projectDetails.coverSrc} />
-        </div>
-        <div>
-          <Image src={projectDetails.coverSrc} />
-        </div>
-        <div>
-          <Image src={projectDetails.coverSrc} />
-        </div>
-      </ScrollableContainer>
+      {projectDetails.gallerySrcs ? (
+        <ScrollableContainer scrollDirection="horizontal" heightMultiplier={80}>
+          {projectDetails.gallerySrcs.map((src: string) => (
+            <div className={styles.imageContainer}>
+              <Image src={src} />
+            </div>
+          ))}
+        </ScrollableContainer>
+      ) : null}
     </div>
   );
 }

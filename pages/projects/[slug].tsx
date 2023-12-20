@@ -42,7 +42,7 @@ export async function getStaticProps({ params }: Params) {
       "coverSrc",
       "organization",
       "referenceLink",
-      "galleryFolder",
+      "gallerySrcs",
       "content",
     ],
     projectDirectory
