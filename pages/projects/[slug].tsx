@@ -30,7 +30,16 @@ type Params = {
 export async function getStaticProps({ params }: Params) {
   const projectDetails = getBySlug(
     params.slug,
-    ["title", "year", "slug", "categories", "coverSrc"],
+    [
+      "title",
+      "year",
+      "slug",
+      "categories",
+      "coverSrc",
+      "organization",
+      "referenceLink",
+      "galleryFolder",
+    ],
     projectDirectory
   );
   const content = await markdownToHtml(projectDetails.content || "");
