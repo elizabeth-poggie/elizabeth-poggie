@@ -29,10 +29,18 @@ export function ProjectDetails({ projectDetails }: IProps) {
         </div>
       </div>
       <ScrollableContainer scrollDirection="horizontal" heightMultiplier={80}>
-        <Image src={projectDetails.coverSrc} />
-        <Image src={projectDetails.coverSrc} />
-        <Image src={projectDetails.coverSrc} />
-        <Image src={projectDetails.coverSrc} />
+        <div>
+          <Image src={projectDetails.coverSrc} />
+        </div>
+        <div>
+          <Image src={projectDetails.coverSrc} />
+        </div>
+        <div>
+          <Image src={projectDetails.coverSrc} />
+        </div>
+        <div>
+          <Image src={projectDetails.coverSrc} />
+        </div>
       </ScrollableContainer>
     </div>
   );
