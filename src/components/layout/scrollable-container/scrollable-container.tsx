@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./scrollable-container.module.scss";
 
+// TODO - move the scrollbar outside of the container following this example => https://stackoverflow.com/questions/74462846/place-scroll-bar-outside-div
+
 interface Props {
   children: React.ReactNode;
   /**

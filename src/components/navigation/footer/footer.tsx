@@ -3,6 +3,8 @@ import { Text } from "../../typography/text/text";
 import { Link } from "../link/link";
 import styles from "./footer.module.scss";
 
+// TODO - add footer item hover animation
+
 interface Props {
   footerItems: Array<FooterItem>;
 }

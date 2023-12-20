@@ -13,6 +13,18 @@ import {
 } from "../../components/display/list-item/list-item";
 import { ScrollableContainer } from "../../components/layout/scrollable-container/scrollable-container";
 
+/**
+ * TODO - Make it such that when there is a scroll event outside of this list (e.g. the body),
+ * it is this list that is updated instead. Similar to this behavior https://magazine.ssense.com/
+ *
+ * References:
+ * - https://codepen.io/fcalderan/pen/qBYyRgE?editors=0010
+ * - https://stackoverflow.com/questions/9280258/prevent-body-scrolling-but-allow-overlay-scrolling
+ * - https://jsfiddle.net/csdigitaldesign/NDx47/ (best bet)
+ * - https://stackoverflow.com/questions/16094785/have-a-fixed-position-div-that-needs-to-scroll-if-content-overflows
+ * - .....or googling "react scroll overlay and not body when scrolling"
+ */
+
 interface Props {
   allProjects: Project[];
 }
@@ -23,24 +35,8 @@ export function Projects({ allProjects }: Props) {
   const observedHeightRef = React.useRef(null);
   const imageRef = React.useRef(null);
 
-  /** 
-  TODO - Make it such that when there is a scroll event outside of this list (e.g. the body),
-  it is this list that is updated instead
-
-  similar to this behavior: https://magazine.ssense.com/
-
-  this might be the place to start => https://codepen.io/fcalderan/pen/qBYyRgE?editors=0010 
-  orrrr => https://stackoverflow.com/questions/9280258/prevent-body-scrolling-but-allow-overlay-scrolling
-  oooooorrrrrr google this => react scroll overaly and not body when scrolling
-
-  this might be the closest thing to what i want actually lol
-  or => https://jsfiddle.net/csdigitaldesign/NDx47/ or https://stackoverflow.com/questions/16094785/have-a-fixed-position-div-that-needs-to-scroll-if-content-overflows
-  
-  TODO - maybe also fix the scrollbar to be outside the div instead like this => https://stackoverflow.com/questions/74462846/place-scroll-bar-outside-div
-  */
-
   React.useEffect(() => {
-    // custom padding - configure div to match title and horizontal line height
+    // custom styling - configure project image div padding to match title and horizontal line height
     if (!observedHeightRef.current) {
       return;
     }

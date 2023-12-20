@@ -3,6 +3,8 @@ import { Link } from "../../navigation/link/link";
 import { Text } from "../../typography/text/text";
 import styles from "./list-item.module.scss";
 
+// TODO - add list item hover animation
+
 interface Props {
   title: string;
   rightContent?: React.ReactNode;
