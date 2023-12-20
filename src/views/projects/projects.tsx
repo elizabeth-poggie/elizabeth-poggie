@@ -5,6 +5,7 @@ import styles from "./projects.module.scss";
 import React from "react";
 import { Link } from "../../components/navigation/link/link";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
+import { cs } from "../../utils/helpers/classHelpers";
 
 interface Props {
   allProjects: Project[];
@@ -12,6 +13,26 @@ interface Props {
 
 export function Projects({ allProjects }: Props) {
   const [imageSrc, setImageSrc] = React.useState<string | null>(null);
+  const [height, setHeight] = React.useState<number>(0);
+  const observedHeightDiv = React.useRef(null);
+
+  React.useEffect(() => {
+    if (!observedHeightDiv.current) {
+      return;
+    }
+
+    const resizeObserver = new ResizeObserver(() => {
+      if (observedHeightDiv.current.offsetHeight !== height) {
+        setHeight(observedHeightDiv.current.offsetHeight);
+      }
+    });
+
+    resizeObserver.observe(observedHeightDiv.current);
+
+    return function cleanup() {
+      resizeObserver.disconnect();
+    };
+  }, [observedHeightDiv.current]);
 
   const onMouseEnter = (projectIndex: number) => {
     setImageSrc(allProjects[projectIndex].coverSrc);
@@ -22,12 +43,17 @@ export function Projects({ allProjects }: Props) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.projectImage}>
+      <div
+        className={cs(styles.projectImage)}
+        style={{ paddingTop: `${height}px` }}
+      >
         {imageSrc ? <Image src={imageSrc} variant="thumbnail" /> : null}
       </div>
       <div className={styles.projectsList}>
-        <Text variant="title">Projects</Text>
-        <HorizontalLine />
+        <div ref={observedHeightDiv}>
+          <Text variant="title">Projects</Text>
+          <HorizontalLine />
+        </div>
         {allProjects.map((project: Project, i: number) => {
           return (
             <Link key={project.slug} href={`/projects/${project.slug}`}>
