@@ -3,6 +3,7 @@ import styles from "./scrollable-container.module.scss";
 import { cs } from "../../../utils/helpers/classHelpers";
 
 // TODO - move the scrollbar outside of the container following this example => https://stackoverflow.com/questions/74462846/place-scroll-bar-outside-div
+// or this one https://stackoverflow.com/questions/67912369/how-to-place-the-scrollbar-outside-of-div
 
 const scrollDirectionToStyleMap = {
   vertical: styles.vertical,
