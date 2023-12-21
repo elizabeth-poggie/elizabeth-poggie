@@ -1,0 +1,25 @@
+@import "./variables.scss";
+@import url(https://db.onlinewebfonts.com/c/02c5086e8616653dade6e7cb3a1f0498?family=LTC+Bodoni+175+W01+Regular);
+@import url(https://db.onlinewebfonts.com/c/e080040fab017e068ee2901a6cdb5ec4?family=Lato+Regular);
+@import url(https://db.onlinewebfonts.com/c/0033a2fbc0329740fb86c1cfd134cb94?family=Roboto);
+
+@mixin header {
+  font-family: "LTC Bodoni 175 W01 Regular";
+  color: $color-white;
+}
+
+@mixin body {
+  font-family: "Lato Regular";
+  color: $color-white;
+}
+
+.markdown {
+  color: $color-white;
+}
+
+.markdown p {
+  font-size: $text-md;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  @include body;
+}

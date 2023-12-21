@@ -3,12 +3,11 @@ import Meta from "../src/views/meta/meta";
 import { Footer } from "../src/components/navigation/footer/footer";
 import { Projects } from "../src/views/projects/projects";
 import { getAllProjects } from "../src/utils/api";
-import { Project } from "../src/interfaces/project";
-import { Text } from "../src/components/typography/text/text";
+import { IProject } from "../src/interfaces/project";
 import { footerItems } from ".";
 
 interface Props {
-  allProjects: Project[];
+  allProjects: IProject[];
 }
 
 export default function ProjectsPage({ allProjects }: Props) {

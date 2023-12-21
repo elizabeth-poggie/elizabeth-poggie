@@ -25,7 +25,7 @@ type TextVariant = "title" | "subheading" | "h1" | "p";
 type TextStyle = "normal" | "italics" | "uppercase";
 
 // TODO - fix typing of the custom component to work with all text inputs
-interface Props {
+interface IProps {
   children: string;
   /**
    * predefined style variants
@@ -52,7 +52,7 @@ export function Text({
   variant = "p",
   align = "left",
   style = "normal",
-}: Props) {
+}: IProps) {
   return (
     <div
       className={cs(

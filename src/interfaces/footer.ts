@@ -1,4 +1,4 @@
-export type FooterItem = {
+export type IFooterItem = {
   href: string;
   name: string;
 };

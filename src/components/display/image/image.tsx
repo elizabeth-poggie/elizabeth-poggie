@@ -2,15 +2,18 @@ import { cs } from "../../../utils/helpers/classHelpers";
 import styles from "./image.module.scss";
 
 const imageVariantToStyleMap = {
-  default: styles.default,
+  default: null,
   cover: styles.cover,
   thumbnail: styles.thumbnail,
+  lead: styles.lead,
+  listItem: styles.listItem,
 };
 
 const imageVariantToContainerStyleMap = {
   default: null,
   cover: styles.coverContainer,
   thumbnail: styles.thumbnailContainer,
+  lead: styles.leadContainer,
 };
 
 const imageFilterToStyleMap = {
@@ -19,9 +22,9 @@ const imageFilterToStyleMap = {
 };
 
 type ImageFilter = "default" | "darken";
-type ImageVariant = "default" | "cover" | "thumbnail";
+type ImageVariant = "default" | "cover" | "thumbnail" | "lead" | "listItem";
 
-interface Props {
+interface IProps {
   /**
    * path of the image
    */
@@ -40,7 +43,11 @@ interface Props {
   filter?: ImageFilter;
 }
 
-export function Image({ src, variant = "default", filter = "default" }: Props) {
+export function Image({
+  src,
+  variant = "default",
+  filter = "default",
+}: IProps) {
   return (
     <div className={imageVariantToContainerStyleMap[variant]}>
       <img

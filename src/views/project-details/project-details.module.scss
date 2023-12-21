@@ -1,0 +1,37 @@
+@import "../../styles/variables.scss";
+
+.container {
+  padding-bottom: calc(12 * $unit);
+}
+
+.leadImageContainer {
+  padding-top: calc(12 * $unit);
+}
+
+.contentDetails {
+  display: flex;
+  justify-content: space-between;
+  padding: calc(12 * $unit) calc(4 * $unit) calc(12 * $unit) calc(4 * $unit);
+}
+
+.leftContent {
+  display: block;
+}
+
+.contentContainer {
+  width: 55%;
+}
+
+.title {
+  padding-bottom: $unit;
+}
+
+.listItem {
+  padding-right: $unit;
+}
+
+// Ensure the entry view takes up the full screen
+.contentHeader {
+  min-height: 100vh;
+  min-width: 100vw;
+}

@@ -2,13 +2,16 @@ import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 
+// directories
+export const projectDirectory = join(process.cwd(), "_content/projects/");
+
 // Read Directory Slugs
 export function getSlugs(directory: string) {
   return fs.readdirSync(directory);
 }
 
 // Read MD Content
-export function getBySlugs(
+export function getBySlug(
   slug: string,
   fields: string[] = [],
   directory: string
@@ -42,10 +45,9 @@ export function getBySlugs(
 }
 
 export function getAllProjects(fields: string[] = []) {
-  const projectDirectory = join(process.cwd(), "_content/projects/");
   const slugs = getSlugs(projectDirectory);
   const sortedProjects = slugs
-    .map((slug) => getBySlugs(slug, fields, projectDirectory))
+    .map((slug) => getBySlug(slug, fields, projectDirectory))
     .sort((a, b) => parseFloat(b.year) - parseFloat(a.year));
   return sortedProjects;
 }
