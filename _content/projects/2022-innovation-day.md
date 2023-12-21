@@ -6,7 +6,12 @@ coverSrc: "/assets/projects/2022-innovation-day/cover.jpeg"
 categories: ["Coordination"]
 
 # Details
-organization: ""
+organization: "SSENSE"
 referenceLink: ""
-galleryFolder: ""
+gallerySrcs:
+  [
+    "/assets/projects/2022-innovation-day/gallery/1.jpeg",
+    "/assets/projects/2022-innovation-day/gallery/2.jpeg",
+    "/assets/projects/2022-innovation-day/gallery/3.jpeg",
+  ]
 ---

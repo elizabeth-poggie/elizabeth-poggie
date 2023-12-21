@@ -28,11 +28,11 @@ export function ProjectDetails({ projectDetails }: IProps) {
           />
         </div>
       </div>
-      {projectDetails.gallerySrcs ? (
+      {projectDetails.gallerySrcs?.length ? (
         <ScrollableContainer scrollDirection="horizontal" heightMultiplier={80}>
           {projectDetails.gallerySrcs.map((src: string) => (
             <div className={styles.imageContainer}>
-              <Image src={src} />
+              <Image src={src} variant="listItem" />
             </div>
           ))}
         </ScrollableContainer>

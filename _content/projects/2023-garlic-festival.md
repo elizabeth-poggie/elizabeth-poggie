@@ -15,6 +15,8 @@ gallerySrcs:
     "/assets/projects/2023-garlic-festival/gallery/3.jpeg",
     "/assets/projects/2023-garlic-festival/gallery/4.jpeg",
     "/assets/projects/2023-garlic-festival/gallery/5.jpeg",
+    "/assets/projects/2023-garlic-festival/gallery/6.jpeg",
+    "/assets/projects/2023-garlic-festival/gallery/7.jpeg",
   ]
 ---
 

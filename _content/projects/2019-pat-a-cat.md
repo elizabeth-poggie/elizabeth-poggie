@@ -8,5 +8,5 @@ categories: ["Development", "Branding"]
 # Details
 organization: ""
 referenceLink: ""
-galleryFolder: ""
+gallerySrcs: []
 ---

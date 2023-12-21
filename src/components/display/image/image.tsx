@@ -6,6 +6,7 @@ const imageVariantToStyleMap = {
   cover: styles.cover,
   thumbnail: styles.thumbnail,
   lead: styles.lead,
+  listItem: styles.listItem,
 };
 
 const imageVariantToContainerStyleMap = {
@@ -21,7 +22,7 @@ const imageFilterToStyleMap = {
 };
 
 type ImageFilter = "default" | "darken";
-type ImageVariant = "default" | "cover" | "thumbnail" | "lead";
+type ImageVariant = "default" | "cover" | "thumbnail" | "lead" | "listItem";
 
 interface IProps {
   /**
