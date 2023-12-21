@@ -24,18 +24,22 @@ interface IProps {
    * @default "vertical"
    */
   scrollDirection?: ScrollDirection;
+
+  /**
+   * Lock window on inner container scroll
+   * @default false
+   */
+  isLockWindowEnabled?: boolean;
 }
 
 export function ScrollableContainer({
   children,
   scrollDirection = "vertical",
+  isLockWindowEnabled = false,
   heightMultiplier,
 }: IProps) {
   React.useEffect(() => {
-    // TODO - maybe come up with a better solution for the 'Projects' view
-    if (scrollDirection === "vertical") {
-      document.body.style.overflow = "hidden";
-    }
+    isLockWindowEnabled ? (document.body.style.overflow = "hidden") : null;
     return () => {
       document.body.style.overflow = "scroll";
     };

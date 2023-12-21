@@ -1,13 +1,17 @@
 @import "../../styles/variables.scss";
 
 .container {
+  padding-bottom: calc(12 * $unit);
+}
+
+.leadImageContainer {
   padding-top: calc(12 * $unit);
 }
 
-.info {
+.contentDetails {
   display: flex;
   justify-content: space-between;
-  padding: 60px 20px 60px 20px;
+  padding: calc(12 * $unit) calc(4 * $unit) calc(12 * $unit) calc(4 * $unit);
 }
 
 .leftContent {
@@ -19,9 +23,15 @@
 }
 
 .title {
-  padding-bottom: 5px;
+  padding-bottom: $unit;
 }
 
-.imageContainer {
-  padding-right: 20px;
+.listItem {
+  padding-right: $unit;
+}
+
+// Ensure the entry view takes up the full screen
+.contentHeader {
+  min-height: 100vh;
+  min-width: 100vw;
 }

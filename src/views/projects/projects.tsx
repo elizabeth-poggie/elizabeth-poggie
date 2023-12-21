@@ -76,7 +76,7 @@ export function Projects({ allProjects }: IProps) {
           <Text variant="title">Projects</Text>
           <HorizontalLine />
         </div>
-        <ScrollableContainer heightMultiplier={120}>
+        <ScrollableContainer heightMultiplier={120} isLockWindowEnabled={true}>
           {allProjects.map((project: IProject, i: number) => {
             return (
               <div
