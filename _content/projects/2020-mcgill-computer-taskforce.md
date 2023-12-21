@@ -7,7 +7,7 @@ categories: ["Coordination", "Development", "Branding"]
 
 # Details
 organization: "McGill University"
-referenceLink: ""
+referenceLink: "https://ctf.science.mcgill.ca/"
 gallerySrcs:
   [
     "/assets/projects/2020-mcgill-computer-taskforce/gallery/1.png",
@@ -17,3 +17,5 @@ gallerySrcs:
     "/assets/projects/2020-mcgill-computer-taskforce/gallery/5.png",
   ]
 ---
+
+Led a team of developers to deliver the main website, coordinated the elections of 30 student groups during the pandemic, and instantiated a web based solution for the note takers club impacting all students in the faculty of Science & Arts and Science at McGill. To this day, all of these initiatives are still being extended.

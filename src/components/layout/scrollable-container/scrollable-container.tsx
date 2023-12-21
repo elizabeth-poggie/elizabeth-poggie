@@ -15,7 +15,7 @@ interface IProps {
   children: React.ReactNode;
   /**
    * Determines the height of the container as a function of 5px
-   * @default 100
+   * @default 100%
    */
   heightMultiplier?: number;
   /**
@@ -28,7 +28,7 @@ interface IProps {
 export function ScrollableContainer({
   children,
   scrollDirection = "vertical",
-  heightMultiplier = 100,
+  heightMultiplier,
 }: IProps) {
   React.useEffect(() => {
     // TODO - maybe come up with a better solution for the 'Projects' view
@@ -41,11 +41,12 @@ export function ScrollableContainer({
   }, []);
   return (
     <div
-      className={cs(
-        styles.container,
-        scrollDirectionToStyleMap[scrollDirection]
-      )}
-      style={{ height: `calc(${heightMultiplier} * 5px)` }}
+      className={scrollDirectionToStyleMap[scrollDirection]}
+      style={
+        heightMultiplier
+          ? { height: `calc(${heightMultiplier} * 5px)` }
+          : { height: "100%" }
+      }
     >
       {children}
     </div>
