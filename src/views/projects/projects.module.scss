@@ -26,3 +26,26 @@
   opacity: 1;
   transition: all 250ms ease-in;
 }
+
+@media screen and (max-width: $bp-md) {
+  .container {
+    padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
+  }
+  .projectsList {
+    padding: 0 0 0 calc(8 * $unit);
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: $bp-sm) {
+  .container {
+    padding: calc(20 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
+  }
+  .projectsList {
+    padding: 0;
+    width: 100%;
+  }
+  .projectImage {
+    display: none;
+  }
+}

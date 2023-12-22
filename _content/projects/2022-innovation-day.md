@@ -11,8 +11,10 @@ referenceLink: ""
 gallerySrcs:
   [
     "/assets/projects/2022-innovation-day/gallery/1.jpeg",
+    "/assets/projects/2022-innovation-day/gallery/4.jpeg",
     "/assets/projects/2022-innovation-day/gallery/2.jpeg",
     "/assets/projects/2022-innovation-day/gallery/3.jpeg",
+    "/assets/projects/2022-innovation-day/gallery/5.jpeg",
   ]
 ---
 

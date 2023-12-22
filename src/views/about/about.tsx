@@ -1,6 +1,8 @@
 import { Text } from "../../components/typography/text/text";
 import { Image } from "../../components/display/image/image";
 import styles from "./about.module.scss";
+import { NavBar } from "../../components/navigation/nav-bar/nav-bar";
+import { navItems } from "../../../pages";
 
 // Read more about static assets here => https://nextjs.org/docs/pages/building-your-application/optimizing/static-assets
 const coverSrc = "/assets/personal/cover.jpeg";
@@ -18,7 +20,7 @@ export function About() {
       </div>
       <div className={styles.container}>
         <div className={styles.content}>
-          <Text variant="p" align="right">
+          <Text variant="p" align="justify">
             My name is Elizabeth Poggie and I'm a software developer with a
             passion for coordination. Since 2019, I've been merging my love of
             frontend development with planning by working on highly

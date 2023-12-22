@@ -1,3 +1,5 @@
+@import "../../../styles/variables.scss";
+
 // Containers
 .coverContainer {
   width: 100vw;
@@ -48,4 +50,15 @@
 // Filters
 .darken {
   filter: brightness(70%);
+}
+
+@media screen and (max-width: $bp-sm) {
+  .coverContainer {
+    width: 100vw;
+    height: 60vh;
+  }
+  .leadContainer {
+    width: 100vw;
+    height: 50vh;
+  }
 }

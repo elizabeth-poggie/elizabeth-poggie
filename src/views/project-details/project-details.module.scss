@@ -11,7 +11,7 @@
 .contentDetails {
   display: flex;
   justify-content: space-between;
-  padding: calc(12 * $unit) calc(4 * $unit) calc(12 * $unit) calc(4 * $unit);
+  padding: calc(12 * $unit) calc(8 * $unit) calc(12 * $unit) calc(8 * $unit);
 }
 
 .leftContent {
@@ -20,6 +20,7 @@
 
 .contentContainer {
   width: 55%;
+  text-align: justify;
 }
 
 .title {
@@ -34,4 +35,18 @@
 .contentHeader {
   min-height: 100vh;
   min-width: 100vw;
+}
+
+@media screen and (max-width: $bp-sm) {
+  .contentDetails {
+    display: flex;
+    flex-direction: column;
+    padding: calc(8 * $unit) calc(4 * $unit) calc(8 * $unit) calc(4 * $unit);
+  }
+  .contentContainer {
+    width: 100%;
+  }
+  .leftContent {
+    padding-bottom: calc(6 * $unit);
+  }
 }
