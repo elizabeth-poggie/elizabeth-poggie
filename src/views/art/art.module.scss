@@ -1,8 +1,10 @@
+@import "../../styles/variables.scss";
+
 .container {
   display: flex;
   flex-wrap: nowrap;
-  gap: 20px;
-  padding: 40px;
+  gap: calc(4 * $unit);
+  padding: calc(8 * $unit);
 }
 
 .column {
@@ -10,5 +12,23 @@
   flex-direction: column;
   flex: 50% 1;
   max-width: 50%;
-  gap: 20px;
+  gap: calc(4 * $unit);
+}
+
+@media screen and (max-width: $bp-md) {
+  .container {
+    padding: calc(4 * $unit);
+  }
+}
+
+@media screen and (max-width: $bp-sm) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: calc(4 * $unit);
+  }
+  .column {
+    flex: 100% 1;
+    max-width: 100%;
+  }
 }

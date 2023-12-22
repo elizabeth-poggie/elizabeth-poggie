@@ -55,6 +55,8 @@ export function getAllProjects(fields: string[] = []) {
 
 export function getAllArt(fields: string[] = []) {
   const slugs = getSlugs(artDirectory);
-  const art = slugs.map((slug) => getBySlug(slug, fields, artDirectory));
-  return art;
+  const sortedArt = slugs
+    .map((slug) => getBySlug(slug, fields, artDirectory))
+    .sort((a, b) => parseFloat(b.year) - parseFloat(a.year));
+  return sortedArt;
 }
