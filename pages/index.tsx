@@ -20,7 +20,6 @@ export const footerItems: Array<IFooterItem> = [
   },
 ];
 
-// TODO - set up a provider for global information
 export default function Index() {
   return (
     <>

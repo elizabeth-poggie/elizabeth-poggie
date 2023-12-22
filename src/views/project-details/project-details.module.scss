@@ -27,7 +27,7 @@
 }
 
 .listItem {
-  padding-right: $unit;
+  padding-right: calc(2 * $unit);
 }
 
 // Ensure the entry view takes up the full screen

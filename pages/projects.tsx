@@ -6,11 +6,11 @@ import { getAllProjects } from "../src/utils/api";
 import { IProject } from "../src/interfaces/project";
 import { footerItems } from ".";
 
-interface Props {
-  allProjects: IProject[];
+interface IProps {
+  allProjects: Array<IProject>;
 }
 
-export default function ProjectsPage({ allProjects }: Props) {
+export default function ProjectsPage({ allProjects }: IProps) {
   return (
     <>
       <Meta />

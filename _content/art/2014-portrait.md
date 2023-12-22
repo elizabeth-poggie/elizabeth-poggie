@@ -1,7 +1,7 @@
 ---
 # General Information
 title: "Portrait"
-year: "2018"
-src: "/assets/art/2018-portrait/cover.png"
+year: "2014"
+src: "/assets/art/2014-portrait/cover.jpeg"
 isPinned: true
 ---

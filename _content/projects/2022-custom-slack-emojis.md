@@ -8,7 +8,11 @@ categories: ["Presentation"]
 # Details
 organization: "SSENSE"
 referenceLink: ""
-gallerySrcs: ["/assets/projects/2022-custom-slack-emojis/gallery/1.jpeg"]
+gallerySrcs:
+  [
+    "/assets/projects/2022-custom-slack-emojis/gallery/1.jpeg",
+    "/assets/projects/2022-custom-slack-emojis/gallery/2.jpeg",
+  ]
 ---
 
 Developed a community building workshop centered around SSENSE's thriving emoji culture to provide networking opportunities between cross functional teams and senior leadership.

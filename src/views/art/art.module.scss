@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  padding: 40px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 50% 1;
+  max-width: 50%;
+  gap: 20px;
+}
