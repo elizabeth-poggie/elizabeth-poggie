@@ -1,0 +1,30 @@
+@import "../../../styles/variables.scss";
+
+.items {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 0 0 calc($unit * 8) calc($unit * 8);
+  z-index: 1;
+}
+
+.title {
+  display: none;
+}
+
+@media screen and (max-width: $bp-sm) {
+  .items {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    padding: calc($unit * 4) calc($unit * 4) 0 calc($unit * 4);
+  }
+  .container {
+    padding: calc(4 * $unit) 0 calc(3 * $unit) 0;
+    width: 100%;
+  }
+  .title {
+    display: unset;
+  }
+}

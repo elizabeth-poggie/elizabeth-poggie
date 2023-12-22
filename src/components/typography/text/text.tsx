@@ -12,6 +12,7 @@ const alignToStyleMap = {
   left: null,
   center: styles.center,
   right: styles.right,
+  justify: styles.justify,
 };
 
 const styleToStyleMap = {
@@ -20,7 +21,7 @@ const styleToStyleMap = {
   uppercase: styles.uppercase,
 };
 
-type TextAlign = "left" | "center" | "right";
+type TextAlign = "left" | "center" | "right" | "justify";
 type TextVariant = "title" | "subheading" | "h1" | "p";
 type TextStyle = "normal" | "italics" | "uppercase";
 

@@ -1,10 +1,10 @@
 import Head from "next/head";
 import Meta from "../src/views/meta/meta";
-import { Footer } from "../src/components/navigation/footer/footer";
+import { NavBar } from "../src/components/navigation/nav-bar/nav-bar";
 import { Projects } from "../src/views/projects/projects";
 import { getAllProjects } from "../src/utils/api";
 import { IProject } from "../src/interfaces/project";
-import { footerItems } from ".";
+import { navItems } from ".";
 
 interface IProps {
   allProjects: Array<IProject>;
@@ -17,8 +17,8 @@ export default function ProjectsPage({ allProjects }: IProps) {
       <Head>
         <title>Elizabeth Poggie</title>
       </Head>
+      <NavBar navItems={navItems} />
       <Projects allProjects={allProjects} />
-      <Footer footerItems={footerItems} />
     </>
   );
 }
