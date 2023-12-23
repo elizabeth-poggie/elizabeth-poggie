@@ -1,9 +1,15 @@
 @import "../../../styles/variables.scss";
 
 // Containers
+.defaultContainer {
+  position: relative;
+  height: 100%;
+}
+
 .coverContainer {
   width: 100vw;
   height: 100vh;
+  @extend .defaultContainer;
 }
 
 .thumbnailContainer {
@@ -11,17 +17,22 @@
   height: 42vh;
   overflow: hidden;
   display: flex;
+  @extend .defaultContainer;
 }
 
 .leadContainer {
   width: 100vw;
   height: 70vh;
+  @extend .defaultContainer;
 }
 
 // Variants
 .default {
   max-height: 100%;
   max-width: 100%;
+  // Overrides for NextImage
+  height: auto !important;
+  position: relative !important;
 }
 
 .cover {
@@ -40,7 +51,10 @@
 
 .listItem {
   object-fit: contain;
-  max-width: 400px;
+  height: 100%;
+  // Overrides for NextImage
+  width: 400px !important;
+  position: relative !important;
 }
 
 .lead {
@@ -59,6 +73,6 @@
   }
   .leadContainer {
     width: 100vw;
-    height: 50vh;
+    height: 55vh;
   }
 }
