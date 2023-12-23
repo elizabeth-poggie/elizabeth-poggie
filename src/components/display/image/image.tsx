@@ -1,4 +1,5 @@
 import { cs } from "../../../utils/helpers/classHelpers";
+import { default as NextImage } from "next/image";
 import styles from "./image.module.scss";
 
 const imageVariantToStyleMap = {
@@ -10,7 +11,7 @@ const imageVariantToStyleMap = {
 };
 
 const imageVariantToContainerStyleMap = {
-  default: null,
+  default: styles.defaultContainer,
   cover: styles.coverContainer,
   thumbnail: styles.thumbnailContainer,
   lead: styles.leadContainer,
@@ -50,12 +51,14 @@ export function Image({
 }: IProps) {
   return (
     <div className={imageVariantToContainerStyleMap[variant]}>
-      <img
+      <NextImage
         className={cs(
           imageVariantToStyleMap[variant],
           imageFilterToStyleMap[filter]
         )}
         src={src}
+        alt="yeet"
+        fill={true}
       />
     </div>
   );
