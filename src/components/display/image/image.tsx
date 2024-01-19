@@ -51,11 +51,12 @@ export function Image({
   filter = "default",
 }: IProps) {
   /**
-   * A boolean that causes the image to fill the parent element, which is useful when the width and height are unknown.
+   * NextImage guarantees faster up page loads and better performance. In this use case, the prop `fill` will always be set to true since
+   * we are *always* dynamically accessing our images.
    *
-   * NOTE: When using fill, the container element must have `position: relative` and `display: block`
+   * FUTURE NOTE: When using `fill`, the container element must have `position: relative` and `display: block`
    *
-   * More on the `fill` prop can be read here ➡️ https://nextjs.org/docs/pages/building-your-application/optimizing/images#image-sizing
+   * More on the `fill` prop can be seen here ➡️ https://nextjs.org/docs/pages/building-your-application/optimizing/images#image-sizing
    */
   const fill = true;
 
