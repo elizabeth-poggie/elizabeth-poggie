@@ -1,4 +1,5 @@
 import { cs } from "../../../utils/helpers/classHelpers";
+import { default as NextImage } from "next/image";
 import styles from "./image.module.scss";
 
 const imageVariantToStyleMap = {
@@ -10,10 +11,11 @@ const imageVariantToStyleMap = {
 };
 
 const imageVariantToContainerStyleMap = {
-  default: null,
+  default: styles.defaultContainer,
   cover: styles.coverContainer,
   thumbnail: styles.thumbnailContainer,
   lead: styles.leadContainer,
+  listItem: styles.listItemContainer,
 };
 
 const imageFilterToStyleMap = {
@@ -48,14 +50,26 @@ export function Image({
   variant = "default",
   filter = "default",
 }: IProps) {
+  /**
+   * NextImage guarantees faster up page loads and better performance. In this use case, the prop `fill` will always be set to true since
+   * we are *always* dynamically accessing our images.
+   *
+   * FUTURE NOTE: When using `fill`, the container element must have `position: relative` and `display: block`
+   *
+   * More on the `fill` prop can be seen here ➡️ https://nextjs.org/docs/pages/building-your-application/optimizing/images#image-sizing
+   */
+  const fill = true;
+
   return (
     <div className={imageVariantToContainerStyleMap[variant]}>
-      <img
+      <NextImage
         className={cs(
           imageVariantToStyleMap[variant],
           imageFilterToStyleMap[filter]
         )}
         src={src}
+        alt="didn't load lol"
+        fill={fill}
       />
     </div>
   );
