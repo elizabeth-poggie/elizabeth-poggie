@@ -15,6 +15,7 @@ const imageVariantToContainerStyleMap = {
   cover: styles.coverContainer,
   thumbnail: styles.thumbnailContainer,
   lead: styles.leadContainer,
+  listItem: styles.listItemContainer,
 };
 
 const imageFilterToStyleMap = {
@@ -49,6 +50,15 @@ export function Image({
   variant = "default",
   filter = "default",
 }: IProps) {
+  /**
+   * A boolean that causes the image to fill the parent element, which is useful when the width and height are unknown.
+   *
+   * NOTE: When using fill, the container element must have `position: relative` and `display: block`
+   *
+   * More on the `fill` prop can be read here ➡️ https://nextjs.org/docs/pages/building-your-application/optimizing/images#image-sizing
+   */
+  const fill = true;
+
   return (
     <div className={imageVariantToContainerStyleMap[variant]}>
       <NextImage
@@ -57,8 +67,8 @@ export function Image({
           imageFilterToStyleMap[filter]
         )}
         src={src}
-        alt="yeet"
-        fill={true}
+        alt="didn't load lol"
+        fill={fill}
       />
     </div>
   );

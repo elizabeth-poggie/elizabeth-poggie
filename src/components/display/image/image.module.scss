@@ -26,6 +26,12 @@
   @extend .defaultContainer;
 }
 
+.listItemContainer {
+  padding-right: calc(2 * $unit);
+  display: block;
+  position: relative;
+}
+
 // Variants
 .default {
   max-height: 100%;

@@ -12,7 +12,6 @@ gallerySrcs:
   [
     "/assets/projects/2022-custom-slack-emojis/gallery/1.jpeg",
     "/assets/projects/2022-custom-slack-emojis/gallery/5.jpg",
-    "/assets/projects/2022-custom-slack-emojis/gallery/3.jpeg",
     "/assets/projects/2022-custom-slack-emojis/gallery/2.jpeg",
   ]
 ---

@@ -35,9 +35,7 @@ export function ProjectDetails({ projectDetails }: IProps) {
       {projectDetails.gallerySrcs?.length ? (
         <ScrollableContainer scrollDirection="horizontal">
           {projectDetails.gallerySrcs.map((src: string) => (
-            <div className={styles.listItem}>
-              <Image src={src} variant="listItem" />
-            </div>
+            <Image src={src} variant="listItem" />
           ))}
         </ScrollableContainer>
       ) : null}
