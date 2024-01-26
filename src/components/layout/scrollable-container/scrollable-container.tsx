@@ -2,31 +2,8 @@ import React from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import styles from "./scrollable-container.module.scss";
 
-const scrollDirectionToStyleMap = {
-  vertical: styles.vertical,
-  horizontal: styles.horizontal,
-};
-
-const scrollDirectionToContainerMap = {
-  vertical: styles.verticalContainer,
-  horizontal: styles.horizontalContainer,
-};
-
-type ScrollDirection = "vertical" | "horizontal";
-
-interface IProps {
+interface IScrollableContainerProps {
   children: React.ReactNode;
-  /**
-   * Determines the height of the container as a function of 5px
-   * @default 100%
-   */
-  heightMultiplier?: number;
-  /**
-   * Determines the scroll direction for the container
-   * @default "vertical"
-   */
-  scrollDirection?: ScrollDirection;
-
   /**
    * Lock window on inner container scroll
    * @default false
@@ -36,10 +13,8 @@ interface IProps {
 
 export function ScrollableContainer({
   children,
-  scrollDirection = "vertical",
   isLockWindowEnabled = false,
-  heightMultiplier,
-}: IProps) {
+}: IScrollableContainerProps) {
   React.useEffect(() => {
     isLockWindowEnabled ? (document.body.style.overflow = "hidden") : null;
     return () => {
@@ -50,7 +25,7 @@ export function ScrollableContainer({
   const renderThumb = ({ style, ...props }) => {
     const thumbStyle = {
       width: "1px",
-      backgroundColor: "white",
+      // backgroundColor: "white", // TODO - make thumb "white" eventually
     };
     return <div style={{ ...style, ...thumbStyle }} {...props} />;
   };
@@ -75,23 +50,25 @@ export function ScrollableContainer({
   };
 
   return (
-    <div
-      // className={scrollDirectionToStyleMap[scrollDirection]}
-      style={{
-        height: heightMultiplier ? `calc(${heightMultiplier} * 5px)` : "100%",
-      }}
+    <Scrollbars
+      renderThumbHorizontal={renderThumb}
+      renderThumbVertical={renderThumb}
+      renderTrackHorizontal={renderTrackHorizontal}
+      renderTrackVertical={renderTrackVertical}
+      universal // config for NextJs, see more here => https://github.com/malte-wessel/react-custom-scrollbars/blob/master/docs/usage.md#universal-rendering
     >
-      <Scrollbars
-        renderThumbHorizontal={renderThumb}
-        renderThumbVertical={renderThumb}
-        renderTrackHorizontal={renderTrackHorizontal}
-        renderTrackVertical={renderTrackVertical}
-        universal // config for NextJs, see more here => https://github.com/malte-wessel/react-custom-scrollbars/blob/master/docs/usage.md#universal-rendering
-      >
-        <div className={scrollDirectionToContainerMap[scrollDirection]}>
-          {children}
-        </div>
-      </Scrollbars>
-    </div>
+      {children}
+    </Scrollbars>
+  );
+}
+
+interface IProps extends IScrollableContainerProps {}
+
+// TODO - make the list items a child component here.
+export function Carousel({ children }: IProps) {
+  return (
+    <ScrollableContainer>
+      <div className={styles.carouselContainer}>{children}</div>
+    </ScrollableContainer>
   );
 }

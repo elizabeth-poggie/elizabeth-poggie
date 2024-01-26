@@ -1,17 +1,3 @@
-.vertical {
-  overflow-y: scroll;
-}
-
-.horizontal {
-  overflow-x: scroll;
-  overflow-y: hidden;
-}
-
-.verticalContainer {
-  margin-right: 1.5rem;
-}
-
-.horizontalContainer {
+.carouselContainer {
   display: flex;
-  margin-bottom: 1.5rem;
 }
