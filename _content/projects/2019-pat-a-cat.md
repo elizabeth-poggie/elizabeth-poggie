@@ -17,4 +17,4 @@ gallerySrcs:
   ]
 ---
 
-In this game you can compete against your friends to pat as many cats as you can using keyboard controls. Once a cat is patted, you get to listen to the happy meows of hackers, sponsors, and coordinators of the event. Due to the positive reception of this game, our team won best design and runner up for the popularity contest.
+In this game you can compete against your friends to pat as many cats as you can using keyboard controls. Once a cat is patted, you get to listen to the happy meows of hackers, sponsors, and coordinators of the event.
