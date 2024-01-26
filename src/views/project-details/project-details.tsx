@@ -35,7 +35,7 @@ export function ProjectDetails({ projectDetails }: IProps) {
         <div className={styles.carouselContainer}>
           <Carousel>
             {projectDetails.gallerySrcs.map((src: string) => (
-              <Image src={src} variant="listItem" />
+              <Image key={src} src={src} variant="listItem" />
             ))}
           </Carousel>
         </div>
