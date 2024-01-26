@@ -1,30 +1,9 @@
 import React from "react";
+import { Scrollbars } from "react-custom-scrollbars-2";
 import styles from "./scrollable-container.module.scss";
-import { cs } from "../../../utils/helpers/classHelpers";
 
-// TODO - move the scrollbar outside of the container following this example => https://stackoverflow.com/questions/74462846/place-scroll-bar-outside-div
-// or this one https://stackoverflow.com/questions/67912369/how-to-place-the-scrollbar-outside-of-div
-
-const scrollDirectionToStyleMap = {
-  vertical: styles.vertical,
-  horizontal: styles.horizontal,
-};
-
-type ScrollDirection = "vertical" | "horizontal";
-
-interface IProps {
+interface IScrollableContainerProps {
   children: React.ReactNode;
-  /**
-   * Determines the height of the container as a function of 5px
-   * @default 100%
-   */
-  heightMultiplier?: number;
-  /**
-   * Determines the scroll direction for the container
-   * @default "vertical"
-   */
-  scrollDirection?: ScrollDirection;
-
   /**
    * Lock window on inner container scroll
    * @default false
@@ -34,26 +13,62 @@ interface IProps {
 
 export function ScrollableContainer({
   children,
-  scrollDirection = "vertical",
   isLockWindowEnabled = false,
-  heightMultiplier,
-}: IProps) {
+}: IScrollableContainerProps) {
   React.useEffect(() => {
     isLockWindowEnabled ? (document.body.style.overflow = "hidden") : null;
     return () => {
       document.body.style.overflow = "scroll";
     };
   }, []);
+
+  const renderThumb = ({ style, ...props }) => {
+    const thumbStyle = {
+      width: "1px",
+      // backgroundColor: "white", // TODO - make thumb "white" eventually
+    };
+    return <div style={{ ...style, ...thumbStyle }} {...props} />;
+  };
+
+  const renderTrackVertical = ({ style, ...props }) => {
+    const trackStyle = {
+      width: "1px",
+      right: "0px",
+      bottom: "0px",
+      top: "0px",
+    };
+    return <div style={{ ...style, ...trackStyle }} {...props} />;
+  };
+  const renderTrackHorizontal = ({ style, ...props }) => {
+    const trackStyle = {
+      width: "1px",
+      right: "0px",
+      bottom: "0px",
+      top: "0px",
+    };
+    return <div style={{ ...style, ...trackStyle }} {...props} />;
+  };
+
   return (
-    <div
-      className={scrollDirectionToStyleMap[scrollDirection]}
-      style={
-        heightMultiplier
-          ? { height: `calc(${heightMultiplier} * 5px)` }
-          : { height: "100%" }
-      }
+    <Scrollbars
+      renderThumbHorizontal={renderThumb}
+      renderThumbVertical={renderThumb}
+      renderTrackHorizontal={renderTrackHorizontal}
+      renderTrackVertical={renderTrackVertical}
+      universal // config for NextJs, see more here => https://github.com/malte-wessel/react-custom-scrollbars/blob/master/docs/usage.md#universal-rendering
     >
       {children}
-    </div>
+    </Scrollbars>
+  );
+}
+
+interface IProps extends IScrollableContainerProps {}
+
+// TODO - make the list items a child component here.
+export function Carousel({ children }: IProps) {
+  return (
+    <ScrollableContainer>
+      <div className={styles.carouselContainer}>{children}</div>
+    </ScrollableContainer>
   );
 }

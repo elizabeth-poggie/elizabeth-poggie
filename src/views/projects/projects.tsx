@@ -76,29 +76,31 @@ export function Projects({ allProjects }: IProps) {
           <Text variant="title">Projects</Text>
           <HorizontalLine />
         </div>
-        <ScrollableContainer heightMultiplier={120}>
-          {allProjects.map((project: IProject, i: number) => {
-            return (
-              <div
-                key={project.slug}
-                onMouseEnter={() => onMouseEnter(i)}
-                onMouseLeave={onMouseLeave}
-              >
-                <ListItem
-                  title={project.title}
-                  href={`/projects/${project.slug}`}
-                  rightContent={
-                    <Text variant="subheading">{project.year}</Text>
-                  }
-                  subContent={
-                    <ListItemCategories categories={project.categories} />
-                  }
-                />
-                {i === allProjects.length - 1 ? null : <HorizontalLine />}
-              </div>
-            );
-          })}
-        </ScrollableContainer>
+        <div className={styles.scrollableContainer}>
+          <ScrollableContainer>
+            {allProjects.map((project: IProject, i: number) => {
+              return (
+                <div
+                  key={project.slug}
+                  onMouseEnter={() => onMouseEnter(i)}
+                  onMouseLeave={onMouseLeave}
+                >
+                  <ListItem
+                    title={project.title}
+                    href={`/projects/${project.slug}`}
+                    rightContent={
+                      <Text variant="subheading">{project.year}</Text>
+                    }
+                    subContent={
+                      <ListItemCategories categories={project.categories} />
+                    }
+                  />
+                  {i === allProjects.length - 1 ? null : <HorizontalLine />}
+                </div>
+              );
+            })}
+          </ScrollableContainer>
+        </div>
       </div>
     </div>
   );

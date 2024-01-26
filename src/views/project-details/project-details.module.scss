@@ -27,6 +27,11 @@
   padding-bottom: $unit;
 }
 
+.carouselContainer {
+  // TODO - probs shouldn't hardcode this lol
+  height: 300px;
+}
+
 // Ensure the entry view takes up the full screen
 .contentHeader {
   min-height: 100vh;
