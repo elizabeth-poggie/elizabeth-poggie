@@ -17,4 +17,4 @@ gallerySrcs:
   ]
 ---
 
-In this game you can compete against your friends to pat as many cats as you can using keyboard controls. Once a cat is patted, you get to listen to the happy meows of hackers, sponsors, and coordinators of the event.
+Pat-a-cat was inspired when Aidon Lebar said "all i want to do is pet cats" and from there started a story of heroism as David Lougheed, Elizabeth Poggie, and Allan Wang made it happen. In the corners of McHacks you could witness the cats being drawn, meows being recorded, and code being coded.

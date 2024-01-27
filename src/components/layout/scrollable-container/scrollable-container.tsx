@@ -1,8 +1,7 @@
 import React from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
-import styles from "./scrollable-container.module.scss";
 
-interface IScrollableContainerProps {
+export interface IScrollableContainerProps {
   children: React.ReactNode;
   /**
    * Lock window on inner container scroll
@@ -59,16 +58,5 @@ export function ScrollableContainer({
     >
       {children}
     </Scrollbars>
-  );
-}
-
-interface IProps extends IScrollableContainerProps {}
-
-// TODO - make the list items a child component here.
-export function Carousel({ children }: IProps) {
-  return (
-    <ScrollableContainer>
-      <div className={styles.carouselContainer}>{children}</div>
-    </ScrollableContainer>
   );
 }
