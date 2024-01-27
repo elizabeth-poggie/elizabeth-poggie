@@ -7,7 +7,7 @@ import { IArt } from "../src/interfaces/art";
 import { Art } from "../src/views/art/art";
 
 interface IProps {
-  allArt: Array<IArt>;
+  allArt: IArt[];
 }
 
 export default function ArtPage({ allArt }: IProps) {
@@ -16,7 +16,7 @@ export default function ArtPage({ allArt }: IProps) {
     <>
       <Meta />
       <Head>
-        <title>Elizabeth Poggie</title>
+        <title>Elizabeth Poggie - Art</title>
       </Head>
       <NavBar navItems={navItems} />
       <Art allArt={allArt} />

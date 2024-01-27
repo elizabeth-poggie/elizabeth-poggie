@@ -4,6 +4,7 @@ import { NavBar } from "../src/components/navigation/nav-bar/nav-bar";
 import { NavItem } from "../src/interfaces/footer";
 import { INote } from "../src/interfaces/note";
 import { Notes } from "../src/views/notes/notes";
+import { getAllNotes } from "../src/utils/api";
 
 // TODO - maybe come up with a better way to control this routing or make it so the footer is only defined in one place
 // TODO - Figure out where the 'About' page fits in here
@@ -23,7 +24,7 @@ export const navItems: Array<NavItem> = [
 ];
 
 interface IProps {
-  allNotes: Array<INote>;
+  allNotes: INote[];
 }
 
 export default function Index({ allNotes }: IProps) {
@@ -38,3 +39,18 @@ export default function Index({ allNotes }: IProps) {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  const allNotes = getAllNotes([
+    "slug",
+    "title",
+    "subtitle",
+    "date",
+    "course",
+    "type",
+  ]);
+
+  return {
+    props: { allNotes },
+  };
+};
