@@ -1,10 +1,9 @@
 export interface INote {
   slug: string;
   title: string;
-  subtitle: string;
+  subtitle: string; // TODO - eventually replace by parsing h1 titles in the content
   date: string;
-}
-
-export interface INoteDetails extends INote {
+  course: string;
+  type: string;
   content: string;
 }
