@@ -1,4 +1,4 @@
-import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
+import { ListLayout } from "../../components/layout/list/list-layout";
 import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 
@@ -9,10 +9,16 @@ interface IProps {
 export function Notes({ allNotes }: IProps) {
   // TODO - make a reducer to filter what notes are being selected
   // TODO - make a pill component
+  // TODO - migrate projects view to here
+  const renderListContent = () => {
+    return null;
+  };
+
   return (
-    <div>
-      <Text variant="title">Notes</Text>
-      <HorizontalLine />
-    </div>
+    <ListLayout
+      title="Notes"
+      leftContent={<Text>Yeet</Text>}
+      listContent={renderListContent()}
+    />
   );
 }
