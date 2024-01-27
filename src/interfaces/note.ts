@@ -7,3 +7,7 @@ export interface INote {
   type: string;
   content: string;
 }
+
+type NoteCategory = "Course" | "Year" | "Material Type";
+
+// TODO - Group based on similar keys instead of manually creating sub types
