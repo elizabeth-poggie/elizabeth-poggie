@@ -1,21 +1,20 @@
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import { ListItem } from "../../components/display/list-item/list-item";
+import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { ListLayout } from "../../components/layout/list-layout/list-layout";
 import { Text } from "../../components/typography/text/text";
-import { INote } from "../../interfaces/note";
+import { ICollegeNote } from "../../interfaces/note";
 
 interface IProps {
-  allNotes: INote[];
+  allNotes: ICollegeNote[];
 }
 
 export function Notes({ allNotes }: IProps) {
-  // TODO - make a reducer to filter what notes are being selected
-  // TODO - make a pill component
   // TODO - migrate projects view to here
   const renderListContent = () => {
     return (
       <>
-        {allNotes.map((note: INote, i: number) => {
+        {allNotes.map((note: ICollegeNote, i: number) => {
           return (
             <div key={note.slug}>
               <ListItem
@@ -35,14 +34,22 @@ export function Notes({ allNotes }: IProps) {
     );
   };
 
-  const renderFilters = () => {
+  // TODO - implement with a reducer instead
+  // add sort on click functionality
+  const renderFilterRow = (filterTitle: string, filterType: string) => {
     return (
-      <>
-        <Text variant="h1">Course</Text>
-        <Text variant="h1">Material Type</Text>
-        <Text variant="h1">Year</Text>
-      </>
+      <div>
+        <Text variant="h1">{filterTitle}</Text>
+        {allNotes.map((note: ICollegeNote) => {
+          return <PillButton title={note[filterType]} onClick={() => null} />;
+        })}
+      </div>
     );
+  };
+
+  // TODO - support more types
+  const renderFilters = () => {
+    return <>{renderFilterRow("Course", "course")}</>;
   };
 
   return (
