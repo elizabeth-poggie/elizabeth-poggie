@@ -11,7 +11,7 @@ interface IProps {
 
 export function Notes({ allNotes }: IProps) {
   // TODO - migrate projects view to here
-  const renderListContent = () => {
+  const renderList = () => {
     return (
       <>
         {allNotes.map((note: ICollegeNote, i: number) => {
@@ -56,7 +56,7 @@ export function Notes({ allNotes }: IProps) {
     <ListLayout
       title="Notes"
       leftContent={renderFilters()}
-      listContent={renderListContent()}
+      listContent={renderList()}
     />
   );
 }
