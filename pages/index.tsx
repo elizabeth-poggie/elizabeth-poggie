@@ -7,7 +7,6 @@ import { Notes } from "../src/views/notes/notes";
 import { getAllNotes } from "../src/utils/api";
 
 // TODO - maybe come up with a better way to control this routing or make it so the footer is only defined in one place
-// TODO - Figure out where the 'About' page fits in here
 export const navItems: Array<NavItem> = [
   {
     href: "/",
