@@ -21,7 +21,7 @@ export function NavBar({ navItems }: IProps) {
         {navItems.map((item) => {
           return (
             <Link key={item.href} href={item.href}>
-              <Text variant="h1">{item.name}</Text>
+              <Text variant="h2">{item.name}</Text>
             </Link>
           );
         })}

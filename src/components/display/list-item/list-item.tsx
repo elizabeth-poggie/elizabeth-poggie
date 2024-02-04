@@ -17,7 +17,7 @@ export function ListItem({ title, rightContent, subContent, href }: IProps) {
     <Link href={href}>
       <div className={styles.container}>
         <div className={styles.title}>
-          <Text variant="h1">{title}</Text>
+          <Text variant="h2">{title}</Text>
           {rightContent}
         </div>
         {subContent}

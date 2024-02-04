@@ -38,7 +38,7 @@ export function Notes({ allNotes }: IProps) {
   const renderFilterRow = (filterTitle: string, filterType: string) => {
     return (
       <div>
-        <Text variant="h1">{filterTitle}</Text>
+        <Text variant="h2">{filterTitle}</Text>
         {allNotes.map((note: ICollegeNote) => {
           return <PillButton title={note[filterType]} onClick={() => null} />;
         })}

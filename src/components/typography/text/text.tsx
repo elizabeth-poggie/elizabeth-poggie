@@ -6,6 +6,7 @@ const textVariantToStyleMap = {
   subheading: styles.subheading,
   subheading2: styles.subheading2,
   h1: styles.h1,
+  h2: styles.h2,
   p: styles.p,
 };
 
@@ -23,7 +24,7 @@ const styleToStyleMap = {
 };
 
 type TextAlign = "left" | "center" | "right" | "justify";
-type TextVariant = "title" | "subheading" | "subheading2" | "h1" | "p";
+type TextVariant = "title" | "subheading" | "subheading2" | "h1" | "h2" | "p";
 type TextStyle = "normal" | "italics" | "uppercase";
 
 interface IProps {

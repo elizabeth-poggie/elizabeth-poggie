@@ -39,12 +39,22 @@
 .title {
   font-size: $text-xl;
   letter-spacing: 0.2em;
+  padding-bottom: 0.5em;
   @extend .uppercase;
   @include header;
 }
 
 .h1 {
   font-size: $text-lg;
+  letter-spacing: 0.2em;
+  padding-bottom: 0.25em;
+  @extend .uppercase;
+  @include header;
+}
+
+.h2 {
+  font-size: $text-lg;
+  padding-bottom: 0.25em;
   @include header;
 }
 
