@@ -3,7 +3,7 @@ import { Text } from "../../components/typography/text/text";
 import { IProjectDetails } from "../../interfaces/project";
 import styles from "./project-details.module.scss";
 import markdownStyles from "../../styles/markdown-styles.module.scss";
-import { Carousel } from "../../components/layout/scrollable-container/scrollable-container";
+import { Carousel } from "../../components/layout/carousel/carousel";
 
 interface IProps {
   projectDetails: IProjectDetails;
