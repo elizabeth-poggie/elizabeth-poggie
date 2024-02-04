@@ -10,7 +10,6 @@ interface IProps {
 }
 
 export function Notes({ allNotes }: IProps) {
-  // TODO - migrate projects view to here
   const renderList = () => {
     return (
       <>
