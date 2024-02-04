@@ -17,7 +17,6 @@ export default function NoteDetailsPage({ noteDetails }: Props) {
           {noteDetails.title} - {noteDetails.course}
         </title>
       </Head>
-      {noteDetails.content}
     </>
   );
 }
@@ -31,7 +30,7 @@ type Params = {
 export async function getStaticProps({ params }: Params) {
   const details = getBySlug(
     params.slug,
-    ["title", "subtitle", "content"],
+    ["title", "subtitle", "course", "content"],
     noteDirectory
   );
 
