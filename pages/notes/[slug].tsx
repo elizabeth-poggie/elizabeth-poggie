@@ -5,7 +5,6 @@ import { mdxNotesDirectory } from "../../src/utils/api";
 import fs from "fs";
 import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
-import { Text } from "../../src/components/typography/text/text";
 
 // /notes/week2 works :)
 // TODO - combine link Note View and Notes List View together
@@ -18,14 +17,7 @@ export default function MdxPage({
       <Head>
         <title>Yeet</title>
       </Head>
-      <MDXRemote
-        {...source}
-        components={{
-          h1: ({ children }) => <Text variant="title">{children}</Text>,
-          h2: ({ children }) => <Text variant="h1">{children}</Text>,
-          p: ({ children }) => <Text variant="p">{children}</Text>,
-        }}
-      />
+      <MDXRemote {...source} />
     </div>
   );
 }

@@ -28,7 +28,7 @@ type TextStyle = "normal" | "italics" | "uppercase";
 
 // TODO - fix typing of the custom component to work with all text inputs
 interface IProps {
-  children: React.ReactNode;
+  children: string;
   /**
    * predefined style variants
    *
