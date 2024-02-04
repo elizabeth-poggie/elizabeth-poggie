@@ -1,10 +1,11 @@
 import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
-import { markdownToHtml } from "../../src/utils/helpers/markdownToHtml";
 import { getAllNotes, getBySlug, noteDirectory } from "../../src/utils/api";
 import { ICollegeNote } from "../../src/interfaces/note";
 import Markdown from "react-markdown";
 import { Text } from "../../src/components/typography/text/text";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 interface Props {
   noteDetails: ICollegeNote;
@@ -25,6 +26,22 @@ export default function NoteDetailsPage({ noteDetails }: Props) {
           h1: ({ children }) => <Text variant="title">{children}</Text>,
           h2: ({ children }) => <Text variant="h1">{children}</Text>,
           p: ({ children }) => <Text variant="p">{children}</Text>,
+          code: ({ node, className, children, ...props }) => {
+            const match = /language-(\w+)/.exec(className || "");
+            return match ? (
+              <SyntaxHighlighter
+                children={String(children).replace(/\n$/, "")}
+                style={atomDark}
+                language={match[1]}
+                PreTag="div"
+                {...props}
+              />
+            ) : (
+              <span className={className} {...props}>
+                {children}
+              </span>
+            );
+          },
         }}
       />
     </>
