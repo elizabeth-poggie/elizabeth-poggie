@@ -26,9 +26,8 @@ type TextAlign = "left" | "center" | "right" | "justify";
 type TextVariant = "title" | "subheading" | "subheading2" | "h1" | "p";
 type TextStyle = "normal" | "italics" | "uppercase";
 
-// TODO - fix typing of the custom component to work with all text inputs
 interface IProps {
-  children: string;
+  children: React.ReactNode;
   /**
    * predefined style variants
    *
