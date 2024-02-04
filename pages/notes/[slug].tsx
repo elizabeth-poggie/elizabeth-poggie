@@ -1,16 +1,14 @@
 import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
-import { ProjectDetails } from "../../src/views/project-details/project-details";
 import { markdownToHtml } from "../../src/utils/helpers/markdownToHtml";
-import { getAllProjects, getBySlug, noteDirectory } from "../../src/utils/api";
-import { IProjectDetails } from "../../src/interfaces/project";
+import { getAllNotes, getBySlug, noteDirectory } from "../../src/utils/api";
 import { ICollegeNote } from "../../src/interfaces/note";
 
 interface Props {
   noteDetails: ICollegeNote;
 }
 
-export default function ProjectDetailsPage({ noteDetails }: Props) {
+export default function NoteDetailsPage({ noteDetails }: Props) {
   return (
     <>
       <Meta />
@@ -19,6 +17,7 @@ export default function ProjectDetailsPage({ noteDetails }: Props) {
           {noteDetails.title} - {noteDetails.course}
         </title>
       </Head>
+      {noteDetails.content}
     </>
   );
 }

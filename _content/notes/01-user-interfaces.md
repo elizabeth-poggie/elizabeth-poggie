@@ -7,10 +7,4 @@ course: "2W6 - User Interfaces"
 type: "Lecture"
 ---
 
-# I am a Test
-
-This is a test
-
-- i am a test
-- i am a test
-- i am a test
+test test test test
