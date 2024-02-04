@@ -1,10 +1,10 @@
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-
 // directories
 export const projectDirectory = join(process.cwd(), "_content/projects/");
 export const artDirectory = join(process.cwd(), "_content/art/");
+export const noteDirectory = join(process.cwd(), "_content/notes/");
 
 // Read Directory Slugs
 export function getSlugs(directory: string) {
@@ -59,4 +59,11 @@ export function getAllArt(fields: string[] = []) {
     .map((slug) => getBySlug(slug, fields, artDirectory))
     .sort((a, b) => parseFloat(b.year) - parseFloat(a.year));
   return sortedArt;
+}
+
+export function getAllNotes(fields: string[] = []) {
+  const slugs = getSlugs(noteDirectory);
+  const notes = slugs.map((slug) => getBySlug(slug, fields, noteDirectory));
+  // TODO - add special sorting based on date
+  return notes;
 }

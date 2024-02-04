@@ -7,7 +7,7 @@ import { IProject } from "../src/interfaces/project";
 import { navItems } from ".";
 
 interface IProps {
-  allProjects: Array<IProject>;
+  allProjects: IProject[];
 }
 
 export default function ProjectsPage({ allProjects }: IProps) {
@@ -15,7 +15,7 @@ export default function ProjectsPage({ allProjects }: IProps) {
     <>
       <Meta />
       <Head>
-        <title>Elizabeth Poggie</title>
+        <title>Elizabeth Poggie - Projects</title>
       </Head>
       <NavBar navItems={navItems} />
       <Projects allProjects={allProjects} />

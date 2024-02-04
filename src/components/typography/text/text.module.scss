@@ -53,6 +53,11 @@
   @include body;
 }
 
+.subheading2 {
+  font-size: $text-xs;
+  @include body;
+}
+
 .p {
   font-size: $text-md;
   @include body;
