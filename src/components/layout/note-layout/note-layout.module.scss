@@ -1,0 +1,39 @@
+@import "../../../styles/variables.scss";
+
+.container {
+  display: flex;
+  padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
+  height: 100%;
+}
+
+.rightContentContainer {
+  padding: 0 calc(24 * $unit) 0 calc(18 * $unit);
+  width: 50%;
+}
+
+.leftContentContainer {
+  width: 50%;
+}
+
+@media screen and (max-width: $bp-md) {
+  .container {
+    padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
+  }
+  .rightContentContainer {
+    padding: 0 0 0 calc(8 * $unit);
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: $bp-sm) {
+  .container {
+    padding: calc(20 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
+  }
+  .rightContentContainer {
+    padding: 0;
+    width: 100%;
+  }
+  .leftContentContainer {
+    display: none;
+  }
+}
