@@ -1,7 +1,7 @@
 ---
 # General Information
 title: "Lecture 2"
-subtitle: "More on basic HTML Elements"
+subtitle: "More on basic HTML elements"
 date: "2024-01-30T12:17:29Z"
 course: "User Interfaces"
 type: "Lecture"

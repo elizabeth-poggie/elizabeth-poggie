@@ -1,7 +1,7 @@
 ---
 # General Information
 title: "Lecture 1"
-subtitle: "Introduction to User Interfaces"
+subtitle: "Introduction to user interfaces"
 date: "2024-01-29T12:17:29Z"
 course: "User Interfaces"
 type: "Lecture"

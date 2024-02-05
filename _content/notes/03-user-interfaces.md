@@ -1,7 +1,7 @@
 ---
 # General Information
 title: "Lecture 3"
-subtitle: "Basic HTML Structure & Intro to CSS"
+subtitle: "Basic HTML structure & intro to CSS"
 date: "2024-02-02T12:17:29Z"
 course: "User Interfaces"
 type: "Lecture"
@@ -33,9 +33,7 @@ They are made up of element types such as:
 
 ## What are block-level elements?
 
-Block-level elements are those that create a distinct "block" or box on a web page. They typically start on a new line and extend to the full width of their containing element. These elements are commonly employed to structure the overall layout of a webpage, organizing content into sections and creating a visual hierarchy.
-
-For example:
+Block-level elements are those that create a distinct "block" or box on a web page. They typically start on a new line and extend to the full width of their containing element. These elements are commonly employed to structure the overall layout of a webpage, organizing content into sections and creating a visual hierarchy. For example:
 
 ```html
 <p>...</p>
@@ -52,9 +50,7 @@ For example:
 
 ## What are Inline elements?
 
-In contrast, do not create a new block; instead, they flow within the content and typically do not force a new line. They occupy only as much width as necessary. These elements are commonly used for text-level semantics, emphasizing or styling specific portions of text within a block-level element.
-
-For example:
+In contrast, do not create a new block; instead, they flow within the content and typically do not force a new line. They occupy only as much width as necessary. These elements are commonly used for text-level semantics, emphasizing or styling specific portions of text within a block-level element. For example:
 
 ```html
 <a>...</a> <img />
@@ -183,7 +179,7 @@ However one thing you must know about using the id, is that they must always be 
 Classes are styling templates generally associated with more than one element. We can associate a class to an element by adding the `class=”...”` attribute inside the opening html tag. For example:
 
 ```html
-<p class="”special”">Welcome</p>
+<p class="special">Welcome</p>
 
 …
 
@@ -207,6 +203,8 @@ What you need to consider when deciding how to order your sheets:
 - Ordering: When specificity is equal, the source order becomes crucial. The rule defined later in the stylesheet or closer to the HTML element in the document will override previous rules.
 
 # Multiple selectors
+
+## Grouping selectors
 
 If you would like to add the same styling to multiple selectors, it is possible to list them at the same time. For example:
 
@@ -254,3 +252,11 @@ Remembering all CSS property names can be challenging, especially considering th
 - Documentation: Rely on official documentation such as MDN Web Docs (Mozilla Developer Network) or the [W3C CSS](https://www.w3schools.com/css/default.asp) Specification. For example
   [CSS Colors](https://www.w3schools.com/css/css_colors.asp)
 - Inspector tools: You can actually modify the element selectors and css properties directly in the browser. As an exercise, try changing the background color and text content of google
+
+# CSS Exercises
+
+- [HTML Classes exercise](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_classes1)
+- [HTML id exercise](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_id1)
+- [HTML body exercise](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_css1)
+- [CSS Selector exercise](https://www.w3schools.com/css/exercise.asp?filename=exercise_selectors1)
+- [CSS External sheet exercise](https://www.w3schools.com/css/exercise.asp?filename=exercise_howto1)
