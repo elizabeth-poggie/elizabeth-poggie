@@ -1,0 +1,256 @@
+---
+# General Information
+title: "Lecture 3"
+subtitle: "Basic HTML Structure & Intro to CSS"
+date: "2024-02-02T12:17:29Z"
+course: "User Interfaces"
+type: "Lecture"
+---
+
+# HTML Structure
+
+## Intro
+
+You may have noticed that certain HTML elements will "stack" on top of each other automatically (paragraphs, headers), while others will stay on the same line as neighboring elements (anchors, images).
+
+The basic structure of an HTML (Hypertext Markup Language) page adheres to a standardized template that includes essential elements. (what we have seen so far with the boilerplate).
+
+This boilerplate code ensures proper rendering and interpretation of the content by web browsers. However within the body tag, we are going to explore more today how elements of a web page lay themselves out.
+
+## How are elements laid out by default?
+
+The layout of HTML elements by default is influenced by the display properties and styling provided by browsers. Without any special styling attributes, the display of elements follows a top-to-bottom, left-to-right progression in rendering the content. This is what is referred to as the “Normal FLow” of an HTML page. It’s a “default” arrangement.
+
+Understanding the normal flow is essential for understanding how to structure our HTML page.
+
+## What are the key characteristics of normal flows?
+
+They are made up of element types such as:
+
+- Block-Level Elements
+- Inline Elements
+- Styling
+
+## What are block-level elements?
+
+Block-level elements are those that create a distinct "block" or box on a web page. They typically start on a new line and extend to the full width of their containing element. These elements are commonly employed to structure the overall layout of a webpage, organizing content into sections and creating a visual hierarchy.
+
+For example:
+
+```html
+<p>...</p>
+<h1>...</h1>
+<ol>
+  <li>...</li>
+  <li>...</li>
+</ol>
+<ul>
+  <li>...</li>
+  <li>...</li>
+</ul>
+```
+
+## What are Inline elements?
+
+In contrast, do not create a new block; instead, they flow within the content and typically do not force a new line. They occupy only as much width as necessary. These elements are commonly used for text-level semantics, emphasizing or styling specific portions of text within a block-level element.
+
+For example:
+
+```html
+<a>...</a> <img />
+```
+
+## What happens when we combine block and inline elements?
+
+When we nest inline elements within block-level elements, we get both structural and styling capabilities.
+
+# Container Elements
+
+## Div
+
+```html
+<div>{some-content}</div>
+```
+
+Stands for "division" and is a container used to group and structure content within a web page.
+
+It is a block-level element that does not have any specific meaning on its own, but it serves as an essential tool for organizing and styling content.
+
+Developers commonly use `<div>` to group together related elements, providing a way to apply styling, layout, or JavaScript functionality to a particular section.
+
+## Span
+
+```html
+<span>{some-content}</span>
+```
+
+This is an inline-level container that is used to apply styles or scripting to a specific portion of text within a larger block of content.
+
+Unlike the `<div>` element, which is a block-level container, `<span>` is designed for smaller, inline elements. It is particularly handy for applying styles or scripting to small portions of text.
+
+# Styling
+
+## Intro
+
+Styling HTML pages is accomplished through the use of Cascading Style Sheets (CSS).
+
+CSS allows developers to control the visual presentation of HTML elements including aspects such as layout and colors.
+
+There are 3 different ways to use CSS with your HTML document. All of these methods achieve the same result, however the third method is the most popular and we will explore why later on.
+
+## Inline Styling
+
+Add the `style=””` attribute inside the HTML tag followed by the CSS property. For example:
+
+```html
+<p style="color: blue;">This is a styled paragraph.</p>
+```
+
+This works well for very specific fixes, however most companies advise against this method of styling.
+
+## Internal Styling
+
+This is when we add CSS rules in the head section of the HTML page by adding a `<style>` section. For example:
+
+```html
+…
+<head>
+  <style>
+    p {
+      color: blue;
+    }
+  </style>
+</head>
+…
+```
+
+## External Styling
+
+Create a separate CSS file and link it to the HTML document using the `<link>` element within the `<head>` section. This is the most popular method of making style sheets.
+
+```html
+<link rel="stylesheet" type="text/css" href="./styles/styles.css" />
+```
+
+Note the period refers to your current directory, so the above implies you have a styles directory off the root.
+
+## Why is external styling so popular?
+
+CSS was created to separate the responsibility of structuring the content from the responsibility of styling the content. Some examples where this is exceptionally useful:
+
+- Reusability: When we separate our CSS from HTML, we allow for the creation of modular and reusable stylesheets. Styles can be defined once and applied consistently across multiple pages, fostering maintainability and efficiency.
+- Maintainability: When styles are kept in a separate CSS file, modifications and updates can be made more efficiently. So if i make a change to a single style sheet, those changes can be reflected everywhere
+- User Experience: By centralizing styling instructions in CSS, developers can ensure a consistent design throughout an entire website.
+- Accessibility: It enables the creation of clean HTML that is more easily interpreted by assistive technologies, making web content more inclusive.
+- … and so much more !!
+
+# CSS Selectors
+
+## Intro
+
+Selectors are a way of applying CSS to our elements.
+
+## Global Selectors
+
+When using the html tag as a selector, all elements of the same tag will be affected by the style. For example:
+
+```css
+p {
+  color: blue;
+}
+```
+
+## Id Selectors
+
+When we want to target a specific html element with a particular style, we add the `id=”...”` attribute inside the html tag. For example:
+
+```html
+<head>
+  <style>
+    #special {
+      color: green;
+    }
+  </style>
+</head>
+…
+<p id="special">Welcome</p>
+```
+
+However one thing you must know about using the id, is that they must always be unique. It is standard practice to never give the same id to more than one element. What do we do if we want multiple tags to use a certain CSS definition? Class Selectors!
+
+## Class selectors
+
+Classes are styling templates generally associated with more than one element. We can associate a class to an element by adding the `class=”...”` attribute inside the opening html tag. For example:
+
+```html
+<p class="”special”">Welcome</p>
+
+…
+
+<head>
+  <style>
+    .special {
+      color: green;
+    }
+  </style>
+</head>
+```
+
+## Ordering
+
+The order of CSS rules in a stylesheet does matter, and it can significantly impact how styles are applied to HTML elements. The principle that governs this behavior is called the "cascading" part of Cascading Style Sheets (CSS).
+
+What you need to consider when deciding how to order your sheets:
+
+- Specificity: CSS rules with higher specificity take precedence over rules with lower specificity. Some examples: A rule with an ID selector (#example) is more specific than a rule with a class selector (.example), and it will override styles defined by the less specific rule. Inline styles that use the style attribute have the highest specificity.
+- Importance: ​​Some CSS rules may have higher importance, such as those defined using !important.
+- Ordering: When specificity is equal, the source order becomes crucial. The rule defined later in the stylesheet or closer to the HTML element in the document will override previous rules.
+
+# Multiple selectors
+
+If you would like to add the same styling to multiple selectors, it is possible to list them at the same time. For example:
+
+```css
+.special,
+.also-special {
+  color: green;
+}
+```
+
+## Nested selectors
+
+It is possible to target the inner elements of an element that has a given id using a nested selector. For example, if i wanted to all the `<p>` elements inside the element having the id `#special`, then it would look like this:
+
+```css
+#special p {
+  color: green;
+}
+```
+
+## Selecting the entire page
+
+If we want to apply styling to the whole page, we would need to use the body selector. For example:
+
+```css
+body {
+  background-color: red;
+}
+```
+
+## Selecting all elements
+
+To select all elements on a document, use `*`. For example:
+
+```css
+* {
+  text-align: center;
+}
+```
+
+# CSS Properties
+
+Remembering all CSS property names can be challenging, especially considering the extensive list of properties available. However, there are practical strategies and resources that can help you learn and recall CSS property names more effectively. Some examples are:
+
+- Documentation: Rely on official documentation such as MDN Web Docs (Mozilla Developer Network) or the [W3C CSS](https://www.w3schools.com/css/default.asp) Specification. For example
+  [CSS Colors](https://www.w3schools.com/css/css_colors.asp)
+- Inspector tools: You can actually modify the element selectors and css properties directly in the browser. As an exercise, try changing the background color and text content of google
