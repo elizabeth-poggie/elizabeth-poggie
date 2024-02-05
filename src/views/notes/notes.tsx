@@ -4,6 +4,7 @@ import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { ListLayout } from "../../components/layout/list-layout/list-layout";
 import { Text } from "../../components/typography/text/text";
 import { ICollegeNote } from "../../interfaces/note";
+import styles from "./notes.module.scss";
 
 interface IProps {
   allNotes: ICollegeNote[];
@@ -33,16 +34,25 @@ export function Notes({ allNotes }: IProps) {
     );
   };
 
-  // TODO - implement with a reducer instead
-  // add sort on click functionality
+  // TODO - add sort on click functionality
   const renderFilterRow = (filterTitle: string, filterType: string) => {
+    const onlyUnique = (value, index, array) => {
+      return array.indexOf(value) === index;
+    };
+
+    const filterTitles: string[] = [
+      ...allNotes.map((note: ICollegeNote) => {
+        return note[filterType];
+      }),
+    ].filter(onlyUnique);
+
     return (
       <article>
-        <header>
+        <header className={styles.filterHeader}>
           <Text variant="h2">{filterTitle}</Text>
         </header>
-        {allNotes.map((note: ICollegeNote) => {
-          return <PillButton title={note[filterType]} onClick={() => null} />;
+        {filterTitles.map((filterTitle: string) => {
+          return <PillButton title={filterTitle} onClick={() => null} />;
         })}
       </article>
     );
