@@ -1,7 +1,5 @@
 import Head from "next/head";
 import Meta from "../src/views/meta/meta";
-import { NavBar } from "../src/components/navigation/nav-bar/nav-bar";
-import { NavItem } from "../src/interfaces/footer";
 import { ICollegeNote } from "../src/interfaces/note";
 import { Notes } from "../src/views/notes/notes";
 import { getAllNotes } from "../src/utils/api";
