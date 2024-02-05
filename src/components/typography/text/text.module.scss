@@ -69,6 +69,13 @@
   @include body;
 }
 
+.link {
+  font-size: $text-md;
+  text-decoration: none;
+  color: $color-off-blue;
+  @extend .italics;
+}
+
 .p {
   font-size: $text-md;
   color: $color-off-white;

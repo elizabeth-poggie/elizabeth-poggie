@@ -1,7 +1,7 @@
 ---
 # General Information
 title: "Lecture 1"
-subtitle: "Introduction to User Interfaces, Links, and Images"
+subtitle: "Introduction to User Interfaces"
 date: "2024-01-27T12:17:29Z"
 course: "User Interfaces"
 type: "Lecture"
@@ -12,8 +12,6 @@ type: "Lecture"
 ## Intro
 
 Visual Studio Code is a free (lightweight) IDE for creating modern applications for platforms such as Android, iOS, Windows, and Web apps. You can download it [here](https://visualstudio.microsoft.com/vs/community/).
-
-Homework ⇒ Download it tonight && get comfortable with it.
 
 ## Extensions
 

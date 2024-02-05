@@ -5,6 +5,7 @@ import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Markdown from "react-markdown";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import styles from "./note-details.module.scss";
+import { Link } from "../../components/navigation/link/link";
 
 interface IProps {
   noteDetails: ICollegeNote;
@@ -49,9 +50,11 @@ export function NoteDetails({ noteDetails }: IProps) {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <Text variant="title">
-          {noteDetails.course} - {noteDetails.title}
-        </Text>
+        <div>
+          <Text variant="title">
+            {noteDetails.course} - {noteDetails.title}
+          </Text>
+        </div>
         <Text variant="subheading" style="italics">
           {noteDetails.subtitle}
         </Text>
@@ -64,6 +67,13 @@ export function NoteDetails({ noteDetails }: IProps) {
             h2: ({ children }) => renderSubHeader({ children }),
             p: ({ children }) => renderParagraph({ children }),
             ul: ({ children }) => renderUnorderedList({ children }),
+            a: ({ children, href }) => (
+              <span>
+                <Link href={href}>
+                  <Text variant="link">{children}</Text>
+                </Link>
+              </span>
+            ),
             code: ({ node, className, children, ...props }) => {
               const match = /language-(\w+)/.exec(className || "");
               return match ? (
