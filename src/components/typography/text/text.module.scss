@@ -10,7 +10,6 @@
 
 @mixin body {
   font-family: "Lato Regular";
-  color: $color-white;
 }
 
 // Styles and transformations
@@ -39,26 +38,46 @@
 .title {
   font-size: $text-xl;
   letter-spacing: 0.2em;
+  padding-bottom: 0.5em;
   @extend .uppercase;
   @include header;
 }
 
 .h1 {
   font-size: $text-lg;
+  letter-spacing: 0.2em;
+  padding-bottom: 0.25em;
+  @extend .uppercase;
+  @include header;
+}
+
+.h2 {
+  font-size: $text-lg;
+  padding-bottom: 0.25em;
   @include header;
 }
 
 .subheading {
   font-size: $text-sm;
+  color: $color-white;
   @include body;
 }
 
 .subheading2 {
   font-size: $text-xs;
+  color: $color-white;
   @include body;
+}
+
+.link {
+  font-size: $text-md;
+  text-decoration: none;
+  color: $color-off-blue;
+  @extend .italics;
 }
 
 .p {
   font-size: $text-md;
+  color: $color-off-white;
   @include body;
 }

@@ -20,9 +20,11 @@ export function NavBar({ navItems }: IProps) {
       <div className={styles.items}>
         {navItems.map((item) => {
           return (
-            <Link key={item.href} href={item.href}>
-              <Text variant="h1">{item.name}</Text>
-            </Link>
+            <div>
+              <Link key={item.href} href={item.href}>
+                <Text variant="h2">{item.name}</Text>
+              </Link>
+            </div>
           );
         })}
       </div>

@@ -6,7 +6,9 @@ const textVariantToStyleMap = {
   subheading: styles.subheading,
   subheading2: styles.subheading2,
   h1: styles.h1,
+  h2: styles.h2,
   p: styles.p,
+  link: styles.link,
 };
 
 const alignToStyleMap = {
@@ -23,12 +25,18 @@ const styleToStyleMap = {
 };
 
 type TextAlign = "left" | "center" | "right" | "justify";
-type TextVariant = "title" | "subheading" | "subheading2" | "h1" | "p";
+type TextVariant =
+  | "title"
+  | "subheading"
+  | "subheading2"
+  | "h1"
+  | "h2"
+  | "p"
+  | "link";
 type TextStyle = "normal" | "italics" | "uppercase";
 
-// TODO - fix typing of the custom component to work with all text inputs
 interface IProps {
-  children: string;
+  children: React.ReactNode;
   /**
    * predefined style variants
    *
@@ -56,7 +64,7 @@ export function Text({
   style = "normal",
 }: IProps) {
   return (
-    <div
+    <span
       className={cs(
         textVariantToStyleMap[variant],
         alignToStyleMap[align],
@@ -64,6 +72,6 @@ export function Text({
       )}
     >
       {children}
-    </div>
+    </span>
   );
 }

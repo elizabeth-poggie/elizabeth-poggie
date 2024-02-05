@@ -37,12 +37,14 @@ export function Notes({ allNotes }: IProps) {
   // add sort on click functionality
   const renderFilterRow = (filterTitle: string, filterType: string) => {
     return (
-      <div>
-        <Text variant="h1">{filterTitle}</Text>
+      <article>
+        <header>
+          <Text variant="h2">{filterTitle}</Text>
+        </header>
         {allNotes.map((note: ICollegeNote) => {
           return <PillButton title={note[filterType]} onClick={() => null} />;
         })}
-      </div>
+      </article>
     );
   };
 

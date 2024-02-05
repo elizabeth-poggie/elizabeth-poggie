@@ -1,0 +1,32 @@
+@import "../../styles/variables.scss";
+
+.header {
+  text-align: center;
+  padding: 100px 0;
+}
+
+.inlineCode {
+  display: inline;
+  padding: 0 4px;
+  background-color: #1d1f21;
+  color: $color-off-yellow;
+  font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
+  font-size: 0.8rem;
+  border-radius: 5px;
+}
+
+.mdHeader {
+  margin-bottom: 1.5rem;
+  margin-top: 5rem;
+}
+
+.mdSubHeader {
+  margin-top: 1rem;
+  margin-bottom: 0.35em;
+}
+
+.mdParagraph {
+  text-align: justify;
+  padding-top: 0.375rem;
+  margin-bottom: 1rem;
+}

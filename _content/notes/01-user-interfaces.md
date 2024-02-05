@@ -1,0 +1,224 @@
+---
+# General Information
+title: "Lecture 1"
+subtitle: "Introduction to User Interfaces"
+date: "2024-01-27T12:17:29Z"
+course: "User Interfaces"
+type: "Lecture"
+---
+
+# VSCode
+
+## Intro
+
+Visual Studio Code is a free (lightweight) IDE for creating modern applications for platforms such as Android, iOS, Windows, and Web apps. You can download it [here](https://visualstudio.microsoft.com/vs/community/).
+
+## Extensions
+
+- [Live Preview](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server)
+- [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+- … And more to come later!
+
+# HTML vs CSS vs JavaScript
+
+## Why does it matter?
+
+These 3 languages are typically the foundation of any website, but this is just the beginning. There is so much more and as you continue in this program you will get to cover more advanced topics. For this class however, we will be sticking to the foundational languages.
+
+## HTML Overview
+
+HTML determines how documents and web pages are displayed in a web browser, these are the building blocks of all websites. There is no logic built-in HTML code. Think of this as the LAYOUT.
+
+Some examples:
+
+- Text
+- Links
+- Cards
+- Lists
+- Buttons
+
+## CSS Overview
+
+CSS style sheet language that determines how a document created in HTML is styled. Think of this as the STYLING.
+
+Some examples:
+
+- Color
+- Size
+- Font
+
+## JavaScript Overview
+
+This adds a layer of interactivity to a web page and allows you to affect the HTML and CSS parts of our web page. This language actually lets you do things whereas HTML and CSS are only concerned about display logic. Think of this as the PROGRAMMING.
+
+# HTML
+
+## Elements and Tags
+
+Elements are composed of tags. Elements can be considered containers for content and the opening and closing tags tell the browser what the type of content the element contains. For example, `<p>` tells the browser that the element contains text. Now the browser can determine how the content must be formatted.
+
+## Structure
+
+```html
+<p>Hello World</p>
+```
+
+Opening tags tell the browser this is the start of an HTML element. They are composed of a keyword enclosed in angle brackets `<>`.
+
+Closing tags tell the browser where an element ends. They are almost the same as opening tags; the only difference is that they have a forward slash before the keyword.
+
+## Void Elements
+
+```html
+<br />
+<img />
+```
+
+They are known as void elements because they are void of any content. These do not have any closing tags so they can’t wrap content like other tags do.
+
+## Entities
+
+Tags have a syntax, but what happens if we want to display a tag?
+For all special characters, refer to [here](https://websitebuilders.com/tools/html-codes/a-z/)
+
+# Boilerplate Foundations
+
+## Getting Started
+
+Make `index.html` and type `!` to get the below result.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+```
+
+To serve your document, right click `index.html` and select the option ‘Open with Live Server’.
+
+Now navigate to the left side of the screen and select ‘Show Preview’. Compare the developer experience of having to reload the page vs enabling this function.
+
+## index.html
+
+Web servers will by default look for an index.html page when someone lands on a website.
+
+## DOCTYPE
+
+Every HTML page starts with a doctype declaration. The doctype’s purpose is to tell the browser what version of HTML it should use to render the doc. For those that want to specify an older version of HTML, that is an option however we likely will not be using anything other than HTML5 which can be declared like:
+
+```html
+<!DOCTYPE html>
+```
+
+## The Root
+
+We need to provide an `<html>` element. This is what’s known as the root element of the document, meaning that every other element in the document will be a descendant of it. The `lang=”en”` is what is known as an HTML attribute which we will explore more in detail later on.
+
+But why even specify `lang`? This specifies the language of the text content in that element to improve accessibility of the webpage. It allows assistive technologies, like screen readers, to adapt according to the language and invoke correct pronunciation. More on accessibility later :) !!
+
+## Head
+
+Where we store information about our web pages, also known as the “meta-information”. In other words, it's information about information. Data about data.
+
+```html
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+```
+
+Note how the first `<meta charset="UTF-8">` element specifies the charset encoding of the web page. But what is encoding? What is charset? And why even bother?
+
+- Encoding refers to the process of converting data from one format into another for the purpose of standardization, security, or transmission.
+- In this case, we are encoding the characters and for our web pages, we want to ensure that we display special symbols and characters from different languages correctly in the browser. (more important information for accessibility systems to know)
+
+Note the `title` element is used to give webpages a human-readable title which is displayed in our webpage’s browser tab. But what happens if we delete it?
+
+There are other elements that can go into the head, however for now we are focusing on the important ones listed here. One thing you must not though is that no information with respect to the content display is listed in here!
+
+## Body
+
+This is where all the content that will be displayed to users will go.
+
+# Links
+
+## Anchor Elements
+
+To create a link in HTML, we use the anchor element defined by:
+
+```html
+<a>wow</a>
+```
+
+Let’s hover over the element in VSCode, what happens? What happens when we click? Look at all this fun documentation, if you forget anything while coding or are curious with a lot of time on your hands, you can refer to this!
+
+Now let’s click the anchor element on our browser. Notice how clicking this does not do anything. We need to tell the anchor tag where we want to link to. To do this we need to introduce the concept of an HTML attribute.
+
+## HTML Attributes
+
+An attribute is a special keyword added to a HTML element that provides additional information about the element. Attributes are used to modify the behavior or appearance of an HTML element, or to provide metadata about the element.
+
+These are always specified in the opening tag of an HTML element and are written as name-value pairs, where the name is the attribute name that is supported by the element and the value follows the `=` sign.
+
+To see all the supported attributes of an HTML Element, on VSCode use `Ctrl + Space`
+
+Now going back to our original example…
+
+## Anchor Attributes
+
+```html
+<a href="wow.com">wow</a>
+```
+
+`href` - links to any kind of resource (including other html documents). You can link to videos, pdf files, images, and so on, but for the most part, you will be linking to other HTML documents.
+`target` - To see all the options the attribute can be, type a single “ after the = sign into VSCode to see all the available options. Select one and see how they differ.
+
+## Link Types
+
+- "Absolute Links" - Links to pages on other websites on the internet.
+- "Relative Links" - Links to pages located on our own website. Relative links only include the file path to the other page, relative to the page you are creating the link on.
+- "Mail Links" - When our href attribute is populated by `mailto:someone@email.com` , when a user clicks on the link, it opens the default email client installed on the user's device and populates the recipient field with the specified email address! This allows users to easily send emails.
+
+# Images
+
+## Intro
+
+HTML provides a wide variety of elements for displaying all sorts of different media. The most widely used of these is the `<img>` element. For example:
+
+```html
+<img src="cat.jpg" />
+```
+
+his could get quickly messy, so let’s store this image instead in a new folder called “images” in case we want to add more down the line! Note: we are using a relative link!
+
+```html
+<img src="images/cat.jpg" />
+```
+
+In many cases, this will work just fine; however, you may run into unexpected issues with this approach. Prepending ./ before the link will prevent most problems from occurring. By adding ./ you are specifying to your code that it should start looking for the file/directory relative to the current directory.
+
+```html
+<img src="./images/cat.jpg" />
+```
+
+## Parent Directories
+
+What if we make another folder called ‘pages’ and move our `about.html` page there so things are more organized? But now what happens if we want to access our cat file from there? Now we need to use two dots in the relative filepath like this `../` in the `about.html` file.
+
+```html
+<img src="../images/cat.jpg" />
+```
+
+Using `../` in a file path is kind of like stepping out from the room you are currently in to the main hallway so you can go to another room.
+
+## Image Attributes
+
+- `alt` - used to describe an image. It will be used in place of the image if it cannot be loaded.
+- `width`, `height` - only in pixels in this case, but what happens if we want this stuff to be responsive? Details to come later…
