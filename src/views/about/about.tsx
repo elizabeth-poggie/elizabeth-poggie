@@ -1,8 +1,6 @@
 import { Text } from "../../components/typography/text/text";
 import { Image } from "../../components/display/image/image";
 import styles from "./about.module.scss";
-import { NavBar } from "../../components/navigation/nav-bar/nav-bar";
-import { navItems } from "../../../pages";
 
 // Read more about static assets here => https://nextjs.org/docs/pages/building-your-application/optimizing/static-assets
 const coverSrc = "/assets/personal/cover.jpeg";
