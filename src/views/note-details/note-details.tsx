@@ -11,6 +11,41 @@ interface IProps {
 }
 
 export function NoteDetails({ noteDetails }: IProps) {
+  const renderHeader = ({ children }) => {
+    return (
+      <div className={styles.mdHeader}>
+        <Text variant="h1">{children}</Text>
+        <HorizontalLine />
+      </div>
+    );
+  };
+
+  const renderSubHeader = ({ children }) => {
+    return (
+      <div className={styles.mdSubHeader}>
+        <Text variant="h2" style="italics">
+          {children}
+        </Text>
+      </div>
+    );
+  };
+
+  const renderUnorderedList = ({ children }) => {
+    return (
+      <ul>
+        <Text variant="p">{children}</Text>
+      </ul>
+    );
+  };
+
+  const renderParagraph = ({ children }) => {
+    return (
+      <div className={styles.mdParagraph}>
+        <Text variant="p">{children}</Text>
+      </div>
+    );
+  };
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -21,14 +56,14 @@ export function NoteDetails({ noteDetails }: IProps) {
           {noteDetails.subtitle}
         </Text>
       </header>
-      <HorizontalLine />
-      <div className={styles.content}>
+      <div>
         <Markdown
           children={noteDetails.content}
           components={{
-            h1: ({ children }) => <Text variant="h1">{children}</Text>,
-            h2: ({ children }) => <Text variant="h2">{children}</Text>,
-            p: ({ children }) => <Text variant="p">{children}</Text>,
+            h1: ({ children }) => renderHeader({ children }),
+            h2: ({ children }) => renderSubHeader({ children }),
+            p: ({ children }) => renderParagraph({ children }),
+            ul: ({ children }) => renderUnorderedList({ children }),
             code: ({ node, className, children, ...props }) => {
               const match = /language-(\w+)/.exec(className || "");
               return match ? (

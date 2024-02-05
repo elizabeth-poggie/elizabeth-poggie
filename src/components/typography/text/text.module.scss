@@ -10,7 +10,6 @@
 
 @mixin body {
   font-family: "Lato Regular";
-  color: $color-white;
 }
 
 // Styles and transformations
@@ -60,15 +59,18 @@
 
 .subheading {
   font-size: $text-sm;
+  color: $color-white;
   @include body;
 }
 
 .subheading2 {
   font-size: $text-xs;
+  color: $color-white;
   @include body;
 }
 
 .p {
   font-size: $text-md;
+  color: $color-off-white;
   @include body;
 }
