@@ -52,7 +52,13 @@ export function Notes({ allNotes }: IProps) {
           <Text variant="h2">{filterTitle}</Text>
         </header>
         {filterTitles.map((filterTitle: string) => {
-          return <PillButton title={filterTitle} onClick={() => null} />;
+          return (
+            <PillButton
+              key={filterTitle}
+              title={filterTitle}
+              onClick={() => null}
+            />
+          );
         })}
       </article>
     );
