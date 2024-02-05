@@ -203,7 +203,7 @@ The order of CSS rules in a stylesheet does matter, and it can significantly imp
 What you need to consider when deciding how to order your sheets:
 
 - Specificity: CSS rules with higher specificity take precedence over rules with lower specificity. Some examples: A rule with an ID selector (#example) is more specific than a rule with a class selector (.example), and it will override styles defined by the less specific rule. Inline styles that use the style attribute have the highest specificity.
-- Importance: ​​Some CSS rules may have higher importance, such as those defined using !important.
+- Importance: ​​Some CSS rules may have higher importance, such as those defined using `!important`.
 - Ordering: When specificity is equal, the source order becomes crucial. The rule defined later in the stylesheet or closer to the HTML element in the document will override previous rules.
 
 # Multiple selectors
