@@ -7,13 +7,17 @@ course: "User Interfaces"
 type: "Lecture"
 ---
 
+# Slides
+
+[View them here](/assets/notes/2024-user-interfaces/slides/04.pdf)
+
 # Notes
 
 TBD
 
 # CSS Exercises
 
-[Download Exercises Here](/assets/notes/2024-user-interfaces/week03-foundations-exercises.zip)
+[Download exercises here](/assets/notes/2024-user-interfaces/exercises/week03-foundations-exercises.zip)
 
 The exercises in these directories, are shared with minor modification from [The Odin Project (TOP)](https://github.com/TheOdinProject/css-exercises) ([MIT License](https://github.com/TheOdinProject/css-exercises/blob/main/LICENSE))
 

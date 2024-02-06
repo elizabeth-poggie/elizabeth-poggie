@@ -7,6 +7,7 @@ import { HorizontalLine } from "../../components/display/horizontal-line/horizon
 import styles from "./note-details.module.scss";
 import { Link } from "../../components/navigation/link/link";
 import { NoteLayout } from "../../components/layout/note-layout/note-layout";
+import { Image } from "../../components/display/image/image";
 
 interface IProps {
   noteDetails: ICollegeNote;
@@ -28,6 +29,14 @@ export function NoteDetails({ noteDetails }: IProps) {
         <Text variant="h2" style="italics">
           {children}
         </Text>
+      </div>
+    );
+  };
+
+  const renderImage = ({ children, src }) => {
+    return (
+      <div>
+        <Image src={src} />
       </div>
     );
   };
@@ -69,6 +78,7 @@ export function NoteDetails({ noteDetails }: IProps) {
               h2: ({ children }) => renderSubHeader({ children }),
               p: ({ children }) => renderParagraph({ children }),
               ul: ({ children }) => renderUnorderedList({ children }),
+              img: ({ children, src }) => renderImage({ children, src }),
               a: ({ children, href }) => (
                 <span>
                   <Link href={href}>
