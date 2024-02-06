@@ -22,7 +22,7 @@ In the previous lab, we learned about different HTML elements to establish a bas
 
 # Starter Code
 
-[Download it here](/assets/notes/2024-user-interfaces/labs/02/lab2.zip)
+Download the starter code on Lea
 
 # Getting Started
 
