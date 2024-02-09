@@ -13,7 +13,7 @@ interface IProps {
   noteDetails: ICollegeNote;
 }
 
-export function NoteDetails({ noteDetails }: IProps) {
+export function NoteDetails({ noteDetails }: Readonly<IProps>) {
   const renderHeader = ({ children }) => {
     return (
       <div className={styles.mdHeader}>
@@ -57,22 +57,31 @@ export function NoteDetails({ noteDetails }: IProps) {
     );
   };
 
+  const renderNoteHeader = () => {
+    return (
+      <header className={styles.header}>
+        <div>
+          <Text variant="title">
+            {noteDetails.course} - {noteDetails.title}
+          </Text>
+        </div>
+        <Text variant="subheading" style="italics">
+          {noteDetails.subtitle}
+        </Text>
+      </header>
+    );
+  };
+
+  const renderSideBar = () => {
+    return <aside>Yeet</aside>;
+  };
+
   const renderNoteDetails = () => {
     return (
       <>
-        <header className={styles.header}>
-          <div>
-            <Text variant="title">
-              {noteDetails.course} - {noteDetails.title}
-            </Text>
-          </div>
-          <Text variant="subheading" style="italics">
-            {noteDetails.subtitle}
-          </Text>
-        </header>
+        {renderNoteHeader()}
         <div>
           <Markdown
-            children={noteDetails.content}
             components={{
               h1: ({ children }) => renderHeader({ children }),
               h2: ({ children }) => renderSubHeader({ children }),
@@ -90,12 +99,13 @@ export function NoteDetails({ noteDetails }: IProps) {
                 const match = /language-(\w+)/.exec(className || "");
                 return match ? (
                   <SyntaxHighlighter
-                    children={String(children).replace(/\n$/, "")}
                     style={atomDark}
                     language={match[1]}
                     PreTag="div"
                     {...props}
-                  />
+                  >
+                    {String(children).replace(/\n$/, "")}
+                  </SyntaxHighlighter>
                 ) : (
                   <span className={styles.inlineCode} {...props}>
                     {children}
@@ -103,11 +113,18 @@ export function NoteDetails({ noteDetails }: IProps) {
                 );
               },
             }}
-          />
+          >
+            {noteDetails.content}
+          </Markdown>
         </div>
       </>
     );
   };
 
-  return <NoteLayout rightContent={renderNoteDetails()} />;
+  return (
+    <NoteLayout
+      leftContent={renderSideBar()}
+      rightContent={renderNoteDetails()}
+    />
+  );
 }

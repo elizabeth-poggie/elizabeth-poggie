@@ -1,28 +1,26 @@
 import { NavItem } from "../../../interfaces/navigation";
 import { Text } from "../../typography/text/text";
 import { Link } from "../link/link";
-import styles from "./nav-bar.module.scss";
-
-// TODO - add footer item hover animation
+import styles from "./content-navigation.module.scss";
 
 interface IProps {
   navItems: NavItem[];
 }
 
-export function NavBar({ navItems }: IProps) {
+export function ContentNavigation({ navItems }: Readonly<IProps>) {
   return (
-    <div className={styles.container}>
-      <div className={styles.items}>
+    <nav>
+      <ul>
         {navItems.map((item) => {
           return (
-            <div key={item.href}>
+            <li key={item.href}>
               <Link href={item.href}>
-                <Text variant="h2">{item.name}</Text>
+                <Text>{item.name}</Text>
               </Link>
-            </div>
+            </li>
           );
         })}
-      </div>
-    </div>
+      </ul>
+    </nav>
   );
 }
