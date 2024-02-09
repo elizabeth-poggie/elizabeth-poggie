@@ -5,6 +5,7 @@ import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Markdown from "react-markdown";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import styles from "./note-details.module.scss";
+import { renderToString } from "react-dom/server";
 import { Link } from "../../components/navigation/link/link";
 import { NoteLayout } from "../../components/layout/note-layout/note-layout";
 import { Image } from "../../components/display/image/image";
@@ -120,6 +121,29 @@ export function NoteDetails({ noteDetails }: Readonly<IProps>) {
       </>
     );
   };
+
+  const getHeadings = (source) => {
+    const regex = /<h2>(.*?)<\/h2>/g;
+
+    if (source.match(regex)) {
+      return source.match(regex).map((heading) => {
+        const headingText = heading.replace("<h2>", "").replace("</h2>", "");
+
+        const link = "#" + headingText.replace(/ /g, "_").toLowerCase();
+
+        return {
+          text: headingText,
+          link,
+        };
+      });
+    }
+
+    return [];
+  };
+
+  const headings = getHeadings(noteDetails.content);
+  console.log(headings);
+  console.log(noteDetails.content);
 
   return (
     <NoteLayout

@@ -9,6 +9,7 @@ interface IProps {
 export function NoteLayout({ leftContent, rightContent }: IProps) {
   return (
     <div className={styles.container}>
+      <div className={styles.leftContentContainer}>{leftContent}</div>
       <div className={styles.rightContentContainer}>{rightContent}</div>
     </div>
   );
