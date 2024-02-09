@@ -9,16 +9,22 @@ import { renderToString } from "react-dom/server";
 import { Link } from "../../components/navigation/link/link";
 import { NoteLayout } from "../../components/layout/note-layout/note-layout";
 import { Image } from "../../components/display/image/image";
+import rehypeSlug from "rehype-slug";
 
 interface IProps {
   noteDetails: ICollegeNote;
 }
 
 export function NoteDetails({ noteDetails }: Readonly<IProps>) {
-  const renderHeader = ({ children }) => {
+  const renderHeader = ({ id, children }) => {
+    console.log(id);
     return (
       <div className={styles.mdHeader}>
-        <Text variant="h1">{children}</Text>
+        <Link href={`#${id}`} scroll={false}>
+          <Text id={id} variant="h1">
+            {children}
+          </Text>
+        </Link>
         <HorizontalLine />
       </div>
     );
@@ -83,8 +89,9 @@ export function NoteDetails({ noteDetails }: Readonly<IProps>) {
         {renderNoteHeader()}
         <div>
           <Markdown
+            rehypePlugins={[rehypeSlug]}
             components={{
-              h1: ({ children }) => renderHeader({ children }),
+              h1: ({ id, children }) => renderHeader({ id, children }),
               h2: ({ children }) => renderSubHeader({ children }),
               p: ({ children }) => renderParagraph({ children }),
               ul: ({ children }) => renderUnorderedList({ children }),
@@ -121,29 +128,6 @@ export function NoteDetails({ noteDetails }: Readonly<IProps>) {
       </>
     );
   };
-
-  const getHeadings = (source) => {
-    const regex = /<h2>(.*?)<\/h2>/g;
-
-    if (source.match(regex)) {
-      return source.match(regex).map((heading) => {
-        const headingText = heading.replace("<h2>", "").replace("</h2>", "");
-
-        const link = "#" + headingText.replace(/ /g, "_").toLowerCase();
-
-        return {
-          text: headingText,
-          link,
-        };
-      });
-    }
-
-    return [];
-  };
-
-  const headings = getHeadings(noteDetails.content);
-  console.log(headings);
-  console.log(noteDetails.content);
 
   return (
     <NoteLayout

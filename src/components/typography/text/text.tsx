@@ -55,16 +55,19 @@ interface IProps {
    * @example "italics"
    */
   style?: TextStyle;
+  id?: string; // probs need to extend the attribute class here instead lol
 }
 
 export function Text({
   children,
+  id,
   variant = "p",
   align = "left",
   style = "normal",
-}: IProps) {
+}: Readonly<IProps>) {
   return (
     <span
+      id={id}
       className={cs(
         textVariantToStyleMap[variant],
         alignToStyleMap[align],

@@ -2,10 +2,6 @@ import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
 import { getAllNotes, getBySlug, noteDirectory } from "../../src/utils/api";
 import { ICollegeNote } from "../../src/interfaces/note";
-import Markdown from "react-markdown";
-import { Text } from "../../src/components/typography/text/text";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { NoteDetails } from "../../src/views/note-details/note-details";
 
 interface Props {
