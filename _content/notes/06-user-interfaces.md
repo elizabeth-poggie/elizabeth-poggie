@@ -7,13 +7,13 @@ course: "User Interfaces"
 type: "Lecture"
 ---
 
+# Slides
+
+[View them here](/assets/notes/2024-user-interfaces/slides/06.pdf)
+
 # CSS Exercises
 
-## Download them ...
-
-[✨ here ✨](/assets/notes/2024-user-interfaces/exercises/week04-styling-text-exercises.zip)
-
-The exercises in these directories, are shared with minor modification from [The Odin Project (TOP)](https://github.com/TheOdinProject/css-exercises) ([MIT License](https://github.com/TheOdinProject/css-exercises/blob/main/LICENSE))
+[Download them here ✨](/assets/notes/2024-user-interfaces/exercises/week04-styling-text-exercises.zip)
 
 # Instructions
 
@@ -47,3 +47,11 @@ The exercises in these directories, are shared with minor modification from [The
 - Make it so that links are underlined by default, but when you hover or focus them, the underline disappears.
 - Give the active state a noticeably different styling so it stands out nicely, but make it still fit in with the overall page design.
 - Make it so that external links have the external link icon inserted next to them.
+
+## Bonus points 👀
+
+- Bonus points for all those that manage to find a way to cause an image to disappear on button click
+
+# AcknowledgementS
+
+The exercises in these directories, are shared with minor modification from [The Odin Project (TOP)](https://github.com/TheOdinProject/css-exercises) ([MIT License](https://github.com/TheOdinProject/css-exercises/blob/main/LICENSE))
