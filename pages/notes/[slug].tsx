@@ -6,9 +6,13 @@ import { NoteDetails } from "../../src/views/note-details/note-details";
 
 interface Props {
   noteDetails: ICollegeNote;
+  relatedNotes?: ICollegeNote[];
 }
 
-export default function NoteDetailsPage({ noteDetails }: Props) {
+export default function NoteDetailsPage({
+  noteDetails,
+  relatedNotes,
+}: Readonly<Props>) {
   return (
     <>
       <Meta />
@@ -17,7 +21,7 @@ export default function NoteDetailsPage({ noteDetails }: Props) {
           {noteDetails.title} - {noteDetails.course}
         </title>
       </Head>
-      <NoteDetails noteDetails={noteDetails} />
+      <NoteDetails noteDetails={noteDetails} relatedNotes={relatedNotes} />
     </>
   );
 }
@@ -31,14 +35,28 @@ type Params = {
 export async function getStaticProps({ params }: Params) {
   const details = getBySlug(
     params.slug,
-    ["title", "subtitle", "course", "content"],
+    ["title", "subtitle", "course", "content", "slides", "type"],
     noteDirectory
+  );
+
+  // filtered by type and course
+  const filteredNotes = getAllNotes([
+    "slug",
+    "title",
+    "subtitle",
+    "course",
+    "type",
+  ]).filter(
+    (note) => note.course === details.course && note.type === details.type
   );
 
   return {
     props: {
       noteDetails: {
         ...details,
+      },
+      relatedNotes: {
+        ...filteredNotes,
       },
     },
   };

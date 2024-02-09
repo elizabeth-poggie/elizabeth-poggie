@@ -10,20 +10,20 @@ import { Link } from "../../components/navigation/link/link";
 import { NoteLayout } from "../../components/layout/note-layout/note-layout";
 import { Image } from "../../components/display/image/image";
 import rehypeSlug from "rehype-slug";
+import React from "react";
+import { Toc } from "../../components/navigation/toc/toc";
 
 interface IProps {
   noteDetails: ICollegeNote;
+  relatedNotes?: ICollegeNote[];
 }
 
-export function NoteDetails({ noteDetails }: Readonly<IProps>) {
+export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const renderHeader = ({ id, children }) => {
-    console.log(id);
     return (
       <div className={styles.mdHeader}>
         <Link href={`#${id}`} scroll={false}>
-          <Text id={id} variant="h1">
-            {children}
-          </Text>
+          <h1 id={id}>{children}</h1>
         </Link>
         <HorizontalLine />
       </div>
@@ -80,14 +80,18 @@ export function NoteDetails({ noteDetails }: Readonly<IProps>) {
   };
 
   const renderSideBar = () => {
-    return <aside>Yeet</aside>;
+    return (
+      <>
+        <Toc />
+      </>
+    );
   };
 
   const renderNoteDetails = () => {
     return (
       <>
         {renderNoteHeader()}
-        <div>
+        <div className="js-toc-content">
           <Markdown
             rehypePlugins={[rehypeSlug]}
             components={{
