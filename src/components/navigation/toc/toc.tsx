@@ -11,13 +11,14 @@ export function Toc({}: Readonly<IProps>) {
       contentSelector: ".js-toc-content", // Select the warpper of contents
       linkClass: styles.link,
       activeLinkClass: styles.activeLink,
+      listClass: styles.list,
       headingSelector: ".js-toc-heading",
     });
     return () => tocbot.destroy();
   }, []);
 
   return (
-    <nav className={styles.container}>
+    <nav>
       <div className="js-toc"></div>
     </nav>
   );

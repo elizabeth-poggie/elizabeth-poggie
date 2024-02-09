@@ -6,7 +6,7 @@ import { NoteDetails } from "../../src/views/note-details/note-details";
 
 interface Props {
   noteDetails: ICollegeNote;
-  relatedNotes?: ICollegeNote[];
+  relatedNotes: ICollegeNote[];
 }
 
 export default function NoteDetailsPage({
@@ -55,9 +55,7 @@ export async function getStaticProps({ params }: Params) {
       noteDetails: {
         ...details,
       },
-      relatedNotes: {
-        ...filteredNotes,
-      },
+      relatedNotes: [...filteredNotes],
     },
   };
 }

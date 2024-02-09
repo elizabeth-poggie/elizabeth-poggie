@@ -1,14 +1,6 @@
 @import "tocbot/src/scss/tocbot";
 @import "../../../styles/variables.scss";
 
-.container {
-  position: fixed;
-  left: 0;
-  top: 0;
-  padding: calc($unit * 16) 0 0 calc($unit * 8);
-  z-index: 1;
-}
-
 .link {
   color: grey;
   text-decoration: none;
@@ -17,6 +9,11 @@
   font-size: 0.8rem;
   font-family: "Lato Regular";
   font-style: italic;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
 }
 
 .link:first-letter {

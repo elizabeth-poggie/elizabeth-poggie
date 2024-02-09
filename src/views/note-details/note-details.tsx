@@ -12,6 +12,7 @@ import { Image } from "../../components/display/image/image";
 import rehypeSlug from "rehype-slug";
 import React from "react";
 import { Toc } from "../../components/navigation/toc/toc";
+import tocbot from "tocbot";
 
 interface IProps {
   noteDetails: ICollegeNote;
@@ -19,6 +20,23 @@ interface IProps {
 }
 
 export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
+  const [note, setNote] = React.useState<ICollegeNote>();
+  React.useEffect(() => {
+    // we do not need to refresh if we are on the same page
+    if (note && note === noteDetails) {
+      return;
+    }
+    // this is our first time on the note details page
+    if (!note) {
+      return setNote(noteDetails);
+    }
+    // we are moving to another note details page, refresh toc
+    return () => {
+      setNote(noteDetails);
+      tocbot.refresh();
+    };
+  }, [tocbot, noteDetails]);
+
   const renderHeader = ({ id, children }) => {
     return (
       <div className={styles.mdHeader}>
@@ -83,9 +101,25 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
 
   const renderSideBar = () => {
     return (
-      <>
+      <aside className={styles.sideBar}>
         <Toc />
-      </>
+        {relatedNotes?.map((note: ICollegeNote) => {
+          return (
+            <div key={note.slug}>
+              <Link href={`/notes/${note.slug}`}>
+                <Text variant="subheading" style="italics">
+                  {note.title}
+                </Text>
+              </Link>
+            </div>
+          );
+        })}
+        <Link href="/">
+          <Text variant="subheading" style="italics">
+            Home
+          </Text>
+        </Link>
+      </aside>
     );
   };
 
