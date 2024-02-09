@@ -5,13 +5,22 @@
   position: fixed;
   left: 0;
   top: 0;
-  padding: calc($unit * 8) 0 0 calc($unit * 8);
+  padding: calc($unit * 16) 0 0 calc($unit * 8);
   z-index: 1;
 }
 
 .link {
   color: grey;
   text-decoration: none;
+  text-transform: lowercase;
+  display: inline-block;
+  font-size: 0.8rem;
+  font-family: "Lato Regular";
+  font-style: italic;
+}
+
+.link:first-letter {
+  text-transform: uppercase;
 }
 
 .activeLink {

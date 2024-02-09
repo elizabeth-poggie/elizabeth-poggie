@@ -23,7 +23,9 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
     return (
       <div className={styles.mdHeader}>
         <Link href={`#${id}`} scroll={false}>
-          <h1 id={id}>{children}</h1>
+          <div className="js-toc-heading" id={id}>
+            <Text variant="h1">{children}</Text>
+          </div>
         </Link>
         <HorizontalLine />
       </div>
