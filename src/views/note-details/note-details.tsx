@@ -22,19 +22,14 @@ interface IProps {
 export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const [note, setNote] = React.useState<ICollegeNote>();
   React.useEffect(() => {
-    // we do not need to refresh if we are on the same page
-    if (note && note === noteDetails) {
-      return;
-    }
-    // this is our first time on the note details page
     if (!note) {
       return setNote(noteDetails);
     }
-    // we are moving to another note details page, refresh toc
-    return () => {
+    if (note !== noteDetails) {
       setNote(noteDetails);
       tocbot.refresh();
-    };
+    }
+    return;
   }, [tocbot, noteDetails]);
 
   const renderHeader = ({ id, children }) => {
