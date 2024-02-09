@@ -2,7 +2,7 @@ import React from "react";
 import { NavItem } from "../../../interfaces/navigation";
 import { Text } from "../../typography/text/text";
 import { Link } from "../link/link";
-import styles from "./content-navigation.module.scss";
+import styles from "./toc.module.scss";
 import tocbot from "tocbot";
 
 interface IProps {
@@ -14,22 +14,15 @@ export function Toc({ navItems }: Readonly<IProps>) {
     tocbot.init({
       tocSelector: ".js-toc", // Select the wrapper of toc
       contentSelector: ".js-toc-content", // Select the warpper of contents
+      linkClass: styles.link,
+      activeLinkClass: styles.activeLink,
       headingSelector: "h1", // Choose the heading tags
-      /* Optional 1.
-      Enable these if you have a sticky header and adjust the offset value
-      */
-      // headingsOffset: 100,
-      // scrollSmoothOffset: -100,
-      /* Optional 2. 
-      Enable this if 'active' class on scroll won't work properly
-      */
-      // hasInnerContainers: true,
     });
     return () => tocbot.destroy();
   }, []);
 
   return (
-    <nav>
+    <nav className={styles.container}>
       <span>Table of Contents</span>
       <div className="js-toc"></div>
     </nav>
