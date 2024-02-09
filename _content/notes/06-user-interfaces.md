@@ -11,7 +11,7 @@ type: "Lecture"
 
 ## Download them ...
 
-[✨ here ✨]()
+[✨ here ✨](/assets/notes/2024-user-interfaces/exercises/week04-styling-text-exercises.zip)
 
 The exercises in these directories, are shared with minor modification from [The Odin Project (TOP)](https://github.com/TheOdinProject/css-exercises) ([MIT License](https://github.com/TheOdinProject/css-exercises/blob/main/LICENSE))
 
