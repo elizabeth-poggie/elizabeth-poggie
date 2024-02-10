@@ -1,7 +1,7 @@
 ---
 # General Information
 title: "Lecture 1"
-subtitle: "Introduction to programming"
+subtitle: "Introduction to Programming"
 date: "2024-01-30T12:17:29Z"
 course: "Intro to Programming"
 type: "Lecture"

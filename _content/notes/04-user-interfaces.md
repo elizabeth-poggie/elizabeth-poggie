@@ -1,16 +1,12 @@
 ---
 # General Information
 title: "Lecture 4"
-subtitle: "The DOM, dev tools, and in-class css exercises"
+subtitle: "The DOM and Dev Tools"
 date: "2024-02-05T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
-slides: /assets/notes/2024-user-interfaces/slides/04.pdf
+slides: "/assets/notes/2024-user-interfaces/slides/04.pdf"
 ---
-
-# Slides
-
-[View them here](/assets/notes/2024-user-interfaces/slides/04.pdf)
 
 # Inspecting HTML and CSS
 
