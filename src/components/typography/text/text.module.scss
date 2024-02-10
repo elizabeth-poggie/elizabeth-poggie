@@ -47,7 +47,7 @@
 
 // Variants
 .title {
-  font-size: 2.2rem;
+  font-size: $text-xxl;
   letter-spacing: 0.2em;
   line-height: 1.6;
   padding-bottom: 0.5em;
@@ -56,7 +56,7 @@
 }
 
 .h1 {
-  font-size: 1.5rem;
+  font-size: $text-xl;
   letter-spacing: 0.2em;
   line-height: 1.4;
   padding-bottom: 0.3em;
@@ -84,6 +84,8 @@
   font-size: $text-md;
   text-decoration: none;
   color: $color-off-blue;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
   @extend .italics;
 }
 

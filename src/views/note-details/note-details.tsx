@@ -64,7 +64,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
 
   const renderImage = ({ children, src }) => {
     return (
-      <div>
+      <div className={styles.codeBlock}>
         <Image src={src} />
       </div>
     );
