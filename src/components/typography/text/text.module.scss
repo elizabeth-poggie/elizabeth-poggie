@@ -3,6 +3,14 @@
 @import url(https://db.onlinewebfonts.com/c/e080040fab017e068ee2901a6cdb5ec4?family=Lato+Regular);
 @import url(https://db.onlinewebfonts.com/c/0033a2fbc0329740fb86c1cfd134cb94?family=Roboto);
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+
+@mixin title {
+  font-family: "Oxygen", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
 
 @mixin header {
   font-family: "Montserrat Alternates", sans-serif;
@@ -21,6 +29,14 @@
 
 .white {
   color: $color-white;
+}
+
+.green {
+  color: $color-off-green;
+}
+
+.blue {
+  color: $color-off-blue;
 }
 
 // Styles and transformations
@@ -55,6 +71,18 @@
   @include header;
 }
 
+.title2 {
+  font-size: 2.4rem;
+  line-height: 1.6;
+  @include title;
+}
+
+.title3 {
+  font-size: $text-lg;
+  padding-bottom: 0.25em;
+  @include title;
+}
+
 .h1 {
   font-size: $text-xl;
   letter-spacing: 0.2em;
@@ -83,9 +111,9 @@
 .link {
   font-size: $text-md;
   text-decoration: none;
-  color: $color-off-blue;
   line-height: 1.75;
   letter-spacing: 0.02em;
+  @extend .blue;
   @extend .italics;
 }
 

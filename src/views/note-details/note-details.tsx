@@ -14,7 +14,6 @@ import {
   Toc,
 } from "../../components/navigation/toc/toc";
 import tocbot from "tocbot";
-import { PillButton } from "../../components/inputs/pill-button/pill-button";
 
 interface IProps {
   noteDetails: ICollegeNote;
@@ -54,9 +53,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const renderSubHeader = ({ children }) => {
     return (
       <div className={styles.mdSubHeader}>
-        <Text variant="h2" style="italics">
-          {children}
-        </Text>
+        <Text variant="title3">{children}</Text>
       </div>
     );
   };
@@ -85,24 +82,20 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
     );
   };
 
-  // TODO - make this better lmao
   const renderNoteHeader = () => {
     return (
       <header className={styles.header}>
         <div>
-          <Text variant="title">{noteDetails.title}</Text>
+          <Text variant="h2">{noteDetails.title}</Text>
         </div>
-        <Text variant="subheading" style="italics">
-          {noteDetails.subtitle}
-        </Text>
-        {/* <PillButton title={noteDetails.course} onClick={() => null} />
-        {noteDetails.slides ? (
-          <Link href={noteDetails.slides}>
-            <Text variant="subheading" style="italics" color="grey">
-              slides
-            </Text>
-          </Link>
-        ) : null} */}
+        <Text variant="title2">{noteDetails.subtitle}</Text>
+        <div>
+          {noteDetails.slides ? (
+            <Link href={noteDetails.slides}>
+              <Text variant="link">slides</Text>
+            </Link>
+          ) : null}
+        </div>
       </header>
     );
   };
