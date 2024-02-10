@@ -103,31 +103,32 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const renderSideBar = () => {
     return (
       <aside className={styles.sideBar}>
-        <Toc />
-        <HorizontalLine />
-        {relatedNotes?.map((note: ICollegeNote) => {
-          const isActiveLink = note.title === noteDetails.title;
-          return (
-            <div key={note.slug}>
-              <Link
-                onClick={() => setClicked(true)}
-                href={`/notes/${note.slug}`}
-              >
-                <Text
-                  variant="subheading"
-                  style="italics"
-                  color={isActiveLink ? "white" : "grey"}
+        <section className={styles.sideBarSection}>
+          <Toc />
+        </section>
+        <section className={styles.sideBarSection}>
+          {relatedNotes?.map((note: ICollegeNote) => {
+            const isActiveLink = note.title === noteDetails.title;
+            return (
+              <div key={note.slug}>
+                <Link
+                  onClick={() => setClicked(true)}
+                  href={`/notes/${note.slug}`}
                 >
-                  {note.title}
-                </Text>
-              </Link>
-            </div>
-          );
-        })}
-        <HorizontalLine />
+                  <Text
+                    variant="subheading"
+                    color={isActiveLink ? "white" : "grey"}
+                  >
+                    {note.title}
+                  </Text>
+                </Link>
+              </div>
+            );
+          })}
+        </section>
         <Link href="/">
           <Text variant="subheading" style="italics">
-            Home
+            All Notes
           </Text>
         </Link>
       </aside>

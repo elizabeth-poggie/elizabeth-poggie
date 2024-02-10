@@ -24,6 +24,7 @@ const styleToStyleMap = {
   normal: null,
   italics: styles.italics,
   uppercase: styles.uppercase,
+  bold: styles.bold,
 };
 
 const colorToStyleMap = {
@@ -42,7 +43,7 @@ type TextVariant =
   | "h2"
   | "p"
   | "link";
-type TextStyle = "normal" | "italics" | "uppercase";
+type TextStyle = "normal" | "italics" | "uppercase" | "bold";
 
 // TODO - maybe make a color object or something lol
 type TextColor = "white" | "grey";

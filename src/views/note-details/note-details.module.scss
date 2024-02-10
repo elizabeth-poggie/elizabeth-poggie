@@ -13,6 +13,10 @@
   z-index: 1;
 }
 
+.sideBarSection {
+  padding-bottom: calc($unit * 6);
+}
+
 .inlineCode {
   display: inline;
   padding: 0 4px;
