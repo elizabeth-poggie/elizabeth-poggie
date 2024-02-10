@@ -14,6 +14,8 @@ import {
   Toc,
 } from "../../components/navigation/toc/toc";
 import tocbot from "tocbot";
+import { PillButton } from "../../components/inputs/pill-button/pill-button";
+import { filterToColorMap } from "../notes/notes";
 
 interface IProps {
   noteDetails: ICollegeNote;
@@ -92,7 +94,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
         <div>
           {noteDetails.slides ? (
             <Link href={noteDetails.slides}>
-              <Text variant="link">slides</Text>
+              <PillButton title="slides" onClick={() => null} />
             </Link>
           ) : null}
         </div>

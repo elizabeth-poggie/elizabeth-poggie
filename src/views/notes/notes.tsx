@@ -11,6 +11,13 @@ interface IProps {
   allNotes: ICollegeNote[];
 }
 
+// List of supported filters lol
+export const filterToColorMap = {
+  // Courses
+  "User Interfaces": "green",
+  "Intro to Programming": "default",
+};
+
 export function Notes({ allNotes }: IProps) {
   // TODO - maybe use a provider instead lol, however this will be good for now
   const [filteredNotes, setFilteredNotes] = React.useState(allNotes);
@@ -25,6 +32,13 @@ export function Notes({ allNotes }: IProps) {
               <ListItem
                 title={note.title}
                 href={`/notes/${note.slug}`}
+                rightContent={
+                  <PillButton
+                    color={filterToColorMap[note.course]}
+                    title={note.course}
+                    onClick={() => null}
+                  />
+                }
                 subContent={
                   <Text variant="subheading" style="italics">
                     {note.subtitle}
@@ -65,6 +79,7 @@ export function Notes({ allNotes }: IProps) {
         {filters.map((filter: string) => {
           return (
             <PillButton
+              color={filterToColorMap[filter]}
               key={filter}
               title={filter}
               onClick={() => setNotes(filter)}

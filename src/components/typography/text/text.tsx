@@ -29,6 +29,7 @@ const styleToStyleMap = {
 const colorToStyleMap = {
   white: styles.white,
   grey: styles.grey,
+  green: styles.green,
 };
 
 type TextAlign = "left" | "center" | "right" | "justify";
@@ -42,10 +43,10 @@ type TextVariant =
   | "h2"
   | "p"
   | "link";
+
 type TextStyle = "normal" | "italics" | "uppercase";
 
-// TODO - maybe make a color object or something lol
-type TextColor = "white" | "grey";
+type TextColor = "white" | "grey" | "green";
 
 interface IProps {
   children: React.ReactNode;
