@@ -55,12 +55,14 @@
 @media screen and (max-width: $bp-lg) {
   .container {
     padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
+    width: 50%;
   }
 }
 
 @media screen and (max-width: $bp-sm) {
   .container {
     padding: calc(20 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
+    width: 100%;
   }
 
   .sideBar {
