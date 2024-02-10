@@ -11,7 +11,10 @@ import { NoteLayout } from "../../components/layout/note-layout/note-layout";
 import { Image } from "../../components/display/image/image";
 import rehypeSlug from "rehype-slug";
 import React from "react";
-import { Toc } from "../../components/navigation/toc/toc";
+import {
+  TOC_NOTE_DETAILS_OPTIONS,
+  Toc,
+} from "../../components/navigation/toc/toc";
 import tocbot from "tocbot";
 
 interface IProps {
@@ -20,16 +23,20 @@ interface IProps {
 }
 
 export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
-  const [note, setNote] = React.useState<ICollegeNote>();
+  const [isClicked, setClicked] = React.useState<boolean>();
   React.useEffect(() => {
-    if (!note) {
-      return setNote(noteDetails);
+    // refresh & initalize toc if we navigated to a new note details page
+    if (isClicked) {
+      tocbot.refresh({
+        ...TOC_NOTE_DETAILS_OPTIONS,
+        headingsOffset: -window.innerHeight,
+        hasInnerContainers: true, // TODO - investigate why this refresh is still clunky lol
+      });
+      return setClicked(false);
     }
-    if (note !== noteDetails) {
-      setNote(noteDetails);
-      tocbot.refresh();
-    }
-    return;
+    // else just init toc
+    tocbot.init(TOC_NOTE_DETAILS_OPTIONS);
+    return () => tocbot.destroy();
   }, [tocbot, noteDetails]);
 
   const renderHeader = ({ id, children }) => {
@@ -99,10 +106,18 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
       <aside className={styles.sideBar}>
         <Toc />
         {relatedNotes?.map((note: ICollegeNote) => {
+          const isActiveLink = note.title === noteDetails.title;
           return (
             <div key={note.slug}>
-              <Link href={`/notes/${note.slug}`}>
-                <Text variant="subheading" style="italics">
+              <Link
+                onClick={() => setClicked(true)}
+                href={`/notes/${note.slug}`}
+              >
+                <Text
+                  variant="subheading"
+                  style="italics"
+                  color={isActiveLink ? "white" : "grey"}
+                >
                   {note.title}
                 </Text>
               </Link>

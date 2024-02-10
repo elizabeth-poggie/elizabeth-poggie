@@ -5,11 +5,19 @@
 
 @mixin header {
   font-family: "LTC Bodoni 175 W01 Regular";
-  color: $color-white;
 }
 
 @mixin body {
   font-family: "Lato Regular";
+}
+
+// Colors
+.grey {
+  color: $color-grey;
+}
+
+.white {
+  color: $color-white;
 }
 
 // Styles and transformations
@@ -59,13 +67,11 @@
 
 .subheading {
   font-size: $text-sm;
-  color: $color-white;
   @include body;
 }
 
 .subheading2 {
   font-size: $text-xs;
-  color: $color-white;
   @include body;
 }
 

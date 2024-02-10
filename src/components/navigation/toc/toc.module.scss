@@ -2,7 +2,7 @@
 @import "../../../styles/variables.scss";
 
 .link {
-  color: grey;
+  color: $color-grey;
   text-decoration: none;
   text-transform: lowercase;
   display: inline-block;
