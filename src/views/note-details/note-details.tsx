@@ -16,6 +16,7 @@ import {
   Toc,
 } from "../../components/navigation/toc/toc";
 import tocbot from "tocbot";
+import { PillButton } from "../../components/inputs/pill-button/pill-button";
 
 interface IProps {
   noteDetails: ICollegeNote;
@@ -86,17 +87,24 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
     );
   };
 
+  // TODO - make this better lmao
   const renderNoteHeader = () => {
     return (
       <header className={styles.header}>
         <div>
-          <Text variant="title">
-            {noteDetails.course} - {noteDetails.title}
-          </Text>
+          <Text variant="title">{noteDetails.title}</Text>
         </div>
         <Text variant="subheading" style="italics">
           {noteDetails.subtitle}
         </Text>
+        {/* <PillButton title={noteDetails.course} onClick={() => null} />
+        {noteDetails.slides ? (
+          <Link href={noteDetails.slides}>
+            <Text variant="subheading" style="italics" color="grey">
+              slides
+            </Text>
+          </Link>
+        ) : null} */}
       </header>
     );
   };
@@ -105,6 +113,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
     return (
       <aside className={styles.sideBar}>
         <Toc />
+        <HorizontalLine />
         {relatedNotes?.map((note: ICollegeNote) => {
           const isActiveLink = note.title === noteDetails.title;
           return (
@@ -124,6 +133,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
             </div>
           );
         })}
+        <HorizontalLine />
         <Link href="/">
           <Text variant="subheading" style="italics">
             Home

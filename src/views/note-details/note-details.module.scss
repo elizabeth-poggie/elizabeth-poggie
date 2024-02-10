@@ -2,14 +2,14 @@
 
 .header {
   text-align: center;
-  padding: 100px 0;
+  padding: 0 0 calc($unit * 10) 0;
 }
 
 .sideBar {
   position: fixed;
   left: 0;
   top: 0;
-  padding: calc($unit * 16) 0 0 calc($unit * 8);
+  padding: calc($unit * 20) 0 0 calc($unit * 8);
   z-index: 1;
 }
 

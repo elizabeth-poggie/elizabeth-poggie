@@ -2,6 +2,10 @@
 @import "../../../styles/variables.scss";
 
 .link {
+  text-overflow: ellipsis;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
   color: $color-grey;
   text-decoration: none;
   text-transform: lowercase;

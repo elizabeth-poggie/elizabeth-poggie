@@ -8,14 +8,14 @@
 
 .rightContentContainer {
   padding: 0 calc(24 * $unit) 0 calc(24 * $unit);
-  width: 50%;
+  width: 70%;
 }
 
 .leftContentContainer {
-  width: 50%;
+  width: 30%;
 }
 
-@media screen and (max-width: $bp-md) {
+@media screen and (max-width: $bp-lg) {
   .container {
     padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
   }
