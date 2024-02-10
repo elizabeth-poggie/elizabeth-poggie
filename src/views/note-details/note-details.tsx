@@ -6,7 +6,6 @@ import Markdown from "react-markdown";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import styles from "./note-details.module.scss";
 import { Link } from "../../components/navigation/link/link";
-import { NoteLayout } from "../../components/layout/note-layout/note-layout";
 import { Image } from "../../components/display/image/image";
 import rehypeSlug from "rehype-slug";
 import React from "react";
@@ -191,9 +190,9 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   };
 
   return (
-    <NoteLayout
-      leftContent={renderSideBar()}
-      rightContent={renderNoteDetails()}
-    />
+    <>
+      {renderSideBar()}
+      <div className={styles.container}>{renderNoteDetails()}</div>
+    </>
   );
 }
