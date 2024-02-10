@@ -2,13 +2,16 @@
 @import url(https://db.onlinewebfonts.com/c/02c5086e8616653dade6e7cb3a1f0498?family=LTC+Bodoni+175+W01+Regular);
 @import url(https://db.onlinewebfonts.com/c/e080040fab017e068ee2901a6cdb5ec4?family=Lato+Regular);
 @import url(https://db.onlinewebfonts.com/c/0033a2fbc0329740fb86c1cfd134cb94?family=Roboto);
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @mixin header {
-  font-family: "LTC Bodoni 175 W01 Regular";
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 100;
 }
 
 @mixin body {
-  font-family: "Lato Regular";
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
 }
 
 // Colors
@@ -44,17 +47,19 @@
 
 // Variants
 .title {
-  font-size: $text-xl;
+  font-size: $text-xxl;
   letter-spacing: 0.2em;
+  line-height: 1.6;
   padding-bottom: 0.5em;
   @extend .uppercase;
   @include header;
 }
 
 .h1 {
-  font-size: $text-lg;
+  font-size: $text-xl;
   letter-spacing: 0.2em;
-  padding-bottom: 0.25em;
+  line-height: 1.4;
+  padding-bottom: 0.3em;
   @extend .uppercase;
   @include header;
 }
@@ -79,11 +84,15 @@
   font-size: $text-md;
   text-decoration: none;
   color: $color-off-blue;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
   @extend .italics;
 }
 
 .p {
   font-size: $text-md;
   color: $color-off-white;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
   @include body;
 }

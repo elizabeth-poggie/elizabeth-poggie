@@ -5,7 +5,6 @@ import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Markdown from "react-markdown";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import styles from "./note-details.module.scss";
-import { renderToString } from "react-dom/server";
 import { Link } from "../../components/navigation/link/link";
 import { NoteLayout } from "../../components/layout/note-layout/note-layout";
 import { Image } from "../../components/display/image/image";
@@ -65,7 +64,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
 
   const renderImage = ({ children, src }) => {
     return (
-      <div>
+      <div className={styles.codeBlock}>
         <Image src={src} />
       </div>
     );
@@ -166,14 +165,16 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
               code: ({ node, className, children, ...props }) => {
                 const match = /language-(\w+)/.exec(className || "");
                 return match ? (
-                  <SyntaxHighlighter
-                    style={atomDark}
-                    language={match[1]}
-                    PreTag="div"
-                    {...props}
-                  >
-                    {String(children).replace(/\n$/, "")}
-                  </SyntaxHighlighter>
+                  <div className={styles.codeBlock}>
+                    <SyntaxHighlighter
+                      style={atomDark}
+                      language={match[1]}
+                      PreTag="div"
+                      {...props}
+                    >
+                      {String(children).replace(/\n$/, "")}
+                    </SyntaxHighlighter>
+                  </div>
                 ) : (
                   <span className={styles.inlineCode} {...props}>
                     {children}

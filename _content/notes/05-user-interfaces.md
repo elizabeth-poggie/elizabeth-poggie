@@ -262,4 +262,4 @@ Step 5 - Map - Have a bubble for each page on your site, and draw lines to show 
 
 # Exercises
 
-[✨here✨](https://www.w3schools.com/html/html5_semantic_elements.asp)
+[here✨](https://www.w3schools.com/html/html5_semantic_elements.asp)

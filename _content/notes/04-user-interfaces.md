@@ -151,13 +151,9 @@ You can simulate different devices directly on chrome
 
 # CSS Exercises
 
-## Download them ...
+[Download them here ✨](/assets/notes/2024-user-interfaces/exercises/week03-foundations-exercises.zip)
 
-[✨ here ✨](/assets/notes/2024-user-interfaces/exercises/week03-foundations-exercises.zip)
-
-The exercises in these directories, are shared with minor modification from [The Odin Project (TOP)](https://github.com/TheOdinProject/css-exercises) ([MIT License](https://github.com/TheOdinProject/css-exercises/blob/main/LICENSE))
-
-## Instructions
+# Instructions
 
 These exercises were written as a series of CSS related tasks intended to complement the HTML and CSS content on TOP. We will use them to complement the course content in our course as well.
 
@@ -179,3 +175,7 @@ You may need to add some elements to your HTML to get things into the right spot
 happen.)
 
 You may need to add more selectors to your CSS file. The first few exercises have almost everything already done for you, but as you progress you'll find that you need to add more and more to get the correct result.
+
+# Acknowledgements
+
+The exercises in these directories, are shared with minor modification from [The Odin Project (TOP)](https://github.com/TheOdinProject/css-exercises) ([MIT License](https://github.com/TheOdinProject/css-exercises/blob/main/LICENSE))
