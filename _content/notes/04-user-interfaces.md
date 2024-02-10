@@ -1,7 +1,7 @@
 ---
 # General Information
 title: "Lecture 4"
-subtitle: "The DOM and Dev Tools"
+subtitle: "The DOM & Dev Tools"
 date: "2024-02-05T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"

@@ -21,7 +21,6 @@ export const filterToColorMap = {
 export function Notes({ allNotes }: IProps) {
   // TODO - maybe use a provider instead lol, however this will be good for now
   const [filteredNotes, setFilteredNotes] = React.useState(allNotes);
-  const [activeFilters, setActiveFilters] = React.useState([]);
 
   const renderList = () => {
     return (
@@ -53,8 +52,10 @@ export function Notes({ allNotes }: IProps) {
     );
   };
 
+  // TODO - maybe make it such that more than one thing can be selected at once
+  // TODO - ...and that the styling of things that are active is different lol
   const setNotes = (filter: string) => {
-    const newFilterNotes = filteredNotes.filter(
+    const newFilterNotes = allNotes.filter(
       (note) => note.type === filter || note.course === filter
     );
     setFilteredNotes(newFilterNotes);
