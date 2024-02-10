@@ -5,6 +5,7 @@ subtitle: "The DOM, dev tools, and in-class css exercises"
 date: "2024-02-05T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
+slides: /assets/notes/2024-user-interfaces/slides/04.pdf
 ---
 
 # Slides

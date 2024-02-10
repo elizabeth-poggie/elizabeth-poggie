@@ -25,7 +25,7 @@ interface IProps {
   allNotes: ICollegeNote[];
 }
 
-export default function Index({ allNotes }: IProps) {
+export default function Index({ allNotes }: Readonly<IProps>) {
   return (
     <>
       <Meta />

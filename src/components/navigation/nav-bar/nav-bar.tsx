@@ -1,4 +1,4 @@
-import { NavItem } from "../../../interfaces/footer";
+import { NavItem } from "../../../interfaces/navigation";
 import { Text } from "../../typography/text/text";
 import { Link } from "../link/link";
 import styles from "./nav-bar.module.scss";
@@ -6,7 +6,7 @@ import styles from "./nav-bar.module.scss";
 // TODO - add footer item hover animation
 
 interface IProps {
-  navItems: Array<NavItem>;
+  navItems: NavItem[];
 }
 
 export function NavBar({ navItems }: IProps) {

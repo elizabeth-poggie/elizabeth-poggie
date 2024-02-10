@@ -3,7 +3,6 @@ import React from "react";
 import styles from "../src/styles/app.module.scss";
 // @ts-ignore: Hacky work around to make my page not have visible scroll bars
 import noScrollStyles from "../src/styles/app.css";
-
 export default function MyApp({ Component, pageProps }: AppProps) {
   /**
    * Read more about editing the body tag of Next.js applications here

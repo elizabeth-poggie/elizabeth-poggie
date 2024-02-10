@@ -11,6 +11,20 @@ type: "Lecture"
 
 [View them here](/assets/notes/2024-user-interfaces/slides/06.pdf)
 
+# Intro to JavaScript
+
+```html
+<button onclick="goAwaySpider()"><h1>GO AWAY</h1></button>
+<section>
+  <img id="no" src="./images/spider.webp" width="400" />
+</section>
+<script>
+  function goAwaySpider() {
+    document.querySelector("#no").style.visibility = "hidden";
+  }
+</script>
+```
+
 # CSS Exercises
 
 [Download them here ✨](/assets/notes/2024-user-interfaces/exercises/week04-styling-text-exercises.zip)
@@ -50,8 +64,8 @@ type: "Lecture"
 
 ## Bonus points 👀
 
-- Bonus points for all those that manage to find a way to cause an image to disappear on button click
+- Bonus points for all those that create a button that makes an image disappear.
 
-# AcknowledgementS
+# Acknowledgements
 
 The exercises in these directories, are shared with minor modification from [The Odin Project (TOP)](https://github.com/TheOdinProject/css-exercises) ([MIT License](https://github.com/TheOdinProject/css-exercises/blob/main/LICENSE))

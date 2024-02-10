@@ -24,6 +24,11 @@ const styleToStyleMap = {
   uppercase: styles.uppercase,
 };
 
+const colorToStyleMap = {
+  white: styles.white,
+  grey: styles.grey,
+};
+
 type TextAlign = "left" | "center" | "right" | "justify";
 type TextVariant =
   | "title"
@@ -34,6 +39,9 @@ type TextVariant =
   | "p"
   | "link";
 type TextStyle = "normal" | "italics" | "uppercase";
+
+// TODO - maybe make a color object or something lol
+type TextColor = "white" | "grey";
 
 interface IProps {
   children: React.ReactNode;
@@ -55,20 +63,30 @@ interface IProps {
    * @example "italics"
    */
   style?: TextStyle;
+  /**
+   * set text color
+   * @example "grey"
+   */
+  color?: TextColor;
+  id?: string; // probs need to extend the attribute class here instead lol
 }
 
 export function Text({
   children,
+  id,
   variant = "p",
   align = "left",
+  color = "white",
   style = "normal",
-}: IProps) {
+}: Readonly<IProps>) {
   return (
     <span
+      id={id}
       className={cs(
         textVariantToStyleMap[variant],
         alignToStyleMap[align],
-        styleToStyleMap[style]
+        styleToStyleMap[style],
+        colorToStyleMap[color]
       )}
     >
       {children}

@@ -1,0 +1,30 @@
+@import "tocbot/src/scss/tocbot";
+@import "../../../styles/variables.scss";
+
+.link {
+  text-overflow: ellipsis;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  color: $color-grey;
+  text-decoration: none;
+  text-transform: lowercase;
+  display: inline-block;
+  font-size: 0.8rem;
+  font-family: "Lato Regular";
+  font-style: italic;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+}
+
+.link:first-letter {
+  text-transform: uppercase;
+}
+
+.activeLink {
+  @extend .link;
+  color: white;
+}

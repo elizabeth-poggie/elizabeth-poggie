@@ -2,17 +2,17 @@ import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
 import { getAllNotes, getBySlug, noteDirectory } from "../../src/utils/api";
 import { ICollegeNote } from "../../src/interfaces/note";
-import Markdown from "react-markdown";
-import { Text } from "../../src/components/typography/text/text";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { NoteDetails } from "../../src/views/note-details/note-details";
 
 interface Props {
   noteDetails: ICollegeNote;
+  relatedNotes: ICollegeNote[];
 }
 
-export default function NoteDetailsPage({ noteDetails }: Props) {
+export default function NoteDetailsPage({
+  noteDetails,
+  relatedNotes,
+}: Readonly<Props>) {
   return (
     <>
       <Meta />
@@ -21,7 +21,7 @@ export default function NoteDetailsPage({ noteDetails }: Props) {
           {noteDetails.title} - {noteDetails.course}
         </title>
       </Head>
-      <NoteDetails noteDetails={noteDetails} />
+      <NoteDetails noteDetails={noteDetails} relatedNotes={relatedNotes} />
     </>
   );
 }
@@ -35,8 +35,19 @@ type Params = {
 export async function getStaticProps({ params }: Params) {
   const details = getBySlug(
     params.slug,
-    ["title", "subtitle", "course", "content"],
+    ["title", "subtitle", "course", "content", "slides", "type"],
     noteDirectory
+  );
+
+  // filtered by type and course
+  const filteredNotes = getAllNotes([
+    "slug",
+    "title",
+    "subtitle",
+    "course",
+    "type",
+  ]).filter(
+    (note) => note.course === details.course && note.type === details.type
   );
 
   return {
@@ -44,6 +55,7 @@ export async function getStaticProps({ params }: Params) {
       noteDetails: {
         ...details,
       },
+      relatedNotes: [...filteredNotes],
     },
   };
 }

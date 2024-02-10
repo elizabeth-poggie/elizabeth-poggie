@@ -5,19 +5,49 @@ import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Markdown from "react-markdown";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import styles from "./note-details.module.scss";
+import { renderToString } from "react-dom/server";
 import { Link } from "../../components/navigation/link/link";
 import { NoteLayout } from "../../components/layout/note-layout/note-layout";
 import { Image } from "../../components/display/image/image";
+import rehypeSlug from "rehype-slug";
+import React from "react";
+import {
+  TOC_NOTE_DETAILS_OPTIONS,
+  Toc,
+} from "../../components/navigation/toc/toc";
+import tocbot from "tocbot";
+import { PillButton } from "../../components/inputs/pill-button/pill-button";
 
 interface IProps {
   noteDetails: ICollegeNote;
+  relatedNotes?: ICollegeNote[];
 }
 
-export function NoteDetails({ noteDetails }: IProps) {
-  const renderHeader = ({ children }) => {
+export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
+  const [isClicked, setClicked] = React.useState<boolean>();
+  React.useEffect(() => {
+    // refresh & initalize toc if we navigated to a new note details page
+    if (isClicked) {
+      tocbot.refresh({
+        ...TOC_NOTE_DETAILS_OPTIONS,
+        headingsOffset: -window.innerHeight,
+        hasInnerContainers: true, // TODO - investigate why this refresh is still clunky lol
+      });
+      return setClicked(false);
+    }
+    // else just init toc
+    tocbot.init(TOC_NOTE_DETAILS_OPTIONS);
+    return () => tocbot.destroy();
+  }, [tocbot, noteDetails]);
+
+  const renderHeader = ({ id, children }) => {
     return (
       <div className={styles.mdHeader}>
-        <Text variant="h1">{children}</Text>
+        <Link href={`#${id}`} scroll={false}>
+          <div className="js-toc-heading" id={id}>
+            <Text variant="h1">{children}</Text>
+          </div>
+        </Link>
         <HorizontalLine />
       </div>
     );
@@ -57,24 +87,71 @@ export function NoteDetails({ noteDetails }: IProps) {
     );
   };
 
+  // TODO - make this better lmao
+  const renderNoteHeader = () => {
+    return (
+      <header className={styles.header}>
+        <div>
+          <Text variant="title">{noteDetails.title}</Text>
+        </div>
+        <Text variant="subheading" style="italics">
+          {noteDetails.subtitle}
+        </Text>
+        {/* <PillButton title={noteDetails.course} onClick={() => null} />
+        {noteDetails.slides ? (
+          <Link href={noteDetails.slides}>
+            <Text variant="subheading" style="italics" color="grey">
+              slides
+            </Text>
+          </Link>
+        ) : null} */}
+      </header>
+    );
+  };
+
+  const renderSideBar = () => {
+    return (
+      <aside className={styles.sideBar}>
+        <Toc />
+        <HorizontalLine />
+        {relatedNotes?.map((note: ICollegeNote) => {
+          const isActiveLink = note.title === noteDetails.title;
+          return (
+            <div key={note.slug}>
+              <Link
+                onClick={() => setClicked(true)}
+                href={`/notes/${note.slug}`}
+              >
+                <Text
+                  variant="subheading"
+                  style="italics"
+                  color={isActiveLink ? "white" : "grey"}
+                >
+                  {note.title}
+                </Text>
+              </Link>
+            </div>
+          );
+        })}
+        <HorizontalLine />
+        <Link href="/">
+          <Text variant="subheading" style="italics">
+            Home
+          </Text>
+        </Link>
+      </aside>
+    );
+  };
+
   const renderNoteDetails = () => {
     return (
       <>
-        <header className={styles.header}>
-          <div>
-            <Text variant="title">
-              {noteDetails.course} - {noteDetails.title}
-            </Text>
-          </div>
-          <Text variant="subheading" style="italics">
-            {noteDetails.subtitle}
-          </Text>
-        </header>
-        <div>
+        {renderNoteHeader()}
+        <div className="js-toc-content">
           <Markdown
-            children={noteDetails.content}
+            rehypePlugins={[rehypeSlug]}
             components={{
-              h1: ({ children }) => renderHeader({ children }),
+              h1: ({ id, children }) => renderHeader({ id, children }),
               h2: ({ children }) => renderSubHeader({ children }),
               p: ({ children }) => renderParagraph({ children }),
               ul: ({ children }) => renderUnorderedList({ children }),
@@ -90,12 +167,13 @@ export function NoteDetails({ noteDetails }: IProps) {
                 const match = /language-(\w+)/.exec(className || "");
                 return match ? (
                   <SyntaxHighlighter
-                    children={String(children).replace(/\n$/, "")}
                     style={atomDark}
                     language={match[1]}
                     PreTag="div"
                     {...props}
-                  />
+                  >
+                    {String(children).replace(/\n$/, "")}
+                  </SyntaxHighlighter>
                 ) : (
                   <span className={styles.inlineCode} {...props}>
                     {children}
@@ -103,11 +181,18 @@ export function NoteDetails({ noteDetails }: IProps) {
                 );
               },
             }}
-          />
+          >
+            {noteDetails.content}
+          </Markdown>
         </div>
       </>
     );
   };
 
-  return <NoteLayout rightContent={renderNoteDetails()} />;
+  return (
+    <NoteLayout
+      leftContent={renderSideBar()}
+      rightContent={renderNoteDetails()}
+    />
+  );
 }

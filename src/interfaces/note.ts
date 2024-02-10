@@ -9,4 +9,5 @@ export interface ICollegeNote extends INote {
   date: string;
   course: string;
   type: string;
+  slides: string;
 }
