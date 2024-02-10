@@ -127,9 +127,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
           })}
         </section>
         <Link href="/">
-          <Text variant="subheading" style="italics">
-            All Notes
-          </Text>
+          <Text variant="subheading">All Notes</Text>
         </Link>
       </aside>
     );

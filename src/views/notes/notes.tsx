@@ -52,7 +52,7 @@ export function Notes({ allNotes }: IProps) {
     };
 
     const filters: string[] = [
-      ...filteredNotes.map((note: ICollegeNote) => {
+      ...allNotes.map((note: ICollegeNote) => {
         return note[filterType];
       }),
     ].filter(onlyUnique);
