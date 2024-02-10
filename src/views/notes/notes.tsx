@@ -40,7 +40,7 @@ export function Notes({ allNotes }: IProps) {
                   />
                 }
                 subContent={
-                  <Text variant="subheading" style="italics">
+                  <Text variant="subheading" color="grey">
                     {note.subtitle}
                   </Text>
                 }
