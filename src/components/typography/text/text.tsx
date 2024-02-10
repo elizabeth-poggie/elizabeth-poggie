@@ -24,6 +24,7 @@ const styleToStyleMap = {
   normal: null,
   italics: styles.italics,
   uppercase: styles.uppercase,
+  capitalize: styles.capitalize,
 };
 
 const colorToStyleMap = {
@@ -44,7 +45,7 @@ type TextVariant =
   | "p"
   | "link";
 
-type TextStyle = "normal" | "italics" | "uppercase";
+type TextStyle = "normal" | "italics" | "uppercase" | "capitalize";
 
 type TextColor = "white" | "grey" | "green";
 

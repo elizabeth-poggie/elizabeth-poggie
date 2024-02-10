@@ -75,7 +75,9 @@ export function Notes({ allNotes }: IProps) {
     return (
       <article>
         <header className={styles.filterHeader}>
-          <Text variant="h2">{filterType}</Text>
+          <Text variant="h2" style="capitalize">
+            {filterType}
+          </Text>
         </header>
         {filters.map((filter: string) => {
           return (

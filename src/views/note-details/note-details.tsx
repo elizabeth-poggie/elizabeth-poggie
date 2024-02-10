@@ -15,7 +15,6 @@ import {
 } from "../../components/navigation/toc/toc";
 import tocbot from "tocbot";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
-import { filterToColorMap } from "../notes/notes";
 
 interface IProps {
   noteDetails: ICollegeNote;
@@ -87,10 +86,10 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const renderNoteHeader = () => {
     return (
       <header className={styles.header}>
-        <div>
-          <Text variant="h2">{noteDetails.title}</Text>
+        <Text variant="h2">{noteDetails.title}</Text>
+        <div className={styles.noteTitle}>
+          <Text variant="title2">{noteDetails.subtitle}</Text>
         </div>
-        <Text variant="title2">{noteDetails.subtitle}</Text>
         <div>
           {noteDetails.slides ? (
             <Link href={noteDetails.slides}>
