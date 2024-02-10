@@ -1,5 +1,4 @@
 @import "../../../styles/variables.scss";
-@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
 
 @mixin title {
@@ -8,13 +7,24 @@
   font-style: normal;
 }
 
-@mixin header {
-  font-family: "Montserrat Alternates", sans-serif;
-  font-weight: 100;
+@font-face {
+  font-family: "Montserrat Alternates Thin";
+  src: url(../../../fonts/MontserratAlternates-Thin.ttf);
 }
 
+@font-face {
+  font-family: "Montserrat Alternates Regular";
+  src: url(../../../fonts/MontserratAlternates-Regular.ttf);
+}
+
+@mixin header {
+  font-family: "Montserrat Alternates Thin", sans-serif;
+  font-weight: 100;
+}
+// wow
+
 @mixin body {
-  font-family: "Montserrat Alternates", sans-serif;
+  font-family: "Montserrat Alternates Regular", sans-serif;
   font-weight: 400;
 }
 
