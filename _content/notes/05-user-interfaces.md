@@ -5,7 +5,7 @@ subtitle: "HTML Semantics"
 date: "2024-02-06T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
-slides: "/assets/notes/2024-user-interfaces/slides/05.pdf"
+slides: "/assets/notes/W24-user-interfaces/slides/05.pdf"
 ---
 
 # Document and website structure
@@ -258,4 +258,4 @@ Step 5 - Map - Have a bubble for each page on your site, and draw lines to show 
 
 # Exercises
 
-[here✨](https://www.w3schools.com/html/html5_semantic_elements.asp)
+[here](https://www.w3schools.com/html/html5_semantic_elements.asp)

@@ -5,7 +5,7 @@ import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Markdown from "react-markdown";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import styles from "./note-details.module.scss";
-import { Link } from "../../components/navigation/link/link";
+import { Link, TextLink } from "../../components/navigation/link/link";
 import { Image } from "../../components/display/image/image";
 import rehypeSlug from "rehype-slug";
 import React from "react";
@@ -15,6 +15,7 @@ import {
 } from "../../components/navigation/toc/toc";
 import tocbot from "tocbot";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
+import { filterToColorMap } from "../notes/notes";
 
 interface IProps {
   noteDetails: ICollegeNote;
@@ -106,6 +107,13 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const renderSideBar = () => {
     return (
       <aside className={styles.sideBar}>
+        <header className={styles.sideBarSection}>
+          <PillButton
+            color={filterToColorMap[noteDetails.course]}
+            title={noteDetails.course}
+            onClick={() => null}
+          />
+        </header>
         <section className={styles.sideBarSection}>
           <Toc />
         </section>
@@ -114,24 +122,21 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
             const isActiveLink = note.title === noteDetails.title;
             return (
               <div key={note.slug}>
-                <Link
-                  onClick={() => setClicked(true)}
+                <TextLink
                   href={`/notes/${note.slug}`}
+                  variant="subheading"
+                  onClick={() => setClicked(true)}
+                  color={isActiveLink ? "white" : "grey"}
                 >
-                  <Text
-                    variant="subheading"
-                    color={isActiveLink ? "white" : "grey"}
-                  >
-                    {note.title}
-                  </Text>
-                </Link>
+                  {note.title}
+                </TextLink>
               </div>
             );
           })}
         </section>
-        <Link href="/">
-          <Text variant="subheading">All Notes</Text>
-        </Link>
+        <TextLink href="/" variant="subheading">
+          All Notes
+        </TextLink>
       </aside>
     );
   };
@@ -150,11 +155,13 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
               ul: ({ children }) => renderUnorderedList({ children }),
               img: ({ children, src }) => renderImage({ children, src }),
               a: ({ children, href }) => (
-                <span>
-                  <Link href={href}>
-                    <Text variant="link">{children}</Text>
-                  </Link>
-                </span>
+                <TextLink
+                  href={href}
+                  color={filterToColorMap[noteDetails.course]}
+                  decoration="underline"
+                >
+                  {children}
+                </TextLink>
               ),
               code: ({ node, className, children, ...props }) => {
                 const match = /language-(\w+)/.exec(className || "");

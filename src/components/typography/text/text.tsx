@@ -9,7 +9,6 @@ const textVariantToStyleMap = {
   h2: styles.h2,
   h3: styles.h3,
   p: styles.p,
-  link: styles.link,
 };
 
 const alignToStyleMap = {
@@ -30,9 +29,17 @@ const colorToStyleMap = {
   white: styles.white,
   grey: styles.grey,
   green: styles.green,
+  offWhite: styles.offWhite,
+  yellow: styles.yellow,
+};
+
+const decorationToStyleMap = {
+  none: null,
+  underline: styles.underline,
 };
 
 type TextAlign = "left" | "center" | "right" | "justify";
+
 type TextVariant =
   | "title"
   | "subheading"
@@ -40,14 +47,15 @@ type TextVariant =
   | "h1"
   | "h2"
   | "h3"
-  | "p"
-  | "link";
+  | "p";
 
 type TextStyle = "normal" | "italics" | "uppercase" | "capitalize";
 
-type TextColor = "white" | "grey" | "green";
+type TextDecoration = "none" | "underline";
 
-interface IProps {
+type TextColor = "white" | "grey" | "green" | "offWhite" | "yellow";
+
+export interface ITextProps {
   children: React.ReactNode;
   /**
    * predefined style variants
@@ -72,6 +80,11 @@ interface IProps {
    * @example "grey"
    */
   color?: TextColor;
+  /**
+   * set text decoration
+   * @example "underline"
+   */
+  decoration?: TextDecoration;
   id?: string; // probs need to extend the attribute class here instead lol
 }
 
@@ -80,9 +93,10 @@ export function Text({
   id,
   variant = "p",
   align = "left",
-  color = "white",
+  color = "offWhite",
   style = "normal",
-}: Readonly<IProps>) {
+  decoration = "none",
+}: Readonly<ITextProps>) {
   return (
     <span
       id={id}
@@ -90,7 +104,8 @@ export function Text({
         textVariantToStyleMap[variant],
         alignToStyleMap[align],
         styleToStyleMap[style],
-        colorToStyleMap[color]
+        colorToStyleMap[color],
+        decorationToStyleMap[decoration]
       )}
     >
       {children}

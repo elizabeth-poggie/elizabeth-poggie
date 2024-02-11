@@ -2,14 +2,18 @@
 
 // Colors
 .green {
-  background-color: $color-green;
   background-color: rgba($color-green, 0.2);
   border: 1px solid $color-green;
 }
 
+.yellow {
+  background-color: rgba($color-off-yellow, 0.2);
+  border: 1px solid $color-off-yellow;
+}
+
 .default {
-  background-color: black;
-  border: 1px solid white;
+  background-color: $color-black;
+  border: 1px solid $color-white;
 }
 
 // Base button

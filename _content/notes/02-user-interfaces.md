@@ -5,6 +5,7 @@ subtitle: "More on Basic HTML Elements"
 date: "2024-01-30T12:17:29Z"
 course: "User Interfaces"
 type: "Lecture"
+slides: "/assets/notes/W24-user-interfaces/slides/02.pdf"
 ---
 
 # Lists

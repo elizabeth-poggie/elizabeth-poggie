@@ -5,9 +5,11 @@ import styles from "./pill-button.module.scss";
 const colorToStyleMap = {
   default: styles.default,
   green: styles.green,
+  yellow: styles.yellow,
 };
 
-type PillColor = "default" | "green";
+// TODO - maybe extend the TextColor type here idk
+type PillColor = "default" | "green" | "yellow";
 
 interface IProps {
   title: string;

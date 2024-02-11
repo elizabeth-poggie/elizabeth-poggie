@@ -5,6 +5,7 @@ subtitle: "Basic HTML Structure & Intro to CSS"
 date: "2024-02-02T12:17:29Z"
 course: "User Interfaces"
 type: "Lecture"
+slides: "/assets/notes/W24-user-interfaces/slides/03.pdf"
 ---
 
 # HTML Structure

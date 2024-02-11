@@ -5,7 +5,7 @@ subtitle: "External Font Faces & Web-Safe Fonts"
 date: "2024-02-06T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
-slides: "/assets/notes/2024-user-interfaces/slides/06.pdf"
+slides: "/assets/notes/W24-user-interfaces/slides/06.pdf"
 ---
 
 # Intro to JavaScript
@@ -24,7 +24,7 @@ slides: "/assets/notes/2024-user-interfaces/slides/06.pdf"
 
 # CSS Exercises
 
-[Download them here ✨](/assets/notes/2024-user-interfaces/exercises/week04-styling-text-exercises.zip)
+[Download them here](/assets/notes/W24-user-interfaces/exercises/week04-styling-text-exercises.zip)
 
 # Instructions
 
