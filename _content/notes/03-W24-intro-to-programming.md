@@ -126,7 +126,6 @@ const float PI = 3.14f;         // 🥧 ❤️
 ## Supported by C#
 
 ```cs
-int y,x = 1;
 // Add two operands
 y = y + x;
 // Subtract second operand from the first
