@@ -158,6 +158,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
                 <TextLink
                   href={href}
                   color={filterToColorMap[noteDetails.course]}
+                  decoration="underline"
                 >
                   {children}
                 </TextLink>

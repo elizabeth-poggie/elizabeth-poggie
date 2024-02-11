@@ -33,7 +33,13 @@ const colorToStyleMap = {
   yellow: styles.yellow,
 };
 
+const decorationToStyleMap = {
+  none: null,
+  underline: styles.underline,
+};
+
 type TextAlign = "left" | "center" | "right" | "justify";
+
 type TextVariant =
   | "title"
   | "subheading"
@@ -45,7 +51,9 @@ type TextVariant =
 
 type TextStyle = "normal" | "italics" | "uppercase" | "capitalize";
 
-export type TextColor = "white" | "grey" | "green" | "offWhite" | "yellow";
+type TextDecoration = "none" | "underline";
+
+type TextColor = "white" | "grey" | "green" | "offWhite" | "yellow";
 
 export interface ITextProps {
   children: React.ReactNode;
@@ -72,6 +80,11 @@ export interface ITextProps {
    * @example "grey"
    */
   color?: TextColor;
+  /**
+   * set text decoration
+   * @example "underline"
+   */
+  decoration?: TextDecoration;
   id?: string; // probs need to extend the attribute class here instead lol
 }
 
@@ -82,6 +95,7 @@ export function Text({
   align = "left",
   color = "offWhite",
   style = "normal",
+  decoration = "none",
 }: Readonly<ITextProps>) {
   return (
     <span
@@ -90,7 +104,8 @@ export function Text({
         textVariantToStyleMap[variant],
         alignToStyleMap[align],
         styleToStyleMap[style],
-        colorToStyleMap[color]
+        colorToStyleMap[color],
+        decorationToStyleMap[decoration]
       )}
     >
       {children}

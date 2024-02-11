@@ -147,7 +147,7 @@ You can simulate different devices directly on chrome
 
 # CSS Exercises
 
-[Download them here ✨](/assets/notes/W24-user-interfaces/exercises/week03-foundations-exercises.zip)
+[Download them here](/assets/notes/W24-user-interfaces/exercises/week03-foundations-exercises.zip)
 
 # Instructions
 

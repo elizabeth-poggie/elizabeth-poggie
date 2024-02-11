@@ -8,6 +8,7 @@ const colorToStyleMap = {
   yellow: styles.yellow,
 };
 
+// TODO - maybe extend the TextColor type here idk
 type PillColor = "default" | "green" | "yellow";
 
 interface IProps {

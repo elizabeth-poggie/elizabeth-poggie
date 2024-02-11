@@ -24,7 +24,7 @@ slides: "/assets/notes/W24-user-interfaces/slides/06.pdf"
 
 # CSS Exercises
 
-[Download them here ✨](/assets/notes/W24-user-interfaces/exercises/week04-styling-text-exercises.zip)
+[Download them here](/assets/notes/W24-user-interfaces/exercises/week04-styling-text-exercises.zip)
 
 # Instructions
 
