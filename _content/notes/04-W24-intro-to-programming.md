@@ -175,7 +175,7 @@ As usual, you can use parenthesis () in order to change the priority.
 
 # Order of Operations
 
-From left to right:
+## From left to right ...
 
 - Parenthesis
 - `!`
@@ -188,7 +188,7 @@ From left to right:
   - Equality: `==`, `!=`
 - Boolean: `&&`, `||`
 
-## Examples
+## For Example ...
 
 What does `false || 1 / (int) 2.0 < 3.5` evaluate to?
 
