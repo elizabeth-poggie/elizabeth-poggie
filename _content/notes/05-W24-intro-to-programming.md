@@ -149,7 +149,7 @@ And just like that we have a program :)
 
 ## Idea
 
-"I should go running if it is NOT raining AND if I have finished my work."
+"I should go outside if it is NOT raining AND if I have finished my work."
 
 ## From Idea to Procedure
 
@@ -157,14 +157,14 @@ First, lets turn this statement into variables.
 
 - `isRaining` represents if it is raining outside or not.
 - `workCompleted` represents if I have completed my work or not.
-- `shouldRun` represents if I go for a run or not.
+- `shouldBeOutside` represents if I should go outside.
 
 Now, let's break it into steps
 
 - Step 1) "Is it raining?"
 - Step 2) "Have you finished your work?"
 
-Once we have gotten the answers to the above questions, we can decide whether we should go for a run!
+Once we have gotten the answers to the above questions, we can decide whether we should go outside!
 
 ## From Procedure to Flowgorithm
 
@@ -173,7 +173,7 @@ Now let's implement this in flowgorithm.
 ## From Flowgorithm to Program
 
 ```cs
-bool isRaining, workCompleted, shouldRun;
+bool isRaining, workCompleted, shouldBeOutside;
 string input;
 
 // Step 1) Figure out if it is raining
@@ -194,11 +194,11 @@ if (input.Equals("y")) {
   workCompleted = false;
 }
 
-// Now decide if we should run
-shouldRun = workCompleted && !isRaining;
+// Now decide if we should go outside
+shouldBeOutside = workCompleted && !isRaining;
 
-if (shouldRun) {
-  Console.WriteLine("You should go for a run");
+if (shouldBeOutside) {
+  Console.WriteLine("Enjoy the weather, it's nice out :)");
 } else {
   Console.WriteLine("Stay home lol, maybe another day");
 }
@@ -220,11 +220,11 @@ For those that feel confident in their Flowgorithm abilities, you can move direc
 
 ## What to think about
 
-- What do we need to figure out to decide whether we should give someone a ticket? How do we divide that into steps
+- What do we need to figure out in order to decide whether we should give someone a ticket? How do we divide that into steps?
 - What variables do we need to declare in our program?
 - What is the mathematical `boolean` expression for this idea?
 
-## Expected Inputs and Outputs
+## Expected inputs and outputs
 
 - if someone's speed is above the speed limit, the program should output "ticket for YOU, be more careful next time".
 - if someone's speed is under the speed limit, the program should output "Keep doing what you're doing. Have a lovely day <3"
