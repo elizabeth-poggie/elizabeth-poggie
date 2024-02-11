@@ -3,12 +3,11 @@ import styles from "./text.module.scss";
 
 const textVariantToStyleMap = {
   title: styles.title,
-  title2: styles.title2,
-  title3: styles.title3,
   subheading: styles.subheading,
   subheading2: styles.subheading2,
   h1: styles.h1,
   h2: styles.h2,
+  h3: styles.h3,
   p: styles.p,
   link: styles.link,
 };
@@ -36,12 +35,11 @@ const colorToStyleMap = {
 type TextAlign = "left" | "center" | "right" | "justify";
 type TextVariant =
   | "title"
-  | "title2"
-  | "title3"
   | "subheading"
   | "subheading2"
   | "h1"
   | "h2"
+  | "h3"
   | "p"
   | "link";
 

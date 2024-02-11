@@ -1,12 +1,6 @@
 @import "../../../styles/variables.scss";
-@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
 
-@mixin title {
-  font-family: "Oxygen", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
-
+// Font faces
 @font-face {
   font-family: "Montserrat Alternates Thin";
   src: url(../../../fonts/MontserratAlternates-Thin.ttf);
@@ -17,11 +11,22 @@
   src: url(../../../fonts/MontserratAlternates-Regular.ttf);
 }
 
+@font-face {
+  font-family: "Oxygen Regular";
+  src: url(../../../fonts/Oxygen-Regular.ttf);
+}
+
+// Mixins
 @mixin header {
   font-family: "Montserrat Alternates Thin", sans-serif;
   font-weight: 100;
 }
-// wow
+
+@mixin header2 {
+  font-family: "Oxygen Regular", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
 
 @mixin body {
   font-family: "Montserrat Alternates Regular", sans-serif;
@@ -81,18 +86,6 @@
   @include header;
 }
 
-.title2 {
-  font-size: 2.4rem;
-  line-height: 1.6;
-  @include title;
-}
-
-.title3 {
-  font-size: $text-lg;
-  padding-bottom: 0.25em;
-  @include title;
-}
-
 .h1 {
   font-size: $text-xl;
   letter-spacing: 0.2em;
@@ -106,6 +99,12 @@
   font-size: $text-lg;
   padding-bottom: 0.25em;
   @include header;
+}
+
+.h3 {
+  font-size: $text-lg;
+  padding-bottom: 0.25em;
+  @include header2;
 }
 
 .subheading {

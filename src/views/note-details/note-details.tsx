@@ -54,7 +54,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const renderSubHeader = ({ children }) => {
     return (
       <div className={styles.mdSubHeader}>
-        <Text variant="title3">{children}</Text>
+        <Text variant="h3">{children}</Text>
       </div>
     );
   };
@@ -86,9 +86,11 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const renderNoteHeader = () => {
     return (
       <header className={styles.header}>
-        <Text variant="h2">{noteDetails.title}</Text>
         <div className={styles.noteTitle}>
-          <Text variant="title2">{noteDetails.subtitle}</Text>
+          <Text variant="h3">{noteDetails.title}</Text>
+        </div>
+        <div className={styles.noteTitle}>
+          <Text variant="title">{noteDetails.subtitle}</Text>
         </div>
         <div>
           {noteDetails.slides ? (
