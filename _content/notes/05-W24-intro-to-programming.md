@@ -133,7 +133,7 @@ if (input.Equals("y")) {
   hasPeanutButter = false;
 }
 
-// Now decide if we can have a snack :^)
+// Now decide if we can have a snack
 shouldEatSnack = hasBread && hasPeanutButter;
 
 if (shouldEatSnack) {
@@ -231,4 +231,4 @@ For those that feel confident in their Flowgorithm abilities, you can move direc
 
 # Next Class ...
 
-- Input validation, more on constants, && intro to LOOPS
+Input validation, more on constants, && intro to LOOPS
