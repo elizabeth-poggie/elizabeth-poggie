@@ -1,7 +1,7 @@
 ---
 # General Information
 title: "Lecture 3"
-subtitle: "Basic HTML structure & intro to CSS"
+subtitle: "Basic HTML Structure & Intro to CSS"
 date: "2024-02-02T12:17:29Z"
 course: "User Interfaces"
 type: "Lecture"

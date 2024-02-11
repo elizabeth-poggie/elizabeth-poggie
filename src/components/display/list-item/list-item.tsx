@@ -16,11 +16,13 @@ export function ListItem({ title, rightContent, subContent, href }: IProps) {
   return (
     <Link href={href}>
       <div className={styles.container}>
-        <div className={styles.title}>
-          <Text variant="h2">{title}</Text>
-          {rightContent}
+        <div>
+          <div className={styles.title}>
+            <Text variant="h2">{title}</Text>
+          </div>
+          {subContent}
         </div>
-        {subContent}
+        <div>{rightContent}</div>
       </div>
     </Link>
   );

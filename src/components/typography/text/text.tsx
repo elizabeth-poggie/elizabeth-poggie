@@ -7,6 +7,7 @@ const textVariantToStyleMap = {
   subheading2: styles.subheading2,
   h1: styles.h1,
   h2: styles.h2,
+  h3: styles.h3,
   p: styles.p,
   link: styles.link,
 };
@@ -22,11 +23,13 @@ const styleToStyleMap = {
   normal: null,
   italics: styles.italics,
   uppercase: styles.uppercase,
+  capitalize: styles.capitalize,
 };
 
 const colorToStyleMap = {
   white: styles.white,
   grey: styles.grey,
+  green: styles.green,
 };
 
 type TextAlign = "left" | "center" | "right" | "justify";
@@ -36,12 +39,13 @@ type TextVariant =
   | "subheading2"
   | "h1"
   | "h2"
+  | "h3"
   | "p"
   | "link";
-type TextStyle = "normal" | "italics" | "uppercase";
 
-// TODO - maybe make a color object or something lol
-type TextColor = "white" | "grey";
+type TextStyle = "normal" | "italics" | "uppercase" | "capitalize";
+
+type TextColor = "white" | "grey" | "green";
 
 interface IProps {
   children: React.ReactNode;

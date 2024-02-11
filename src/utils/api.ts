@@ -1,5 +1,5 @@
 import fs from "fs";
-import { join } from "path";
+import path, { join } from "path";
 import matter from "gray-matter";
 // directories
 export const projectDirectory = join(process.cwd(), "_content/projects/");
@@ -18,7 +18,7 @@ export function getBySlug(
   directory: string
 ) {
   const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(directory, `${realSlug}.md`);
+  const fullPath = path.resolve(directory, `${realSlug}.md` as string);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 

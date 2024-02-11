@@ -1,3 +1,4 @@
+import React from "react";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import { ListItem } from "../../components/display/list-item/list-item";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
@@ -10,23 +11,40 @@ interface IProps {
   allNotes: ICollegeNote[];
 }
 
+// List of supported filters lol
+export const filterToColorMap = {
+  // Courses
+  "User Interfaces": "green",
+  "Intro to Programming": "default",
+};
+
 export function Notes({ allNotes }: IProps) {
+  // TODO - maybe use a provider instead lol, however this will be good for now
+  const [filteredNotes, setFilteredNotes] = React.useState(allNotes);
+
   const renderList = () => {
     return (
       <>
-        {allNotes.map((note: ICollegeNote, i: number) => {
+        {filteredNotes.map((note: ICollegeNote, i: number) => {
           return (
             <div key={note.slug}>
               <ListItem
                 title={note.title}
                 href={`/notes/${note.slug}`}
+                rightContent={
+                  <PillButton
+                    color={filterToColorMap[note.course]}
+                    title={note.course}
+                    onClick={() => null}
+                  />
+                }
                 subContent={
-                  <Text variant="subheading" style="italics">
+                  <Text variant="subheading" color="grey">
                     {note.subtitle}
                   </Text>
                 }
               />
-              {i === allNotes.length - 1 ? null : <HorizontalLine />}
+              {i === filteredNotes.length - 1 ? null : <HorizontalLine />}
             </div>
           );
         })}
@@ -34,13 +52,21 @@ export function Notes({ allNotes }: IProps) {
     );
   };
 
-  // TODO - add sort on click functionality
-  const renderFilterRow = (filterTitle: string, filterType: string) => {
+  // TODO - maybe make it such that more than one thing can be selected at once
+  // TODO - ...and that the styling of things that are active is different lol
+  const setNotes = (filter: string) => {
+    const newFilterNotes = allNotes.filter(
+      (note) => note.type === filter || note.course === filter
+    );
+    setFilteredNotes(newFilterNotes);
+  };
+
+  const renderFilterRow = (filterType: string) => {
     const onlyUnique = (value, index, array) => {
       return array.indexOf(value) === index;
     };
 
-    const filterTitles: string[] = [
+    const filters: string[] = [
       ...allNotes.map((note: ICollegeNote) => {
         return note[filterType];
       }),
@@ -49,14 +75,17 @@ export function Notes({ allNotes }: IProps) {
     return (
       <article>
         <header className={styles.filterHeader}>
-          <Text variant="h2">{filterTitle}</Text>
+          <Text variant="h2" style="capitalize">
+            {filterType}
+          </Text>
         </header>
-        {filterTitles.map((filterTitle: string) => {
+        {filters.map((filter: string) => {
           return (
             <PillButton
-              key={filterTitle}
-              title={filterTitle}
-              onClick={() => null}
+              color={filterToColorMap[filter]}
+              key={filter}
+              title={filter}
+              onClick={() => setNotes(filter)}
             />
           );
         })}
@@ -66,7 +95,7 @@ export function Notes({ allNotes }: IProps) {
 
   // TODO - support more types
   const renderFilters = () => {
-    return <>{renderFilterRow("Course", "course")}</>;
+    return <>{renderFilterRow("course")}</>;
   };
 
   return (

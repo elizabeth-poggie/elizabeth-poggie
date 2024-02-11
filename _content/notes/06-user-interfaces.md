@@ -1,15 +1,12 @@
 ---
 # General Information
 title: "Lecture 6"
-subtitle: "External font faces, web safe fonts, and CSS properties"
+subtitle: "External Font Faces & Web-Safe Fonts"
 date: "2024-02-06T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
+slides: "/assets/notes/2024-user-interfaces/slides/06.pdf"
 ---
-
-# Slides
-
-[View them here](/assets/notes/2024-user-interfaces/slides/06.pdf)
 
 # Intro to JavaScript
 

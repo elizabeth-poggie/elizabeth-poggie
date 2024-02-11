@@ -1,5 +1,6 @@
 @import "../../../styles/variables.scss";
 
+// Font faces
 @font-face {
   font-family: "Montserrat Alternates Thin";
   src: url(../../../fonts/MontserratAlternates-Thin.ttf);
@@ -10,11 +11,22 @@
   src: url(../../../fonts/MontserratAlternates-Regular.ttf);
 }
 
+@font-face {
+  font-family: "Oxygen Regular";
+  src: url(../../../fonts/Oxygen-Regular.ttf);
+}
+
+// Mixins
 @mixin header {
   font-family: "Montserrat Alternates Thin", sans-serif;
   font-weight: 100;
 }
-// wow
+
+@mixin header2 {
+  font-family: "Oxygen Regular", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
 
 @mixin body {
   font-family: "Montserrat Alternates Regular", sans-serif;
@@ -30,6 +42,14 @@
   color: $color-white;
 }
 
+.green {
+  color: $color-green;
+}
+
+.blue {
+  color: $color-off-blue;
+}
+
 // Styles and transformations
 .italics {
   font-style: italic;
@@ -37,6 +57,10 @@
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 // Alignments
@@ -77,6 +101,12 @@
   @include header;
 }
 
+.h3 {
+  font-size: $text-lg;
+  padding-bottom: 0.25em;
+  @include header2;
+}
+
 .subheading {
   font-size: $text-sm;
   @include body;
@@ -90,9 +120,9 @@
 .link {
   font-size: $text-md;
   text-decoration: none;
-  color: $color-off-blue;
   line-height: 1.75;
   letter-spacing: 0.02em;
+  @extend .blue;
   @extend .italics;
 }
 

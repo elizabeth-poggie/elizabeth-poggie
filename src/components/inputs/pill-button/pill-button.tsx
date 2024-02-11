@@ -1,18 +1,33 @@
+import { cs } from "../../../utils/helpers/classHelpers";
 import { Text } from "../../typography/text/text";
 import styles from "./pill-button.module.scss";
 
-type Color = "black" | "white";
+const colorToStyleMap = {
+  default: styles.default,
+  green: styles.green,
+};
+
+type PillColor = "default" | "green";
 
 interface IProps {
   title: string;
-  color?: Color;
+  color?: PillColor;
   onClick: () => void;
 }
 
-export function PillButton({ title, color = "black", onClick }: IProps) {
+// i'm making an assumption here that for every pill button i make, i need to make the text
+export function PillButton({ title, color = "default", onClick }: IProps) {
   return (
-    <button className={styles.button} onClick={onClick}>
-      <Text variant="subheading2">{title}</Text>
+    <button
+      className={cs(styles.button, colorToStyleMap[color])}
+      onClick={onClick}
+    >
+      <Text
+        variant="subheading2"
+        color={color === "default" ? undefined : color}
+      >
+        {title}
+      </Text>
     </button>
   );
 }

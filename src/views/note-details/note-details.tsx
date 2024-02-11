@@ -6,7 +6,6 @@ import Markdown from "react-markdown";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import styles from "./note-details.module.scss";
 import { Link } from "../../components/navigation/link/link";
-import { NoteLayout } from "../../components/layout/note-layout/note-layout";
 import { Image } from "../../components/display/image/image";
 import rehypeSlug from "rehype-slug";
 import React from "react";
@@ -55,9 +54,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const renderSubHeader = ({ children }) => {
     return (
       <div className={styles.mdSubHeader}>
-        <Text variant="h2" style="italics">
-          {children}
-        </Text>
+        <Text variant="h3">{children}</Text>
       </div>
     );
   };
@@ -86,24 +83,22 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
     );
   };
 
-  // TODO - make this better lmao
   const renderNoteHeader = () => {
     return (
       <header className={styles.header}>
-        <div>
-          <Text variant="title">{noteDetails.title}</Text>
+        <div className={styles.noteTitle}>
+          <Text variant="h3">{noteDetails.title}</Text>
         </div>
-        <Text variant="subheading" style="italics">
-          {noteDetails.subtitle}
-        </Text>
-        {/* <PillButton title={noteDetails.course} onClick={() => null} />
-        {noteDetails.slides ? (
-          <Link href={noteDetails.slides}>
-            <Text variant="subheading" style="italics" color="grey">
-              slides
-            </Text>
-          </Link>
-        ) : null} */}
+        <div className={styles.noteTitle}>
+          <Text variant="title">{noteDetails.subtitle}</Text>
+        </div>
+        <div>
+          {noteDetails.slides ? (
+            <Link href={noteDetails.slides}>
+              <PillButton title="slides" onClick={() => null} />
+            </Link>
+          ) : null}
+        </div>
       </header>
     );
   };
@@ -111,32 +106,31 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const renderSideBar = () => {
     return (
       <aside className={styles.sideBar}>
-        <Toc />
-        <HorizontalLine />
-        {relatedNotes?.map((note: ICollegeNote) => {
-          const isActiveLink = note.title === noteDetails.title;
-          return (
-            <div key={note.slug}>
-              <Link
-                onClick={() => setClicked(true)}
-                href={`/notes/${note.slug}`}
-              >
-                <Text
-                  variant="subheading"
-                  style="italics"
-                  color={isActiveLink ? "white" : "grey"}
+        <section className={styles.sideBarSection}>
+          <Toc />
+        </section>
+        <section className={styles.sideBarSection}>
+          {relatedNotes?.map((note: ICollegeNote) => {
+            const isActiveLink = note.title === noteDetails.title;
+            return (
+              <div key={note.slug}>
+                <Link
+                  onClick={() => setClicked(true)}
+                  href={`/notes/${note.slug}`}
                 >
-                  {note.title}
-                </Text>
-              </Link>
-            </div>
-          );
-        })}
-        <HorizontalLine />
+                  <Text
+                    variant="subheading"
+                    color={isActiveLink ? "white" : "grey"}
+                  >
+                    {note.title}
+                  </Text>
+                </Link>
+              </div>
+            );
+          })}
+        </section>
         <Link href="/">
-          <Text variant="subheading" style="italics">
-            Home
-          </Text>
+          <Text variant="subheading">All Notes</Text>
         </Link>
       </aside>
     );
@@ -191,9 +185,9 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   };
 
   return (
-    <NoteLayout
-      leftContent={renderSideBar()}
-      rightContent={renderNoteDetails()}
-    />
+    <>
+      {renderSideBar()}
+      <div className={styles.container}>{renderNoteDetails()}</div>
+    </>
   );
 }

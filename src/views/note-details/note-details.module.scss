@@ -13,6 +13,10 @@
   z-index: 1;
 }
 
+.sideBarSection {
+  padding-bottom: calc($unit * 6);
+}
+
 .inlineCode {
   display: inline;
   padding: 0 4px;
@@ -41,4 +45,36 @@
 
 .codeBlock {
   margin: 1.5rem 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  float: right;
+  padding: calc(20 * $unit) calc(20 * $unit) calc(20 * $unit) calc(8 * $unit);
+  height: 100%;
+  width: 60%;
+}
+
+.noteTitle {
+  padding-bottom: calc(2 * $unit);
+}
+
+@media screen and (max-width: $bp-lg) {
+  .container {
+    padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: $bp-sm) {
+  .container {
+    padding: calc(20 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
+    float: none;
+    width: 100%;
+  }
+
+  .sideBar {
+    display: none;
+  }
 }

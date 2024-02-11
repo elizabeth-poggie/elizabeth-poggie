@@ -1,7 +1,19 @@
-.button {
+@import "../../../styles/variables.scss";
+
+// Colors
+.green {
+  background-color: $color-green;
+  background-color: rgba($color-green, 0.2);
+  border: 1px solid $color-green;
+}
+
+.default {
   background-color: black;
   border: 1px solid white;
-  color: black;
+}
+
+// Base button
+.button {
   padding: 5px 10px;
   text-align: center;
   text-decoration: none;
