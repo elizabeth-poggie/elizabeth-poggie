@@ -13,7 +13,9 @@ Update 1) Moving forward, I will be posting all course materials to this website
 
 Update 2) Lab 1 is due tonight! Do not forget to submit!
 
-Update 3) Midterm season is coming up (i know you all must be very excited) and given that this is a complementary course, i want to schedule the midterm for this class that’s best for everyone’s schedule. What day works best for you all? The majority vote wins !!
+Update 3) For anyone who had issues last class with Visual Studio 2022, I discussed with IT and the problem should be resolved for y'all. Let me know if the problem persists or anyone else that still has trouble accessing the software.
+
+Update 4) Midterm season is coming up (i know you all must be very excited) and given that this is a complementary course, i want to schedule the midterm for this class that’s best for everyone’s schedule. What day works best for you all? The majority vote wins !!
 
 - Thursday, February 22, 2024
 - Tuesday, February 27, 2024
@@ -21,8 +23,9 @@ Update 3) Midterm season is coming up (i know you all must be very excited) and 
 
 # Lecture Plan
 
-- Last week, I introduced the concepts of relational operators, logical operators, and conditional statements. We left off on order of operations and just started exploring conditional statements.
-- This Lecture we are going to focus on how to make more efficient programs with these concepts to build what are known as "Selection Control Structures" or (in simpler terms) more complicated "if statements".
+Last week, I introduced the concepts of relational operators, logical operators, and conditional statements. We left off on order of operations and just started exploring conditional statements.
+
+This Lecture we are going to focus on how to make more efficient programs with these concepts to build what are known as "Selection Control Structures" or (in simpler terms) more complicated "if statements".
 
 # Order of Operations Continued
 
