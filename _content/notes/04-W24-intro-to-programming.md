@@ -73,7 +73,7 @@ true        // Result
 false       // Result
 ```
 
-## Relational operators - Order of operations
+## Relational Operators - Order of Operations
 
 - Relational: `<`, `>`, `<=`, `>=`
 - Equality: `==`
@@ -172,3 +172,48 @@ From left to right:
 - `||`
 
 As usual, you can use parenthesis () in order to change the priority.
+
+# Order of Operations
+
+From left to right:
+
+- Parenthesis
+- `!`
+- Typecasting
+- Arithmetic
+  - `\*`, `/`, `%`
+  - `+`, `-`
+- Comparison
+  - Relational: `<`, `>`, `<=`, `>=`
+  - Equality: `==`, `!=`
+- Boolean: `&&`, `||`
+
+## Examples
+
+What does `false || 1 / (int) 2.0 < 3.5` evaluate to?
+
+```cs
+false || 1 / (int) 2.0 < 3.5
+false || 1 / 2 < 3.5            // Step 1
+false || 0 < 3.5                // Step 2
+false || true                   // Step 3
+true                            // Result
+```
+
+# Conditional Statements
+
+## Why use Conditional statements?
+
+So far all the programs we wrote had a sequential structure. i.e. the statements were executed in the order they appear in the code. A code that has a decision structure is a code that performs specific actions only if a condition exists.
+
+We use conditional statements when we need to make a decision in our code. These are often called Decision or Control Flow structures.
+
+## How can we use Booleans?
+
+To write useful programs, we almost always need to check conditions. We might want to execute certain statements only if something is true. Conditional statement give us this ability
+
+The simplest conditional statement is the `if` statement.
+
+## What is the if statement?
+
+When an if statement is executed, the condition is tested. If the condition is true, the block statements are executed. Otherwise, block statements are skipped.
