@@ -5,7 +5,7 @@ subtitle: "The DOM & Dev Tools"
 date: "2024-02-05T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
-slides: "/assets/notes/2024-user-interfaces/slides/04.pdf"
+slides: "/assets/notes/W24-user-interfaces/slides/04.pdf"
 ---
 
 # Inspecting HTML and CSS
@@ -147,7 +147,7 @@ You can simulate different devices directly on chrome
 
 # CSS Exercises
 
-[Download them here ✨](/assets/notes/2024-user-interfaces/exercises/week03-foundations-exercises.zip)
+[Download them here ✨](/assets/notes/W24-user-interfaces/exercises/week03-foundations-exercises.zip)
 
 # Instructions
 

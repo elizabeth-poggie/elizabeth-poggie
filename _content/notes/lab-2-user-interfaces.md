@@ -50,7 +50,7 @@ Once your `index.html` file is correctly marked-up, by applying the the `./css/s
 
 # Example
 
-![example](/assets/notes/2024-user-interfaces/labs/02/demo.png)
+![example](/assets/notes/W24-user-interfaces/labs/02/demo.png)
 
 # HTML Structure Requirements (15 marks)
 
