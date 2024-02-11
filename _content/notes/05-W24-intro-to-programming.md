@@ -98,8 +98,8 @@ First, let's break this statement down into variables.
 
 Next, let's break this down into steps.
 
-- Step 1) "Do I have bread?"
-- Step 2) "Do I have peanut butter?"
+- Step 1) `"Do I have bread?"`
+- Step 2) `"Do I have peanut butter?"`
 
 Once we have gotten the answers to the above questions, we can launch our `apply peanut butter to bread` strategy !! Besides, why should I want to expend energy trying to make a snack if i do not have access to the materials that makes that snack possible ? (might as well uber eats)
 
@@ -109,7 +109,7 @@ Let's first implement this procedure in flowgorithm.
 
 ## From Flowgorithm to Program
 
-Now let's bring this flowgorithm program to C# :)
+Now let's bring this flowgorithm program to C#
 
 ```cs
 bool hasBread, hasPeanutButter, shouldEatSnack;
@@ -226,9 +226,9 @@ For those that feel confident in their Flowgorithm abilities, you can move direc
 
 ## Expected inputs and outputs
 
-- if someone's speed is above the speed limit, the program should output "ticket for YOU, be more careful next time".
-- if someone's speed is under the speed limit, the program should output "Keep doing what you're doing. Have a lovely day <3"
+- if someone's speed is above the speed limit, the program should output `"ticket for YOU, be more careful next time"`.
+- if someone's speed is under the speed limit, the program should output `"Keep doing what you're doing. Have a lovely day <3"`
 
 # Next Class ...
 
-- Input validation && intro to LOOPS
+- Input validation, more on constants, && intro to LOOPS
