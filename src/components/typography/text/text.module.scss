@@ -42,12 +42,20 @@
   color: $color-white;
 }
 
+.offWhite {
+  color: $color-off-white;
+}
+
 .green {
   color: $color-green;
 }
 
 .blue {
   color: $color-off-blue;
+}
+
+.yellow {
+  color: $color-off-yellow;
 }
 
 // Styles and transformations
@@ -117,18 +125,8 @@
   @include body;
 }
 
-.link {
-  font-size: $text-md;
-  text-decoration: none;
-  line-height: 1.75;
-  letter-spacing: 0.02em;
-  @extend .blue;
-  @extend .italics;
-}
-
 .p {
   font-size: $text-md;
-  color: $color-off-white;
   line-height: 1.75;
   letter-spacing: 0.02em;
   @include body;
