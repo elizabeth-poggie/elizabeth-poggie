@@ -45,7 +45,7 @@ type TextVariant =
 
 type TextStyle = "normal" | "italics" | "uppercase" | "capitalize";
 
-type TextColor = "white" | "grey" | "green" | "offWhite" | "yellow";
+export type TextColor = "white" | "grey" | "green" | "offWhite" | "yellow";
 
 export interface ITextProps {
   children: React.ReactNode;
