@@ -5,6 +5,7 @@ subtitle: "From Idea to Program"
 date: "2024-02-13T12:17:29Z"
 course: "Intro to Programming"
 type: "Lecture"
+slides: "/assets/notes/W24-intro-to-programming/slides/05.pdf"
 ---
 
 # Course Updates
@@ -152,7 +153,9 @@ And just like that we have a program :)
 
 ## Idea
 
-"I should go outside if it is NOT raining AND if I have finished my work."
+```cs
+// "I should go outside if it is NOT raining AND if I have finished my work."
+```
 
 ## From Idea to Procedure
 
@@ -217,9 +220,14 @@ For those that feel confident in their Flowgorithm abilities, you can move direc
 
 ## What you will need for C#
 
-- Console Output - `Console.WriteLine()`
-- Console Input - `Console.ReadLine()`
-- Type conversion - `int.Parse()`
+```cs
+// Console Output
+Console.WriteLine("?");
+// Console Input
+Console.WriteLine();
+// Type conversion
+int.Parse("1");
+```
 
 ## What to think about
 
