@@ -169,6 +169,7 @@ p {
 
 - [CSS Box Model](https://www.w3schools.com/css/css_boxmodel.asp)
 - [The Box Model & DevTools](https://www.codecademy.com/article/f1-devtools-box-model)
+- [Video on the Box Model](https://www.youtube.com/watch?v=rIO5326FgPE)
 
 # Acknowledgements
 
