@@ -261,3 +261,7 @@ Remembering all CSS property names can be challenging, especially considering th
 - [HTML body exercise](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_css1)
 - [CSS Selector exercise](https://www.w3schools.com/css/exercise.asp?filename=exercise_selectors1)
 - [CSS External sheet exercise](https://www.w3schools.com/css/exercise.asp?filename=exercise_howto1)
+
+# Acknowledgements
+
+The lecture content was adapted from Larry Fagen's course notes and [Michael Haaf](https://michaelhaaf.github.io/2W6-W23/pages/home.html), as well as taking inspiration from [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow).

@@ -8,26 +8,6 @@ type: "Lecture"
 slides: "/assets/notes/W24-user-interfaces/slides/04.pdf"
 ---
 
-# Inspecting HTML and CSS
-
-## Intro
-
-Being able to inspect and debug your HTML and CSS is important for frontend development. To open up chrome dev tools, you can right-click on any element of a webpage and click “Inspect” or press F12.
-
-## Inspecting elements
-
-In the Elements pane, you can see the entire HTML structure of your page. You can click on any of the elements in this pane to select that specific element.
-
-You can click the blue-highlighted icon shown below on the left, and hover over any element on the page.
-
-When an element is selected, the Styles tab will show all the currently applied styles, as well as any styles that are being overwritten
-
-## Testing
-
-When editing the styles directly, the webpage responds with the changes in real-time.
-
-This won’t affect the source code in your text editor, but it is extremely useful for quickly testing out various attributes and values without needing to reload the page over and over again.
-
 # HTML vs DOM
 
 HTML (Hypertext Markup Language) and the DOM (Document Object Model) are related concepts in web development but serve different purposes.
@@ -174,4 +154,6 @@ You may need to add more selectors to your CSS file. The first few exercises hav
 
 # Acknowledgements
 
-The exercises in these directories, are shared with minor modification from [The Odin Project (TOP)](https://github.com/TheOdinProject/css-exercises) ([MIT License](https://github.com/TheOdinProject/css-exercises/blob/main/LICENSE))
+The lecture content was adapted from [Chrome for Developers](https://developer.chrome.com/docs/devtools/overview/), specifically their section on [Get started with viewing and changing the DOM](https://developer.chrome.com/docs/devtools/dom/) and [View and Change CSS](https://developer.chrome.com/docs/devtools/css/).
+
+The exercises are shared with minor modification from [The Odin Project (TOP)](https://github.com/TheOdinProject/css-exercises) ([MIT License](https://github.com/TheOdinProject/css-exercises/blob/main/LICENSE))

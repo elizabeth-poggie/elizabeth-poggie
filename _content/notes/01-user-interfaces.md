@@ -223,3 +223,7 @@ Using `../` in a file path is kind of like stepping out from the room you are cu
 
 - `alt` - used to describe an image. It will be used in place of the image if it cannot be loaded.
 - `width`, `height` - only in pixels in this case, but what happens if we want this stuff to be responsive? Details to come later…
+
+# Acknowledgements
+
+The lecture content was adapted from Larry Fagen's course notes, [Michael Haaf](https://michaelhaaf.github.io/2W6-W23/pages/home.html), [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow), and [Devin Jackson](https://www.brytdesigns.com/html-css-javascript-whats-the-difference).
