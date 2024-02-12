@@ -5,6 +5,7 @@ subtitle: "The Box Model"
 date: "2024-02-12T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
+slides: "/assets/notes/W24-user-interfaces/slides/07.pdf"
 ---
 
 # The Box Model
@@ -166,7 +167,8 @@ p {
 
 # Exercises
 
-TBD
+- [CSS Box Model](https://www.w3schools.com/css/css_boxmodel.asp)
+- [The Box Model & DevTools](https://www.codecademy.com/article/f1-devtools-box-model)
 
 # Acknowledgements
 
