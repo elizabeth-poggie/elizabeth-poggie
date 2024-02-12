@@ -218,7 +218,7 @@ Use a link ...
 - To redirect a user to a new page
 - To redirect a user to another section within the same page
 - To redirect a user to an email or a phone number
-- ... TLDR: Links “send” you somewhere
+- ... Links “send” you somewhere
 
 Use a button ...
 
@@ -259,3 +259,7 @@ Step 5 - Map - Have a bubble for each page on your site, and draw lines to show 
 # Exercises
 
 [here](https://www.w3schools.com/html/html5_semantic_elements.asp)
+
+# Acknowledgements
+
+The lecture content was adapted from [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure) course notes and [W3schools](https://www.w3schools.com/html/html5_semantic_elements.asp).
