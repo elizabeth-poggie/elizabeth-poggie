@@ -136,7 +136,7 @@ For font-size it is recommended that you use relative CSS units over fixed units
 em
 
 - `1 em` is equal to the font size set on the parent element of the current element we are styling.
-  Be careful when styling nested elements.
+- Be careful when styling nested elements.
 
 rem
 
