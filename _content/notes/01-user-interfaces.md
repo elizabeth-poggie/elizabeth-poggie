@@ -226,4 +226,4 @@ Using `../` in a file path is kind of like stepping out from the room you are cu
 
 # Acknowledgements
 
-The lecture content was adapted from Larry Fagen's course notes, [Michael Haaf](https://michaelhaaf.github.io/2W6-W23/pages/home.html), [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow) course notes, and [Devin Jackson](https://www.brytdesigns.com/html-css-javascript-whats-the-difference).
+The lecture content was adapted from Larry Fagen's course notes, [Michael Haaf](https://michaelhaaf.github.io/2W6-W23/pages/home.html), [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow), and [Devin Jackson](https://www.brytdesigns.com/html-css-javascript-whats-the-difference).

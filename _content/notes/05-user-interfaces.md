@@ -262,4 +262,4 @@ Step 5 - Map - Have a bubble for each page on your site, and draw lines to show 
 
 # Acknowledgements
 
-The lecture content was adapted from [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure) course notes and [W3schools](https://www.w3schools.com/html/html5_semantic_elements.asp).
+The lecture content was adapted from [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure) and [W3schools](https://www.w3schools.com/html/html5_semantic_elements.asp).

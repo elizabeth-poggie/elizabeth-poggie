@@ -264,4 +264,4 @@ Remembering all CSS property names can be challenging, especially considering th
 
 # Acknowledgements
 
-The lecture content was adapted from Larry Fagen's course notes and [Michael Haaf](https://michaelhaaf.github.io/2W6-W23/pages/home.html), as well as taking inspiration from [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow) course notes.
+The lecture content was adapted from Larry Fagen's course notes and [Michael Haaf](https://michaelhaaf.github.io/2W6-W23/pages/home.html), as well as taking inspiration from [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow).

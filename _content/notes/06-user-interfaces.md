@@ -240,4 +240,4 @@ Your browser must receive the JavaScript source code to be able to run it - so y
 
 The exercises in these directories, are shared with minor modification from [The Odin Project (TOP)](https://github.com/TheOdinProject/css-exercises) ([MIT License](https://github.com/TheOdinProject/css-exercises/blob/main/LICENSE))
 
-The lecture content was adapted from [Michael Haaf](https://michaelhaaf.github.io/2W6-W23/pages/home.html) and [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model) course notes.
+The lecture content was adapted from [Michael Haaf](https://michaelhaaf.github.io/2W6-W23/pages/home.html) and [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model).

@@ -122,4 +122,4 @@ To modify the values of the box double click the property value, assign it a new
 
 # Acknowledgements
 
-The lecture content was adapted from [Michael Haaf](https://michaelhaaf.github.io/2W6-W23/pages/home.html) and [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model) course notes, as well as taking inspiration from [codecademy](https://www.codecademy.com/article/f1-devtools-box-model).
+The lecture content was adapted from [Michael Haaf](https://michaelhaaf.github.io/2W6-W23/pages/home.html) and [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model), as well as taking inspiration from [codecademy](https://www.codecademy.com/article/f1-devtools-box-model).
