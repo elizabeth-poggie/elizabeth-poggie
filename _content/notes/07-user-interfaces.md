@@ -13,7 +13,7 @@ So far we have learned about semantic elements and how every element is either `
 
 ## Block and inline boxes
 
-All HTML elements are boxes made up of four components: a content container, padding, border, and margin.
+Everything is a box. All HTML elements are boxes made up of four components: a content container, padding, border, and margin.
 
 Whether an element is `block` or `inline`, ALL elements have well defined box behavior that determines how the box behaves in terms of page flow and in relation to other boxes on the page.
 
@@ -68,7 +68,7 @@ If a box has an outer display type of `inline`, then ...
 
 ## Inner display
 
-Boxes also have an inner display type, which dictates how elements inside that box is laid out. This will directly impact all the children that are nested inside that parent box.
+Boxes also have an inner display type, which dictates how the content or other elements inside that box are laid out. This will directly impact all the children that are nested inside that parent box.
 
 ```html
 <a>I</a>
@@ -106,7 +106,7 @@ it's cool that every html element is a box, however to change their behavior, we
 - Border box: The border box wraps the content and any padding; size it using `border` and related properties.
 - Margin box: The margin is the outermost layer, wrapping the content, padding, and border as whitespace between this box and other elements; size it using `margin` and related properties.
 
-# The Box Model in DevTools
+# The Box Model & DevTools
 
 If this is too much content to digest at once, you can use chrome dev tools to understand the box better.
 
@@ -120,6 +120,54 @@ However, if you know the element you want to inspect, you can right click the el
 
 To modify the values of the box double click the property value, assign it a new number, and press enter. This can give you an idea on the look and feel you want your box to have and once you are happy with the overall look, you can navigate back to the styles tab and copy-and-paste that into your source code for safe keeping :)
 
+# Notable CSS Properties
+
+## Margins
+
+Used to space two elements apart from each other. The below margin command puts `20px` ALL AROUND the box.
+
+```css
+p {
+  margin: 20px;
+}
+```
+
+The below margin command puts `10px` starting from the top, then goes to the right margin at `35px`, then the bottom at `30px` and the left at `10px`. Notice how this is going in a clockwise fashion.
+
+```css
+p {
+  margin: 10px 35px 30px 10px;
+  margin: top right bottom left;
+  /* If you don't get it right, there will be TRouBLe */
+}
+```
+
+When there are two elements next to each other both with margins, the element with the largest margin wins.
+
+```html
+<div style="margin: 200px; border: 1px solid red; width: 100px; height: 100px">
+  My margin WINS
+</div>
+<div style="margin: 20px; border: 1px solid red; width: 100px; height: 100px">
+  My margin loses :^(
+</div>
+```
+
+## Padding
+
+Used to space around the content (or nested children elements). The padding command works similarly to `margin`, however uses the `padding` keyword
+
+```css
+p {
+  padding: 10px 35px 30px 10px;
+  padding: top right bottom left;
+}
+```
+
+# Exercises
+
+TBD
+
 # Acknowledgements
 
-The lecture content was adapted from [Michael Haaf](https://michaelhaaf.github.io/2W6-W23/pages/home.html) and [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model), as well as taking inspiration from [codecademy](https://www.codecademy.com/article/f1-devtools-box-model).
+The lecture content was adapted from [Michael Haaf](https://michaelhaaf.github.io/2W6-W23/pages/home.html) and [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model), as well as taking inspiration from [codecademy](https://www.codecademy.com/article/f1-devtools-box-model), Larry Fagen's course notes, and [Web Dev Simplified](https://www.youtube.com/watch?v=rIO5326FgPE).
