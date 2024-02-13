@@ -8,26 +8,6 @@ type: "Lecture"
 slides: "/assets/notes/W24-intro-to-programming/slides/05.pdf"
 ---
 
-# Course Updates
-
-Update 1) Moving forward, I will be posting all course materials to this website. I will still be posting links on lea so you all get the notifications :)
-
-Update 2) Lab 1 is due tonight! Do not forget to submit!
-
-Update 3) For anyone who had problems with Visual Studio 2022 in class, I discussed with IT and the problem should be resolved for y'all. Let me know if the problem persists or anyone else that still has trouble accessing the software.
-
-Update 4) Midterm season is coming up (i know you all must be very excited) and given that this is a complementary course, i want to schedule the midterm for this class that’s best for everyone’s schedule. What day works best for you all? The majority vote wins !!
-
-- Thursday, February 22, 2024
-- Tuesday, February 27, 2024
-- Thursday, February 29, 2024
-
-# Lecture Plan
-
-Last week, I introduced the concepts of relational operators, logical operators, and conditional statements. We left off on order of operations and just started exploring conditional statements.
-
-This Lecture we are going to focus on how to make more efficient programs with these concepts to build "Selection Control Structures" or in other words "fancier" if statements.
-
 # Order of Operations Continued
 
 You can mix `and` , `or` and `not` operations, so it is important to know the order in which they will be evaluated.
