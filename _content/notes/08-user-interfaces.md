@@ -9,15 +9,33 @@ type: "Lecture"
 
 # Intro to Javascript
 
-## What is Javascript
+## What is Javascript ?
 
 One of the most popular and widely used programming languages in the world and big companies build entire applications on it (or its variations like TypeScript).
 
 IN north america the average salary of a JavaScript developer typically ranges between $70,000 and $120,000,
 
-You can be in the frontend, backend, and full stack dev just with javascript.
+You can be in the frontend and backend just with javascript.
 
 ## Backend vs Frontend vs Full Stack
+
+Backend developers primarily work on the server-side of web applications, managing data storage and processing. They handle tasks such as database management, server configuration, authentication, authorization, and business logic implementation.
+
+At John Abbott, the classes you would want to focus on are ...
+
+- Databases
+- Application Development |
+- Application Development ||
+- Application Development |||
+
+Frontend developers focus on the client-side of web applications, dealing with user interface (UI) design, interactivity, and user experience (UX). They are responsible for building responsive layouts, implementing client-side functionality, and optimizing web applications for performance and accessibility.
+
+At John Abbott, the classes you would want to focus on are ...
+
+- User Interfaces
+- Web Programming |
+- Web Programming ||
+- Web Programming |||
 
 ## How is Java script used?
 
@@ -48,7 +66,7 @@ Now with Node we can run JavaScript outside of a browser allowing us to use Java
 
 - High Performance: Node.js leverages the V8 JavaScript engine, renowned for its high performance and optimization, resulting in fast execution speeds for JavaScript code.
 
-Node.js is widely adopted by developers and companies for building scalable, high-performance applications, including web servers, APIs, microservices architectures and real-time chat applications.
+Node.js is widely adopted by developers and companies for building scalable, high-performance applications, including web servers, APIs, microservices architectures and real-time chat applications. It's immense impact on software development practices, business agility, and the broader technology ecosystem undoubtedly underscores its significance and value in the digital era.
 
 # Getting Started
 
@@ -99,11 +117,11 @@ We can add it in the head section or in the body section. the best practice is t
 </html>
 ```
 
-... but why?
+## ... but why?
 
-The browser parses this file from top to bottom, so if we put the script element in the head section and we happen to have a lot of JavaScript code, it will get busy parsing that code instead of actually rendering that page.Imagine opening up a page and seeing a blank screen. `(bad news)`
+The browser parses this file from top to bottom, so if we put the script element in the head section and we happen to have a lot of JavaScript code, it will get busy parsing that code instead of actually rendering that page. Imagine opening up a page and seeing a blank screen? `(bad news)`
 
-by adding it at the bottom of the body section we can be confident that the browser rendered all other elements before the script tag. WHat if we want to modify an element before it's been rendered `(i m p o s s i b l e)`
+By adding our `<script>` at the bottom of the body section we can be confident that the browser rendered all other elements before the script tag.
 
 ## From DevTools to Code
 
@@ -169,7 +187,63 @@ however we still need to reference that external file in our source code to tell
 
 # Variables
 
-The fundamental concept of almost all programming languages are variables.
+The fundamental concept of almost all programming languages are variables. In JS, to declare a variable use "let"
+
+```js
+let name = "John Abbott";
+console.log(name);
+```
+
+Variables cannot be a reserved keyword. we do not need to memorize which ones are reserved as our IDE will yell at us the moment we try.
+
+```js
+
+let if; // not legal ❌
+let first-name; // not legal ❌
+let 1hello; // not legal ❌
+let firstName; // ✅
+let true; // not legal ❌
+
+```
+
+# Constants
+
+In real world scenarios, we do not want the value of a variable to change. we want to make predictable programs and variables that are unpredictable means we have programs that are unpredictable. `(many bugs, bad news)`
+
+```js
+const pi = 3.14; // 🥧
+```
+
+if you do not need to re-assign, always opt for constants when working with JavaScript
+
+# What are the types in JavaScript?
+
+JS is a "dynamic" language with two categories of variable types:
+
+- primitives
+  - string
+  - boolean
+  - number
+  - undefined
+  - null
+- references (don't worry about this for now)
+
+however in JavaScript, the typing is not strict so if we decide to change the value of a variable, the type will change accordingly. For example, what will the below print?
+
+```js
+let name = "wow";
+console.log(typeof name);
+name = 42;
+console.log(typeof name);
+```
+
+unlike the languages that we are familiar with (C#, Java, etc.), JavaScript let's us change the variable type on the fly. However imagine not having static types and you are working at a large company with a bunch of unexpected runtime errors and now it's you job to figure out what's breaking the code?
+
+Well sometime around 2010 another smart guy named Anders Hejlsberg got fed up with this exact issue and created a new language called TypeScript.
+
+And with TypeScript came the introduction of static typing, which enables developers to define types for variables, also came the introduction of interfaces, generics, access modifiers, and advanced tooling integrations to maintain complex & large codebases.
+
+Knowing TypeScript is outside the scope of this course, however taking time to appreciate JavaScript now will set you up for success in your future courses that tackle this topic. TypeScript's ability to address real-world development challenges while enhancing developer productivity and code quality has solidified its position as a preferred language for many developers and organizations.
 
 # Acknowledgements
 
