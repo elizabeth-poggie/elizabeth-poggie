@@ -138,7 +138,8 @@ Anything that can be typed in Chrome DevTools can be typed in this script tag
   <body>
     <h1>Hello World</h1>
     <script>
-      console.log("Hello World"); // From DevTools to source code
+      console.log("Hello World");
+      // From DevTools to source code
     </script>
   </body>
 </html>
