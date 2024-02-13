@@ -16,9 +16,9 @@ Visual Studio Code is a free (lightweight) IDE for creating modern applications 
 
 ## Extensions
 
-- [Live Preview](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server)
-- [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
-- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+- [Live Preview](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server) - hosts a local server for you to preview your web projects on and get real time updates on your changes !!
+- [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) - A lightweight web server that we will use to serve our web application
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) - Developers can't spell (myself incldued), recommending this for your future careers ;)
 - … And more to come later!
 
 # HTML vs CSS vs JavaScript
