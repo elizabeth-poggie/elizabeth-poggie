@@ -5,6 +5,7 @@ subtitle: "Intro to Javascript"
 date: "2024-02-12T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
+slides: "/assets/notes/W24-user-interfaces/slides/08.pdf"
 ---
 
 # Intro to Javascript
@@ -12,8 +13,6 @@ type: "Lecture"
 ## What is Javascript ?
 
 One of the most popular and widely used programming languages in the world and big companies build entire applications on it (or its variations like TypeScript).
-
-IN north america the average salary of a JavaScript developer typically ranges between $70,000 and $120,000,
 
 You can be in the frontend and backend just with javascript.
 
@@ -574,7 +573,7 @@ p {
 
 article {
   text-align: center;
-  width: 230px;
+  max-width: fit-content;
 }
 
 .ring,
@@ -600,8 +599,8 @@ button {
 
 For those that have completed most of the lab, take my code and do it better then me :^)
 
-The rest of y'all feel free to use this period to finish up your work!
+The rest of y'all feel free to use this period to finish up your lab!
 
 # Acknowledgements
 
-Lecture content was inspired by [Programming with Mosh](https://www.youtube.com/watch?v=W6NZfCO5SIk),
+The lecture content was adapted from Larry Fagen's & Michael Haaf's course notes, as well as inspired by [Programming with Mosh](https://www.youtube.com/watch?v=W6NZfCO5SIk)
