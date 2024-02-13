@@ -237,13 +237,370 @@ name = 42;
 console.log(typeof name);
 ```
 
-Unlike the languages that we are familiar with (C#, Java, etc.), JavaScript let's us change the variable type on the fly. However imagine not having static types and you are working at a large company with a bunch of unexpected runtime errors and now it's you job to fix it.
+Unlike the languages that we are familiar with (C#, Java, etc.), JavaScript let's us change the variable type on the fly. However imagine not having static types and you are working at a large company with a bunch of unexpected runtime errors and now it's your job to fix it.
 
-Well sometime around 2010 another smart guy named Anders Hejlsberg got fed up with this issue and created a new language called TypeScript.
+Well sometime around 2010 another smart guy named Anders Hejlsberg got fed up with this issue and created a new language.
+
+He called it TypeScript.
 
 And with TypeScript came the introduction of static typing, which enables developers to define types for variables, also came the introduction of interfaces, generics, access modifiers, and advanced tooling integrations to maintain complex & large codebases.
 
 Knowing TypeScript is outside the scope of this course, however taking time to appreciate JavaScript now will set you up for success in your future courses that tackle this topic. TypeScript's ability to address real-world development challenges while enhancing developer productivity and code quality has solidified its position as a preferred language for many developers and organizations.
+
+# Real world application
+
+Let's re-create the story feature on instagram :)
+
+## Step 1 - What is the Layout?
+
+Well it seems that this is a section of articles with a an image and title
+
+```html
+<section>
+  <article>
+    <img />
+    <p></p>
+  </article>
+</section>
+```
+
+## Step 2 - What is the Mock Content?
+
+When making a feature, use what ever mock data you want ;) it's your demo, you call the shots
+
+```html
+<body>
+  <section>
+    <article>
+      <img src="./images/charming-cat.jpeg" />
+      <p>cute_cat_96</p>
+    </article>
+  </section>
+</body>
+```
+
+and let's style the body while we are here to match the designs
+
+```css
+body {
+  background-color: black;
+}
+```
+
+## Step 3 - How do we style the img?
+
+The product manager demands circular images, squares won't do
+
+```css
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+}
+```
+
+## Step 4 - what about the text?
+
+Where is the font? Where is it? Let's figure it out in dev tools and bring that style to out source code
+
+```css
+p {
+  color: white;
+}
+```
+
+Now the font is clashing with vibe of the rest of the product. We are building a brand here, so we need a font that matches our product vision. First let's link an external font.
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+  rel="stylesheet"
+/>
+```
+
+... and go back to our original work ...
+
+```css
+p {
+  color: white;
+  font-family: "Roboto", sans-serif;
+}
+```
+
+note how i have a fallback font in case our external font doesn't work !!
+
+## Step 5 - Why is everything not centered ?
+
+Well the article content is expanding to take the full space and the image has a defined width. Let's use the fact that block type elements have an inner display :)
+
+```css
+article {
+  text-align: center;
+}
+```
+
+## Step 6 - How do we add the ring?
+
+What is a ring if not a circular border? First in our html let's add a div where we will define that border. I want to decouple the ring logic from the img logic. We can go back and remove un necessary containers once we have a working feature :)
+
+```html
+<body>
+  <section>
+    <article>
+      <div class="ring">
+        <img src="./images/charming-cat.jpeg" />
+      </div>
+      <p>cute_cat_96</p>
+    </article>
+  </section>
+</body>
+```
+
+and in our css file let's add the below class
+
+```css
+.ring {
+  border: 3px pink solid;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  padding: 5px;
+}
+```
+
+## Step 7 - We have a ring now, but i can't interact with it. Now what?
+
+Let's start working on our JavaScript logic. Based off of the spider function we wrote last class we know we have the power to edit the styling of elements dynamically. Let's do that.
+
+First let's add an id on our element that has the ring class, next let's write our function.
+
+```html
+<body>
+  <section>
+    <article>
+      <div class="ring">
+        <!-- Step 1 -->
+        <img src="./images/charming-cat.jpeg" />
+      </div>
+      <p>cute_cat_96</p>
+    </article>
+  </section>
+  <script>
+    // Step 2
+    function watchStory() {
+      // but how are we calling the method?
+      // ... and how are we changing the style ??
+    }
+  </script>
+</body>
+```
+
+## Step 8 - First let's figure out how we need to activate the method?
+
+Well we need a button that let's me have access to the attribute `onclick` to be able to call this `watchStory()` method that we defined. Let's do that.
+
+```html
+<body>
+  <section>
+    <article>
+      <button onclick="watchStory()">
+        <div class="ring">
+          <img src="./images/charming-cat.jpeg" />
+        </div>
+      </button>
+      <p>cute_cat_96</p>
+    </article>
+  </section>
+  <script>
+    function watchStory() {}
+  </script>
+</body>
+```
+
+## Step 9 - It's ugly again.
+
+Now we need to modify the css of the button to be hidden. Let's go back to DevTools and mess around with that.
+
+```css
+button {
+  background-color: black;
+  border: 0;
+}
+/* and let's fix other styling issues while we are at it */
+article {
+  text-align: center;
+  width: 230px; /* the width of our ring and image was not aligning with the text - small hack for now*/
+}
+```
+
+## Step 10 - Let's modify the class
+
+What happens if we set the visibility of the ring class to hidden?
+
+```html
+<body>
+  <section>
+    <article>
+      <button onclick="watchStory()">
+        <div class="ring">
+          <img src="./images/charming-cat.jpeg" />
+        </div>
+      </button>
+      <p>cute_cat_96</p>
+    </article>
+  </section>
+  <script>
+    function watchStory() {
+      document.querySelector(".ring").style.visibility = "hidden";
+    }
+  </script>
+</body>
+```
+
+oh no !! Everything Disappears !! Why ? This is because the div has children elements (our image) that we do not want to disappear. ok so let's take a new approach.
+
+- The first thing we should consider is that we dont want the interaction of one user story to impact other user stories
+- And 2, we do not want to have the styling of the parent div to impact children elements && for padding changes to be affected either.
+
+So let's make a new class as a new strat called `noRing` that we add only when a user clicks. maybe we want to change the look and feel of this class in 2 years, who knows.
+
+```css
+.ring,
+.noRing {
+  border: 3px pink solid;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  padding: 5px;
+}
+
+.noRing {
+  border: 3px black solid; /* this is a bad move if we ever decide to change the body color, however in the interest of time leaving it like this for now lol */
+}
+```
+
+Let's chain noRing to be made up as the same properties as ring, since our new class is just a new variant extending this class. As a hacky solution for now, noRing will have a border of 3px.
+
+## Step 11 - Updating our script
+
+```html
+<body>
+  <section>
+    <article>
+      <button onclick="watchStory()">
+        <div id="1" class="ring">
+          <img src="./images/charming-cat.jpeg" />
+        </div>
+      </button>
+      <p>cute_cat_96</p>
+    </article>
+  </section>
+  <script>
+    function watchStory() {
+      document.getElementById(1).classList.add("noRing");
+    }
+  </script>
+</body>
+```
+
+and just like that we recreated the entire look interaction of insta stories in like 15 minutes
+
+## Step 12 - REFACTORING
+
+However a lot of our approaches could be improved. How would you improve my code?
+
+The `index.html` file:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <article>
+        <button onclick="watchStory()">
+          <div id="1" class="ring">
+            <img src="./images/charming-cat.jpeg" />
+          </div>
+        </button>
+        <p>cute_cat_96</p>
+      </article>
+    </section>
+    <script>
+      function watchStory() {
+        document.getElementById(1).classList.add("noRing");
+      }
+    </script>
+  </body>
+</html>
+```
+
+The `styles.css` file:
+
+```css
+body {
+  background-color: black;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+p {
+  color: white;
+  font-family: "Roboto", sans-serif;
+}
+
+article {
+  text-align: center;
+  width: 230px;
+}
+
+.ring,
+.noRing {
+  border: 3px pink solid;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  padding: 5px;
+}
+
+.noRing {
+  border: 3px black solid;
+}
+
+button {
+  background-color: black;
+  border: 0;
+}
+```
+
+# Exercise
+
+Take my code to do better then me :^)
+
+# Exercise
 
 # Acknowledgements
 
