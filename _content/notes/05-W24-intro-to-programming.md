@@ -10,11 +10,11 @@ slides: "/assets/notes/W24-intro-to-programming/slides/05.pdf"
 
 # Course Updates
 
-Update 1) Moving forward, I will be posting all course materials to this website. I will still be posting links on lea moving forward so you all get the notifications :)
+Update 1) Moving forward, I will be posting all course materials to this website. I will still be posting links on lea so you all get the notifications :)
 
 Update 2) Lab 1 is due tonight! Do not forget to submit!
 
-Update 3) For anyone who had issues last class with Visual Studio 2022, I discussed with IT and the problem should be resolved for y'all. Let me know if the problem persists or anyone else that still has trouble accessing the software.
+Update 3) For anyone who had problems with Visual Studio 2022 in class, I discussed with IT and the problem should be resolved for y'all. Let me know if the problem persists or anyone else that still has trouble accessing the software.
 
 Update 4) Midterm season is coming up (i know you all must be very excited) and given that this is a complementary course, i want to schedule the midterm for this class that’s best for everyone’s schedule. What day works best for you all? The majority vote wins !!
 
@@ -26,7 +26,7 @@ Update 4) Midterm season is coming up (i know you all must be very excited) and 
 
 Last week, I introduced the concepts of relational operators, logical operators, and conditional statements. We left off on order of operations and just started exploring conditional statements.
 
-This Lecture we are going to focus on how to make more efficient programs with these concepts to build what are known as "Selection Control Structures" or (in simpler terms) more complicated "if statements".
+This Lecture we are going to focus on how to make more efficient programs with these concepts to build "Selection Control Structures" or in other words "fancier" if statements.
 
 # Order of Operations Continued
 
@@ -81,7 +81,7 @@ Boolean logic and conditional statements are cool and all, however useless unles
 
 "I should make myself a snack if I have bread AND peanut butter."
 
-How do we turn this idea into a program? Tell me how I should make myself a snack.
+How do we turn this idea into a program? How do i make a snack?
 
 - Should i put peanut butter on the bread?
 - How do i put peanut butter on the bread?
@@ -91,7 +91,7 @@ How do we turn this idea into a program? Tell me how I should make myself a snac
 - What happens if I decide to use my elbow to spread peanut butter? It's a totally valid approach, however would require a lot of energy
 - ... So how do ensure we only use energy efficient methods of spreading peanut butter??????
 
-Computers are dumb and need step by step instructions. These instructions need to be direct and precise.
+Computers are dumb and need step by step instructions. The instructions need to be direct and precise.
 
 ## From Idea to Procedure
 
@@ -105,7 +105,7 @@ Next, let's break this down into steps.
 - Step 1) `"Do I have bread?"`
 - Step 2) `"Do I have peanut butter?"`
 
-Once we have gotten the answers to the above questions, we can launch our `apply peanut butter to bread` strategy !! Besides, why should I want to expend energy trying to make a snack if i do not have access to the materials that makes that snack possible ? (might as well uber eats)
+Once we have gotten the answers to the above questions, we can launch our `apply peanut butter to bread` strategy !! Besides, why should I expend energy trying to make a snack if i do not have access to the materials to make the snack? (might as well uber eats)
 
 ## From Procedure to Flowgorithm
 
