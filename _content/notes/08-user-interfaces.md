@@ -237,9 +237,9 @@ name = 42;
 console.log(typeof name);
 ```
 
-unlike the languages that we are familiar with (C#, Java, etc.), JavaScript let's us change the variable type on the fly. However imagine not having static types and you are working at a large company with a bunch of unexpected runtime errors and now it's you job to figure out what's breaking the code?
+Unlike the languages that we are familiar with (C#, Java, etc.), JavaScript let's us change the variable type on the fly. However imagine not having static types and you are working at a large company with a bunch of unexpected runtime errors and now it's you job to fix it.
 
-Well sometime around 2010 another smart guy named Anders Hejlsberg got fed up with this exact issue and created a new language called TypeScript.
+Well sometime around 2010 another smart guy named Anders Hejlsberg got fed up with this issue and created a new language called TypeScript.
 
 And with TypeScript came the introduction of static typing, which enables developers to define types for variables, also came the introduction of interfaces, generics, access modifiers, and advanced tooling integrations to maintain complex & large codebases.
 
