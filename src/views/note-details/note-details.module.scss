@@ -13,6 +13,13 @@
   z-index: 1;
 }
 
+.tocInSideBar {
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-left: 1px white solid;
+}
+
 .sideBarSection {
   padding-bottom: calc($unit * 6);
 }

@@ -23,22 +23,6 @@ interface IProps {
 }
 
 export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
-  const [isClicked, setClicked] = React.useState<boolean>();
-  React.useEffect(() => {
-    // refresh & initalize toc if we navigated to a new note details page
-    if (isClicked) {
-      tocbot.refresh({
-        ...TOC_NOTE_DETAILS_OPTIONS,
-        headingsOffset: -window.innerHeight,
-        hasInnerContainers: true, // TODO - investigate why this refresh is still clunky lol
-      });
-      return setClicked(false);
-    }
-    // else just init toc
-    tocbot.init(TOC_NOTE_DETAILS_OPTIONS);
-    return () => tocbot.destroy();
-  }, [tocbot, noteDetails]);
-
   const renderHeader = ({ id, children }) => {
     return (
       <div className={styles.mdHeader}>
@@ -115,9 +99,6 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
           />
         </header>
         <section className={styles.sideBarSection}>
-          <Toc />
-        </section>
-        <section className={styles.sideBarSection}>
           {relatedNotes?.map((note: ICollegeNote) => {
             const isActiveLink = note.title === noteDetails.title;
             return (
@@ -125,18 +106,28 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
                 <TextLink
                   href={`/notes/${note.slug}`}
                   variant="subheading"
-                  onClick={() => setClicked(true)}
+                  onClick={() =>
+                    tocbot.refresh({
+                      ...TOC_NOTE_DETAILS_OPTIONS,
+                      hasInnerContainers: true,
+                    })
+                  }
                   color={isActiveLink ? "white" : "grey"}
                 >
                   {note.title}
                 </TextLink>
+                {isActiveLink ? (
+                  <div className={styles.tocInSideBar}>
+                    <Toc />
+                  </div>
+                ) : null}
               </div>
             );
           })}
         </section>
-        <TextLink href="/" variant="subheading">
+        {/* <TextLink href="/" variant="subheading">
           All Notes
-        </TextLink>
+        </TextLink> */}
       </aside>
     );
   };
