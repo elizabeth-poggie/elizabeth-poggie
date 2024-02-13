@@ -279,7 +279,7 @@ When making a feature, use what ever mock data you want ;) it's your demo, you c
 </body>
 ```
 
-and let's style the body while we are here to match the designs
+and let's style the body in a separate file called `styles.css` while we are getting started (we want to stay true to the designs)
 
 ```css
 body {
@@ -304,7 +304,7 @@ img {
 
 ## Step 4 - what about the text?
 
-Where is the font? Where is it? Let's figure it out in dev tools and bring that style to out source code
+Where is the font? Let's figure it out in dev tools and bring that style to out source code
 
 ```css
 p {
@@ -346,7 +346,7 @@ article {
 
 ## Step 6 - How do we add the ring?
 
-What is a ring if not a circular border? First in our html let's add a div where we will define that border. I want to decouple the ring logic from the img logic. We can go back and remove un necessary containers once we have a working feature :)
+What is a ring if not a circular border? First in our html let's add a div where we will define that border. I want to decouple the ring logic from the img logic and we can go back & remove un necessary containers once we have a working feature :)
 
 ```html
 <body>
@@ -375,16 +375,13 @@ and in our css file let's add the below class
 
 ## Step 7 - We have a ring now, but i can't interact with it. Now what?
 
-Let's start working on our JavaScript logic. Based off of the spider function we wrote last class we know we have the power to edit the styling of elements dynamically. Let's do that.
-
-First let's add an id on our element that has the ring class, next let's write our function.
+Let's start working on our JavaScript logic. Based off of the spider function we wrote last class, we know we have the power to edit the styling of elements dynamically. Let's do that.
 
 ```html
 <body>
   <section>
     <article>
       <div class="ring">
-        <!-- Step 1 -->
         <img src="./images/charming-cat.jpeg" />
       </div>
       <p>cute_cat_96</p>
@@ -464,7 +461,7 @@ What happens if we set the visibility of the ring class to hidden?
 
 oh no !! Everything Disappears !! Why ? This is because the div has children elements (our image) that we do not want to disappear. ok so let's take a new approach.
 
-- The first thing we should consider is that we dont want the interaction of one user story to impact other user stories
+- The first thing we should consider is that we don't want the interaction of one user story to impact other user stories
 - And 2, we do not want to have the styling of the parent div to impact children elements && for padding changes to be affected either.
 
 So let's make a new class as a new strat called `noRing` that we add only when a user clicks. maybe we want to change the look and feel of this class in 2 years, who knows.
@@ -487,6 +484,8 @@ So let's make a new class as a new strat called `noRing` that we add only when a
 Let's chain noRing to be made up as the same properties as ring, since our new class is just a new variant extending this class. As a hacky solution for now, noRing will have a border of 3px.
 
 ## Step 11 - Updating our script
+
+and now because we do not want multiple user stories to impact each other, so let's add a unique id to each possible thing that we could click. In our case we only have one story so let's create an id of `1` for our div and implement that display logic.
 
 ```html
 <body>
@@ -514,7 +513,7 @@ and just like that we recreated the entire look interaction of insta stories in 
 
 However a lot of our approaches could be improved. How would you improve my code?
 
-The `index.html` file:
+My `index.html` file:
 
 ```html
 <!DOCTYPE html>
@@ -551,7 +550,7 @@ The `index.html` file:
 </html>
 ```
 
-The `styles.css` file:
+My `styles.css` file:
 
 ```css
 body {
@@ -598,9 +597,9 @@ button {
 
 # Exercise
 
-Take my code to do better then me :^)
+For those that have completed most of the lab, take my code and do it better then me :^)
 
-# Exercise
+The rest of y'all feel free to use this period to finish up your work!
 
 # Acknowledgements
 
