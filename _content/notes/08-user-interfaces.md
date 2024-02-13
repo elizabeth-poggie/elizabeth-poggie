@@ -477,11 +477,11 @@ So let's make a new class as a new strat called `noRing` that we add only when a
 }
 
 .noRing {
-  border: 3px black solid; /* this is a bad move if we ever decide to change the body color, however in the interest of time leaving it like this for now lol */
+  border: 3px black solid; /* this is a bad move, how would you fix it?*/
 }
 ```
 
-Let's chain noRing to be made up as the same properties as ring, since our new class is just a new variant extending this class. As a hacky solution for now, noRing will have a border of 3px.
+Let's chain noRing to be made up as the same properties as ring, since our new class is just a new variant extending this class. As a hacky solution for now, noRing will have a border of `3px`.
 
 ## Step 11 - Updating our script
 
