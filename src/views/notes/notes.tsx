@@ -12,7 +12,11 @@ interface IProps {
 }
 
 /**
- * Family
+ * * * * * * * * * * * * * * * * * * * * * * * *
+ *
+ *    Data Structures and Relationships
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * *
  */
 
 /**
@@ -20,15 +24,19 @@ interface IProps {
  *
  * - Category
  *    - Sub Category
+ *      - Color                         (e.g. yellow, green, blue - can be automated with a script)
  *      - Primary types []              (e.g. left column in Note)
  *      - Secondary types []            (e.g. right column in Note)
  *
  * * * * * * * * * * * * * * * * * * * * * * * *
  *
- * - Computer Science @ John Abbott
- *    - Course
+ * - Course
+ *    - Computer Science @ John Abbott
  *      - Lectures
  *      - Labs, Exercises
+ *    - UnderGrad @ McGill University
+ *      - Lectures
+ *      - Assignments, Tests, Projects
  *
  * * * * * * * * * * * * * * * * * * * * * * * *
  *
@@ -39,44 +47,36 @@ interface IProps {
  *    - The Human Condition
  *      - Strategies
  *      - Templates, Procedures
- *
- * * * * * * * * * * * * * * * * * * * * * * * *
- *
- * - Poggie's Kitchen
- *    - Recipe
+ *    - The Kitchen
  *      - Mains
  *      - Drinks, Desserts, Appetizers
  *
- * * * * * * * * * * * * * * * * * * * * * * * * *
- *
- * - UnderGrad @ McGill University
- *    - Course
- *      - Lectures
- *      - Assignments, Tests
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * *
- *
+ * * * * * * * * * * * * * * * * * * * * * * * *
  */
 
 /**
  * * * * * * * * * * * * * * * * * * * * * * * *
  *
- *
- * - Type           (e.g. "Lecture", "Strategy", "Template", "Assignment", "Lab")
- *    - slug
+ * - slug         (e.g. 2024-01-26-Intro-to-Programming - can be automated with a script)
+ *    - type             (e.g. "Lecture", "Strategy", "Template", "Assignment", "Lab", "Art" ....)
  *    - content
- *    - parent
  *    - date of creation        (e.g. in UTC - can be automated with a script)
- *    - date of update
+ *    - date of update              (in case i re use my notes at all lol)
  *    - number in series        (e.g. "Lecture 1", "Lecture 1.1", "Lab 1", "Lab 2", "Recipe 1", "Strategy 1.0"...)
- *    - title
+ *    - title                 (e.g. "Intro to JavaScript", "The Box Model")
  *    - subtitle        (e.g. "as taught by Poggie in 2024", "as made by Nana in 2012", "as taught by Luc Devroye in 2016", "as learnt the hard way in 2022")
- *    - cover image
- *    - related images        (e.g. carousel content)
- *    - text:link           (e.g. -  slides:pdf, contact:email, source:href)
- *    - color       (e.g. yellow, green, blue - can be automated with a script)
+ *    - images            (e.g. carousel content, cover image, thumbnail)
+ *    - text:link           (e.g. slides:pdf, contact:email, source:href)
  *
  * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+
+/**
+ * Sorters
+ *
+ * - Latest
+ * - Year: 2024, 2023, 2022 ...
+ *
  */
 
 // List of supported filters lol
