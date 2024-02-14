@@ -11,6 +11,74 @@ interface IProps {
   allNotes: ICollegeNote[];
 }
 
+/**
+ * Family
+ */
+
+/**
+ * * * * * * * * * * * * * * * * * * * * * * * *
+ *
+ * - Category
+ *    - Sub Category
+ *      - Primary types []              (e.g. left column in Note)
+ *      - Secondary types []            (e.g. right column in Note)
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * *
+ *
+ * - Computer Science @ John Abbott
+ *    - Course
+ *      - Lectures
+ *      - Labs, Exercises
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * *
+ *
+ * - Navigation Strategies
+ *    - The Corporate World
+ *      - Strategies
+ *      - Templates, Procedures
+ *    - The Human Condition
+ *      - Strategies
+ *      - Templates, Procedures
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * *
+ *
+ * - Poggie's Kitchen
+ *    - Recipe
+ *      - Mains
+ *      - Drinks, Desserts, Appetizers
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * *
+ *
+ * - UnderGrad @ McGill University
+ *    - Course
+ *      - Lectures
+ *      - Assignments, Tests
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *
+ */
+
+/**
+ * * * * * * * * * * * * * * * * * * * * * * * *
+ *
+ *
+ * - Type           (e.g. "Lecture", "Strategy", "Template", "Assignment", "Lab")
+ *    - slug
+ *    - content
+ *    - parent
+ *    - date of creation        (e.g. in UTC - can be automated with a script)
+ *    - date of update
+ *    - number in series        (e.g. "Lecture 1", "Lecture 1.1", "Lab 1", "Lab 2", "Recipe 1", "Strategy 1.0"...)
+ *    - title
+ *    - subtitle        (e.g. "as taught by Poggie in 2024", "as made by Nana in 2012", "as taught by Luc Devroye in 2016", "as learnt the hard way in 2022")
+ *    - cover image
+ *    - related images        (e.g. carousel content)
+ *    - text:link           (e.g. -  slides:pdf, contact:email, source:href)
+ *    - color       (e.g. yellow, green, blue - can be automated with a script)
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+
 // List of supported filters lol
 export const filterToColorMap = {
   // Courses

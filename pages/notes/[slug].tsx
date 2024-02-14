@@ -3,6 +3,7 @@ import Meta from "../../src/views/meta/meta";
 import { getAllNotes, getBySlug, noteDirectory } from "../../src/utils/api";
 import { ICollegeNote } from "../../src/interfaces/note";
 import { NoteDetails } from "../../src/views/note-details/note-details";
+import { sortByDateAscending } from "../../src/utils/helpers/sortByDate";
 
 interface Props {
   noteDetails: ICollegeNote;
@@ -13,6 +14,7 @@ export default function NoteDetailsPage({
   noteDetails,
   relatedNotes,
 }: Readonly<Props>) {
+  const sortedRelatedNotes = sortByDateAscending(relatedNotes);
   return (
     <>
       <Meta />
@@ -21,7 +23,10 @@ export default function NoteDetailsPage({
           {noteDetails.title} - {noteDetails.course}
         </title>
       </Head>
-      <NoteDetails noteDetails={noteDetails} relatedNotes={relatedNotes} />
+      <NoteDetails
+        noteDetails={noteDetails}
+        relatedNotes={sortedRelatedNotes}
+      />
     </>
   );
 }

@@ -125,9 +125,6 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
             );
           })}
         </section>
-        {/* <TextLink href="/" variant="subheading">
-          All Notes
-        </TextLink> */}
       </aside>
     );
   };
