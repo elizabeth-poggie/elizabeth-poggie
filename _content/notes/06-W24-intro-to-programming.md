@@ -160,6 +160,7 @@ int speed;
 Console.WriteLine("How fast are you going?");
 successfulConversion = int.TryParse(Console.ReadLine(), out speed);
 
+// One-way 'if' statement
 if(successfulConversion) {
   // do rest of program
 }
@@ -176,7 +177,7 @@ int speed;
 Console.WriteLine("How fast are you going?");
 successfulConversion = int.TryParse(Console.ReadLine(), out speed);
 
-// similar idea to our flowgorithm diamond
+// Two-way 'if-else' statement, similar idea to the flowgorithm diamond
 if(successfulConversion) {
   // do rest of program
 } else {
@@ -194,6 +195,7 @@ int speed;
 Console.WriteLine("How fast are you going?");
 successfulConversion = int.TryParse(Console.ReadLine(), out speed);
 
+// Nested if statements, what would this look in flowgorithm ?
 if(successfulConversion) {
   if (speed > SPEED_LIMIT) {
     Console.WriteLine("Wow that's too fast !! \n-----------------------\nThe speed limit is: {0} \nYou were going: {1}", SPEED_LIMIT, speed);
@@ -205,10 +207,6 @@ if(successfulConversion) {
 }
 ```
 
-## How would this look in flowgorithm?
-
-Let's give it a shot
-
 # ............................. but what's the BEST in C# ????????
 
 ```cs
@@ -219,6 +217,7 @@ int speed;
 Console.WriteLine("How fast are you going?");
 successfulConversion = int.TryParse(Console.ReadLine(), out speed);
 
+// if ... else statements are cleaner solutions compared to nested if statements
 if(successfulConversion && speed > SPEED_LIMIT) {
 	Console.WriteLine("Wow that's too fast !! \n--------------------\nThe speed limit is: {0} \nYou were going: {1}", SPEED_LIMIT, speed);
 } else if (successfulConversion) {
