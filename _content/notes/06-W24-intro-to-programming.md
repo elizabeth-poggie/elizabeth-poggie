@@ -131,7 +131,7 @@ These are what's known as `escape sequences`, in C# they all start with a `\` an
 \" - prints a double quote
 ```
 
-# ............................. and the BEST ????????
+# ............................. and BETTER ????????
 
 What happens if the user enters `123abc` ?
 
@@ -204,6 +204,31 @@ if(successfulConversion) {
   Console.WriteLine("Please put in a valid speed");
 }
 ```
+
+## How would this look in flowgorithm?
+
+Let's give it a shot
+
+# ............................. but what's the BEST in C# ????????
+
+```cs
+const int SPEED_LIMIT = 42;
+bool successfulConversion;
+int speed;
+
+Console.WriteLine("How fast are you going?");
+successfulConversion = int.TryParse(Console.ReadLine(), out speed);
+
+if(successfulConversion && speed > SPEED_LIMIT) {
+	Console.WriteLine("Wow that's too fast !! \n--------------------\nThe speed limit is: {0} \nYou were going: {1}", SPEED_LIMIT, speed);
+} else if (successfulConversion) {
+	Console.WriteLine("Keep doing you");
+} else {
+  Console.WriteLine("please put in a valid speed");
+}
+```
+
+In just one exercise we have managed to write around 8 programs, now imagine the possibilities with more complex problems. As a general rule, always write comments to describe your solutions to me so i can award partial marks for the correct thought processes and reasoning :)
 
 # Exercises
 
