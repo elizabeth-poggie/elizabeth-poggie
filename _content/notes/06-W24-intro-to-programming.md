@@ -11,7 +11,7 @@ type: "Lecture"
 
 All programs take inputs, and give outputs. Let's make our C# programs a bit more interesting.
 
-# Round 1
+# How do we make this idea a Program ?
 
 ## Idea
 
@@ -65,7 +65,7 @@ if (speed > SPEED_LIMIT) {
 }
 ```
 
-## How can we make this better?
+# How can we do better ?
 
 First let's remove unecessary variables
 
@@ -84,7 +84,7 @@ if (speed > SPEED_LIMIT) {
 }
 ```
 
-## ... but even better?
+# ... but even better?
 
 Well if a user that is speeding, how do they find out know the speed limit? Besides how can they can't improve if they do not know.
 
@@ -110,28 +110,28 @@ This concept is what is known as `output formatting` !! In the above example, th
 Console.WriteLine("Wow that's too fast, the speed limit in these parts is {0} and you were going {1}", SPEED_LIMIT, speed);
 ```
 
-## ............. and BETTER ?
+# ............. and BETTER ?
 
 There is too much happening in that line, what if we want to print things on different lines?
 
 ```cs
 
-Console.WriteLine("Wow that's too fast !! \n--------------------\nThe speed limit is: {0} \nYou were going: {1}", SPEED_LIMIT, speed);
+Console.WriteLine("Wow that's too fast !! \n-----------------------\nThe speed limit is: {0} \nYou were going: {1}", SPEED_LIMIT, speed);
 ```
 
 These are what's known as `escape sequences`, in C# they all start with a `\` and followed by an escape character. Here is a list of all of them
 
 ```md
-\n // a new line
-\t // the next tab
-\b // one character back
-\r // the beginning of a line
-\\ // prints a backslash
-\' // prints a single quote
-\" // prints a double quote
+\n - a new line
+\t - the next tab
+\b - one character back
+\r - the beginning of a line
+\\ - prints a backslash
+\' - prints a single quote
+\" - prints a double quote
 ```
 
-## ............................. and the BEST ????????
+# ............................. and the BEST ????????
 
 What happens if the user enters `123abc` ?
 
@@ -156,19 +156,53 @@ but how do we prevent this from happening? Let's get into the idea of `input val
 const int SPEED_LIMIT = 42;
 bool successfulConversion;
 int speed;
-string input;
 
 Console.WriteLine("How fast are you going?");
-input = Console.ReadLine();
+successfulConversion = int.TryParse(Console.ReadLine(), out speed);
 
-successfulConversion = int.TryParse(input);
-
-if (speed > SPEED_LIMIT) {
-	Console.WriteLine("Wow that's too fast");
-} else {
-	Console.WriteLine("Keep doing you");
+if(successfulConversion) {
+  // do rest of program
 }
 
+```
+
+but how do we prevent the rest of the program from executing if the conversion was not successful?
+
+```cs
+const int SPEED_LIMIT = 42;
+bool successfulConversion;
+int speed;
+
+Console.WriteLine("How fast are you going?");
+successfulConversion = int.TryParse(Console.ReadLine(), out speed);
+
+// similar idea to our flowgorithm diamond
+if(successfulConversion) {
+  // do rest of program
+} else {
+  // leave program
+}
+```
+
+now let's plug in the rest of our program
+
+```cs
+const int SPEED_LIMIT = 42;
+bool successfulConversion;
+int speed;
+
+Console.WriteLine("How fast are you going?");
+successfulConversion = int.TryParse(Console.ReadLine(), out speed);
+
+if(successfulConversion) {
+  if (speed > SPEED_LIMIT) {
+    Console.WriteLine("Wow that's too fast !! \n-----------------------\nThe speed limit is: {0} \nYou were going: {1}", SPEED_LIMIT, speed);
+  } else {
+    Console.WriteLine("Keep doing you");
+  }
+} else {
+  Console.WriteLine("Please put in a valid speed");
+}
 ```
 
 # Exercises
