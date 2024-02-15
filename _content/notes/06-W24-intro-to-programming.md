@@ -11,13 +11,13 @@ type: "Lecture"
 
 All programs take inputs, and give outputs. Let's make our C# programs a bit more interesting.
 
-# How do we make this idea a Program ?
+# From Idea to Program (Round 1)
 
 ## Idea
 
 Last class I gave out an exercise. There are many ways to interpret that statement, let's build on it together.
 
-Our answers to this question may be different depending on how we go about trying to solve this statement, however as long as you are rigorous in your logic and add comments to explain your thought process. Marks will be given accordingly.
+Our answers to this question may be different depending on how we go about trying to solve this problem :)
 
 ```cs
 "I should get a ticket if I am above the speed limit."
@@ -229,29 +229,108 @@ if(successfulConversion && speed > SPEED_LIMIT) {
 
 In just one exercise we have managed to write around 8 programs, now imagine the possibilities with more complex problems. As a general rule, always write comments to describe your solutions to me so i can award partial marks for the correct thought processes and reasoning :)
 
-# Exercises
+# From Idea to Program (Round 2)
 
-## For those who want more C# practice
+## Idea
 
-Write a program that prints the following names, such that the 2nd name starts on the same column (see below for sample output)
+```md
+Design a program that asks the user for the number of women, men, and non-binary registered in a class. The program should display
 
-```cs
-string fname1 = "Arthur"
-string lname1 = "Dent"
-string fname2 = "Ford"
-string lname2 = "Perfect"
-string fname3 = "Marvin"
-string lname3 = "Android"
+> The total number of students.
+> The number and the percentage (%) of women.
+> The number and the percentage (%) of men.
+> The number and the percentage (%) of non-binary.
+```
 
+Example input
+
+```md
+women: ?
+men: ?
+non-binary: ?
 ```
 
 Example output
 
-```cs
-"Arthur"      "Dent"
-"Ford"        "Perfect"
-"Marvin"      "Android"
+```md
+Number of students: 42
+Number of women and %: "20 total so 47.62% of the class"
+Number of females and %: "20 total so 47.62% of the class"
+Number of non-binary and %: "2 total so 4.76% of the class"
 ```
+
+## From Idea to Procedure
+
+What are our variables?
+
+- `numWomen` represents the number of women
+- `numMen` represents the number of men
+- `numNonBinary` represents the number of non-binary
+- `total` represents the total number of students
+
+What's the procedure?
+
+- Step 1) Figure out the number of women
+- Step 2) Figure out the number of men
+- Step 3) Figure out the number of non-binary
+- Step 4) Do some some math
+- Step 5) Format the output
+
+## From Procedure to Flowgorithm
+
+Now let's implement this in flowgorithm.
+
+## From Flowgorithm to Program
+
+```cs
+int numWomen, numMen, numNonBinary, total;
+
+// first get all the numbers
+Console.WriteLine("How many women in class?");
+numWomen = int.Parse(Console.ReadLine());
+Console.WriteLine("How many men in class?");
+numMen = int.Parse(Console.ReadLine());
+Console.WriteLine("How many non-binary in class?");
+numNonBinary = int.Parse(Console.ReadLine());
+
+// now add them together
+total = numWomen + numMen + numNonBinary;
+
+Console.WriteLine("The total number of students is {0}", total);
+Console.WriteLine("There are {0} women, so {1}% of the class", numWomen, ((numWomen / total) * 100));
+Console.WriteLine("There are {0} men, so {1}% of the class", numMen, ((numMen / total) * 100));
+Console.WriteLine("There are {0} non-binary, so {1}% of the class", numNonBinary, ((numNonBinary / total) * 100));
+```
+
+oh no !! the percentages are being calculated wrong ... how can we fix this?
+
+```cs
+int numWomen, numMen, numNonBinary, total;
+
+Console.WriteLine("How many women in class?");
+numWomen = int.Parse(Console.ReadLine());
+Console.WriteLine("How many men in class?");
+numMen = int.Parse(Console.ReadLine());
+Console.WriteLine("How many non-binary in class?");
+numNonBinary = int.Parse(Console.ReadLine());
+
+total = numWomen + numMen + numNonBinary;
+
+// we need to do do an explicit type conversion. otherwise we will get another 0 output !!
+Console.WriteLine("The total number of students is {0}", total);
+Console.WriteLine("There are {0} women, so {1}% of the class", numWomen, ((double) numWomen / total) * 100);
+Console.WriteLine("There are {0} men, so {1}% of the class", numMen, ((double) numMen / total) * 100);
+Console.WriteLine("There are {0} non-binary, so {1}% of the class", numNonBinary, ((double) numNonBinary / total) * 100);
+
+```
+
+# Exercises
+
+## For those who want more C# practice
+
+Factor into the above c# program input validation and make the outputs formatted a bit nicer. How would you improve my code?
+
+## For those who want more C# practice
 
 ## For the brave
 
