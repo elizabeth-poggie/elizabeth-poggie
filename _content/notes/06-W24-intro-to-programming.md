@@ -9,13 +9,13 @@ type: "Lecture"
 
 # Introduction
 
-All programs take inputs, and give outputs. Let's make our C# programs a bit more interesting.
+All programs take inputs and give outputs. Today let's make our C# programs a bit more interesting.
 
 # From Idea to Program (Round 1)
 
 ## Idea
 
-Last class I gave out an exercise. There are many ways to interpret that statement, let's build on it together.
+Last class I gave out an exercise. There are many ways to interpret that statement, so let's build on it together.
 
 Our answers to this question may be different depending on how we go about trying to solve this problem :)
 
@@ -86,7 +86,7 @@ if (speed > SPEED_LIMIT) {
 
 # ... but even better?
 
-Well if a user that is speeding, how do they find out know the speed limit? Besides how can they can't improve if they do not know.
+Well if a user that is speeding, how do they find out know the speed limit? Besides how can they improve if they do not know.
 
 ```cs
 const int SPEED_LIMIT = 42;
@@ -106,7 +106,6 @@ if (speed > SPEED_LIMIT) {
 This concept is what is known as `output formatting` !! In the above example, the `SPEED_LIMIT` is being inserted where the `{0}` is located. But what happens when we want to insert multiple numbers?
 
 ```cs
-
 Console.WriteLine("Wow that's too fast, the speed limit in these parts is {0} and you were going {1}", SPEED_LIMIT, speed);
 ```
 
@@ -207,7 +206,9 @@ if(successfulConversion) {
 }
 ```
 
-# ............................. but what's the BEST in C# ????????
+# ............................. but what's the BEST in C# ???
+
+if ... else statements are cleaner solutions compared to nested if statements. These conditional statements are free for you to use in C#
 
 ```cs
 const int SPEED_LIMIT = 42;
@@ -217,7 +218,6 @@ int speed;
 Console.WriteLine("How fast are you going?");
 successfulConversion = int.TryParse(Console.ReadLine(), out speed);
 
-// if ... else statements are cleaner solutions compared to nested if statements
 if(successfulConversion && speed > SPEED_LIMIT) {
 	Console.WriteLine("Wow that's too fast !! \n--------------------\nThe speed limit is: {0} \nYou were going: {1}", SPEED_LIMIT, speed);
 } else if (successfulConversion) {
@@ -304,6 +304,8 @@ Console.WriteLine("There are {0} non-binary, so {1}% of the class", numNonBinary
 
 oh no !! the percentages are being calculated wrong ... how can we fix this?
 
+We need to do do an explicit type conversion. otherwise we will get another 0 output !!
+
 ```cs
 int numWomen, numMen, numNonBinary, total;
 
@@ -316,7 +318,6 @@ numNonBinary = int.Parse(Console.ReadLine());
 
 total = numWomen + numMen + numNonBinary;
 
-// we need to do do an explicit type conversion. otherwise we will get another 0 output !!
 Console.WriteLine("The total number of students is {0}", total);
 Console.WriteLine("There are {0} women, so {1}% of the class", numWomen, ((double) numWomen / total) * 100);
 Console.WriteLine("There are {0} men, so {1}% of the class", numMen, ((double) numMen / total) * 100);
@@ -328,10 +329,12 @@ Console.WriteLine("There are {0} non-binary, so {1}% of the class", numNonBinary
 
 ## For those who want more C# practice
 
-Factor into the above c# program input validation and make the outputs formatted a bit nicer. How would you improve my code?
+Factor into the above c# program:
 
-## For those who want more C# practice
+- Input validation
+- Format the output to include atleast 1 escape character.
+- ... and figure out how to make my code cleaner :^)
 
-## For the brave
+## For the Brave
 
 Turn your question 2 from lab 1 into a C# Program
