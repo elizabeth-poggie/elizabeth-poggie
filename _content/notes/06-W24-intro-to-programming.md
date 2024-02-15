@@ -2,9 +2,10 @@
 # General Information
 title: "Lecture 6"
 subtitle: "Input & Outputs"
-date: "2024-02-13T12:17:29Z"
+date: "2024-02-15T12:17:29Z"
 course: "Intro to Programming"
 type: "Lecture"
+slides: "/assets/notes/W24-intro-to-programming/slides/06.pdf"
 ---
 
 # Introduction
@@ -234,7 +235,10 @@ In just one exercise we have managed to write around 8 programs, now imagine the
 ## Idea
 
 ```md
-Design a program that asks the user for the number of women, men, and non-binary registered in a class. The program should display
+Design a program that asks the user for the number of
+women, men, and non-binary registered in a class.
+
+The program should display:
 
 > The total number of students.
 > The number and the percentage (%) of women.
@@ -327,7 +331,7 @@ Console.WriteLine("There are {0} non-binary, so {1}% of the class", numNonBinary
 
 # Exercises
 
-## For those who want more C# practice
+## For those who need more C# practice
 
 Factor into the above c# program:
 
