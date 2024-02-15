@@ -12,15 +12,15 @@ interface IProps {
 }
 
 /**
- * * * * * * * * * * * * * * * * * * * * * * * *
- *
- *    Data Structures and Relationships
- *
- * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * *
+ *                                           *
+ *    Data Structures and Relationships      *
+ *                                           *
+ * * * * * * * * * * * * * * * * * * * * * * *
  */
 
 /**
- * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *
  * - Category
  *    - Sub Category
@@ -28,17 +28,17 @@ interface IProps {
  *      - Primary types []              (e.g. left column in Note)
  *      - Secondary types []            (e.g. right column in Note)
  *
- * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *
  * - Course
- *    - Computer Science @ John Abbott
+ *    - Computer Science @ John Abbott College
  *      - Lectures
  *      - Labs, Exercises
  *    - UnderGrad @ McGill University
  *      - Lectures
  *      - Assignments, Tests, Projects
  *
- * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *
  * - Navigation Strategies
  *    - The Corporate World
@@ -51,13 +51,14 @@ interface IProps {
  *      - Mains
  *      - Drinks, Desserts, Appetizers
  *
- * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 
 /**
- * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *
- * - slug         (e.g. 2024-01-26-Intro-to-Programming - can be automated with a script)
+ * - Note
+ *    - slug       (e.g. 2024-01-26-Intro-to-Programming - can be automated with a script)
  *    - type             (e.g. "Lecture", "Strategy", "Template", "Assignment", "Lab", "Art" ....)
  *    - content
  *    - date of creation        (e.g. in UTC - can be automated with a script)
@@ -68,14 +69,14 @@ interface IProps {
  *    - images            (e.g. carousel content, cover image, thumbnail)
  *    - text:link           (e.g. slides:pdf, contact:email, source:href)
  *
- * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 
 /**
  * Sorters
  *
  * - Latest
- * - Year: 2024, 2023, 2022 ...
+ * - Year: 2024, 2023, 2022, ...
  *
  */
 
