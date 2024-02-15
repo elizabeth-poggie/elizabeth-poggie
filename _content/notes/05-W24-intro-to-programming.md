@@ -8,26 +8,6 @@ type: "Lecture"
 slides: "/assets/notes/W24-intro-to-programming/slides/05.pdf"
 ---
 
-# Course Updates
-
-Update 1) Moving forward, I will be posting all course materials to this website. I will still be posting links on lea so you all get the notifications :)
-
-Update 2) Lab 1 is due tonight! Do not forget to submit!
-
-Update 3) For anyone who had problems with Visual Studio 2022 in class, I discussed with IT and the problem should be resolved for y'all. Let me know if the problem persists or anyone else that still has trouble accessing the software.
-
-Update 4) Midterm season is coming up (i know you all must be very excited) and given that this is a complementary course, i want to schedule the midterm for this class that’s best for everyone’s schedule. What day works best for you all? The majority vote wins !!
-
-- Thursday, February 22, 2024
-- Tuesday, February 27, 2024
-- Thursday, February 29, 2024
-
-# Lecture Plan
-
-Last week, I introduced the concepts of relational operators, logical operators, and conditional statements. We left off on order of operations and just started exploring conditional statements.
-
-This Lecture we are going to focus on how to make more efficient programs with these concepts to build "Selection Control Structures" or in other words "fancier" if statements.
-
 # Order of Operations Continued
 
 You can mix `and` , `or` and `not` operations, so it is important to know the order in which they will be evaluated.
@@ -79,7 +59,9 @@ Boolean logic and conditional statements are cool and all, however useless unles
 
 ## Idea
 
+```cs
 "I should make myself a snack if I have bread AND peanut butter."
+```
 
 How do we turn this idea into a program? How do i make a snack?
 
@@ -154,7 +136,7 @@ And just like that we have a program :)
 ## Idea
 
 ```cs
-// "I should go outside if it is NOT raining AND if I have finished my work."
+"I should go outside if it is NOT raining AND if I have finished my work."
 ```
 
 ## From Idea to Procedure
@@ -214,11 +196,13 @@ if (shouldBeOutside) {
 
 ## Idea
 
-Now it's your turn! Develop a Flowgorithm program that determines if someone should get a ticket if their speed is above the speed limit. Once that is done, translate that into C#.
+Now it's your turn ...
 
-For those that feel confident in their Flowgorithm abilities, you can move directly to C# :)
+```cs
+"I should get a ticket if I am above the speed limit."
+```
 
-## What you will need for C#
+## What you may need for C#
 
 ```cs
 // Console Output
@@ -234,12 +218,3 @@ int.Parse("1");
 - What do we need to figure out in order to decide whether we should give someone a ticket? How do we divide that into steps?
 - What variables do we need to declare in our program?
 - What is the mathematical `boolean` expression for this idea?
-
-## Expected inputs and outputs
-
-- if someone's speed is above the speed limit, the program should output `"ticket for YOU, be more careful next time"`.
-- if someone's speed is under the speed limit, the program should output `"Keep doing what you're doing. Have a lovely day <3"`
-
-# Next Class ...
-
-Input validation, more on constants, && intro to LOOPS
