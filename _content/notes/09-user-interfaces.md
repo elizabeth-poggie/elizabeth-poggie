@@ -1,7 +1,7 @@
 ---
 # General Information
 title: "Lecture 9"
-subtitle: "In Class Hackathon"
+subtitle: "In-Class Hackathon"
 date: "2024-02-12T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
@@ -34,7 +34,7 @@ What to ask yourself:
 
 Thinking about your target audience is essential because this will inform you on your motivation behind your solution. Only then will you will be able to decide how to start designing and developing your strategy. When we solve problems, it's not a thoughtless process. We need to think about "who" we are doing this for because a solution for me may not be a solution for you or for larger groups.
 
-# Step 2) Crafting your Vision
+# Step 2) Crafting your vision
 
 Now that we know our target audience, you need to think about the constraints in which you are developing your idea.
 
@@ -88,25 +88,36 @@ Some initial ideas to get you started:
 - a simple web game
 - ...or something completely different? Google anything and everything that you think could help :^)
 
-## Activity Phase
+## Grouping Phase (2 minutes)
 
-- Get into groups of sizes 2 or 3.
-  - One person needs to be in charge of communicating your solution to the class.
-  - One person needs to design the idea and/or help with development.
-  - One person needs to be in charge of development.
-- You have 10 minutes to come up with a solution to the problem in your group
-- Then you have 30 minutes to develop the solution.
-- Afterwards we will regroup.
+Get into groups of sizes 3 or 4.
 
-## Regrouping Phase
+- One person needs to be in charge of communicating your project to the class.
+- One person needs to design the idea and/or help with development.
+- One person needs to be in charge of development.
 
-Share a few words about:
+## Planning (5 minutes)
+
+Brainstorm ideas and plan your projects.
+
+## Implementation Phase (30 minutes)
+
+Develop your project in groups. If any single member of the group finishes their tasks early, they must act as support to the other members of their group.
+
+## Presentation Phase (15 minutes)
+
+Afterwards we will regroup where a member of each group will need to present their project to the class and communicate the following points:
 
 - Your vision
 - Your target audience
-- How your solution is unique
+- How your group's solution is unique
 - The solution's impact
 - and how this follows HTML semantics, CSS best practices && utilizes effective JavaScript :)
+
+## Evaluation Phase (5 minutes)
+
+- The project that solve the problem at hand, follow best practices, and has the highest impact will receive a prize.
+- Runner up will receive a smaller prize :^)
 
 # Next week
 
