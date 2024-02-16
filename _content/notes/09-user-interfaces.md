@@ -5,7 +5,6 @@ subtitle: "In Class Hackathon"
 date: "2024-02-12T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
-slides: "/assets/notes/W24-user-interfaces/slides/08.pdf"
 ---
 
 # What is a Hackathon?
@@ -50,7 +49,7 @@ What to consider:
 
 At the moment, we only have basic HTML knowledge, some JavaScript experience, and limited CSS foundations. Given these constraints and the limited time frame we have to work with, how will you design your vision?
 
-# Step 3) How do you implement your vision?
+# Step 3) What is the Implementation Strategy?
 
 Now that we know the "who" we are solving this problem for and and "what" we are aiming to make, we need to start thinking about "how" we are going to do it.
 
@@ -63,7 +62,7 @@ What to think about:
 
 We are building VISION here, using tools beyond this class is encouraged because the best kind of problem solving is one that leverages creativity && innovation. Keep in mind, there may be MANY tools in your tool belt for developing a vision, however sometimes a more complex tool may not be the best strategy. Beauty can be found in simplicity, it's about staying true to the problem we are trying to solve.
 
-# Step 4) What is the impact of our vision?
+# Step 4) What is the impact?
 
 Is your solution memorable? Are you actually solving the problem at hand? Will your message be received by your target audience? Who else may your solution be impacting?
 
@@ -72,13 +71,22 @@ What to keep in mind:
 - A bad solution that is memorable is better than an average solution that is forgettable.
 - We may strive for perfection in our solutions ALTHOUGH sometimes purposely being horrendous may actually be the correct strategy.
 
-Keep in mind, it's about your VISION, your TARGET AUDIENCE & staying true to what you are trying to solve.
+Keep in mind, it's about your VISION, your TARGET AUDIENCE & staying true to what you are trying to solve. The quicker you do things that are high impact right away, the quicker you build trust with your TARGET AUDIENCE. As well, you need to be clear about risk assessment for trust to work. If milestones are not properly achieved in the proper time frame, how are you communicating that to your target audience?
 
-# In class Exercise
+Unexpected results, changes, and set-backs are part of life, how are you managing those expectations? How do you communicate potential changes?
+
+# In-Class Exercise
 
 ## The Problem
 
-TBD
+A bunch of students are stressed out and need a way to relax while studying for exams. What website can those students go to that will help them unwind?
+
+Some initial ideas to get you started:
+
+- a random quote generator
+- a meme gallery
+- a simple web game
+- ...or something completely different? Google anything and everything that you think could help :^)
 
 ## Activity Phase
 
@@ -96,8 +104,9 @@ Share a few words about:
 
 - Your vision
 - Your target audience
+- How your solution is unique
 - The solution's impact
-- and how this follows best HTML && JavaScript best practices :)
+- and how this follows HTML semantics, CSS best practices && utilizes effective JavaScript :)
 
 # Next week
 
