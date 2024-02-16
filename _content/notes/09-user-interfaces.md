@@ -2,7 +2,7 @@
 # General Information
 title: "Lecture 9"
 subtitle: "In-Class Hackathon"
-date: "2024-02-12T15:30:35Z"
+date: "2024-02-16T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
 ---
@@ -60,7 +60,9 @@ What to think about:
 - Will this have a specific layout? (e.g. special HTML semantics, how are we captivating our audience?)
 - What other resources do we have available to us to work with? (e.g. what materials from your other classes can we blend into this work)
 
-We are building VISION here, using tools beyond this class is encouraged because the best kind of problem solving is one that leverages creativity && innovation. Keep in mind, there may be MANY tools in your tool belt for developing a vision, however sometimes a more complex tool may not be the best strategy. Beauty can be found in simplicity, it's about staying true to the problem we are trying to solve.
+We are building VISION here, using tools beyond this class is encouraged because the best kind of problem solving is one that leverages creativity && innovation. Keep in mind, there may be MANY tools in your tool belt for developing a vision, however sometimes a more complex tool may not be the best strategy.
+
+Beauty can be found in simplicity, it's about staying true to the problem we are trying to solve.
 
 # Step 4) What is the Impact?
 
@@ -88,7 +90,7 @@ Some initial ideas to get you started:
 - a simple web game
 - ...or something completely different? Google anything and everything that you think could help :^)
 
-## Grouping Phase (2 minutes)
+## Grouping Phase (5 minutes)
 
 Get into groups of sizes 3 or 4.
 
@@ -96,15 +98,15 @@ Get into groups of sizes 3 or 4.
 - One person needs to design the idea and/or help with development.
 - One person needs to be in charge of development.
 
-## Planning (5 minutes)
+## Planning (15 minutes)
 
 Brainstorm ideas and plan your projects.
 
-## Implementation Phase (30 minutes)
+## Implementation Phase (40 minutes)
 
 Develop your project in groups. If any single member of the group finishes their tasks early, they must act as support to the other members of their group.
 
-## Presentation Phase (15 minutes)
+## Presentation Phase (30 minutes)
 
 Afterwards we will regroup where a member of each group will need to present their project to the class and communicate the following points:
 
