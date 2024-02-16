@@ -62,7 +62,7 @@ What to think about:
 
 We are building VISION here, using tools beyond this class is encouraged because the best kind of problem solving is one that leverages creativity && innovation. Keep in mind, there may be MANY tools in your tool belt for developing a vision, however sometimes a more complex tool may not be the best strategy. Beauty can be found in simplicity, it's about staying true to the problem we are trying to solve.
 
-# Step 4) What is the impact?
+# Step 4) What is the Impact?
 
 Is your solution memorable? Are you actually solving the problem at hand? Will your message be received by your target audience? Who else may your solution be impacting?
 
@@ -116,7 +116,7 @@ Afterwards we will regroup where a member of each group will need to present the
 
 ## Evaluation Phase (5 minutes)
 
-- The project that solve the problem at hand, follow best practices, and has the highest impact will receive a prize.
+- The project that solves the problem at hand, follows best practices, and has the highest impact will receive a prize.
 - Runner up will receive a smaller prize :^)
 
 # Next week
