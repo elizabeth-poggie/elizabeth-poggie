@@ -5,6 +5,7 @@ subtitle: "In-Class Hackathon"
 date: "2024-02-16T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
+slides: "/assets/notes/W24-user-interfaces/slides/09.pdf"
 ---
 
 # What is a Hackathon?
@@ -17,15 +18,20 @@ Hackathons encourage creativity, innovation, and teamwork, and they often featur
 
 ## How do you win?
 
-To win, you need to impress the judges with your project's creativity, technical execution, and potential impact at solving real world problems... so how do you do that? Let's break it down into steps.
+To win, you need to impress the judges with your project's creativity, technical execution, and potential impact at solving real world problems... so how do you do that?
+
+## Let's break it down into steps
+
+- Step 1) figure out what you are trying to do
+- Step 2) craft your vision
+- Step 3) develop your implementation strategy
+- Step 4) evaluate your impact
 
 # Step 1) What are you trying to do?
 
-What are you trying to solve?
-How is your solution better than other possible solutions?
-What message is your solution conveying?
+What are you trying to solve? How is your solution better than other possible solutions? What message is your solution conveying?
 
-What to ask yourself:
+## What to ask yourself
 
 - Is this solution for yourself?
 - Is it for a friend?
@@ -38,7 +44,7 @@ Thinking about your target audience is essential because this will inform you on
 
 Now that we know our target audience, you need to think about the constraints in which you are developing your idea.
 
-What to consider:
+## What to consider
 
 - How much effort will solving this problem take? How long will it take?
 - What is the meaningful impact of the vision?
@@ -53,7 +59,7 @@ At the moment, we only have basic HTML knowledge, some JavaScript experience, an
 
 Now that we know the "who" we are solving this problem for and and "what" we are aiming to make, we need to start thinking about "how" we are going to do it.
 
-What to think about:
+## What to think about
 
 - Will your solution benefit from user interaction? (e.g. JavaScript)
 - Will this need a special design? (e.g. custom CSS, we are building a BRAND here.)
@@ -68,7 +74,7 @@ Beauty can be found in simplicity, it's about staying true to the problem we are
 
 Is your solution memorable? Are you actually solving the problem at hand? Will your message be received by your target audience? Who else may your solution be impacting?
 
-What to keep in mind:
+## What to keep in mind
 
 - A bad solution that is memorable is better than an average solution that is forgettable.
 - We may strive for perfection in our solutions ALTHOUGH sometimes purposely being horrendous may actually be the correct strategy.
@@ -83,7 +89,7 @@ Unexpected results, changes, and set-backs are part of life, how are you managin
 
 A bunch of students are stressed out and need a way to relax while studying for exams. What website can those students go to that will help them unwind?
 
-Some initial ideas to get you started:
+## Some initial ideas to get you started
 
 - a random quote generator
 - a meme gallery
@@ -102,7 +108,7 @@ Get into groups of sizes 3 or 4.
 
 Brainstorm ideas and plan your projects.
 
-## Implementation Phase (40 minutes)
+## Implementation Phase (60 - 90 minutes)
 
 Develop your project in groups. If any single member of the group finishes their tasks early, they must act as support to the other members of their group.
 
@@ -120,7 +126,3 @@ Afterwards we will regroup where a member of each group will need to present the
 
 - The project that solves the problem at hand, follows best practices, and has the highest impact will receive a prize.
 - Runner up will receive a smaller prize :^)
-
-# Next week
-
-... returning to CSS land where we learn about FLEX & GRID !!
