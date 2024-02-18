@@ -1,7 +1,7 @@
 ---
 # General Information
 title: "Lecture 10"
-subtitle: "Floats & Intro to Flexbox"
+subtitle: "Floats"
 date: "2024-02-19T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
