@@ -42,16 +42,16 @@ Thinking about your target audience is essential because this will inform you on
 
 # Step 2) Crafting your vision
 
-Now that you know our target audience, you need to think about the project you want to make.
+Now that you know your target audience, you need to think about the project you want to make.
 
 ## What to consider
 
 - How much effort will solving this problem take? How long will it take?
 - What is the meaningful impact of the vision?
-- How do we demonstrate the magnitude of the work required is proportional to the magnitude of the impact? (e.g. Will this even pay off? Is it worth the time and effort?)
-- How can we be sure if we address these problems, we won't run into even more problems later down the line?
-- What is the risk associated with the input and output of the vision? For example, will it actually take the time we are allocating to the task or will it take longer?
-- At what point do we actually make a difference? What is the first milestone where we start seeing that our hard work is actually paying off?
+- How do you demonstrate the magnitude of the work required is proportional to the magnitude of the impact? (e.g. Will this even pay off? Is it worth the time and effort?)
+- How can you be sure if you address these problems, you won't run into even more problems later down the line?
+- What is the risk associated with the input and output of the idea? For example, will it actually take the time we are allocating to the task or will it take longer?
+- At what point do you actually make a difference? What is the first milestone where you start seeing that your hard work is actually paying off?
 
 At the moment, you only have basic HTML knowledge, some JavaScript experience, and limited CSS foundations. Given these resources and the limited time frame, how will you develop your vision?
 
@@ -63,7 +63,7 @@ Now that you know the "who" you're solving this problem for and and "what" you'r
 
 - Will your solution benefit from user interaction? (e.g. JavaScript)
 - Will this need a special design? (e.g. custom CSS, we are building a BRAND here.)
-- Will this have a specific layout? (e.g. special HTML semantics, how are you captivating our audience?)
+- Will this have a specific layout? (e.g. special HTML semantics, how are you captivating your audience?)
 - What other resources do we have available to us to work with? (e.g. what materials from your other classes can we blend into this work)
 
 You are building VISION here, using tools beyond this class is encouraged because the best kind of problem solving is one that leverages creativity && innovation. Keep in mind, there may be MANY tools in your tool belt for developing a vision, however sometimes a more complex tool may not be the best strategy.
@@ -79,7 +79,7 @@ Is your solution memorable? Are you actually solving the problem at hand? Will y
 - A bad solution that is memorable is better than an average solution that is forgettable.
 - We may strive for perfection in our solutions ALTHOUGH sometimes purposely being horrendous may actually be the correct strategy.
 
-The quicker you do things that are high impact right away, the quicker you build trust with your TARGET AUDIENCE.
+KEEP IN MIND: The quicker you do things that are HIGH IMPACT, the quicker you build trust with your TARGET AUDIENCE.
 
 ## You need to be clear about risk for trust to work.
 
