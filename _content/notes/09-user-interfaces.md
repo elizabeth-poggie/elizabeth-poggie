@@ -42,7 +42,7 @@ Thinking about your target audience is essential because this will inform you on
 
 # Step 2) Crafting your vision
 
-Now that we know our target audience, you need to think about the constraints in which you are developing your idea.
+Now that we know our target audience, you need to think about the project we are aiming to make.
 
 ## What to consider
 
@@ -53,7 +53,7 @@ Now that we know our target audience, you need to think about the constraints in
 - What is the risk associated with the input and output of the vision? For example, will it actually take the time we are allocating to the task or will it take longer?
 - At what point do we actually make a difference? What is the first milestone where we start seeing that our hard work is actually paying off?
 
-At the moment, we only have basic HTML knowledge, some JavaScript experience, and limited CSS foundations. Given these constraints and the limited time frame we have to work with, how will you design your vision?
+At the moment, we only have basic HTML knowledge, some JavaScript experience, limited CSS foundations. Given these resources and the limited time frame, how will you develop your vision?
 
 # Step 3) What is the Implementation Strategy?
 
