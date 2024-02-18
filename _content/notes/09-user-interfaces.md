@@ -29,7 +29,7 @@ To win, you need to impress the judges with your project's creativity, technical
 
 # Step 1) What are you trying to do?
 
-What are you trying to solve? How is your solution better than other possible solutions? What message is your solution conveying?
+What are you trying to solve? How is your solution better than all other possible solutions? What message is your solution conveying?
 
 ## What to ask yourself
 
