@@ -20,9 +20,10 @@ Floats alter the default layout of a web page, so we should probably start by re
 
 ```html
 <main class="page">
-  <header class="header">Header</header>
+  <nav class="header">Header</nav>
   <aside class="sidebar">Sidebar</aside>
   <section class="content">Content</section>
+  <footer class="footer">Footer</footer>
 </main>
 ```
 
@@ -78,6 +79,10 @@ This doesn’t just align the sidebar — it also tells surrounding elements tha
 |                        |
 |                        |
 |________________________|
+ ________________________
+|                        |
+|         footer         |
+|________________________|
 
 --------------------------
 ```
@@ -104,11 +109,86 @@ It’s as if the sidebar is inside the .content block, so any HTML markup in .co
 |                        |
 |                        |
 |________________________|
+ ________________________
+|                        |
+|         footer         |
+|________________________|
 
 --------------------------
 ```
 
 We are not constrained to floating elements to the left as in the above example, you can also try experimenting with `float: right;` , for example, what happens when we add the following?
+
+# Float in a Float
+
+Floated boxes always align to the left or right of their parent element – not their grandparent, not the <body> element, but their immediate parent. If instead we had a fixed width for our `<main class='page'>` element, the floated boxes inside of this element will float to the far left of its parent element. For Example:
+
+```css
+.page {
+  width: 900px; /* Add this line */
+  margin: 0 auto;
+}
+```
+
+Does the sidebar hug the left hand of the browser window, or of its parent?
+
+# Multiple Floats
+
+Let’s go back to our current magazine-style float a little bit more by adding an explicit width to our `.content` block:
+
+```css
+.content {
+  width: 500px;
+  height: 500px;
+  background-color: #f5cf8e;
+}
+```
+
+You can clearly see that our sidebar is being hugged by our `.content`.
+
+KEEP IN MIND: floats change the default flow behavior, allowing horizontal flow, ONLY for that element. For other elements to ALSO have different/horizontal flow, we need to make THOSE elements have the float property set as well. What happens when you apply the following floats?
+
+- sidebar: left, content: left
+- sidebar: left, content: right
+- sidebar: right, content: left
+- sidebar: right, content: right
+
+When you float multiple elements in the same direction, notice how they stack horizontally. As for our footer element, notice how the footer shows up in the top right, directly below `.header`. That’s because floated boxes are removed from the normal flow of the page. The height of our floated elements don’t contribute to the vertical position of the footer, so it simply sticks itself below the last element that wasn’t floated. We can see this more clearly by adding a red border around our `.page` element:
+
+```css
+.page {
+  border: 5px red solid; /* add this */
+  width: 100%;
+  margin: 0 auto;
+}
+```
+
+Notice how once a border is added, the border only surrounds the `.header` and `.footer` elements. The floated elements are being completely ignored !! When floating an element, it removes it from the normal flow of the document, which means that other elements in the document do not consider the floated element when calculating their heights or positions. How do we fix these issues with height? What happens if we want a layout like the below?
+
+```text
+
+--------------------------
+ ________________________
+|                        |
+|         header         |
+|                        |
+|________________________|
+ _______ ________________
+|       |                |
+|sidebar|                |
+|       |                |
+|_______|    content     |
+        |                |
+        |                |
+        |                |
+        |________________|
+ ________________________
+|                        |
+|         footer         |
+|________________________|
+
+--------------------------
+```
 
 # Clearing Floats
 
@@ -126,42 +206,43 @@ The above would clear any floats and would be as if the footer appeared directly
 
 ```html
 <head>
-    <title>Demo</title>
-    <style>
-        * {
-            border: 1px greenyellow solid
-        }
-        .page {
-            border: 5px red solid;
-            width: 100%;
-            margin: 0 auto;
-        }
-        .sidebar {
-            float:left;
-            width: 200px;
-            height: 300px;
-            background-color: red;
-        }
-        .content {
-            width: 500px;
-            height: 500px;
-            background-color: #F5CF8E;
-        }
-        .footer {
-            clear: both;
-            height: 200px;
-            background-color: lightblue;
-        }
-    </style>
+  <title>Demo</title>
+  <style>
+    * {
+        border: 1px greenyellow solid
+    }
+    .page {
+        border: 5px red solid;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .sidebar {
+        float:left;
+        width: 200px;
+        height: 300px;
+        background-color: red;
+    }
+    .content {
+        float:right;
+        width: 500px;
+        height: 500px;
+        background-color: #F5CF8E;
+    }
+    .footer {
+        clear: both;
+        height: 200px;
+        background-color: lightblue;
+    }
+  </style>
 </head>
 
 <body>
   <main class="page">
-        <nav class='menu'>Menu</nav>
-        <aside class="sidebar">Sidebar</aside>
-        <section class="content">Content</section>
-        <footer class="footer">Footer</footer>
-    </main>
+    <nav class='header'>Header</nav>
+    <aside class="sidebar">Sidebar</aside>
+    <section class="content">Content</section>
+    <footer class="footer">Footer</footer>
+  </main>
 </body>
 </html>
 ```
@@ -173,7 +254,7 @@ The word "both" means clear both left and right floats, however you can be more 
 Depending on the type of layout you’re trying to create, the prior example is completely valid. However let's say we want the menu and footer to expand to the full width of the screen? This is what is known as a full bleed layout and is a design concept where the content or an element extends all the way to the edge of the page or screen, without any margins or padding. In other words, the content "bleeds" off the edges, giving a seamless and continuous appearance. For example:
 
 ```html
-<nav class="menu">Menu</nav>
+<nav class="header">Header</nav>
 <main class="page">
   <aside class="sidebar">Sidebar</aside>
   <section class="content">Content</section>
@@ -182,21 +263,6 @@ Depending on the type of layout you’re trying to create, the prior example is 
 ```
 
 When we take out the menu and footer from the "page" element, they extend to the full width of the window !! which is exactly what we want!!!
-
-# Float in a Float
-
-Floated boxes always align to the left or right of their parent element – not their grandparent, not the <body> element, but their immediate parent. If instead we had a fixed width for our `<main class='page'>` element, the floated boxes inside of this element will float to the far left of its parent element. For Example:
-
-```css
-.page {
-  width: 900px; /* Add this line */
-  margin: 0 auto;
-}
-```
-
-Does the sidebar hug the left hand of the browser window, or of its parent?
-
-# Multiple Floats
 
 # Floats for Equal Columns
 
