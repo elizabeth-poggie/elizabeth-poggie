@@ -68,7 +68,7 @@ Now that we know the "who" we are solving this problem for and and "what" we are
 
 We are building VISION here, using tools beyond this class is encouraged because the best kind of problem solving is one that leverages creativity && innovation. Keep in mind, there may be MANY tools in your tool belt for developing a vision, however sometimes a more complex tool may not be the best strategy.
 
-Beauty can be found in simplicity, it's about staying true to the problem we are trying to solve.
+Beauty can be found in simplicity, it's about staying true to the problem we are trying to solve and who you are solving it for.
 
 # Step 4) What is the Impact?
 
@@ -79,7 +79,11 @@ Is your solution memorable? Are you actually solving the problem at hand? Will y
 - A bad solution that is memorable is better than an average solution that is forgettable.
 - We may strive for perfection in our solutions ALTHOUGH sometimes purposely being horrendous may actually be the correct strategy.
 
-Keep in mind, it's about your VISION, your TARGET AUDIENCE & staying true to what you are trying to solve. The quicker you do things that are high impact right away, the quicker you build trust with your TARGET AUDIENCE. As well, you need to be clear about risk assessment for trust to work. If milestones are not properly achieved in the proper time frame, how are you communicating that to your target audience?
+Keep in mind, it's about your VISION, your TARGET AUDIENCE & staying true to what you are trying to solve. The quicker you do things that are high impact right away, the quicker you build trust with your TARGET AUDIENCE.
+
+## You need to be clear about risk for trust to work.
+
+Unexpected results, changes, and setbacks are part of life, how are you managing those expectations? How do you communicate potential changes? What is the timing in which we communicate those changes?
 
 Unexpected results, changes, and set-backs are part of life, how are you managing those expectations? How do you communicate potential changes?
 
@@ -120,9 +124,13 @@ Afterwards we will regroup where a member of each group will need to present the
 - Your target audience
 - How your group's solution is unique
 - The solution's impact
-- and how this follows HTML semantics, CSS best practices && utilizes effective JavaScript :)
+- ...and how this follows HTML semantics, CSS best practices && utilizes effective JavaScript :)
 
 ## Evaluation Phase (5 minutes)
 
 - The project that solves the problem at hand, follows best practices, and has the highest impact will receive a prize.
 - Runner up will receive a smaller prize :^)
+
+# Acknowledgements
+
+The lecture content was inspired by Vikram Singh and Ben Tang, and was further adapted from my own experiences in hackathons.
