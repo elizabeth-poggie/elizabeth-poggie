@@ -42,7 +42,7 @@ Thinking about your target audience is essential because this will inform you on
 
 # Step 2) Crafting your vision
 
-Now that we know our target audience, you need to think about the project we are aiming to make.
+Now that you know our target audience, you need to think about the project you want to make.
 
 ## What to consider
 
@@ -53,22 +53,22 @@ Now that we know our target audience, you need to think about the project we are
 - What is the risk associated with the input and output of the vision? For example, will it actually take the time we are allocating to the task or will it take longer?
 - At what point do we actually make a difference? What is the first milestone where we start seeing that our hard work is actually paying off?
 
-At the moment, we only have basic HTML knowledge, some JavaScript experience, limited CSS foundations. Given these resources and the limited time frame, how will you develop your vision?
+At the moment, you only have basic HTML knowledge, some JavaScript experience, and limited CSS foundations. Given these resources and the limited time frame, how will you develop your vision?
 
 # Step 3) What is the Implementation Strategy?
 
-Now that we know the "who" we are solving this problem for and and "what" we are aiming to make, we need to start thinking about "how" we are going to do it.
+Now that you know the "who" you're solving this problem for and and "what" you're aiming to make, we need to start thinking about "how" you are going to do it.
 
 ## What to think about
 
 - Will your solution benefit from user interaction? (e.g. JavaScript)
 - Will this need a special design? (e.g. custom CSS, we are building a BRAND here.)
-- Will this have a specific layout? (e.g. special HTML semantics, how are we captivating our audience?)
+- Will this have a specific layout? (e.g. special HTML semantics, how are you captivating our audience?)
 - What other resources do we have available to us to work with? (e.g. what materials from your other classes can we blend into this work)
 
-We are building VISION here, using tools beyond this class is encouraged because the best kind of problem solving is one that leverages creativity && innovation. Keep in mind, there may be MANY tools in your tool belt for developing a vision, however sometimes a more complex tool may not be the best strategy.
+You are building VISION here, using tools beyond this class is encouraged because the best kind of problem solving is one that leverages creativity && innovation. Keep in mind, there may be MANY tools in your tool belt for developing a vision, however sometimes a more complex tool may not be the best strategy.
 
-Beauty can be found in simplicity, it's about staying true to the problem we are trying to solve and who you are solving it for.
+Beauty can be found in simplicity, it's about staying true to the problem you are trying to solve and who you are solving it for.
 
 # Step 4) What is the Impact?
 
@@ -79,13 +79,11 @@ Is your solution memorable? Are you actually solving the problem at hand? Will y
 - A bad solution that is memorable is better than an average solution that is forgettable.
 - We may strive for perfection in our solutions ALTHOUGH sometimes purposely being horrendous may actually be the correct strategy.
 
-Keep in mind, it's about your VISION, your TARGET AUDIENCE & staying true to what you are trying to solve. The quicker you do things that are high impact right away, the quicker you build trust with your TARGET AUDIENCE.
+The quicker you do things that are high impact right away, the quicker you build trust with your TARGET AUDIENCE.
 
 ## You need to be clear about risk for trust to work.
 
 Unexpected results, changes, and setbacks are part of life, how are you managing those expectations? How do you communicate potential changes? What is the timing in which we communicate those changes?
-
-Unexpected results, changes, and set-backs are part of life, how are you managing those expectations? How do you communicate potential changes?
 
 # In-Class Exercise
 
