@@ -30,11 +30,12 @@ interface IProps {
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *
- * - Course
- *    - Computer Science @ John Abbott College
+ * - Computer Science @ John Abbott College
+ *    - Course
  *      - Lectures
  *      - Labs, Exercises
- *    - UnderGrad @ McGill University
+ * - UnderGrad @ McGill University
+ *    - Course
  *      - Lectures
  *      - Assignments, Tests, Projects
  *
@@ -60,6 +61,7 @@ interface IProps {
  * - Note
  *    - slug       (e.g. 2024-01-26-Intro-to-Programming - can be automated with a script)
  *    - type             (e.g. "Lecture", "Strategy", "Template", "Assignment", "Lab", "Art" ....)
+ *    - category        (e.g. User Interfaces, Intro to Programming)
  *    - content
  *    - date of creation        (e.g. in UTC - can be automated with a script)
  *    - date of update              (in case i re use my notes at all lol)
