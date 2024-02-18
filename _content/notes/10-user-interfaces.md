@@ -30,7 +30,7 @@ and let's give all elements a box to see how everything is just a box:
 
 ```css
 * {
-  border: 1px red solid;
+  border: 1px greenyellow solid;
 }
 ```
 
@@ -45,11 +45,21 @@ The CSS float property gives us control over the horizontal position of an eleme
   float: left; /* add this */
   width: 200px;
   height: 300px;
-  background-color: black;
+  background-color: red;
 }
 ```
 
-However, this doesn’t just align the sidebar — it also tells surrounding elements that they can flow around the sidebar instead of beginning underneath it. This give's a magazine-style layout:
+This doesn’t just align the sidebar — it also tells surrounding elements that they can flow around the sidebar instead of beginning underneath it. To see this idea come to life, let's add some styling to the content:
+
+```css
+.content {
+  width: 500px;
+  height: 500px;
+  background-color: #f5cf8e;
+}
+```
+
+... so that when we apply the prior styling, we get the following magazine-style layout:
 
 ```text
 
@@ -72,7 +82,7 @@ However, this doesn’t just align the sidebar — it also tells surrounding ele
 --------------------------
 ```
 
-It’s as if the sidebar is inside the .content block, so any HTML markup in .content would wrap around the sidebar’s box. However, if we unset the float property, the block-level elements will go back to stacking on top of each other:
+It’s as if the sidebar is inside the .content block, so any HTML markup in .content would wrap around the sidebar’s box !! However, if we unset the float property, the block-level elements will go back to stacking on top of each other:
 
 ```text
 
@@ -91,28 +101,104 @@ It’s as if the sidebar is inside the .content block, so any HTML markup in .co
 |                        |
 |         content        |
 |                        |
+|                        |
+|                        |
 |________________________|
 
 --------------------------
 ```
 
-We are not constrained to floating elements to the left as in the above example, you can also try experimenting with `float: right;` :^)
+We are not constrained to floating elements to the left as in the above example, you can also try experimenting with `float: right;` , for example, what happens when we add the following?
 
-## Clearing floats
+# Clearing Floats
 
-"Clearing" a float is when you tell a block to ignore any floats that appear before it. instead of flowing around the floated box, a cleared element always appears after any floats. it's like forcing a block back into the default vertical flow of the page. So for example:
+"Clearing" a float is when you tell a block to ignore any floats that appear before it. Instead of flowing around the floated box, a cleared element always appears after any floats. It's like forcing a block back into the default vertical flow of the page. So for example:
 
 ```css
-footer {
+.footer {
   clear: both; /* add this */
   height: 200px;
-  background-color: black;
+  background-color: blue;
 }
 ```
 
-The above would clear any floats and would be as if the footer appeared directly below anything on the vertical alignment. The word "both" means clear both left and right floats.
+The above would clear any floats and would be as if the footer appeared directly below anything in the vertical alignment. For example, if we add a footer to our previous work, what would our layout look like? Copy and paste the following in your own sandbox:
 
-## Floats for Equal Columns
+```html
+<head>
+    <title>Demo</title>
+    <style>
+        * {
+            border: 1px greenyellow solid
+        }
+        .page {
+            border: 5px red solid;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .sidebar {
+            float:left;
+            width: 200px;
+            height: 300px;
+            background-color: red;
+        }
+        .content {
+            width: 500px;
+            height: 500px;
+            background-color: #F5CF8E;
+        }
+        .footer {
+            clear: both;
+            height: 200px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+  <main class="page">
+        <nav class='menu'>Menu</nav>
+        <aside class="sidebar">Sidebar</aside>
+        <section class="content">Content</section>
+        <footer class="footer">Footer</footer>
+    </main>
+</body>
+</html>
+```
+
+The word "both" means clear both left and right floats, however you can be more selective with `clear: left` and `clear: right`.
+
+## Full-bleed Layouts
+
+Depending on the type of layout you’re trying to create, the prior example is completely valid. However let's say we want the menu and footer to expand to the full width of the screen? This is what is known as a full bleed layout and is a design concept where the content or an element extends all the way to the edge of the page or screen, without any margins or padding. In other words, the content "bleeds" off the edges, giving a seamless and continuous appearance. For example:
+
+```html
+<nav class="menu">Menu</nav>
+<main class="page">
+  <aside class="sidebar">Sidebar</aside>
+  <section class="content">Content</section>
+</main>
+<footer class="footer">Footer</footer>
+```
+
+When we take out the menu and footer from the "page" element, they extend to the full width of the window !! which is exactly what we want!!!
+
+# Float in a Float
+
+Floated boxes always align to the left or right of their parent element – not their grandparent, not the <body> element, but their immediate parent. If instead we had a fixed width for our `<main class='page'>` element, the floated boxes inside of this element will float to the far left of its parent element. For Example:
+
+```css
+.page {
+  width: 900px; /* Add this line */
+  margin: 0 auto;
+}
+```
+
+Does the sidebar hug the left hand of the browser window, or of its parent?
+
+# Multiple Floats
+
+# Floats for Equal Columns
 
 To create 3 columns in your content, follow the below recipe
 
@@ -147,55 +233,6 @@ Want a grid in the parent instead of 3 columns? No problem! When there isn't eno
   <div class="column"></div>
   <div class="column"></div>
 </div>
-```
-
-## Float in a Float
-
-Let's say you want to create the following layout:
-
-```text
---------------------------
- _______
-|       |    -------------
-|       |    -------------
-|       |    -------------
-|_______|    -------------
-
---------------------------
---------------------------
---------------------------
---------------------------
-
---------------------------
-```
-
-In this instance, you can nest floats inside of each other. For example:
-
-```html
-<!-- Step 1) create the html layout and make sure you image is in the content class -->
-<main>
-  <section class="content">
-    <img class="content-image" />
-    <p>wow</p>
-    <p>wowowowowowowowowowowowowowowoowowwowoowowwoowowowowowowowowoowo</p>
-    <p>wow wow wow wow</p>
-  </section>
-</main>
-```
-
-```css
-/* Step 2) add styling */
-.content {
-  padding: 20px;
-}
-
-.content-image {
-  float: left;
-  width: 300px;
-  height: 200px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-}
 ```
 
 # Intro to Flexbox
