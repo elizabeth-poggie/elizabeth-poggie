@@ -1,7 +1,7 @@
 ---
 # General Information
 title: "Lecture 6"
-subtitle: "Fonts & JavaScript"
+subtitle: "Fonts & Intro to JavaScript"
 date: "2024-02-06T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"

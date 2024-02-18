@@ -1,7 +1,7 @@
 ---
 # General Information
 title: "Lecture 9"
-subtitle: "In-Class Hackathon"
+subtitle: "In-class Hackathon"
 date: "2024-02-16T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
