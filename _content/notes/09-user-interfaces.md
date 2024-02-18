@@ -79,7 +79,7 @@ Is your solution memorable? Are you actually solving the problem at hand? Will y
 - A bad solution that is memorable is better than an average solution that is forgettable.
 - We may strive for perfection in our solutions ALTHOUGH sometimes purposely being horrendous may actually be the correct strategy.
 
-KEEP IN MIND: The quicker you do things that are HIGH IMPACT, the quicker you build trust with your TARGET AUDIENCE.
+The quicker you do things that are HIGH IMPACT, the quicker you build trust with your TARGET AUDIENCE.
 
 ## You need to be clear about risk for trust to work.
 
