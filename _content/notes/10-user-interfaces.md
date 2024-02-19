@@ -5,7 +5,7 @@ subtitle: "Floats"
 date: "2024-02-19T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
-slides: ""
+slides: "/assets/notes/W24-user-interfaces/slides/10.pdf"
 ---
 
 # Motivation
