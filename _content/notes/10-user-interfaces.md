@@ -51,7 +51,7 @@ The above html & styling forms a single column layout, however adding something 
 
 In CSS, the "float" property is used to specify whether an element should be floated to the left or right within its containing element. This property gives us control over the horizontal position of an element, so by applying the property `float: left;` and “floating” an element to the left, we’re telling the browser to align it to the left side of the page.
 
-When we float an element, it is taken out of the normal flow of the document, which content content to "flow" around it:
+When we float an element, it is taken out of the normal flow of the document, which allows content to "flow" around it:
 
 ```css
 .sidebar {
@@ -74,8 +74,6 @@ To see this idea come to life, let's add some styling to the content:
 ... so that when we apply the prior styling, we get the following magazine-style layout:
 
 ```text
-
---------------------------
  ________________________
 |                        |
 |         header         |
@@ -95,14 +93,12 @@ To see this idea come to life, let's add some styling to the content:
 |         footer         |
 |________________________|
 
---------------------------
+
 ```
 
 It’s as if the sidebar is inside the .content block, so any HTML markup in .content would wrap around the sidebar’s box !! However, if we unset the float property, the block-level elements will go back to stacking on top of each other:
 
 ```text
-
---------------------------
  ________________________
 |                        |
 |         header         |
@@ -125,7 +121,7 @@ It’s as if the sidebar is inside the .content block, so any HTML markup in .co
 |         footer         |
 |________________________|
 
---------------------------
+
 ```
 
 What happens when we apply the property `float: right;` to content?
@@ -164,7 +160,29 @@ KEEP IN MIND: floats change the default flow behavior, allowing horizontal flow,
 - sidebar: right, content: left
 - sidebar: right, content: right
 
-When you float multiple elements in the same direction, notice how they stack horizontally. As for our `.footer` element, notice how the `.footer` shows up in the top right, directly below `.header`. That’s because floated boxes are REMOVED from the normal flow of the page. The height of our floated elements don’t contribute to the vertical position of the footer, so it simply sticks itself below the last element that wasn’t floated. We can see this more clearly by adding a red border around our `.page` element:
+When you float multiple elements in the same direction, notice how they stack horizontally. As for our `.footer` element, notice how the `.footer` shows up in the top right, directly below `.header`, demonstrated in the following diagram:
+
+```text
+ ________________________
+|                        |
+|         header         |
+|                        |
+|________________________|
+ _______ ________________
+|       |                |
+|sidebar|     footer     |
+|       |________________|
+|_______|________________
+|                        |
+|                        |
+|        content         |
+|                        |
+|                        |
+|________________________|
+
+```
+
+That’s because floated boxes are REMOVED from the normal flow of the page. The height of our floated elements don’t contribute to the vertical position of the footer, so it simply sticks itself below the last element that wasn’t floated. We can see this more clearly by adding a red border around our `.page` element:
 
 ```css
 .page {
@@ -179,8 +197,6 @@ When a border is added, notice how the border only surrounds the `.header` and `
 SOOO, How do we fix these issues with height? What happens if we want a layout below?
 
 ```text
-
---------------------------
  ________________________
 |                        |
 |         header         |
@@ -200,7 +216,7 @@ SOOO, How do we fix these issues with height? What happens if we want a layout b
 |         footer         |
 |________________________|
 
---------------------------
+
 ```
 
 # Clearing Floats
@@ -279,10 +295,23 @@ When we take out the `.header` and `.footer` from the `.page` element, they exte
 
 # Floats for Equal Columns
 
-To create 3 columns in your content, follow the below recipe
+How would we create this layout?
+
+```text
+ _______     _______     _______
+|       |   |       |   |       |
+|       |   |       |   |       |
+|       |   |       |   |       |
+|   1   |   |   2   |   |   3   |
+|       |   |       |   |       |
+|       |   |       |   |       |
+|_______|   |_______|   |_______|
+
+```
+
+Step 1) create this general layout:
 
 ```html
-<!-- Step 1) create this general layout -->
 <div class="parent">
   <div class="column"></div>
   <div class="column"></div>
@@ -290,8 +319,9 @@ To create 3 columns in your content, follow the below recipe
 </div>
 ```
 
+Step 2) style the column like this:
+
 ```css
-/* Step 2) style the column like this */
 .column {
   float: left;
   width: 31%;
@@ -300,10 +330,9 @@ To create 3 columns in your content, follow the below recipe
 }
 ```
 
-Want a grid in the parent instead of 3 columns? No problem! When there isn't enough room to stack a floated element horizontally, it pops down to the next line. All we need to do is add more column elements :)
+BOOM, done!HOWEVER, Want a grid in the parent instead of 3 columns? No problem! When there isn't enough room to stack a floated element horizontally, it pops down to the next line. All we need to do is add more column elements:
 
 ```html
-<!-- Step 3) Add more columns -->
 <div class="parent">
   <div class="column"></div>
   <div class="column"></div>
