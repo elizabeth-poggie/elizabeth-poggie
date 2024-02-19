@@ -1,7 +1,7 @@
 ---
 # General Information
 title: "Lecture 9"
-subtitle: "In-Class Hackathon"
+subtitle: "In-class Hackathon"
 date: "2024-02-16T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
@@ -29,7 +29,7 @@ To win, you need to impress the judges with your project's creativity, technical
 
 # Step 1) What are you trying to do?
 
-What are you trying to solve? How is your solution better than other possible solutions? What message is your solution conveying?
+What are you trying to solve? How is your solution better than all other possible solutions? What message is your solution conveying?
 
 ## What to ask yourself
 
@@ -42,33 +42,33 @@ Thinking about your target audience is essential because this will inform you on
 
 # Step 2) Crafting your vision
 
-Now that we know our target audience, you need to think about the constraints in which you are developing your idea.
+Now that you know your target audience, you need to think about the project you want to make.
 
 ## What to consider
 
 - How much effort will solving this problem take? How long will it take?
 - What is the meaningful impact of the vision?
-- How do we demonstrate the magnitude of the work required is proportional to the magnitude of the impact? (e.g. Will this even pay off? Is it worth the time and effort?)
-- How can we be sure if we address these problems, we won't run into even more problems later down the line?
-- What is the risk associated with the input and output of the vision? For example, will it actually take the time we are allocating to the task or will it take longer?
-- At what point do we actually make a difference? What is the first milestone where we start seeing that our hard work is actually paying off?
+- How do you demonstrate the magnitude of the work required is proportional to the magnitude of the impact? (e.g. Will this even pay off? Is it worth the time and effort?)
+- How can you be sure if you address these problems, you won't run into even more problems later down the line?
+- What is the risk associated with the input and output of the idea? For example, will it actually take the time we are allocating to the task or will it take longer?
+- At what point do you actually make a difference? What is the first milestone where you start seeing that your hard work is actually paying off?
 
-At the moment, we only have basic HTML knowledge, some JavaScript experience, and limited CSS foundations. Given these constraints and the limited time frame we have to work with, how will you design your vision?
+At the moment, you only have basic HTML knowledge, some JavaScript experience, and limited CSS foundations. Given these resources and the limited time frame, how will you develop your vision?
 
 # Step 3) What is the Implementation Strategy?
 
-Now that we know the "who" we are solving this problem for and and "what" we are aiming to make, we need to start thinking about "how" we are going to do it.
+Now that you know the "who" you're solving this problem for and and "what" you're aiming to make, we need to start thinking about "how" you are going to do it.
 
 ## What to think about
 
 - Will your solution benefit from user interaction? (e.g. JavaScript)
 - Will this need a special design? (e.g. custom CSS, we are building a BRAND here.)
-- Will this have a specific layout? (e.g. special HTML semantics, how are we captivating our audience?)
+- Will this have a specific layout? (e.g. special HTML semantics, how are you captivating your audience?)
 - What other resources do we have available to us to work with? (e.g. what materials from your other classes can we blend into this work)
 
-We are building VISION here, using tools beyond this class is encouraged because the best kind of problem solving is one that leverages creativity && innovation. Keep in mind, there may be MANY tools in your tool belt for developing a vision, however sometimes a more complex tool may not be the best strategy.
+You are building VISION here, using tools beyond this class is encouraged because the best kind of problem solving is one that leverages creativity && innovation. Keep in mind, there may be MANY tools in your tool belt for developing a vision, however sometimes a more complex tool may not be the best strategy.
 
-Beauty can be found in simplicity, it's about staying true to the problem we are trying to solve.
+Beauty can be found in simplicity, it's about staying true to the problem you are trying to solve and who you are solving it for.
 
 # Step 4) What is the Impact?
 
@@ -79,9 +79,11 @@ Is your solution memorable? Are you actually solving the problem at hand? Will y
 - A bad solution that is memorable is better than an average solution that is forgettable.
 - We may strive for perfection in our solutions ALTHOUGH sometimes purposely being horrendous may actually be the correct strategy.
 
-Keep in mind, it's about your VISION, your TARGET AUDIENCE & staying true to what you are trying to solve. The quicker you do things that are high impact right away, the quicker you build trust with your TARGET AUDIENCE. As well, you need to be clear about risk assessment for trust to work. If milestones are not properly achieved in the proper time frame, how are you communicating that to your target audience?
+The quicker you do things that are HIGH IMPACT, the quicker you build trust with your TARGET AUDIENCE.
 
-Unexpected results, changes, and set-backs are part of life, how are you managing those expectations? How do you communicate potential changes?
+## You need to be clear about risk for trust to work.
+
+Unexpected results, changes, and setbacks are part of life, how are you managing those expectations? How do you communicate potential changes? What is the timing in which we communicate those changes?
 
 # In-Class Exercise
 
@@ -120,9 +122,13 @@ Afterwards we will regroup where a member of each group will need to present the
 - Your target audience
 - How your group's solution is unique
 - The solution's impact
-- and how this follows HTML semantics, CSS best practices && utilizes effective JavaScript :)
+- ...and how this follows HTML semantics, CSS best practices && utilizes effective JavaScript :)
 
 ## Evaluation Phase (5 minutes)
 
 - The project that solves the problem at hand, follows best practices, and has the highest impact will receive a prize.
 - Runner up will receive a smaller prize :^)
+
+# Acknowledgements
+
+The lecture content was inspired by Vikram Singh and Ben Tang, and was further adapted from my own experiences in hackathons.

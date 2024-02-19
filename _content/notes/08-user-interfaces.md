@@ -1,7 +1,7 @@
 ---
 # General Information
 title: "Lecture 8"
-subtitle: "Intro to Javascript"
+subtitle: "Javascript"
 date: "2024-02-12T15:30:35Z"
 course: "User Interfaces"
 type: "Lecture"
