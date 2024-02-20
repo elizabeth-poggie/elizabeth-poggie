@@ -145,7 +145,8 @@ while (i < 5) { // Step 2
 ## Idea
 
 ```cs
-"Guess the number between 1 and 1000. Fail, and the game will never end."
+"Guess the number between 1 and 1000."
+"Fail, and the game will never end."
 ```
 
 ## From idea to procedure
@@ -186,7 +187,8 @@ How would you improve the above program?
 Write the following idea in flowgorithm:
 
 ```cs
-"If I am playing rock, paper, scissors with a computer, I should only be allowed to play a valid move"
+"If I am playing rock, paper, scissors with a computer"
+"I should only be allowed to play a valid move"
 ```
 
 ## What does this look like in C# ?
