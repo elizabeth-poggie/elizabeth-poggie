@@ -59,7 +59,9 @@ Boolean logic and conditional statements are cool and all, however useless unles
 
 ## Idea
 
+```cs
 "I should make myself a snack if I have bread AND peanut butter."
+```
 
 How do we turn this idea into a program? How do i make a snack?
 
@@ -134,7 +136,7 @@ And just like that we have a program :)
 ## Idea
 
 ```cs
-// "I should go outside if it is NOT raining AND if I have finished my work."
+"I should go outside if it is NOT raining AND if I have finished my work."
 ```
 
 ## From Idea to Procedure
@@ -194,11 +196,13 @@ if (shouldBeOutside) {
 
 ## Idea
 
-Now it's your turn! Develop a Flowgorithm program that determines if someone should get a ticket if their speed is above the speed limit. Once that is done, translate that into C#.
+Now it's your turn ...
 
-For those that feel confident in their Flowgorithm abilities, you can move directly to C# :)
+```cs
+"I should get a ticket if I am above the speed limit."
+```
 
-## What you will need for C#
+## What you may need for C#
 
 ```cs
 // Console Output
@@ -214,12 +218,3 @@ int.Parse("1");
 - What do we need to figure out in order to decide whether we should give someone a ticket? How do we divide that into steps?
 - What variables do we need to declare in our program?
 - What is the mathematical `boolean` expression for this idea?
-
-## Expected inputs and outputs
-
-- if someone's speed is above the speed limit, the program should output `"ticket for YOU, be more careful next time"`.
-- if someone's speed is under the speed limit, the program should output `"Keep doing what you're doing. Have a lovely day <3"`
-
-# Next Class ...
-
-Input validation, more on constants, && intro to LOOPS
