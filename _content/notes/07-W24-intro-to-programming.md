@@ -56,11 +56,11 @@ The above block of code is repeatedly executed as long as the condition evaluate
 
 What does this look like in Flowgorithm? Let's try to see the difference between `if` and `while`
 
-## Infintie loops
+# Infintie loops
 
 Be careful when writing a loop! It is important to make sure that the loop can eventually terminate and not execute forever.
 
-## Structuring our loops (to end)
+## Structuring While loops (to end)
 
 Very often in loops, we will do three things:
 
@@ -274,6 +274,32 @@ As a general rule of thumb though:
 - use `for` loops when the condition depends on the value of an integer, and the number of iterations is fixed or easily computable. (when you need a counter, might as well use built in functionality)
 - use `while` loops when the number of iterations is indefinite. (input validation, secret number guessing)
 
+# Structuring For loops (to end)
+
+Let's break down the following syntax ...
+
+```cs
+for (int i = 0; i < 5 ; i++) {
+  // some code
+}
+```
+
+... i can rewrite this as ...
+
+```cs
+for (initializer; condition ; update) {
+  // some code
+}
+```
+
+... let's break it down
+
+## To summarize
+
+- The `initializer` is executed once, before the loop starts.
+- The `condition` is checked at the beginning of each iteration. If it evaluates to false, the loop ends. Otherwise, the body is repeated.
+- The `update` is executed at the end of each iteration.
+
 # From bad to best
 
 ## Our original idea
@@ -337,3 +363,7 @@ for (int i = 0; i < 5 ; i++) {
   Console.WriteLine("HI");
 }
 ```
+
+# Exercise 2
+
+Design a flowchart/program to ask the user to enter 5 integer numbers and find their sum.
