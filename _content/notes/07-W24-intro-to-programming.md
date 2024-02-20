@@ -10,7 +10,7 @@ slides: ""
 
 # TODO
 
-A Reminder: Test 1 covers lectures 1 - 6 and lab 1, however giving out a lab now for extra practice for those that feel like they ned it and will only be due after the break.
+A Reminder: Test 1 covers lectures 1 - 6 and lab 1, however I am going to start introducing new topics. Why? It gives y'all more hands-on experience building programs (good for test). As well, these concepts might take a little extra time to digest, so we're taking the slow and steady route as opposed to me shoving this down your throat after the holidays lol.
 
 # Introduction
 
@@ -76,17 +76,7 @@ Very often in loops, we will do three things:
 "output a welcoming message 5 times."
 ```
 
-What would the procedure look like? How would this look in Flowgorithm? Let's give it a try.
-
-# Building a (better) program
-
-## Idea
-
-```cs
-"output a welcoming message 5 times."
-```
-
-first, let's think about how this would look if we only used `if` statements
+First, let's think about how this would look if we only used `if` statements. How would this look in Flowgorithm? What about C#? Lets try.
 
 ```cs
 int i = 0;
@@ -116,7 +106,9 @@ if(i < 5) { // dead end
 }
 ```
 
-## From idea to procedure
+## Building a (better) program
+
+Let's try this now with ITERATION :^)
 
 What are our variables?
 
@@ -270,7 +262,7 @@ if(i < 5) { // dead end
 }
 ```
 
-As a general rule of thumb though:
+As a general rule of thumb tho:
 
 - use `for` loops when the condition depends on the value of an integer, and the number of iterations is fixed or easily computable. (when you need a counter, might as well use built in functionality)
 - use `while` loops when the number of iterations is indefinite. (input validation, secret number guessing)
@@ -293,9 +285,7 @@ for (initializer; condition ; update) {
 }
 ```
 
-... let's break it down
-
-## To summarize
+... let's break it down:
 
 - The `initializer` is executed once, before the loop starts.
 - The `condition` is checked at the beginning of each iteration. If it evaluates to false, the loop ends. Otherwise, the body is repeated.
