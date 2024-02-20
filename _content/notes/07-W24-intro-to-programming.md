@@ -56,11 +56,11 @@ The above block of code is repeatedly executed as long as the condition evaluate
 
 What does this look like in Flowgorithm? Let's try to see the difference between `if` and `while`
 
-# Infintie loops
+## Infintie loops
 
 Be careful when writing a loop! It is important to make sure that the loop can eventually terminate and not execute forever.
 
-# Structuring our loops (to end)
+## Structuring our loops (to end)
 
 Very often in loops, we will do three things:
 
@@ -84,6 +84,36 @@ What would the procedure look like? How would this look in Flowgorithm? Let's gi
 
 ```cs
 "output a welcoming message 5 times."
+```
+
+first, let's think about how this would look if we only used `if` statements
+
+```cs
+int i = 0;
+if(i < 5) {
+  Console.WriteLine("HI");
+  i = i + 1;
+}
+if(i < 5) {
+  Console.WriteLine("HI");
+  i = i + 1;
+}
+if(i < 5) {
+  Console.WriteLine("HI");
+  i = i + 1;
+}
+if(i < 5) {
+  Console.WriteLine("HI");
+  i = i + 1;
+}
+if(i < 5) {
+  Console.WriteLine("HI");
+  i = i + 1;
+}
+if(i < 5) { // dead end
+  Console.WriteLine("HI");
+  i = i + 1;
+}
 ```
 
 ## From idea to procedure
@@ -159,10 +189,6 @@ while (guess != secret) { // Step 2
 
 How would you improve the above program?
 
-# Input Validation
-
-Input validation is the process of ensuring that user input is valid. While loops are a popular choice used to perform input validation.
-
 # Exercise 1
 
 Write the following idea in flowgorithm:
@@ -181,3 +207,119 @@ while(move != "rock" && move != "paper" && move != "scissors") {
 }
 Console.WriteLine("yay!!");
 ```
+
+# Input Validation
+
+Input validation is the process of ensuring that user input is valid. While loops are a popular choice used to perform input validation.
+
+## Example with TryParse
+
+```cs
+
+int number; bool valid;
+Console.WriteLine("Please enter an integer"); valid = int.TryParse(Console.ReadLine(), out number);
+while (!valid)
+{
+	   Console.WriteLine("Error: number is not valid");
+	   valid = int.TryParse(Console.ReadLine(), out number);
+}
+Console.WriteLine("The number is {0}", number);
+
+```
+
+# For loops
+
+A for loop is a while loop with a built-in counter. the `while` loop and the `for` loops are equivalent. For example, the below methods are equivalent
+
+```cs
+int i = 0;
+while (i < 5) {
+  // some code
+  i++;
+}
+```
+
+```cs
+for (int i = 0; i < 5 ; i++) {
+  // some code
+}
+```
+
+which is (again) is just another way of writing this:
+
+```cs
+int i = 0;
+if(i < 5) {
+  i = i + 1;
+}
+if(i < 5) {
+  i = i + 1;
+}
+if(i < 5) {
+  i = i + 1;
+}
+if(i < 5) {
+  i = i + 1;
+}
+if(i < 5) {
+  i = i + 1;
+}
+if(i < 5) { // dead end
+  i = i + 1;
+}
+```
+
+As a general rule of thumb though:
+
+- use `for` loops when the condition depends on the value of an integer, and the number of iterations is fixed or easily computable. (when you need a counter, might as well use built in functionality)
+- use `while` loops when the number of iterations is indefinite. (input validation, secret number guessing)
+
+# From bad to best
+
+## Our original idea
+
+```cs
+"output a welcoming message 5 times."
+```
+
+## If statements
+
+```cs
+int i = 0;
+if(i < 5) {
+  Console.WriteLine("HI");
+  i = i + 1;
+}
+if(i < 5) {
+  Console.WriteLine("HI");
+  i = i + 1;
+}
+if(i < 5) {
+  Console.WriteLine("HI");
+  i = i + 1;
+}
+if(i < 5) {
+  Console.WriteLine("HI");
+  i = i + 1;
+}
+if(i < 5) {
+  Console.WriteLine("HI");
+  i = i + 1;
+}
+if(i < 5) { // dead end
+  Console.WriteLine("HI");
+  i = i + 1;
+}
+```
+
+## While Loop
+
+```cs
+int i = 0; // Step 1
+while (i < 5) { // Step 2
+  Console.WriteLine("HI");
+  i++; // Step 3
+} // ... and loop
+```
+
+## For Loop
