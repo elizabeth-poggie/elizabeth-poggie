@@ -197,7 +197,7 @@ Write the following idea in flowgorithm:
 "If I am playing rock, paper, scissors with a computer, I should only be allowed to play a valid move"
 ```
 
-## What does this look like in C#
+## What does this look like in C# ?
 
 ```cs
 string move = Console.ReadLine();
@@ -216,7 +216,8 @@ Input validation is the process of ensuring that user input is valid. While loop
 
 ```cs
 
-int number; bool valid;
+int number;
+bool valid;
 Console.WriteLine("Please enter an integer"); valid = int.TryParse(Console.ReadLine(), out number);
 while (!valid)
 {
@@ -364,6 +365,48 @@ for (int i = 0; i < 5 ; i++) {
 }
 ```
 
+# Another program
+
+## Idea
+
+```cs
+"A computer should output all even numbers between 1 and 20."
+```
+
+## From idea to Flowgorithm
+
+Lets give it a shot.
+
+## From Flowgorithm to program
+
+```cs
+for (int i = 2; i <= 20 ; i = i + 2) {
+	Console.WriteLine(i);
+}
+```
+
 # Exercise 2
 
-Design a flowchart/program to ask the user to enter 5 integer numbers and find their sum.
+Write the following idea in flowgorithm:
+
+```cs
+"If I enter 5 integer numbers, the computer should output the sum."
+```
+
+## What does this look like in C# ?
+
+```cs
+int sum = 0;
+for (int i = 0; i < 5 ; i++) {
+	int number;
+	bool valid = int.TryParse(Console.ReadLine(), out number);
+	while (!valid)
+	{
+		   Console.WriteLine("not valid lol");
+		   valid = int.TryParse(Console.ReadLine(), out number);
+	}
+	sum = sum + number;
+}
+Console.WriteLine(sum);
+
+```
