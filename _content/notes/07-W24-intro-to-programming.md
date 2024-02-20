@@ -102,11 +102,11 @@ How do we make a condition that eventually ends?
 
 - We want the loop to only run FIVE times. Let's make the condition such that if `counter > 5` we exit our loop
 
-## From Procedure to Flowgorithm
+## From procedure to Flowgorithm
 
 Let's try it. What happens if i change the condition? What happens if i change the initial number?
 
-## From Flowgorithm to Program
+## From Flowgorithm to program
 
 Notice how we are testing the outcome of the condition prior to executing any statements
 
@@ -138,3 +138,46 @@ What's the procedure?
 
 - Step 1) Get user input
 - Step 2) Create a condition that compares user input with the `secretNumber`
+- Step 3) get user input again
+
+## From procedure to Flowgorithm
+
+Let's give it a try. What happens if we enter below 0 and above 1000? How do we prevent the user from entering inputs within those bounds? Let's add an `if` statement.
+
+## From Flowgorithm to program
+
+```cs
+int secret = 42;
+int guess = int.Parse(Console.ReadLine()); // Step 1
+while (guess != secret) { // Step 2
+	if (!(guess >= 0 && guess <= 1000)) {
+		Console.WriteLine("enter a valid number plz");
+	}
+    guess = int.Parse(Console.ReadLine()); // Step 3
+}
+```
+
+How would you improve the above program?
+
+# Input Validation
+
+Input validation is the process of ensuring that user input is valid. While loops are a popular choice used to perform input validation.
+
+# Exercise 1
+
+Write the following idea in flowgorithm:
+
+```cs
+"If I am playing rock, paper, scissors with a computer, I should only be allowed to play a valid move"
+```
+
+## What does this look like in C#
+
+```cs
+string move = Console.ReadLine();
+while(move != "rock" && move != "paper" && move != "scissors") {
+  Console.WriteLine("Try again lol");
+  move = Console.ReadLine();
+}
+Console.WriteLine("yay!!");
+```
