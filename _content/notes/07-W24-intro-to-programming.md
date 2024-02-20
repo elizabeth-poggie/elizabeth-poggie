@@ -282,7 +282,7 @@ As a general rule of thumb though:
 "output a welcoming message 5 times."
 ```
 
-## If statements
+## If statements (bad)
 
 ```cs
 int i = 0;
@@ -312,14 +312,28 @@ if(i < 5) { // dead end
 }
 ```
 
-## While Loop
+## While Loop in Flowgorithm (not bad)
+
+demo.
+
+## For Loop in Flowgorithm (could do better)
+
+demo.
+
+## While Loop in C# (better)
 
 ```cs
-int i = 0; // Step 1
-while (i < 5) { // Step 2
+int i = 0;
+while (i < 5) {
   Console.WriteLine("HI");
-  i++; // Step 3
-} // ... and loop
+  i++;
+}
 ```
 
-## For Loop
+## For Loop in C# (best)
+
+```cs
+for (int i = 0; i < 5 ; i++) {
+  Console.WriteLine("HI");
+}
+```
