@@ -3,7 +3,7 @@
 category: "User Interfaces"
 number: 2
 type: "Lecture"
-title: "More on Basic HTML Elements"
+title: "Basic HTML Elements"
 created: "2024-01-30T12:17:29Z"
 link:
   { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/02.pdf" }

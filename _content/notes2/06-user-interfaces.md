@@ -3,7 +3,7 @@
 category: "User Interfaces"
 number: 6
 type: "Lecture"
-title: "Fonts & Intro to JavaScript"
+title: "Fonts"
 created: "2024-02-06T12:17:29Z"
 link:
   { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/06.pdf" }
