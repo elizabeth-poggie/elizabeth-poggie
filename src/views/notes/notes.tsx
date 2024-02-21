@@ -55,14 +55,6 @@ interface IProps {
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 
-/**
- * Sorters
- *
- * - Latest
- * - Year: 2024, 2023, 2022, ...
- *
- */
-
 // List of supported filters lol
 export const filterToColorMap = {
   // Categories

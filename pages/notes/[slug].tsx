@@ -3,7 +3,6 @@ import Meta from "../../src/views/meta/meta";
 import { getAllNotes, getBySlug, noteDirectory } from "../../src/utils/api";
 import { INote } from "../../src/interfaces/note";
 import { NoteDetails } from "../../src/views/note-details/note-details";
-import { sortByCreatedAscending } from "../../src/utils/helpers/sortByDate";
 
 export interface relatedNotes {
   type: string;
@@ -16,23 +15,34 @@ interface Props {
   secondaryRelatedNotes?: relatedNotes[];
 }
 
-/**
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *
- * - Family
- *    - Category
- *      - Color
- *      - Primary types []              (e.g. left column in Note)
- *      - Secondary types []            (e.g. right column in Note)
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- */
+type CategoryProperties = {
+  color: string;
+  primaryRelatedTypes?: string[];
+  secondaryRelatedTypes?: string[];
+};
+
+type SupportedCategories = "User Interfaces" | "Intro to Programming";
+
+type CategoryMap = {
+  [key in SupportedCategories]: CategoryProperties;
+};
+
+export const categoryMap: CategoryMap = {
+  "User Interfaces": {
+    color: "green",
+    primaryRelatedTypes: ["Lecture", "Lab"],
+  },
+  "Intro to Programming": {
+    color: "yellow",
+    primaryRelatedTypes: ["Lecture", "Lab"],
+  },
+};
+
 export default function NoteDetailsPage({
   noteDetails,
   primaryRelatedNotes,
   secondaryRelatedNotes,
 }: Readonly<Props>) {
-  // const sortedRelatedNotes = sortByCreatedAscending(primaryRelatedNotes);
   return (
     <>
       <Meta />
@@ -70,24 +80,18 @@ export async function getStaticProps({ params }: Params) {
     noteDirectory
   );
 
-  // filtered by type and course
   const allNotes = getAllNotes(["slug", "category", "type", "number", "title"]);
 
-  // TODO - start with Course layout and then generalize later
-  const type1 = allNotes.filter(
-    (note) => note.category === details.category && note.type === "Lecture"
-  );
-
-  const type2 = allNotes.filter(
-    (note) => note.category === details.category && note.type === "Lab"
-  );
-
   const primaryRelatedNotes = [];
+  categoryMap[details.category].primaryRelatedTypes.map((type: string) => {
+    const notesByType = allNotes.filter(
+      (note) => note.category === details.category && note.type === type
+    );
+    if (notesByType.length > 0)
+      primaryRelatedNotes.push({ type, items: notesByType });
+  });
+
   const secondaryRelatedNotes = [];
-  if (type1.length > 0)
-    primaryRelatedNotes.push({ type: "Lectures", items: type1 });
-  if (type2.length > 0)
-    primaryRelatedNotes.push({ type: "Labs", items: type2 });
 
   return {
     props: {
