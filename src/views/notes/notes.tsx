@@ -81,7 +81,7 @@ export function Notes({ allNotes }: IProps) {
           return (
             <div key={note.slug}>
               <ListItem
-                title={`${note.number}. ${note.title}`}
+                title={note.title}
                 href={`/notes/${note.slug}`}
                 subContent={
                   <PillButton
