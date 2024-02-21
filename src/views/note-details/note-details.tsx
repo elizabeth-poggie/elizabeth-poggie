@@ -174,11 +174,9 @@ const NotesSideBar = ({ relatedNotes, currentNote }: ISideBarProps) => {
   return (
     <aside>
       <section className={styles.sideBarSection}>
-        <PillButton
-          color={filterToColorMap[currentNote.category]}
-          title={currentNote.category}
-          onClick={() => null}
-        />
+        <Link href="/">
+          <PillButton title="All Notes" onClick={() => null} />
+        </Link>
       </section>
       {relatedNotes.map((relatedNote: relatedNotes) => {
         return (
@@ -221,3 +219,6 @@ const NotesSideBar = ({ relatedNotes, currentNote }: ISideBarProps) => {
     </aside>
   );
 };
+
+// TODO migrate once done
+const DoubleSideBarLayout = () => {};
