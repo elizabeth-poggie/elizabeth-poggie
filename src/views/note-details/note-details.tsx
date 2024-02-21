@@ -116,7 +116,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
                   }
                   color={isActiveLink ? "white" : "grey"}
                 >
-                  {note.title}
+                  {note.number}. {note.title}
                 </TextLink>
                 {isActiveLink ? (
                   <div className={styles.tocInSideBar}>
