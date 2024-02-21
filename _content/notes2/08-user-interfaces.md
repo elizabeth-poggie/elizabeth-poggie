@@ -1,11 +1,12 @@
 ---
 # General Information
-title: "Lecture 8"
-subtitle: "Javascript"
-date: "2024-02-12T15:30:35Z"
-course: "User Interfaces"
+category: "User Interfaces"
+number: 8
 type: "Lecture"
-slides: "/assets/notes/W24-user-interfaces/slides/08.pdf"
+title: "Javascript"
+created: "2024-02-12T12:17:29Z"
+link:
+  { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/08.pdf" }
 ---
 
 # Intro to Javascript

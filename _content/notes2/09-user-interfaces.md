@@ -1,11 +1,12 @@
 ---
 # General Information
-title: "Lecture 9"
-subtitle: "In-class Hackathon"
-date: "2024-02-16T15:30:35Z"
-course: "User Interfaces"
+category: "User Interfaces"
+number: 9
 type: "Lecture"
-slides: "/assets/notes/W24-user-interfaces/slides/09.pdf"
+title: "In-class Hackathon"
+created: "2024-02-16T12:17:29Z"
+link:
+  { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/09.pdf" }
 ---
 
 # What is a Hackathon?
