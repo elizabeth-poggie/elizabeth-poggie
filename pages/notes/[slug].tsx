@@ -1,11 +1,6 @@
 import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
-import {
-  getAllNotes,
-  getBySlug,
-  note2Directory,
-  noteDirectory,
-} from "../../src/utils/api";
+import { getAllNotes, getBySlug, noteDirectory } from "../../src/utils/api";
 import { ICollegeNote, INote } from "../../src/interfaces/note";
 import { NoteDetails } from "../../src/views/note-details/note-details";
 import { sortByCreatedAscending } from "../../src/utils/helpers/sortByDate";
@@ -53,7 +48,7 @@ export async function getStaticProps({ params }: Params) {
       "link",
       "content",
     ],
-    note2Directory
+    noteDirectory
   );
 
   console.log(details);
