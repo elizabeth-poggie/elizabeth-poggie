@@ -5,12 +5,29 @@
   padding: 0 0 calc($unit * 10) 0;
 }
 
-.sideBar {
+.container {
+  padding-top: calc(20 * $unit);
+  padding-left: calc(20 * $unit);
+  margin: auto;
+  width: 50%;
+}
+
+.leftSideBar {
   position: fixed;
+  width: 20%;
   left: 0;
   top: 0;
-  padding: calc($unit * 20) 0 0 calc($unit * 8);
+  padding: calc($unit * 25) 0 0 calc($unit * 8);
   z-index: 1;
+}
+
+.rightSideBar {
+  text-align: right;
+  width: 20%;
+  left: auto;
+  right: 0;
+  padding: calc($unit * 25) calc($unit * 8) 0 0;
+  @extend .leftSideBar;
 }
 
 .tocInSideBar {
@@ -55,15 +72,6 @@
 
 .codeBlock {
   margin: 1.5rem 0;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  float: right;
-  padding: calc(20 * $unit) calc(20 * $unit) calc(20 * $unit) calc(8 * $unit);
-  height: 100%;
-  width: 60%;
 }
 
 .noteTitle {

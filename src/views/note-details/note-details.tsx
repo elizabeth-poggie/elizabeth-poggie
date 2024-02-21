@@ -158,11 +158,19 @@ export function NoteDetails({
 
   return (
     <>
-      <NotesSideBar
-        relatedNotes={primaryRelatedNotes}
-        currentNote={noteDetails}
-      />
+      <div className={styles.leftSideBar}>
+        <NotesSideBar
+          relatedNotes={primaryRelatedNotes}
+          currentNote={noteDetails}
+        />
+      </div>
       <div className={styles.container}>{renderDetails()}</div>
+      <div className={styles.rightSideBar}>
+        <NotesSideBar
+          relatedNotes={secondaryRelatedNotes}
+          currentNote={noteDetails}
+        />
+      </div>
     </>
   );
 }
@@ -173,43 +181,46 @@ interface ISideBarProps {
 }
 
 const NotesSideBar = ({ relatedNotes, currentNote }: ISideBarProps) => {
-  const curr = relatedNotes[0];
   return (
-    <aside className={styles.sideBar}>
-      <section className={styles.sideBarSectionHeader}>
-        <header>
-          <Text variant="p" style="capitalize">
-            {curr.type}
-          </Text>
-        </header>
-      </section>
-      <section className={styles.sideBarSection}>
-        {curr.items?.map((item) => {
-          const isActiveLink = item.title === currentNote.title;
-          return (
-            <div key={item.slug}>
-              <TextLink
-                href={`/notes/${item.slug}`}
-                variant="subheading"
-                onClick={() =>
-                  tocbot.refresh({
-                    ...TOC_NOTE_DETAILS_OPTIONS,
-                    hasInnerContainers: true,
-                  })
-                }
-                color={isActiveLink ? "white" : "grey"}
-              >
-                {item.number}. {item.title}
-              </TextLink>
-              {isActiveLink ? (
-                <div className={styles.tocInSideBar}>
-                  <Toc />
+    <aside>
+      {relatedNotes.map((relatedNote: relatedNotes) => {
+        return (
+          <section className={styles.sideBarSection}>
+            <section className={styles.sideBarSectionHeader}>
+              <header>
+                <Text variant="p" style="capitalize">
+                  {relatedNote.type}
+                </Text>
+              </header>
+            </section>
+            {relatedNote.items?.map((item) => {
+              const isActiveLink = item.title === currentNote.title;
+              return (
+                <div key={item.slug}>
+                  <TextLink
+                    href={`/notes/${item.slug}`}
+                    variant="subheading"
+                    onClick={() =>
+                      tocbot.refresh({
+                        ...TOC_NOTE_DETAILS_OPTIONS,
+                        hasInnerContainers: true,
+                      })
+                    }
+                    color={isActiveLink ? "white" : "grey"}
+                  >
+                    {item.number}. {item.title}
+                  </TextLink>
+                  {isActiveLink ? (
+                    <div className={styles.tocInSideBar}>
+                      <Toc />
+                    </div>
+                  ) : null}
                 </div>
-              ) : null}
-            </div>
-          );
-        })}
-      </section>
+              );
+            })}
+          </section>
+        );
+      })}
     </aside>
   );
 };

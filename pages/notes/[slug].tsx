@@ -30,6 +30,7 @@ interface Props {
 export default function NoteDetailsPage({
   noteDetails,
   primaryRelatedNotes,
+  secondaryRelatedNotes,
 }: Readonly<Props>) {
   // const sortedRelatedNotes = sortByCreatedAscending(primaryRelatedNotes);
   return (
@@ -41,6 +42,7 @@ export default function NoteDetailsPage({
       <NoteDetails
         noteDetails={noteDetails}
         primaryRelatedNotes={primaryRelatedNotes}
+        secondaryRelatedNotes={secondaryRelatedNotes}
       />
     </>
   );
@@ -76,12 +78,20 @@ export async function getStaticProps({ params }: Params) {
     (note) => note.category === details.category && note.type === "Lecture"
   );
 
+  const secondary = allNotes.filter(
+    (note) => note.category === details.category && note.type === "Lab"
+  );
+
   return {
     props: {
       noteDetails: {
         ...details,
       },
-      primaryRelatedNotes: [{ type: "Lectures", items: primary }],
+      primaryRelatedNotes: [
+        { type: "Lectures", items: primary },
+        { type: "Labs", items: secondary },
+      ],
+      secondaryRelatedNotes: [],
     },
   };
 }
