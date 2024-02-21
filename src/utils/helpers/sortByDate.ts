@@ -1,4 +1,4 @@
-import { ICollegeNote, INote } from "../../interfaces/note";
+import { INote } from "../../interfaces/note";
 
 /**
  *

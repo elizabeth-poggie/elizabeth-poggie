@@ -4,7 +4,7 @@ import { ListItem } from "../../components/display/list-item/list-item";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { ListLayout } from "../../components/layout/list-layout/list-layout";
 import { Text } from "../../components/typography/text/text";
-import { ICollegeNote, INote } from "../../interfaces/note";
+import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
 
 interface IProps {

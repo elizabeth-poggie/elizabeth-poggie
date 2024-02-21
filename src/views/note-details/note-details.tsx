@@ -1,5 +1,5 @@
 import { Text } from "../../components/typography/text/text";
-import { ICollegeNote, INote } from "../../interfaces/note";
+import { INote } from "../../interfaces/note";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Markdown from "react-markdown";
@@ -101,7 +101,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
           />
         </header>
         <section className={styles.sideBarSection}>
-          {relatedNotes?.map((note: ICollegeNote) => {
+          {relatedNotes?.map((note: INote) => {
             const isActiveLink = note.title === noteDetails.title;
             return (
               <div key={note.slug}>

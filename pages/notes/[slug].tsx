@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
 import { getAllNotes, getBySlug, noteDirectory } from "../../src/utils/api";
-import { ICollegeNote, INote } from "../../src/interfaces/note";
+import { INote } from "../../src/interfaces/note";
 import { NoteDetails } from "../../src/views/note-details/note-details";
 import { sortByCreatedAscending } from "../../src/utils/helpers/sortByDate";
 

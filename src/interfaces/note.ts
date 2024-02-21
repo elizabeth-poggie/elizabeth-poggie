@@ -79,9 +79,3 @@ export interface INote {
    */
   content: string;
 }
-
-export interface ICollegeNote extends INote {
-  date: string;
-  course: string;
-  slides: string;
-}
