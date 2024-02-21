@@ -56,25 +56,6 @@ interface IProps {
  */
 
 /**
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *
- * - Note
- *    - slug       (e.g. 2024-01-26-Intro-to-Programming - can be automated with a script)
- *    - type             (e.g. "Lecture", "Strategy", "Template", "Assignment", "Lab", "Art" ....)
- *    - category        (e.g. User Interfaces, Intro to Programming)
- *    - content
- *    - date of creation        (e.g. in UTC - can be automated with a script)
- *    - date of update              (in case i re use my notes at all lol)
- *    - number in series        (e.g. "Lecture 1", "Lecture 1.1", "Lab 1", "Lab 2", "Recipe 1", "Strategy 1.0"...)
- *    - title                 (e.g. "Intro to JavaScript", "The Box Model")
- *    - subtitle        (e.g. "as taught by Poggie in 2024", "as made by Nana in 2012", "as taught by Luc Devroye in 2016", "as learnt the hard way in 2022")
- *    - images            (e.g. carousel content, cover image, thumbnail)
- *    - text:link           (e.g. slides:pdf, contact:email, source:href)
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- */
-
-/**
  * Sorters
  *
  * - Latest
