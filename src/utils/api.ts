@@ -5,6 +5,7 @@ import matter from "gray-matter";
 export const projectDirectory = join(process.cwd(), "_content/projects/");
 export const artDirectory = join(process.cwd(), "_content/art/");
 export const noteDirectory = join(process.cwd(), "_content/notes/");
+export const note2Directory = join(process.cwd(), "_content/notes2/");
 
 // Read Directory Slugs
 export function getSlugs(directory: string) {
@@ -62,7 +63,7 @@ export function getAllArt(fields: string[] = []) {
 }
 
 export function getAllNotes(fields: string[] = []) {
-  const slugs = getSlugs(noteDirectory);
-  const notes = slugs.map((slug) => getBySlug(slug, fields, noteDirectory));
+  const slugs = getSlugs(note2Directory);
+  const notes = slugs.map((slug) => getBySlug(slug, fields, note2Directory));
   return notes;
 }

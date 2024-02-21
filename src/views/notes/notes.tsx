@@ -4,11 +4,11 @@ import { ListItem } from "../../components/display/list-item/list-item";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { ListLayout } from "../../components/layout/list-layout/list-layout";
 import { Text } from "../../components/typography/text/text";
-import { ICollegeNote } from "../../interfaces/note";
+import { ICollegeNote, INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
 
 interface IProps {
-  allNotes: ICollegeNote[];
+  allNotes: INote[];
 }
 
 /**
@@ -22,8 +22,8 @@ interface IProps {
 /**
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *
- * - Category
- *    - Sub Category
+ * - Family
+ *    - Category
  *      - Color                         (e.g. yellow, green, blue - can be automated with a script)
  *      - Primary types []              (e.g. left column in Note)
  *      - Secondary types []            (e.g. right column in Note)
@@ -65,7 +65,7 @@ interface IProps {
 
 // List of supported filters lol
 export const filterToColorMap = {
-  // Courses
+  // Categories
   "User Interfaces": "green",
   "Intro to Programming": "yellow",
 };
@@ -77,23 +77,18 @@ export function Notes({ allNotes }: IProps) {
   const renderList = () => {
     return (
       <>
-        {filteredNotes.map((note: ICollegeNote, i: number) => {
+        {filteredNotes.map((note: INote, i: number) => {
           return (
             <div key={note.slug}>
               <ListItem
-                title={note.title}
+                title={`${note.number}) ${note.title}`}
                 href={`/notes/${note.slug}`}
                 rightContent={
                   <PillButton
-                    color={filterToColorMap[note.course]}
-                    title={note.course}
+                    color={filterToColorMap[note.category]}
+                    title={note.category}
                     onClick={() => null}
                   />
-                }
-                subContent={
-                  <Text variant="subheading" color="grey">
-                    {note.subtitle}
-                  </Text>
                 }
               />
               {i === filteredNotes.length - 1 ? null : <HorizontalLine />}
@@ -108,7 +103,7 @@ export function Notes({ allNotes }: IProps) {
   // TODO - ...and that the styling of things that are active is different lol
   const setNotes = (filter: string) => {
     const newFilterNotes = allNotes.filter(
-      (note) => note.type === filter || note.course === filter
+      (note) => note.type === filter || note.category === filter
     );
     setFilteredNotes(newFilterNotes);
   };
@@ -119,7 +114,7 @@ export function Notes({ allNotes }: IProps) {
     };
 
     const filters: string[] = [
-      ...allNotes.map((note: ICollegeNote) => {
+      ...allNotes.map((note: INote) => {
         return note[filterType];
       }),
     ].filter(onlyUnique);
@@ -128,7 +123,7 @@ export function Notes({ allNotes }: IProps) {
       <article>
         <header className={styles.filterHeader}>
           <Text variant="h2" style="capitalize">
-            {filterType}
+            Course
           </Text>
         </header>
         {filters.map((filter: string) => {
@@ -147,7 +142,7 @@ export function Notes({ allNotes }: IProps) {
 
   // TODO - support more types
   const renderFilters = () => {
-    return <>{renderFilterRow("course")}</>;
+    return <>{renderFilterRow("category")}</>;
   };
 
   return (

@@ -11,6 +11,7 @@ interface ILink {
  * @member {string} subtitle subheader
  * @member {string} category group of belonging
  * @member {string} type type of content
+ * @member {string} number number in series
  * @member {string} created date of creation
  * @member {string} updated date of update
  * @member {string} coverSrc path to cover image
@@ -46,6 +47,11 @@ export interface INote {
    * @example "Strategy"
    */
   type: string;
+  /**
+   * number in series
+   * @example 1
+   */
+  number: number; // TODO - maybe replace with better logic in the future
   /**
    * Date of creation in UTC
    */

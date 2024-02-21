@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Meta from "../src/views/meta/meta";
-import { ICollegeNote } from "../src/interfaces/note";
+import { ICollegeNote, INote } from "../src/interfaces/note";
 import { Notes } from "../src/views/notes/notes";
 import { getAllNotes } from "../src/utils/api";
 
@@ -22,7 +22,7 @@ import { getAllNotes } from "../src/utils/api";
 // ];
 
 interface IProps {
-  allNotes: ICollegeNote[];
+  allNotes: INote[];
 }
 
 export default function Index({ allNotes }: Readonly<IProps>) {
@@ -41,11 +41,12 @@ export default function Index({ allNotes }: Readonly<IProps>) {
 export const getStaticProps = async () => {
   const allNotes = getAllNotes([
     "slug",
+    "category",
+    "number",
+    "type",
     "title",
     "subtitle",
-    "date",
-    "course",
-    "type",
+    "created",
   ]);
 
   return {

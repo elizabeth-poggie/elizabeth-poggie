@@ -19,9 +19,7 @@ export default function NoteDetailsPage({
     <>
       <Meta />
       <Head>
-        <title>
-          {noteDetails.title} - {noteDetails.course}
-        </title>
+        <title>{noteDetails.title}</title>
       </Head>
       <NoteDetails
         noteDetails={noteDetails}
