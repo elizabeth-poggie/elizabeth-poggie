@@ -81,9 +81,9 @@ export function Notes({ allNotes }: IProps) {
           return (
             <div key={note.slug}>
               <ListItem
-                title={`${note.number}) ${note.title}`}
+                title={`${note.number}. ${note.title}`}
                 href={`/notes/${note.slug}`}
-                rightContent={
+                subContent={
                   <PillButton
                     color={filterToColorMap[note.category]}
                     title={note.category}
