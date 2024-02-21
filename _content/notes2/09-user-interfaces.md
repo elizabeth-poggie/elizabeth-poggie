@@ -115,7 +115,7 @@ Brainstorm ideas and plan your projects.
 
 Develop your project in groups. If any single member of the group finishes their tasks early, they must act as support to the other members of their group.
 
-## Presentation Phase (30 minutes)
+## Presentation Phase (~5 minutes each)
 
 Afterwards we will regroup where a member of each group will need to present their project to the class and communicate the following points:
 
