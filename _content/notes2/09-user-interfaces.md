@@ -121,7 +121,7 @@ Afterwards we will regroup where a member of each group will need to present the
 
 - Your vision
 - Your target audience
-- How your group's solution is unique
+- Your inspiration
 - The solution's impact
 - ...and how this follows HTML semantics, CSS best practices && utilizes effective JavaScript :)
 
