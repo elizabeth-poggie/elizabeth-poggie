@@ -99,11 +99,7 @@ export function NoteDetails({
   // TODO put this somewhere lol
   /**
    * 
-   <PillButton
-            color={filterToColorMap[noteDetails.category]}
-            title={noteDetails.category}
-            onClick={() => null}
-          />
+   
    */
 
   const renderDetails = () => {
@@ -165,12 +161,6 @@ export function NoteDetails({
         />
       </div>
       <div className={styles.container}>{renderDetails()}</div>
-      <div className={styles.rightSideBar}>
-        <NotesSideBar
-          relatedNotes={secondaryRelatedNotes}
-          currentNote={noteDetails}
-        />
-      </div>
     </>
   );
 }
@@ -183,6 +173,13 @@ interface ISideBarProps {
 const NotesSideBar = ({ relatedNotes, currentNote }: ISideBarProps) => {
   return (
     <aside>
+      <section className={styles.sideBarSection}>
+        <PillButton
+          color={filterToColorMap[currentNote.category]}
+          title={currentNote.category}
+          onClick={() => null}
+        />
+      </section>
       {relatedNotes.map((relatedNote: relatedNotes) => {
         return (
           <section className={styles.sideBarSection}>
@@ -224,6 +221,3 @@ const NotesSideBar = ({ relatedNotes, currentNote }: ISideBarProps) => {
     </aside>
   );
 };
-
-// TODO migrate once done
-const DoubleSideBarLayout = () => {};

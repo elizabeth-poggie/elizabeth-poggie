@@ -17,7 +17,7 @@
   width: 20%;
   left: 0;
   top: 0;
-  padding: calc($unit * 25) 0 0 calc($unit * 8);
+  padding: calc($unit * 20) 0 0 calc($unit * 8);
   z-index: 1;
 }
 
@@ -26,7 +26,7 @@
   width: 20%;
   left: auto;
   right: 0;
-  padding: calc($unit * 25) calc($unit * 8) 0 0;
+  padding: calc($unit * 20) calc($unit * 8) 0 0;
   @extend .leftSideBar;
 }
 
