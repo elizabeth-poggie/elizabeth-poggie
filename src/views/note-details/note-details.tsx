@@ -1,5 +1,5 @@
 import { Text } from "../../components/typography/text/text";
-import { ICollegeNote } from "../../interfaces/note";
+import { ICollegeNote, INote } from "../../interfaces/note";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Markdown from "react-markdown";
@@ -18,8 +18,8 @@ import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { filterToColorMap } from "../notes/notes";
 
 interface IProps {
-  noteDetails: ICollegeNote;
-  relatedNotes?: ICollegeNote[];
+  noteDetails: INote;
+  relatedNotes?: INote[];
 }
 
 export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
@@ -72,15 +72,17 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
     return (
       <header className={styles.header}>
         <div className={styles.noteTitle}>
-          <Text variant="h3">{noteDetails.title}</Text>
+          <Text variant="h3">
+            {noteDetails.type} {noteDetails.number}
+          </Text>
         </div>
         <div className={styles.noteTitle}>
-          <Text variant="title">{noteDetails.subtitle}</Text>
+          <Text variant="title">{noteDetails.title}</Text>
         </div>
         <div>
-          {noteDetails.slides ? (
-            <Link href={noteDetails.slides}>
-              <PillButton title="slides" onClick={() => null} />
+          {noteDetails.link ? (
+            <Link href={noteDetails.link.href}>
+              <PillButton title={noteDetails.link.text} onClick={() => null} />
             </Link>
           ) : null}
         </div>
@@ -93,8 +95,8 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
       <aside className={styles.sideBar}>
         <header className={styles.sideBarSection}>
           <PillButton
-            color={filterToColorMap[noteDetails.course]}
-            title={noteDetails.course}
+            color={filterToColorMap[noteDetails.category]}
+            title={noteDetails.category}
             onClick={() => null}
           />
         </header>
@@ -145,7 +147,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
               a: ({ children, href }) => (
                 <TextLink
                   href={href}
-                  color={filterToColorMap[noteDetails.course]}
+                  color={filterToColorMap[noteDetails.category]}
                   decoration="underline"
                 >
                   {children}

@@ -1,27 +1,27 @@
-import { ICollegeNote } from "../../interfaces/note";
+import { ICollegeNote, INote } from "../../interfaces/note";
 
 /**
  *
- * Sort array that contains a 'date' property from least to most recent.
+ * Sort array that contains a 'created' property from least to most recent.
  *
- * @param a
- * @returns
+ * @param {INote[]} notes array of notes
+ * @returns {INote[]} sorted notes
  */
-export const sortByDateAscending = (a: ICollegeNote[]): ICollegeNote[] => {
-  return a.sort((a: ICollegeNote, b: ICollegeNote) => {
-    return Date.parse(a.date) - Date.parse(b.date);
+export const sortByCreatedAscending = (notes: INote[]): INote[] => {
+  return notes.sort((a: INote, b: INote) => {
+    return Date.parse(a.created) - Date.parse(b.created);
   });
 };
 
 /**
  *
- * Sort array that contains a 'date' property from most to least recent.
+ *  Sort array that contains a 'created' property from most to least recent.
  *
- * @param a
- * @returns
+ * @param {INote[]} notes array of notes
+ * @returns {INote[]} sorted notes
  */
-export const sortByDateDescending = (a: ICollegeNote[]): ICollegeNote[] => {
-  return a.sort((a: ICollegeNote, b: ICollegeNote) => {
-    return Date.parse(b.date) - Date.parse(a.date);
+export const sortByCreatedDescending = (notes: INote[]): INote[] => {
+  return notes.sort((a: INote, b: INote) => {
+    return Date.parse(b.created) - Date.parse(a.created);
   });
 };
