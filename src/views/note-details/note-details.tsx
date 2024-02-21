@@ -27,7 +27,6 @@ interface IProps {
 export function NoteDetails({
   noteDetails,
   primaryRelatedNotes,
-  secondaryRelatedNotes,
 }: Readonly<IProps>) {
   const renderHeader = ({ id, children }) => {
     return (
@@ -95,12 +94,6 @@ export function NoteDetails({
       </header>
     );
   };
-
-  // TODO put this somewhere lol
-  /**
-   * 
-   
-   */
 
   const renderDetails = () => {
     return (
@@ -219,6 +212,3 @@ const NotesSideBar = ({ relatedNotes, currentNote }: ISideBarProps) => {
     </aside>
   );
 };
-
-// TODO migrate once done
-const DoubleSideBarLayout = () => {};

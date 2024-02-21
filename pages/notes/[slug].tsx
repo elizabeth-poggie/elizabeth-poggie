@@ -74,24 +74,28 @@ export async function getStaticProps({ params }: Params) {
   const allNotes = getAllNotes(["slug", "category", "type", "number", "title"]);
 
   // TODO - start with Course layout and then generalize later
-  const primary = allNotes.filter(
+  const type1 = allNotes.filter(
     (note) => note.category === details.category && note.type === "Lecture"
   );
 
-  const secondary = allNotes.filter(
+  const type2 = allNotes.filter(
     (note) => note.category === details.category && note.type === "Lab"
   );
+
+  const primaryRelatedNotes = [];
+  const secondaryRelatedNotes = [];
+  if (type1.length > 0)
+    primaryRelatedNotes.push({ type: "Lectures", items: type1 });
+  if (type2.length > 0)
+    primaryRelatedNotes.push({ type: "Labs", items: type2 });
 
   return {
     props: {
       noteDetails: {
         ...details,
       },
-      primaryRelatedNotes: [
-        { type: "Lectures", items: primary },
-        { type: "Labs", items: secondary },
-      ],
-      secondaryRelatedNotes: [],
+      primaryRelatedNotes: primaryRelatedNotes,
+      secondaryRelatedNotes: secondaryRelatedNotes,
     },
   };
 }
