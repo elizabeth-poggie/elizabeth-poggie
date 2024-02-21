@@ -1,11 +1,12 @@
 ---
 # General Information
-title: "Lecture 9"
-subtitle: "In-class Hackathon"
-date: "2024-02-16T15:30:35Z"
-course: "User Interfaces"
+category: "User Interfaces"
+number: 9
 type: "Lecture"
-slides: "/assets/notes/W24-user-interfaces/slides/09.pdf"
+title: "In-class Hackathon"
+created: "2024-02-16T12:17:29Z"
+link:
+  { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/09.pdf" }
 ---
 
 # What is a Hackathon?
@@ -114,13 +115,13 @@ Brainstorm ideas and plan your projects.
 
 Develop your project in groups. If any single member of the group finishes their tasks early, they must act as support to the other members of their group.
 
-## Presentation Phase (30 minutes)
+## Presentation Phase (~5 minutes each)
 
 Afterwards we will regroup where a member of each group will need to present their project to the class and communicate the following points:
 
 - Your vision
 - Your target audience
-- How your group's solution is unique
+- Your inspiration
 - The solution's impact
 - ...and how this follows HTML semantics, CSS best practices && utilizes effective JavaScript :)
 

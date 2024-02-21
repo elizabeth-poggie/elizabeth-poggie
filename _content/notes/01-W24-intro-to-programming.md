@@ -1,11 +1,15 @@
 ---
 # General Information
-title: "Lecture 1"
-subtitle: "Introduction to Programming"
-date: "2024-01-30T12:17:29Z"
-course: "Intro to Programming"
+category: "Intro to Programming"
+number: 1
 type: "Lecture"
-slides: "/assets/notes/W24-intro-to-programming/slides/01.pdf"
+title: "Introduction to Programming"
+created: "2024-01-30T12:17:29Z"
+link:
+  {
+    text: "slides",
+    href: "/assets/notes/W24-intro-to-programming/slides/01.pdf",
+  }
 ---
 
 # What is programming?

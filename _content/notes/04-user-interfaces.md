@@ -1,11 +1,12 @@
 ---
 # General Information
-title: "Lecture 4"
-subtitle: "The DOM & Dev Tools"
-date: "2024-02-05T15:30:35Z"
-course: "User Interfaces"
+category: "User Interfaces"
+number: 4
 type: "Lecture"
-slides: "/assets/notes/W24-user-interfaces/slides/04.pdf"
+title: "The DOM & Dev Tools"
+created: "2024-02-05T12:17:29Z"
+link:
+  { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/04.pdf" }
 ---
 
 # HTML vs DOM

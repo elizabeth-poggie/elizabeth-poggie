@@ -1,11 +1,12 @@
 ---
 # General Information
-title: "Lecture 3"
-subtitle: "Basic HTML Structure & Intro to CSS"
-date: "2024-02-02T12:17:29Z"
-course: "User Interfaces"
+category: "User Interfaces"
+number: 3
 type: "Lecture"
-slides: "/assets/notes/W24-user-interfaces/slides/03.pdf"
+title: "HTML Structure & Intro to CSS"
+created: "2024-02-02T12:17:29Z"
+link:
+  { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/03.pdf" }
 ---
 
 # HTML Structure

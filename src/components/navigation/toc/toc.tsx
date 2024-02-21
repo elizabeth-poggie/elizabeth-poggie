@@ -14,6 +14,11 @@ export const TOC_NOTE_DETAILS_OPTIONS: tocbot.IStaticOptions = {
 };
 
 export function Toc({}: Readonly<IProps>) {
+  React.useEffect(() => {
+    tocbot.init(TOC_NOTE_DETAILS_OPTIONS);
+    return () => tocbot.destroy();
+  }, [tocbot]);
+
   return (
     <nav>
       <div className="js-toc"></div>

@@ -1,11 +1,15 @@
 ---
 # General Information
-title: "Lecture 5"
-subtitle: "From Idea to Program"
-date: "2024-02-13T12:17:29Z"
-course: "Intro to Programming"
+category: "Intro to Programming"
+number: 5
 type: "Lecture"
-slides: "/assets/notes/W24-intro-to-programming/slides/05.pdf"
+title: "From Idea to Program"
+created: "2024-02-13T12:17:29Z"
+link:
+  {
+    text: "slides",
+    href: "/assets/notes/W24-intro-to-programming/slides/05.pdf",
+  }
 ---
 
 # Order of Operations Continued

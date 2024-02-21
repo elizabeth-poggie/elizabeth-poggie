@@ -1,27 +1,30 @@
 import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
 import { getAllNotes, getBySlug, noteDirectory } from "../../src/utils/api";
-import { ICollegeNote } from "../../src/interfaces/note";
+import { INote } from "../../src/interfaces/note";
 import { NoteDetails } from "../../src/views/note-details/note-details";
+import { sortByCreatedAscending } from "../../src/utils/helpers/sortByDate";
 
 interface Props {
-  noteDetails: ICollegeNote;
-  relatedNotes: ICollegeNote[];
+  noteDetails: INote;
+  relatedNotes: INote[];
 }
 
 export default function NoteDetailsPage({
   noteDetails,
   relatedNotes,
 }: Readonly<Props>) {
+  const sortedRelatedNotes = sortByCreatedAscending(relatedNotes);
   return (
     <>
       <Meta />
       <Head>
-        <title>
-          {noteDetails.title} - {noteDetails.course}
-        </title>
+        <title>{noteDetails.title}</title>
       </Head>
-      <NoteDetails noteDetails={noteDetails} relatedNotes={relatedNotes} />
+      <NoteDetails
+        noteDetails={noteDetails}
+        relatedNotes={sortedRelatedNotes}
+      />
     </>
   );
 }
@@ -35,19 +38,30 @@ type Params = {
 export async function getStaticProps({ params }: Params) {
   const details = getBySlug(
     params.slug,
-    ["title", "subtitle", "course", "content", "slides", "type"],
+    [
+      "slug",
+      "category",
+      "type",
+      "number",
+      "title",
+      "subtitle",
+      "link",
+      "content",
+    ],
     noteDirectory
   );
+
+  console.log(details);
 
   // filtered by type and course
   const filteredNotes = getAllNotes([
     "slug",
-    "title",
-    "subtitle",
-    "course",
+    "category",
     "type",
+    "number",
+    "title",
   ]).filter(
-    (note) => note.course === details.course && note.type === details.type
+    (note) => note.category === details.category && note.type === details.type
   );
 
   return {

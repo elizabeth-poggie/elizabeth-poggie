@@ -1,11 +1,12 @@
 ---
 # General Information
-title: "Lecture 5"
-subtitle: "HTML Semantics"
-date: "2024-02-06T15:30:35Z"
-course: "User Interfaces"
+category: "User Interfaces"
+number: 5
 type: "Lecture"
-slides: "/assets/notes/W24-user-interfaces/slides/05.pdf"
+title: "HTML Semantics"
+created: "2024-02-06T12:17:29Z"
+link:
+  { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/05.pdf" }
 ---
 
 # Document and website structure
