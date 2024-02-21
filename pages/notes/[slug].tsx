@@ -5,16 +5,33 @@ import { INote } from "../../src/interfaces/note";
 import { NoteDetails } from "../../src/views/note-details/note-details";
 import { sortByCreatedAscending } from "../../src/utils/helpers/sortByDate";
 
-interface Props {
-  noteDetails: INote;
-  relatedNotes: INote[];
+export interface relatedNotes {
+  type: string;
+  items: Pick<INote, "slug" | "title" | "number">[];
 }
 
+interface Props {
+  noteDetails: INote;
+  primaryRelatedNotes?: relatedNotes[];
+  secondaryRelatedNotes?: relatedNotes[];
+}
+
+/**
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *
+ * - Family
+ *    - Category
+ *      - Color
+ *      - Primary types []              (e.g. left column in Note)
+ *      - Secondary types []            (e.g. right column in Note)
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
 export default function NoteDetailsPage({
   noteDetails,
-  relatedNotes,
+  primaryRelatedNotes,
 }: Readonly<Props>) {
-  const sortedRelatedNotes = sortByCreatedAscending(relatedNotes);
+  // const sortedRelatedNotes = sortByCreatedAscending(primaryRelatedNotes);
   return (
     <>
       <Meta />
@@ -23,7 +40,7 @@ export default function NoteDetailsPage({
       </Head>
       <NoteDetails
         noteDetails={noteDetails}
-        relatedNotes={sortedRelatedNotes}
+        primaryRelatedNotes={primaryRelatedNotes}
       />
     </>
   );
@@ -51,17 +68,12 @@ export async function getStaticProps({ params }: Params) {
     noteDirectory
   );
 
-  console.log(details);
-
   // filtered by type and course
-  const filteredNotes = getAllNotes([
-    "slug",
-    "category",
-    "type",
-    "number",
-    "title",
-  ]).filter(
-    (note) => note.category === details.category && note.type === details.type
+  const allNotes = getAllNotes(["slug", "category", "type", "number", "title"]);
+
+  // TODO - start with Course layout and then generalize later
+  const primary = allNotes.filter(
+    (note) => note.category === details.category && note.type === "Lecture"
   );
 
   return {
@@ -69,7 +81,7 @@ export async function getStaticProps({ params }: Params) {
       noteDetails: {
         ...details,
       },
-      relatedNotes: [...filteredNotes],
+      primaryRelatedNotes: [{ type: "Lectures", items: primary }],
     },
   };
 }

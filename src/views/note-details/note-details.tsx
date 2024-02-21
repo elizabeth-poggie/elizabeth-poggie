@@ -16,13 +16,19 @@ import {
 import tocbot from "tocbot";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { filterToColorMap } from "../notes/notes";
+import { relatedNotes } from "../../../pages/notes/[slug]";
 
 interface IProps {
   noteDetails: INote;
-  relatedNotes?: INote[];
+  primaryRelatedNotes?: relatedNotes[];
+  secondaryRelatedNotes?: relatedNotes[];
 }
 
-export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
+export function NoteDetails({
+  noteDetails,
+  primaryRelatedNotes,
+  secondaryRelatedNotes,
+}: Readonly<IProps>) {
   const renderHeader = ({ id, children }) => {
     return (
       <div className={styles.mdHeader}>
@@ -90,48 +96,17 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
     );
   };
 
-  const renderSideBar = () => {
-    return (
-      <aside className={styles.sideBar}>
-        <header className={styles.sideBarSection}>
-          <PillButton
+  // TODO put this somewhere lol
+  /**
+   * 
+   <PillButton
             color={filterToColorMap[noteDetails.category]}
             title={noteDetails.category}
             onClick={() => null}
           />
-        </header>
-        <section className={styles.sideBarSection}>
-          {relatedNotes?.map((note: INote) => {
-            const isActiveLink = note.title === noteDetails.title;
-            return (
-              <div key={note.slug}>
-                <TextLink
-                  href={`/notes/${note.slug}`}
-                  variant="subheading"
-                  onClick={() =>
-                    tocbot.refresh({
-                      ...TOC_NOTE_DETAILS_OPTIONS,
-                      hasInnerContainers: true,
-                    })
-                  }
-                  color={isActiveLink ? "white" : "grey"}
-                >
-                  {note.number}. {note.title}
-                </TextLink>
-                {isActiveLink ? (
-                  <div className={styles.tocInSideBar}>
-                    <Toc />
-                  </div>
-                ) : null}
-              </div>
-            );
-          })}
-        </section>
-      </aside>
-    );
-  };
+   */
 
-  const renderNoteDetails = () => {
+  const renderDetails = () => {
     return (
       <>
         {renderNoteHeader()}
@@ -183,8 +158,61 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
 
   return (
     <>
-      {renderSideBar()}
-      <div className={styles.container}>{renderNoteDetails()}</div>
+      <NotesSideBar
+        relatedNotes={primaryRelatedNotes}
+        currentNote={noteDetails}
+      />
+      <div className={styles.container}>{renderDetails()}</div>
     </>
   );
 }
+
+interface ISideBarProps {
+  relatedNotes?: relatedNotes[];
+  currentNote: INote;
+}
+
+const NotesSideBar = ({ relatedNotes, currentNote }: ISideBarProps) => {
+  const curr = relatedNotes[0];
+  return (
+    <aside className={styles.sideBar}>
+      <section className={styles.sideBarSectionHeader}>
+        <header>
+          <Text variant="p" style="capitalize">
+            {curr.type}
+          </Text>
+        </header>
+      </section>
+      <section className={styles.sideBarSection}>
+        {curr.items?.map((item) => {
+          const isActiveLink = item.title === currentNote.title;
+          return (
+            <div key={item.slug}>
+              <TextLink
+                href={`/notes/${item.slug}`}
+                variant="subheading"
+                onClick={() =>
+                  tocbot.refresh({
+                    ...TOC_NOTE_DETAILS_OPTIONS,
+                    hasInnerContainers: true,
+                  })
+                }
+                color={isActiveLink ? "white" : "grey"}
+              >
+                {item.number}. {item.title}
+              </TextLink>
+              {isActiveLink ? (
+                <div className={styles.tocInSideBar}>
+                  <Toc />
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
+      </section>
+    </aside>
+  );
+};
+
+// TODO migrate once done
+const DoubleSideBarLayout = () => {};
