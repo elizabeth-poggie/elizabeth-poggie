@@ -202,7 +202,7 @@ What prints?
 1 2 3 4 6 7 8 9 10
 ```
 
-# When to break or continue your loops
+## When to break or continue your loops
 
 Even though, using break and continue gives you more control over the loop execution, they make the code more difficult to read and debug. If you find yourself using them all the time, you are probably doing something more complicated than it needs to be.
 
