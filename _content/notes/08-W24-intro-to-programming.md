@@ -249,6 +249,31 @@ So ...
 5 ^ 5 = 3125
 ```
 
+# Putting it all together
+
+Let's write the following idea in flowgorithm:
+
+```cs
+"If I enter 5 positive integer numbers, the computer should output the sum."
+```
+
+## In C# ?
+
+```cs
+int sum = 0;
+for (int i = 0; i < 5 ; i++) {
+	int number;
+	bool valid = int.TryParse(Console.ReadLine(), out number);
+	while (!valid || number <= 0)
+	{
+		   Console.WriteLine("not valid lol");
+		   valid = int.TryParse(Console.ReadLine(), out number);
+	}
+	sum = sum + number;
+}
+Console.WriteLine(sum);
+```
+
 # Drawing shapes
 
 Let's write a program that takes an `int` as input and prints a square. For example, if i input 4, the program should output:
@@ -261,6 +286,8 @@ Let's write a program that takes an `int` as input and prints a square. For exam
 ```
 
 ## In Flowgorithm?
+
+Let's try it.
 
 ## In C# ?
 
@@ -294,27 +321,48 @@ for (int i = 0; i < size; i++)
 - `for (int j = 0; j < size; j++)` draws one line of our square where each line is made of `size` number of `+`s (e.g. 4 pluses)
 - `for (int i = 0; i < size; i++)` draws each line `size` times (e.g. 4 rows of pluses)
 
-# Putting it all together
+# Exercise
 
-Let's write the following idea in flowgorithm:
+write a flowgorithm program that takes an `int` as input and prints an empty square. For example, if i enter the number `4`, i should see:
 
 ```cs
-"If I enter 5 integer numbers, the computer should output the sum."
+++++
++  +
++  +
+++++
 ```
 
 ## In C# ?
 
 ```cs
-int sum = 0;
-for (int i = 0; i < 5 ; i++) {
-	int number;
-	bool valid = int.TryParse(Console.ReadLine(), out number);
-	while (!valid)
-	{
-		   Console.WriteLine("not valid lol");
-		   valid = int.TryParse(Console.ReadLine(), out number);
-	}
-	sum = sum + number;
+// Step 1) Prompt for input
+Console.Write("Enter the size of the square: ");
+int size;
+
+// Step 2) Input validation
+while (!int.TryParse(Console.ReadLine(), out size) || size <= 0)
+{
+  Console.WriteLine("Invalid input. Please enter a positive integer.");
+  Console.Write("Enter the size of the square: ");
 }
-Console.WriteLine(sum);
+
+// Step 3) Printing the empty square
+Console.WriteLine("Square of size {0}:", size);
+for (int i = 1; i <= size; i++)
+{
+  for (int j = 1; j <= size; j++)
+  {
+    // print a solid line if i am at the top OR bottom of the box (when i=1 || i=size)
+    // print a solid line if i am at the right OR left side of the box (when j=1 || j=size)
+    if (i == 1 || i == size || j == 1|| j == size)
+    {
+        Console.Write("+");
+    }
+    else
+    {
+        Console.Write(" ");
+    }
+  }
+  Console.WriteLine();
+}
 ```
