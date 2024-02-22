@@ -1,11 +1,12 @@
 ---
 # General Information
-title: "Lecture 6"
-subtitle: "Fonts & Intro to JavaScript"
-date: "2024-02-06T15:30:35Z"
-course: "User Interfaces"
+category: "User Interfaces"
+number: 6
 type: "Lecture"
-slides: "/assets/notes/W24-user-interfaces/slides/06.pdf"
+title: "Fonts"
+created: "2024-02-06T12:17:29Z"
+link:
+  { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/06.pdf" }
 ---
 
 # Fonts

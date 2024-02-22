@@ -1,11 +1,15 @@
 ---
 # General Information
-title: "Lecture 6"
-subtitle: "Input & Outputs"
-date: "2024-02-15T12:17:29Z"
-course: "Intro to Programming"
+category: "Intro to Programming"
+number: 6
 type: "Lecture"
-slides: "/assets/notes/W24-intro-to-programming/slides/06.pdf"
+title: "Input & Outputs"
+created: "2024-02-15T12:17:29Z"
+link:
+  {
+    text: "slides",
+    href: "/assets/notes/W24-intro-to-programming/slides/06.pdf",
+  }
 ---
 
 # Introduction

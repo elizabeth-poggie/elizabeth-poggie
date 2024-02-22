@@ -1,11 +1,12 @@
 ---
 # General Information
-title: "Lecture 10"
-subtitle: "Floats"
-date: "2024-02-19T15:30:35Z"
-course: "User Interfaces"
+category: "User Interfaces"
+number: 10
 type: "Lecture"
-slides: "/assets/notes/W24-user-interfaces/slides/10.pdf"
+title: "Floats"
+created: "2024-02-19T12:17:29Z"
+link:
+  { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/10.pdf" }
 ---
 
 # Motivation

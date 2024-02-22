@@ -1,11 +1,12 @@
 ---
 # General Information
-title: "Lecture 7"
-subtitle: "The Box Model"
-date: "2024-02-12T15:30:35Z"
-course: "User Interfaces"
+category: "User Interfaces"
+number: 7
 type: "Lecture"
-slides: "/assets/notes/W24-user-interfaces/slides/07.pdf"
+title: "The Box Model"
+created: "2024-02-12T12:17:29Z"
+link:
+  { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/07.pdf" }
 ---
 
 # The Box Model

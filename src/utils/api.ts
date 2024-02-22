@@ -64,6 +64,5 @@ export function getAllArt(fields: string[] = []) {
 export function getAllNotes(fields: string[] = []) {
   const slugs = getSlugs(noteDirectory);
   const notes = slugs.map((slug) => getBySlug(slug, fields, noteDirectory));
-  // TODO - add special sorting based on date
   return notes;
 }

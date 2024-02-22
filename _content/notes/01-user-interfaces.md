@@ -1,11 +1,12 @@
 ---
 # General Information
-title: "Lecture 1"
-subtitle: "Introduction to User Interfaces"
-date: "2024-01-29T12:17:29Z"
-course: "User Interfaces"
+category: "User Interfaces"
+number: 1
 type: "Lecture"
-slides: "/assets/notes/W24-user-interfaces/slides/01.pdf"
+title: "Introduction to User Interfaces"
+created: "2024-01-29T12:17:29Z"
+link:
+  { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/01.pdf" }
 ---
 
 # VSCode

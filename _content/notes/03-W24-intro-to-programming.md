@@ -1,11 +1,15 @@
 ---
 # General Information
-title: "Lecture 3"
-subtitle: "Variables & Arithmetic"
-date: "2024-02-06T12:17:29Z"
-course: "Intro to Programming"
+category: "Intro to Programming"
+number: 3
 type: "Lecture"
-slides: "/assets/notes/W24-intro-to-programming/slides/03.pdf"
+title: "Variables & Arithmetic"
+created: "2024-02-06T12:17:29Z"
+link:
+  {
+    text: "slides",
+    href: "/assets/notes/W24-intro-to-programming/slides/03.pdf",
+  }
 ---
 
 # Variables

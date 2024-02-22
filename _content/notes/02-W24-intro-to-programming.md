@@ -1,11 +1,15 @@
 ---
 # General Information
-title: "Lecture 2"
-subtitle: "From Flowgorithm to C#"
-date: "2024-02-01T12:17:29Z"
-course: "Intro to Programming"
+category: "Intro to Programming"
+number: 2
 type: "Lecture"
-slides: "/assets/notes/W24-intro-to-programming/slides/02.pdf"
+title: "From Flowgorithm to C#"
+created: "2024-02-01T12:17:29Z"
+link:
+  {
+    text: "slides",
+    href: "/assets/notes/W24-intro-to-programming/slides/02.pdf",
+  }
 ---
 
 # Creating a Project in Visual Studio
