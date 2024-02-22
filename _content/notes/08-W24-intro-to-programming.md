@@ -58,7 +58,9 @@ The % operator in C# is called the "remainder" or "modulus" operator. It returns
 
 This operator is often used to determine if a number is even or odd. If a number n is divided by 2 and the remainder is 0, then n is even; otherwise, n is odd.
 
-## What does this look in flowgorithm?
+## In flowgorithm?
+
+Let's try it.
 
 ## In C#?
 
@@ -204,7 +206,7 @@ What prints?
 
 ## When to break or continue your loops
 
-Even though, using break and continue gives you more control over the loop execution, they make the code more difficult to read and debug. If you find yourself using them all the time, you are probably doing something more complicated than it needs to be.
+Using break and continue gives you more control over the loop execution, but they make the code more difficult to read and debug. If you find yourself using them all the time, you are probably doing something more complicated than it needs to be.
 
 Think of them as tools in your toolkit, best used sparingly.
 
@@ -254,7 +256,8 @@ So ...
 Let's write the following idea in flowgorithm:
 
 ```cs
-"If I enter 5 positive integer numbers, the computer should output the sum."
+"If I enter 5 positive integer numbers,"
+"the computer should output the sum."
 ```
 
 ## In C# ?
@@ -323,7 +326,7 @@ for (int i = 0; i < size; i++)
 
 # Exercise
 
-write a flowgorithm program that takes an `int` as input and prints an empty square. For example, if i enter the number `4`, i should see:
+Write a flowgorithm program that takes an `int` as input and prints an empty square. For example, if i enter the number `4`, i should see:
 
 ```cs
 ++++

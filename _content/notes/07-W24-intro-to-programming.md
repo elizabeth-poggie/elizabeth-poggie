@@ -8,10 +8,6 @@ created: "2024-02-20T12:17:29Z"
 # link: { text: "slides", href: "" }
 ---
 
-# TODO
-
-A Reminder: Test 1 covers lectures 1 - 6 and lab 1, however I am going to start introducing new topics. Why? It gives y'all more hands-on experience building programs (good for test). As well, these concepts might take a little extra time to digest, so we're taking the slow and steady route as opposed to me shoving this down your throat after the holidays lol.
-
 # Introduction
 
 A repetition structure causes a statement or set of statements to execute repeatedly. They provide a way to automate repetitive tasks and process data efficiently. These structures are known as "Loops".
