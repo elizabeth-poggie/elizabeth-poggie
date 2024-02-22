@@ -1,11 +1,11 @@
 ---
 # General Information
-title: "Lecture 7"
-subtitle: "Intro to loops"
-date: "2024-02-20T12:17:29Z"
-course: "Intro to Programming"
+category: "Intro to Programming"
+number: 7
 type: "Lecture"
-slides: ""
+title: "Loops I"
+created: "2024-02-20T12:17:29Z"
+# link: { text: "slides", href: "" }
 ---
 
 # TODO
@@ -375,30 +375,4 @@ Lets give it a shot.
 for (int i = 2; i <= 20 ; i = i + 2) {
 	Console.WriteLine(i);
 }
-```
-
-# Exercise 2
-
-Write the following idea in flowgorithm:
-
-```cs
-"If I enter 5 integer numbers, the computer should output the sum."
-```
-
-## What does this look like in C# ?
-
-```cs
-int sum = 0;
-for (int i = 0; i < 5 ; i++) {
-	int number;
-	bool valid = int.TryParse(Console.ReadLine(), out number);
-	while (!valid)
-	{
-		   Console.WriteLine("not valid lol");
-		   valid = int.TryParse(Console.ReadLine(), out number);
-	}
-	sum = sum + number;
-}
-Console.WriteLine(sum);
-
 ```
