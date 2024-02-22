@@ -5,7 +5,11 @@ number: 8
 type: "Lecture"
 title: "Loops II"
 created: "2024-02-22T12:17:29Z"
-# link: { text: "slides", href: "" }
+link:
+  {
+    text: "slides",
+    href: "/assets/notes/W24-intro-to-programming/slides/08.pdf",
+  }
 ---
 
 # Tracing the 'While' Loop

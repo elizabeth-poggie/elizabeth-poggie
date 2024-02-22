@@ -5,7 +5,11 @@ number: 7
 type: "Lecture"
 title: "Loops I"
 created: "2024-02-20T12:17:29Z"
-# link: { text: "slides", href: "" }
+link:
+  {
+    text: "slides",
+    href: "/assets/notes/W24-intro-to-programming/slides/07.pdf",
+  }
 ---
 
 # Introduction
