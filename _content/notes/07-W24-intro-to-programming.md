@@ -182,7 +182,7 @@ while (guess != secret) { // Step 2
 
 How would you improve the above program?
 
-# Exercise 1
+# Exercise
 
 Write the following idea in flowgorithm:
 
