@@ -176,7 +176,7 @@ Yes !! Any element can be both a `flex-container` and a `flex-item`. In other wo
 
 ```
 
-# Aligning Items
+# Aligning
 
 Ok cool we have a row of equal sized flex items, however what happens if we want to change how these items are distributed on the page?
 
@@ -219,7 +219,7 @@ the `justify-content` property accepts the following values:
 - `flex-end`: Items align to the right side of the container.
 - `center`: Items align at the center of the container.
 
-# Distributing Items
+# Distributing
 
 What happens if i want my items spread out evenly?
 
@@ -259,18 +259,59 @@ the `justify-content` property ALSO accepts these values:
 - `space-between`: Items display with equal spacing between them.
 - `space-around`: Items display with equal spacing around them.
 
+# Vertical alignment
+
+So far, we’ve been manipulating horizontal alignment, but flex containers can also define the vertical alignment of their items. For example, if i have this delightful cat that i want to center in my container:
+
+```text
+
+ ____________________________________________
+|                                            |
+|                                            |
+|                                            |
+|                                            |
+|                 /\_____/\                  |
+|                /  o   o  \                 |
+|               ( ==  ^  == )                |
+|                                            |
+|                                            |
+|                                            |
+|                                            |
+|____________________________________________|
+
+```
+
+I cannot do this using floats !! What does the code look like?
+
+```css
+.flex-container {
+  display: flex;
+  justify-content: center;
+  height: 100vh; /* Add this to make your container take up 100% of the viewport height */
+  align-items: center; /* Add this to center your cat on the vertical axis */
+}
+```
+
+```html
+<div class="flex-container">
+  <img src="./images/delightful-cat.jpeg" width="200" />
+</div>
+```
+
+## Properties
+
+The available options for `align-items` accepts the following values:
+
+- `flex-start`: Items align to the top of the container.
+- `flex-end`: Items align to the bottom of the container.
+- `center`: Items align at the vertical center of the container.
+- `baseline`: Items display at the baseline of the container.
+- `stretch`: Items are stretched to fit the container.
+
 # Exercises
 
 - [Inspect and Debug CSS Flexbox layouts](https://developer.chrome.com/docs/devtools/css/flexbox)
-- [Flexbox Froggy](https://flexboxfroggy.com/)
-
-# A charming cat
-
-```text
-    /\_____/\
-   /  o   o  \
-  ( ==  ^  == )
-```
+- [Flexbox Froggy, Levels 1-8](https://flexboxfroggy.com/)
 
 # Acknowledgements
 
