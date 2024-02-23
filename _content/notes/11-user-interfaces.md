@@ -176,7 +176,7 @@ Yes !! Any element can be both a `flex-container` and a `flex-item`. In other wo
 
 ```
 
-# Aligning
+# Horizontal Alignment
 
 Ok cool we have a row of equal sized flex items, however what happens if we want to change how these items are distributed on the page?
 
@@ -219,7 +219,7 @@ the `justify-content` property accepts the following values:
 - `flex-end`: Items align to the right side of the container.
 - `center`: Items align at the center of the container.
 
-# Distributing
+# Distribution
 
 What happens if i want my items spread out evenly?
 
