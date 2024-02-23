@@ -27,6 +27,7 @@ interface IProps {
 export function NoteDetails({
   noteDetails,
   primaryRelatedNotes,
+  secondaryRelatedNotes,
 }: Readonly<IProps>) {
   const renderHeader = ({ id, children }) => {
     return (
@@ -148,41 +149,41 @@ export function NoteDetails({
   return (
     <>
       <div className={styles.leftSideBar}>
-        <NotesSideBar
-          relatedNotes={primaryRelatedNotes}
-          currentNote={noteDetails}
-        />
+        <NotesSideBar related={primaryRelatedNotes} current={noteDetails} />
       </div>
       <div className={styles.container}>{renderDetails()}</div>
+      <div className={styles.rightSideBar}>
+        <NotesSideBar related={secondaryRelatedNotes} current={noteDetails} />
+      </div>
     </>
   );
 }
 
 interface ISideBarProps {
-  relatedNotes?: relatedNotes[];
-  currentNote: INote;
+  related?: relatedNotes[];
+  current: INote;
 }
 
-const NotesSideBar = ({ relatedNotes, currentNote }: ISideBarProps) => {
+const NotesSideBar = ({ related, current }: ISideBarProps) => {
   return (
     <aside>
-      <section className={styles.sideBarSection}>
+      {/* <section className={styles.sideBarSection}>
         <Link href="/">
           <PillButton title="All Notes" onClick={() => null} />
         </Link>
-      </section>
-      {relatedNotes.map((relatedNote: relatedNotes) => {
+      </section> */}
+      {related.map((related: relatedNotes) => {
         return (
           <section className={styles.sideBarSection}>
             <section className={styles.sideBarSectionHeader}>
               <header>
                 <Text variant="p" style="capitalize">
-                  {relatedNote.type}
+                  {related.type}
                 </Text>
               </header>
             </section>
-            {relatedNote.items?.map((item) => {
-              const isActiveLink = item.title === currentNote.title;
+            {related.notes?.map((item) => {
+              const isActiveLink = item.title === current.title;
               return (
                 <div key={item.slug}>
                   <TextLink
