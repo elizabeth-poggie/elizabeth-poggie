@@ -30,7 +30,7 @@ It is not my intention to create any surprises. The course notes (Lectures 1-8) 
 
 Regarding grades for labs, you can expect to receive them shortly.
 
-# What is Flexbox?
+# Intro
 
 Over the years, the evolution of web design has witnessed the emergence of innovative techniques while some older approaches have faded into obscurity. Among these advancements, Flexbox stands out as a relatively recent addition to CSS, revolutionizing web applications and user interface.
 
@@ -114,7 +114,7 @@ A flex container is any element that has `display: flex` on it. A "flex item" is
 
 ## Can they be nested?
 
-Yes !! any element can be both a `flex-container` and a `flex-item`. In other words, for any flex-item, you can also put `display: flex` and then use flexbox to arrange that item's children:
+Yes !! Any element can be both a `flex-container` and a `flex-item`. In other words, for any flex-item, you can also put `display: flex` and then use flexbox to arrange that item's children:
 
 ```text
                container
@@ -127,6 +127,11 @@ Yes !! any element can be both a `flex-container` and a `flex-item`. In other wo
 |_____________________________________|
 
 ```
+
+# Exercises
+
+- [Inspect and Debug CSS Flexbox layouts](https://developer.chrome.com/docs/devtools/css/flexbox)
+- [Flexbox Froggy](https://flexboxfroggy.com/)
 
 ```text
     /\_____/\
