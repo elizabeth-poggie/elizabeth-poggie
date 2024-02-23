@@ -3,7 +3,7 @@
 category: "User Interfaces"
 number: 11
 type: "Lecture"
-title: "Intro to Flexbox"
+title: "Flexbox I"
 created: "2024-02-23T12:17:29Z"
 ---
 
@@ -30,19 +30,69 @@ It is not my intention to create any surprises. The course notes (Lectures 1-8) 
 
 Regarding grades for labs, you can expect to receive them shortly.
 
-# Intro
+# Flexbox
+
+## Intro
 
 Over the years, the evolution of web design has witnessed the emergence of innovative techniques while some older approaches have faded into obscurity. Among these advancements, Flexbox stands out as a relatively recent addition to CSS, revolutionizing web applications and user interface.
 
 Flexbox, short for "Flexible Box Layout," is a layout model in CSS designed for creating dynamic and responsive layouts. With Flexbox, the intricacies of crafting complex layouts are significantly streamlined, reducing the need for convoluted HTML structures. Moreover, flex offers better support for various screen sizes and devices, contributing to improved user experience across various platforms.
 
-# Before starting
+Whereas floats only let us horizontally position our boxes, flexbox gives us complete control over the alignment, direction, order, and size of our boxes.
+
+## When to use floats and when to use Flexbox?
+
+Use flexbox to lay out your web pages as much as possible, reserving floats for when you need text to flow around a box to create a magazine style layout or when you need to support legacy web browsers.
+
+If you want this 👉 use floats
+
+```text
+ _______ ________________
+|       |                |
+|  img  |                |
+|_______|                |
+|                        |
+|        content         |
+|                        |
+|________________________|
+
+```
+
+If you want this 👉 use flexbox
+
+```text
+ ________________________________
+|                                |
+|             header             |
+|________________________________|
+ ________________________    ____
+|                        |  |    |
+|                        |  |____|
+|                        |
+|                        |   ____
+|                        |  |    |
+|         content        |  |____|
+|                        |
+|                        |   ____
+|                        |  |    |
+|                        |  |____|
+|________________________|
+ ________________________________
+|                                |
+|             footer             |
+|________________________________|
+
+```
+
+By the end of the end of this topic, you should be able to create pretty much any layout.
+
+## Before starting
 
 DevTools will be crucial for you in the following lectures. If something isn’t behaving the way you expect, inspecting it in the developer tools should be your first step every time.
 
-# Flexbox
+# Overview
 
-Flexbox is a way to arrange items into rows or columns. These items will flex (i.e. grow or shrink) based on some rules that you can define.
+Flexbox is a way to arrange items into rows or columns. These items will move based on some rules that you can define in the parent element.
 
 What do the below code snippets print?
 
@@ -55,7 +105,7 @@ What do the below code snippets print?
   background: peachpuff;
   margin: 2px;
   height: 100px;
-  flex: 1; /* add this to make a flex item */
+  width: 100px;
 }
 ```
 
@@ -79,11 +129,11 @@ If copy-and-pasted correctly, you should see all 3 `flex-items` arranged horizon
 
 ## What occurs when you resize the browser window?
 
-You'll notice that the `flex-items` adapt to fill the available area while maintaining equal width. However, due to the fixed height set at `100px`, this should remain unchanged.
+You'll notice that the `flex-items` adapt to fill the available area. However, due to the fixed height set at `100px`, this should remain unchanged and when there is enough space for our items on the screen, they will retain their fixed width at `100px`
 
 ## What happens if i add more flex-items?
 
-The `flex-items` will show up alongside the others, and everything will flex to fit within the available area.
+The `flex-items` will show up alongside the others, and everything will "flex" to fit within the available area.
 
 ```text
  ____     ____     ____     ____
@@ -92,8 +142,6 @@ The `flex-items` will show up alongside the others, and everything will flex to 
 |____|   |____|   |____|   |____|
 
 ```
-
-the items will squish together on a single row ^
 
 # Containers & Items
 
@@ -128,13 +176,64 @@ Yes !! Any element can be both a `flex-container` and a `flex-item`. In other wo
 
 ```
 
+# Aligning Items
+
+Ok cool we have a row of equal sized flex items, however what happens if we want to change how these items are distributed on the page?
+
+For example, what happens if we want the below layout?
+
+```text
+
+ _____________________________________________
+|       _______     _______     _______       |
+|      |       |   |       |   |       |      |
+|      | item  |   | item  |   | item  |      |
+|      |_______|   |_______|   |_______|      |
+|_____________________________________________|
+
+```
+
+That’s what the `justify-content` property is for:
+
+```css
+.flex-container {
+  display: flex;
+  justify-content: center; /* Add this */
+}
+
+.flex-item {
+  background: peachpuff;
+  margin: 2px;
+  height: 100px;
+  width: 100px;
+}
+```
+
+Notice how we did this by adding a property to the parent element (the flex container) instead of directly to the element we wanted to center (the flex item). This approach of controlling items through their containers is a recurring pattern in flexbox, diverging from traditional box positioning methods we've used thus far
+
+## All properties
+
+the `justify-content` property accepts the following values:
+
+- `flex-start`: Items align to the left side of the container.
+- `flex-end`: Items align to the right side of the container.
+- `center`: Items align at the center of the container.
+- `space-between`: Items display with equal spacing between them.
+- `space-around`: Items display with equal spacing around them.
+
 # Exercises
 
 - [Inspect and Debug CSS Flexbox layouts](https://developer.chrome.com/docs/devtools/css/flexbox)
 - [Flexbox Froggy](https://flexboxfroggy.com/)
+
+# A charming cat
 
 ```text
     /\_____/\
    /  o   o  \
   ( ==  ^  == )
 ```
+
+# Acknowledgements
+
+The lecture content was adapted from [Interneting is Hard](https://internetingishard.netlify.app/) and Michael Haaf's course notes, as well as insights from my own experience.
