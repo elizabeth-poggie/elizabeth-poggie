@@ -211,13 +211,51 @@ That’s what the `justify-content` property is for:
 
 Notice how we did this by adding a property to the parent element (the flex container) instead of directly to the element we wanted to center (the flex item). This approach of controlling items through their containers is a recurring pattern in flexbox, diverging from traditional box positioning methods we've used thus far
 
-## All properties
+## Properties
 
 the `justify-content` property accepts the following values:
 
 - `flex-start`: Items align to the left side of the container.
 - `flex-end`: Items align to the right side of the container.
 - `center`: Items align at the center of the container.
+
+# Distributing Items
+
+What happens if i want my items spread out evenly?
+
+```text
+
+ ____________________________________________
+|    _______       _______       _______     |
+|   |       |     |       |     |       |    |
+|   | item  |     | item  |     | item  |    |
+|   |_______|     |_______|     |_______|    |
+|____________________________________________|
+
+```
+
+The `justify-content` property also gives you this same support:
+
+```css
+.flex-container {
+  display: flex;
+  justify-content: space-around; /* Add this */
+}
+
+.flex-item {
+  background: peachpuff;
+  margin: 2px;
+  height: 100px;
+  width: 100px;
+}
+```
+
+The flex container automatically distributes extra horizontal space to either side of each item. The `space-between` value is similar, but it only adds that extra space between items.
+
+## More Properties
+
+the `justify-content` property ALSO accepts these values:
+
 - `space-between`: Items display with equal spacing between them.
 - `space-around`: Items display with equal spacing around them.
 
