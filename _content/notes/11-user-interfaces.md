@@ -259,7 +259,7 @@ the `justify-content` property ALSO accepts these values:
 - `space-between`: Items display with equal spacing between them.
 - `space-around`: Items display with equal spacing around them.
 
-# Vertical alignment
+# Vertical Alignment
 
 So far, we’ve been manipulating horizontal alignment, but flex containers can also define the vertical alignment of their items. For example, if i have this delightful cat that i want to center in my container:
 
