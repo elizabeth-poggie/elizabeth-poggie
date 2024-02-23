@@ -30,13 +30,11 @@ type CategoryMap = {
 export const categoryMap: CategoryMap = {
   "User Interfaces": {
     color: "green",
-    primaryRelatedTypes: ["Lecture"],
-    secondaryRelatedTypes: ["Lab"],
+    primaryRelatedTypes: ["Lecture", "Lab"],
   },
   "Intro to Programming": {
     color: "yellow",
-    primaryRelatedTypes: ["Lecture"],
-    secondaryRelatedTypes: ["Lab"],
+    primaryRelatedTypes: ["Lecture", "Lab"],
   },
 };
 
@@ -86,7 +84,7 @@ export async function getStaticProps({ params }: Params) {
 
   // Col 1
   const primaryRelatedNotes = [];
-  categoryMap[details.category].primaryRelatedTypes.map((type: string) => {
+  categoryMap[details.category].primaryRelatedTypes?.map((type: string) => {
     const notesByType = allNotes.filter(
       (note) => note.category === details.category && note.type === type
     );
@@ -96,7 +94,7 @@ export async function getStaticProps({ params }: Params) {
 
   // Col 2
   const secondaryRelatedNotes = [];
-  categoryMap[details.category].secondaryRelatedTypes.map((type: string) => {
+  categoryMap[details.category].secondaryRelatedTypes?.map((type: string) => {
     const notesByType = allNotes.filter(
       (note) => note.category === details.category && note.type === type
     );
