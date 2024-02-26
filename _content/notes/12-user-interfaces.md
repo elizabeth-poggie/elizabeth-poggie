@@ -233,3 +233,165 @@ after:
 ```
 
 The above ordering of elements is from lowest number to highest starting at -1, 0, 1
+
+# Item alignment
+
+For any horizontal and vertical alignment we can apply on a container, we can do so on an item! For example:
+
+```css
+.last-item {
+  align-self: flex-start; /* add this */
+}
+```
+
+## Properties
+
+The `align-self` property accepts the same values as `align-items`, however it's applied individually to a specific flex item rather than to all items collectively.
+
+# Flexing your items
+
+What happens if we want relative widths instead of fixed widths? What if we want to build the below layout?
+
+```text
+ _______     _______     _________________
+|       |   |       |   |                 |
+|       |   |       |   |                 |
+|_______|   |_______|   |_________________|
+
+```
+
+This is what the `flex` property is for!! With this property we can define the width of individual items in a flex container. Or, more accurately, it allows them to have flexible widths. It works as a "weight" that tells the flex container how to distribute extra space to each item. Let's experiment on a footer component:
+
+```html
+<footer>
+  <div class="footer-item footer-one"></div>
+  <div class="footer-item footer-two"></div>
+  <div class="footer-item footer-three"></div>
+</footer>
+```
+
+Then in CSS add the following classes:
+
+```css
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-item {
+  margin: 5px;
+  background-color: peachpuff;
+  height: 200px;
+  flex: 1;
+}
+```
+
+That `flex: 1;` line tells the items to stretch to match the width of `.footer`. Since they all have the same weight, they’ll stretch equally.
+
+```text
+                footer
+_______________________________________
+ _________     _________     _________
+|         |   |         |   |         |
+|         |   |         |   |         |
+|_________|   |_________|   |_________|
+_______________________________________
+```
+
+What happens when we apply the below CSS to our elements?
+
+```css
+.footer-three {
+  flex: 2;
+}
+```
+
+if applied correctly, you should see the following result:
+
+```text
+                  footer
+_________________________________________
+ _______     _______     _______________
+|       |   |       |   |               |
+|       |   |       |   |               |
+|_______|   |_______|   |_______________|
+_________________________________________
+```
+
+## Static item widths
+
+We can even mix-and-match flexible boxes with fixed-width ones. `flex: initial` falls back to the item’s explicit width property. This lets us combine static and flexible boxes in complex ways. For example, if i want to recreate the below diagram:
+
+```text
+  fixed          flexible         fixed
+ _______     _______________     _______
+|       |   |               |   |       |
+|       |   |               |   |       |
+|_______|   |_______________|   |_______|
+```
+
+you will need to create the following css class adjustments:
+
+```css
+.footer-one,
+.footer-three {
+  background-color: #5995da;
+  flex: initial;
+  width: 300px; /* notice the fixed width here !! */
+}
+```
+
+Without that `flex: initial;` line, the `flex: 1;` declaration would be inherited from the `.footer-item` class, which would cause the fixed width we want to be ignored !! Notice how when we resize the browser, the middle block is the only one that grows!! The above design pattern is a very common choice as many websites have a fixed-width sidebar (or multiple sidebars) and a flexible content block containing the main text of the page. You will likely be following this layout in your later careers.
+
+# Auto Margins
+
+Auto-margins in flexbox are special and work a bit differently in the context of flexbox. Think of auto-margins as a “divider” for flex items in the same container. What happens when we execute the below HTML?
+
+```html
+<div class="container">
+  <div class="what">what</div>
+  <div class="will">will</div>
+  <div class="happen">happen ??</div>
+</div>
+```
+
+with the following CSS:
+
+```css
+.container {
+  display: flex;
+}
+
+.what,
+.will,
+.happen {
+  margin: 5px;
+}
+
+.will {
+  margin-left: auto;
+}
+```
+
+Notice how auto-margins eat up all the extra space in a flex container instead of distributing items equally !! `will` and any following items move to the right side of the container.
+
+# Summary
+
+## When to use what property?
+
+- Use `display: flex;` to create a flex container.
+- Use `justify-content` to define the horizontal alignment of items.
+- Use `align-items` to define the vertical alignment of items.
+- Use `flex-direction` if you need columns instead of rows.
+- Use the `row-reverse` or `column-reverse` values to flip item order.
+- Use `order` to customize the order of individual elements.
+- Use `align-self` to vertically align individual items.
+- Use `flex` to create flexible boxes that can stretch and shrink.
+
+## How to know when to it's time to use a property?
+
+When handed a design that you need to implement, your first task is to draw a bunch of boxes on it and determine how they’re supposed to stack, stretch, and shrink to achieve the desired design across different platforms. Once you’ve got that done, it should be pretty ez to code it up using the above list of flexbox techniques.
+
+# Exercises
+
+- [Flexbox Froggy, Levels 8-24](https://flexboxfroggy.com/)
