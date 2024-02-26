@@ -5,6 +5,8 @@ number: 11
 type: "Lecture"
 title: "Flexbox I"
 created: "2024-02-23T12:17:29Z"
+link:
+  { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/11.pdf" }
 ---
 
 # Flexbox
