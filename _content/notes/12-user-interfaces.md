@@ -92,6 +92,22 @@ In Flexbox, “Direction” refers to whether a container renders its items hori
 
 A fundamental principle of responsive design involves delivering identical HTML markup to both mobile and desktop users. However, this presents a challenge because mobile layouts typically feature a single column, whereas desktop layouts arrange elements horizontally. Despite this difference, this property enables seamless switching between layouts, facilitating the creation of designs that cater to a variety of user interfaces.
 
+```text
+ _______
+|       |
+|       |
+|_______|
+ _______
+|       |
+|       |
+|_______|
+ _______
+|       |
+|       |
+|_______|
+
+```
+
 ## Directing your alignment
 
 When you rotate the direction of a container with `flex-direction`, you also rotate the direction of the `justify-content`. What happens if we want horizontally center our column? We now need to include an `align-items` property as well.
@@ -394,4 +410,4 @@ When handed a design that you need to implement, your first task is to draw a bu
 
 # Exercises
 
-- [Flexbox Froggy, Levels 8-24](https://flexboxfroggy.com/)
+[Flexbox Froggy, Levels 8-24](https://flexboxfroggy.com/)
