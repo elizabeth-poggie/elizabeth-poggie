@@ -24,6 +24,29 @@ interface IProps {
 }
 
 export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
+  const [height, setHeight] = React.useState<number>(0);
+  const observedHeightRef = React.useRef(null);
+
+  React.useEffect(() => {
+    // custom styling - configure side bar top to match where markdown content begins
+    if (!observedHeightRef.current) {
+      return;
+    }
+    const resizeObserver = new ResizeObserver(() => {
+      if (
+        observedHeightRef.current &&
+        observedHeightRef.current.offsetTop !== height
+      ) {
+        setHeight(observedHeightRef.current.offsetTop);
+      }
+    });
+    resizeObserver.observe(observedHeightRef.current);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [observedHeightRef]);
+
   const renderHeader = ({ id, children }) => {
     return (
       <div className={styles.mdHeader}>
@@ -94,8 +117,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const renderDetails = () => {
     return (
       <>
-        {renderNoteHeader()}
-        <div className="js-toc-content">
+        <div className="js-toc-content" ref={observedHeightRef}>
           <Markdown
             rehypePlugins={[rehypeSlug]}
             components={{
@@ -143,10 +165,16 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
 
   return (
     <>
-      <div className={styles.leftSideBar}>
+      <div
+        className={styles.leftSideBar_default}
+        style={{ top: `${height}px` }}
+      >
         <NotesSideBar related={relatedNotes} current={noteDetails} />
       </div>
-      <div className={styles.container}>{renderDetails()}</div>
+      <div className={styles.container}>
+        {renderNoteHeader()}
+        {renderDetails()}
+      </div>
     </>
   );
 }
