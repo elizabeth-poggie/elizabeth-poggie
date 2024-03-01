@@ -33,9 +33,17 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
     const { offsetTop } = observedContentRef.current;
     const position = window.pageYOffset;
     if (position >= offsetTop) {
+      tocbot.refresh({
+        ...TOC_NOTE_DETAILS_OPTIONS,
+        hasInnerContainers: true,
+      });
       setIsInContent(true);
       setTop(0);
     } else if (position < offsetTop) {
+      tocbot.refresh({
+        ...TOC_NOTE_DETAILS_OPTIONS,
+        hasInnerContainers: true,
+      });
       setIsInContent(false);
       setTop(offsetTop);
     }
