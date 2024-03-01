@@ -13,7 +13,7 @@ Let's remake the chat feature from instagram.
 
 # Step 1) What are the requirements?
 
-To figure out the bare minimum requirements to create this feature, lets analyze it:
+To figure out the bare minimum requirements to create this feature, we need to analyze what needs to happen:
 
 - What are the core features?
   - How do we send messages?
@@ -29,7 +29,7 @@ To figure out the bare minimum requirements to create this feature, lets analyze
 
 # Step 2) Planning
 
-Before we get started, let's plan out what's happening
+Let's design it.
 
 ```text
  ________________________________
