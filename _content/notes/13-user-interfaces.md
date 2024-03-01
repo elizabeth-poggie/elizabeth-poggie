@@ -19,12 +19,9 @@ To figure out the bare minimum requirements to create this feature, lets analyze
   - How do we send messages?
   - How do we receive messages?
   - How do we view messages?
-  - How do we look at message history
+  - How do we look at message history?
 - What is the user flow?
-  - How will users initiate chats?
-  - Send messages?
-  - View messages?
-  - Manage conversations?
+  - How will users initiate the core functionalities necessary?
 - How are we building this?
   - React?
   - React Native?
