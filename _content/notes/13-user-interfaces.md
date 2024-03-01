@@ -13,7 +13,7 @@ Let's remake the chat feature on instagram.
 
 # Step 1) What are the requirements?
 
-To figure out the bare minimum requirements to create the feature, we need first analyze what needs to happen:
+To figure out the bare minimum requirements to create the feature, our first step is to analyze the critical functionalities:
 
 - What are the core features?
   - How do we send messages?
