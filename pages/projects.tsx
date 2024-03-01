@@ -15,7 +15,6 @@ export default function ProjectsPage({ allProjects }: IProps) {
       <Head>
         <title>Elizabeth Poggie - Projects</title>
       </Head>
-      {/* <NavBar navItems={navItems} /> */}
       <Projects allProjects={allProjects} />
     </>
   );

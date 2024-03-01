@@ -15,7 +15,6 @@ export default function ArtPage({ allArt }: IProps) {
       <Head>
         <title>Elizabeth Poggie - Art</title>
       </Head>
-      {/* <NavBar navItems={navItems} /> */}
       <Art allArt={allArt} />
     </>
   );

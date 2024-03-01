@@ -47,7 +47,7 @@ export default function NoteDetailsPage({
       <Head>
         <title>{noteDetails.title}</title>
       </Head>
-      {/* TODO - <Burger /> */}
+      <Burger />
       <NoteDetails noteDetails={noteDetails} relatedNotes={relatedNotes} />
     </>
   );
