@@ -284,6 +284,7 @@ My `index.html`:
 
 ```html
 <body>
+  <!-- demo box -->
   <img class="iphone" src="./images/phone.png" />
   <main class="iphone-viewport">
     <!-- header -->
@@ -312,8 +313,9 @@ My `index.html`:
         <h2>Requests</h2>
       </button>
     </nav>
+    <!-- chat list -->
     <section class="chat-list">
-      <!-- chat item -->
+      <!-- chat item 1 -->
       <button class="chat-item">
         <img class="profile" src="./images/chonky-cat.jpeg" />
         <div class="info">
@@ -326,7 +328,8 @@ My `index.html`:
           width="20"
         />
       </button>
-      <!-- once you have a working product for 1 chat item, lets add more mock data :) -->
+
+      <!-- chat item 2 -->
       <button class="chat-item">
         <img class="profile" src="./images/sleepy-cat.png" />
         <div class="info">
@@ -340,6 +343,7 @@ My `index.html`:
         />
       </button>
 
+      <!-- chat item 3 -->
       <button class="chat-item">
         <img class="profile" src="./images/sad-cat.jpg" />
         <div class="info">
@@ -353,6 +357,7 @@ My `index.html`:
         />
       </button>
 
+      <!-- chat item 4 -->
       <button class="chat-item">
         <img class="profile" src="./images/box-cat.jpeg" />
         <div class="info">
@@ -373,7 +378,7 @@ My `index.html`:
 My `styles.css`:
 
 ```css
-/* Demo Box */
+/* demo box */
 .iphone {
   position: absolute;
   left: 0;
@@ -399,7 +404,7 @@ My `styles.css`:
   flex-direction: column;
 }
 
-/* Typography */
+/* typography */
 @font-face {
   font-family: "Roboto Light";
   src: url("./fonts/Roboto/Roboto-Light.ttf");
@@ -437,7 +442,7 @@ p {
   color: grey;
 }
 
-/* Default button styling */
+/* default button styling */
 button {
   appearance: none;
   padding: 0;
@@ -453,7 +458,7 @@ button:hover,
     );
 }
 
-/* Chat header */
+/* chat header */
 .chat-header {
   display: flex;
   align-items: center;
@@ -469,7 +474,7 @@ button:hover,
   padding-left: 20px;
 }
 
-/* Search bar */
+/* search bar */
 .chat-search {
   display: flex;
 }
@@ -485,7 +490,7 @@ input {
   width: 100%;
 }
 
-/* Chat navigation */
+/* navigation */
 .chat-nav {
   display: flex;
   justify-content: space-between;
