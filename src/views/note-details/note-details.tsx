@@ -26,18 +26,16 @@ interface IProps {
 
 export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const [top, setTop] = React.useState<number>(0);
-  const [isInContent, setIsInContent] = React.useState<boolean>(false);
+  const [isInContent, setIsInContent] = React.useState<boolean>();
   const observedContentRef = React.useRef(null);
 
   const handleScroll = () => {
     const { offsetTop } = observedContentRef.current;
     const position = window.pageYOffset;
-    if (position >= offsetTop && !isInContent) {
-      console.log("Yikes");
+    if (position >= offsetTop) {
       setIsInContent(true);
       setTop(0);
-    } else if (position < offsetTop && isInContent) {
-      console.log("nvm");
+    } else if (position < offsetTop) {
       setIsInContent(false);
       setTop(offsetTop);
     }

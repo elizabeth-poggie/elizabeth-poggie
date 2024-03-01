@@ -21,7 +21,7 @@
 }
 
 .leftSideBar_sticky {
-  position: sticky;
+  position: fixed;
   padding: calc($unit * 8) 0 0 calc($unit * 8);
   z-index: 1;
   @extend .leftSideBar_default;
