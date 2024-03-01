@@ -6,3 +6,54 @@
   filter: invert(100%) sepia(96%) saturate(15%) hue-rotate(229deg)
     brightness(104%) contrast(105%);
 }
+
+/* Menu Button 1 */
+.menu {
+  height: 32px;
+  width: 40px;
+  cursor: pointer;
+}
+
+.menu span,
+.menu span::before,
+.menu span::after {
+  background: red;
+  border-radius: 3px;
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 6px;
+  margin-top: 13px;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.menu span::before {
+  margin-top: -12px;
+}
+
+.menu span::after {
+  margin-top: 12px;
+}
+
+.menu.active span {
+  background: transparent;
+}
+
+.menu.active span::before {
+  margin-top: 0;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.menu.active span::after {
+  margin-top: 0;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}

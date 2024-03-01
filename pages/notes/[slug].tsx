@@ -4,6 +4,7 @@ import { getAllNotes, getBySlug, noteDirectory } from "../../src/utils/api";
 import { INote } from "../../src/interfaces/note";
 import { NoteDetails } from "../../src/views/note-details/note-details";
 import { Burger } from "../../src/components/navigation/burger/Burger";
+import { navItems } from "..";
 
 export interface relatedNotes {
   type: string;
@@ -47,7 +48,7 @@ export default function NoteDetailsPage({
       <Head>
         <title>{noteDetails.title}</title>
       </Head>
-      <Burger />
+      <Burger navItems={navItems} />
       <NoteDetails noteDetails={noteDetails} relatedNotes={relatedNotes} />
     </>
   );

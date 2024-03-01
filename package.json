@@ -10,6 +10,7 @@
     "classnames": "^2.3.2",
     "date-fns": "^2.28.0",
     "gray-matter": "^4.0.3",
+    "hamburger-react": "^2.5.0",
     "mdast-util-to-hast": "^13.1.0",
     "next": "latest",
     "next-images": "^1.8.5",

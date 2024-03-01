@@ -11,7 +11,7 @@ interface IProps {
 
 export function NavBar({ navItems }: IProps) {
   return (
-    <div className={styles.container}>
+    <nav className={styles.container}>
       <div className={styles.items}>
         {navItems.map((item) => {
           return (
@@ -23,6 +23,6 @@ export function NavBar({ navItems }: IProps) {
           );
         })}
       </div>
-    </div>
+    </nav>
   );
 }
