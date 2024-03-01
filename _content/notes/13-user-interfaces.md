@@ -13,19 +13,23 @@ Let's remake the chat feature on instagram.
 
 # Step 1) What are the requirements?
 
-To figure out the bare minimum requirements to create the feature, our first step is to analyze the critical functionalities:
+To figure out the bare minimum requirements to create the feature, our first step is to analyze the core functionalities:
 
-- What are the core features?
-  - How do we send messages?
-  - How do we receive messages?
-  - How do we view messages?
-  - How do we look at message history?
-- What is the user flow?
-  - How will users initiate the core functionalities necessary?
-- How are we building this?
-  - React?
-  - React Native?
-  - HTML, JS, CSS?
+- How do we send messages?
+- How do we receive messages?
+- How do we view messages?
+- How do we look at message history?
+
+Next, we need to think about the "user flow":
+
+- What steps is the user taking to accomplish specific tasks?
+- How do these tasks relate to the core functionalities we want to implement?
+
+And finally, now we need to decide how are we building this:
+
+- React?
+- React Native?
+- HTML, JS, CSS?
 
 # Step 2) Planning
 
@@ -63,7 +67,6 @@ Let's design it.
 What to keep in mind:
 
 - Does our initial plan capture all the requirements?
-- Does the plan match the designs?
 - Are there any edge cases that have not yet been considered? (e.g. what is the look when there are no chat items?)
 - If there are last minute changes, will we be able to accommodate them?
 - Is our plan scalable? How maintainable is it?
@@ -91,7 +94,7 @@ Open up an `index.html` file and generate the boilerplate HTML code using the `!
 </main>
 ```
 
-ok it's ugly, now what? Let's create some default styles
+ok, it's ugly. now what? Let's create some default styles.
 
 # Step 4) Default Styles
 
