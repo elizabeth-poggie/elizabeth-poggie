@@ -60,14 +60,14 @@ What to keep in mind:
   <header>...</header>
   <input />
   <nav>...</nav>
-  <section>
-    <button>
+  <section class="chat-list">
+    <button class="chat-item">
       <img class="profile" />
       <div>
         <h3>...</h3>
         <p>...</p>
       </div>
-      <img class="icon" />
+      <img class="camera-icon" />
     </button>
   </section>
 </main>
@@ -207,6 +207,59 @@ input {
 </nav>
 ```
 
+```css
+.chat-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 10px 10px 10px;
+}
+```
+
+# Step 7) Chat Item
+
+```html
+<button class="chat-item">
+  <img class="profile" src="./images/chonky-cat.jpeg" />
+  <div class="info">
+    <h3>chonky_boi_420</h3>
+    <p>Seen</p>
+  </div>
+  <img class="camera-icon filter-grey" src="./svg/camera.svg" width="20" />
+</button>
+```
+
+```css
+.chat-item {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.chat-item .profile {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.chat-item .camera-icon {
+  margin-left: auto;
+}
+
+.chat-item .info {
+  padding-left: 10px;
+}
+```
+
+# Step 8) chat list
+
+Now that we have a working single item product, let's add more chat items.
+
+# Final product.
+
 ```html
 <body>
   <img class="iphone" src="./images/phone.png" />
@@ -237,9 +290,8 @@ input {
         <h2>Requests</h2>
       </button>
     </nav>
-    <!-- Step 7) chat list -->
     <section class="chat-list">
-      <!-- Step 8) chat item -->
+      <!-- Step 7) chat item -->
       <button class="chat-item">
         <img class="profile" src="./images/chonky-cat.jpeg" />
         <div class="info">
@@ -420,7 +472,7 @@ input {
   width: 100%;
 }
 
-.profile {
+.chat-item .profile {
   width: 60px;
   height: 60px;
   border-radius: 50%;
