@@ -4,6 +4,7 @@ import { INote } from "../src/interfaces/note";
 import { Notes } from "../src/views/notes/notes";
 import { getAllNotes } from "../src/utils/api";
 import { sortByCreatedDescending } from "../src/utils/helpers/sortByDate";
+import { Burger } from "../src/components/navigation/burger/Burger";
 
 // Putting the other nav items on ice for now until im further along in my teacher career lol
 
@@ -34,7 +35,6 @@ export default function Index({ allNotes }: Readonly<IProps>) {
       <Head>
         <title>Elizabeth Poggie - Notes</title>
       </Head>
-      {/* <NavBar navItems={navItems} /> */}
       <Notes allNotes={sortedNotes} />
     </>
   );
