@@ -79,19 +79,24 @@
 @media screen and (max-width: $bp-lg) {
   .container {
     padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
-    float: right;
-    width: 60%;
+    float: none;
+    width: 100%;
+  }
+  .leftSideBar_default,
+  .leftSideBar_sticky {
+    display: none;
   }
 }
 
-@media screen and (max-width: $bp-sm) {
+@media screen and (max-width: $bp-md) {
   .container {
     padding: calc(20 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
     float: none;
     width: 100%;
   }
 
-  .leftSideBar {
+  .leftSideBar_default,
+  .leftSideBar_sticky {
     display: none;
   }
 }

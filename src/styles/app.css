@@ -10,27 +10,7 @@
   top: 20px;
   filter: invert(100%) sepia(96%) saturate(15%) hue-rotate(229deg)
     brightness(104%) contrast(105%);
-}
-
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-  background: #373a47;
-}
-
-/* Color/shape of burger icon bars on hover*/
-.bm-burger-bars-hover {
-  background: #a90000;
-}
-
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
-
-/* Color/shape of close button cross */
-.bm-cross {
-  background: #bdc3c7;
+  z-index: 3 !important;
 }
 
 /*
@@ -40,6 +20,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-menu-wrap {
   position: fixed;
   height: 100%;
+  z-index: 2 !important;
 }
 
 /* General sidebar styles */
@@ -67,5 +48,12 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* Styling of overlay */
 .bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
+  z-index: 1 !important;
+}
+
+/* // Mobile breakpoint - $bp-sm: 576px;*/
+@media screen and (max-width: 576px) {
+  .bm-menu-wrap {
+    width: 100% !important;
+  }
 }
