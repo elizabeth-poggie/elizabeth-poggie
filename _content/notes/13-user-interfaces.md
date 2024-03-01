@@ -7,13 +7,32 @@ title: "Real World Application"
 created: "2024-03-1T12:17:29Z"
 ---
 
-# Step 0) What are the requirements?
+# Step 0) What are we making?
 
-Let's remake the chat feature from instagram
+Let's remake the chat feature from instagram.
 
-# Step 1) Planning
+# Step 1) What are the requirements?
 
-Before we get started, let's draw out what's happening
+To figure out the bare minimum requirements to create this feature, lets analyze it:
+
+- What are the core features?
+  - How do we send messages?
+  - How do we receive messages?
+  - How do we view messages?
+  - How do we look at message history
+- What is the user flow?
+  - How will users initiate chats?
+  - Send messages?
+  - View messages?
+  - Manage conversations?
+- How are we building this?
+  - React?
+  - React Native?
+  - HTML, JS, CSS?
+
+# Step 2) Planning
+
+Before we get started, let's plan out what's happening
 
 ```text
  ________________________________
@@ -53,7 +72,7 @@ What to keep in mind:
 - Is our plan scalable? How maintainable is it?
 - Are there any pieces of code i can re-use that i have already written?
 
-# Step 2) Creating a (rough) layout
+# Step 3) Creating a (rough) layout
 
 ```html
 <main>
@@ -75,7 +94,7 @@ What to keep in mind:
 
 ok it's ugly, now what? Let's create some default styles
 
-# Step 3) Default Styles
+# Step 4) Default Styles
 
 ## Typography
 
@@ -136,7 +155,7 @@ button:hover,
 
 Now that we have a rough layout and default styling, lets build the design component by component. By taking this approach, we will be able to reuse our styles & HTML code snippets as we go about the project.
 
-# Step 4) Header
+# Step 5) Header
 
 ```html
 <header class="chat-header">
@@ -170,7 +189,7 @@ Now that we have a rough layout and default styling, lets build the design compo
 }
 ```
 
-# Step 5) Search Bar
+# Step 6) Search Bar
 
 ```html
 <div class="chat-search">
@@ -194,7 +213,7 @@ input {
 }
 ```
 
-# Step 6) Navigation
+# Step 7) Navigation
 
 ```html
 <nav class="chat-nav">
@@ -215,7 +234,7 @@ input {
 }
 ```
 
-# Step 7) Chat Item
+# Step 8) Chat Item
 
 ```html
 <button class="chat-item">
@@ -254,7 +273,7 @@ input {
 }
 ```
 
-# Step 8) chat list
+# Step 9) chat list
 
 Now that we have a working single item product, let's add more chat items.
 
@@ -264,7 +283,7 @@ Now that we have a working single item product, let's add more chat items.
 <body>
   <img class="iphone" src="./images/phone.png" />
   <main class="iphone-viewport">
-    <!-- Step 4) header -->
+    <!-- header -->
     <header class="chat-header">
       <button>
         <img src="./svg/left-chevron.svg" width="30" />
@@ -277,11 +296,11 @@ Now that we have a working single item product, let's add more chat items.
         <img src="./svg/pen-square.svg" width="24" />
       </button>
     </header>
-    <!-- Step 5) search bar -->
+    <!-- search bar -->
     <div class="chat-search">
       <input type="text" placeholder="Search" />
     </div>
-    <!-- Step 6) navigation -->
+    <!-- navigation -->
     <nav class="chat-nav">
       <button>
         <h2>Messages</h2>
@@ -291,7 +310,7 @@ Now that we have a working single item product, let's add more chat items.
       </button>
     </nav>
     <section class="chat-list">
-      <!-- Step 7) chat item -->
+      <!-- chat item -->
       <button class="chat-item">
         <img class="profile" src="./images/chonky-cat.jpeg" />
         <div class="info">
@@ -304,8 +323,7 @@ Now that we have a working single item product, let's add more chat items.
           width="20"
         />
       </button>
-
-      <!-- LAST STEP) once you have a working product for 1 chat item, lets add more mock data :) -->
+      <!-- once you have a working product for 1 chat item, lets add more mock data :) -->
       <button class="chat-item">
         <img class="profile" src="./images/sleepy-cat.png" />
         <div class="info">
