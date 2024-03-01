@@ -3,28 +3,52 @@ import Meta from "../../src/views/meta/meta";
 import { getAllNotes, getBySlug, noteDirectory } from "../../src/utils/api";
 import { INote } from "../../src/interfaces/note";
 import { NoteDetails } from "../../src/views/note-details/note-details";
-import { sortByCreatedAscending } from "../../src/utils/helpers/sortByDate";
+import { Burger } from "../../src/components/navigation/burger/Burger";
+
+export interface relatedNotes {
+  type: string;
+  notes: Pick<INote, "slug" | "title" | "number">[];
+}
 
 interface Props {
   noteDetails: INote;
-  relatedNotes: INote[];
+  relatedNotes?: relatedNotes[];
 }
+
+type CategoryProperties = {
+  color: string;
+  relatedTypes?: string[];
+};
+
+type SupportedCategories = "User Interfaces" | "Intro to Programming";
+
+type CategoryMap = {
+  [key in SupportedCategories]: CategoryProperties;
+};
+
+export const categoryMap: CategoryMap = {
+  "User Interfaces": {
+    color: "green",
+    relatedTypes: ["Lecture", "Lab"],
+  },
+  "Intro to Programming": {
+    color: "yellow",
+    relatedTypes: ["Lecture", "Lab"],
+  },
+};
 
 export default function NoteDetailsPage({
   noteDetails,
   relatedNotes,
 }: Readonly<Props>) {
-  const sortedRelatedNotes = sortByCreatedAscending(relatedNotes);
   return (
     <>
       <Meta />
       <Head>
         <title>{noteDetails.title}</title>
       </Head>
-      <NoteDetails
-        noteDetails={noteDetails}
-        relatedNotes={sortedRelatedNotes}
-      />
+      {/* TODO - <Burger /> */}
+      <NoteDetails noteDetails={noteDetails} relatedNotes={relatedNotes} />
     </>
   );
 }
@@ -51,25 +75,23 @@ export async function getStaticProps({ params }: Params) {
     noteDirectory
   );
 
-  console.log(details);
+  const allNotes = getAllNotes(["slug", "category", "type", "number", "title"]);
 
-  // filtered by type and course
-  const filteredNotes = getAllNotes([
-    "slug",
-    "category",
-    "type",
-    "number",
-    "title",
-  ]).filter(
-    (note) => note.category === details.category && note.type === details.type
-  );
+  // Col 1
+  const relatedNotes = [];
+  categoryMap[details.category].relatedTypes?.map((type: string) => {
+    const notesByType = allNotes.filter(
+      (note) => note.category === details.category && note.type === type
+    );
+    if (notesByType.length > 0) relatedNotes.push({ type, notes: notesByType });
+  });
 
   return {
     props: {
       noteDetails: {
         ...details,
       },
-      relatedNotes: [...filteredNotes],
+      relatedNotes,
     },
   };
 }
