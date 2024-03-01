@@ -9,11 +9,11 @@ created: "2024-03-1T12:17:29Z"
 
 # Step 0) What are we making?
 
-Let's remake the chat feature from instagram.
+Let's remake the chat feature on instagram.
 
 # Step 1) What are the requirements?
 
-To figure out the bare minimum requirements to create this feature, we need to analyze what needs to happen:
+To figure out the bare minimum requirements to create the feature, we need first analyze what needs to happen:
 
 - What are the core features?
   - How do we send messages?
@@ -274,7 +274,11 @@ input {
 
 Now that we have a working single item product, let's add more chat items.
 
-# Final product.
+# Step 10) Refactoring
+
+How would you improve my code?
+
+My `index.html`:
 
 ```html
 <body>
@@ -363,6 +367,8 @@ Now that we have a working single item product, let's add more chat items.
   </main>
 </body>
 ```
+
+My `styles.css`:
 
 ```css
 /* Demo Box */
@@ -518,3 +524,7 @@ input {
   padding-left: 10px;
 }
 ```
+
+# Exercise
+
+Take my code and do it better then me :^)
