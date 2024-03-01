@@ -350,7 +350,7 @@ Now that we have a working single item product, let's add more chat items.
 ```
 
 ```css
-/* Step 0) create a demo box */
+/* Demo Box */
 .iphone {
   position: absolute;
   left: 0;
@@ -360,6 +360,7 @@ Now that we have a working single item product, let's add more chat items.
   margin-right: auto;
   width: 420px;
 }
+
 .iphone-viewport {
   position: absolute;
   top: 75px;
@@ -380,26 +381,32 @@ Now that we have a working single item product, let's add more chat items.
   font-family: "Roboto Light";
   src: url("./fonts/Roboto/Roboto-Light.ttf");
 }
+
 * {
   font-family: "Roboto Light", Georgia, serif; /* default font */
 }
+
 @font-face {
   font-family: "Roboto Bold";
   src: url("./fonts/Roboto/Roboto-Medium.ttf");
 }
+
 h1 {
   font-family: "Roboto Bold";
   font-size: 1.5rem;
 }
+
 h2 {
   font-family: "Roboto Bold";
   font-size: 0.8rem;
   margin: 0;
 }
+
 h3 {
   font-size: 0.8rem;
   margin: 0;
 }
+
 p {
   font-size: 0.75rem;
   padding-top: 2px;
@@ -415,6 +422,7 @@ button {
   border: none;
   text-align: unset;
 }
+
 button:hover,
 .filter-grey {
   filter: invert(57%) sepia(3%) saturate(9%) hue-rotate(351deg) brightness(87%) contrast(
@@ -442,6 +450,7 @@ button:hover,
 .chat-search {
   display: flex;
 }
+
 input {
   display: flex;
   border: none;
@@ -485,9 +494,11 @@ input {
   background-color: #f8f8f8;
   filter: none;
 }
+
 .chat-item .camera-icon {
   margin-left: auto;
 }
+
 .chat-item .info {
   padding-left: 10px;
 }
