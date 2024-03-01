@@ -20,15 +20,10 @@ import { relatedNotes } from "../../../pages/notes/[slug]";
 
 interface IProps {
   noteDetails: INote;
-  primaryRelatedNotes?: relatedNotes[];
-  secondaryRelatedNotes?: relatedNotes[];
+  relatedNotes?: relatedNotes[];
 }
 
-export function NoteDetails({
-  noteDetails,
-  primaryRelatedNotes,
-  secondaryRelatedNotes,
-}: Readonly<IProps>) {
+export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const renderHeader = ({ id, children }) => {
     return (
       <div className={styles.mdHeader}>
@@ -149,12 +144,9 @@ export function NoteDetails({
   return (
     <>
       <div className={styles.leftSideBar}>
-        <NotesSideBar related={primaryRelatedNotes} current={noteDetails} />
+        <NotesSideBar related={relatedNotes} current={noteDetails} />
       </div>
       <div className={styles.container}>{renderDetails()}</div>
-      <div className={styles.rightSideBar}>
-        <NotesSideBar related={secondaryRelatedNotes} current={noteDetails} />
-      </div>
     </>
   );
 }
@@ -167,18 +159,13 @@ interface ISideBarProps {
 const NotesSideBar = ({ related, current }: ISideBarProps) => {
   return (
     <aside>
-      {/* <section className={styles.sideBarSection}>
-        <Link href="/">
-          <PillButton title="All Notes" onClick={() => null} />
-        </Link>
-      </section> */}
       {related.map((related: relatedNotes) => {
         return (
           <section className={styles.sideBarSection}>
             <section className={styles.sideBarSectionHeader}>
               <header>
                 <Text variant="p" style="capitalize">
-                  {related.type}
+                  {related.type}s
                 </Text>
               </header>
             </section>

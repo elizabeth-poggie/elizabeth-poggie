@@ -11,14 +11,12 @@ export interface relatedNotes {
 
 interface Props {
   noteDetails: INote;
-  primaryRelatedNotes?: relatedNotes[];
-  secondaryRelatedNotes?: relatedNotes[];
+  relatedNotes?: relatedNotes[];
 }
 
 type CategoryProperties = {
   color: string;
-  primaryRelatedTypes?: string[];
-  secondaryRelatedTypes?: string[];
+  relatedTypes?: string[];
 };
 
 type SupportedCategories = "User Interfaces" | "Intro to Programming";
@@ -30,18 +28,17 @@ type CategoryMap = {
 export const categoryMap: CategoryMap = {
   "User Interfaces": {
     color: "green",
-    primaryRelatedTypes: ["Lecture", "Lab"],
+    relatedTypes: ["Lecture", "Lab"],
   },
   "Intro to Programming": {
     color: "yellow",
-    primaryRelatedTypes: ["Lecture", "Lab"],
+    relatedTypes: ["Lecture", "Lab"],
   },
 };
 
 export default function NoteDetailsPage({
   noteDetails,
-  primaryRelatedNotes,
-  secondaryRelatedNotes,
+  relatedNotes,
 }: Readonly<Props>) {
   return (
     <>
@@ -49,11 +46,7 @@ export default function NoteDetailsPage({
       <Head>
         <title>{noteDetails.title}</title>
       </Head>
-      <NoteDetails
-        noteDetails={noteDetails}
-        primaryRelatedNotes={primaryRelatedNotes}
-        secondaryRelatedNotes={secondaryRelatedNotes}
-      />
+      <NoteDetails noteDetails={noteDetails} relatedNotes={relatedNotes} />
     </>
   );
 }
@@ -83,23 +76,12 @@ export async function getStaticProps({ params }: Params) {
   const allNotes = getAllNotes(["slug", "category", "type", "number", "title"]);
 
   // Col 1
-  const primaryRelatedNotes = [];
-  categoryMap[details.category].primaryRelatedTypes?.map((type: string) => {
+  const relatedNotes = [];
+  categoryMap[details.category].relatedTypes?.map((type: string) => {
     const notesByType = allNotes.filter(
       (note) => note.category === details.category && note.type === type
     );
-    if (notesByType.length > 0)
-      primaryRelatedNotes.push({ type, notes: notesByType });
-  });
-
-  // Col 2
-  const secondaryRelatedNotes = [];
-  categoryMap[details.category].secondaryRelatedTypes?.map((type: string) => {
-    const notesByType = allNotes.filter(
-      (note) => note.category === details.category && note.type === type
-    );
-    if (notesByType.length > 0)
-      secondaryRelatedNotes.push({ type, notes: notesByType });
+    if (notesByType.length > 0) relatedNotes.push({ type, notes: notesByType });
   });
 
   return {
@@ -107,8 +89,7 @@ export async function getStaticProps({ params }: Params) {
       noteDetails: {
         ...details,
       },
-      primaryRelatedNotes: primaryRelatedNotes,
-      secondaryRelatedNotes: secondaryRelatedNotes,
+      relatedNotes,
     },
   };
 }
