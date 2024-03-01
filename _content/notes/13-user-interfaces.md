@@ -277,7 +277,7 @@ input {
 
 # Step 9) chat list
 
-Now that we have a working single item product, let's add more chat items.
+Now that we have it working with one chat item, let's add some more.
 
 # Step 10) Refactoring
 
