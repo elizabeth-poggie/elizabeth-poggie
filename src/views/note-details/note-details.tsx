@@ -17,6 +17,7 @@ import tocbot from "tocbot";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { filterToColorMap } from "../notes/notes";
 import { relatedNotes } from "../../../pages/notes/[slug]";
+import { Console } from "console";
 
 interface IProps {
   noteDetails: INote;
@@ -24,28 +25,47 @@ interface IProps {
 }
 
 export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
-  const [height, setHeight] = React.useState<number>(0);
-  const observedHeightRef = React.useRef(null);
+  const [top, setTop] = React.useState<number>(0);
+  const [isInContent, setIsInContent] = React.useState<boolean>(false);
+  const observedContentRef = React.useRef(null);
+
+  const handleScroll = () => {
+    const { offsetTop } = observedContentRef.current;
+    const position = window.pageYOffset;
+    if (position >= offsetTop && !isInContent) {
+      console.log("Yikes");
+      setIsInContent(true);
+      setTop(0);
+    } else if (position < offsetTop && isInContent) {
+      console.log("nvm");
+      setIsInContent(false);
+      setTop(offsetTop);
+    }
+  };
 
   React.useEffect(() => {
-    // custom styling - configure side bar top to match where markdown content begins
-    if (!observedHeightRef.current) {
+    if (!observedContentRef.current) {
       return;
     }
+    const { offsetTop } = observedContentRef.current;
+    // custom styling - configure side bar top to match where markdown content begins
     const resizeObserver = new ResizeObserver(() => {
-      if (
-        observedHeightRef.current &&
-        observedHeightRef.current.offsetTop !== height
-      ) {
-        setHeight(observedHeightRef.current.offsetTop);
+      if (offsetTop !== top) {
+        setTop(offsetTop);
       }
     });
-    resizeObserver.observe(observedHeightRef.current);
+    resizeObserver.observe(observedContentRef.current);
+
+    // custom styling - configure side bar to become sticky once we enter the content
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
+      // disconnect observer
       resizeObserver.disconnect();
+      // remove listener
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, [observedHeightRef]);
+  }, [observedContentRef]);
 
   const renderHeader = ({ id, children }) => {
     return (
@@ -117,7 +137,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const renderDetails = () => {
     return (
       <>
-        <div className="js-toc-content" ref={observedHeightRef}>
+        <div className="js-toc-content">
           <Markdown
             rehypePlugins={[rehypeSlug]}
             components={{
@@ -166,14 +186,16 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   return (
     <>
       <div
-        className={styles.leftSideBar_default}
-        style={{ top: `${height}px` }}
+        className={
+          isInContent ? styles.leftSideBar_sticky : styles.leftSideBar_default
+        }
+        style={{ top: `${top}px` }}
       >
         <NotesSideBar related={relatedNotes} current={noteDetails} />
       </div>
       <div className={styles.container}>
         {renderNoteHeader()}
-        {renderDetails()}
+        <div ref={observedContentRef}>{renderDetails()}</div>
       </div>
     </>
   );
