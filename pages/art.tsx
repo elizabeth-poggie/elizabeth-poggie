@@ -9,7 +9,6 @@ interface IProps {
 }
 
 export default function ArtPage({ allArt }: IProps) {
-  console.log(allArt);
   return (
     <>
       <Meta />

@@ -17,7 +17,6 @@ import tocbot from "tocbot";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { filterToColorMap } from "../notes/notes";
 import { relatedNotes } from "../../../pages/notes/[slug]";
-import { Console } from "console";
 
 interface IProps {
   noteDetails: INote;
