@@ -71,6 +71,8 @@ What to keep in mind:
 
 # Step 3) Creating a (rough) layout
 
+Open up an `index.html` file and generate the boilerplate HTML code using the `!` command. In our `<body>` tag, let's paste the below (taking inspiration directly from the design)
+
 ```html
 <main>
   <header>...</header>
