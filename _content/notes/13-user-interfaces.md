@@ -178,6 +178,35 @@ Now that we have a rough layout and default styling, lets build the design compo
 </div>
 ```
 
+```css
+.chat-search {
+  display: flex;
+}
+input {
+  display: flex;
+  border: none;
+  background-color: #e7e9eb;
+  border-radius: 2%;
+  padding: 5px;
+  margin: 0 10px 0 10px;
+  padding-left: 10px;
+  width: 100%;
+}
+```
+
+# Step 6) Navigation
+
+```html
+<nav class="chat-nav">
+  <button>
+    <h2>Messages</h2>
+  </button>
+  <button class="filter-grey">
+    <h2>Requests</h2>
+  </button>
+</nav>
+```
+
 ```html
 <body>
   <img class="iphone" src="./images/phone.png" />
@@ -199,7 +228,7 @@ Now that we have a rough layout and default styling, lets build the design compo
     <div class="chat-search">
       <input type="text" placeholder="Search" />
     </div>
-    <!-- Step 6) navigation tabs -->
+    <!-- Step 6) navigation -->
     <nav class="chat-nav">
       <button>
         <h2>Messages</h2>
