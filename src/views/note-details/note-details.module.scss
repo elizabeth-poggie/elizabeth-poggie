@@ -18,13 +18,12 @@
   width: 20%;
   left: 0;
   padding: 0 0 0 calc($unit * 8);
-  z-index: 1;
 }
 
 .leftSideBar_sticky {
   position: fixed;
+  top: 0;
   padding: calc($unit * 8) 0 0 calc($unit * 8);
-  z-index: 1;
   @extend .leftSideBar_default;
 }
 
