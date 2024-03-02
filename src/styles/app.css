@@ -52,16 +52,17 @@ Note: Beware of modifying this element as it can break the animations - you shou
   z-index: 1 !important;
 }
 
-/* Mobile breakpoint - $bp-sm: 576px;*/
-@media screen and (max-width: 576px) {
-  .bm-menu-wrap {
-    width: 100% !important;
-  }
-}
 /* Tablet breakpoint - $bp-md: 768px
    Desktop breakpoint - $bp-lg: 992px */
 @media screen and (max-width: 992px) {
   .bm-menu-wrap {
     width: 50% !important;
+  }
+}
+
+/* Mobile breakpoint - $bp-sm: 576px;*/
+@media screen and (max-width: 576px) {
+  .bm-menu-wrap {
+    width: 100% !important;
   }
 }
