@@ -46,7 +46,7 @@ export default function NoteDetailsPage({
     <>
       <Meta />
       <Head>
-        <title>{noteDetails.title}</title>
+        <title>Poggie • {noteDetails.title}</title>
       </Head>
       <Burger navItems={navItems} />
       <NoteDetails noteDetails={noteDetails} relatedNotes={relatedNotes} />

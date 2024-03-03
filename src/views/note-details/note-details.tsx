@@ -24,27 +24,27 @@ interface IProps {
 }
 
 export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
-  const [top, setTop] = React.useState<number>(0);
   const [isInContent, setIsInContent] = React.useState<boolean>();
   const observedContentRef = React.useRef(null);
 
   const handleScroll = () => {
+    if (!observedContentRef.current) {
+      return;
+    }
     const { offsetTop } = observedContentRef.current;
     const position = window.pageYOffset;
-    if (position >= offsetTop) {
+    if (position + 16 >= offsetTop) {
       tocbot.refresh({
         ...TOC_NOTE_DETAILS_OPTIONS,
         hasInnerContainers: true,
       });
       setIsInContent(true);
-      setTop(0);
     } else if (position < offsetTop) {
       tocbot.refresh({
         ...TOC_NOTE_DETAILS_OPTIONS,
         hasInnerContainers: true,
       });
       setIsInContent(false);
-      setTop(offsetTop);
     }
   };
 
@@ -52,21 +52,11 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
     if (!observedContentRef.current) {
       return;
     }
-    const { offsetTop } = observedContentRef.current;
-    // custom styling - configure side bar top to match where markdown content begins
-    const resizeObserver = new ResizeObserver(() => {
-      if (offsetTop !== top) {
-        setTop(offsetTop);
-      }
-    });
-    resizeObserver.observe(observedContentRef.current);
 
     // custom styling - configure side bar to become sticky once we enter the content
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      // disconnect observer
-      resizeObserver.disconnect();
       // remove listener
       window.removeEventListener("scroll", handleScroll);
     };
@@ -190,17 +180,20 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
 
   return (
     <>
-      <div
-        className={
-          isInContent ? styles.leftSideBar_sticky : styles.leftSideBar_default
-        }
-        style={{ top: `${top}px` }}
-      >
-        <NotesSideBar related={relatedNotes} current={noteDetails} />
-      </div>
       <div className={styles.container}>
         {renderNoteHeader()}
-        <div ref={observedContentRef}>{renderDetails()}</div>
+        <div ref={observedContentRef}>
+          <div
+            className={
+              isInContent
+                ? styles.leftSideBar_sticky
+                : styles.leftSideBar_default
+            }
+          >
+            <NotesSideBar related={relatedNotes} current={noteDetails} />
+          </div>
+          {renderDetails()}
+        </div>
       </div>
     </>
   );
@@ -216,10 +209,10 @@ const NotesSideBar = ({ related, current }: ISideBarProps) => {
     <aside>
       {related.map((related: relatedNotes) => {
         return (
-          <section className={styles.sideBarSection}>
+          <section key={related.type} className={styles.sideBarSection}>
             <section className={styles.sideBarSectionHeader}>
               <header>
-                <Text variant="p" style="capitalize">
+                <Text variant="p" style="capitalize" color="white">
                   {related.type}s
                 </Text>
               </header>

@@ -6,9 +6,7 @@
 }
 
 .container {
-  padding-top: calc(20 * $unit);
-  padding-left: calc(20 * $unit);
-  padding-bottom: calc(40 * $unit);
+  padding: calc(20 * $unit) 0 calc(40 * $unit) calc(20 * $unit);
   margin: auto;
   width: 50%;
 }
@@ -18,13 +16,12 @@
   width: 20%;
   left: 0;
   padding: 0 0 0 calc($unit * 8);
-  z-index: 1;
 }
 
 .leftSideBar_sticky {
   position: fixed;
+  top: 0;
   padding: calc($unit * 8) 0 0 calc($unit * 8);
-  z-index: 1;
   @extend .leftSideBar_default;
 }
 
