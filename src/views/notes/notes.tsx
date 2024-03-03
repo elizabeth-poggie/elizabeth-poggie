@@ -6,54 +6,11 @@ import { ListLayout } from "../../components/layout/list-layout/list-layout";
 import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
+import { TextLink } from "../../components/navigation/link/link";
 
 interface IProps {
   allNotes: INote[];
 }
-
-/**
- * * * * * * * * * * * * * * * * * * * * * * *
- *                                           *
- *    Data Structures and Relationships      *
- *                                           *
- * * * * * * * * * * * * * * * * * * * * * * *
- */
-
-/**
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *
- * - Family
- *    - Category
- *      - Color                         (e.g. yellow, green, blue - can be automated with a script)
- *      - Primary types []              (e.g. left column in Note)
- *      - Secondary types []            (e.g. right column in Note)
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *
- * - Computer Science @ John Abbott College
- *    - Course
- *      - Lectures
- *      - Labs, Exercises
- * - UnderGrad @ McGill University
- *    - Course
- *      - Lectures
- *      - Assignments, Tests, Projects
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *
- * - Navigation Strategies
- *    - The Corporate World
- *      - Strategies
- *      - Templates, Procedures
- *    - The Human Condition
- *      - Strategies
- *      - Templates, Procedures
- *    - The Kitchen
- *      - Mains
- *      - Drinks, Desserts, Appetizers
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- */
 
 // List of supported filters lol
 export const filterToColorMap = {
@@ -65,35 +22,12 @@ export const filterToColorMap = {
 export function Notes({ allNotes }: IProps) {
   // TODO - maybe use a provider instead lol, however this will be good for now
   const [filteredNotes, setFilteredNotes] = React.useState(allNotes);
-
-  const renderList = () => {
-    return (
-      <>
-        {filteredNotes.map((note: INote, i: number) => {
-          return (
-            <div key={note.slug}>
-              <ListItem
-                title={note.title}
-                href={`/notes/${note.slug}`}
-                subContent={
-                  <PillButton
-                    color={filterToColorMap[note.category]}
-                    title={note.category}
-                    onClick={() => null}
-                  />
-                }
-              />
-              {i === filteredNotes.length - 1 ? null : <HorizontalLine />}
-            </div>
-          );
-        })}
-      </>
-    );
-  };
+  const [activeFilter, setActiveFilter] = React.useState<string>(null);
 
   // TODO - maybe make it such that more than one thing can be selected at once
   // TODO - ...and that the styling of things that are active is different lol
   const setNotes = (filter: string) => {
+    setActiveFilter(filter);
     const newFilterNotes = allNotes.filter(
       (note) => note.type === filter || note.category === filter
     );
@@ -113,35 +47,57 @@ export function Notes({ allNotes }: IProps) {
 
     return (
       <article>
-        <header className={styles.filterHeader}>
-          <Text variant="h2" style="capitalize">
-            Course
-          </Text>
+        <header>
+          <Text>John Abbott College</Text>
         </header>
         {filters.map((filter: string) => {
           return (
-            <PillButton
-              color={filterToColorMap[filter]}
-              key={filter}
-              title={filter}
-              onClick={() => setNotes(filter)}
-            />
+            <div key={filter}>
+              <TextLink
+                href={`/`}
+                variant="subheading"
+                onClick={() => setNotes(filter)}
+                color={activeFilter === filter ? "white" : "grey"}
+              >
+                {filter}
+              </TextLink>
+            </div>
           );
         })}
       </article>
     );
   };
 
-  // TODO - support more types
-  const renderFilters = () => {
-    return <>{renderFilterRow("category")}</>;
-  };
-
   return (
-    <ListLayout
-      title="Notes"
-      leftContent={renderFilters()}
-      listContent={renderList()}
-    />
+    <main className={styles.container}>
+      <header>
+        <Text variant="title">Notes</Text>
+        <HorizontalLine />
+      </header>
+      <aside className={styles.leftSideBar}>
+        {renderFilterRow("category")}
+      </aside>
+      <section className={styles.content}>
+        {filteredNotes.map((note: INote, i: number) => {
+          return (
+            <div key={note.slug}>
+              <ListItem
+                title={note.title}
+                href={`/notes/${note.slug}`}
+                subContent={
+                  <PillButton
+                    color={filterToColorMap[note.category]}
+                    title={note.category}
+                    onClick={() => null}
+                  />
+                }
+              />
+              {i === filteredNotes.length - 1 ? null : <HorizontalLine />}
+            </div>
+          );
+        })}
+      </section>
+      <aside className={styles.rightSideBar}></aside>
+    </main>
   );
 }

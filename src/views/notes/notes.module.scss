@@ -1,6 +1,19 @@
 @import "../../styles/variables.scss";
 
-.filterHeader {
-  padding-left: $unit;
-  padding-bottom: $unit;
+.container {
+  padding: calc(20 * $unit) 0 calc(40 * $unit) calc(20 * $unit);
+  margin: auto;
+  width: 50%;
+}
+
+.leftSideBar {
+  position: absolute;
+  width: 20%;
+  left: 0;
+  padding: 0 0 0 calc($unit * 8);
+}
+
+.rightSideBar {
+  flex: 1;
+  padding: 0 calc($unit * 8) 0 0;
 }
