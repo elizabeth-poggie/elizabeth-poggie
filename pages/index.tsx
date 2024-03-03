@@ -25,7 +25,7 @@ export default function Index({ allNotes }: Readonly<IProps>) {
     <>
       <Meta />
       <Head>
-        <title>Elizabeth Poggie - Notes</title>
+        <title>Poggie • Notes</title>
       </Head>
       <Burger navItems={navItems} />
       <Notes allNotes={sortedNotes} />
