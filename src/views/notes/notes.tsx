@@ -21,14 +21,11 @@ export const filterToColorMap = {
 };
 
 export function Notes({ allNotes }: IProps) {
-  // TODO - maybe use a provider instead lol, however this will be good for now
   const [filteredNotes, setFilteredNotes] = React.useState(allNotes);
   const [activeFilter, setActiveFilter] = React.useState<
     string | "John Abbott College"
   >("John Abbott College");
 
-  // TODO - maybe make it such that more than one thing can be selected at once
-  // TODO - ...and that the styling of things that are active is different lol
   const setNotes = (filter: string) => {
     setActiveFilter(filter);
     const newFilterNotes = allNotes.filter(
@@ -89,11 +86,23 @@ export function Notes({ allNotes }: IProps) {
       </aside>
       <section className={styles.content}>
         {filteredNotes.map((note: INote, i: number) => {
+          // date logic for list items
+          const currentDate = note.updated
+            ? new Date(note.updated) // priority given to updated
+            : new Date(note.created);
+          const displayDate = currentDate.getFullYear() ? (
+            <Text>
+              {`${currentDate.toLocaleString("default", {
+                month: "short",
+              })} ${currentDate.getFullYear()}`}
+            </Text>
+          ) : null;
           return (
             <div key={note.slug}>
               <ListItem
                 title={note.title}
                 href={`/notes/${note.slug}`}
+                rightContent={displayDate}
                 subContent={
                   <PillButton
                     color={filterToColorMap[note.category]}
