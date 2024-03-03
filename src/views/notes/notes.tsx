@@ -23,7 +23,9 @@ export const filterToColorMap = {
 export function Notes({ allNotes }: IProps) {
   // TODO - maybe use a provider instead lol, however this will be good for now
   const [filteredNotes, setFilteredNotes] = React.useState(allNotes);
-  const [activeFilter, setActiveFilter] = React.useState<string>(null);
+  const [activeFilter, setActiveFilter] = React.useState<
+    string | "John Abbott College"
+  >("John Abbott College");
 
   // TODO - maybe make it such that more than one thing can be selected at once
   // TODO - ...and that the styling of things that are active is different lol
@@ -49,7 +51,15 @@ export function Notes({ allNotes }: IProps) {
     return (
       <article>
         <header>
-          <Text>John Abbott College</Text>
+          <TextButton
+            onClick={() => {
+              setActiveFilter("John Abbott College");
+              setFilteredNotes(allNotes);
+            }}
+            color={activeFilter === "John Abbott College" ? "white" : "grey"}
+          >
+            John Abbott College
+          </TextButton>
         </header>
         {filters.map((filter: string) => {
           return (

@@ -28,6 +28,9 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
   const observedContentRef = React.useRef(null);
 
   const handleScroll = () => {
+    if (!observedContentRef.current) {
+      return;
+    }
     const { offsetTop } = observedContentRef.current;
     const position = window.pageYOffset;
     if (position + 16 >= offsetTop) {
@@ -206,7 +209,7 @@ const NotesSideBar = ({ related, current }: ISideBarProps) => {
     <aside>
       {related.map((related: relatedNotes) => {
         return (
-          <section className={styles.sideBarSection}>
+          <section key={related.type} className={styles.sideBarSection}>
             <section className={styles.sideBarSectionHeader}>
               <header>
                 <Text variant="p" style="capitalize">
