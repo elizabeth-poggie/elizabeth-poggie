@@ -7,6 +7,7 @@ import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
 import { TextLink } from "../../components/navigation/link/link";
+import { TextButton } from "../../components/inputs/text-button/text-button";
 
 interface IProps {
   allNotes: INote[];
@@ -53,14 +54,13 @@ export function Notes({ allNotes }: IProps) {
         {filters.map((filter: string) => {
           return (
             <div key={filter}>
-              <TextLink
-                href={`/`}
+              <TextButton
                 variant="subheading"
                 onClick={() => setNotes(filter)}
                 color={activeFilter === filter ? "white" : "grey"}
               >
                 {filter}
-              </TextLink>
+              </TextButton>
             </div>
           );
         })}
@@ -70,10 +70,10 @@ export function Notes({ allNotes }: IProps) {
 
   return (
     <main className={styles.container}>
-      <header>
+      <header className={styles.titleWrapper}>
         <Text variant="title">Notes</Text>
-        <HorizontalLine />
       </header>
+      <HorizontalLine />
       <aside className={styles.leftSideBar}>
         {renderFilterRow("category")}
       </aside>

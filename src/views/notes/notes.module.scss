@@ -1,5 +1,10 @@
 @import "../../styles/variables.scss";
 
+.titleWrapper {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
 .container {
   padding: calc(20 * $unit) 0 calc(40 * $unit) calc(20 * $unit);
   margin: auto;
