@@ -8,6 +8,7 @@ import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
 import { TextLink } from "../../components/navigation/link/link";
 import { TextButton } from "../../components/inputs/text-button/text-button";
+import { ScrollableContainer } from "../../components/layout/scrollable-container/scrollable-container";
 
 interface IProps {
   allNotes: INote[];
@@ -75,16 +76,9 @@ export function Notes({ allNotes }: IProps) {
     );
   };
 
-  return (
-    <main className={styles.container}>
-      <header className={styles.titleWrapper}>
-        <Text variant="title">Notes</Text>
-      </header>
-      <HorizontalLine />
-      <aside className={styles.leftSideBar}>
-        {renderFilterRow("category")}
-      </aside>
-      <section className={styles.content}>
+  const renderList = () => {
+    return (
+      <>
         {filteredNotes.map((note: INote, i: number) => {
           // date logic for list items
           const currentDate = note.updated
@@ -97,6 +91,7 @@ export function Notes({ allNotes }: IProps) {
               })} ${currentDate.getFullYear()}`}
             </Text>
           ) : null;
+
           return (
             <div key={note.slug}>
               <ListItem
@@ -115,6 +110,23 @@ export function Notes({ allNotes }: IProps) {
             </div>
           );
         })}
+      </>
+    );
+  };
+
+  return (
+    <main className={styles.container}>
+      <header className={styles.titleWrapper}>
+        <Text variant="title">Notes</Text>
+      </header>
+      <HorizontalLine />
+      <aside className={styles.leftSideBar}>
+        {renderFilterRow("category")}
+      </aside>
+      <section className={styles.content}>
+        <ScrollableContainer isLockWindowEnabled={true}>
+          {renderList()}
+        </ScrollableContainer>
       </section>
       <aside className={styles.rightSideBar}></aside>
     </main>

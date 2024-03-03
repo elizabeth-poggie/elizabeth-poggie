@@ -23,6 +23,10 @@
   padding: 0 calc($unit * 8) 0 0;
 }
 
+.content {
+  height: 80vh;
+}
+
 @media screen and (max-width: $bp-lg) {
   .container {
     padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
