@@ -6,8 +6,6 @@ import { getAllNotes } from "../src/utils/api";
 import { sortByCreatedDescending } from "../src/utils/helpers/sortByDate";
 import { Burger } from "../src/components/navigation/burger/Burger";
 
-// Putting the other nav items on ice for now until im further along in my teacher career lol
-
 export const navItems: ILink[] = [
   {
     href: "/",

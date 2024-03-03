@@ -212,7 +212,7 @@ const NotesSideBar = ({ related, current }: ISideBarProps) => {
           <section key={related.type} className={styles.sideBarSection}>
             <section className={styles.sideBarSectionHeader}>
               <header>
-                <Text variant="p" style="capitalize">
+                <Text variant="p" style="capitalize" color="white">
                   {related.type}s
                 </Text>
               </header>
