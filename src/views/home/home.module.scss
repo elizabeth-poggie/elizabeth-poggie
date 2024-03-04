@@ -1,0 +1,47 @@
+@import "../../styles/variables.scss";
+
+.container {
+  padding: calc(20 * $unit) 0 calc(20 * $unit) calc(20 * $unit);
+  margin: auto;
+  width: 50%;
+}
+
+.paragraphContainer {
+  padding-bottom: 15px;
+  text-align: justify;
+}
+
+.collection {
+  display: flex;
+  justify-content: center;
+}
+
+.section {
+  margin-bottom: 6.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: $bp-lg) {
+  .container {
+    padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
+    float: none;
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: $bp-md) {
+  .container {
+    padding: calc(20 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
+    float: none;
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: $bp-sm) {
+  .container {
+    padding: calc(18 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
+    float: none;
+    width: 80%;
+  }
+}

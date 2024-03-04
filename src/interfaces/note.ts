@@ -77,5 +77,9 @@ export interface INote {
   /**
    * Markdown
    */
+  color?: string;
+  /**
+   * Markdown
+   */
   content: string;
 }
