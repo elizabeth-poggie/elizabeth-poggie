@@ -7,7 +7,15 @@ export function Home() {
   return (
     <div className={styles.container}>
       <Text variant="title" align="center">
-        Elizabeth Poggie
+        Courses • Projects • Art
+      </Text>
+      <div className={styles.collection}>
+        <div className={styles.collectionItem}></div>
+        <div className={styles.collectionItem}></div>
+      </div>
+
+      <Text variant="title" align="center">
+        About
       </Text>
       <div className={styles.paragraphContainer}>
         <Text variant="p">
@@ -30,15 +38,9 @@ export function Home() {
           biting off more work than I can chew (again).
         </Text>
       </div>
-
-      <HorizontalLine />
       <Text variant="title" align="center">
-        Courses
+        Contact
       </Text>
-      <div className={styles.collection}>
-        <div className={styles.collectionItem}></div>
-        <div className={styles.collectionItem}></div>
-      </div>
     </div>
   );
 }

@@ -15,8 +15,8 @@
 
 .collectionItem {
   background-color: aquamarine;
-  width: 15vw;
-  height: 559.3px;
+  max-width: 15vw;
+  height: 560px;
   background-position: 50%;
   background-size: cover;
   border-radius: 20em;
@@ -28,4 +28,29 @@
 
 .collection {
   display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: $bp-lg) {
+  .container {
+    padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
+    float: none;
+    width: 90%;
+  }
+  .collectionItem {
+    max-width: 15vw;
+    height: 320px;
+  }
+}
+
+@media screen and (max-width: $bp-md) {
+  .container {
+    padding: calc(20 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
+    float: none;
+    width: 100%;
+  }
+  .collectionItem {
+    max-width: 24vw;
+    height: 200px;
+  }
 }
