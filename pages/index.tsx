@@ -5,44 +5,29 @@ import { Notes } from "../src/views/notes/notes";
 import { getAllNotes } from "../src/utils/api";
 import { sortByCreatedDescending } from "../src/utils/helpers/sortByDate";
 import { Burger } from "../src/components/navigation/burger/Burger";
-
+import { Home } from "../src/views/home/home";
 export const navItems: ILink[] = [
   {
     href: "/",
+    text: "Home",
+  },
+  {
+    href: "/notes",
     text: "Notes",
   },
 ];
 
-interface IProps {
-  allNotes: INote[];
-}
+interface IProps {}
 
-export default function Index({ allNotes }: Readonly<IProps>) {
-  const sortedNotes = sortByCreatedDescending(allNotes);
+export default function Index({}: Readonly<IProps>) {
   return (
     <>
       <Meta />
       <Head>
-        <title>Poggie • Notes</title>
+        <title>Poggie</title>
       </Head>
       <Burger navItems={navItems} />
-      <Notes allNotes={sortedNotes} />
+      <Home />
     </>
   );
 }
-
-export const getStaticProps = async () => {
-  const allNotes = getAllNotes([
-    "slug",
-    "category",
-    "number",
-    "type",
-    "title",
-    "subtitle",
-    "created",
-  ]);
-
-  return {
-    props: { allNotes },
-  };
-};

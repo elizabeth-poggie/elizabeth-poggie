@@ -1,0 +1,31 @@
+@import "../../styles/variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: calc(20 * $unit) 0 calc(40 * $unit) calc(20 * $unit);
+  margin: auto;
+  width: 50%;
+}
+
+.paragraphContainer {
+  padding-bottom: 15px;
+  text-align: justify;
+}
+
+.collectionItem {
+  background-color: aquamarine;
+  width: 15vw;
+  height: 559.3px;
+  background-position: 50%;
+  background-size: cover;
+  border-radius: 20em;
+  flex: auto;
+  align-self: stretch;
+  margin: 40px;
+  overflow: hidden;
+}
+
+.collection {
+  display: flex;
+}
