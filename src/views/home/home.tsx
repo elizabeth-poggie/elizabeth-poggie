@@ -46,11 +46,10 @@ export function Home({ allCourses }: IProps) {
         </div>
         <div className={styles.paragraphContainer}>
           <Text variant="p">
-            Coaching is at the heart of what I do, where I find joy in
-            motivating others, guiding them towards their goals and uncovering
-            their full potential. While growth can be challenging at times, I
-            believe in embracing the journey, knowing that it leads knowing that
-            it leads to remarkable discoveries :^)
+            Since 2019, I've been merging my technical expertise with my love of
+            problem-solving by working on highly interdisciplinary projects. In
+            the right environment, I like to blend creativity into my work by
+            adding my own artistic touch.
           </Text>
         </div>
         <div className={styles.paragraphContainer}>
