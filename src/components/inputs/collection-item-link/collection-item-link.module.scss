@@ -1,0 +1,50 @@
+@import "../../../styles/variables.scss";
+
+// Colors
+.green {
+  background-color: rgba($color-green, 0.2);
+  border: 3px solid $color-green;
+}
+
+.yellow {
+  background-color: rgba($color-off-yellow, 0.2);
+  border: 3px solid $color-off-yellow;
+}
+
+.default {
+  background-color: $color-black;
+  border: 3px solid $color-white;
+}
+
+.collectionItem {
+  max-width: 15vw;
+  height: 560px;
+  background-position: 50%;
+  background-size: cover;
+  border-radius: 20em;
+  flex: auto;
+  align-self: stretch;
+  margin: 0 40px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5px;
+}
+
+@media screen and (max-width: $bp-lg) {
+  .collectionItem {
+    padding: 10px;
+    max-width: 15vw;
+    height: 320px;
+  }
+}
+
+@media screen and (max-width: $bp-md) {
+  .collectionItem {
+    padding: 15px;
+    max-width: 24vw;
+    height: 200px;
+  }
+}
