@@ -1,8 +1,6 @@
 @import "../../styles/variables.scss";
 
 .container {
-  display: flex;
-  flex-direction: column;
   padding: calc(20 * $unit) 0 calc(40 * $unit) calc(20 * $unit);
   margin: auto;
   width: 50%;
@@ -18,15 +16,17 @@
   justify-content: center;
 }
 
+.section {
+  margin-bottom: 6.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
 @media screen and (max-width: $bp-lg) {
   .container {
     padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
     float: none;
-    width: 90%;
-  }
-  .collectionItem {
-    max-width: 15vw;
-    height: 320px;
+    width: 60%;
   }
 }
 
@@ -34,10 +34,14 @@
   .container {
     padding: calc(20 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
     float: none;
-    width: 100%;
+    width: 70%;
   }
-  .collectionItem {
-    max-width: 24vw;
-    height: 200px;
+}
+
+@media screen and (max-width: $bp-sm) {
+  .container {
+    padding: calc(18 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
+    float: none;
+    width: 80%;
   }
 }

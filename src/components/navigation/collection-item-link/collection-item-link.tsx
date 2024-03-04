@@ -1,5 +1,5 @@
 import { cs } from "../../../utils/helpers/classHelpers";
-import { Link } from "../../navigation/link/link";
+import { Link } from "../link/link";
 import styles from "./collection-item-link.module.scss";
 
 const colorToStyleMap = {
