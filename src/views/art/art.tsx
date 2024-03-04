@@ -1,5 +1,4 @@
 import { Image } from "../../components/display/image/image";
-import { IArt } from "../../interfaces/art";
 import { INote } from "../../interfaces/note";
 import styles from "./art.module.scss";
 
