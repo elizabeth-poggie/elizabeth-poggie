@@ -1,6 +1,7 @@
 ---
 # General Information
-title: "Portrait"
-year: "2014"
-src: "/assets/art/2014-portrait/cover.jpeg"
+category: "Art"
+type: "Portrait"
+created: "2014-01-01T12:12:12Z"
+coverSrc: "/assets/art/2014-portrait/cover.jpeg"
 ---
