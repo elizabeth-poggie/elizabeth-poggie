@@ -9,7 +9,7 @@ import { Home } from "../src/views/home/home";
 export const navItems: ILink[] = [
   {
     href: "/",
-    text: "Home",
+    text: "About",
   },
   {
     href: "/notes",
