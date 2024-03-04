@@ -1,8 +1,10 @@
 import Head from "next/head";
-import Meta from "../src/views/meta/meta";
-import { getAllArt } from "../src/utils/api";
-import { IArt } from "../src/interfaces/art";
-import { Art } from "../src/views/art/art";
+import Meta from "../../src/views/meta/meta";
+import { getAllArt } from "../../src/utils/api";
+import { IArt } from "../../src/interfaces/art";
+import { Art } from "../../src/views/art/art";
+import { Burger } from "../../src/components/navigation/burger/Burger";
+import { navItems } from "..";
 
 interface IProps {
   allArt: IArt[];
@@ -13,8 +15,9 @@ export default function ArtPage({ allArt }: IProps) {
     <>
       <Meta />
       <Head>
-        <title>Elizabeth Poggie - Art</title>
+        <title>Poggie • Art</title>
       </Head>
+      <Burger navItems={navItems} />
       <Art allArt={allArt} />
     </>
   );

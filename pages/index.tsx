@@ -15,6 +15,10 @@ export const navItems: ILink[] = [
     href: "/notes",
     text: "Notes",
   },
+  {
+    href: "/art",
+    text: "Art",
+  },
 ];
 
 interface IProps {

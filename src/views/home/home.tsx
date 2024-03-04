@@ -49,7 +49,15 @@ export function Home({ allCourses }: IProps) {
             Since 2019, I've been merging my technical expertise with my love of
             problem-solving by working on highly interdisciplinary projects. In
             the right environment, I like to blend creativity into my work by
-            adding my own artistic touch.
+            adding{" "}
+            <TextLink
+              variant="p"
+              href="/art/"
+              decoration="underline"
+              color="green"
+            >
+              my own artistic touch.
+            </TextLink>
           </Text>
         </div>
         <div className={styles.paragraphContainer}>
