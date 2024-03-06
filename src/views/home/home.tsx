@@ -8,6 +8,7 @@ interface IProps {
   allCourses: INote[];
 }
 
+// TODO - make it so all these links navigate within the code base
 // TODO - maybe move this is a markdown file lol
 export function Home({ allCourses }: IProps) {
   return (
@@ -32,16 +33,25 @@ export function Home({ allCourses }: IProps) {
         </Text>
         <div className={styles.paragraphContainer}>
           <Text variant="p">
-            I am currently a lecturer @{" "}
+            I am currently a lecturer @ John Abbott College , where I teach{" "}
             <TextLink
               variant="p"
-              href="https://johnabbott.qc.ca/"
+              href="/notes/01-W24-intro-to-programming"
               decoration="underline"
               color="green"
             >
-              John Abbott College
+              programming
+            </TextLink>{" "}
+            and{" "}
+            <TextLink
+              variant="p"
+              href="/notes/01-user-interfaces"
+              decoration="underline"
+              color="green"
+            >
+              web development
             </TextLink>
-            , where I teach programming and web development.
+            .
           </Text>
         </div>
         <div className={styles.paragraphContainer}>
@@ -49,23 +59,23 @@ export function Home({ allCourses }: IProps) {
             Since 2019, I've been merging my technical expertise with my love of
             problem-solving by working on highly interdisciplinary projects. In
             the right environment, I like to blend creativity into my work by
-            adding my own artistic touch.
+            adding{" "}
+            <TextLink
+              variant="p"
+              href="/art"
+              decoration="underline"
+              color="green"
+            >
+              my own artistic touch
+            </TextLink>
+            .
           </Text>
         </div>
         <div className={styles.paragraphContainer}>
           <Text variant="p">
             When I am not hidden away in the corners of Penfield, you'll often
-            spot me at{" "}
-            <TextLink
-              variant="p"
-              href="http://marchesainteanne.ca/fr/acceuil/"
-              decoration="underline"
-              color="green"
-            >
-              a farmers market
-            </TextLink>
-            , creating another strange piece of art or biting off more work than
-            I can chew (again).
+            spot me at a farmers market , creating another strange piece of art
+            or biting off more work than I can chew (again).
           </Text>
         </div>
       </section>

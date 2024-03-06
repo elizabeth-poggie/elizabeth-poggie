@@ -1,9 +1,7 @@
 import Head from "next/head";
 import Meta from "../src/views/meta/meta";
 import { ILink, INote } from "../src/interfaces/note";
-import { Notes } from "../src/views/notes/notes";
 import { getAllCourses, getAllNotes } from "../src/utils/api";
-import { sortByCreatedDescending } from "../src/utils/helpers/sortByDate";
 import { Burger } from "../src/components/navigation/burger/Burger";
 import { Home } from "../src/views/home/home";
 export const navItems: ILink[] = [
@@ -14,6 +12,10 @@ export const navItems: ILink[] = [
   {
     href: "/notes",
     text: "Notes",
+  },
+  {
+    href: "/art",
+    text: "Art",
   },
 ];
 
