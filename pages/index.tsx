@@ -10,6 +10,10 @@ export const navItems: ILink[] = [
     text: "About",
   },
   {
+    href: "/courses",
+    text: "Courses",
+  },
+  {
     href: "/notes",
     text: "Notes",
   },
