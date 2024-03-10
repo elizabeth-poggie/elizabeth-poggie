@@ -28,8 +28,19 @@ You must get your feature as close to the design as possible.
 
 However, your company prioritizes legal compliance and wants to avoid potential lawsuits. Therefore, it recommends sourcing images for the community page from reputable platforms such as [Pexels](https://www.pexels.com/), [Pixabay](https://pixabay.com/), or [Unsplash](https://unsplash.com/) as they provide free-to-use images.
 
-If you plan to use memes in your work however, nothing increases lawsuit potential faster than ignoring copyright laws. Consequently, you must give credit to the original creators if required. We always strive to minimize lawsuit potential in our work, as nothing jeopardizes job security faster than legal complications :^)
+If you plan to use memes in your work however, nothing risks a lawsuit faster than ignoring copyright laws. Consequently, you must give credit to the original creators if required. We always strive to minimize lawsuit potential in our work, as nothing jeopardizes job security faster than legal complications :^)
 
 # Question 2) Troubleshooting (20%)
 
-Oh no! The design requirements have changed 3 days before launch! Your product manager got some tea from sales and now needs to modify the feature to appeal to higher-paying clients. As a result, the designer has made the following change:
+Oh no! The feature requirements changed 3 days before launch! Your product manager got some tea from sales and now needs to modify the feature to appeal to higher-paying clients. As a result, the designer has made the following changes:
+
+An intermediate developer has provided you with some starter code to turn the hamburger icon in the top-right of the webpage into a theme-toggler. Once this is working, you should add two stylesheets to your community page:
+
+- layouts.css
+- custom.css
+
+## layouts.css (10%)
+
+## custom.css (10%)
+
+This stylesheet will give you the opportunity to come up with your own color and font theme for the webpage, using resources provided.
