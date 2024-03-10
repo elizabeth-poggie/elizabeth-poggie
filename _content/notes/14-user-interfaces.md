@@ -28,9 +28,9 @@ The 3 ways of adding CSS styles to HTML elements:
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- External Stylesheets - apply styles across multiple HTML documents -->
+    <!-- external stylesheets - apply styles across multiple HTML documents -->
     <link rel="stylesheet" type="text/css" href="./styles/styles.css" />
-    <!-- Internal Styles - apply styles to all elements within the document -->
+    <!-- internal styles - apply styles to all elements within the document -->
     <style>
       p {
         color: green;
@@ -38,7 +38,7 @@ The 3 ways of adding CSS styles to HTML elements:
     </style>
   </head>
   <body>
-    <!-- Inline Styles - apply styles directly to a specific element -->
+    <!-- inline styles - apply styles directly to a specific element -->
     <p style="color: green;">wow</p>
   </body>
 </html>
