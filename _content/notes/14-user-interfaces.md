@@ -140,7 +140,7 @@ A CSS declaration that is more specific will take precedence over less specific 
 
 These rules distinguish the basic differences between where CSS declarations are read by the browser (inline vs internal vs external), however this information still does not tell us which style will win.
 
-## What is the most specific?
+## What is the most specific style rule?
 
 - ID selectors (most specific selector)
 - Class selectors
@@ -241,7 +241,7 @@ No. Directly targeting an element always beats inheritance.
 
 # Quiz
 
-## Question 1) What color wins?
+## Question 4) What color wins?
 
 ```html
 <div id="parent">
@@ -263,7 +263,7 @@ No. Directly targeting an element always beats inheritance.
 
 Blue. Why? Despite the parent element having a higher specificity with an ID, the child element would have the `color: blue` style applied since that declaration directly targets it, while `color: red` from the parent is only inherited.
 
-## Question 2) What color wins?
+## Question 5) What color wins?
 
 ```html
 <div id="parent special">
@@ -317,25 +317,95 @@ Let’s say that after every other factor has been taken into account, there are
 }
 ```
 
-Yellow :^) Why? the cascade would run through every other factor, including inheritance (none here) and specificity (neither rule is more specific than the other). Since the `.warning` rule was the last one defined, and no other factor was able to determine which rule to apply, it’s the one that gets applied to the element.
+Yellow :^) Why? The cascade would run through every other factor, including inheritance (none here) and specificity (neither rule is more specific than the other). Since the `.warning` rule was the last one defined, and no other factor was able to determine which rule to apply, it’s the one that gets applied to the element.
 
-## What happens if there are different ways styles are being applied to HTML elements tho?
+## Do we need to consider how the different ways styles are applied to elements impact the final result?
 
-Yes we also need to consider this (unfortunately).
-
-# Battle of CSS Styling
+Yes. We also need to consider this (unfortunately).
 
 # Inline CSS
 
-## What color wins?
+Since there is no selector for inline CSS, there is no specificity to calculate; inline CSS rules automatically beat all other CSS rules for this reason.
+
+## Could we ever beat inline styling?
+
+There is only one way for internal/external CSS to beat inline css: using the `!important` keyword. (however this keyword should generally be avoided). For example:
 
 ```css
-
+p {
+  color: green !important; /* the keyword in action*/
+}
 ```
 
-- style-file-1.css is read: div has the rules color: black; and background-color: beige.
-- The internal <style> is read: div has the rules color: white; and background-color: black. p has the rule color: red
-- style-file-2.css is read: div has the rules color: blue;
+# Internal and External CSS
+
+## Are internal CSS rules more specific, or external CSS rules?
+
+Neither. For all rules from each source, when all other specificity is equal between two rules, the order that the rules are encountered by the browser is what determines the resulting style.
+
+# Quiz
+
+## Question 6) What color wins?
+
+Let's say this is our `index.html` file:
+
+```html
+<head>
+  <link rel="stylesheet" href="style-file-1.css" />
+  <!-- link to style-file-1.css -->
+  <style>
+    /* internal CSS style tag */
+    div {
+      color: white;
+      background-color: black;
+    }
+    p {
+      color: red;
+    }
+  </style>
+  <link rel="stylesheet" href="style-file-1.css" />
+  <!-- link to style-file-2.css -->
+</head>
+<body>
+  <div>
+    <p>Here is a paragraph!</p>
+  </div>
+</body>
+```
+
+This is `style-file-1.css`:
+
+```css
+div {
+  color: black;
+  background-color: yellow;
+}
+```
+
+This is `style-file-2.css`:
+
+```css
+div {
+  color: blue;
+}
+```
+
+What color is the p? What color is the div?
+
+- `<p>` will be ``
+- `<div>` will be ``
+
+Why? Lets break it into steps.
+
+- FIRST, `style-file-1.css` is read: div has the rules `color: black;` and `background-color: yellow;`.
+- NEXT, the internal `<style>` is read: div has the rules `color: white;` and `background-color: black;` p has the rule `color: red`
+- FINALLY, `style-file-2.css` is read: div has the rules `color: blue;`
+
+What to take away from this example?
+
+- the order of `<link>` and `<style>` tags in the `<head>` element is decisive for rules of EQUAL specificity.
+- A common pattern web developers use (especially with multiple stylesheets) is to place more general (i.e. website independent) sheets first, followed by more specific (i.e. style rules for a specific page in the website) rules later in the file.
+- Why? Developers want to ensure that the more specific rules are not overwritten by more general rules.
 
 # Exercise
 
