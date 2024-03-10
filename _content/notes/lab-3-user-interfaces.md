@@ -44,7 +44,7 @@ An intermediate developer has provided you with some starter code to help you ou
 
 This stylesheet will allow you to easily identify the structural elements of your web page.
 
-In addition to the normal style.css rules:
+In addition to the normal `style.css` rules:
 
 - Flex containers should be identified with a border of solid color (ex.: red, green, blue, yellow, purple, etc).
 - Flex items should be identified with a dashed or dotted border.
