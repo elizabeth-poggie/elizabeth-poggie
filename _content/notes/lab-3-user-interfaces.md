@@ -41,6 +41,15 @@ An intermediate developer has provided you with some starter code to turn the ha
 
 ## layouts.css (10%)
 
+This stylesheet will allow you to easily identify the structural elements of your web page.
+
+In addition to the normal style.css rules:
+
+- Flex containers should be identified with a border of solid color (ex.: red, green, blue, yellow, purple, etc). An example is shown in the figure below.
+- Flex items should be identified with a dashed or dotted border.
+- An item can be a Flex container and item at the same time. In this case it will have a colored border that is dashed or dotted.
+- Block level elements / Float elements that are not inside Flex items or containers will have a black solid border.
+
 ## custom.css (10%)
 
 This stylesheet will give you the opportunity to come up with your own color and font theme for the webpage, using resources provided.
