@@ -239,7 +239,7 @@ Typography based properties (`color`, `font-size`, f`ont-family`, etc.) are usua
 
 No. Directly targeting an element always beats inheritance.
 
-# Quiz 2
+# Quiz
 
 ## Question 1) What color wins?
 
@@ -299,7 +299,43 @@ Red. Why? In this case, the ordering of the rules is what determines the color. 
 }
 ```
 
-Blue would win because it's the css rule ordering that is the tie breaker (NOT inheritance OR specificity this time. As you can begin to see, CSS can be particularly annoying to debug lol.)
+Blue would win because it's the css rule ordering that is the tie breaker (NOT inheritance OR specificity this time. As you can begin to see, CSS can be particularly annoying to debug.) This brings us to our next topic...
+
+# Rule Order
+
+Let’s say that after every other factor has been taken into account, there are still multiple conflicting rules targeting an element. How does the cascade determine which rule to apply? Whichever rule was the last defined is the winner.
+
+## What color wins when both classes are applied?
+
+```css
+.alert {
+  color: red;
+}
+
+.warning {
+  color: yellow;
+}
+```
+
+Yellow :^) Why? the cascade would run through every other factor, including inheritance (none here) and specificity (neither rule is more specific than the other). Since the `.warning` rule was the last one defined, and no other factor was able to determine which rule to apply, it’s the one that gets applied to the element.
+
+## What happens if there are different ways styles are being applied to HTML elements tho?
+
+Yes we also need to consider this (unfortunately).
+
+# Battle of CSS Styling
+
+# Inline CSS
+
+## What color wins?
+
+```css
+
+```
+
+- style-file-1.css is read: div has the rules color: black; and background-color: beige.
+- The internal <style> is read: div has the rules color: white; and background-color: black. p has the rule color: red
+- style-file-2.css is read: div has the rules color: blue;
 
 # Exercise
 
