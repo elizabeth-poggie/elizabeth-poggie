@@ -5,18 +5,34 @@
   padding: 0 0 calc($unit * 10) 0;
 }
 
-.sideBar {
-  position: fixed;
+.container {
+  padding: calc(20 * $unit) 0 calc(40 * $unit) calc(20 * $unit);
+  margin: auto;
+  width: 50%;
+}
+
+.leftSideBar_default {
+  position: absolute;
+  width: 20%;
   left: 0;
+  padding: 0 0 0 calc($unit * 8);
+}
+
+.leftSideBar_sticky {
+  position: fixed;
   top: 0;
-  padding: calc($unit * 20) 0 0 calc($unit * 8);
-  z-index: 1;
+  padding: calc($unit * 8) 0 0 calc($unit * 8);
+  @extend .leftSideBar_default;
 }
 
 .tocInSideBar {
   padding-left: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
+}
+
+.sideBarSectionHeader {
+  margin-bottom: 7.5px;
 }
 
 .sideBarSection {
@@ -53,15 +69,6 @@
   margin: 1.5rem 0;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  float: right;
-  padding: calc(20 * $unit) calc(20 * $unit) calc(20 * $unit) calc(8 * $unit);
-  height: 100%;
-  width: 60%;
-}
-
 .noteTitle {
   padding-bottom: calc(2 * $unit);
 }
@@ -69,18 +76,24 @@
 @media screen and (max-width: $bp-lg) {
   .container {
     padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
-    width: 50%;
+    float: none;
+    width: 90%;
+  }
+  .leftSideBar_default,
+  .leftSideBar_sticky {
+    display: none;
   }
 }
 
-@media screen and (max-width: $bp-sm) {
+@media screen and (max-width: $bp-md) {
   .container {
     padding: calc(20 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
     float: none;
     width: 100%;
   }
 
-  .sideBar {
+  .leftSideBar_default,
+  .leftSideBar_sticky {
     display: none;
   }
 }

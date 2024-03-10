@@ -1,57 +1,50 @@
 import Head from "next/head";
 import Meta from "../src/views/meta/meta";
-import { INote } from "../src/interfaces/note";
-import { Notes } from "../src/views/notes/notes";
-import { getAllNotes } from "../src/utils/api";
-import { sortByCreatedDescending } from "../src/utils/helpers/sortByDate";
-
-// Putting the other nav items on ice for now until im further along in my teacher career lol
-
-// export const navItems: Array<NavItem> = [
-//   {
-//     href: "/",
-//     name: "Notes",
-//   },
-//   {
-//     href: "/projects",
-//     name: "Projects",
-//   },
-//   {
-//     href: "/art",
-//     name: "Art",
-//   },
-// ];
+import { ILink, INote } from "../src/interfaces/note";
+import { getAllCourses, getAllNotes } from "../src/utils/api";
+import { Burger } from "../src/components/navigation/burger/Burger";
+import { Home } from "../src/views/home/home";
+export const navItems: ILink[] = [
+  {
+    href: "/",
+    text: "About",
+  },
+  {
+    href: "/notes",
+    text: "Notes",
+  },
+  {
+    href: "/art",
+    text: "Art",
+  },
+];
 
 interface IProps {
-  allNotes: INote[];
+  allCourses: INote[];
 }
 
-export default function Index({ allNotes }: Readonly<IProps>) {
-  const sortedNotes = sortByCreatedDescending(allNotes);
+export default function Index({ allCourses }: Readonly<IProps>) {
   return (
     <>
       <Meta />
       <Head>
-        <title>Elizabeth Poggie - Notes</title>
+        <title>Poggie</title>
       </Head>
-      {/* <NavBar navItems={navItems} /> */}
-      <Notes allNotes={sortedNotes} />
+      <Burger navItems={navItems} />
+      <Home allCourses={allCourses} />
     </>
   );
 }
 
 export const getStaticProps = async () => {
-  const allNotes = getAllNotes([
+  const allCourses = getAllCourses([
     "slug",
     "category",
-    "number",
     "type",
     "title",
-    "subtitle",
-    "created",
+    "color",
   ]);
-
   return {
-    props: { allNotes },
+    props: { allCourses },
   };
 };

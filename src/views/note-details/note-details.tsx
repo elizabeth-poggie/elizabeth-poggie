@@ -16,13 +16,52 @@ import {
 import tocbot from "tocbot";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { filterToColorMap } from "../notes/notes";
+import { relatedNotes } from "../../../pages/notes/[slug]";
 
 interface IProps {
   noteDetails: INote;
-  relatedNotes?: INote[];
+  relatedNotes?: relatedNotes[];
 }
 
 export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
+  const [isInContent, setIsInContent] = React.useState<boolean>();
+  const observedContentRef = React.useRef(null);
+
+  const handleScroll = () => {
+    if (!observedContentRef.current) {
+      return;
+    }
+    const { offsetTop } = observedContentRef.current;
+    const position = window.pageYOffset;
+    if (position + 16 >= offsetTop) {
+      tocbot.refresh({
+        ...TOC_NOTE_DETAILS_OPTIONS,
+        hasInnerContainers: true,
+      });
+      setIsInContent(true);
+    } else if (position < offsetTop) {
+      tocbot.refresh({
+        ...TOC_NOTE_DETAILS_OPTIONS,
+        hasInnerContainers: true,
+      });
+      setIsInContent(false);
+    }
+  };
+
+  React.useEffect(() => {
+    if (!observedContentRef.current) {
+      return;
+    }
+
+    // custom styling - configure side bar to become sticky once we enter the content
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      // remove listener
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [observedContentRef]);
+
   const renderHeader = ({ id, children }) => {
     return (
       <div className={styles.mdHeader}>
@@ -90,51 +129,9 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
     );
   };
 
-  const renderSideBar = () => {
-    return (
-      <aside className={styles.sideBar}>
-        <header className={styles.sideBarSection}>
-          <PillButton
-            color={filterToColorMap[noteDetails.category]}
-            title={noteDetails.category}
-            onClick={() => null}
-          />
-        </header>
-        <section className={styles.sideBarSection}>
-          {relatedNotes?.map((note: INote) => {
-            const isActiveLink = note.title === noteDetails.title;
-            return (
-              <div key={note.slug}>
-                <TextLink
-                  href={`/notes/${note.slug}`}
-                  variant="subheading"
-                  onClick={() =>
-                    tocbot.refresh({
-                      ...TOC_NOTE_DETAILS_OPTIONS,
-                      hasInnerContainers: true,
-                    })
-                  }
-                  color={isActiveLink ? "white" : "grey"}
-                >
-                  {note.number}. {note.title}
-                </TextLink>
-                {isActiveLink ? (
-                  <div className={styles.tocInSideBar}>
-                    <Toc />
-                  </div>
-                ) : null}
-              </div>
-            );
-          })}
-        </section>
-      </aside>
-    );
-  };
-
-  const renderNoteDetails = () => {
+  const renderDetails = () => {
     return (
       <>
-        {renderNoteHeader()}
         <div className="js-toc-content">
           <Markdown
             rehypePlugins={[rehypeSlug]}
@@ -183,8 +180,71 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
 
   return (
     <>
-      {renderSideBar()}
-      <div className={styles.container}>{renderNoteDetails()}</div>
+      <div className={styles.container}>
+        {renderNoteHeader()}
+        <div ref={observedContentRef}>
+          <div
+            className={
+              isInContent
+                ? styles.leftSideBar_sticky
+                : styles.leftSideBar_default
+            }
+          >
+            <NotesSideBar related={relatedNotes} current={noteDetails} />
+          </div>
+          {renderDetails()}
+        </div>
+      </div>
     </>
   );
 }
+
+interface ISideBarProps {
+  related?: relatedNotes[];
+  current: INote;
+}
+
+const NotesSideBar = ({ related, current }: ISideBarProps) => {
+  return (
+    <aside>
+      {related.map((related: relatedNotes) => {
+        return (
+          <section key={related.type} className={styles.sideBarSection}>
+            <section className={styles.sideBarSectionHeader}>
+              <header>
+                <Text variant="p" style="capitalize" color="white">
+                  {related.type}s
+                </Text>
+              </header>
+            </section>
+            {related.notes?.map((item) => {
+              const isActiveLink = item.title === current.title;
+              return (
+                <div key={item.slug}>
+                  <TextLink
+                    href={`/notes/${item.slug}`}
+                    variant="subheading"
+                    onClick={() =>
+                      tocbot.refresh({
+                        ...TOC_NOTE_DETAILS_OPTIONS,
+                        hasInnerContainers: true,
+                      })
+                    }
+                    color={isActiveLink ? "white" : "grey"}
+                  >
+                    {item.number}. {item.title}
+                  </TextLink>
+                  {isActiveLink ? (
+                    <div className={styles.tocInSideBar}>
+                      <Toc />
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })}
+          </section>
+        );
+      })}
+    </aside>
+  );
+};

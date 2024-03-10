@@ -6,62 +6,13 @@ import { ListLayout } from "../../components/layout/list-layout/list-layout";
 import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
+import { TextLink } from "../../components/navigation/link/link";
+import { TextButton } from "../../components/inputs/text-button/text-button";
+import { ScrollableContainer } from "../../components/layout/scrollable-container/scrollable-container";
 
 interface IProps {
   allNotes: INote[];
 }
-
-/**
- * * * * * * * * * * * * * * * * * * * * * * *
- *                                           *
- *    Data Structures and Relationships      *
- *                                           *
- * * * * * * * * * * * * * * * * * * * * * * *
- */
-
-/**
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *
- * - Family
- *    - Category
- *      - Color                         (e.g. yellow, green, blue - can be automated with a script)
- *      - Primary types []              (e.g. left column in Note)
- *      - Secondary types []            (e.g. right column in Note)
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *
- * - Computer Science @ John Abbott College
- *    - Course
- *      - Lectures
- *      - Labs, Exercises
- * - UnderGrad @ McGill University
- *    - Course
- *      - Lectures
- *      - Assignments, Tests, Projects
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *
- * - Navigation Strategies
- *    - The Corporate World
- *      - Strategies
- *      - Templates, Procedures
- *    - The Human Condition
- *      - Strategies
- *      - Templates, Procedures
- *    - The Kitchen
- *      - Mains
- *      - Drinks, Desserts, Appetizers
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- */
-
-/**
- * Sorters
- *
- * - Latest
- * - Year: 2024, 2023, 2022, ...
- *
- */
 
 // List of supported filters lol
 export const filterToColorMap = {
@@ -71,37 +22,13 @@ export const filterToColorMap = {
 };
 
 export function Notes({ allNotes }: IProps) {
-  // TODO - maybe use a provider instead lol, however this will be good for now
   const [filteredNotes, setFilteredNotes] = React.useState(allNotes);
+  const [activeFilter, setActiveFilter] = React.useState<
+    string | "John Abbott College"
+  >("John Abbott College");
 
-  const renderList = () => {
-    return (
-      <>
-        {filteredNotes.map((note: INote, i: number) => {
-          return (
-            <div key={note.slug}>
-              <ListItem
-                title={note.title}
-                href={`/notes/${note.slug}`}
-                subContent={
-                  <PillButton
-                    color={filterToColorMap[note.category]}
-                    title={note.category}
-                    onClick={() => null}
-                  />
-                }
-              />
-              {i === filteredNotes.length - 1 ? null : <HorizontalLine />}
-            </div>
-          );
-        })}
-      </>
-    );
-  };
-
-  // TODO - maybe make it such that more than one thing can be selected at once
-  // TODO - ...and that the styling of things that are active is different lol
   const setNotes = (filter: string) => {
+    setActiveFilter(filter);
     const newFilterNotes = allNotes.filter(
       (note) => note.type === filter || note.category === filter
     );
@@ -121,35 +48,87 @@ export function Notes({ allNotes }: IProps) {
 
     return (
       <article>
-        <header className={styles.filterHeader}>
-          <Text variant="h2" style="capitalize">
-            Course
-          </Text>
+        <header>
+          <TextButton
+            onClick={() => {
+              setActiveFilter("John Abbott College");
+              setFilteredNotes(allNotes);
+            }}
+            color={activeFilter === "John Abbott College" ? "white" : "grey"}
+          >
+            John Abbott College
+          </TextButton>
         </header>
         {filters.map((filter: string) => {
           return (
-            <PillButton
-              color={filterToColorMap[filter]}
-              key={filter}
-              title={filter}
-              onClick={() => setNotes(filter)}
-            />
+            <div key={filter}>
+              <TextButton
+                variant="subheading"
+                onClick={() => setNotes(filter)}
+                color={activeFilter === filter ? "white" : "grey"}
+              >
+                {filter}
+              </TextButton>
+            </div>
           );
         })}
       </article>
     );
   };
 
-  // TODO - support more types
-  const renderFilters = () => {
-    return <>{renderFilterRow("category")}</>;
+  const renderList = () => {
+    return (
+      <>
+        {filteredNotes.map((note: INote, i: number) => {
+          // date logic for list items
+          const currentDate = note.updated
+            ? new Date(note.updated) // priority given to updated
+            : new Date(note.created);
+          const displayDate = currentDate.getFullYear() ? (
+            <Text>
+              {`${currentDate.toLocaleString("default", {
+                month: "short",
+              })} ${currentDate.getFullYear()}`}
+            </Text>
+          ) : null;
+
+          return (
+            <div key={note.slug}>
+              <ListItem
+                title={note.title}
+                href={`/notes/${note.slug}`}
+                rightContent={displayDate}
+                subContent={
+                  <PillButton
+                    color={filterToColorMap[note.category]}
+                    title={note.category}
+                    onClick={() => null}
+                  />
+                }
+              />
+              {i === filteredNotes.length - 1 ? null : <HorizontalLine />}
+            </div>
+          );
+        })}
+      </>
+    );
   };
 
   return (
-    <ListLayout
-      title="Notes"
-      leftContent={renderFilters()}
-      listContent={renderList()}
-    />
+    <main className={styles.container}>
+      <header className={styles.titleWrapper}>
+        <Text variant="title">Notes</Text>
+      </header>
+      <HorizontalLine />
+      <aside className={styles.leftSideBar}>
+        {renderFilterRow("category")}
+      </aside>
+      <section className={styles.content}>
+        <ScrollableContainer isLockWindowEnabled={true}>
+          {renderList()}
+        </ScrollableContainer>
+      </section>
+      <aside className={styles.rightSideBar}></aside>
+    </main>
   );
 }

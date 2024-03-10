@@ -1,4 +1,4 @@
-interface ILink {
+export interface ILink {
   text: string;
   href: string;
 }
@@ -74,6 +74,10 @@ export interface INote {
    * @example {text: "slides", href: "path/to/slides.pdf"}
    */
   link?: ILink;
+  /**
+   * Markdown
+   */
+  color?: string;
   /**
    * Markdown
    */

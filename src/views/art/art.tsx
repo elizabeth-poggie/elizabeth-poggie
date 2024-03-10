@@ -1,24 +1,24 @@
 import { Image } from "../../components/display/image/image";
-import { IArt } from "../../interfaces/art";
+import { INote } from "../../interfaces/note";
 import styles from "./art.module.scss";
 
 interface IProps {
-  allArt: Array<IArt>;
+  allArt: INote[];
 }
 
 export function Art({ allArt }: IProps) {
   const col1 = allArt.slice(0, allArt.length / 2);
   const col2 = allArt.slice(allArt.length / 2);
 
-  const renderColumn = (colArt: Array<IArt>) => {
+  const renderColumn = (colArt: INote[]) => {
     if (!colArt.length) {
       return null;
     }
 
     return (
       <div className={styles.column}>
-        {colArt.map((art: IArt) => {
-          return <Image src={art.src} />;
+        {colArt.map((art: INote) => {
+          return <Image src={art.coverSrc} />;
         })}
       </div>
     );
