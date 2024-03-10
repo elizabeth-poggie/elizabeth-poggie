@@ -425,14 +425,19 @@ What to take away from this example?
 
 TBD
 
-# Do I have to memorize this lol
+# Do I have to memorize this ???
 
-You don’t have to instantly know how every selector will interact with others. Things get i n s a n e when you start working on larger projects. What should you care about instead? Why certain styles are showing up and others aren’t, and to understand the basic rules of over-ride.
+You don’t have to instantly know how every selector will interact with others. Things get i n s a n e when you start working on larger projects.
 
-Best practices that help you prevent unintentional style bugs:
+What should you care about instead?
 
-- use as LITTLE specificity as possible. Try to stick to element and class selectors and AVOID ids and combination selectors as much as possible.
-- Structure your code to respect the cascade. Put general element-based styles up top, followed by specific component/module styles, then modifiers.
+- Understand why certain styles appear while others don't.
+- Understand the basic rules of over-ride.
+
+Best practices that help you avoid unintentional style bugs:
+
+- AVOID specificity whenever possible. Try to stick to element and class selectors over ids and combination selectors.
+- Organize your code to follow the cascade. Put general element-based styles at the top, followed by specific component or module styles, and conclude with modifiers.
 
 # Exercises
 
