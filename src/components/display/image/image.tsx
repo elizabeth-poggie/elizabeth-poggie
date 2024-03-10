@@ -1,5 +1,5 @@
 import { cs } from "../../../utils/helpers/classHelpers";
-import { default as NextImage } from "next/image";
+import { default as NextImage, ImageProps as NextImageProps } from "next/image";
 import styles from "./image.module.scss";
 
 const imageVariantToStyleMap = {
@@ -26,7 +26,7 @@ const imageFilterToStyleMap = {
 type ImageFilter = "default" | "darken";
 type ImageVariant = "default" | "cover" | "thumbnail" | "lead" | "listItem";
 
-interface IProps {
+export interface IImageProps extends NextImageProps {
   /**
    * path of the image
    */
@@ -49,7 +49,8 @@ export function Image({
   src,
   variant = "default",
   filter = "default",
-}: IProps) {
+  ...args
+}: IImageProps) {
   /**
    * NextImage guarantees faster up page loads and better performance. In this use case, the prop `fill` will always be set to true since
    * we are *always* dynamically accessing our images.
@@ -70,6 +71,7 @@ export function Image({
         src={src}
         alt="didn't load lol"
         fill={fill}
+        {...args}
       />
     </div>
   );

@@ -2,7 +2,7 @@ import NextLink, { LinkProps as NextLinkProps } from "next/link";
 import styles from "./link.module.scss";
 import { ITextProps, Text } from "../../typography/text/text";
 
-interface ILinkProps extends NextLinkProps {
+export interface ILinkProps extends NextLinkProps {
   children: React.ReactNode;
 }
 

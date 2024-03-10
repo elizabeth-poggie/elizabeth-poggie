@@ -26,7 +26,7 @@ export const GalleryLayout = ({ allNotes }: IGalleryLayoutProps) => {
     return (
       <div className={styles.column}>
         {colNote.map((note: INote) => {
-          return <Image key={note.slug} src={note.coverSrc} />;
+          return <Image key={note.slug} src={note.coverSrc} alt={note.title} />;
         })}
       </div>
     );

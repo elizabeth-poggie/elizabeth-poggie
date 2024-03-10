@@ -1,11 +1,9 @@
 import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
-import { getAllArt, getAllCourses } from "../../src/utils/api";
-import { Art } from "../../src/views/art/art";
+import { getAllCourses } from "../../src/utils/api";
 import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
 import { INote } from "../../src/interfaces/note";
-import { sortByCreatedDescending } from "../../src/utils/helpers/sortByDate";
 import { Courses } from "../../src/views/courses/courses";
 
 interface IProps {
