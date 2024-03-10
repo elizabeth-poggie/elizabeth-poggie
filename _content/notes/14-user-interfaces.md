@@ -132,3 +132,93 @@ There are different factors that the "cascade" uses to determine what styling ru
 # Specificity
 
 A CSS declaration that is more specific will take precedence over less specific ones.
+
+## What does that even mean?
+
+- Inline CSS styles (applied directly to the HTML element) are more specific than internal `<style>` declarations AND external `*.css` file declarations
+- For all other declarations (internal and external), equally specific declarations are prioritized in the order they are read by the browser (top-to-bottom for the HTML file).
+
+These rules distinguish the basic differences between where CSS declarations are read by the browser (inline vs internal vs external), however this information still does not tell us which style will win.
+
+## What is the most specific?
+
+- ID selectors (most specific selector)
+- Class selectors
+- Type selectors
+
+## When do we care about specificity?
+
+Specificity will only be taken into account when an element has multiple, conflicting declarations targeting it, sort of like a tie-breaker. TLDR: ID beats class, class beats type, type beats anything less specific.
+
+# Quiz
+
+## Question 1) What color wins?
+
+```html
+<div class="main">
+  <div class="list subsection"></div>
+</div>
+```
+
+```css
+/* rule 1 */
+.subsection {
+  color: blue;
+}
+
+/* rule 2 */
+.main .list {
+  color: red;
+}
+```
+
+> Red :) Why? rule 2 is more specific because it is using more class selectors despite both rules use class selectors.
+
+## Question 2) What color wins?
+
+```html
+<div class="main">
+  <div class="list" id="subsection"></div>
+</div>
+```
+
+```css
+/* rule 1 */
+#subsection {
+  color: blue;
+}
+
+/* rule 2 */
+.main .list {
+  color: red;
+}
+```
+
+> Blue :^) Why? rule 1 is more specific because ID beats class despite rule 2 having 2 class selectors
+
+## Question 3) What color wins?
+
+```html
+<div class="main">
+  <div class="list">
+    <div id="subsection"></div>
+  </div>
+</div>
+```
+
+```css
+/* rule 1 */
+.list #subsection {
+  background-color: yellow;
+  color: blue;
+}
+
+/* rule 2 */
+.main .list #subsection {
+  color: red;
+}
+```
+
+Red :) Why? Both rules are using ID and class selectors, so neither rule is using a more specific selector than the other. The cascade then checks the amounts of each selector type. Both rules only have one ID selector, but rule 2 has more class selectors, so rule 2 has a higher specificity.
+
+How come yellow still appears? `background-color: yellow` has no conflicting style declaration for it.
