@@ -377,7 +377,7 @@ Let's say this is our `index.html` file:
       color: red;
     }
   </style>
-  <link rel="stylesheet" href="style-file-1.css" />
+  <link rel="stylesheet" href="style-file-2.css" />
   <!-- link to style-file-2.css -->
 </head>
 <body>
@@ -406,8 +406,8 @@ div {
 
 What color is the p? What color is the div?
 
-- `<p>` will be ``
-- `<div>` will be ``
+- `<p>` will be `red`
+- `<div>` will be `black`
 
 Why? Lets break it into steps.
 
@@ -423,7 +423,59 @@ What to take away from this example?
 
 ## Question 9) What color wins?
 
-TBD
+Let's say this is our `index.html` file:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style-file-1.css" />
+    <!-- link to style-file-1.css -->
+    <style>
+      /* internal CSS style tag */
+      div {
+        color: white;
+        background-color: black;
+      }
+      p {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wow" style="background-color: aquamarine;">
+      <p style="color: green;">Here is a paragraph!</p>
+    </div>
+  </body>
+</html>
+```
+
+and this is `style-file-1.css`:
+
+```css
+div {
+  color: black;
+  background-color: yellow;
+}
+
+p {
+  color: black !important;
+}
+
+#wow {
+  background-color: pink;
+}
+```
+
+What color is the p? What color is the div?
+
+- `<p>` will be `black`
+- `<div>` will be `aquamarine`
+
+Why?
+
+- `!important` wins against all other rules.
+- inline styling is the next "in line" for priority, despite "id" being the most specific selector.
 
 # Do I have to memorize this ???
 
