@@ -4,7 +4,7 @@ category: "User Interfaces"
 number: 2
 type: "Lab"
 title: "Mastering HTML Semantics"
-created: "2024-02-02612:17:29Z"
+created: "2024-02-02T12:17:29Z"
 ---
 
 # Overview
