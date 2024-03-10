@@ -98,3 +98,35 @@ The properties that are common to all elements such as:
   /* etc... */
 }
 ```
+
+# CSS Cascade
+
+Sometimes we may have rules that conflict with one another, and we end up with some unexpected results. Expressions of frustration in such situations may include, but are not limited to:
+
+```text
+"But I wanted these paragraphs to be blue, why are they black?!"
+```
+
+```text
+"Why won't it apply any margins????¿??????¿¿¿??¿"
+```
+
+```text
+"what is even happening lol"
+```
+
+These sentiments have inspired prolific meme creation in the developer community, including:
+
+As frustrating as this can be, it’s important to understand that CSS doesn’t just do things against our wishes. CSS only does what we tell it to do. What we need to understand more closely is the mechanics of how CSS does what we tell it, and for that, we need to understand the CSS Cascade.
+
+## Common causes of unexpected behaviour:
+
+- A browser default style has not been overwritten by you
+- You have not understood how a property you have written works
+- You have not understood how the properties you wrote Cascade
+
+There are different factors that the "cascade" uses to determine what styling rule is applied, three of which we’ll cover in this class...
+
+# Specificity
+
+A CSS declaration that is more specific will take precedence over less specific ones.
