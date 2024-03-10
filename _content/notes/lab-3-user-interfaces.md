@@ -12,7 +12,7 @@ created: "2024-03-12T12:17:29Z"
 - Worth: This lab will count towards the ‘lab’ portion of your final grade at 12.5%
 - Due: March 22, 2024 (by ‘end of day’)
 - Hand In: A `.zip` file containing your folder (work) onto LEA.
-- Late Penalty: Late submissions lose 10% per day to a maximum of 3 days. Nothing is accepted after 3 days and a grade of zero will be given.
+- Late Penalty: Late submissions lose 2.5% per day to a maximum of 7 days. Nothing is accepted after 7 days and a grade of zero will be given.
 
 # Goal
 
@@ -24,6 +24,8 @@ You are a junior developer at a startup and a product manager has tasked you wit
 
 The web designer has provided you with the following design:
 
+<!-- TODO: insert Design -->
+
 You must get your feature as close to the design as possible.
 
 However, your company prioritizes legal compliance and wants to avoid potential lawsuits. Therefore, it recommends sourcing images for the community page from reputable platforms such as [Pexels](https://www.pexels.com/), [Pixabay](https://pixabay.com/), or [Unsplash](https://unsplash.com/) as they provide free-to-use images.
@@ -34,22 +36,17 @@ If you plan to use memes in your work however, nothing risks a lawsuit faster th
 
 Oh no! The feature requirements changed 3 days before launch! Your product manager got some tea from sales and now needs to modify the feature to appeal to higher-paying clients. As a result, the designer has made the following changes:
 
-An intermediate developer has provided you with some starter code to turn the hamburger icon in the top-right of the webpage into a theme-toggler. Once this is working, you should add two stylesheets to your community page:
+<!-- TODO: insert Design -->
 
-- layouts.css
-- custom.css
+An intermediate developer has provided you with some starter code to help you out which will turn the hamburger icon in the top-right of the webpage into a theme-toggler. Once this is working, you should add the one stylesheets to your community page:
 
-## layouts.css (10%)
+<!-- TODO: insert CSS -->
 
 This stylesheet will allow you to easily identify the structural elements of your web page.
 
 In addition to the normal style.css rules:
 
-- Flex containers should be identified with a border of solid color (ex.: red, green, blue, yellow, purple, etc). An example is shown in the figure below.
+- Flex containers should be identified with a border of solid color (ex.: red, green, blue, yellow, purple, etc).
 - Flex items should be identified with a dashed or dotted border.
 - An item can be a Flex container and item at the same time. In this case it will have a colored border that is dashed or dotted.
 - Block level elements / Float elements that are not inside Flex items or containers will have a black solid border.
-
-## custom.css (10%)
-
-This stylesheet will give you the opportunity to come up with your own color and font theme for the webpage, using resources provided.
