@@ -16,13 +16,13 @@ created: "2024-03-12T12:17:29Z"
 
 # Goal
 
-In this lab we will develop and practice intermediate CSS layout skills by leveraging Floats and Flexbox. Our end goal is to bring static design documents to life :)
+In this lab we will develop and practice intermediate CSS layout skills by leveraging Floats and Flexbox. Our goal is to bring designs to life :)
 
 # Part 1) Landing page (80%)
 
 You are a junior developer at a startup and a product manager has tasked you with creating a feature for your company's new community page. The deadline is tight, with launch scheduled in 10 days time. Unfortunately, there was no prior consultation with the developers for time estimation, and the deadline cannot be altered as it has already been guaranteed to shareholders.
 
-The web designer has provided you with the following design:
+The designer has provided you with the following design:
 
 <!-- TODO: insert Design -->
 
@@ -38,13 +38,13 @@ Oh no! The feature requirements changed 3 days before launch! Your product manag
 
 <!-- TODO: insert Design -->
 
-An intermediate developer has provided you with some starter code to help you out which will turn the hamburger icon in the top-right of the webpage into a theme-toggler. Once this is working, you should add the one stylesheets to your community page:
+An intermediate developer has provided you with some starter code to help you out, this code will turn the hamburger icon in the top-right of the webpage into a theme-toggler. Once this is working, you should add the following `styles.css` to your project:
 
 <!-- TODO: insert CSS -->
 
 This stylesheet will allow you to easily identify the structural elements of your web page.
 
-In addition to the normal `style.css` rules:
+In addition to the other `style.css` rules, you must adapt the styles to include:
 
 - Flex containers should be identified with a border of solid color (ex.: red, green, blue, yellow, purple, etc).
 - Flex items should be identified with a dashed or dotted border.
