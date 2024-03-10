@@ -222,3 +222,85 @@ Specificity will only be taken into account when an element has multiple, confli
 Red :) Why? Both rules are using ID and class selectors, so neither rule is using a more specific selector than the other. The cascade then checks the amounts of each selector type. Both rules only have one ID selector, but rule 2 has more class selectors, so rule 2 has a higher specificity.
 
 How come yellow still appears? `background-color: yellow` has no conflicting style declaration for it.
+
+# Inheritance
+
+One thing that you might have noticed already is that some CSS properties are automatically propagated from parents to children. A common example you will see in many websites is that most font properties are set in the `<body>` element, rather than explicitly defined for every single element in the page.
+
+## What is inheritance?
+
+Inheritance refers to certain CSS properties that, when applied to an element, are inherited by that element’s descendants, even if we don’t explicitly write a rule for those descendants.
+
+## When do we use inheritance?
+
+Typography based properties (`color`, `font-size`, f`ont-family`, etc.) are usually inherited, while most other properties are not.
+
+## Does inheritance beat Specificity?
+
+No. Directly targeting an element always beats inheritance.
+
+# Quiz 2
+
+## Question 1) What color wins?
+
+```html
+<div id="parent">
+  <div class="child"></div>
+</div>
+```
+
+```css
+/* rule 1 */
+#parent {
+  color: red;
+}
+
+/* rule 2 */
+.child {
+  color: blue;
+}
+```
+
+Blue. Why? Despite the parent element having a higher specificity with an ID, the child element would have the `color: blue` style applied since that declaration directly targets it, while `color: red` from the parent is only inherited.
+
+## Question 2) What color wins?
+
+```html
+<div id="parent special">
+  <div class="child" id="special"></div>
+</div>
+```
+
+```css
+/* rule 1 */
+.child,
+#special {
+  color: blue;
+}
+
+/* rule 2 */
+#parent,
+#special {
+  color: red;
+}
+```
+
+Red. Why? In this case, the ordering of the rules is what determines the color. `#special` creates the same specificity for both rules and inheritance is being ignored (again). So if we changed the ordering to this:
+
+```css
+#parent,
+#special {
+  color: red;
+}
+
+.child,
+#special {
+  color: blue;
+}
+```
+
+Blue would win because it's the css rule ordering that is the tie breaker (NOT inheritance OR specificity this time. As you can begin to see, CSS can be particularly annoying to debug lol.)
+
+# Exercise
+
+Open the Developer Tools inspector in your browser on this page. Can you see where the light and dark color schemes are defined?
