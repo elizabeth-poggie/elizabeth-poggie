@@ -475,7 +475,7 @@ What color is the p? What color is the div?
 Why?
 
 - `!important` wins against all other rules.
-- inline styling is the next "in line" for priority, despite "id" being the most specific selector.
+- Inline styling is the next "in line" for priority, despite "id" being the most specific selector.
 
 # Do I have to memorize this ???
 
