@@ -305,7 +305,13 @@ Blue would win because it's the css rule ordering that is the tie breaker (NOT i
 
 Let’s say that after every other factor has been taken into account, there are still multiple conflicting rules targeting an element. How does the cascade determine which rule to apply? Whichever rule was the last defined is the winner.
 
-## What color wins when both classes are applied?
+# Quiz
+
+## Question 6) What color wins?
+
+```html
+<p class="alert warning">wow</p>
+```
 
 ```css
 .alert {
@@ -318,6 +324,14 @@ Let’s say that after every other factor has been taken into account, there are
 ```
 
 Yellow :^) Why? The cascade would run through every other factor, including inheritance (none here) and specificity (neither rule is more specific than the other). Since the `.warning` rule was the last one defined, and no other factor was able to determine which rule to apply, it’s the one that gets applied to the element.
+
+## Question 7) What color wins?
+
+```html
+<p class="warning alert">wow</p>
+```
+
+Yellow still. Why? The order that you put these in the HTML tag makes NO DIFFERENCE. The outcome is the ALWAYS the one that is last one that has been defined.
 
 ## Do we need to consider how the different ways styles are applied to elements impact the final result?
 
@@ -345,7 +359,7 @@ Neither. For all rules from each source, when all other specificity is equal bet
 
 # Quiz
 
-## Question 6) What color wins?
+## Question 8) What color wins?
 
 Let's say this is our `index.html` file:
 
@@ -407,6 +421,20 @@ What to take away from this example?
 - A common pattern web developers use (especially with multiple stylesheets) is to place more general (i.e. website independent) sheets first, followed by more specific (i.e. style rules for a specific page in the website) rules later in the file.
 - Why? Developers want to ensure that the more specific rules are not overwritten by more general rules.
 
-# Exercise
+## Question 9) What color wins?
 
-Open the Developer Tools inspector in your browser on this page. Can you see where the light and dark color schemes are defined?
+TBD
+
+# Do I have to memorize this lol
+
+You don’t have to instantly know how every selector will interact with others. Things get i n s a n e when you start working on larger projects. What should you care about instead? Why certain styles are showing up and others aren’t, and to understand the basic rules of over-ride.
+
+Best practices that help you prevent unintentional style bugs:
+
+- use as LITTLE specificity as possible. Try to stick to element and class selectors and AVOID ids and combination selectors as much as possible.
+- Structure your code to respect the cascade. Put general element-based styles up top, followed by specific component/module styles, then modifiers.
+
+# Exercises
+
+- [Try it yourself](https://www.w3schools.com/css/css_specificity.asp)
+- Open the Developer Tools inspector in your browser on google. Can you see where the light and dark color schemes are defined? Can you figure out how to change between the schemes from DevTools?
