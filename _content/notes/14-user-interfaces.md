@@ -117,6 +117,8 @@ Sometimes we may have rules that conflict with one another, and we end up with s
 
 These sentiments have inspired prolific meme creation in the developer community, including:
 
+![meme](/assets/notes/W24-user-interfaces/photos/family-guy-css.gif)
+
 As frustrating as this can be, it’s important to understand that CSS doesn’t just do things against our wishes. CSS only does what we tell it to do. What we need to understand more closely is the mechanics of how CSS does what we tell it, and for that, we need to understand the CSS Cascade.
 
 ## Common causes of unexpected behaviour:
