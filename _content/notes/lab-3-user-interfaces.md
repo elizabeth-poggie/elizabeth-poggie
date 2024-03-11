@@ -26,11 +26,11 @@ You've been tasked by a product manager to create [a landing page](https://www.s
 
 A designer has provided you with the following design:
 
-<!-- TODO: insert Design -->
+![design](/assets/notes/W24-user-interfaces/labs/03/lab3-design.png)
 
 You must get your landing page as close to the design as possible. To help get you started, here is the font and color specs associated with the project:
 
-<!-- TODO: insert Design -->
+![specs](/assets/notes/W24-user-interfaces/labs/03/lab3-specs.png)
 
 # Part 2) Content (10%)
 
@@ -53,7 +53,44 @@ Oh no! The requirements changed 3 days before launch! Your product manager got s
 
 An intermediate developer has provided you with some code to help you out, this code will turn the hamburger icon in the top-right of the webpage into a theme-toggler. Once this is working, you should add the following `styles.css` to your project:
 
-<!-- TODO: insert CSS -->
+In your `index.html` file head:
+
+```html
+<head>
+  <!-- ... rest of your head code -->
+
+  <!-- You are expected to understand the purpose of the <link> element below! -->
+  <link rel="stylesheet" id="custom-css" href="./css/custom.css" />
+
+  <!-- Fix this CSS tag so that the button will not be hidden! -->
+  <style>
+    #css-swapper {
+      display: none !important;
+    }
+  </style>
+
+  <!-- You are not expected to understand the <script> tag code -->
+  <!-- For now, it's enough to know that inserting this tag will allow the button to control whether your custom css file will apply or not.-->
+  <script>
+    const customCssSheet = document.querySelector("#custom-css");
+    window.onload = (event) => {
+      customCssSheet.disabled = true;
+    };
+
+    function swapcss() {
+      customCssSheet.disabled
+        ? (customCssSheet.disabled = false)
+        : (customCssSheet.disabled = true);
+    }
+  </script>
+</head>
+```
+
+In your nav bar:
+
+```html
+<button id="css-swapper" onclick="swapcss();">Change Theme</button>
+```
 
 This stylesheet will allow you to easily identify the structural elements of your web page.
 
@@ -63,3 +100,5 @@ In addition to the other `style.css` rules, you must adapt the styles to include
 - Flex items should be identified with a dashed or dotted border.
 - An item can be a Flex container and item at the same time. In this case it will have a colored border that is dashed or dotted.
 - Block level elements / Float elements that are not inside Flex items or containers will have a black solid border.
+
+# Hints
