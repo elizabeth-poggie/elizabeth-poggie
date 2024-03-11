@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "User Interfaces"
-number: 2
+number: 3
 type: "Lab"
 title: "The Feature Grind"
 created: "2024-03-12T12:17:29Z"
@@ -101,3 +101,13 @@ In addition to the other `style.css` rules, you must adapt the styles to include
 - Block level elements / Float elements that are not inside Flex items or containers will have a black solid border.
 
 # Hints
+
+There may be minor details about this assignment that we haven't covered in class. This is by design. These details are minor and can be easily found through resources such as Google search (e.g., 'CSS rounded corners'). Professional developers in real-life constantly rely on external resources even for tasks they've been doing for years.
+
+There are many ways to tackle a project like this, and it can be overwhelming to look at a blank HTML document and not know where to start. Suggestion: take it one component at a time :^)
+
+For the component you’re working on, begin by getting all the content onto the page before beginning to style it. In other words, do the HTML and then do the CSS.
+
+Do not worry about making your project look nice on a mobile device, or even at different zoom levels. We’ll learn how to deal with that later.
+
+The “LOGO” box in the top left corner of the webpage should be an `.svg` image. You should find an svg that seems representative of the content of your webpage. [This website](https://feathericons.com/) can be a good starting point to help you get started :)
