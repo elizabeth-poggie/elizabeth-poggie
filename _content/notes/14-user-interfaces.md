@@ -494,4 +494,4 @@ Best practices that help you avoid unintentional style bugs:
 # Exercises
 
 - [Try it yourself](https://www.w3schools.com/css/css_specificity.asp)
-- Open the Developer Tools inspector in your browser on google. Can you see where the light and dark color schemes are defined? Can you figure out how to change between the schemes from DevTools?
+- Open up DevTools on Google. Can you see where the light and dark color schemes are defined? Can you figure out how to change between the schemes from DevTools?
