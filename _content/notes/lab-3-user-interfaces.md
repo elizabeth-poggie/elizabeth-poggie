@@ -28,13 +28,7 @@ A designer has provided you with the following design:
 
 <!-- TODO: insert Design -->
 
-You must get your landing page as close to the design as possible. The designer mas been doing market research and recommends looking at these resources if you need further inspiration for the content
-
-To help get you started, here is the color specification for your project:
-
-<!-- TODO: insert Design -->
-
-and the font specification:
+You must get your landing page as close to the design as possible. To help get you started, here is the font and color specs associated with the project:
 
 <!-- TODO: insert Design -->
 
