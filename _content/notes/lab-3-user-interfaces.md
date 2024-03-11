@@ -51,7 +51,7 @@ However, your company prioritizes legal compliance and wants to avoid potential 
 
 If you plan to use gifs (or memes) in your work however, nothing risks a lawsuit faster than ignoring copyright laws. Consequently, you must give credit to the original creators if required. We always strive to minimize lawsuit potential in our work, as nothing jeopardizes job security faster than legal complications :^)
 
-# Question 2) Troubleshooting (20%)
+# Part 3) Troubleshooting (20%)
 
 Oh no! The requirements changed 3 days before launch! Your product manager got some tea from sales and now needs to modify the feature to appeal to higher-paying clients. As a result, the designer has made the following changes:
 
