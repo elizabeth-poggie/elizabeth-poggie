@@ -49,41 +49,40 @@ If you plan to use gifs (or memes) in your work however, nothing risks a lawsuit
 
 Oh no! The requirements changed 3 days before launch! Your product manager got some tea from sales and now needs to modify the feature to appeal to higher-paying clients. As a result, the designer has made the following changes:
 
-<!-- TODO: insert Design -->
+![new nav](/assets/notes/W24-user-interfaces/labs/03/lab3-new-nav.png)
 
 An intermediate developer has provided you with some code to help you out, this code will turn the hamburger icon in the top-right of the webpage into a theme-toggler. Once this is working, you should add the following `styles.css` to your project:
 
 In your `index.html` file head:
 
 ```html
-<head>
-  <!-- ... rest of your head code -->
+<!-- ... rest of your head code -->
 
-  <!-- You are expected to understand the purpose of the <link> element below! -->
-  <link rel="stylesheet" id="custom-css" href="./css/custom.css" />
+<!-- You are expected to understand the purpose of the <link> element below! -->
+<link rel="stylesheet" id="custom-css" href="./css/custom.css" />
 
-  <!-- Fix this CSS tag so that the button will not be hidden! -->
-  <style>
-    #css-swapper {
-      display: none !important;
-    }
-  </style>
+<!-- Fix this CSS tag so that the button will not be hidden! -->
+<style>
+  #css-swapper {
+    display: none !important;
+  }
+</style>
 
-  <!-- You are not expected to understand the <script> tag code -->
-  <!-- For now, it's enough to know that inserting this tag will allow the button to control whether your custom css file will apply or not.-->
-  <script>
-    const customCssSheet = document.querySelector("#custom-css");
-    window.onload = (event) => {
-      customCssSheet.disabled = true;
-    };
+<!-- You are not expected to understand the <script> tag code -->
+<!-- For now, it's enough to know that inserting this tag will allow the button to control whether your custom css file will apply or not.-->
+<script>
+  const customCssSheet = document.querySelector("#custom-css");
+  window.onload = (event) => {
+    customCssSheet.disabled = true;
+  };
 
-    function swapcss() {
-      customCssSheet.disabled
-        ? (customCssSheet.disabled = false)
-        : (customCssSheet.disabled = true);
-    }
-  </script>
-</head>
+  function swapcss() {
+    customCssSheet.disabled
+      ? (customCssSheet.disabled = false)
+      : (customCssSheet.disabled = true);
+  }
+</script>
+<!-- ... rest of your head code -->
 ```
 
 In your nav bar:
