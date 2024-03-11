@@ -40,7 +40,7 @@ and the font specification:
 
 # Part 2) Content (10%)
 
-The designer has conducted some [market research](https://bootcamp.uxdesign.cc/market-research-a-beginners-guide-for-ux-designers-64a5afaa0cb4) and suggests referring to these resources for additional inspiration for the content.
+The designer has conducted some [market research](https://bootcamp.uxdesign.cc/market-research-a-beginners-guide-for-ux-designers-64a5afaa0cb4) and suggests referring to these resources for additional inspiration for the content:
 
 - [The IPhone 15](https://www.apple.com/ca/iphone/?afid=p238%7CsYSSN3NtJ-dc_mtid_20925xpb40345_pcrid_674783757790_pgrid_152700520759_pexid__&cid=wwa-ca-kwgo-iphone-slid----General-)
 - [This Portfolio](https://colin-moy.webflow.io/)
