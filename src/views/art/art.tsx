@@ -1,4 +1,5 @@
 import { Image } from "../../components/display/image/image";
+import { Link } from "../../components/navigation/link/link";
 import { INote } from "../../interfaces/note";
 import styles from "./art.module.scss";
 
@@ -26,7 +27,12 @@ export const GalleryLayout = ({ allNotes }: IGalleryLayoutProps) => {
     return (
       <div className={styles.column}>
         {colNote.map((note: INote) => {
-          return <Image key={note.slug} src={note.coverSrc} alt={note.title} />;
+          return (
+            // TODO - make the paths generic
+            <Link key={note.slug} href={`/courses/${note.slug}`}>
+              <Image src={note.coverSrc} alt={note.title} />
+            </Link>
+          );
         })}
       </div>
     );

@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
 import {
+  courseDirectory,
   getAllCourses,
-  getAllNotes,
   getBySlug,
   noteDirectory,
 } from "../../src/utils/api";
@@ -21,10 +21,7 @@ interface Props {
   relatedNotes?: relatedNotes[];
 }
 
-export default function CourseDetailsPage({
-  courseDetails,
-  relatedNotes,
-}: Readonly<Props>) {
+export default function CourseDetailsPage({ courseDetails }: Readonly<Props>) {
   return (
     <>
       <Meta />
@@ -32,7 +29,7 @@ export default function CourseDetailsPage({
         <title>Poggie • {courseDetails.title}</title>
       </Head>
       <Burger navItems={navItems} />
-      <NoteDetails noteDetails={courseDetails} relatedNotes={relatedNotes} />
+      <NoteDetails noteDetails={courseDetails} />
     </>
   );
 }
@@ -56,7 +53,7 @@ export async function getStaticProps({ params }: Params) {
       "link",
       "content",
     ],
-    noteDirectory
+    courseDirectory
   );
 
   return {
