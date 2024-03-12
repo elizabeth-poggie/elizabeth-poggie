@@ -20,7 +20,7 @@ In this lab we will develop and practice intermediate CSS layout skills by lever
 
 # Part 1) Landing page (70%)
 
-Recently acquired by a major company with $50 million in funding, your hackathon project is ready to disrupt the market.
+Recently acquired by a major company, your hackathon project is ready to disrupt the market.
 
 You've been tasked by a product manager to create [a landing page](https://www.semrush.com/blog/what-is-a-landing-page/?kw&cmp=CA_SRCH_DSA_Blog_EN&label=dsa_pagefeed&Network=g&Device=c&utm_content=676606881770&kwid=dsa-2185834088096&cmpid=18361978716&agpid=155254833518&BU=Core&extid=105177812820&adpos&gad_source=1) to market your project. The page must effectively showcase your work and persuade potential clients to invest. The deadline is tight, with launch scheduled in 10 days time. Regrettably, there was no prior consultation with the developers for time estimation, and the deadline cannot be altered as it has already been guaranteed to shareholders.
 
