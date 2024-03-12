@@ -3,7 +3,7 @@
 category: "Intro to Programming"
 number: 9
 type: "Lecture"
-title: "Loops III & Lab"
+title: "Loops III"
 created: "2024-03-12T12:17:29Z"
 ---
 
@@ -84,7 +84,6 @@ Let's do it.
 ## In C# ?
 
 ```cs
-
 // Step 1) Printing the empty square
 Console.WriteLine("Printing a # symbol");
 for (int i = 1; i <= 5; i++)
@@ -111,3 +110,7 @@ for (int i = 1; i <= 5; i++)
   Console.WriteLine();
 }
 ```
+
+# Lab Time
+
+The remainder of the class was dedicated to people getting a head start on their lab.
