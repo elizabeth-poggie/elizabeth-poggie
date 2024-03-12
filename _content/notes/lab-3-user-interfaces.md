@@ -51,7 +51,7 @@ Oh no! The requirements changed 3 days before launch! Your product manager got s
 
 ![new nav](/assets/notes/W24-user-interfaces/labs/03/lab3-new-nav.png)
 
-An intermediate developer has provided you with some code to help you out, this code will turn the hamburger icon in the top-right of the webpage into a theme-toggler. Once this is working, you should add the following `styles.css` to your project:
+An intermediate developer has provided you with some code to help you out, this code will turn the hamburger icon in the top-right of the webpage into a theme-toggler. Once this is working, you should create a `custom.css` to your project:
 
 In your `index.html` file head:
 
@@ -91,7 +91,7 @@ In your nav bar:
 <button id="css-swapper" onclick="swapcss();">Change Theme</button>
 ```
 
-In a file called `custom.css`, you should allow users to be able to easily identify the structural elements of your web page, such as:
+...and in `custom.css`, you should allow users to be able to easily identify the structural elements of your web page, such as:
 
 - Flex containers should be identified with a border of solid color (ex.: red, green, blue, yellow, purple, etc).
 - Flex items should be identified with a dashed or dotted border.
