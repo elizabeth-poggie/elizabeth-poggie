@@ -28,7 +28,7 @@ A designer has provided you with the following design:
 
 ![design](/assets/notes/W24-user-interfaces/labs/03/lab3-design.png)
 
-You must get your landing page as close to the design as possible. To help get you started, here is the font and color specs associated with the project:
+You must get your landing page as close to the design as possible and fill all the boxes with images of your content. To help get you started, here is the font and color specs associated with the project:
 
 ![specs](/assets/notes/W24-user-interfaces/labs/03/lab3-specs.png)
 
