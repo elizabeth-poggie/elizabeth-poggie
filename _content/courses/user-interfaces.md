@@ -2,7 +2,7 @@
 # General Information
 category: "User Interfaces"
 type: "syllabus"
-title: "Winter 2024 - Course Syllabus"
+title: "Course Syllabus"
 created: "2024-03-03T12:17:29Z"
 coverSrc: "/assets/courses/user-interfaces.gif"
 ---

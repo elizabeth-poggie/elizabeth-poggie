@@ -77,8 +77,6 @@ export async function getStaticProps({ params }: Params) {
   );
 
   const allNotes = getAllNotes(["slug", "category", "type", "number", "title"]);
-
-  // Col 1
   const relatedNotes = [];
   categoryMap[details.category].relatedTypes?.map((type: string) => {
     const notesByType = allNotes.filter(
