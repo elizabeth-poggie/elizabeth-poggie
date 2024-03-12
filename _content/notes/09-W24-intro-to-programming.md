@@ -94,19 +94,19 @@ for (int i = 1; i <= 5; i++)
 	  // Step 2) print a "+" line if i am at the top, middle, or bottom the outer loop
 	  //AND i am in the second or fourth iteration of the inner loop
 	  if ((i == 1 || i == 3 || i == 5) && (j == 2 || j == 4))
-	{
-		Console.Write("+");
-	}
-	// Step 3) print a "+" line if i am at the second or fourth iteration of the loop
-	else if (i == 2 || i == 4)
-	{
-		Console.Write("+");
-	}
-	// Step 4) if all else fails, print a space :)
-	else
-	{
-		Console.Write(" ");
-	}
+    {
+      Console.Write("+");
+    }
+    // Step 3) print a "+" line if i am at the second or fourth iteration of the loop
+    else if (i == 2 || i == 4)
+    {
+      Console.Write("+");
+    }
+    // Step 4) if all else fails, print a space :)
+    else
+    {
+      Console.Write(" ");
+    }
   }
   Console.WriteLine();
 }
