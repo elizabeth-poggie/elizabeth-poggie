@@ -51,9 +51,7 @@ Oh no! The requirements changed 3 days before launch! Your product manager got s
 
 ![new nav](/assets/notes/W24-user-interfaces/labs/03/lab3-new-nav.png)
 
-An intermediate developer has provided you with some code to help you out, this code will turn the hamburger icon in the top-right of the webpage into a theme-toggler. Once this is working, you should create a `custom.css` to your project:
-
-In your `index.html` file head:
+An intermediate developer has provided you with some code to help you out, this code will turn the hamburger icon in the top-right of the webpage into a theme-toggler. Once this is working, you should create a `custom.css` to your project and in your `index.html` file head add:
 
 ```html
 <!-- ... rest of your head code -->
@@ -85,7 +83,7 @@ In your `index.html` file head:
 <!-- ... rest of your head code -->
 ```
 
-In your nav bar:
+...in your nav bar add:
 
 ```html
 <button id="css-swapper" onclick="swapcss();">Change Theme</button>
