@@ -39,7 +39,7 @@ The designer has conducted some [market research](https://bootcamp.uxdesign.cc/m
 - [The IPhone 15](https://www.apple.com/ca/iphone/?afid=p238%7CsYSSN3NtJ-dc_mtid_20925xpb40345_pcrid_674783757790_pgrid_152700520759_pexid__&cid=wwa-ca-kwgo-iphone-slid----General-)
 - [This Portfolio](https://colin-moy.webflow.io/)
 - [This Enterprise Software](https://www.getmaintainx.com/enterprise/)
-- [This Magazine](https://magazine.ssense.com/)
+- [This Brand](https://www.noname.ca/naturally-imperfect)
 
 However, your company prioritizes legal compliance and wants to avoid potential lawsuits. Therefore, it recommends sourcing images for the landing page from reputable platforms such as [Pexels](https://www.pexels.com/), [Pixabay](https://pixabay.com/), or [Unsplash](https://unsplash.com/) as they provide free-to-use images.
 
