@@ -206,4 +206,38 @@ for(int i=0; i<rScores.Length; i++) {
 }
 ```
 
-we can access the length of an array using `arrayName.Length`
+We can access the length of an array using `arrayName.Length`
+
+# Mini Quiz
+
+## Question 1) What will print?
+
+```cs
+int[] nums = new int[42];
+Console.WriteLine(nums[0]);
+```
+
+Output: 0
+ProTip: Always initialize your arrays before trying to access them. This way you can avoid unexpected results :^)
+
+## Question 2) What will print?
+
+```cs
+string[] profs = {"Poggie", "Helen", "Vik"};
+Console.WriteLine(profs[-1]);
+```
+
+Output: "Run-time exception (line ??): Index was outside the bounds of the array."
+ProTip: Always use an index that is within the bounds of an array.
+
+## Question 3) What will print?
+
+```cs
+int size = -3;
+string[] profs = new string[size];
+profs[0] = "Poggie";
+Console.WriteLine(profs[0]);
+```
+
+Output: "Run-time exception (line ??)"
+ProTip: Always use a positive number to initialize an array
