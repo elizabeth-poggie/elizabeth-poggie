@@ -145,4 +145,65 @@ Console.WriteLine(drawer[1]);
 Console.WriteLine(drawer[6]);
 ```
 
-For example, if i try to access my drawer at index `1` like `drawer[1]` and there are no socks there,
+What happens if we try to access a negative index or one that is greater than the size of the array minus 1?
+
+```text
+Run-time exception (line ??): Index was outside the bounds of the array.
+```
+
+Our program breaks. When we combine arrays && loops together, we can do all sorts of powerful things, however in a lot of ways it's like playing with fire. You need to master the foundations else nothing will work.
+
+Let's get into some examples.
+
+# Examples
+
+## Example 1
+
+How can we get the average R-Score for a program?
+
+```cs
+// For simplicity, let's say our program only has 5 students
+double[] rScores = new double[5];
+
+// As the students grades are finalized, we can populate our array with the proper values
+rScores[0] = 30.1;
+rScores[1] = 26.7;
+rScores[2] = 32.8;
+rScores[3] = 9000;
+rScores[4] = 22.3;
+
+// Now lets compute the average r-score
+double sum = rScores[0] + rScores[1] + rScores[2] + rScores[3] + rScores[4];
+double avg = sum/5.0;
+
+// ... and print
+Console.WriteLine(avg);
+```
+
+## Example 2
+
+Now let's combine arrays and loops together :)
+
+Going back to the previous example, we can use a for loop to compute the sum of all the elements in the array `rScores` :^)
+
+```cs
+double sum = 0;
+double avg = 0;
+for(int i=0; i<5; i++) {
+    sum += rScores[i];
+    avg = sum/5.0;
+}
+```
+
+Its a neat way that we can make repetitive tasks faster !! But wait, what happens if more students are admitted into the program? We would need to go back into this for loop every time and increase the `5` by 1 every time !! TRASH. We need to think like a lazy programmer.
+
+```cs
+double sum = 0;
+double avg = 0;
+for(int i=0; i<rScores.Length; i++) {
+    sum += rScores[i];
+    avg = sum/rScores.Length;
+}
+```
+
+we can access the length of an array using `arrayName.Length`
