@@ -61,6 +61,41 @@ We start counting at 0!!
 2. "Test1"
 ```
 
-- Order matters!! What is the index of “Test1”?
+In this example, "Lab2" has the index of 1 :^)
 
 ## What happens if we do not know what values ahead of time?
+
+We can use the `new` operator to create an array of a certain size. This way, we can then populate the entries one at a time, later in the program.
+
+```cs
+int[] ids = new int[5]; // Declaring and initializing an integer array named 'ids' with a length of 5
+double[] rScores = new double[3]; // Declaring and initializing a double array named 'rScores' with a length of 3
+string[] docs = new string[4]; // Declaring and initializing a string array named 'docs' with a length of 4
+```
+
+Notice how the types here are specified after the `new` operator. We are initializing an array of a certain type and then populating it with a collection of elements of that same type.
+
+## Why does it all have to be the same type?
+
+MEMORY !! Arrays in memory are contiguous blocks of memory where each element occupies the same size of memory. This layout allows for efficient random access to elements based on their index.
+
+Think of it like a drawer. Would you store your socks in the fridge? Would you want to store mayo in your backpack? NO !! It's the same idea here.
+
+- Socks are stored in a sock drawer.
+- Each particle of mayo is stored in a tub labeled "Mayonnaise"
+
+## Let's expand on this idea.
+
+When you initialize your sock drawer (e.g. purchase a dresser from your favorite local retailer), do you know every pair of socks you are going to put in that drawer prior to purchase? Over the course of your entire lifetime? Realistically no.
+
+Let's define a drawer in C#:
+
+```cs
+string[] drawer = new string[30]; // our drawer here has a max capacity of 30 pairs of socks
+```
+
+How do we add socks to our drawer? Like this:
+
+```cs
+string[0] = "Black Nike Socks"; // putting a pair of socks at index 0 of our drawer
+```
