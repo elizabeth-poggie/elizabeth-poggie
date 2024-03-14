@@ -4,7 +4,7 @@ category: "Intro to Programming"
 number: 10
 type: "Lecture"
 title: "Arrays I"
-created: "2024-03-12T12:17:29Z"
+created: "2024-03-14T12:17:29Z"
 ---
 
 # Intro
@@ -34,8 +34,7 @@ OK so it's been declared, now how do we initialize it?
 
 # Initialization
 
-- The length of the array is established when the array is created and it cannot be changed.
-- All the elements of an array must be of the same type.
+The length of the array is established when the array is created and it cannot be changed. All the elements of an array must be of the same type. For Example:
 
 ```cs
 // Declaring and initializing an integer array named 'ids'
@@ -46,7 +45,7 @@ double[] rScores = {10.5, 20.3, 15.8};
 string[] docs = {"Lab1", "Lab2", "Test1"}
 ```
 
-- Using curly brackets, we can assign values to all elements in the array at the same time as we declare the array
+Using curly brackets, we can assign values to all elements in the array at the same time as we declare the array
 
 ## Order matters in arrays
 
@@ -81,9 +80,9 @@ string[] docs = new string[4];
 
 Notice how the types here are specified after the `new` operator. We are initializing an array of a certain type and then populating it with a collection of elements of that same type.
 
-## Why does it all have to be the same type?
+## Why does each element need to be the same type?
 
-MEMORY !! Arrays in memory are contiguous blocks of memory where each element occupies the same size of memory. This layout allows for efficient random access to elements based on their index.
+MEMORY !! ACCESSIBILITY !! Arrays in memory are contiguous blocks of memory where each element occupies the same size of memory. This structure allows for speedy access to each element based on an element's index.
 
 Think of it like a drawer. Would you store your socks in the fridge? Would you want to store mayo in your backpack? NO !! It's the same idea here.
 
@@ -99,7 +98,8 @@ When you initialize your sock drawer (e.g. purchase a dresser from your favorite
 Let's define a drawer in C#:
 
 ```cs
-string[] drawer = new string[30]; // our drawer here has a max capacity of 30 pairs of socks
+// our drawer here has a max capacity of 30 pairs of socks
+string[] drawer = new string[30];
 ```
 
 How do we add socks to our drawer? Like this:
@@ -113,9 +113,9 @@ drawer[6] = "Checkered Socks";
 
 # Default values
 
-As soon as we create an array object and initialize the variable, we are assigning default values to each position in the array. Thus, if we don’t assign any values to the array, it will have the values assigned by default.
+As soon as you create an array object and initialize the variable, you are assigning default values to each position in the array. Thus, if you don’t assign any values to the array, it will have the values assigned by default.
 
-SO, if i put no socks in my sock drawer, what is in it?
+SO, if i put no socks in my sock drawer, what's even in the drawer?
 
 - Nothing.
 - In computer words that would be `null`.
@@ -123,7 +123,7 @@ SO, if i put no socks in my sock drawer, what is in it?
 What is `null`?
 
 - It's essentially the absence of a value.
-- A `null` value doesn't occupy any memory space.
+- A `null` value doesn't occupy any memory space. (e.g. an absence of socks in our case)
 
 What are the default values of all arrays?
 
@@ -134,7 +134,7 @@ What are the default values of all arrays?
 
 # Accessing an array
 
-Going back to socks, how could i retrieve a pair of socks? using the name of the array variable and the index of the element inside square brackets. For example:
+Going back to socks, how could I retrieve a pair of socks? Using the name of the array variable and the index of the element inside square brackets. For example:
 
 ```cs
 // What prints? "Black Nike Socks" :)
@@ -145,7 +145,7 @@ Console.WriteLine(drawer[1]);
 Console.WriteLine(drawer[6]);
 ```
 
-What happens if we try to access a negative index or one that is greater than the size of the array minus 1?
+What happens if we try to access a negative index or one that is greater than the size of the "array minus 1"?
 
 ```text
 Run-time exception (line ??): Index was outside the bounds of the array.
@@ -195,7 +195,9 @@ for(int i=0; i<5; i++) {
 }
 ```
 
-Its a neat way that we can make repetitive tasks faster !! But wait, what happens if more students are admitted into the program? We would need to go back into this for loop every time and increase the `5` by 1 every time !! TRASH. We need to think like a lazy programmer.
+Its a neat way that you can make repetitive tasks faster !!
+
+But wait, what happens if more students are admitted into the program? You would need to go back into this for loop every time and increase the `5` by 1 every time !! TRASH !! You must think like a lazy programmer.
 
 ```cs
 double sum = 0;
@@ -206,7 +208,7 @@ for(int i=0; i<rScores.Length; i++) {
 }
 ```
 
-We can access the length of an array using `arrayName.Length`
+You can access the length of an array using `arrayName.Length`
 
 # Mini Quiz
 
@@ -282,4 +284,4 @@ double quebecTaxDeduction = grossYearlyIncome * quebecTaxRate;
 
 What is your net income after taxes? 👀
 
-What happens if you are required to factor in input validation for this exercise?
+What happens if you are required to factor in input validation to this problem?
