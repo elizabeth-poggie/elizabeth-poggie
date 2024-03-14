@@ -97,5 +97,6 @@ string[] drawer = new string[30]; // our drawer here has a max capacity of 30 pa
 How do we add socks to our drawer? Like this:
 
 ```cs
-string[0] = "Black Nike Socks"; // putting a pair of socks at index 0 of our drawer
+drawer[0] = "Black Nike Socks"; // putting a pair of socks at index 0 of our drawer
+drawer[6] = "Checkered Socks"; // we can toss socks anywhere in drawer, as long as the index we are using is within the capacity of our drawer
 ```
