@@ -250,7 +250,7 @@ Let's write a program that calculates the annual earnings for a group of student
 const int STUDENTS = 5;
 const int WEEKS_PER_YEAR = 52;
 double payRate;
-double grosgrossYearlyIncomesPay;
+double grossYearlyIncomesPay;
 int[] hours = new int[STUDENTS];
 //Getting values
 for (int index = 0; index < STUDENTS; index++)
@@ -280,4 +280,6 @@ double quebecTaxRate = 0.25; // Example Quebec tax rate (25%)
 double quebecTaxDeduction = grossYearlyIncome * quebecTaxRate;
 ```
 
-What is your new `grossYearlyIncome` after taxes? 👀
+What is your net income after taxes? 👀
+
+What happens if you are required to factor in input validation for this exercise?
