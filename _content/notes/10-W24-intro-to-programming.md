@@ -254,6 +254,7 @@ const int WEEKS_PER_YEAR = 52;
 double payRate;
 double grossYearlyIncomesPay;
 int[] hours = new int[STUDENTS];
+
 //Getting values
 for (int index = 0; index < STUDENTS; index++)
 {
