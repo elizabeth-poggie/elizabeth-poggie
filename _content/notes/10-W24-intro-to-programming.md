@@ -241,3 +241,43 @@ Console.WriteLine(profs[0]);
 
 Output: "Run-time exception (line ??)"
 ProTip: Always use a positive number to initialize an array
+
+# Real world application
+
+Let's write a program that calculates the annual earnings for a group of students working part-time jobs.
+
+```cs
+const int STUDENTS = 5;
+const int WEEKS_PER_YEAR = 52;
+double payRate;
+double grosgrossYearlyIncomesPay;
+int[] hours = new int[STUDENTS];
+//Getting values
+for (int index = 0; index < STUDENTS; index++)
+{
+	Console.WriteLine("Enter the hours worked per week by Student " + (index + 1) + ":");
+	hours[index] = int.Parse(Console.ReadLine());
+}
+Console.WriteLine("Enter the hourly pay rate for all students");
+payRate = double.Parse(Console.ReadLine());
+
+//Output
+Console.WriteLine("Here is each student's annual earnings:");
+for (int index = 0; index < STUDENTS; index++)
+{
+	grossYearlyIncome = hours[index] * payRate * WEEKS_PER_YEAR;
+	Console.WriteLine("Student #" + (index + 1) + ": $" + grossYearlyIncome);
+}
+```
+
+# Exercise
+
+Factor in the Quebec Tax rate to this calculation. For example:
+
+```cs
+// Calculate Quebec tax deductions (example rates, adjust as needed)
+double quebecTaxRate = 0.25; // Example Quebec tax rate (25%)
+double quebecTaxDeduction = grossYearlyIncome * quebecTaxRate;
+```
+
+What is your new `grossYearlyIncome` after taxes? 👀
