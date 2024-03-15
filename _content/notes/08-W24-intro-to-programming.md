@@ -338,38 +338,3 @@ Write a flowgorithm program that takes an `int` as input and prints an empty squ
 +  +
 ++++
 ```
-
-## In C# ?
-
-```cs
-// Step 1) Prompt for input
-Console.Write("Enter the size of the square: ");
-int size;
-
-// Step 2) Input validation
-while (!int.TryParse(Console.ReadLine(), out size) || size <= 0)
-{
-  Console.WriteLine("Invalid input. Please enter a positive integer.");
-  Console.Write("Enter the size of the square: ");
-}
-
-// Step 3) Printing the empty square
-Console.WriteLine("Square of size {0}:", size);
-for (int i = 1; i <= size; i++)
-{
-  for (int j = 1; j <= size; j++)
-  {
-    // print a solid line if i am at the top OR bottom of the box (when i=1 || i=size)
-    // print a solid line if i am at the right OR left side of the box (when j=1 || j=size)
-    if (i == 1 || i == size || j == 1|| j == size)
-    {
-        Console.Write("+");
-    }
-    else
-    {
-        Console.Write(" ");
-    }
-  }
-  Console.WriteLine();
-}
-```
