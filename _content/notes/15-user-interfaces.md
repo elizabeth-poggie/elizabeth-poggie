@@ -3,13 +3,27 @@
 category: "User Interfaces"
 number: 15
 type: "Lecture"
-title: "Responsive Design"
+title: "In-class Hackathon (part 2)"
 created: "2024-03-15T12:17:29Z"
 ---
 
-# Exercises on CSS Specificity
+# In-Class Hackathon
 
-Despite being a website used by over 10 000 students on a daily basis, Omnivox has not received an update in the last 15 years. Now it's your job to fix it.
+The theory of CSS Specificity is one thing. Putting it into practice is a completely different beast. The reality is that most of you are going to be working in older code bases with the CSS that is the developer equivalent to Spaghetti.
+
+How many of you have been tasked with untangling christmas lights for the holidays? Yes, it's like that.
+
+Very few people in this world find that experience pleasurable. I am one of them, which is why i am teaching this class lol.
+
+let's begin :^).
+
+# The Problem
+
+Despite being a website used by over 10 000 students on a daily basis, Omnivox hasn't received an update in the last 15 years. Now it's your job to fix it.
+
+## The Tool
+
+Download this [chrome extension](https://chromewebstore.google.com/detail/stylebot/oiaejidbmkiecgbjeifoejpgmdaleoha)
 
 ## Some initial theme ideas to get you started
 
@@ -18,34 +32,37 @@ Despite being a website used by over 10 000 students on a daily basis, Omnivox h
 - Genshin Impact?
 - Replace all the images with memes?
 
-## Grouping Phase (5 minutes)
+## Grouping Phase (2 minutes)
 
-Get into groups of any size of your choosing with a max of 3 people. If you prefer to work independently that is also an option.
+Get into groups of any size of your choosing with a max of 4 people. If you prefer to work independently that is also an option.
 
 - Together you need to develop the one style sheet to rule them all.
-- As a general word of advice: divide and conquer. Split different components of the page amongst yourselves to drive home the final design For example, one person tackles the side bar, one does cards, and another does links. Afterwards, combine all the separate sheets into one final design.
+- As a general word of advice: divide and conquer. Split different components of the page amongst yourselves to drive home the final design For example, one person can tackle the side bar, one does cards, and another does links. Afterwards, combine all the separate sheets into one final design.
 - This task is impossible to complete without teamwork. To put it in perspective, it took me three hours last night just to develop the layout alone.
 
 ## Planning (5 minutes)
 
-Brainstorm ideas and plan your projects.
+Brainstorm ideas and divide the tasks.
 
 ## Implementation Phase (60 - 90 minutes)
 
-Develop your project in groups. Any one member of the group that finishes their component first needs to act as support to complete the un finished tasks.
+Bring your idea to life. Any one member of the group that finishes their component first needs to act as support to complete the un finished tasks.
 
-## Presentation Phase (~10 minutes each)
+## Presentation Phase
 
-Afterwards we will regroup where a member of each group will need to present their project to the class and communicate the following points:
+In this google doc, attach the following:
 
+- A screenshot of your final product
+- Your team name
 - Your vision
-- Your inspiration
-- WHo will benefit from this solution
-- ...and how the sheet was built :)
+- The inspiration
+- Who will benefit from the solution
+
+Our Monday class will begin where I review each of your projects "Simon Cowell" style. May the odds be ever in your favour :^)
 
 ## Evaluation Phase (5 minutes)
 
-- The project that solves the problem at hand, follows best practices, and has the highest impact will receive a prize.
+- The team that has the most complete design, most creative solution, and has the potential to be used by the largest number of students will receive a prize.
 - Runner up will receive a smaller prize :^)
 
 # Backup Lecture !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -91,7 +108,7 @@ Getting good at any approach to HTML/CSS requires being able to debug our code a
 ## QUIZ: Can we do this in DevTools?
 
 - Capture what the user sees when they try to take a screenshot of our website?
-- What a screen rotation causes our site to look like?
+- See what a screen rotation does to our website?
 - Can we simulate a Desktop device that is also a touch screen?
 - Sometimes we try to access pages on a website and the WIFI sucks, can we simulate that on Chrome?
 - What happens if we are located in South Korea, can we see what this will look like on our website?
