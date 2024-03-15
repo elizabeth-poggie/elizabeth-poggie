@@ -9,7 +9,7 @@ created: "2024-03-15T12:17:29Z"
 
 # In-Class Hackathon
 
-The theory of CSS Specificity is one thing. Putting it into practice is a completely different beast. The reality is that most of you are going to be working in older code bases with the CSS that is the developer equivalent to Spaghetti.
+The theory of CSS Specificity is one thing. Putting it into practice is a completely different beast. The reality is that most of you are going to be working in older code bases with CSS that is the developer equivalent to Spaghetti.
 
 How many of you have been tasked with untangling christmas lights for the holidays? Yes, it's like that.
 
@@ -46,7 +46,7 @@ Brainstorm ideas and divide the tasks.
 
 Bring your idea to life. Any one member of the group that finishes their component first needs to act as support to complete the un-finished tasks.
 
-## Presentation Phase
+## Submission (before monday morning latest)
 
 In this google doc, attach the following:
 
@@ -58,7 +58,7 @@ In this google doc, attach the following:
 
 Our Monday class will begin where I review each of your projects "Simon Cowell" style. May the odds be ever in your favour :^)
 
-## Evaluation Phase (5 minutes)
+## Evaluation Phase (Monday)
 
 - The team that has the most complete design, most creative solution, and has the potential to be used by the largest number of students will receive a prize.
 - Runner up will receive a smaller prize :^)
