@@ -207,7 +207,7 @@ interface ISideBarProps {
 const NotesSideBar = ({ related, current }: ISideBarProps) => {
   return (
     <aside>
-      {related.map((related: relatedNotes) => {
+      {related?.map((related: relatedNotes) => {
         return (
           <section key={related.type} className={styles.sideBarSection}>
             <section className={styles.sideBarSectionHeader}>
