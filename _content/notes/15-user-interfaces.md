@@ -3,8 +3,10 @@
 category: "User Interfaces"
 number: 15
 type: "Lecture"
-title: "In-class Hackathon (part 2)"
+title: "In-class Hackathon"
 created: "2024-03-15T12:17:29Z"
+link:
+  { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/15.pdf" }
 ---
 
 # In-Class Hackathon
