@@ -9,7 +9,7 @@ created: "2024-03-18T12:17:29Z"
 
 # Responsive Design
 
-Have you ever been on a website that sucks to use? When you were trying to access my notes on mobile, was it annoying to use?
+Have you ever been on a website that sucks to use? When you were trying to access my notes on mobile in the first weeks of the class, was it annoying to use?
 
 Any creative trade requires both technique (HTML, CSS) as well as design. So what is responsive web design?
 
@@ -28,12 +28,12 @@ We are using HTML and CSS to achieve an ambitious goal: we want not just make an
 
 Getting good at any approach to HTML/CSS requires being able to debug our code and measure our success in achieving a design. Like in previous topics we have learned, modern internet browsers come with a suite of very useful tools for debugging and measuring – for responsive design, most browsers have a responsive design mode tool.
 
-## What can you see in DevTools
+## What can simulate in DevTools
 
-- Simulate a mobile devices
-- Simulate varying device widths
-- Show media queries
-- Different devices have different resolutions. In DevTools, you can actually simulate different device pixel ratios.
+- mobile devices
+- varying device widths
+- media queries
+- different resolutions. In DevTools, you can actually simulate different device pixel ratios.
 
 ## QUIZ: Can we do this in DevTools?
 
@@ -53,7 +53,27 @@ Have fun :^)
 
 # Responsive by Default
 
-our very first lab was strangely the most responsive of the labs we have made so far. (Despite containing no extra CSS)
+Our very first lab was strangely the most responsive of the labs we have made so far. (Despite containing no extra CSS)
+
+```text
+ ________________________
+|                        |
+|         header         |
+|                        |
+|________________________|
+ ________________________
+|                        |
+|         content        |
+|                        |
+|                        |
+|                        |
+|________________________|
+ ________________________
+|                        |
+|         footer         |
+|________________________|
+
+```
 
 HTML is fundamentally responsive, or fluid. If you create a web page containing only HTML, with no CSS, and resize the window, the browse will automatically reflow the text to fit the viewport.
 
@@ -77,7 +97,11 @@ span {
 }
 ```
 
-Because HTML uses relative concepts like percentage of parent width to compute width, and because the top visible parent (the body element) is by default a block element, pure HTML automatically resizes its elements in response to the devices and viewports of the user.
+## How?
+
+Pure HTML automatically resizes its elements in response to the devices and viewports of the user.
+
+HTML uses relative concepts like percentage of parent width to compute width, and the top visible parent (the body element) is by default a block element and its properties are inherited by all child elements.
 
 ## For example...
 
