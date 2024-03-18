@@ -13,7 +13,7 @@ created: "2024-03-19T12:17:29Z"
 
 Avoid setting `width` and `height` directly as much as possible (forces overflow, changes the behavior of the element in surprising ways)
 
-## For Example
+## Some Examples
 
 To set element `height`: add vertical `padding` (make content “taller”)
 
@@ -51,7 +51,7 @@ main {
 
 Use dynamic sizing whenever possible.
 
-## For Example
+## Some Examples
 
 Use percentages (`%`) to divide containers into portions.
 
@@ -172,11 +172,107 @@ Set limits on how much an element’s size can grow/shrink, use min- and max- pr
 
 ## For Example
 
-Let's say we have an image on a button screen, we do not want it to expand to become massive.
+TBD
+
+# Media queries
+
+Media queries are a key component of responsive design that allow you to apply CSS styles depending properties of client-side device characteristics.
+
+CSS Media queries are a way to identify important browser characteristics, features, and user preferences, then apply styles adapting to those things.
+
+## Pro Tip
+
+the most common media queries in the world are those that target particular viewport ranges and apply custom styles.
+
+## Some examples
+
+Increasing font size for devices with large screens using min-width:
 
 ```css
-.limited {
-  max-width: 400px; /* Maximum width allowed */
-  max-height: 200px; /* Maximum height allowed */
+/* Some default style: */
+
+html {
+  /* Browser default is 16px, this will keep it at 16px */
+  font-size: 100%;
+}
+
+/* @media query override: */
+
+/* Example using "min-width":
+* When the browser is AT LEAST (min-width) 800px or larger: */
+@media screen and (min-width: 800px) {
+  html {
+    font-size: 125%; /* increase font size on large screens! */
+  }
+}
+```
+
+Increase the padding between paragraphs when a page is viewed on a narrow device
+
+```css
+/* Some default style: */
+
+article p {
+  /* Common typographic style: padding on top, margin on bottom */
+  padding-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* @media query override: */
+
+/* Example using "max-width":
+* When the browser is AT MOST (max-width) 600px or smaller: */
+@media screen and (max-width: 600px) {
+  article p {
+    /* It is common for line-height to be 1.5rem, so in this e.g.:
+        *   - large devices: 0.5rem + 1rem = 1 line of whitespace
+        *   - small devices: 1rem + 2rem = 2 lines of whitespace */
+    padding-top: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+```
+
+Increase the size of buttons on touchscreens
+
+```css
+/* Some default style: */
+
+button {
+  /* Use padding to define the "content" size of the button */
+  padding: 1em 2em;
+}
+
+/* @media query override: */
+
+/* Example: detecting "touchscreen" device type with "hover: none" 
+* When the browser does NOT have the ability to "hover":
+*/
+@media (hover: none) {
+  /* overwrite previous values only on devices that cannot "hover" */
+  button {
+    padding: 2em 4em;
+  }
+}
+```
+
+## Breakpoints
+
+You can add multiple media queries within a stylesheet, tweaking your whole layout or parts of it to best suit the various screen sizes. The points at which a media query is introduced, and the layout changed, are known as breakpoints. Common breakpoints:
+
+```css
+/* Mobile phones */
+@media screen and (max-width: 480px) {
+  /* ... */
+}
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+  /* ... */
+}
+
+/* Desktops */
+@media screen and (min-width: 1920px) {
+  /* ... */
 }
 ```
