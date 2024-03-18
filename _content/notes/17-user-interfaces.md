@@ -47,9 +47,9 @@ main {
 
 # Pixels vs. Percentage/Relative Units
 
-## Pro Tips
+## Pro Tip
 
-Use dynamic sizing whenever possible
+Use dynamic sizing whenever possible.
 
 ## For Example
 
@@ -161,5 +161,22 @@ body {
 }
 p {
   font-size: 20px;
+}
+```
+
+# Max and Min Height/Width
+
+## Pro Tip
+
+Set limits on how much an element’s size can grow/shrink, use min- and max- properties instead.
+
+## For Example
+
+Let's say we have an image on a button screen, we do not want it to expand to become massive.
+
+```css
+.limited {
+  max-width: 400px; /* Maximum width allowed */
+  max-height: 200px; /* Maximum height allowed */
 }
 ```
