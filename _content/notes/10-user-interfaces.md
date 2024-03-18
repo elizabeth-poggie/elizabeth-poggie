@@ -330,7 +330,7 @@ Step 2) style the column like this:
 }
 ```
 
-BOOM, done!HOWEVER, Want a grid in the parent instead of 3 columns? No problem! When there isn't enough room to stack a floated element horizontally, it pops down to the next line. All we need to do is add more column elements:
+BOOM, done! HOWEVER, Want a grid in the parent instead of 3 columns? No problem! When there isn't enough room to stack a floated element horizontally, it pops down to the next line. All we need to do is add more column elements:
 
 ```html
 <div class="parent">
