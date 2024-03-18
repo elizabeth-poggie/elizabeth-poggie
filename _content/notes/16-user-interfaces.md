@@ -153,9 +153,7 @@ By the late 1990s, search engine developers became aware of these manipulative p
 
 To combat manipulation and ensure the integrity of their search results, search engines evolved their algorithms, incorporating more sophisticated criteria that were harder for website owners to exploit. This included factors like the quality of content, user experience, and relevance to the search query.
 
-For ethical website owners and businesses, the key to SEO success lies in adhering to best practices and focusing on providing valuable, relevant content that genuinely addresses the needs of their target audience. Employing semantic HTML markup, which helps search engines understand the structure and context of web content, is crucial for improving search result accuracy and increasing the likelihood of ranking higher. For those entitled companies that employ overly aggressive techniques to beat the system, search engine providers respond by banning the client websites of these companies from search results :^)
-
-For the purposes of this class, use websites that rely on semantic HTML to help search engines to quickly determine the content of a webpage. This will not only make search results about your webpage more accurate, but increase the likely hood of ranking higher for a search result.
+For ethical website owners and businesses, the key to SEO success lies in adhering to best practices and focusing on providing valuable, relevant content that genuinely addresses the needs of their target audience. Employing semantic HTML markup, which helps search engines understand the structure and context of web content, is crucial for improving search result accuracy and increasing the likelihood of ranking higher.
 
 For those curious about page rank algorithms and flow networks, I invite you to explore further on the course page of my [Algorithms and Data Structures](http://luc.devroye.org/252.html) class at McGill, taught by Luc Devroye. Understanding these concepts can provide valuable insights into the principles that govern search engine behavior and inform effective SEO strategies.
 
