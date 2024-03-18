@@ -79,9 +79,9 @@ span {
 
 Because HTML uses relative concepts like percentage of parent width to compute width, and because the top visible parent (the body element) is by default a block element, pure HTML automatically resizes its elements in response to the devices and viewports of the user.
 
-## Example
+## For example...
 
-For example, although [marxists.org](https://www.marxists.org/reference/archive/hegel/works/hl/hl512.htm#HL2_524) is a straightforward single-column website, it demonstrates responsiveness across various devices and maintains resilience to the ever-evolving landscape of frontend technology. This adaptability is crucial for ensuring accessibility across different platforms. In contrast, [bible.ca](https://www.bible.ca/) lacks mobile-friendly design, and also has not aged well with the passage of time.
+Although [marxists.org](https://www.marxists.org/reference/archive/hegel/works/hl/hl512.htm#HL2_524) is a straightforward single-column website, it demonstrates responsiveness across various devices and maintains resilience to the ever-evolving landscape of frontend technology. This adaptability is crucial for ensuring accessibility across different platforms. In contrast, [bible.ca](https://www.bible.ca/) lacks mobile-friendly design, and has not aged well with the passage of time.
 
 # Semantic HTML Responsivity
 
@@ -142,6 +142,20 @@ Browser reader mode discards elements like <aside>, <header>, <footer> etc. to f
 What is one of the main ingredients that leads to a successful website? Appealing to as many people as possible. The more people you can proactively accommodate from the outset, the more people you don’t unintentionally alienate.
 
 Our design choices should be invisible. we’re not trying to say, “this is for you.” That should inherently resonate. What we’re trying to avoid are scenarios where someone encounters something that communicates, “this is for someone else.” For those that are more curious about this topic, you can can read about it [here](https://webdesign.tutsplus.com/designing-accessible-content-typography-font-styling-and-structure--cms-31934a) and [here](https://www.interaction-design.org/master-classes/how-to-design-inclusive-and-accessible-experiences), however this is merely marks the beginning.
+
+## Search Engine Optimization
+
+Search engine optimization (SEO) is the process of improving the quality and quantity of website traffic to a website or a web page from search engines.
+
+Content providers began optimizing websites for search engines in the mid-1990s, as the first search engines were cataloging the early Web. However, some web content providers got a bit carried away with this and went as far to also manipulate some attributes within the HTML source of a page in an attempt to rank well in search engines. By the late 90s, search engine designers recognized that content providers were making efforts to rank well in their search engine and that some providers were even manipulating their rankings in search results by stuffing pages with excessive or irrelevant keywords.
+
+However this made the search engine providers a bit angry. Since the success and popularity of a search engine are determined by its ability to produce the most relevant results to any given search, poor quality or irrelevant search results could lead users to find other search sources. In other words, if a content provider had a high ranking website that led to a useless result, this could cause the user to not only reject the content provider, but the search engine provider as well. Bad news.
+
+Consequently, search engines responded by developing more complex ranking algorithms, taking into account additional factors that were more difficult for content providers to control && manipulate. For those entitled companies that employ overly aggressive techniques to beat the system, the search engine providers responded by banning the client websites of these companies from search results :^)
+
+For the purposes of this class, use websites that rely on semantic HTML to help search engines to quickly determine the content of a webpage. This will not only make search results about your webpage more accurate, but increase the likely hood of ranking higher for a search result.
+
+For those curious about page rank algorithms and flow networks, invite you to explore further on the course page of my [Algorithms and Data Structures](http://luc.devroye.org/252.html) class at McGill, taught by Luc Devroye.
 
 # Acknowledgements
 
