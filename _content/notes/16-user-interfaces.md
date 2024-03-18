@@ -203,7 +203,8 @@ Semantic HTML doesn’t just improve the responsivity of your layout, it also al
 ```
 
 ```html
-<!-- screenreaders automatically generate Tables of Contents from your heading elements.-->
+<!-- screenreaders automatically generate Tables of Contents -->
+<!-- from your heading elements. -->
 <h1>Wow</h1>
 <h2>Wow</h2>
 <h3>Wow</h3>
@@ -213,7 +214,9 @@ As we can see, there is a large overlap between Responsive Design and Accessibil
 
 ## SO, what is CSS even good for?
 
-That’s not even to mention: what if we need a real layout? We can’t make elements stack on each-other, or “flow” horizontally, with just HTML. Rather, it emphasizes the importance of knowing when CSS is truly necessary and understanding its implications on the page design. Adding CSS without comprehension may inadvertently detract from the intended design of the page.
+What if we want to make a complex layout?
+
+We can’t make elements stack on each-other, or “flow” horizontally, with just HTML. Rather, it emphasizes the importance of knowing when CSS is truly necessary and understanding its implications on the page design. Adding CSS without comprehension may inadvertently detract from the intended design of the page.
 
 Consider CSS a tool in your tool belt, wield it carefully.
 
