@@ -7,13 +7,51 @@ title: "Responsive CSS Techniques"
 created: "2024-03-19T12:17:29Z"
 ---
 
-# Height/Width vs. Padding
+# Everything is a Grid
+
+## What is a Grid-View?
+
+Many desktop web pages are based on a grid-view, which means that the page is divided into columns (usually 12) and has a total width of 100%
+
+```
+|   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   |   |   |   |   |   |   |   |
+
+  1   2   3   4   5   6   7   8   9   10  11  12
+```
+
+Using a grid-view is very helpful when designing web pages. It makes it easier to place elements on the page cause you can dedicate a certain elements eventual total width relative to other elements. For example:
+
+```
+ _______________________________________________
+|                                               |
+|                     header                    |
+|_______________________________________________|
+|           |   |   |   |   |   |   |   |   |   |
+|           |   |   |   |   |   |   |   |   |   |
+|   aside   |   |   |   |   |   |   |   |   |   |
+|           |   |   |   |   |   |   |   |   |   |
+|___________|   |   |   |   |   |   |   |   |   |
+ _______________________________________________
+|                                               |
+|                     footer                    |
+|_______________________________________________|
+
+  1   2   3   4   5   6   7   8   9   10  11  12
+
+```
+
+But how do we determine the width of each element? What happens if we only want the above layout for desktop and not mobile? For this, lets get into some best practices for developing resilient CSS and implementing responsive design principals.
+
+# Height/Width vs Padding
 
 ## Pro Tip
 
 Avoid setting `width` and `height` directly as much as possible (forces overflow, changes the behavior of the element in surprising ways)
 
-## Some Examples
+## Some examples
 
 To set element `height`: add vertical `padding` (make content “taller”)
 
@@ -45,13 +83,13 @@ main {
 }
 ```
 
-# Pixels vs. Percentage/Relative Units
+# Pixels vs Percentage/Relative Units
 
 ## Pro Tip
 
 Use dynamic sizing whenever possible.
 
-## Some Examples
+## Some examples
 
 Use percentages (`%`) to divide containers into portions.
 
@@ -84,7 +122,6 @@ When I apply the below (correct) styling, the button sizes adjust relative to th
 .container {
   font-size: 1rem; /* Base font size for the container */
 }
-
 /* Button font size relative to the container font size */
 .button {
   font-size: 1em;
@@ -170,9 +207,16 @@ p {
 
 Set limits on how much an element’s size can grow/shrink, use min- and max- properties instead.
 
-## For Example
+## For example
 
-TBD
+```css
+.element {
+  max-width: 400px;
+  min-width: 200px;
+  max-height: 400px;
+  min-height: 200px;
+}
+```
 
 # Media queries
 
@@ -286,3 +330,113 @@ Designing for mobile first is known as mobile first ™ design.
 ## Why?
 
 - Mobile-first websites are lighter in processing requirements for mobile users, since the browser only has to apply the CSS that occurs before `@media` queries.
+- The processing of complex media queries and the rendering of intricate layouts are done by larger devices, which presumably has higher computational power.
+- Mobile layouts are simpler (usually [plain HTML][html-responsive-by-default] will suffice!) and therefore: easier to implement, faster to code, and easier to maintain. Complexity should be added incrementally as screen sizes increase.
+
+## Media Query Specificity
+
+`@media` queries do not add specificity to your selectors. The examples above only worked because the queries were placed at the end of the stylesheet – remember that, in a tie between two equally specific selectors, the last selector read by the Browser wins.
+
+A common best practice is to place your @media queries at the end of your files so that you do not need to make your @media queries any more specific than they need to be.
+
+```css
+/* DO */
+/* Default col width takes 1/3 of the viewport */
+.col {
+  width: 33.33%;
+}
+/* Default col width takes 100% of the viewport */
+@media screen and (max-width: 480px) {
+  .col {
+    width: 100%;
+  }
+}
+
+/* DON'T */
+@media screen and (max-width: 480px) {
+  .col {
+    width: 100%;
+  }
+}
+.col {
+  width: 33.33%;
+}
+```
+
+# At-rules Syntax
+
+The syntax for `@media` may seem strange – what is the `@` for? We haven’t seen it yet: in CSS, at-rules (rules starting with an @ character) define a variety of high-level formatting and layout behaviors for the CSS engine. @media is the only one we will focus on in this class, but there are a few others that are worth knowing
+
+## @Media
+
+```css
+/* Defines a conditional group of rules (nested inside curly braces)
+that apply only if the client device meets certain criteria. */
+
+@media screen and (min-width: 900px) {
+  article {
+    padding: 1rem 3rem;
+  }
+}
+
+/* They can be nested within another conditional at-rules */
+@supports (display: flex) {
+  @media screen and (min-width: 900px) {
+    article {
+      display: flex;
+    }
+  }
+}
+```
+
+## @Import
+
+```css
+/* You can include an external style sheet. */
+@import url("my-imported-styles.css");
+
+/* This is often used to import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+```
+
+## @keyframes
+
+```css
+/* Define a keyframe animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Apply the animation to an element */
+.element {
+  animation: fadeIn 2s ease-in-out;
+}
+```
+
+## @font-face
+
+```css
+/* Define a custom font */
+@font-face {
+  font-family: "Yeet";
+  src: url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+}
+
+/* Use the custom font in your styles */
+body {
+  font-family: "Yeet", sans-serif;
+}
+```
+
+# Lab Time
+
+The remainder of the class was dedicated to students working on their lab :^)
+
+# Acknowledgements
+
+[MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/@media) and [w3schools]https://www.w3schools.com/css/css_rwd_intro.asp
