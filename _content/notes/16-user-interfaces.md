@@ -43,7 +43,7 @@ Getting good at any approach to HTML/CSS requires being able to debug our code a
 - Sometimes we try to access pages on a website and the WIFI sucks, can we simulate that on Chrome?
 - What happens if we are located in South Korea, can we see what this will look like on our website?
 
-# Exercise
+# Exercise 1
 
 Complete [this tutorial](https://developer.chrome.com/docs/devtools/device-mode). In my time at Morgan Stanley, SSENSE && MaintainX, the tools featured in the tutorial were a regular part of my workflow and a requirement to use prior to shipping any feature.
 
@@ -155,7 +155,47 @@ To combat manipulation and ensure the integrity of their search results, search 
 
 For ethical website owners and businesses, the key to SEO success lies in adhering to best practices and focusing on providing valuable, relevant content that genuinely addresses the needs of their target audience. Employing semantic HTML markup, which helps search engines understand the structure and context of web content, is crucial for improving search result accuracy and increasing the likelihood of ranking higher.
 
-For those curious about page rank algorithms and flow networks, I invite you to explore further on the course page of my [Algorithms and Data Structures](http://luc.devroye.org/252.html) class at McGill, taught by Luc Devroye. Understanding these concepts can provide valuable insights into the principles that govern search engine behavior and inform effective SEO strategies.
+For those curious about page rank algorithms and flow networks, I invite you to explore further on the course page of my [Algorithms and Data Structures](http://luc.devroye.org/252.html) class at McGill, taught by Luc Devroye. Understanding these concepts can provide insight into the principles that govern search engine behavior and inform effective SEO strategies.
+
+## Summary
+
+Semantic HTML doesn’t just improve the responsivity of your layout, it also also improves the responsivity of individual HTML elements. For example
+
+```html
+<!-- clickable, focusable and understood by screen-readers by default -->
+<button>Click ME</button>
+
+<!-- not understood by screen-readers by default -->
+<div>Click ME</div>
+<!-- 👈 restyled/javascripted -->
+```
+
+```html
+<!-- alt attributes allow non-sighted users to understand your content -->
+<img
+  src="./cool-cat.jpg"
+  alt="I can tell non-sighted people what this cool cat looks like"
+/>
+```
+
+```html
+<!-- screenreaders automatically generate Tables of Contents from your heading elements.-->
+<h1>Wow</h1>
+<h2>Wow</h2>
+<h3>Wow</h3>
+```
+
+As we can see, there is a large overlap between Responsive Design and Accessibility. In a lot of ways, Responsive Design can be viewed as a component within the broader realm of accessible web design :)
+
+## SO, what is CSS even good for?
+
+That’s not even to mention: what if we need a real layout? We can’t make elements stack on each-other, or “flow” horizontally, with just HTML. Rather, it emphasizes the importance of knowing when CSS is truly necessary and understanding its implications on the page design. Adding CSS without comprehension may inadvertently detract from the intended design of the page.
+
+Consider CSS a tool in your tool belt, wield it carefully.
+
+# Exercise 2
+
+[HTML Block and Inline Elements](https://www.w3schools.com/htmL/html_blocks.asp)
 
 # Acknowledgements
 
