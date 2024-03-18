@@ -94,7 +94,6 @@ To see this idea come to life, let's add some styling to the content:
 |         footer         |
 |________________________|
 
-
 ```
 
 It’s as if the sidebar is inside the .content block, so any HTML markup in .content would wrap around the sidebar’s box !! However, if we unset the float property, the block-level elements will go back to stacking on top of each other:
