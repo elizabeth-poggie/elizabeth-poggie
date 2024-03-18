@@ -76,3 +76,73 @@ span {
   height: auto;    /* same as content height (0px if no content inside element) */
 }
 ```
+
+Because HTML uses relative concepts like percentage of parent width to compute width, and because the top visible parent (the body element) is by default a block element, pure HTML automatically resizes its elements in response to the devices and viewports of the user.
+
+## Example
+
+For example, although [marxists.org](https://www.marxists.org/reference/archive/hegel/works/hl/hl512.htm#HL2_524) is a straightforward single-column website, it demonstrates responsiveness across various devices and maintains resilience to the ever-evolving landscape of frontend technology. This adaptability is crucial for ensuring accessibility across different platforms. In contrast, [bible.ca](https://www.bible.ca/) lacks mobile-friendly design, and also has not aged well with the passage of time.
+
+# Semantic HTML Responsivity
+
+On top of default HTML behavior, there are a few more improvements we can make using semantic HTML element choices.
+
+What's the difference between the responsivity and usability of the two following layouts?
+
+```text
+    *** LAYOUT 1 ***
+ ________________________
+|                        |
+|         header         |
+|                        |
+|________________________|
+ _______ ________________
+|       |                |
+| aside |                |
+|       |                |
+|_______|    main        |
+|                        |
+|                        |
+|                        |
+|________________________|
+ ________________________
+|                        |
+|         footer         |
+|________________________|
+
+```
+
+```text
+    *** LAYOUT 2 ***
+ ________________________
+|                        |
+|          div           |
+|                        |
+|________________________|
+ _______ ________________
+|       |                |
+|  div  |                |
+|       |                |
+|_______|     div        |
+|                        |
+|                        |
+|                        |
+|________________________|
+ ________________________
+|                        |
+|          div           |
+|________________________|
+
+```
+
+## Inclusivity
+
+Browser reader mode discards elements like <aside>, <header>, <footer> etc. to focus on the <main> and <article> content of a webpage, allowing users to easily get a distraction && advertisement free experience of a website. Reader mode is not available when semantic markup is not present.
+
+What is one of the main ingredients that leads to a successful website? Appealing to as many people as possible. The more people you can proactively accommodate from the outset, the more people you don’t unintentionally alienate.
+
+Our design choices should be invisible. we’re not trying to say, “this is for you.” That should inherently resonate. What we’re trying to avoid are scenarios where someone encounters something that communicates, “this is for someone else.” For those that are more curious about this topic, you can can read about it [here](https://webdesign.tutsplus.com/designing-accessible-content-typography-font-styling-and-structure--cms-31934a) and [here](https://www.interaction-design.org/master-classes/how-to-design-inclusive-and-accessible-experiences), however this is merely marks the beginning.
+
+# Acknowledgements
+
+[CSS Tricks](https://css-tricks.com/reader-mode-the-button-to-beat/)
