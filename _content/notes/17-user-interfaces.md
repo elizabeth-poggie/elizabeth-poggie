@@ -261,18 +261,28 @@ button {
 You can add multiple media queries within a stylesheet, tweaking your whole layout or parts of it to best suit the various screen sizes. The points at which a media query is introduced, and the layout changed, are known as breakpoints. Common breakpoints:
 
 ```css
-/* Mobile phones */
+/* Mobile phones - AT MOST (max-width) 480px or smaller*/
 @media screen and (max-width: 480px) {
   /* ... */
 }
 
-/* Tablets */
+/* Tablets - AT MOST (max-width) 768px or smaller */
 @media screen and (max-width: 768px) {
   /* ... */
 }
 
-/* Desktops */
-@media screen and (min-width: 1920px) {
+/* Desktops - AT MINIMUM 769px (min-width) or larger */
+@media screen and (min-width: 769px) {
   /* ... */
 }
 ```
+
+# Mobile First ™
+
+A common approach to web design is to start with a simple single-column layout for narrow-screen devices (e.g. mobile phones). Then, use `min-width` queries to check for wider screens, and add only the rules necessary to implement a multiple-column layout when you know that you have enough screen width to handle it.
+
+Designing for mobile first is known as mobile first ™ design.
+
+## Why?
+
+- Mobile-first websites are lighter in processing requirements for mobile users, since the browser only has to apply the CSS that occurs before `@media` queries.
