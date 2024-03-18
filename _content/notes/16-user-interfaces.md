@@ -145,17 +145,19 @@ Our design choices should be invisible. we’re not trying to say, “this is fo
 
 ## Search Engine Optimization
 
-Search engine optimization (SEO) is the process of improving the quality and quantity of website traffic to a website or a web page from search engines.
+Search engine optimization (SEO) is the art of improving the quality and quantity of website traffic by improving its visibility on search engine result pages. It involves optimizing various aspects of a website or web page to align with the algorithms used by search engines, ultimately aiming to rank higher for relevant search queries.
 
-Content providers began optimizing websites for search engines in the mid-1990s, as the first search engines were cataloging the early Web. However, some web content providers got a bit carried away with this and went as far to also manipulate some attributes within the HTML source of a page in an attempt to rank well in search engines. By the late 90s, search engine designers recognized that content providers were making efforts to rank well in their search engine and that some providers were even manipulating their rankings in search results by stuffing pages with excessive or irrelevant keywords.
+The origins of SEO can be traced back to the mid-1990s when the first search engines emerged and began cataloging the rapidly growing World Wide Web. Website owners and content providers soon realized the importance of being visible in search results and started optimizing their sites accordingly. However, in their quest for better rankings, some resorted to questionable tactics, such as keyword stuffing and manipulating HTML attributes.
 
-However this made the search engine providers a bit angry. Since the success and popularity of a search engine are determined by its ability to produce the most relevant results to any given search, poor quality or irrelevant search results could lead users to find other search sources. In other words, if a content provider had a high ranking website that led to a useless result, this could cause the user to not only reject the content provider, but the search engine provider as well. Bad news.
+By the late 1990s, search engine developers became aware of these manipulative practices and recognized the need to refine their algorithms to ensure the relevance and quality of search results. They understood that allowing websites to artificially inflate their rankings could undermine the credibility of the search engine itself, leading users to seek alternative search sources. (Bad news)
 
-Consequently, search engines responded by developing more complex ranking algorithms, taking into account additional factors that were more difficult for content providers to control && manipulate. For those entitled companies that employ overly aggressive techniques to beat the system, the search engine providers responded by banning the client websites of these companies from search results :^)
+To combat manipulation and ensure the integrity of their search results, search engines evolved their algorithms, incorporating more sophisticated criteria that were harder for website owners to exploit. This included factors like the quality of content, user experience, and relevance to the search query.
+
+For ethical website owners and businesses, the key to SEO success lies in adhering to best practices and focusing on providing valuable, relevant content that genuinely addresses the needs of their target audience. Employing semantic HTML markup, which helps search engines understand the structure and context of web content, is crucial for improving search result accuracy and increasing the likelihood of ranking higher. For those entitled companies that employ overly aggressive techniques to beat the system, search engine providers respond by banning the client websites of these companies from search results :^)
 
 For the purposes of this class, use websites that rely on semantic HTML to help search engines to quickly determine the content of a webpage. This will not only make search results about your webpage more accurate, but increase the likely hood of ranking higher for a search result.
 
-For those curious about page rank algorithms and flow networks, invite you to explore further on the course page of my [Algorithms and Data Structures](http://luc.devroye.org/252.html) class at McGill, taught by Luc Devroye.
+For those curious about page rank algorithms and flow networks, I invite you to explore further on the course page of my [Algorithms and Data Structures](http://luc.devroye.org/252.html) class at McGill, taught by Luc Devroye. Understanding these concepts can provide valuable insights into the principles that govern search engine behavior and inform effective SEO strategies.
 
 # Acknowledgements
 
