@@ -246,13 +246,17 @@ int sum = num[0] + num[1] + num[2];
 Console.WriteLine(sum);
 ```
 
+👉 0
+
 ## What prints?
 
 ```cs
 string[] days = new string[7];
-int numLettersMonday = days[0].length();
+int numLettersMonday = days[0].Length;
 Console.WriteLine(numLettersMonday);
 ```
+
+👉 Run-time exception (line ??): Object reference not set to an instance of an object.
 
 # Arrays and Equality
 
@@ -325,10 +329,10 @@ for(int i=0; i<arr.Length; i++)
 
 ## Search
 
-Let's write a program that takes as input an int x. The method should return true if x is an element of a secret array that only the computer knows, false otherwise.
+Let's write a program that takes as input an int x. The program should return true if x is an element of a secret array that only the computer knows, false otherwise.
 
 ```cs
-// Initalize the array
+// Initialize the array
 int[] arr = {1,2,3,4,5};
 
 // Get user input
