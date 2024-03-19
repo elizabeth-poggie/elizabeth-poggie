@@ -1,0 +1,140 @@
+---
+# General Information
+category: "Intro to Programming"
+number: 11
+type: "Lecture"
+title: "Arrays II"
+created: "2024-03-14T12:17:29Z"
+---
+
+# Intro
+
+Continuing from last lecture, Arrays are the last piece of the puzzle to laying the foundations to computer science. Afterwards we will be able to explore more applications :^)
+
+# Example
+
+Here are a bunch of socks.
+
+```cs
+string sock1 = "Nike";
+string sock2 = "White";
+string sock3 = "Blue";
+// ...
+```
+
+What happens if i want to add even more socks? That is going to be annoying to type out each unique variable. Instead let's create a drawer to hold all our pairs of socks where each index indicates the position of the socks in the drawer.
+
+It's like a list. A container that has "order".
+
+```cs
+string [] drawer = new string[30];
+```
+
+## What does this look like in the computer?
+
+Let's draw it.
+
+# Primitive vs Reference Types – Examples
+
+## What prints?
+
+```cs
+int x = 5;
+int y = x;
+x++;
+Console.WriteLine(x + " " + y);
+```
+
+👉 6 5
+
+## What prints?
+
+```cs
+int[] x = {1, 2, 3};
+int[] y = x;
+y[0] = 4;
+Console.WriteLine(x[0] + " " + y[0]);
+```
+
+👉 4 4
+
+## Why does this happen?
+
+Arrays don’t store the values of the types, but a reference to the location in memory containing that value. You can think of it as an address which points to where the data is located in memory.
+
+What is happening under the hood?
+
+# Reference types
+
+What is the value of `drawer` ?
+
+```cs
+string [] drawer = {"Nike", "White", "Blue"}
+```
+
+Inside of `drawer` is stored the address in memory of where we can find the first element of the array.
+
+```text
+ _______     _______     _______
+|       |   |       |   |       |
+|  Nike |   | White |   | Blue  |
+|_______|   |_______|   |_______|
+    0           1           2
+```
+
+What do you think is going to happen when we print this?
+
+```cs
+Console.WriteLine(drawer);
+```
+
+# Copying Arrays
+
+These statements create an array of three integers and make two different variables, x and y, refer to it.
+
+```cs
+int[] x = {1, 2, 3};
+int[] y = x;
+```
+
+Since both are pointing to the same space in memory, any changes made by either variable will be seen by the other.
+
+What happens if we want to copy the array and not just it's reference? You actually want to copy the array, not just a reference, you need to create a new array.
+
+```cs
+int[] someCoolNumbers = {4, 2, 42};
+```
+
+What does this look like in the computer?
+
+```text
+someCoolNumbers
+    |
+    |
+    V
+ _______     _______     _______
+|       |   |       |   |       |
+|   4   |   |   2   |   |   42  |
+|_______|   |_______|   |_______|
+    0           1           2
+```
+
+What does this look like on the computer?
+
+```cs
+int[] someCoolNumbers = {4, 2, 42};
+int[] myCoolNumbers = someCoolNumbers;
+```
+
+```text
+myCoolNumbers,
+someCoolNumbers
+    |
+    |
+    V
+ _______     _______     _______
+|       |   |       |   |       |
+|   4   |   |   2   |   |   42  |
+|_______|   |_______|   |_______|
+    0           1           2
+```

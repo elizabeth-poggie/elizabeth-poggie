@@ -13,7 +13,7 @@ created: "2024-03-19T12:17:29Z"
 
 Many desktop web pages are based on a grid-view, which means that the page is divided into columns (usually 12) and has a total width of 100%
 
-```
+```text
 |   |   |   |   |   |   |   |   |   |   |   |   |
 |   |   |   |   |   |   |   |   |   |   |   |   |
 |   |   |   |   |   |   |   |   |   |   |   |   |
@@ -22,9 +22,9 @@ Many desktop web pages are based on a grid-view, which means that the page is di
   1   2   3   4   5   6   7   8   9   10  11  12
 ```
 
-Using a grid-view is very helpful when designing web pages. It makes it easier to place elements on the page cause you can dedicate a certain elements eventual total width relative to other elements. For example:
+Using a grid-view is very helpful when designing web pages. It makes it easier to place elements on the page cause you can dedicate a certain elements total width relative to other elements. For example:
 
-```
+```text
  _______________________________________________
 |                                               |
 |                     header                    |
