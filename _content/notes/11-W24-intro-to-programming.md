@@ -227,3 +227,67 @@ When We changed the first String of the array. Strings are immutable -> the refe
 |_______|   |_______|   |_______|   |_______|   |_______|
 
 ```
+
+# Mini Quiz
+
+## What prints?
+
+```cs
+int[] num = new int[3];
+int sum = num[0] + num[1] + num[2];
+Console.WriteLine(sum);
+```
+
+## What prints?
+
+```cs
+string[] days = new string[7];
+int numLettersMonday = days[0].length();
+Console.WriteLine(numLettersMonday);
+```
+
+# Arrays and Equality
+
+## What prints?
+
+```cs
+int[] x = {1,2,3};
+int[] y = {1,2,3};
+Console.WriteLine(x == y);
+```
+
+👉 false. Why? arrays are reference types, which means that when you compare two array variables using the "==", you are comparing their references, not their content.
+
+## What prints?
+
+```cs
+int[] x = {1,2,3};
+int[] y = {1,2,3};
+Console.WriteLine(x.Equals(y));
+```
+
+👉 false. Why? It fails for the same reasons as before.
+
+## What prints?
+
+```cs
+using System.Linq;
+// ...
+int[] x = {1,2,3};
+int[] y = {1,2,3};
+Console.WriteLine(x.SequenceEqual(y));
+```
+
+👉 true. Why? To compare the contents of the arrays, you must use auxillary methods provided by other libraries.
+
+NOTE: Before using `SequenceEqual` is useful to import it like `using System.Linq`.
+
+# Examples
+
+## Reverse
+
+Write a void method that reverse the order of the elements of an array.
+
+## Search
+
+Write a method that takes as input an integer array and an int x. The method should return true if x is an element of the array, false otherwise.
