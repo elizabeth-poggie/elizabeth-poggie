@@ -66,10 +66,10 @@ What is happening under the hood?
 
 # Reference types
 
-What is the value of `drawer` ?
+What is the value of `nums` ?
 
 ```cs
-string [] drawer = {"Nike", "White", "Blue"}
+string [] nums = {1, 2, 3};
 ```
 
 Inside of `drawer` is stored the address in memory of where we can find the first element of the array.
@@ -77,7 +77,7 @@ Inside of `drawer` is stored the address in memory of where we can find the firs
 ```text
  _______     _______     _______
 |       |   |       |   |       |
-|  Nike |   | White |   | Blue  |
+|   1   |   |   2   |   |   3   |
 |_______|   |_______|   |_______|
     0           1           2
 ```
@@ -85,7 +85,7 @@ Inside of `drawer` is stored the address in memory of where we can find the firs
 What do you think is going to happen when we print this?
 
 ```cs
-Console.WriteLine(drawer);
+Console.WriteLine(nums);
 ```
 
 # Copying Arrays
@@ -137,4 +137,31 @@ someCoolNumbers
 |   4   |   |   2   |   |   42  |
 |_______|   |_______|   |_______|
     0           1           2
+```
+
+What about now?
+
+```cs
+int[] someCoolNumbers = {4, 2, 42};
+int[] myCoolNumbers = someCoolNumbers;
+myCoolNumbers[0] = 420;
+```
+
+```text
+myCoolNumbers,
+someCoolNumbers
+    |
+    |
+    V
+ _______     _______     _______
+|       |   |       |   |       |
+|  420  |   |   2   |   |   42  |
+|_______|   |_______|   |_______|
+    0           1           2
+```
+
+# String Arrays
+
+```cs
+string [] drawer = {"Nike", "White", "Blue"}
 ```
