@@ -11,14 +11,14 @@ created: "2024-03-19T12:17:29Z"
 
 Continuing from last lecture, Arrays are the last piece of the puzzle to laying the foundations to computer science. Afterwards we will be able to explore more applications and intermediate topics :^)
 
-# Example
+# Continuing from last class...
 
 Here are a bunch of socks.
 
 ```cs
-string sock1 = "Nike";
-string sock2 = "White";
-string sock3 = "Blue";
+string sock0 = "Nike";
+string sock1 = "White";
+string sock2 = "Blue";
 // ...
 ```
 
@@ -30,9 +30,17 @@ It's like a list. A container that has "order".
 string [] drawer = new string[30];
 ```
 
-## What does this look like in the computer?
+How do we add socks to our drawer? Like this:
 
-Let's draw it.
+```cs
+drawer[0] = "Nike";
+drawer[1] = "White";
+drawer[2] = "Blue";
+```
+
+Notice instead of appending a number to our primitive (string) type, we are creating an array with that number now representing an index of where that sock exists in our array.
+
+But what's the difference anyways between these two data types? Let's explore that.
 
 # Primitive vs Reference Types – Examples
 
@@ -228,7 +236,7 @@ When We changed the first String of the array. Strings are immutable -> the refe
 
 ```
 
-# Quiz
+# Mini Quiz
 
 ## What prints?
 
