@@ -162,6 +162,68 @@ someCoolNumbers
 
 # String Arrays
 
+What does the below look like under the hood?
+
 ```cs
-string [] drawer = {"Nike", "White", "Blue"}
+string [] drawer = {"Nike", "White"};
+```
+
+What is a sentence if not an array of letters? This is actually more precisely what it will look like in memory.
+
+```text
+ drawer
+    |
+    |
+    V
+ _______     _______
+|       |   |       |
+|       |   |       | --------> "..."
+|_______|   |_______|
+    0           1
+    |
+    |
+    V
+ _______     _______     _______     _______
+|       |   |       |   |       |   |       |
+|   N   |   |   I   |   |   K   |   |   E   |
+|_______|   |_______|   |_______|   |_______|
+
+```
+
+What happens if we add an "s" to "Nike"?
+
+```cs
+drawer[0] = drawer[0] + "s"
+```
+
+When we changed the array. Arrays are mutable -> the reference stored in `drawer` did not change!
+
+When We changed the first String of the array. Strings are immutable -> the reference in pets[0] did change!
+
+```text
+ drawer
+    |
+    |
+    V
+ _______     _______
+|       |   |       |
+|       |   |       | --------> "..."
+|_______|   |_______|
+    0           1
+    |
+    |_____________________________________________
+                                                  |
+ _______     _______     _______     _______      |
+|       |   |       |   |       |   |       |     |
+|   N   |   |   I   |   |   K   |   |   E   |     |
+|_______|   |_______|   |_______|   |_______|     |
+                                                  |
+     _____________________________________________|
+    |
+    V
+ _______     _______     _______     _______     _______
+|       |   |       |   |       |   |       |   |       |
+|   N   |   |   I   |   |   K   |   |   E   |   |   S   |
+|_______|   |_______|   |_______|   |_______|   |_______|
+
 ```
