@@ -4,12 +4,12 @@ category: "Intro to Programming"
 number: 11
 type: "Lecture"
 title: "Arrays II"
-created: "2024-03-14T12:17:29Z"
+created: "2024-03-19T12:17:29Z"
 ---
 
 # Intro
 
-Continuing from last lecture, Arrays are the last piece of the puzzle to laying the foundations to computer science. Afterwards we will be able to explore more applications :^)
+Continuing from last lecture, Arrays are the last piece of the puzzle to laying the foundations to computer science. Afterwards we will be able to explore more applications and intermediate topics :^)
 
 # Example
 
@@ -228,7 +228,7 @@ When We changed the first String of the array. Strings are immutable -> the refe
 
 ```
 
-# Mini Quiz
+# Quiz
 
 ## What prints?
 
@@ -266,7 +266,7 @@ int[] y = {1,2,3};
 Console.WriteLine(x.Equals(y));
 ```
 
-👉 false. Why? It fails for the same reasons as before.
+👉 false. Why? It fails for the same reason as before.
 
 ## What prints?
 
@@ -280,14 +280,71 @@ Console.WriteLine(x.SequenceEqual(y));
 
 👉 true. Why? To compare the contents of the arrays, you must use auxillary methods provided by other libraries.
 
-NOTE: Before using `SequenceEqual` is useful to import it like `using System.Linq`.
+NOTE: Before using `SequenceEqual` is important to import it like `using System.Linq`.
 
 # Examples
 
 ## Reverse
 
-Write a void method that reverse the order of the elements of an array.
+Let's write a program that reverses the order of the elements of an array.
+
+```cs
+// Initialize the array
+int[] arr = {1,2,3,4,5};
+
+// Initialize counters
+int start = 0;
+int end = arr.Length - 1;
+
+while (start < end)
+{
+    // Swap elements at start and end indices
+    int temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+
+    // Move towards the center
+    start++;
+    end--;
+}
+
+// Now print
+for(int i=0; i<arr.Length; i++)
+{
+    Console.Write(arr[i] + " ");
+}
+```
 
 ## Search
 
-Write a method that takes as input an integer array and an int x. The method should return true if x is an element of the array, false otherwise.
+Let's write a program that takes as input an int x. The method should return true if x is an element of a secret array that only the computer knows, false otherwise.
+
+```cs
+// Initalize the array
+int[] arr = {1,2,3,4,5};
+
+// Get user input
+int x;
+while (!int.TryParse(Console.ReadLine(), out x))
+{
+    Console.WriteLine("Invalid input. Try again!");
+}
+
+// Set the default result
+bool result = false;
+
+// Now try to find a match
+for(int i=0; i<arr.Length; i++)
+{
+    if (arr[i] == x)
+    {
+        result = true;
+        break; // Exit the loop once the first match is found
+    } else {
+        result = false;
+    }
+}
+
+// print result
+Console.WriteLine(result);
+```
