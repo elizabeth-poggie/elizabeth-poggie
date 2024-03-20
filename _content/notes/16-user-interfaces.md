@@ -5,6 +5,8 @@ number: 16
 type: "Lecture"
 title: "Responsive Design"
 created: "2024-03-18T12:17:29Z"
+link:
+  { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/16.pdf" }
 ---
 
 # Responsive Design

@@ -5,6 +5,8 @@ number: 17
 type: "Lecture"
 title: "Responsive CSS Techniques"
 created: "2024-03-19T12:17:29Z"
+link:
+  { text: "slides", href: "/assets/notes/W24-user-interfaces/slides/17.pdf" }
 ---
 
 # Everything is a Grid
