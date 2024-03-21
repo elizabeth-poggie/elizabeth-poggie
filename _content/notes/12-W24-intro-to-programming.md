@@ -129,6 +129,40 @@ Console.WriteLine(sum);
 
 👉 2
 
+# Another Example
+
+Let's write a program that takes as input an int x. The program should return true if x is an element of a secret array that only the computer knows, false otherwise.
+
+```cs
+// Initialize the array
+int[] arr = {1,2,3,4,5};
+
+// Get user input
+int x;
+while (!int.TryParse(Console.ReadLine(), out x))
+{
+    Console.WriteLine("Invalid input. Try again!");
+}
+
+// Set the default result
+bool result = false;
+
+// Now try to find a match
+for(int i=0; i<arr.Length; i++)
+{
+    if (arr[i] == x)
+    {
+        result = true;
+        break; // Exit the loop once the first match is found
+    } else {
+        result = false;
+    }
+}
+
+// print result
+Console.WriteLine(result);
+```
+
 # Multidimensional Arrays
 
 ## What are they?
@@ -233,7 +267,7 @@ String[][][][] theFourthWall = new String[2][][][];
 
 # Exercise
 
-Write a program that take a 2D `int` array and prints all the elements of the array, one array per line. For example, if given the below code snippet:
+Write a program that takes a 2D `int` array and prints all the elements of the array, one array per line. For example, if given the below code snippet:
 
 ```cs
 int[,] nums = {
@@ -249,7 +283,7 @@ I should see the following printed to my console:
 3 4
 ```
 
-HINT: to get the length of 2D arrays use, `GEtLength(index #)`
+HINT: to get the length of 2D arrays use, `GetLength(index #)`
 
 ```cs
 int[,] nums = {
@@ -262,5 +296,77 @@ for (int i=0; i<nums.GetLength(0); i++) {
         Console.Write(nums[i,j]);
     }
     Console.WriteLine();
+}
+```
+
+# Another example
+
+Write a program that takes a 2D integer array as input and two integers i and j. The program should swap the array in position i with the array in position j.
+
+```cs
+int[,] array = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+
+int i = 0; // Position i
+int j = 2; // Position j
+
+// Swap arrays at positions i and j
+int[] temp = new int[array.GetLength(1)];
+for (int k = 0; k < array.GetLength(1); k++) {
+    temp[k] = array[i, k];
+    array[i, k] = array[j, k];
+    array[j, k] = temp[k];
+}
+
+
+
+for (int x=0; x<array.GetLength(0); x++) {
+    for (int y=0; y<array.GetLength(1); y++) {
+        Console.Write(array[x,y]);
+    }
+    Console.WriteLine();
+}
+```
+
+# Exercise 2
+
+Write a program that takes a 2D integer array and returns and integer array containing the smallest elements in each row. For example if given this:
+
+```cs
+int[][] matrix = {
+    { 2, 3, 9 },
+    { 5, 1, 6 },
+    { 8, -1, 9 }
+};
+```
+
+I should see this as a result:
+
+```cs
+{ 2, 1, -1 }
+```
+
+## The solution
+
+```cs
+int[,] array = {
+    { 3, 7, 2 },
+    { 8, 1, 5 },
+    { 4, 9, 6 }
+};
+
+int[] smallestElements = new int[array.GetLength(0)];
+
+for (int i = 0; i < array.GetLength(0); i++) {
+    int smallest = array[i, 0];
+    for (int j = 1; j < array.GetLength(1); j++) {
+        if (array[i, j] < smallest) {
+            smallest = array[i, j];
+        }
+    }
+    smallestElements[i] = smallest;
 }
 ```
