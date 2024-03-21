@@ -97,6 +97,66 @@ What is the value of nums[1]?
 
 👉 0
 
-# Arrays && Arithmetic
+# Arrays && Loops && Arithmetic
 
 ## What prints?
+
+```cs
+int[] nums  = {-4, 4, 2};
+int sum = 0;
+for(int i = 0; i < nums.Length; i++) {
+    if(i%2 == 0) {
+        sum = sum + nums[i];
+    }
+}
+Console.WriteLine(sum);
+```
+
+👉 -2
+
+## What prints?
+
+```cs
+int[] nums  = {-4, 4, 2};
+int sum = 0;
+for(int i = 0; i < nums.Length; i++) {
+    if(nums[i]%2 == 0) {
+        sum = sum + nums[i];
+    }
+}
+Console.WriteLine(sum);
+```
+
+👉 2
+
+# Multidimensional Arrays
+
+## What are they?
+
+Arrays of arrays
+
+## How are they declared?
+
+```cs
+int[,] alsoAlsoMatrix = {
+    { 1, 2, 3 },
+    { 4, 5, 6 },
+    { 7, 8, 9 }
+};
+```
+
+This creates an array of length 3, containing integer arrays. Each element in the array also has a length of 3 :)
+
+```cs
+int[,] matrix = new int[3, 2];
+```
+
+This creates an array of length 3. Each element is an integer array of length 2. You can think of it as a 3 by 2 matrix.
+
+```cs
+int[][] alsoMatrix = new int[3][];
+```
+
+This creates an array of length 3. Each element will be an integer array. For the moment the elements are initialized by default to `null`.
+
+## Code snippets
