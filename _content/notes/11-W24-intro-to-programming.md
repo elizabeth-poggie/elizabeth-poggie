@@ -327,7 +327,7 @@ for(int i=0; i<arr.Length; i++)
 }
 ```
 
-## Search
+# Another Example
 
 Let's write a program that takes as input an int x. The program should return true if x is an element of a secret array that only the computer knows, false otherwise.
 
