@@ -159,4 +159,108 @@ int[][] alsoMatrix = new int[3][];
 
 This creates an array of length 3. Each element will be an integer array. For the moment the elements are initialized by default to `null`.
 
-## Code snippets
+## Examples
+
+## Example 1
+
+```cs
+int[,] nums = {
+    { 1, 2 },
+    { 3, 4 }
+};
+```
+
+What does this look like in the computer?
+
+```text
+   nums
+    |
+    |
+    V
+ _______     _______
+|       |   |       |
+|       |   |       | --------> "..."
+|_______|   |_______|
+    0           1
+    |
+    |
+    V
+ _______     _______
+|       |   |       |
+|   1   |   |   2   |
+|_______|   |_______|
+
+```
+
+what happens when we want to change a number?
+
+```cs
+nums[0][1] = 42;
+```
+
+nums[0] is an array and arrays are mutable (unlike strings) !! the reference stored in nums[0] did not change !!
+
+```text
+   nums
+    |
+    |
+    V
+ _______     _______
+|       |   |       |
+|       |   |       | --------> "..."
+|_______|   |_______|
+    0           1
+    |
+    |
+    V
+ _______     _______
+|       |   |       |
+|   1   |   |  42   |
+|_______|   |_______|
+
+```
+
+## Is there a limit to the amount of dimensions of the multi dimensional array?
+
+NO !!!
+
+You can create as many dimensions as you want !!! For example:
+
+```cs
+int[][][] cube = new int[3][3][3];
+String[][][][] theFourthWall = new String[2][][][];
+```
+
+# Exercise
+
+Write a program that take a 2D `int` array and prints all the elements of the array, one array per line. For example, if given the below code snippet:
+
+```cs
+int[,] nums = {
+    { 1, 2 },
+    { 3, 4 }
+};
+```
+
+I should see the following printed to my console:
+
+```cs
+1 2
+3 4
+```
+
+HINT: to get the length of 2D arrays use, `GEtLength(index #)`
+
+```cs
+int[,] nums = {
+    { 1, 2 },
+    { 3, 4 }
+};
+
+for (int i=0; i<nums.GetLength(0); i++) {
+    for (int j=0; j<nums.GetLength(1); j++) {
+        Console.Write(nums[i,j]);
+    }
+    Console.WriteLine();
+}
+```
