@@ -94,7 +94,6 @@ To see this idea come to life, let's add some styling to the content:
 |         footer         |
 |________________________|
 
-
 ```
 
 It’s as if the sidebar is inside the .content block, so any HTML markup in .content would wrap around the sidebar’s box !! However, if we unset the float property, the block-level elements will go back to stacking on top of each other:
@@ -331,7 +330,7 @@ Step 2) style the column like this:
 }
 ```
 
-BOOM, done!HOWEVER, Want a grid in the parent instead of 3 columns? No problem! When there isn't enough room to stack a floated element horizontally, it pops down to the next line. All we need to do is add more column elements:
+BOOM, done! HOWEVER, Want a grid in the parent instead of 3 columns? No problem! When there isn't enough room to stack a floated element horizontally, it pops down to the next line. All we need to do is add more column elements:
 
 ```html
 <div class="parent">
