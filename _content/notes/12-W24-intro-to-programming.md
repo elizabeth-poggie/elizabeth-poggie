@@ -91,9 +91,17 @@ How many elements are in the array?
 
 What is the value of the variable `nums`?
 
+```cs
+Console.WriteLine(nums);
+```
+
 the reference to the array/the address in memory of the first element of the array.
 
 What is the value of nums[1]?
+
+```cs
+Console.WriteLine(nums[1]);
+```
 
 👉 0
 
@@ -154,8 +162,6 @@ for(int i=0; i<arr.Length; i++)
     {
         result = true;
         break; // Exit the loop once the first match is found
-    } else {
-        result = false;
     }
 }
 
