@@ -173,6 +173,183 @@ The `gap` between grid rows and columns is known as the gutter or alley.
 
 Why is this so neat? You get to avoid setting margins for child elements and instead do it in one quick line from the parent container !!
 
+# Grid Lines
+
+Whenever we create grid tracks, grid lines are created implicitly. For example:
+
+```text
+🐱 🐶
+🐡 🦜
+```
+
+can also be interpreted as:
+
+```text
+ ---------
+| 🐱 | 🐶 |
+ ---------
+| 🐡 | 🦜 |
+ ---------
+```
+
+where every track has a start line and an end line.
+
+```text
+ ---------  1
+| 🐱 | 🐶 |
+ ---------  2
+| 🐡 | 🦜 |
+ ---------  3
+1    2    3
+```
+
+These lines can be numbered from left to right and top to bottom starting at 1. Notice how our above 2x2 grid has line numbers ranging from 1 to 3 !! Why is this neat? We will explore soon :)
+
+# Cells
+
+The space in a grid shared by a single row track and a single column track is called a grid "cell". For example, each "grid item" below is talking up one "cell's" worth of space:
+
+```text
+ ---------
+| 🐱 | 🐶 |
+ ---------
+| 🐡 | 🦜 |
+ ---------
+```
+
+But what happens if we wanted to change the order of our grid items? Or if we want our items to take up more than one cell?
+
+# Positioning
+
+Let's get creative and modify the original HTML code:
+
+```html
+<div class="zoo">
+  <div id="cat-cafe">Cat</div>
+  <div id="dog-park">Dog</div>
+  <div id="aquarium">Fish</div>
+  <div id="aviary">Bird</div>
+</div>
+```
+
+with the following CSS:
+
+```css
+.zoo {
+  display: grid;
+  grid-template-columns: 42px 42px 42px 42px;
+  grid-template-rows: 42px 42px 42px 42px;
+}
+.zoo div {
+  border: 1px solid lightgray; /* add this to see relative sizing better */
+}
+```
+
+At the moment, each of our enclosures takes up 1 "cell's" worth of space:
+
+```text
+ ------------------
+| 🐱 | 🐶 |   |    |
+ ------------------
+| 🐡 | 🦜 |    |    |
+ ------------------
+|   |    |    |    |
+ ------------------
+|   |    |    |    |
+ ------------------
+```
+
+...but we can design our enclosures better because our grid is 4 x 4 !! We have so much more space !!
+
+```css
+/* ... rest of your css code ... */
+
+#aquarium {
+  grid-column-start: 1; /* add this */
+  grid-column-end: 5; /* add this */
+}
+```
+
+The aquarium now takes up more space :)
+
+```text
+ ---------
+| 🐱 | 🐶 | ...
+ ------------------
+| 🐡               |
+ ------------------
+| 🦜 |  ...
+ ----
+...
+
+```
+
+HOW? by adding specific `grid-column-start` and `grid-column-end` numbers, we are specifying the column grid lines that we want to start and end with.
+
+We can also do this with rows:
+
+```css
+/* ... rest of your css code ... */
+
+#aquarium {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 1; /* add this */
+  grid-row-end: 3; /* add this */
+}
+```
+
+to get the following result:
+
+```text
+ ------------------
+| 🐡          🐡   |
+|       🐡      🐡 |
+ ------------------
+| 🐱 | 🐶 | 🦜 | ...
+ --------------
+...
+
+```
+
+YAY! Lot's of room for FISH! However, notice how despite the 🐱 and 🐶 came before 🐡 in the HTML structure, that CSS property ultimately determines the layout of the grid.
+
+We can do better though to better utilize the above space. Add the below CSS to your file:
+
+```css
+/* ... rest of your css code ... */
+
+#cat-cafe {
+  background-color: peachpuff;
+  grid-row-start: 3;
+  grid-row-end: 5;
+}
+#dog-park {
+  background-color: lightgreen;
+  grid-column-start: 2;
+  grid-column-end: 5;
+}
+#aviary {
+  background-color: lightsalmon;
+  grid-column-end: 5; /* notice how we are not defining a grid column start */
+}
+```
+
+to generate the following layout:
+
+```text
+ ------------------
+| 🐡          🐡   |
+|       🐡      🐡 |
+ ------------------
+| 🐱 |     🐶      |
+| 🐱 |-------------
+| 🐱 |        | 🦜 |
+ ---           ---
+```
+
+Notice that when we do not define a `grid-column-start`, the grid item will still take up 1 "cell's" worth of space !!
+
 # Flexbox vs Grid vs floats
 
 Flexbox, CSS Grid, and Floats are 3 distinct layout models in CSS that aim to make web development easier and more efficient, but they serve different purposes and have different use cases. As a general rule:
