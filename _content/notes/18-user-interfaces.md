@@ -366,5 +366,5 @@ Each of these layout models offers unique advantages, and selecting the appropri
 
 # Exercises
 
-- [CSS Grids and DevTools](https://developer.chrome.com/docs/devtools/css/grid)
+- [The Grid and DevTools](https://developer.chrome.com/docs/devtools/css/grid)
 - [Grid Garden, Levels 1 - 12](https://cssgridgarden.com/)
