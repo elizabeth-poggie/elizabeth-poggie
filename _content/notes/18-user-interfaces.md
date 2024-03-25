@@ -177,8 +177,8 @@ Why is this so neat? You get to avoid setting margins for child elements and ins
 
 Flexbox, CSS Grid, and Floats are 3 distinct layout models in CSS that aim to make web development easier and more efficient, but they serve different purposes and have different use cases. As a general rule:
 
-- Use Flexbox when arranging items along a single dimension, like in navigation bars or adaptable content sections within a container. It's also ideal for crafting intricate, unique components such as message displays.
-- Use Grid when crafting intricate two-dimensional layouts featuring rows and columns, such as page compositions or visually appealing photo galleries. However, despite its emergence in 2017, CSS Grid is sometimes considered a more "hipster" choice, especially in corporate settings where Flexbox might be more prevalent for overall layout designs.
+- Use Flexbox when arranging items along a single dimension, like in navigation bars or adaptable content sections within a container. It's also ideal for creating unique components such as message displays and user stories.
+- Use Grid when crafting two-dimensional layouts featuring rows and columns, such as page compositions or galleries. However, considering its emergence in 2017, CSS Grid is a more "hipster" choice, especially in corporate settings where Flexbox might be more prevalent for overall layout designs.
 - Use floats when you want to create "magazine" layouts, where content flows around elements in a fluid manner.
 
 Each of these layout models offers unique advantages, and selecting the appropriate one depends on the specific requirements and goals of your web project. As well, these concepts can also be combined to create memorable user experiences :^)
