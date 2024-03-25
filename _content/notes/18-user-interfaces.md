@@ -350,6 +350,10 @@ to generate the following layout:
 
 Notice that when we do not define a `grid-column-start`, the grid item will still take up 1 "cell's" worth of space !!
 
+# Advanced Grid Techniques
+
+There are other tools available in your tool belt when it comes to harnessing the `grid`, however that is beyond the scope of the class. For those curious grid enthusiasts who want to explore more fancy techniques, you can read more about it [here](https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-advanced-grid-properties).
+
 # Flexbox vs Grid vs floats
 
 Flexbox, CSS Grid, and Floats are 3 distinct layout models in CSS that aim to make web development easier and more efficient, but they serve different purposes and have different use cases. As a general rule:
@@ -362,4 +366,5 @@ Each of these layout models offers unique advantages, and selecting the appropri
 
 # Exercises
 
-- [Grid Garden, Levels 1 - 28](https://cssgridgarden.com/)
+- [CSS Grids and DevTools](https://developer.chrome.com/docs/devtools/css/grid)
+- [Grid Garden, Levels 1 - 12](https://cssgridgarden.com/)
