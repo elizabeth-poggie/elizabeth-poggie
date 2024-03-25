@@ -130,7 +130,7 @@ with the following CSS styling:
 }
 ```
 
-What would happen? You should see that the `gator` was still placed on the grid and it’s been slotted into a third row we have not yet defined:
+What would happen? You should see that the 🐊 was still placed on the grid and it’s been slotted into a third row we have not yet defined:
 
 ```text
 🐱 🐶
@@ -157,9 +157,31 @@ We can set the implicit grid track sizes like below:
 
 By adding the above css snippet, any new "implicit" rows will have the same value as our "explicit" row track :^)
 
-# Flexbox vs Grid
+# Grid Gutters
 
-TBD
+The `gap` between grid rows and columns is known as the gutter or alley.
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 42px 42px;
+  grid-template-rows: 42px 42px;
+  column-gap: 42px; /* add this to create space between columns */
+  row-gap: 420px; /* add this to create space between rows */
+}
+```
+
+Why is this so neat? You get to avoid setting margins for child elements and instead do it in one quick line from the parent container !!
+
+# Flexbox vs Grid vs floats
+
+Flexbox, CSS Grid, and Floats are 3 distinct layout models in CSS that aim to make web development easier and more efficient, but they serve different purposes and have different use cases. As a general rule:
+
+- Use Flexbox when arranging items along a single dimension, like in navigation bars or adaptable content sections within a container. It's also ideal for crafting intricate, unique components such as message displays.
+- Use Grid when crafting intricate two-dimensional layouts featuring rows and columns, such as page compositions or visually appealing photo galleries. However, despite its emergence in 2017, CSS Grid is sometimes considered a more "hipster" choice, especially in corporate settings where Flexbox might be more prevalent for overall layout designs.
+- Use floats when you want to create "magazine" layouts, where content flows around elements in a fluid manner.
+
+Each of these layout models offers unique advantages, and selecting the appropriate one depends on the specific requirements and goals of your web project. As well, these concepts can also be combined to create memorable user experiences :^)
 
 # Exercises
 
