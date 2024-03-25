@@ -326,37 +326,3 @@ for(int i=0; i<arr.Length; i++)
     Console.Write(arr[i] + " ");
 }
 ```
-
-## Search
-
-Let's write a program that takes as input an int x. The program should return true if x is an element of a secret array that only the computer knows, false otherwise.
-
-```cs
-// Initialize the array
-int[] arr = {1,2,3,4,5};
-
-// Get user input
-int x;
-while (!int.TryParse(Console.ReadLine(), out x))
-{
-    Console.WriteLine("Invalid input. Try again!");
-}
-
-// Set the default result
-bool result = false;
-
-// Now try to find a match
-for(int i=0; i<arr.Length; i++)
-{
-    if (arr[i] == x)
-    {
-        result = true;
-        break; // Exit the loop once the first match is found
-    } else {
-        result = false;
-    }
-}
-
-// print result
-Console.WriteLine(result);
-```

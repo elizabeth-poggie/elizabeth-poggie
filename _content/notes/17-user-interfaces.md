@@ -441,4 +441,4 @@ The remainder of the class was dedicated to students working on their lab :^)
 
 # Acknowledgements
 
-[MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/@media) and [w3schools]https://www.w3schools.com/css/css_rwd_intro.asp
+[MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/@media) and [w3schools](https://www.w3schools.com/css/css_rwd_intro.asp)
