@@ -194,7 +194,7 @@ int[,] matrix = new int[3, 2];
 This creates an array of length 3. Each element is an integer array of length 2. You can think of it as a 3 by 2 matrix.
 
 ```cs
-int[][] alsoMatrix = new int[3][];
+int[,] alsoMatrix = new int[3][];
 ```
 
 This creates an array of length 3. Each element will be an integer array. For the moment the elements are initialized by default to `null`.
@@ -267,8 +267,8 @@ NO !!!
 You can create as many dimensions as you want !!! For example:
 
 ```cs
-int[][][] cube = new int[3][3][3];
-String[][][][] theFourthWall = new String[2][][][];
+int[,,] cube = new int[3][3][3];
+String[,,,] theFourthWall = new String[2][][][];
 ```
 
 # Exercise
@@ -334,45 +334,5 @@ for (int x=0; x<array.GetLength(0); x++) {
         Console.Write(array[x,y]);
     }
     Console.WriteLine();
-}
-```
-
-# Exercise 2
-
-Write a program that takes a 2D integer array and returns and integer array containing the smallest elements in each row. For example if given this:
-
-```cs
-int[][] matrix = {
-    { 2, 3, 9 },
-    { 5, 1, 6 },
-    { 8, -1, 9 }
-};
-```
-
-I should see this as a result:
-
-```cs
-{ 2, 1, -1 }
-```
-
-## The solution
-
-```cs
-int[,] array = {
-    { 3, 7, 2 },
-    { 8, 1, 5 },
-    { 4, 9, 6 }
-};
-
-int[] smallestElements = new int[array.GetLength(0)];
-
-for (int i = 0; i < array.GetLength(0); i++) {
-    int smallest = array[i, 0];
-    for (int j = 1; j < array.GetLength(1); j++) {
-        if (array[i, j] < smallest) {
-            smallest = array[i, j];
-        }
-    }
-    smallestElements[i] = smallest;
 }
 ```
