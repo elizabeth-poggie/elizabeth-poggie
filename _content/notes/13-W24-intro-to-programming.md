@@ -243,6 +243,56 @@ if (array1.Length != array2.Length)
 Console.WriteLine(isEqual);
 ```
 
+# Printing ASCII Art Example
+
+Let's draw this, but with loops
+
+```text
+ ------------
+|  👁️    👁️  |
+|     👄     |
+ ------------
+```
+
+## The solution
+
+```cs
+int height = 2;
+int width = 12;
+
+// Print the top line
+Console.WriteLine(" ------------");
+
+// Print the face character by character
+for (int i = 0; i < height; i++)
+{
+    for (int j = 0; j < width; j++)
+    {
+        // print a solid line if i am at the right OR left side of the box
+        if (j == 0 || j == width-1)
+        {
+            Console.Write("|");
+        }
+        // print an eye at the proper positon
+        else if (j==2 && i==0|| j==(width-1 - 2) && i==0) {
+            Console.Write("👁️");
+        }
+        else if (j==6 && i==1) {
+            Console.Write("👄");
+        }
+        // otherwise fill the rest with space
+        else {
+            Console.Write(" ");
+        }
+        System.Threading.Thread.Sleep(50); // Pause for 50 milliseconds for demonstration purposes
+    }
+    // indent after every row
+    Console.WriteLine();
+}
+// Print the bottom line
+Console.WriteLine(" ------------");
+```
+
 # Lab 3 Clarifications
 
 The pressure’s on and now you need to cut the right wire to diffuse the bomb. With every wrong wire cut, your luck is tested. Once your luck runs out it’s game over.
