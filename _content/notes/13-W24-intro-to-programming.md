@@ -5,9 +5,12 @@ number: 13
 type: "Lecture"
 title: "Putting it together"
 created: "2024-03-25"
+updated: "2024-03-28"
 ---
 
 # What prints?
+
+Part of what makes a great developer is one that can recognize bad code. Let's get into it :)
 
 ```cs
 Console.WriteLine("Enter a number");
@@ -37,6 +40,8 @@ In:7
 ```
 
 # What prints?
+
+Round 2
 
 ```cs
 int x = 5;
@@ -227,7 +232,7 @@ if (array1.Length != array2.Length)
     // Compare each element of the arrays
     for (int i = 0; i < array1.Length; i++)
     {
-        // the moment we find descrepency, set our lad to false
+        // the moment we find discrepancy, set our lad to false
         if (array1[i] != array2[i])
         {
             isEqual = false;
@@ -239,3 +244,33 @@ Console.WriteLine(isEqual);
 ```
 
 # Lab 3 Clarifications
+
+The pressure’s on and now you need to cut the right wire to diffuse the bomb. With every wrong wire cut, your luck is tested. Once your luck runs out it’s game over.
+
+Hint: Use nested loops and an array
+
+Getting the winning wire you need to cut:
+
+```cs
+Random random = new Random();
+// Selecting a random number between 1 and 6
+int winningWire = random.Next(1, 7);
+```
+
+Calculating your luck:
+
+```cs
+// initialize luck between 1 and 6
+int luck = random.Next(1, 7);
+. . .
+// update luck on each incorrect wire cut
+luck–-;
+```
+
+As a general starting point - Let's think about how to craft our recipe:
+
+```text
+Step 1 - initialize the winning wire (if this is ever guess the user wins)
+Step 2 - initialize luck (this represents how many wrong guesses the user can input)
+Step 3 - Keep getting user input and checking to see if their guess == winningWire. if luck == 0 then they fail.
+```
