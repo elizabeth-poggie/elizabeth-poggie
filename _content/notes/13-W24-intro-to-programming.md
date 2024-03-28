@@ -116,3 +116,48 @@ for (int i = 0; i < array.GetLength(0); i++) {
     smallestElements[i] = smallest;
 }
 ```
+
+# Array Example
+
+Let's write a program that takes an array and prints an array where all the elements have been moved up by one position. The element at the end of the array should end up at the beginning. For example:
+
+```cs
+// if the initial array is
+int[] input = {2,4,6,8,1,2,3};
+
+// ... other stuff
+
+// the program should print a new array
+input = {3,2,4,6,8,1,2};
+```
+
+## The solution
+
+```cs
+TBD
+```
+
+# Comparing Array Example
+
+Let's write a program that takes two arrays of `string`s and prints the number of indices at which the `string` in both arrays at the same index have the same length. For example:
+
+```cs
+// if the two arrays are
+string[] array1 = { "cat", "bunny", "house", "puppy" };
+string[] array2 = { "cow", "elephant", "dog", "mouse" };
+
+// ... other stuff
+
+// the program should print 2
+Console.WriteLine(2);
+```
+
+## The solution
+
+```cs
+TBD
+```
+
+# Comparing Array Example
+
+Let's write your own method that takes two int arrays as inputs and returns true is the content of the two arrays is equal.

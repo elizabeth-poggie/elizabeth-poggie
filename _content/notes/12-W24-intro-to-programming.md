@@ -327,8 +327,7 @@ for (int k = 0; k < array.GetLength(1); k++) {
     array[j, k] = temp[k];
 }
 
-
-
+// Now print
 for (int x=0; x<array.GetLength(0); x++) {
     for (int y=0; y<array.GetLength(1); y++) {
         Console.Write(array[x,y]);
