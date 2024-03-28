@@ -134,7 +134,27 @@ input = {3,2,4,6,8,1,2};
 ## The solution
 
 ```cs
-TBD
+int[] input = { 2, 4, 6, 8, 1, 2, 3 };
+
+// Move elements up by one position
+int temp = input[input.Length - 1];
+for (int i = input.Length - 1; i > 0; i--)
+{
+    input[i] = input[i - 1];
+}
+input[0] = temp;
+
+// Print the new array
+Console.Write("{ ");
+for (int i = 0; i < input.Length; i++)
+{
+    Console.Write(input[i]);
+    if (i < input.Length - 1)
+    {
+        Console.Write(", ");
+    }
+}
+Console.WriteLine(" }");
 ```
 
 # Comparing Array Example
@@ -155,9 +175,67 @@ Console.WriteLine(2);
 ## The solution
 
 ```cs
-TBD
+// Initialize arrays
+string[] array1 = { "cat", "bunny", "house", "puppy" };
+string[] array2 = { "cow", "elephant", "dog", "mouse" };
+
+// Ensure both arrays have the same length before starting
+if (array1.Length != array2.Length) {
+    Console.WriteLine("Arrays must have the same length to begin.");
+} else {
+    // Initialize counter
+    int count = 0;
+    // Iterate through both arrays and count matching lengths
+    for (int i = 0; i < array1.Length; i++)
+    {
+        if (array1[i].Length == array2[i].Length)
+        {
+            count++;
+        }
+    }
+    Console.WriteLine("The number of strings with the same length is " + count);
+}
 ```
 
 # Comparing Array Example
 
-Let's write your own method that takes two int arrays as inputs and returns true is the content of the two arrays is equal.
+Let's write a program that takes two `int` arrays and prints `true` is the content of the two arrays is equal. For example:
+
+```cs
+// If the 2 arrays are:
+int[] array1 = {1,2,3};
+int[] array2 = {1,2,3};
+
+// Then the program should print true
+Console.WriteLine(true);
+```
+
+## The solution
+
+```cs
+int[] array1 = { 1, 2, 3 };
+int[] array2 = { 1, 2, 3 };
+
+// Initialize result - not guilty until proven otherwise
+bool isEqual = true;
+
+// First Check if arrays have the same length
+if (array1.Length != array2.Length)
+{
+    isEqual = false;
+} else {
+    // Compare each element of the arrays
+    for (int i = 0; i < array1.Length; i++)
+    {
+        // the moment we find descrepency, set our lad to false
+        if (array1[i] != array2[i])
+        {
+            isEqual = false;
+        }
+    }
+}
+// now print the result
+Console.WriteLine(isEqual);
+```
+
+# Lab 3 Clarifications
