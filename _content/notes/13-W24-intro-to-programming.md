@@ -269,8 +269,6 @@ luck–-;
 
 As a general starting point - Let's think about how to craft our recipe:
 
-```text
-Step 1 - initialize the winning wire (if this is ever guess the user wins)
-Step 2 - initialize luck (this represents how many wrong guesses the user can input)
-Step 3 - Keep getting user input and checking to see if their guess == winningWire. if luck == 0 then they fail.
-```
+- Step 1 - initialize the `winningWire` (if this is ever guess the user wins)
+- Step 2 - initialize `luck` (this represents how many wrong guesses the user can input)
+- Step 3 - Keep getting user input and checking to see if their `guess == winningWire.` if `luck == 0` then they fail.
