@@ -3,7 +3,7 @@
 category: "User Interfaces"
 number: 4
 type: "Lab"
-title: "The Feature Grind"
+title: "Mobile First ™"
 created: "2024-04-01"
 ---
 
@@ -29,7 +29,7 @@ Considerations:
 
 This aspect evaluates the overall quality of the code. High-quality code should be well-structured and easy to understand.
 
-Consideration:
+Considerations:
 
 - Are variable names descriptive and meaningful?
 - Are error handling mechanisms informative, providing meaningful feedback to users?
