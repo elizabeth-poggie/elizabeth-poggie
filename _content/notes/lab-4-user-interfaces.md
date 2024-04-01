@@ -18,19 +18,38 @@ created: "2024-04-01"
 
 ## Meets Requirements
 
-The lab fulfills all specified requirements as outlined in the given instructions.
+The lab meets all specified requirements as outlined in the given instructions.
+
+Considerations:
+
+- Have you thoroughly reviewed all lab details before final submission to ensure compliance with requirements?
+- Have you clarified any ambiguities or uncertainties regarding the lab requirements before proceeding with your submission?
 
 ## Code Quality
 
 This aspect evaluates the overall quality of the code. High-quality code should be well-structured and easy to understand.
 
+Consideration:
+
+- Are variable names descriptive and meaningful?
+- Are error handling mechanisms informative, providing meaningful feedback to users?
+- If modularization is possible, is it implemented effectively, ensuring clear separation of concerns and minimal coupling between sub-components?
+- If a design pattern can be leveraged, is it applied correctly and in alignment with the intended use case, enhancing code maintainability and extensibility?
+
 ## Best Practices
 
-The code follows established coding conventions and standards. Adhering to best practices ensures that the code is scalable, reliable, and maintainable over time.
+The code follows established coding conventions and standards, promoting scalability, reliability, and maintainability over time.
+
+Considerations:
+
+- Are variable names consistently written in `camelCase` format?
+- Does the code maintain consistent indentation and formatting throughout?
+- Are comments used effectively to explain complex sections of code or document important decisions?
+- Have you minimized code duplication?
 
 ## Logic
 
-Code logic should be clear, concise, and logically sound to ensure proper functioning with minimal complexity. Embracing simplicity often leads to elegant solutions.
+The code logic should be clear, concise, and logically sound to ensure proper functioning with minimal complexity. Embracing simplicity often leads to elegant solutions.
 
 Considerations:
 
