@@ -101,7 +101,7 @@ Considerations:
 
 Anti-pattern:
 
-- Fulfills the minimum criteria without striving for innovation or originality.
+- Fulfills the minimum requirements without innovation or originality.
 - Demonstrates a reluctance to explore new ideas or take calculated risks in problem-solving.
 - Fails to incorporate diverse perspectives or consider alternative methods, resulting in stagnation.
 
@@ -111,19 +111,19 @@ Demonstrates [leadership skills](https://www.amazon.jobs/content/en/our-workplac
 
 Considerations:
 
+- Models desired behaviors and work ethic, inspiring others to follow suit through actions rather than words alone.
 - Demonstrates understanding of tasks by asking clarifying questions.
 - Respectfully challenges decisions in instances of disagreement.
-- Consistently supports the success of peers through coaching or mentoring. (not by copy and pasting solutions tho lol, thats plagiarism)
+- Consistently supports the success of peers through coaching or mentoring. (not by copy and pasting solutions tho lol, that's plagiarism)
 - Enhances the class experience by identifying and suggesting improvements.
 - In group activities, you are the go to person to communicate the work to the class.
-- Models desired behaviors and work ethic, inspiring others to follow suit through actions rather than words alone.
 
 Anti-pattern:
 
 - Does not accept feedback from their peers or the prof.
 - Actively promotes a negative outlook for the class or alienates individuals without offering constructive solutions. For instance, handles conflicts in a counterproductive manner by avoiding confrontation or escalating disputes without seeking resolution.
 - Avoids taking responsibility for errors or setbacks, deflecting blame onto others or external factors.
-- Prioritizes personal gain over the welfare and success of other class members.
+- Prioritizes personal gain over the wellbeing and success of other class members. Note: Prioritizing personal interests != protecting oneself; it's essential to maintain [healthy boundaries](https://www.amazon.ca/Set-Boundaries-Find-Peace-Reclaiming/dp/0349426953/ref=asc_df_0349426953/?tag=googleshopc0c-20&linkCode=df0&hvadid=500814012938&hvpos=&hvnetw=g&hvrand=13357593454139839732&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000489&hvtargid=pla-1119061818132&psc=1&mcid=00dec801770a35b391850d8a28aa2bd6) without sacrificing one's own wellbeing for others :^)
 
 ## Timely Submission
 
