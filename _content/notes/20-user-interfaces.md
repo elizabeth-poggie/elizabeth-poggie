@@ -191,9 +191,48 @@ You will notice that by default, the `input` element creates a basic single-line
 
 Are there more options? [Yes lol](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input). Use them wisely depending on the project
 
-# Text area
+# Labels
 
-...
+The `<label>` element associates a text caption with an `<input>` field. Going back to our original example:
+
+```html
+<label for="nameF">Username</label>
+<input type="text" name="nameFirst" id="nameF" />
+```
+
+is what creates this look:
+
+```text
+
+Username
+ ________________________
+|________________________|
+
+```
+
+Why use labels as opposed to using a <p> or another text element before the input? Using `<label>` for `<input>` has two major advantages:
+
+- Screen readers can read out the label when the user is focused on the form input.
+- Clicking on the label will focus/activate the input.
+
+# Dropdowns
+
+The <select> element is used to create a drop-down list of options. For example:
+
+```html
+<label for="pet-select">Choose a pet:</label>
+
+<select name="pets" id="pet-select">
+  <option value="">-- Wow! Look at all these options!! --</option>
+  <option value="cat1">Cat</option>
+  <option value="cat2">Cat</option>
+  <option value="cat3">Cat</option>
+  <option value="cat4">Cat</option>
+  <option value="cat5">Cat</option>
+</select>
+```
+
+Here the `<option> ... </option>` tags inside the `<select>` element define the available options in the drop-down list.
 
 # Putting it all together
 
