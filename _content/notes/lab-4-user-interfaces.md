@@ -16,7 +16,76 @@ created: "2024-04-01"
 
 # Goal
 
-In this lab we will develop and practice intermediate CSS layout skills by leveraging Flexbox (and Grid if you prefer). The goal is to make your assignment responsive and adapt for Mobile, Tablet, and Desktop devices.
+In this lab we will develop and practice intermediate CSS layout skills by leveraging Flexbox and Responsive CSS Techniques. The goal is to make your website responsive and adapt for Mobile, Tablet, and Desktop devices.
+
+# Part 1) Value Generation (50%)
+
+Building off of your [lab 3](./notes/lab-3-user-interfaces), your website now features an entertainment section emulating TikTok's [homepage](www.tiktok.com/en/). When a user clicks on the "Get Educated" tab of your nav bar, they should be redirected to the following page:
+
+<insert design>
+
+Please note that your solution does not need to be a perfect copy, however, you should aim to make it as close as possible while factoring in your particular brand styling:
+
+<insert design specs>
+
+## Updated Requirements
+
+- Your navbar must be constantly shown at the top of the viewport.
+- Clicking on the logo should take the user to the main page (`#`)
+- Clicking any link other than "Get Educated" should take the user back to the main page (`#`)
+- Notice the text changes for the footer.
+
+# Part 2) Responsive Design (40%)
+
+Implement the following breakpoints:
+
+- Mobile portrait: 594 px and below
+- Tablet: 595px to 1076px
+- Desktop: 1077px and above
+
+And for each breakpoint, factor in the below changes ...
+
+## Home Page
+
+Desktop
+
+<insert design>
+
+Tablet
+
+<insert design>
+
+Mobile
+
+<insert design>
+
+## Get Educated Page
+
+Desktop
+
+<insert design>
+
+Tablet
+
+<insert design>
+
+Mobile
+
+<insert design>
+
+# Part 3) Publishing Content (10%)
+
+Follow [this tutorial](https://pages.github.com/) to publish your website. We will cover the content in class so no rush on this task yet if you don't know what to do !!
+
+# Hints
+
+For the content and styles, re-use the work did for lab 3 to save on time.
+
+For the component you’re working on, begin by getting all the content onto the page before beginning to style it. In other words, do the HTML and then do the CSS. If you get stuck, use Chrome DevTools.
+
+Use this [HEX color picker](https://imagecolorpicker.com/en) if you want to steal colors from TikTok.
+
+For icons, you can look [here](https://www.svgrepo.com/svg/488230/home-3) for SVGs.
 
 # Evaluation Criteria
 
@@ -121,9 +190,8 @@ Considerations:
 Anti-pattern:
 
 - Does not accept feedback from their peers or the prof.
-- Actively promotes a negative outlook for the class or alienates individuals without offering constructive solutions. For instance, handles conflicts in a counterproductive manner by avoiding confrontation or escalating disputes without seeking resolution.
+- Actively promotes a negative outlook for the class or alienates individuals without offering constructive solutions.
 - Avoids taking responsibility for errors or setbacks, deflecting blame onto others or external factors.
-- Prioritizes personal gain over the wellbeing and success of other class members. Note: Prioritizing personal interests != protecting oneself; it's essential to maintain [healthy boundaries](https://www.amazon.ca/Set-Boundaries-Find-Peace-Reclaiming/dp/0349426953/ref=asc_df_0349426953/?tag=googleshopc0c-20&linkCode=df0&hvadid=500814012938&hvpos=&hvnetw=g&hvrand=13357593454139839732&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000489&hvtargid=pla-1119061818132&psc=1&mcid=00dec801770a35b391850d8a28aa2bd6) without sacrificing one's own wellbeing for others :^)
 
 ## Timely Submission
 
