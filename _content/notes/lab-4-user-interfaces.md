@@ -32,7 +32,7 @@ Please note that your solution does not need to be a perfect copy, however, you 
 
 - Your navbar must be constantly shown at the top of the viewport.
 - Clicking on the logo should take the user to the main page (`#`)
-- Clicking any link other than "Get Educated" should take the user back to the main page (`#`)
+- Clicking on any link other than "Get Educated" should take the user back to the main page (`#`)
 - Notice the text changes for the footer.
 
 # Part 2) Responsive Design (40%)
@@ -180,7 +180,6 @@ Demonstrates [leadership skills](https://www.amazon.jobs/content/en/our-workplac
 
 Considerations:
 
-- Models desired behaviors and work ethic, inspiring others to follow suit through actions rather than words alone.
 - Demonstrates understanding of tasks by asking clarifying questions.
 - Respectfully challenges decisions in instances of disagreement.
 - Consistently supports the success of peers through coaching or mentoring. (not by copy and pasting solutions tho lol, that's plagiarism)
