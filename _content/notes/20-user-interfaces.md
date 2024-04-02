@@ -237,14 +237,14 @@ Here the `<option> ... </option>` tags inside the `<select>` element define the 
 Immediately after an `<input>` of `type=button` is clicked inside a `form`
 
 ```html
-<input type="submit" value="Submit" />
+<input type="submit" value="Submit" onclick="submit()" />
 ```
 
 Immediately after a `<button>` element is clicked inside a form
 As far as the form is concerned both methods are functionally the same.
 
 ```html
-<button type="submit">
+<button type="submit" onclick="submit()">
   <i>Submit</i>
 </button>
 ```
@@ -254,31 +254,49 @@ The main advantage of the button is that this element can take other elements in
 # Putting it all together
 
 ```html
-<!-- Form which will send a GET request to the current URL -->
-<form method="get">
-  <label>
-    Name:
-    <input name="submitted-name" autocomplete="name" />
-  </label>
-  <button>Save</button>
-</form>
-
-<!-- Form which will send a POST request to the current URL -->
-<form method="post">
-  <label>
-    Name:
-    <input name="submitted-name" autocomplete="name" />
-  </label>
-  <button>Save</button>
-</form>
-
-<!-- Form with fieldset, legend, and label -->
-<form method="post">
-  <fieldset>
-    <legend>Do you agree to the terms?</legend>
-    <label><input type="radio" name="radio" value="yes" />YES</label>
-    <label><input type="radio" name="radio" value="no" />Absolutely not</label>
-  </fieldset>
+<form action="/yeet-data">
+  <!-- Form which will send a GET request to the current URL -->
+  <form method="get">
+    <label>
+      First name:
+      <!-- Notice the placeholder text -->
+      <input name="submitted-name" placeholder="Arthur" />
+    </label>
+    <button>Save</button>
+  </form>
+  <br />
+  <!-- Form which will send a POST request to the current URL -->
+  <form method="post">
+    <label>
+      Middle name:
+      <!-- Notice the disabled attribute -->
+      <input name="submitted-name" disabled />
+    </label>
+    <button>Save</button>
+  </form>
+  <br />
+  <!-- Form which will send a POST request to the current URL -->
+  <form method="get">
+    <label>
+      Last name:
+      <!-- Notice the readonly attribute -->
+      <input name="submitted-name" readonly placeholder="Dent" />
+    </label>
+    <button>Save</button>
+  </form>
+  <br />
+  <!-- Form with fieldset, legend, and label -->
+  <form method="post">
+    <fieldset>
+      <legend>Do you agree to the terms?</legend>
+      <label><input type="radio" name="radio" value="yes" />YES</label>
+      <label>
+        <input type="radio" name="radio" value="no" />Absolutely not</label
+      >
+    </fieldset>
+  </form>
+  <br />
+  <input type="submit" value="Submit" onclick="submit()" />
 </form>
 ```
 
