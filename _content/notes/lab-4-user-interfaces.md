@@ -16,7 +16,9 @@ created: "2024-04-01"
 
 # Goal
 
-In this lab we will develop and practice intermediate CSS layout skills by leveraging Flexbox and Responsive CSS Techniques. The goal is to make your website responsive and adapt for Mobile, Tablet, and Desktop devices.
+In this lab we will develop and practice intermediate CSS layout skills by leveraging Flexbox and Responsive CSS Techniques. If you prefer to use CSS Grid, go for it !! The goal is to make your website responsive and adapt for Mobile, Tablet, and Desktop devices building off of what we did last lab.
+
+For those of you who took the time to create maintainable code last lab, you will find this lab relatively quick to do despite seeming like a lot of work. This is by design as most developer's re-use logic they use from previous projects in future work. Think like a lazy person, keep it simple and do more with less :^)
 
 # Part 1) Value Generation (50%)
 
