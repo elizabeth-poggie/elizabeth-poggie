@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "User Interfaces"
-number: 19
+number: 20
 type: "Lecture"
 title: "HTML Forms"
 created: "2024-03-23"
@@ -17,10 +17,10 @@ For this lecture, we will stick to the basics and in later classes you will cove
 
 Forms are made of 4 primarily components:
 
-- One `<form>` container element that wraps all form elements;
-- One or more `<input type="">` element where users enter data (e.g., `type=search` for a search bar, or `type=radio` to select one of many options)
-- An `<input type=submit>` element or a `<button>` element for triggering the submission;
-- `<label>` elements that visually identify `<input>` elements
+- One `<form>` container element that wraps all other child `<form>` elements.
+- One or more `<input type="">` element where users "inputs" data.
+- An `<input type=submit>` element or a `<button>` element to trigger form submission.
+- `<label>` elements that visually identify `<input>` elements. (we love accessibility)
 
 For example:
 
@@ -39,7 +39,6 @@ For example:
 should give the following basic layout:
 
 ```text
-
 Username
  ________________________
 |________________________|
@@ -97,10 +96,9 @@ But what does "GET" mean? What does "POST" mean? For now what you need to know i
 - "GET", retries data
 - "POST", sends data
 
-Another way to think of this concept is that you want to put a message in an old school envelope,: you're either sending it to a specific address or receiving it from one. Similarly, in our case, the 'address' corresponds to a URL where the 'server' or 'backend' resides, and the 'method' indicates whether we're sending ('POST') or receiving ('GET') data.
+Another way to think of this concept is that you want to put a message in an old school envelope, you're either sending it to a specific address or receiving it from one. Similarly, in our case, the 'address' corresponds to a URL where the 'server' or 'backend' resides, and the 'method' indicates whether we're sending ('POST') or receiving ('GET') data.
 
 ```text
-
 ✉️ -- POST --> 🗃️ @ url
 
 ✉️ <-- GET -- 🗃️ @ url
@@ -115,7 +113,7 @@ But what does this data look like? Well it depends:
 As a general rule: always use POST if the form data contains sensitive information.
 
 We always strive to make our info more confidential, especially when it's personal.
-This practice ensures that even if someone attempts to intercept your 'POST' request,, they'd need mad IQ skills to decrypt the sensitive info sent to the server. Going back to our message analogy, imagine if someone tried to scan your risque envelopes or screenshot your private texts, your haters would need mad EQ skills to understand the nuances of your communication. (Stay bothered, we love verbal boundaries)
+This practice ensures that even if someone attempts to intercept your 'POST' request, they'd need mad IQ skills to decrypt the sensitive info sent to the server. Going back to our message analogy, imagine if someone tried to scan your risque envelopes or screenshot your private texts, your haters would need mad EQ skills to understand the nuances of your communication. (Stay bothered, we love verbal boundaries)
 
 ```text
 ✉️ -- POST -- (your haters) --> ❤️ (your loved ones)
@@ -162,9 +160,6 @@ You will notice that by default, the `input` element creates a basic single-line
 <label for="radio1">Option 1</label><br />
 <input type="radio" id="radio2" name="radioGroup" value="option2" />
 <label for="radio2">Option 2</label><br />
-
-<!-- Submit Button: for submitting form data -->
-<input type="submit" value="Submit" />
 ```
 
 ## Numeric inputs (including date && time)
@@ -203,14 +198,15 @@ The `<label>` element associates a text caption with an `<input>` field. Going b
 is what creates this look:
 
 ```text
-
 Username
  ________________________
 |________________________|
 
 ```
 
-Why use labels as opposed to using a <p> or another text element before the input? Using `<label>` for `<input>` has two major advantages:
+## Why labels?
+
+Using `<label>` for `<input>` has two major advantages compared to other text elements we are familiar with
 
 - Screen readers can read out the label when the user is focused on the form input.
 - Clicking on the label will focus/activate the input.
@@ -233,6 +229,27 @@ The <select> element is used to create a drop-down list of options. For example:
 ```
 
 Here the `<option> ... </option>` tags inside the `<select>` element define the available options in the drop-down list.
+
+# Trigger Submission
+
+## There are two ways of triggering a form submission...
+
+Immediately after an `<input>` of `type=button` is clicked inside a `form`
+
+```html
+<input type="submit" value="Submit" />
+```
+
+Immediately after a `<button>` element is clicked inside a form
+As far as the form is concerned both methods are functionally the same.
+
+```html
+<button type="submit">
+  <i>Submit</i>
+</button>
+```
+
+The main advantage of the button is that this element can take other elements inside, such as icons or images.
 
 # Putting it all together
 
