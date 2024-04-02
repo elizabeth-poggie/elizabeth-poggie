@@ -238,6 +238,7 @@ Immediately after an `<input>` of `type=button` is clicked inside a `form`
 
 ```html
 <input type="submit" value="Submit" onclick="submit()" />
+<!-- (Javascript not included) -->
 ```
 
 Immediately after a `<button>` element is clicked inside a form
@@ -247,6 +248,7 @@ As far as the form is concerned both methods are functionally the same.
 <button type="submit" onclick="submit()">
   <i>Submit</i>
 </button>
+<!-- (Javascript not included) -->
 ```
 
 The main advantage of the button is that this element can take other elements inside, such as icons or images.
