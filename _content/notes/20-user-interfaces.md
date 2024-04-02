@@ -6,3 +6,125 @@ type: "Lecture"
 title: "HTML Forms"
 created: "2024-03-23"
 ---
+
+# Intro
+
+Forms are the primary interactive component of websites. Forms allow users to enter data, which is generally sent to a web server for processing and storage, or used immediately on the browser to update the interface.
+
+For this lecture, we will stick to the basics and in later classes you will cover server-side and client-side JavaScript related logic for forms.
+
+# Basic structure
+
+Forms are made of 4 primarily components:
+
+- One `<form>` container element that wraps all form elements;
+- One or more `<input type="">` element where users enter data (e.g., `type=search` for a search bar, or `type=radio` to select one of many options)
+- An `<input type=submit>` element or a `<button>` element for triggering the submission;
+- `<label>` elements that visually identify `<input>` elements
+
+For example:
+
+```html
+<form action="/yeet-data">
+  <label for="nameF">Username</label>
+  <input type="text" name="nameFirst" id="nameF" />
+
+  <label for="nameL">Password</label>
+  <input type="text" name="nameLast" id="nameL" />
+
+  <input type="submit" value="Login in" />
+</form>
+```
+
+should give the following basic layout:
+
+```text
+
+Username
+ ________________________
+|________________________|
+
+Password
+ ________________________
+|________________________|
+
+ ________________________
+|                        |
+|         Log in         |
+|________________________|
+
+```
+
+Look familiar? You can find this snippet of logic implemented on practically every website you have visited today alone. Let's look at each element in detail...
+
+# Form Element
+
+the `<form>` tag is used to create an HTML form for user input:
+
+```html
+<form>
+  <!-- other stuff -->
+</form>
+```
+
+However the above example is still useless as it does nothing and sends nothing.
+
+If you want the form to send data, you need to include it's most important attribute `action="..."`, which defines the URL of where to send the data.
+
+```html
+<form action="/yeet-data">
+  <!-- other stuff -->
+</form>
+```
+
+The URL usually points to a server-site script, in this case "/yeet-data" which will parse the data (categorize it) and store it. You will explore that fun stuff later on :^) problems for future you!!
+
+However the form is still useless as it still does nothing. How do we fix this? This is where the next most important attribute `method="..."` comes into play, this specifies the HTTP method you intend to use when the form is submitted (GET or POST).
+
+```html
+<form action="/yeet-data" method="get">
+  <!-- other stuff -->
+</form>
+<!-- other stuff -->
+<form action="/yeet-data" method="post">
+  <!-- other stuff -->
+</form>
+```
+
+# Get && Post
+
+But what does "GET" mean? What does "POST" mean? For now what you need to know is:
+
+- "GET", retries data
+- "POST", sends data
+
+Another way to think of this concept is that you want to put a message in an old school envelope,: you're either sending it to a specific address or receiving it from one. Similarly, in our case, the 'address' corresponds to a URL where the 'server' or 'backend' resides, and the 'method' indicates whether we're sending ('POST') or receiving ('GET') data.
+
+```text
+
+✉️ -- POST --> 🗃️ @ url
+
+✉️ <-- GET -- 🗃️ @ url
+
+```
+
+But what does this data look like? Well it depends:
+
+- With a GET method the data is submitted and visible in the URL bar (i.e. to the user).
+- With a POST method, the data is encoded in the `html` request body and can be encrypted (with `https`).
+
+As a general rule: always use POST if the form data contains sensitive information.
+
+We always strive to make our info more confidential, especially when it's personal.
+This practice ensures that even if someone attempts to intercept your 'POST' request,, they'd need mad IQ skills to decrypt the sensitive info sent to the server. Going back to our message analogy, imagine if someone tried to screenshot your private texts or scan your risque envelopes, your haters would need mad EQ skills to understand the nuances of your communication. (Stay bothered, we love verbal boundaries)
+
+```text
+✉️ -- POST -- (your haters) --> ❤️ (your loved ones)
+```
+
+# Exercises
+
+- [HTML Forms, Exercises 1 - 2](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_forms1)
+- [Form Elements, Exercises 1 - 3](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_form_elements1)
+- [Input Types, Exercises 1 - 5](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_form_input_types1)
+- [Form Attributes, Exercises 1 - 4](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_form_attributes1)
