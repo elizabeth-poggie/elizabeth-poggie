@@ -34,7 +34,7 @@ Please note that your solution does not need to be a perfect copy, however, you 
 
 ![specs](/assets/notes/W24-user-interfaces/labs/03/lab3-specs.png)
 
-Feel free to reuse any branding elements created in Lab 3 for Lab 2, work smarter not harder :^)
+Feel free to reuse any branding elements created in Lab 3 for Lab 4, work smarter not harder :^)
 
 ## Updated Requirements
 
@@ -47,7 +47,7 @@ Feel free to reuse any branding elements created in Lab 3 for Lab 2, work smarte
 
 Implement the following breakpoints:
 
-- Mobile portrait: 594 px and below
+- Mobile: 594 px and below
 - Tablet: 595px to 1076px
 - Desktop: 1077px and above
 
@@ -55,13 +55,9 @@ And for each breakpoint, factor in the below views ...
 
 ## Get Educated Page
 
-Desktop
-
-<insert design>
-
 Tablet
 
-<insert design>
+![design](/assets/notes/W24-user-interfaces/labs/04/TABLET-TikTok.png)
 
 Mobile
 
