@@ -71,7 +71,7 @@ Desktop
 
 Tablet
 
-<insert design>
+![design](/assets/notes/W24-user-interfaces/labs/04/TABLET-home.png)
 
 Mobile
 
