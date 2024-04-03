@@ -218,7 +218,8 @@ const NotesSideBar = ({ related, current }: ISideBarProps) => {
               </header>
             </section>
             {related.notes?.map((item) => {
-              const isActiveLink = item.title === current.title;
+              const isActiveLink =
+                item.title === current.title && item.number === current.number;
               return (
                 <div key={item.slug}>
                   <TextLink
