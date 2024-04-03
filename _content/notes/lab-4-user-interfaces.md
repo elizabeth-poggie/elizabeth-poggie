@@ -54,25 +54,25 @@ And for each breakpoint, factor in the below layouts ...
 
 # Part 3) Get Educated Page (20%)
 
-Tablet
+## Tablet
 
 ![design](/assets/notes/W24-user-interfaces/labs/04/TABLET-TikTok.png)
 
-Mobile
+## Mobile
 
 ![design](/assets/notes/W24-user-interfaces/labs/04/MOBILE-TikTok.png)
 
 # Part 4) Home Page (20%)
 
-Desktop
+## Desktop
 
 ![design](/assets/notes/W24-user-interfaces/labs/04/DESKTOP-home.png)
 
-Tablet
+## Tablet
 
 ![design](/assets/notes/W24-user-interfaces/labs/04/TABLET-home.png)
 
-Mobile
+## Mobile
 
 ![design](/assets/notes/W24-user-interfaces/labs/04/MOBILE-home.png)
 
