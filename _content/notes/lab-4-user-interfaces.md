@@ -61,7 +61,7 @@ Tablet
 
 Mobile
 
-todo
+![design](/assets/notes/W24-user-interfaces/labs/04/MOBILE-TikTok.png)
 
 ## Home Page
 
