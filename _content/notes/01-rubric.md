@@ -99,12 +99,13 @@ Ensures punctual submissions.
 
 # Creativity Bonus
 
-The code takes an innovative and original approach. Creativity in software development can manifest in various ways, such as unique interface designs, unconventional problem-solving approaches, innovative algorithms, or novel functionalities that enhance user experience or efficiency.
+The code takes an innovative and original approach.
 
 ## Considerations:
 
-- Did you demonstrate out-of-the-box thinking?
-- Did you incorporate your own touch into the solution?
+- Was your problem-solving approach unconventional?
+- Did you incorporate your own touch into the solution, such as creating a unique interface design or developing your own algorithm?
+- Did you add any additional features to your solution that enhances the user experience?
 
 ## Anti-pattern:
 
