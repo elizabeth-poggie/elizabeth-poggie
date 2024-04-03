@@ -22,20 +22,26 @@ For those of you who took the time to create maintainable code last lab, you wil
 
 # Part 1) Value Generation (50%)
 
-Building off of your [lab 3](./notes/lab-3-user-interfaces), your website now features an entertainment section emulating TikTok's [homepage](www.tiktok.com/en/). When a user clicks on the "Get Educated" tab of your nav bar, they should be redirected to the following page:
+Building off of your [lab 3](./notes/lab-3-user-interfaces), your website now features an entertainment section emulating TikTok's [homepage](www.tiktok.com/en/). When a user clicks on the "Get Educated" tab of your revised nav bar:
 
-<insert design>
+![nav](/assets/notes/W24-user-interfaces/labs/04/New-Nav.png)
+
+They should be redirected to the following page:
+
+![design](/assets/notes/W24-user-interfaces/labs/04/DESKTOP-TikTok.png)
 
 Please note that your solution does not need to be a perfect copy, however, you should aim to make it as close as possible while factoring in your particular brand styling:
 
-![design](/assets/notes/W24-user-interfaces/labs/04/DESKTOP-TikTok.png)
+![specs](/assets/notes/W24-user-interfaces/labs/03/lab3-specs.png)
+
+Feel free to reuse any branding elements created in Lab 3 for Lab 2, work smarter not harder :^)
 
 ## Updated Requirements
 
 - Your navbar must be constantly shown at the top of the viewport. (look up "sticky nav bars")
 - Clicking on the logo should take the user to the main page (`#`)
 - Clicking on any link other than "Get Educated" should take the user back to the main page (`#`)
-- Notice the text changes for the footer.
+- Notice the content changes in the footer.
 
 # Part 2) Responsive Design (50%)
 
