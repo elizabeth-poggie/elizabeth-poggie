@@ -61,13 +61,13 @@ Tablet
 
 Mobile
 
-<insert design>
+todo
 
 ## Home Page
 
 Desktop
 
-<insert design>
+![design](/assets/notes/W24-user-interfaces/labs/04/DESKTOP-home.png)
 
 Tablet
 
