@@ -10,7 +10,7 @@ created: "2024-04-01"
 # Overview
 
 - Worth: This lab will count towards the ‘lab’ portion of your final grade at 12.5%
-- Due: April 16, 2024 (by ‘end of day’)
+- Due: April 19, 2024 (by ‘end of day’)
 - Hand In: A `.zip` file containing your folder (work) onto LEA.
 - Late Penalty: Late submissions lose 10% per day to a maximum of 3 days. Nothing is accepted after 3 days and a grade of zero will be given.
 
@@ -28,16 +28,16 @@ Building off of your [lab 3](./notes/lab-3-user-interfaces), your website now fe
 
 Please note that your solution does not need to be a perfect copy, however, you should aim to make it as close as possible while factoring in your particular brand styling:
 
-<insert design specs>
+![design](/assets/notes/W24-user-interfaces/labs/04/DESKTOP-TikTok.png)
 
 ## Updated Requirements
 
-- Your navbar must be constantly shown at the top of the viewport.
+- Your navbar must be constantly shown at the top of the viewport. (look up "sticky nav bars")
 - Clicking on the logo should take the user to the main page (`#`)
 - Clicking on any link other than "Get Educated" should take the user back to the main page (`#`)
 - Notice the text changes for the footer.
 
-# Part 2) Responsive Design (40%)
+# Part 2) Responsive Design (50%)
 
 Implement the following breakpoints:
 
@@ -45,21 +45,7 @@ Implement the following breakpoints:
 - Tablet: 595px to 1076px
 - Desktop: 1077px and above
 
-And for each breakpoint, factor in the below changes ...
-
-## Home Page
-
-Desktop
-
-<insert design>
-
-Tablet
-
-<insert design>
-
-Mobile
-
-<insert design>
+And for each breakpoint, factor in the below views ...
 
 ## Get Educated Page
 
@@ -75,9 +61,19 @@ Mobile
 
 <insert design>
 
-# Part 3) Publishing Content (10%)
+## Home Page
 
-Follow [this tutorial](https://pages.github.com/) to publish your website. We will cover the content in class so no rush on this task yet if you don't know what to do !!
+Desktop
+
+<insert design>
+
+Tablet
+
+<insert design>
+
+Mobile
+
+<insert design>
 
 # Hints
 
