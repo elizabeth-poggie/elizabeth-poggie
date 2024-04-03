@@ -41,7 +41,6 @@ Feel free to reuse any branding elements created in Lab 3 for Lab 4, work smarte
 - Your navbar must be constantly shown at the top of the viewport. (look up "sticky nav bars")
 - Clicking on the logo should take the user to the main page (`#`)
 - Clicking on any link other than "Get Educated" should take the user back to the main page (`#`)
-- Notice the content changes in the footer.
 
 # Part 2) Responsive Design (10%)
 
@@ -51,7 +50,7 @@ Implement the following breakpoints:
 - Tablet: 595px to 1076px
 - Desktop: 1077px and above
 
-And for each breakpoint, factor in the below views ...
+And for each breakpoint, factor in the below layouts ...
 
 # Part 3) Get Educated Page (20%)
 
