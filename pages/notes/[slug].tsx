@@ -21,7 +21,7 @@ type CategoryProperties = {
   relatedTypes?: string[];
 };
 
-type SupportedCategories = "User Interfaces" | "Intro to Programming";
+type SupportedCategories = "User Interfaces" | "Intro to Programming" | "Admin";
 
 type CategoryMap = {
   [key in SupportedCategories]: CategoryProperties;
@@ -35,6 +35,10 @@ export const categoryMap: CategoryMap = {
   "Intro to Programming": {
     color: "yellow",
     relatedTypes: ["Lecture", "Lab"],
+  },
+  Admin: {
+    color: "white",
+    relatedTypes: ["Rubric"],
   },
 };
 
