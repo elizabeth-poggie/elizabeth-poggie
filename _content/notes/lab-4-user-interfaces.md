@@ -43,7 +43,7 @@ Feel free to reuse any branding elements created in Lab 3 for Lab 4, work smarte
 - Clicking on any link other than "Get Educated" should take the user back to the main page (`#`)
 - Notice the content changes in the footer.
 
-# Part 2) Responsive Design (50%)
+# Part 2) Responsive Design (10%)
 
 Implement the following breakpoints:
 
@@ -53,7 +53,7 @@ Implement the following breakpoints:
 
 And for each breakpoint, factor in the below views ...
 
-## Get Educated Page
+# Part 3) Get Educated Page (20%)
 
 Tablet
 
@@ -63,7 +63,7 @@ Mobile
 
 ![design](/assets/notes/W24-user-interfaces/labs/04/MOBILE-TikTok.png)
 
-## Home Page
+# Part 4) Home Page (20%)
 
 Desktop
 
@@ -75,7 +75,7 @@ Tablet
 
 Mobile
 
-<insert design>
+![design](/assets/notes/W24-user-interfaces/labs/04/MOBILE-home.png)
 
 # Hints
 
