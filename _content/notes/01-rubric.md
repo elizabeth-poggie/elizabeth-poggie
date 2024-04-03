@@ -81,6 +81,22 @@ There are no additional defects, errors, or issues present in the code.
 
 - The code crashes on edge cases and does not provide effective error handling
 
+# Timely Submission
+
+Ensures punctual submissions.
+
+## Considerations:
+
+- Demonstrates awareness of when to seek guidance on tasks, allowing ample time before the deadline.
+- Communicates any personal circumstances preventing timely submission.
+- Successfully prioritizes tasks, allocating appropriate time to major components versus minor details.
+- Avoids scope creep to adhere to deadlines; while creativity is valued, it should not impede timely submission.
+
+## Anti-pattern:
+
+- Repeatedly misses deadlines
+- Fails to proactively communicate obstacles
+
 # Creativity Bonus
 
 The code takes an innovative and original approach. Creativity in software development can manifest in various ways, such as unique interface designs, unconventional problem-solving approaches, innovative algorithms, or novel functionalities that enhance user experience or efficiency.
@@ -113,19 +129,3 @@ Demonstrates [leadership skills](https://www.amazon.jobs/content/en/our-workplac
 - Does not accept feedback from their peers or the prof.
 - Actively promotes a negative outlook for the class or alienates individuals without offering constructive solutions.
 - Avoids taking responsibility for errors or setbacks, deflecting blame onto others or external factors.
-
-# Timely Submission
-
-Ensures punctual submissions.
-
-## Considerations:
-
-- Demonstrates awareness of when to seek guidance on tasks, allowing ample time before the deadline.
-- Communicates any personal circumstances preventing timely submission.
-- Successfully prioritizes tasks, allocating appropriate time to major components versus minor details.
-- Avoids scope creep to adhere to deadlines; while creativity is valued, it should not impede timely submission.
-
-## Anti-pattern:
-
-- Repeatedly misses deadlines
-- Fails to proactively communicate obstacles
