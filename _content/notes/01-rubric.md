@@ -49,7 +49,6 @@ The code follows established coding conventions and standards, promoting scalabi
 - Are variable names consistently written in `camelCase` format?
 - Does the code maintain consistent indentation and formatting throughout?
 - Are comments used effectively to explain complex sections of code or document important decisions?
-- Have you minimized code duplication?
 
 ## Anti-pattern:
 
