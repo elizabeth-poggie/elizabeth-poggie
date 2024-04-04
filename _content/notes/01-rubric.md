@@ -9,7 +9,7 @@ created: "2024-04-03"
 
 # Overview
 
-Created by Salim ATTOU, Director of Engineering & Infatrusture for industry professionals, and adapted by Poggie for the educational setting. The goal is to bridge the gap from classroom to desk, setting students up for success in their future careers, whether that be in higher education or the corporate world.
+Created by Salim ATTOU, Director of Engineering & Infrastructure for industry professionals, and adapted by Poggie for the educational setting. The goal is to bridge the gap from classroom to desk, setting students up for success in their future careers, whether that be in higher education or the corporate world.
 
 # Meets Requirements
 
