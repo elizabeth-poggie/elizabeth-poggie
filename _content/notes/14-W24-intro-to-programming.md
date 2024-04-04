@@ -28,11 +28,13 @@ Code is code and code talks.
 ## Let's do it in C#
 
 ```cs
+
+// Step 1) Prompt the user
 Console.WriteLine("What category of mistake did the student make?");
 Console.WriteLine();
-// what are the options?
-Console.WriteLine("Your options:");
 
+// Step 2) What are the options?
+Console.WriteLine("Your options:");
 Console.WriteLine("1.  Missing Requirement");
 Console.WriteLine("2.  Messy code quality");
 Console.WriteLine("3.  Does not follow best practices");
@@ -42,15 +44,14 @@ Console.WriteLine("6.  Late submission");
 Console.WriteLine();
 Console.WriteLine("Which option?");
 
-// Input validation
-// Step 2) Input validation
+// Step 3) Input validation
 int option;
 while (!int.TryParse(Console.ReadLine(), out option) || option <= 0)
 {
  Console.WriteLine("Invalid input. Please enter a positive integer between 1 and 6.");
 }
 
-// Now apply the proper feedback
+// Step 4) Now apply the proper feedback
 if (option == 1) {
 // missing requirement
 Console.WriteLine("The task does not meets all specified requirements as outlined in the given instructions.");
