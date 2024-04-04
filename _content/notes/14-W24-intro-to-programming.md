@@ -3,7 +3,7 @@
 category: "Intro to Programming"
 number: 14
 type: "Lecture"
-title: "Real world application"
+title: "Real world Application"
 created: "2024-04-04"
 ---
 
