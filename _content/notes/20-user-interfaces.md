@@ -112,11 +112,16 @@ But what does this data look like? Well it depends:
 
 As a general rule: always use POST if the form data contains sensitive information.
 
-We always strive to make our info more confidential, especially when it's personal.
-This practice ensures that even if someone attempts to intercept your 'POST' request, they'd need mad IQ skills to decrypt the sensitive info sent to the server. Going back to our message analogy, imagine if someone tried to scan your risque envelopes or screenshot your private texts, your haters would need mad EQ skills to understand the nuances of your communication. (Stay bothered, we love verbal boundaries)
+We always strive to make our info more confidential, especially when it's personal. This practice ensures that even if someone attempts to intercept your 'POST' request, they'd need mad IQ skills to decrypt the sensitive info sent to the server.
 
 ```text
-✉️ -- POST -- (your haters) --> ❤️ (your loved ones)
+(client) 💻 💌  -- POST -- (malicious actors) --> 🗃️ (server)
+```
+
+Going back to our message analogy, imagine if someone tried to scan your risque envelopes or screenshot your private texts, your haters would need mad EQ skills to understand the nuances of your communication. (Stay bothered, we love verbal boundaries)
+
+```text
+(you) 🧑 💌 -- POST -- (your haters) --> 💑 (your loved ones)
 ```
 
 What are other relevant attributes? It depends on the use case, the full docs can be found [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attributes)
