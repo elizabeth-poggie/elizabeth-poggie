@@ -4,11 +4,13 @@ category: "User Interfaces"
 number: 21
 type: "Lecture"
 title: "Form Validation"
-created: "2024-03-23"
+created: "2024-04-05"
 ---
 
 # Important Dates
 
+- Solar Eclipse 👉 the 8th (don't come to class, I wont be here lol)
+- Guest speaker 👉 the 12th (some questions on this talk will show up on Test 2)
 - Lab 4 (last lab) 👉 due the 19th
 - Test 2 (final test) 👉 the 23rd
 - Remainder of the class afterwards is coasting on the final project (details on that next week)
@@ -78,22 +80,42 @@ Specifies the increment amounts. (only useful for `type="number"`):
 
 # Why?
 
-Before submitting data to the server, it is important to ensure all required form controls are filled out, in the correct format. This is called client-side form validation, and helps ensure data submitted matches the requirements set forth in the various form controls.
+Before submitting data to the server, it is important to ensure all required form controls are filled out, in the correct format. For example, without input validation the user experience is impacted:
 
 ```text
 ❌ BAD - no input validation ❌
 
-(client) 💻 🗑️ -- POST --> 🗃️ (server)
-
-
-✅ GOOD - input validation ✅
-
+(client) 💻 🗑️ -- POST --> 🗑️ 🗃️ (server wondering why you gave it trash)
 ```
 
-Client-side validation is an initial check and an important feature of good user experience; by catching invalid data on the client-side, the user can fix it straight away.
+By factoring in client-side form validation, it helps ensure data submitted matches the expected inputs and or requirements. This improves the user experience because by catching invalid data on the client-side, the user can fix it straight away:
+
+```text
+✅ GOOD - input validation ✅
+
+(client) 💻 🗑️ -- 🛑 (nope) -- POST --> 🗃️ (server has no knowledge of the occurrence of trash)
+```
+
+Another way to think about this is instead of sending am emotionally driven text to a friend and them wondering why you are being nasty:
+
+```text
+❌ BAD - you did not self regulate and account for your target audience ❌
+
+(you) 🧑 🗑️ -- POST --> 🗑️ 💑 (your loved ones wondering why you are being nasty)
+```
+
+You can run it by ChatGPT to reformat the text to be constructive and apply effective emotional self regulation strategies.
+
+```text
+✅ GOOD - you can now refactor what you want to say ✅
+
+(you) 🧑 🗑️ -- 🛑 (ChatGPT) --> 🗑️ 💑 (your loved ones not knowing your going through stuff rn)
+```
+
+These principals not only help you maintain relationships with the people you care about, but they also serve to proactively address any errors in form submissions before they occur :^)
 
 # Is this enough?
 
 No lol.
 
-client-side validation should not be considered an exhaustive security measure! Your apps should always perform security checks on any form-submitted data on the server-side as well as the client-side, because client-side validation is too easy to bypass
+Client-side validation should not be considered an exhaustive security measure! Your apps should always perform security checks on any form-submitted data on the server-side as well as the client-side, because client-side validation is too easy to bypass
