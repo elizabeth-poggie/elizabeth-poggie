@@ -22,7 +22,20 @@ For those of you who took the time to create maintainable code last lab, you wil
 
 # Part 1) Value Generation (50%)
 
-Building off of your [lab 3](./notes/lab-3-user-interfaces), your website now features an entertainment section emulating TikTok's [homepage](www.tiktok.com/en/). When a user clicks on the "Get Educated" tab of your revised nav bar:
+Building off of your [lab 3](./notes/lab-3-user-interfaces), your website now features an entertainment section emulating TikTok's [homepage](www.tiktok.com/en/). Your file structure should look something like this:
+
+```md
+lab4
+├── index.html
+├── pages
+│ ├── get-educated.html
+├── assets
+│ ├── icon.svg
+├── css
+│ ├── style.css
+```
+
+And when a user clicks on the "Get Educated" tab of your revised nav bar:
 
 ![nav](/assets/notes/W24-user-interfaces/labs/04/New-Nav.png)
 

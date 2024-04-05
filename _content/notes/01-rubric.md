@@ -128,4 +128,4 @@ Demonstrates [leadership skills](https://www.amazon.jobs/content/en/our-workplac
 
 - Does not accept feedback from their peers or the prof.
 - Actively promotes a negative outlook for the class or alienates individuals without offering constructive solutions.
-- Avoids taking responsibility for errors or setbacks, deflecting blame onto others or external factors.
+- Avoids taking responsibility for actions, errors, or setbacks, deflecting blame onto others or external factors.
