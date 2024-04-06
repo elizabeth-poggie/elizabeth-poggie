@@ -38,7 +38,7 @@ export const categoryMap: CategoryMap = {
   },
   Admin: {
     color: "white",
-    relatedTypes: ["Rubric"],
+    relatedTypes: ["Rubric", "Office Hour"],
   },
 };
 
