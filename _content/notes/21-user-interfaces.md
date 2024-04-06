@@ -111,17 +111,17 @@ By factoring in client-side form validation, it helps ensure data submitted matc
 Another way to think about this is instead of sending am emotionally driven text to a friend and them wondering why you are being nasty:
 
 ```text
-❌ BAD - you did not self regulate and account for your target audience ❌
+❌ BAD - you did not account for your target audience ❌
 
-(you) 🧑 🗑️ -- POST --> 🗑️ 💑 (your loved ones wondering why you are being nasty)
+(you) 🧑 🗑️ -- POST --> 🗑️ 💑 (your loved ones)
 ```
 
-You can run it by ChatGPT to reformat the text, ensuring it is constructive and you can apply effective emotional self regulation strategies.
+You can run it by ChatGPT to reformat the text, ensuring it's constructive:
 
 ```text
 ✅ GOOD - you can now refactor what you want to say ✅
 
-(you) 🧑 🗑️ -- 🛑 (ChatGPT) --> 💑 (your loved ones not knowing your going through stuff rn)
+(you) 🧑 🗑️ -- 🛑 (ChatGPT) --> 💑 (your loved ones)
 ```
 
 These principals not only help you maintain relationships with the people you care about, but they also serve to proactively address any errors in form submissions before they occur :^)
