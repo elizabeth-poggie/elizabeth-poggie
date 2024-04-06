@@ -89,7 +89,7 @@ The feedback is generic except might not be helpful if the student makes a speci
 
 # Now let's work some magic
 
-Should you decide to pursue computer science, you will cover the material necessary to create the following scripts in later classes. HOWEVER If you are curious and want to learn it now, u can google it or ChatGPT it (that's what i did lmao).
+Should you decide to pursue computer science, you will cover the material necessary to create the following scripts in later classes. HOWEVER If you are curious and want to learn it now, u can google it or ChatGPT it (that's what i did).
 
 ## Bash Script
 
