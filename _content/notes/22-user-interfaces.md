@@ -232,9 +232,39 @@ git commit -m "💣 no more, long live 🧯"
 
 No lol, I do what's called `atomic commits` with absolutely trash names that provide no context to no one (including myself). It's good to be meaningful so it's easier to "undo" changes and understand what's going on later or you will be in a world of pain.
 
-# pull/push
+# Push
 
-TBD
+One you are ready to send your changes to your `remote repo` or `remote branch` you need to `push` those changes:
+
+```bash
+git push
+```
+
+# Pull
+
+If any changes have happened in the repo since you last checked, you need to `pull` those changes:
+
+```bash
+git pull
+```
+
+# Putting it all together
+
+```text
+                    (kajo on a "Local Repo")
+
+                        --- 👨‍💻 🎨 --- git add .
+                      /                  git commit -m "🎨 4 poggie"
+                    pull                     git push
+                    /                           \
+(Remote Repo) 🗂️ ---------------------------------------> 🗂️ (Remote Repo V.2)
+                 \                               /
+                pull                          git push
+                   \                      git commit -m "💣 no more, long live 🧯"
+                     ------ 👩‍💻 🧯 ----- git add .
+
+                       (me on a "Local Repo")
+```
 
 # GitHub Pages
 
