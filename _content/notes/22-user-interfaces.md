@@ -89,43 +89,57 @@ Here, I have the freedom to create features, squash bugs, and experiment without
 (OG folder) 🗂️ -
                 \
                  \
-                  \_______ 👩‍💻 💣 (me featuring an explosion)
+                  \_______ 👩‍💻 💣
+
+               (me featuring an explosion)
 ```
 
 Why is this so neat? Well, if me and my boy Kajo are working together and im stuck handling a bomb:
 
 ```text
-                       --- 👨‍💻 🎨 (kajo creating art)
+                   (kajo creating art)
+
+                       --- 👨‍💻 🎨
                      /
                     /
 (OG folder) 🗂️ -----
                 \
                  \
-                   ------ 👩‍💻 💣 (me featuring an explosion)
+                   ------ 👩‍💻 💣
+
+                 (me featuring an explosion)
 ```
 
 He could `merge` his own changes back to the OG folder:
 
 ```text
-                       --- 👨‍💻 🎨 (kajo creating art) ---
-                     /                                  \
-                    /                                    \
-(OG folder) 🗂️ ----------------------------------------------------> 🗂️ (OG folder V.2)
+                    (kajo creating art)
+
+                       --- 👨‍💻 🎨 ---
+                     /              \
+                    /                \
+(OG folder) 🗂️ ----------------------------> 🗂️ (OG folder V.2)
                 \
                  \
-                   ------ 👩‍💻 💣 (me featuring an explosion)
+                   ------ 👩‍💻 💣
+
+                 (me featuring an explosion)
 ```
 
 So that by the time I've diffused the bomb, i can `pull` his updates :)
 
 ```text
-                       --- 👨‍💻 🎨 (kajo creating art) ---
-                     /                                  \
-                    /                                    \
-(OG folder) 🗂️ ----------------------------------------------------> 🗂️ (OG folder V.2)
-                \                                             /
-                 \                                           /
-                   ------ 👩‍💻 🧯 (me featuring no bomb) ------
+                    (kajo creating art)
+
+                       --- 👨‍💻 🎨 ---
+                     /              \
+                    /                \
+(OG folder) 🗂️ ----------------------------> 🗂️ (OG folder V.2)
+                \                      /
+                 \                    /
+                   ------ 👩‍💻 🧯 ------
+
+                 (me featuring no bomb)
 ```
 
 ... And thus, no thoughts of copy and pasting need to be experienced. Github take's care of my version, his version, and the OG version with ease so we can get things done FAST 🏎️
@@ -152,13 +166,13 @@ GitHub archives all versions of the code. For instance, imagine if both Kajo's a
 But with Git, now that even if both of our computers are engulfed in flames, we can rest easy knowing that once we get new computers, we can pick up exactly where we left off :)
 
 ```text
-                       -------- 👨‍💻 🔥 -----------
-                     /            🔥             \
-                    /             🔥              \
-(OG folder) 🗂️ ---------------------------------------> 🗂️ (OG folder V.2)
-                \                🔥           /
-                 \              🔥           /
-                   ---------- 👩‍💻 🔥 ---------
+                       -------- 👨‍💻 🔥 --------
+                     /            🔥          \
+                    /             🔥           \
+(OG folder) 🗂️ -----------------------------------> 🗂️ (OG folder V.2)
+                \                🔥         /
+                 \              🔥         /
+                   ---------- 👩‍💻 🔥 -------
 ```
 
 ## ... and so much more !!!
@@ -249,19 +263,19 @@ git pull
 # Putting it all together
 
 ```text
-                    (kajo on a "Local Repo")
+                 (kajo on a "Local Repo")
 
-                        --- 👨‍💻 🎨 --- git add .
-                      /                  git commit -m "🎨 4 poggie"
-                    pull                     git push
-                    /                           \
-(Remote Repo) 🗂️ ---------------------------------------> 🗂️ (Remote Repo V.2)
-                 \                               /
-                pull                          git push
-                   \                      git commit -m "💣 no more, long live 🧯"
-                     ------ 👩‍💻 🧯 ----- git add .
+                     --- 👨‍💻 🎨 --- git add .
+                   /                  git commit -m "🎨 4 poggie"
+(Remote Repo)  pull                     git push
+                /                         \
+ 🗂️ ---------------------------------------> 🗂️ (Remote Repo V.2)
+              \                              /
+             pull                         git push
+                \                     git commit -m "💣 no more, long live 🧯"
+                  ------ 👩‍💻 🧯 ----- git add .
 
-                       (me on a "Local Repo")
+                   (me on a "Local Repo")
 ```
 
 # GitHub Pages
