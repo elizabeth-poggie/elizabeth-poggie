@@ -19,7 +19,7 @@ created: "2024-04-05"
 
 ## Grading Rubric
 
-You will be evaluated on the last assignment as if you were in an intern at a company. Created by the Director of Engineering & Infrastructure @ MaintainX and adapted the content for the classroom, the intent is to set you up for success in your future classes and careers.
+You will be evaluated on the last assignment as if you were in an intern at a company. Created by the Director of Engineering & Infrastructure @ MaintainX and adapted for the classroom, the intent is to set y'all up for success in your future classes and careers.
 
 Shout out to Omar for wanting a rubric in advance which inspired the idea.
 
