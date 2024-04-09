@@ -130,7 +130,38 @@ So that by the time I've diffused the bomb, i can `pull` his updates :)
 
 ... And thus, no thoughts of copy and pasting need to be experienced. Github take's care of my version, his version, and the OG version with ease so we can get things done FAST 🏎️
 
-## Why is version control so neat?
+# Why is version control cool?
+
+## History
+
+You can easily know exactly which files changed, who made those changes, and when those changes occurred. For example, let's say i could find out exactly who, when, and where the bug started.
+
+```text
+👩‍💻 🔎 💣 (me discovering the root cause of the bomb)
+```
+
+## Backup
+
+GitHub archives all versions of the code. For instance, imagine if both Kajo's and my computers spontaneously combusted before we could save the code onto a USB drive. Well, going back to our original approach, now everything is lost:
+
+```text
+(me) 👩‍💻 ==> 📄 ==> 🔥 📂 🔥 (on poggie's 🔥 💻 🔥)
+(kajo) 👨‍💻 ==> 📄 ==> 🔥 📂 🔥 (on kajo's 🔥 💻 🔥)
+```
+
+But with Git, now that even if both of our computers are engulfed in flames, we can rest easy knowing that once we get new computers, we can pick up exactly where we left off :)
+
+```text
+                       -------- 👨‍💻 🔥 -----------
+                     /            🔥             \
+                    /             🔥              \
+(OG folder) 🗂️ ---------------------------------------> 🗂️ (OG folder V.2)
+                \                🔥           /
+                 \              🔥           /
+                   ---------- 👩‍💻 🔥 ---------
+```
+
+## ... and so much more !!!
 
 # GitHub Pages
 
