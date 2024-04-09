@@ -163,6 +163,79 @@ But with Git, now that even if both of our computers are engulfed in flames, we 
 
 ## ... and so much more !!!
 
+Diagrams are cool and all, but to make that magic happen, you need to know the proper commands.
+
+# Repository
+
+A repository is a container that houses your project and its’ history. This is the `OG folder` in our previous example.
+
+## How do you make one?
+
+If your project folder contains the `.git` folder you’re working with a repository!
+
+## How do you know if you are in a repo?
+
+Run the below command from inside the folder to see:
+
+```bash
+# list out all the folders here (ls)
+# & even the ones that may be secret (-la)
+ls -la
+```
+
+## Local vs Remote Repositories
+
+A "Local Repository" is your local project files on your computer.
+
+Going back to our original example, this would be the folder on my computer that i was working in when i was diffusing the bomb:
+
+```text
+(OG folder) 🗂️ -
+                \
+                 \
+                  \__ 👩‍💻 💣 (me on a "Local Repo")
+```
+
+A "Remote Repository" is where your remote project files exist elsewhere (e.g. the cloud, another server, another computer, etc.).
+
+In our original example, the "OG folder" is a "Remote Repository". It serves as a centralized location where team members can access. This is why despite me handling a garbage fire, Kajo can still `clone` the repo to his `local` computer where he can `push` and `pull` changes.
+
+```text
+                       --- 👨‍💻 🎨 (kajo on a "Local Repo")
+                     /
+                    /
+(Remote Repo) 🗂️ ---
+                 \
+                  \
+                    ------ 👩‍💻 💣 (me on a "Local Repo")
+```
+
+# Commits
+
+These are "snapshots" of changes made to a repository.
+
+When you make changes to your code, such as diffusing a bomb, you can group these changes into a a single commit.
+
+For example, let's say when i figure out how to diffuse the bomb, i want to "save" those changes. How do i do that in such a way that those changes get reflected back to the `OG folder` (the remote repo)?
+
+```bash
+git add .
+git commit -m "💣 no more, long live 🧯"
+```
+
+## What is happening here??
+
+- Step 1) i am "adding" all my current changes to the code that i want to save
+- Step 2) i am creating a `commit` message which describes the changes made, providing context to other collaborators about the purpose of the commit.
+
+## Do commit messages follow conventions?
+
+No lol, I do what's called `atomic commits` with absolutely trash names that provide no context to no one (including myself). It's good to be meaningful so it's easier to "undo" changes and understand what's going on later or you will be in a world of pain.
+
+# pull/push
+
+TBD
+
 # GitHub Pages
 
 To access the official documentation, visit [here](https://pages.github.com/). The recipe provided below includes additional comments and explanations meant for the classroom.
@@ -210,7 +283,3 @@ git push -u origin main
 ```
 
 ... and finally go to `https://username.github.io` in your browser :)
-
-## TODO
-
-Review git fundamentals for storing code online: commits, repositories, pull/push
