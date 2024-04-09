@@ -3,7 +3,7 @@
 category: "User Interfaces"
 number: 21
 type: "Lecture"
-title: "Github"
+title: "Intro to Git"
 created: "2024-04-08"
 ---
 
