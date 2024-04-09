@@ -66,11 +66,54 @@ That's why we love Github.
 
 ## Revised strategy
 
-Let's take the same example and work the magic of `git` this time
+Let's take the same example and work the magic of `git` this time.
+
+Let's say that this is the OG folder that contains the foundations of our project:
 
 ```text
-(me) 👩‍💻 ==> 📄 ==> 📂 (on poggie's 💻)
-(kajo) 👨‍💻 ==> 📄 ==> 📂 (on kajo's 💻)
+(OG folder) 🗂️
+```
+
+I can now can `clone` the OG folder to my local computer, stealing all it's contents. Essentially I am creating my own version of work history `branch`ing off from that source code.
+
+```text
+(OG folder) 🗂️ -
+                \
+                 \
+                  \_______ 👩‍💻  (me)
+```
+
+Here, I have the freedom to create features, squash bugs, and experiment without altering the original source code. That way, when i accidentally create a bomb, it won't affect the OG folder.
+
+```text
+(OG folder) 🗂️ -
+                \
+                 \
+                  \_______ 👩‍💻 💣 (me featuring an explosion)
+```
+
+Why is this so neat? Well, if me and my boy Kajo are working together and im stuck handling a bomb:
+
+```text
+                       --- 👨‍💻 🎨 (kajo creating art)
+                     /
+                    /
+(OG folder) 🗂️ -----
+                \
+                 \
+                   ------ 👩‍💻 💣 (me featuring an explosion)
+```
+
+He could `merge` his own changes back to the OG folder, so by the time I've diffused the bomb, i can `pull` his updates :)
+
+```text
+                       --- 👨‍💻 🎨 (kajo creating art) ---
+                     /                                  \
+                    /                                    \
+(OG folder) 🗂️ ----------------------------------------------------> 🗂️ (OG folder V.2)
+                \
+                 \
+                   ------ 👩‍💻 💣 (me featuring an explosion)
 ```
 
 # GitHub Pages
@@ -99,7 +142,7 @@ Go to the folder where you want to store your project, and clone the new reposit
 git clone #<link-to-the-repo>#
 ```
 
-Move into `username.github.io` and create a _very_ simple hello world project:
+Move into `username.github.io` and create a very simple "Hello World" webpage:
 
 ```bash
 # Move into your repo
@@ -123,6 +166,4 @@ git push -u origin main
 
 ## TODO
 
-Review internet fundamentals for web publishing: domain names, IP addresses
 Review git fundamentals for storing code online: commits, repositories, pull/push
-Create complete webpage applying best practises from HTML/CSS/JS knowledge learned throughout the semester
