@@ -36,6 +36,21 @@ Please note that your solution does not need to be a perfect copy, however, you 
 
 Feel free to reuse any branding elements created in Lab 3 for Lab 4, work smarter not harder :^)
 
+## Hint
+
+Your file structure should look something like this:
+
+```md
+lab4
+├── index.html
+├── pages
+│ ├── get-educated.html
+├── assets
+│ ├── icon.svg
+├── css
+│ ├── style.css
+```
+
 ## Updated Requirements
 
 - Your navbar must be constantly shown at the top of the viewport. (look up "sticky nav bars")

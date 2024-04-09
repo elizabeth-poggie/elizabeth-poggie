@@ -9,7 +9,7 @@ created: "2024-04-03"
 
 # Overview
 
-Created by Salim ATTOU, Director of Engineering & Infatrusture for industry professionals, and adapted by Poggie for the educational setting. The goal is to bridge the gap from classroom to desk, setting students up for success in their future careers, whether that be in higher education or the corporate world.
+Created by Salim ATTOU, Director of Engineering & Infrastructure for industry professionals, and adapted by Poggie for the educational setting. The goal is to bridge the gap from classroom to desk, setting students up for success in their future careers, whether that be in higher education or the corporate world.
 
 # Meets Requirements
 
@@ -49,7 +49,6 @@ The code follows established coding conventions and standards, promoting scalabi
 - Are variable names consistently written in `camelCase` format?
 - Does the code maintain consistent indentation and formatting throughout?
 - Are comments used effectively to explain complex sections of code or document important decisions?
-- Have you minimized code duplication?
 
 ## Anti-pattern:
 
@@ -129,4 +128,4 @@ Demonstrates [leadership skills](https://www.amazon.jobs/content/en/our-workplac
 
 - Does not accept feedback from their peers or the prof.
 - Actively promotes a negative outlook for the class or alienates individuals without offering constructive solutions.
-- Avoids taking responsibility for errors or setbacks, deflecting blame onto others or external factors.
+- Avoids taking responsibility for actions, errors, or setbacks, deflecting blame onto others or external factors.

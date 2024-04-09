@@ -3,9 +3,8 @@
 category: "Intro to Programming"
 number: 13
 type: "Lecture"
-title: "Putting it together"
+title: "Putting it all together"
 created: "2024-03-25"
-updated: "2024-03-28"
 ---
 
 # What prints?
