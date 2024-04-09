@@ -30,7 +30,7 @@ Anything. Some ideas to get you started:
 - Airbnb
 - ... and so much more.
 
-If you are creating software in the modern age, you do it using `git`.
+If you are building software in the modern age, you are building it with `git`.
 
 # Version Control
 
@@ -104,7 +104,7 @@ Why is this so neat? Well, if me and my boy Kajo are working together and im stu
                    ------ 👩‍💻 💣 (me featuring an explosion)
 ```
 
-He could `merge` his own changes back to the OG folder, so by the time I've diffused the bomb, i can `pull` his updates :)
+He could `merge` his own changes back to the OG folder:
 
 ```text
                        --- 👨‍💻 🎨 (kajo creating art) ---
@@ -115,6 +115,22 @@ He could `merge` his own changes back to the OG folder, so by the time I've diff
                  \
                    ------ 👩‍💻 💣 (me featuring an explosion)
 ```
+
+So that by the time I've diffused the bomb, i can `pull` his updates :)
+
+```text
+                       --- 👨‍💻 🎨 (kajo creating art) ---
+                     /                                  \
+                    /                                    \
+(OG folder) 🗂️ ----------------------------------------------------> 🗂️ (OG folder V.2)
+                \                                             /
+                 \                                           /
+                   ------ 👩‍💻 🧯 (me featuring no bomb) ------
+```
+
+... And thus, no thoughts of copy and pasting need to be experienced. Github take's care of my version, his version, and the OG version with ease so we can get things done FAST 🏎️
+
+## Why is version control so neat?
 
 # GitHub Pages
 
