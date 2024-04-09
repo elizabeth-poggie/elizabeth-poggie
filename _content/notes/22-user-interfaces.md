@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "User Interfaces"
-number: 21
+number: 22
 type: "Lecture"
 title: "Intro to Git"
 created: "2024-04-08"
@@ -134,7 +134,7 @@ So that by the time I've diffused the bomb, i can `pull` his updates :)
                        --- 👨‍💻 🎨 ---
                      /              \
                     /                \
-(OG folder) 🗂️ ----------------------------> 🗂️ (OG folder V.2)
+(OG folder) 🗂️ -----------------------------------> 🗂️ (OG folder V.2)
                 \                      /
                  \                    /
                    ------ 👩‍💻 🧯 ------
@@ -269,7 +269,7 @@ git pull
                    /                  git commit -m "🎨 4 poggie"
 (Remote Repo)  pull                     git push
                 /                         \
- 🗂️ ---------------------------------------> 🗂️ (Remote Repo V.2)
+ 🗂️ ----------------------------------------------> 🗂️ (Remote Repo V.2)
               \                              /
              pull                         git push
                 \                     git commit -m "💣 no more, long live 🧯"
