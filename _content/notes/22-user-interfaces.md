@@ -178,8 +178,6 @@ If your project folder contains the `.git` folder you’re working with a reposi
 Run the below command from inside the folder to see:
 
 ```bash
-# list out all the folders here (ls)
-# & even the ones that may be secret (-la)
 ls -la
 ```
 
