@@ -60,7 +60,7 @@ Note - this could be a big program. People do this ONLY if they want to configur
 # Cooking with WordPress
 
 - Login to your control panel by clicking the login link from the client area 840.
-- Enter Softaculous Apps Installer from the control panel.
+- Enter "Softaculous Apps Installer" from the control panel.
 - Click WordPress.
 - Click Install Now.
 - Fill in the settings on the page.
@@ -72,9 +72,9 @@ Note - this could be a big program. People do this ONLY if they want to configur
 
 ## Demo
 
-Website: poggies-cool-shop.great-site.net
-Admin Panel: https://poggies-cool-shop.great-site.net/admin
-Admin Credentials: admin username: admin // admin password: password
+- Website: [poggies-cool-shop.great-site.net](poggies-cool-shop.great-site.net/admin)
+- Admin Panel: [poggies-cool-shop.great-site.net/admin](poggies-cool-shop.great-site.net/admin)
+- Admin Credentials: admin username: admin // admin password: password
 
 # Troubleshooting
 
@@ -316,7 +316,7 @@ DNS is like the phone book of the internet. DNS allows your computer to take a d
 
                                                  👇
 
-(poggies-cool-shop.great-site.net) 🏠   == CONVERT WORDS TO IP ==>    🏠 (185.27.134.140)
+(poggies-cool-shop.great-site.net) 🏠   == CONVERT WORDS TO IP ==>    🏠 (24.201.245.77)
 
               👆                                                      👆
 
@@ -332,3 +332,11 @@ Normally, you should be able to see your website in a few hours as `InfinityFree
 ## What happens if we want to ignore DNS?
 
 Pasting the IP address into your browser should do it. DNS is only needed to convert unique human readable labels into unique computer numeric labels. So going back to our google example, when i type the IP address of `google.com` into the browser, I am actually skipping the DNS cache entirely.
+
+```text
+            Front door                          DNS                      Back door
+
+                🚪                               👇                           🚪
+
+(poggies-cool-shop.great-site.net) 🏠   == CONVERT WORDS TO IP ==>    🏠 (24.201.245.77)
+```
