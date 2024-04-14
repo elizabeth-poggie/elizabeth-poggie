@@ -57,7 +57,7 @@ Note - this could be a big program. People do this ONLY if they want to configur
 - Create a password for your website.
 - ... and just like that you have a website :^)
 
-# Cooking with WordPress on InfinityFree
+# Cooking with WordPress
 
 - Login to your control panel by clicking the login link from the client area 840.
 - Enter Softaculous Apps Installer from the control panel.
@@ -83,21 +83,19 @@ If that one doesn't work, [try this one](https://chromewebstore.google.com/detai
 
 ... and finally, if you see nothing, an advertisements page, or an error saying “This site can’t be reached”, don't worry this can also happen. This is usually caused by a system called DNS Caching.
 
-# What is DNS Cashing?
-
-DNS is like the phone book of the internet. DNS allows your computer to take a domain name and look up which IP address it points to, so it can connect to that IP address to load your website.
-
-When you add a domain name to a hosting account `InfinityFree` will automatically configure their servers to send the right data for your domain name, but this can take time.
-
-## How long though?
-
-Normally, you should be able to see your website in a few hours. However, depending on the DNS cache on the computer and network of your visitors, it could take up to 72 hours for the website to be visible everywhere.
-
 ... 'Domain names', 'IP addresses', and 'Caching' oh my !! What do each of these terms mean? Let's break it down in more detail.
 
 # What are Domain names?
 
 Domain names are human-readable labels used to identify and locate resources on the internet. Think of this as the "address" of your website translated into "human words". They come in 2 parts:
+
+```text
+(poggies-cool-shop.great-site.net) 🏠
+
+         👆                    👆
+
+    Domain Label       Top-Level Domain
+```
 
 ## Part 1) Domain Label
 
@@ -105,7 +103,7 @@ This is the unique name chosen by the owner of the domain. Some examples:
 
 ```text
 wikipedia
-elizabeth-poggie
+elizabethpoggie
 wordpress
 ```
 
@@ -129,7 +127,7 @@ It would look like this
 
 ```text
 wikipedia.org
-elizabeth-poggie.com
+elizabethpoggie.com
 wordpress.com
 ```
 
@@ -139,21 +137,77 @@ Once the IP address is resolved, the browser can establish a connection to the s
 
 # What are IP Addresses?
 
-IP addresses are unique numerical labels assigned to devices connected to a computer network that uses the Internet Protocol for communication. They serve two main purposes:
+IP addresses are unique numerical labels assigned to devices connected to a computer network that uses the Internet Protocol for communication. You can see your website's IP on `InfinityFree` by navigating to the proper account and looking at the "Website IP":
+
+```text
+These guys (roughly) mean the same thing
+
+(poggies-cool-shop.great-site.net) 🏠   ===    🏠 (185.27.134.140)
+
+              👆                                      👆
+
+    address using human words            address using computer words
+```
+
+By pasting this in the browser, it can take you directly to your website !! Why are IP addresses so neat? Well, they serve two main purposes:
 
 ## Identification
 
-An IP address uniquely identifies a device on a network, allowing other devices and servers to know where data should be sent or received. This is the "address" of your website translated into "computer words".
+An IP address uniquely identifies a device on a network, allowing other devices and servers to know where data should be sent or received. This is the "address" of your website translated into "computer words":
+
+```text
+(185.27.134.140) 🏠
+```
 
 ## Routing
 
-IP addresses also play a crucial role in routing data across networks. When you send data over the internet, it's broken down into smaller packets, each of which contains the source and destination IP addresses. Routers and other network devices use these addresses to determine where to forward the packets along the most efficient path to their destination.
-
 Every device that connects to the internet is assigned at least one IP address. This is what allows them to communicate with other devices over the internet.
+
+```text
+poggies-cool-shop.great-site.net  ==> 185.27.134.140
+
+* navigate to google.com *
+
+google.com ==> 172.217.13.110
+
+* navigate to elizabethpoggie.com *
+
+elizabethpoggie.com ==> 76.76.21.241
+```
 
 ## How do I find my public IP address?
 
-[Let us visit the IP chicken](https://www.ipchicken.com/). Not only does the IP chicken know where you live, but also knows what your computer you are using and the browser you
+[Let us visit the IP chicken](https://www.ipchicken.com/). Not only does the IP chicken know where you live, but also knows what your computer you are using and your browser.
+
+```text
+The IP chicken knows all.
+
+🔥 🐓 🛜 🔥
+```
+
+The reason IP chicken knows all is because the chicken needs to know know where to send the response data to. This is not only true for the chicken, but for all website you visit.
+
+Be carful out there kids.
+
+## What if i am a bit creeped out by how much IP Chicken knows?
+
+This is why VPNs are cool, it keeps your IP address secret from the rest of the web. 🤫
+
+```text
+🧑‍💻  (you desiring privacy from IP chicken)
+
+  |
+  |
+  V
+
+👤  (VPN keeping your data private)
+
+  |
+  |
+  V
+
+🔥 🐓 🛜 🔥 (ignorant IP chicken)
+```
 
 ## How do I find my private IP address?
 
@@ -203,7 +257,30 @@ FOr those curious on getting all the details beyond just the IP address:
 dig google.com
 ```
 
-What do these other terms mean? 👀 i invite y'all to look it up.
+you should see something like this:
+
+```bash
+; <<>> DiG 9.10.6 <<>> google.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 61789
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;google.com.			IN	A
+
+;; ANSWER SECTION:
+google.com.		129	IN	A	172.217.13.206 # here is the IP address again
+
+;; Query time: 14 msec
+;; SERVER: 192.168.0.1#53(192.168.0.1)
+;; WHEN: Sun Apr 14 12:15:13 EDT 2024
+;; MSG SIZE  rcvd: 55
+```
+
+What do these other terms mean? 👀 I invite y'all to look it up.
 
 ## What happens if we want to continuously poke google?
 
@@ -213,22 +290,44 @@ This let's you continously poke google:
 ping google.com
 ```
 
-Notice how I am also getting the IP address here.
+You should notice how we are also getting the IP address here too :)
 
-# Frontend vs Backend
+```bash
+PING google.com (172.217.13.174): 56 data bytes
+64 bytes from 172.217.13.174: icmp_seq=0 ttl=119 time=13.210 ms
+64 bytes from 172.217.13.174: icmp_seq=1 ttl=119 time=14.741 ms
+64 bytes from 172.217.13.174: icmp_seq=2 ttl=119 time=9.991 ms
+64 bytes from 172.217.13.174: icmp_seq=3 ttl=119 time=12.223 ms
+64 bytes from 172.217.13.174: icmp_seq=4 ttl=119 time=8.516 ms
+64 bytes from 172.217.13.174: icmp_seq=5 ttl=119 time=13.281 ms
+64 bytes from 172.217.13.174: icmp_seq=6 ttl=119 time=21.450 ms
+# . . .
+```
 
-The front end of your site is the part that is exposed to the world. It is what you want your public to see. Example: [www.johnabbott.qc.ca](www.johnabbott.qc.ca) this is what students/the world sees.
+Ok cool, so we know about domain names, we know about ip addresses, but where does "DNS" caching come into play?
 
-The back end is for "employees" of the company to work on the website. Through this portal, you can/will modify the website. For example: [www.johnabbott.qc.ca/wp-admin](www.johnabbott.qc.ca/wp-admin)
+# What is DNS Cashing?
 
-## Updating information
+DNS is like the phone book of the internet. DNS allows your computer to take a domain name and look up which IP address it points to, so it can connect to that IP address to load your website:
 
-Updating department information on a WordPress site shouldn't inherently take too long, as it's usually a matter of logging in, making the necessary changes, and hitting 'Publish'.
+```text
+                                                DNS
 
-# Customizing your theme
+                                                 👇
 
-Navigate to this design catalog to pick a different theme.
+(poggies-cool-shop.great-site.net) 🏠   == CONVERT WORDS TO IP ==>    🏠 (185.27.134.140)
 
-# Creating Pages
+              👆                                                      👆
 
-# Adding Media
+    address using human words                             address using computer words
+```
+
+When you add a domain name to a hosting account `InfinityFree` will automatically configure their servers to send the right data for your domain name, but this can take time because a record of this association needs to be created.
+
+## How long though?
+
+Normally, you should be able to see your website in a few hours. However, depending on the DNS cache on the computer and network of your visitors, it could take up to 72 hours for the website to be visible everywhere. (e.g. you don't have control of the sever in this case so you need to wait for `InfinityFree` to create a record of the association )
+
+## What happens if we want to ignore DNS?
+
+Pasting the IP address into your browser should do it. DNS is only needed to convert unique human readable labels into unique computer numeric labels. So going back to our google example, when i type the IP address of `google.com` into the browser, I am actually skipping the DNS cache entirely.
