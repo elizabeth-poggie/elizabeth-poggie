@@ -21,7 +21,7 @@ public class Program
 }
 ```
 
-## Definitions
+## Definition
 
 A method is a named block of code that performs a task. Sometime it is referenced to as a function.
 
@@ -29,11 +29,7 @@ We call a method in order to execute the code contained in the method definition
 
 # Why do we care?
 
-Methods are commonly used to break a problem down into small manageable pieces.
-
-## Methods simplify programs
-
-If a specific task is performed in several places in the program, a method can be written once to perform that task. This is known as code reuse and means that you can be lazier with writing programs.
+Methods are commonly used to break a problem down into small manageable pieces. If a specific task is performed in several places in the program, a method can be written once to perform that task.
 
 # Examples
 
@@ -179,7 +175,7 @@ Never gonna let you down
 Never gonna run around and desert you
 ```
 
-# Method calls
+## Methods within Methods
 
 There is no limit to how many methods can be called and you can call methods from other methods:
 
@@ -203,4 +199,143 @@ public class Program
 		Console.WriteLine("Never gonna run around and desert you");
 	}
 }
+```
+
+# Method Strat
+
+Using methods can help you eliminate repetitive code. To solve complex problems a common approach is to break it down into sub-problems. Using methods you can focus on each sub-problem in isolation.
+
+This concept is what is known as `divide and conquer`.
+
+# Exercise
+
+Write a program that displays the lyrics of "Never Gonna Give you up" by Rick Astley
+
+## Solution 1
+
+In the main method, write ONE print statement with all the lyrics.
+
+```text
+❌ horrible
+❌ unreadable
+❌ inefficient
+```
+
+When we RickRoll with code, we need to optimize the strategy.
+
+## Solution 2
+
+In the main method, write a print statements, one PER LINE.
+
+```text
+✅ readable
+❌ inefficient
+```
+
+"Never Gonna Give you up" contains a total of 34 lines in its lyrics. We can do better.
+
+## Solution 3
+
+To avoid repetition, create methods for the repeated section of the song: one method for the chorus, and one method for the Verse 1. In the main method, write print statements for Intro and Verse 2, and call the methods when necessary. Something like this:
+
+```cs
+public class Program
+{
+	public static void Main()
+	{
+		// @TODO
+	}
+
+	public static void RickRollChorus()
+	{
+		// @TODO
+	}
+	public static void RickRollVerseOne()
+	{
+		// @TODO
+	}
+}
+```
+
+However we can do better. The song has a lot more structure to it.
+
+## Solution 4
+
+Write the following 6 methods:
+Intro(), Verse1(), Chorus(), Verse2(), Verse3(), and Outro(). In the main method, call methods in the appropriate order as demonstrated below:
+
+```text
+Intro
+Verse 1
+Chorus
+Verse 2
+Chorus
+Verse 3
+Chorus
+Chorus
+Outro
+```
+
+Gorgeous, but we can optimize the strat further
+
+## Solution 5
+
+Write the previous 6 methods AND one additional method, call it RickRoll(), that displays the lyrics in the right order (by calling the other 6 methods).
+In the main method, simply call RickRoll().
+
+```cs
+public class Program
+{
+	public static void Main()
+	{
+		RickRoll();
+	}
+
+	public static void RickRoll () {
+		Intro();
+		Verse1();
+		Chorus();
+		Verse2();
+		Chorus();
+		Verse3();
+		Chorus();
+		Chorus();
+		Outro();
+	}
+
+	public static void Chorus()
+	{
+		// @TODO
+	}
+	public static void Verse1()
+	{
+		// @TODO
+	}
+	public static void Verse2()
+	{
+		// @TODO
+	}
+	public static void Verse3()
+	{
+		// @TODO
+	}
+	public static void Intro()
+	{
+		// @TODO
+	}
+	public static void Outro()
+	{
+		// @TODO
+	}
+}
+```
+
+Perfection. Why?
+
+```text
+✅ readable
+✅ well organized
+✅ efficient
+✅ maintainable
+✅ easy to generalize
 ```
