@@ -73,8 +73,134 @@ int num = int.Parse(input); // What's happening here?
 
 ## Void Methods
 
+Some methods take inputs, but return no value:
+
+```cs
+Console.WriteLine("Hello World");
+```
+
+Some methods take no inputs and return no value.
+
 ## Value Methods
+
+Some methods take inputs and return a value.
+
+```cs
+int num = int.Parse(input);
+```
+
+Some methods take no inputs, but return a value.
 
 # Custom Methods
 
-It is good practice to either have the main method as the first or last method in the class.
+What happens if I want to create my own methods?
+
+```cs
+public static void doNothing() {
+    // WIP
+}
+```
+
+## What is happening here?
+
+- Absolutely nothing
+- This is a method that takes no input and returns no result
+
+## How are methods named?
+
+You can name your method as you want except `Main` or any keywords. By convention, always start with lower case letter and use `camelCase`.
+
+## How are they ordered?
+
+It is good practice to either have the `Main` method as the first or last method in the class.
+
+## Observations
+
+`doNothing()` and `Main()` have similar characteristics:
+
+- public: they can be invoked from other classes.
+- static: you’ll find out more about this in the future.
+- void: they do not return a value.
+- parameters: the parenthesis after the method name contain a list of variables, called parameters, where the method stores its argument. `doNothing()` and `Main()` both take no parameters.
+
+# Exercise
+
+Write a method called `myCities` that prints the name of the cities where you have lived (one per line).
+
+```cs
+public class Program
+{
+	public static void Main()
+	{
+		// @TODO - call method here
+	}
+
+	// @TODO - write method here
+}
+```
+
+To check if it works, call the method `myCities` from the main method and run the program.
+
+# Void Methods
+
+`void` - when used as part of a method header, the keyword void tells the computer that the method does not return anything.
+
+```cs
+               👇
+public static void doNothing()
+```
+
+Can void methods be more more interesting? Yes.
+
+## A Simple Program
+
+```cs
+public class Program
+{
+	public static void Main()
+	{
+		RickRoll();
+	}
+
+	public static void RickRoll()
+	{
+		Console.WriteLine("Never gonna give you up");
+		Console.WriteLine("Never gonna let you down");
+		Console.WriteLine("Never gonna run around and desert you");
+	}
+}
+```
+
+and upon running the program I should see:
+
+```text
+Never gonna give you up
+Never gonna let you down
+Never gonna run around and desert you
+```
+
+# Method calls
+
+There is no limit to how many methods can be called and you can call methods from other methods:
+
+```cs
+public class Program
+{
+	public static void Main()
+	{
+		RickRoll();
+	}
+
+	public static void RickRoll()
+	{
+		RickRollChorus();
+	}
+
+	public static void RickRollChorus()
+	{
+		Console.WriteLine("Never gonna give you up");
+		Console.WriteLine("Never gonna let you down");
+		Console.WriteLine("Never gonna run around and desert you");
+	}
+}
+```
