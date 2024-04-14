@@ -19,7 +19,13 @@ A content management system (CMS) is an application that is used to manage conte
 
 ## What are we using for the course?
 
-There are a bunch on the market that effectively do the same thing, however for the purposes of this case we are using WordPress as it is the most popular.
+There are a bunch on the market that effectively do the same thing, however for the purposes of this case we are using WordPress as it is the most popular with over 46% of websites using it today.
+
+## Why is it so popular
+
+- It's FREE
+- It's OPEN SOURCE
+- And beginner friendly. You don't even really need to know how to code to know how to manage it.
 
 ## How do I get started?
 
@@ -64,13 +70,101 @@ Note - this could be a big program. People do this ONLY if they want to configur
   - Create an admin account (e.g. admin username: admin, admin password: password)
 - Click Install.
 
-# Demo
+## Demo
 
 Website: poggies-cool-shop.great-site.net
 Password: BeepBoop123
 
-## Troubleshooting
+# Troubleshooting
 
 For those of you having issues accessing the website, get this [Chrome extension](https://chromewebstore.google.com/detail/free-vpn-for-chrome-troyw/adlpodnneegcnbophopdmhedicjbcgco). It will help you bypass our lab security measures that prevent us from doing cool stuff :^)
 
 If that one doesn't work, [try this one](https://chromewebstore.google.com/detail/ultrasurf-security-privac/mjnbclmflcpookeapghfhapeffmpodij).
+
+... and finally, if you see nothing, an advertisements page, or an error saying “This site can’t be reached”, don't worry this can also happen. This is usually caused by a system called DNS Caching.
+
+# What is DNS Cashing?
+
+DNS is like the phone book of the internet. DNS allows your computer to take a domain name and look up which IP address it points to, so it can connect to that IP address to load your website.
+
+When you add a domain name to a hosting account `InfinityFree` will automatically configure their servers to send the right data for your domain name, but this can take time.
+
+## How long though?
+
+Normally, you should be able to see your website in a few hours. However, depending on the DNS cache on the computer and network of your visitors, it could take up to 72 hours for the website to be visible everywhere.
+
+... 'Domain names', 'IP addresses', and 'Caching' oh my !! What do each of these terms mean? Let's break it down in more detail.
+
+# What are Domain names?
+
+Domain names are human-readable labels used to identify and locate resources on the internet. They serve as a more user-friendly way to locate websites instead of using their numerical IP addresses directly. This is the "address" of your website translated into "human words". They come in 2 parts:
+
+## Part 1) Domain Label
+
+This is the unique name chosen by the owner of the domain. Some examples:
+
+```text
+google
+elizabeth-poggie
+wordpress
+```
+
+## Part 2) Top-Level Domain
+
+This is the last part of the domain name, which typically indicates the type or purpose of the domain. Some examples:
+
+```text
+.com
+.ca
+.org
+.net
+.gov
+```
+
+Choose this wisely. For example, if I wanted to create an anti-capitalist forum, maybe using `www.marxist.com` would be a bad move since `.com` means `commercial organizations`, whereas `www.marxists.org` is a better choice since `.org` is the abbreviation for `organization`.
+
+## Part 1 + 2) Together
+
+it would look like this
+
+```text
+google.com
+elizabeth-poggie.com
+wordpress.com
+```
+
+When you type a domain name into a web browser's address bar, the browser uses a system called the Domain Name System (DNS) to translate the human-readable domain name into the numerical IP address of the server hosting the website.
+
+Once the IP address is resolved, the browser can establish a connection to the server and retrieve the requested web page.
+
+# What are IP Addresses?
+
+IP addresses are unique numerical labels assigned to devices connected to a computer network that uses the Internet Protocol for communication. They serve two main purposes:
+
+## Identification
+
+An IP address uniquely identifies a device on a network, allowing other devices and servers to know where data should be sent or received. This is the "address" of your website translated into "computer words".
+
+## Routing
+
+IP addresses also play a crucial role in routing data across networks. When you send data over the internet, it's broken down into smaller packets, each of which contains the source and destination IP addresses. Routers and other network devices use these addresses to determine where to forward the packets along the most efficient path to their destination.
+
+Every device that connects to the internet is assigned at least one IP address. This is what allows them to communicate with other devices over the internet.
+
+# Frontend vs Backend
+
+The front end of your site is the part that is exposed to the world. It is what you want your public to see. Example: [www.johnabbott.qc.ca](www.johnabbott.qc.ca) this is what students/the world sees.
+
+The back end is for "employees" of the company to work on the website. Through this portal, you can/will modify the website. For example: [www.johnabbott.qc.ca/wp-admin](www.johnabbott.qc.ca/wp-admin)
+
+## Updating information
+
+Updating department information on a WordPress site shouldn't inherently take too long, as it's usually a matter of logging in, making the necessary changes, and hitting 'Publish'.
+
+# Customizing your theme
+
+Navigate to this design catalog to pick a different theme.
+
+# Creating Pages
+
+# Adding Media
