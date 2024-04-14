@@ -3,7 +3,7 @@
 category: "User Interfaces"
 number: 23
 type: "Lecture"
-title: "Content Management Systems"
+title: "Content Management Systems I"
 created: "2024-04-14"
 ---
 
@@ -73,7 +73,8 @@ Note - this could be a big program. People do this ONLY if they want to configur
 ## Demo
 
 Website: poggies-cool-shop.great-site.net
-Password: BeepBoop123
+Admin Panel: https://poggies-cool-shop.great-site.net/admin
+Admin Credentials: admin username: admin // admin password: password
 
 # Troubleshooting
 
