@@ -200,7 +200,7 @@ This is why VPNs are cool, it keeps your IP address secret from the rest of the 
   |
   V
 
-👤  (VPN keeping your data private)
+👤  (VPN keeping your address private)
 
   |
   |
