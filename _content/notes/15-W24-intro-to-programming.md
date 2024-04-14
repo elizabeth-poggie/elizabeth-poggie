@@ -257,12 +257,12 @@ public class Program
 }
 ```
 
-However we can do better. The song has a lot more structure to it.
+However we could do better. The song has a lot more structure to it.
 
 ## Solution 4
 
 Write the following 6 methods:
-Intro(), Verse1(), Chorus(), Verse2(), Verse3(), and Outro(). In the main method, call methods in the appropriate order as demonstrated below:
+`Intro()`, `Verse1()`, `Chorus()`, `Verse2()`, `Verse3()`, and `Outro()`. In the main method, call methods in the appropriate order as demonstrated below:
 
 ```text
 Intro
@@ -276,12 +276,12 @@ Chorus
 Outro
 ```
 
-Gorgeous, but we can optimize the strat further
+Gorgeous, but we can optimize the strat further.
 
 ## Solution 5
 
-Write the previous 6 methods AND one additional method, call it RickRoll(), that displays the lyrics in the right order (by calling the other 6 methods).
-In the main method, simply call RickRoll().
+Write the previous 6 methods AND one additional method, call it `RickRoll()`, that displays the lyrics in the right order (by calling the other 6 methods).
+In the main method, simply call `RickRoll()`.
 
 ```cs
 public class Program
@@ -330,12 +330,25 @@ public class Program
 }
 ```
 
-Perfection. Why?
+Perfection. Why? The code is ...
 
 ```text
 ✅ readable
+✅ maintainable
 ✅ well organized
 ✅ efficient
-✅ maintainable
 ✅ easy to generalize
 ```
+
+# Recipe for success
+
+Writing efficient strategies to Rick Roll in an Intro to Programming class is one thing, putting it into practice with our programs is a completely different beast. How do we go about constructing our code?
+
+- Step 1) We want to start with a program that compiles and run correctly. Everything can just start in the `Main` method for this part.
+- Step 2) Write one method and extract out the repetitive code.
+- Step 3) Verify that the program still compiles and runs correctly even after the code has been optimized. (want to avoid unecessary bugs ❌ 🐛)
+- Step 4) Back to step 2 until we are done.
+
+# Mini Quiz
+
+What will print?
