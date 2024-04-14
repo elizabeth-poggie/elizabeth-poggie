@@ -51,7 +51,7 @@ Note - this could be a big program. People do this ONLY if they want to configur
 
 - Visit this website [here](https://www.infinityfree.com/)
 - Register for the service
-- Create an account
+- Create an [account](https://dash.infinityfree.com/accounts)
 - For the "Hosting Plan", select the 0$ a month option
 - For the "Domain Name", choose anything your heart desires.
 - Create a password for your website.
