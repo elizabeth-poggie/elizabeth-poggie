@@ -209,9 +209,9 @@ This is why VPNs are cool, it keeps your IP address secret from the rest of the 
 🔥 🐓 🛜 🔥 (ignorant IP chicken)
 ```
 
-## How do I find my private IP address?
+## How do I find my local IP address?
 
-You can find the IP address of your phone through the device's settings or using various methods depending on the operating system (OS) it's running.
+You can find your local IP address of your phone through the device's settings or using various methods depending on the operating system (OS) it's running. Open up your phones and let's follow the below recipe:
 
 For Apple
 
@@ -326,7 +326,7 @@ When you add a domain name to a hosting account `InfinityFree` will automaticall
 
 ## How long though?
 
-Normally, you should be able to see your website in a few hours. However, depending on the DNS cache on the computer and network of your visitors, it could take up to 72 hours for the website to be visible everywhere. (e.g. you don't have control of the sever in this case so you need to wait for `InfinityFree` to create a record of the association )
+Normally, you should be able to see your website in a few hours as `InfinityFree` needs some time to create a record. However, depending on the DNS cache on the computer and network of your visitors, it could take up to 72 hours for the website to be visible everywhere.
 
 ## What happens if we want to ignore DNS?
 
