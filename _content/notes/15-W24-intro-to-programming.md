@@ -221,7 +221,7 @@ In the main method, write ONE print statement with all the lyrics.
 ❌ inefficient
 ```
 
-When we RickRoll with code, we need to optimize the strategy.
+When we RickRoll with code, we ALWAYS need to optimize the strategy.
 
 ## Solution 2
 
@@ -352,3 +352,111 @@ Writing efficient strategies to Rick Roll in an Intro to Programming class is on
 # Mini Quiz
 
 What will print?
+
+```cs
+public class Program
+{
+	public static void secondLine()
+	{
+		Console.Write("To create, innovate,  ");
+		Console.WriteLine("and solve any problems your heart desires <3");
+	}
+
+	public static void firstLine() {
+		Console.WriteLine("The best thing about coding is:");
+	}
+
+	public static void Main()
+	{
+		firstLine();
+		secondLine();
+	}
+}
+```
+
+You should see this:
+
+```text
+The best thing about coding is:
+To create, innovate,  and solve any problems your heart desires <3
+```
+
+But why ???
+
+# Flow of execution
+
+The program is NOT executed by reading methods (and lines) from top to bottom. Execution always begins at the first statement in the main method, it does NOT matter at which point of the code the main method appears.
+
+Statements are executed one at the time.
+
+If a call to a method is reached, then we DETOUR !! Instead of going to the next statement, the first statement of the method called is executed. When all the statements in there are executed go back where we left off :^)
+
+## TLDR
+
+When a program runs only the main method executes. Other methods only execute if they are called from the main method (or from a method that was called by the main method):
+
+```cs
+public class Program
+{
+	public static void Main()
+	{
+		callStuff();
+	}
+
+	public static void callStuff()
+	{
+		Console.WriteLine("I get called");
+	}
+
+	public static void otherStuff() {
+		Console.WriteLine("I am never called and absolutely useless");
+	}
+}
+```
+
+# Exercise
+
+Write a method called `printStuff()` that prints a line of length 5 using the symbol ‘+’.
+
+```cs
+public class Program
+{
+	public static void Main()
+	{
+		printLine();
+	}
+
+	public static void printLine()
+	{
+		for (int i=0; i < 5; i++) {
+			Console.Write("+");
+		}
+	}
+}
+```
+
+Write another method called printBox that uses the above method to print a 4 by 5 box.
+
+```cs
+public class Program
+{
+	public static void Main()
+	{
+		printBox();
+	}
+
+	public static void printLine()
+	{
+		for (int i=0; i < 5; i++) {
+			Console.Write("+");
+		}
+	}
+
+	public static void printBox() {
+		for (int i=0; i < 4; i++) {
+			printLine();
+			Console.WriteLine();
+		}
+	}
+}
+```
