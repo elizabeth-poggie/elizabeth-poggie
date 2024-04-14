@@ -97,14 +97,14 @@ Normally, you should be able to see your website in a few hours. However, depend
 
 # What are Domain names?
 
-Domain names are human-readable labels used to identify and locate resources on the internet. They serve as a more user-friendly way to locate websites instead of using their numerical IP addresses directly. This is the "address" of your website translated into "human words". They come in 2 parts:
+Domain names are human-readable labels used to identify and locate resources on the internet. Think of this as the "address" of your website translated into "human words". They come in 2 parts:
 
 ## Part 1) Domain Label
 
 This is the unique name chosen by the owner of the domain. Some examples:
 
 ```text
-google
+wikipedia
 elizabeth-poggie
 wordpress
 ```
@@ -121,14 +121,14 @@ This is the last part of the domain name, which typically indicates the type or 
 .gov
 ```
 
-Choose this wisely. For example, if I wanted to create an anti-capitalist forum, maybe using `www.marxist.com` would be a bad move since `.com` means `commercial organizations`, whereas `www.marxists.org` is a better choice since `.org` is the abbreviation for `organization`.
+Choose this wisely. For example, if I wanted to create an anti-capitalist forum, maybe using `www.marxist.com` would be a bad move since `.com` stands for `commercial organizations`, whereas `www.marxists.org` is a better choice since `.org` is an abbreviation for `organization`.
 
 ## Part 1 + 2) Together
 
-it would look like this
+It would look like this
 
 ```text
-google.com
+wikipedia.org
 elizabeth-poggie.com
 wordpress.com
 ```
@@ -150,6 +150,70 @@ An IP address uniquely identifies a device on a network, allowing other devices 
 IP addresses also play a crucial role in routing data across networks. When you send data over the internet, it's broken down into smaller packets, each of which contains the source and destination IP addresses. Routers and other network devices use these addresses to determine where to forward the packets along the most efficient path to their destination.
 
 Every device that connects to the internet is assigned at least one IP address. This is what allows them to communicate with other devices over the internet.
+
+## How do I find my public IP address?
+
+[Let us visit the IP chicken](https://www.ipchicken.com/). Not only does the IP chicken know where you live, but also knows what your computer you are using and the browser you
+
+## How do I find my private IP address?
+
+You can find the IP address of your phone through the device's settings or using various methods depending on the operating system (OS) it's running.
+
+For Apple
+
+- Open up "Settings"
+- Tap on "Wifi"
+- Tap on the network you're connected to.
+- Next to "IP Address", you can see your private address.
+- Also notice that you can configure your DNS here for the nerds that are curious on such topics.
+
+For Android
+
+- Open up "Settings"
+- Tap on "Connection"
+- Next goes "WIFI" and next to your current connection, tap on the cog wheel.
+- Here you will be able to click "View More" to see your private IP address
+
+## How do I stalk other people's IP addresses?
+
+Let's run the below command
+
+```bash
+nslookup google.com
+```
+
+and you should see something like this:
+
+```bash
+Server:		192.168.0.1
+Address:	192.168.0.1#53
+
+Non-authoritative answer:
+Name:	google.com
+Address: 172.217.13.110 # paste this boi into your browser
+```
+
+Now let's paste that address into our browser and we can use the "numeric" IP address to access google :^)
+
+## For the hyper nerds
+
+FOr those curious on getting all the details beyond just the IP address:
+
+```bash
+dig google.com
+```
+
+What do these other terms mean? 👀 i invite y'all to look it up.
+
+## What happens if we want to continuously poke google?
+
+This let's you continously poke google:
+
+```bash
+ping google.com
+```
+
+Notice how I am also getting the IP address here.
 
 # Frontend vs Backend
 
