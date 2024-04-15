@@ -3,15 +3,17 @@
 category: "User Interfaces"
 number: 23
 type: "Lecture"
-title: "Content Management Systems I"
+title: "CMS && DNS"
 created: "2024-04-14"
 ---
+
+🚨 TEST 2 NEXT WEEK - Study everything up to && including today 🚨
 
 # Intro
 
 So far we have been learning about the mechanics of manually creating websites and publishing a simple static website. For the rest of the course, we will skip ahead to publishing an automatically creating a website using a CMS (Content Management System).
 
-# Content Management Systems
+# Content Management Systems (CMS)
 
 ## What are they?
 
