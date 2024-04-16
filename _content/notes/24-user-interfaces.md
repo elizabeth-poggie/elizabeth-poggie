@@ -3,7 +3,7 @@
 category: "User Interfaces"
 number: 24
 type: "Lecture"
-title: "CMS"
+title: "Customizing your CMS"
 created: "2024-04-15"
 ---
 
