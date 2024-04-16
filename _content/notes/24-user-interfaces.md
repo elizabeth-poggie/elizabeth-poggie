@@ -56,11 +56,3 @@ Let's click the "+" icon to add a block, pattern, and media. Choose your fighter
 # Creating Patterns
 
 Let's click a group of blocks that are nested together and create a pattern. We can now reuse this pattern on our other pages to save on time.
-
-# Exercise
-
-Editing an individual page as an individual is cool and all, but what happens when we all try to edit the page at the same time?
-
-Everyone get onto the admin panel and edit some aspect of the page.
-
-You have 10 minutes, after the time is up let's look at the final product.

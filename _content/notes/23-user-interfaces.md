@@ -7,8 +7,6 @@ title: "CMS && DNS"
 created: "2024-04-14"
 ---
 
-🚨 TEST 2 NEXT WEEK - Study everything up to && including today 🚨
-
 # Intro
 
 So far we have been learning about the mechanics of manually creating websites and publishing a simple static website. For the rest of the course, we will skip ahead to automatically creating a website using a CMS (Content Management System).
@@ -89,6 +87,8 @@ If that one doesn't work, [try this one](https://chromewebstore.google.com/detai
 ... and finally, if you see nothing, an advertisements page, or an error saying “This site can’t be reached”, don't worry this can also happen. This is usually caused by a system called DNS Caching.
 
 ... 'Domain names', 'IP addresses', and 'Caching' oh my !! What do each of these terms mean? Let's break it down in more detail.
+
+[comment]: <> (@TODO - this is a not to future me, maybe do not teach them DNS once they start having fun with wordpress. Also your website WILL crash after the class lmao)
 
 # What are Domain names?
 
