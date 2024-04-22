@@ -34,7 +34,7 @@ hHre you can do bulk actions, add content, edit pages, add pages, etc.
 
 In this section, you can add user access like a google doc. Remember how last class my `poggies-cool-shop.great-site.net` crashed when we all tried to access it at the same time and my account was later suspended? Ya, you can avoid situations like that :^)
 
-# Exercise
+## Exercise ❤️
 
 In your admin panel, add one of your friends as a fellow admin user and give them access to create content. (max add 2 friends). On another's website, create a post for their blog :)
 
@@ -123,7 +123,7 @@ However, let's take a moment to look at all the content in `SQL Buddy` in our Wo
 
 Here you can directly modify the table's data directly from this view
 
-## Exercise
+## Exercise ❤️
 
 Get `SQL Buddy` installed on your own wordpress website from last class. If you don't have a wordpress site yet, tke the time to start making one. To verify your installation, you should see it in your "Tools" panel under the section "SQL Buddy".
 
