@@ -30,7 +30,7 @@ type CategoryMap = {
 export const categoryMap: CategoryMap = {
   "User Interfaces": {
     color: "green",
-    relatedTypes: ["Lecture", "Lab"],
+    relatedTypes: ["Lecture", "Lab", "Solution"],
   },
   "Intro to Programming": {
     color: "yellow",
