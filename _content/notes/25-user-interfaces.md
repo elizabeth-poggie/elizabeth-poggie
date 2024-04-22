@@ -3,7 +3,7 @@
 category: "User Interfaces"
 number: 25
 type: "Lecture"
-title: "Tour of the WordPress Backend"
+title: "The WordPress Backend"
 created: "2024-04-22"
 ---
 
