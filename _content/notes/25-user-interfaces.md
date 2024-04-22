@@ -90,11 +90,9 @@ HOWEVER, the simplicity of this plugin comes at a cost. It's often avoided by mo
 
 But we are students who just want to learn, so let's take a calculated risk and opt in for the simpler option :^)
 
-## Exercise
+## Tables, Records, and Data Usage !! (oh my !!)
 
-# Tables, Records, and Data Usage !! (oh my !!)
-
-Once you have selected your favorite DMS and successfully connected to your Backend, you should see things like "No.", "Table", "Records", "Data Usage", and other stuff.
+Once you have selected your favorite DMS and successfully connected to your backend, you should see things like "No", "Table", "Records", "Data Usage", and other stuff.
 
 But what does this all mean?
 
@@ -113,3 +111,5 @@ Here you can directly modify the table's data directly from this view
 Get `SQL Buddy` installed on your own wordpress website from last class. If you don't have a wordpress site yet, tke the time to start making one. To verify your installation, you should see it in your "Tools" panel under the section "SQL Buddy".
 
 Using `SQL Buddy`, try to update one of your pages headers to be more interesting :^)
+
+# Records
