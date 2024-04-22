@@ -23,22 +23,22 @@ Step 2) Customize your posts and pages with buttons by navigating to each of the
 - Media
 - Pages
 
-here you can do bulk actions, add content, edit pages, change view, etc.
+hHre you can do bulk actions, add content, edit pages, add pages, etc.
 
 ## Plugins
 
 - Hello dolly > Activate && Deactivate
-- Install other plugins
+- Here you can install other plugins
 
 ## Users
 
-Here you can add use access like a google doc. Remember how last class my `poggies-cool-shop.great-site.net` crashed when we all tried to access it at the same time and the account was later suspended? Ya, you can avoid situations like that :^)
+In this section, you can add user access like a google doc. Remember how last class my `poggies-cool-shop.great-site.net` crashed when we all tried to access it at the same time and my account was later suspended? Ya, you can avoid situations like that :^)
 
 ## Summary
 
-In the admin panel we have a cute user interface to store, update, and create content. However this is just a more intuitive interface to the backend so that people who are not devs can operate with ease.
+In the admin panel we have a cute user interface to store, update, and create content. It serves as an intuitive interface to the backend, allowing non-devs to navigate their website's backend with ease.
 
-However that's not us. Let's take it to the next level
+However that's not us. Let's take our approach to the next level >:^)
 
 # Databases
 
@@ -58,16 +58,30 @@ This is what you will likely use in your future classes and careers. However for
 
 In your wordpress admin panel, install the plugin `SQL Buddy`, this runs directly in your wordpress website. This plugin makes it easy to manage your database table contents right from your WordPress dashboard.
 
-The simplicity of this plugin comes at a cost tho, which is why it's avoided by most major companies. By having it installed on your WordPress site, it increases the vulnerability of your wordpress website to security risks. If a company is using WordPress, they might opt in for a tool like [phpmyadmin](https://www.phpmyadmin.net/) to avoid those security risks.
+HOWEVER, the simplicity of this plugin comes at a cost. It's often avoided by most major companies due to security concerns. Installing this plugin on your WordPress site can potentially increase vulnerability to security risks. rger companies typically opt for more secure alternatives like [phpmyadmin](https://www.phpmyadmin.net/) to avoid those risks.
 
 But we are students who just want to learn, so let's take a calculated risk and opt in for the simpler option :^)
 
 ## Exercise
 
-Get this installed installed on your own wordpress website from last class. If you don't have a wordpress site yet, tke the time to start making one. To verify your installation, you should see it in your "Tools" panel under the section "SQL Buddy".
+Get this plugin installed installed on your own wordpress website from last class. If you don't have a wordpress site yet, tke the time to start making one. To verify your installation, you should see it in your "Tools" panel under the section "SQL Buddy".
 
 # Tables, Records, and Data Usage !! (oh my !!)
 
-Once you have selected your favorite DMS and successfully connected to your Backend, you should see things like "No.", "Table", "Records", and other stuff.
+Once you have selected your favorite DMS and successfully connected to your Backend, you should see things like "No.", "Table", "Records", "Data Usage", and other stuff.
 
 But what does this all mean?
+
+# Tables
+
+Each table stores a different type of data type for your website. Just like in our admin panel where we can see different "posts" and "pages", here you should see a table called something like `wp8r-posts` that stores information about your posts and pages.
+
+Take a moment to look at all the content here.
+
+## Modifying Tables
+
+Here you can directly modify the table's data directly from this view
+
+## Exercise
+
+Using `SQL Buddy`, try to update one of your pages headers to be more interesting :^)
