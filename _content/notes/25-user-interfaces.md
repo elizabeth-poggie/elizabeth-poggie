@@ -3,7 +3,7 @@
 category: "User Interfaces"
 number: 25
 type: "Lecture"
-title: "The WordPress Backend"
+title: "WordPress Backend"
 created: "2024-04-22"
 ---
 
@@ -32,7 +32,7 @@ hHre you can do bulk actions, add content, edit pages, add pages, etc.
 
 ## Users
 
-In this section, you can add user access like a google doc. Remember how last class my `poggies-cool-shop.great-site.net` crashed when we all tried to access it at the same time and my account was later suspended? Ya, you can avoid situations like that :^)
+In this section, you can add users and give them access like a google doc. Remember how last class my `poggies-cool-shop.great-site.net` crashed when we all tried to access it at the same time and my account was later suspended? Ya, you can avoid situations like that :^)
 
 ## Exercise ❤️
 

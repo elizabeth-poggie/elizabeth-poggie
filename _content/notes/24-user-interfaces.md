@@ -3,7 +3,7 @@
 category: "User Interfaces"
 number: 24
 type: "Lecture"
-title: "The WordPress Frontend"
+title: "WordPress Frontend"
 created: "2024-04-15"
 ---
 
