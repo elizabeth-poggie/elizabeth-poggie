@@ -9,9 +9,11 @@ created: "2024-04-22"
 
 # Question 1 (3 points)
 
-"Explain the difference between inline, internal, and external specificity"
+## Question
 
-# Solution
+Explain the difference between inline, internal, and external specificity
+
+## Answer
 
 - Inline - Since there is no selector for inline CSS, there is no specificity to calculate; inline CSS rules automatically beat all other CSS rules for this reason. [Read more here](https://www.elizabethpoggie.com/notes/14-user-interfaces#inline-css)
 
@@ -21,9 +23,11 @@ created: "2024-04-22"
 
 # Question 2 (2 points)
 
-"Which CSS specificity rule beats all other rules?"
+## Question
 
-## Solution
+Which CSS specificity rule beats all other rules?
+
+## Answer
 
 ```css
 !important
@@ -33,9 +37,11 @@ created: "2024-04-22"
 
 # Question 3 (2 points)
 
+## Question
+
 "Why use responsive design? Give or draw your answer"
 
-## Solution
+## Answer
 
 Responsive web design is the set of best practices used to create universally usable webpages.
 
