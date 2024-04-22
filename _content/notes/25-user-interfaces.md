@@ -7,7 +7,7 @@ title: "The WordPress Backend"
 created: "2024-04-22"
 ---
 
-# Customizing your CMS continued
+# Tour of the WordPress Backend
 
 Let's take our WordPress Knowledge to the next level.
 

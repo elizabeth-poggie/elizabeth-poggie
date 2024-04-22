@@ -3,7 +3,7 @@
 category: "User Interfaces"
 number: 24
 type: "Lecture"
-title: "Customizing your CMS"
+title: "The WordPress Frontend"
 created: "2024-04-15"
 ---
 
