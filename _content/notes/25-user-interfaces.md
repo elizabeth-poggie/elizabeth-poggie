@@ -34,6 +34,10 @@ hHre you can do bulk actions, add content, edit pages, add pages, etc.
 
 In this section, you can add user access like a google doc. Remember how last class my `poggies-cool-shop.great-site.net` crashed when we all tried to access it at the same time and my account was later suspended? Ya, you can avoid situations like that :^)
 
+# Exercise
+
+In your admin panel, add one of your friends as a fellow admin user and give them access to create content. (max add 2 friends). On another's website, create a post for their blog :)
+
 ## Summary
 
 In the admin panel we have a cute user interface to store, update, and create content. It serves as an intuitive interface to the backend, allowing non-devs to navigate their website's backend with ease.
@@ -43,6 +47,30 @@ However that's not us. Let's take our approach to the next level >:^)
 # Databases
 
 ## What are they?
+
+It's just an organized collection of information. With all databases, they start with data. For example, what you see on the FRONTEND is stored in a database in the BACKEND.
+
+# Why use databases?
+
+Databases are more efficient to update, add, and extract data. Imagine storing everything in an excel sheet. Absolutely horrible.
+
+```text
+Excel sheets 📊
+----------------
+❌ Chaos
+❌ Not secure at all
+❌ Limited in functionality
+```
+
+For reference, I store all your grade information on an excel spreadsheet at the moment and it will continue to haunt me until find a better way to store that data. Once i figure that out, the data will be SOOOOO much cleaner.
+
+```text
+Databases 🗄️
+-------------
+✅ Organized
+✅ Secure
+✅ Scalable
+```
 
 ## Database management systems (DMS)
 
@@ -56,15 +84,13 @@ This is what you will likely use in your future classes and careers. However for
 
 ## DMS Plugins
 
-In your wordpress admin panel, install the plugin `SQL Buddy`, this runs directly in your wordpress website. This plugin makes it easy to manage your database table contents right from your WordPress dashboard.
+In your wordpress admin panel, install the plugin `SQL Buddy`, this runs directly in your wordpress website. This plugin makes it easy to manage your database table contents DIRECTLY from your WordPress dashboard.
 
-HOWEVER, the simplicity of this plugin comes at a cost. It's often avoided by most major companies due to security concerns. Installing this plugin on your WordPress site can potentially increase vulnerability to security risks. rger companies typically opt for more secure alternatives like [phpmyadmin](https://www.phpmyadmin.net/) to avoid those risks.
+HOWEVER, the simplicity of this plugin comes at a cost. It's often avoided by most major companies due to security concerns. Installing this plugin on your WordPress site can potentially increase vulnerability to security risks. Lar companies typically opt for more secure alternatives like [phpmyadmin](https://www.phpmyadmin.net/) to avoid those risks.
 
 But we are students who just want to learn, so let's take a calculated risk and opt in for the simpler option :^)
 
 ## Exercise
-
-Get this plugin installed installed on your own wordpress website from last class. If you don't have a wordpress site yet, tke the time to start making one. To verify your installation, you should see it in your "Tools" panel under the section "SQL Buddy".
 
 # Tables, Records, and Data Usage !! (oh my !!)
 
@@ -83,5 +109,7 @@ Take a moment to look at all the content here.
 Here you can directly modify the table's data directly from this view
 
 ## Exercise
+
+Get `SQL Buddy` installed on your own wordpress website from last class. If you don't have a wordpress site yet, tke the time to start making one. To verify your installation, you should see it in your "Tools" panel under the section "SQL Buddy".
 
 Using `SQL Buddy`, try to update one of your pages headers to be more interesting :^)
