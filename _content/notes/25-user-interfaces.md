@@ -4,7 +4,7 @@ category: "User Interfaces"
 number: 25
 type: "Lecture"
 title: "Tour of the WordPress Backend"
-created: "2024-04-15"
+created: "2024-04-22"
 ---
 
 # Customizing your CMS continued
@@ -13,7 +13,7 @@ Let's take our WordPress Knowledge to the next level.
 
 ## Navigation
 
-Step 1) login to the admin panel
+Step 1) Login to the admin panel
 
 Notice the options you have on the left, WordPress has been optimized for blogs
 
@@ -98,9 +98,26 @@ But what does this all mean?
 
 # Tables
 
-Each table stores a different type of data type for your website. Just like in our admin panel where we can see different "posts" and "pages", here you should see a table called something like `wp8r-posts` that stores information about your posts and pages.
+Each table stores a different type of "related" data for your website. Just like in our admin panel where we can see different "posts" and "pages", here you should see a table called something like `wp8r-posts` that stores information about your posts and pages.
 
-Take a moment to look at all the content here.
+## What do i mean by related?
+
+A table shares similar information.
+
+For example, with my notes, each note page is made up of a title, date, and class despite the actual contents of each note page being unique.
+
+```md
+---
+# General Information
+category: "User Interfaces"
+number: 25
+type: "Lecture"
+title: "Tour of the WordPress Backend"
+created: "2024-04-22"
+---
+```
+
+However, let's take a moment to look at all the content in `SQL Buddy` in our WordPress website.
 
 ## Modifying Tables
 
@@ -110,6 +127,16 @@ Here you can directly modify the table's data directly from this view
 
 Get `SQL Buddy` installed on your own wordpress website from last class. If you don't have a wordpress site yet, tke the time to start making one. To verify your installation, you should see it in your "Tools" panel under the section "SQL Buddy".
 
-Using `SQL Buddy`, try to update one of your pages headers to be more interesting :^)
+Using `SQL Buddy`, try to update one of your pages to be more interesting :^)
 
 # Records
+
+Each row in a table is called a "Record". This represents a single instance or entry of RELATED data.
+
+In our `wp8r-posts` table, we can select a particular "Record".
+
+# Fields
+
+Each column in a table is a "Field". This represents a single attribute or characteristic of the data being stored. Another way to think of it is as a "Category" of data and has a particular data type associated with it.
+
+Going back to WordPress, when we select a particular "Record" in our `wp8r-posts` table, we can see all the unique "Fields" associated with each post or page :)
