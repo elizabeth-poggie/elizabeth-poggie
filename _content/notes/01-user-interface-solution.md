@@ -256,4 +256,4 @@ When should you use floats vs flexbox? Give or draw your answer
 TLDR:
 
 - Use Flexbox when arranging items along a single dimension, like in navigation bars or adaptable content sections within a container.
-- Use floats when you want to create "magazine" layouts
+- Use floats when you want to create "magazine" layouts.
