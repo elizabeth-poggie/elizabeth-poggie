@@ -101,7 +101,7 @@ public static void method() {
 ```cs
 public static void method() {
     int x = 5;
-	int z = x + y;
+	int z = x + y; // breaks
 	int y = 6; // scope
 }
 ```
@@ -144,6 +144,65 @@ public static void method() {
 	{
 		int y = 6; // scope
 	}
-	int z = x + y;
+	int z = x + y; // breaks
 }
 ```
+
+## Q5
+
+will it run?
+
+```cs
+public class Program
+{
+	public static void Main () {
+	    int x = 5;
+        method();
+        int y = 6;
+        Console.WriteLine(x+y);
+	}
+
+	public static void method() {
+        int x = 7;
+        int z = 10;
+        Console.WriteLine(x+z);
+    }
+}
+```
+
+👉 YES, the program will output `17 11`
+
+# Mini Quiz - Explanations
+
+As with methods, if we declare a variable inside a condition block, such variable only exists inside that block.
+
+```cs
+public static void method () {
+    int x = 2;
+    int y = 3;
+    if (x < y) {
+        x = x + y; // x and y exist
+        int z = 5;
+        y = z * x; // x, y, and z all exist
+    }
+    Console.WriteLine(x + " " + y + " " + z); // code's gonna break here cause "z" is out of scope here lol
+}
+```
+
+If we declare a variable before the condition block, then we can use the variable inside (and after) the block. Any modification to the value of the variable will apply.
+
+```cs
+// v2 method
+public static void methodV2 () {
+    int x = 2;
+    int y = 3;
+    if (x < y) {
+		x = x + y;
+		int z = 5;
+		y = z * x;
+    }
+    Console.WriteLine(x + " " + y); // notice that z no longer exists here
+}
+```
+
+When i run the above i should see `5 25` printed :^)
