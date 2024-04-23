@@ -3,7 +3,7 @@
 category: "Intro to Programming"
 number: 16
 type: "Lecture"
-title: "Methods II"
+title: "Scope && Value Methods"
 created: "2024-04-23"
 ---
 
@@ -242,3 +242,169 @@ public static void methodV2 () {
 ```
 
 When i run the above i should see `5 25` printed :^)
+
+# Exercise ❤️
+
+As an exercise, write a program that has a method that takes two integers x and y as input. If x is less than y, then the program should print out the "product" of the two integers, otherwise it should print out the "sum" of the two integers.
+
+# Value methods
+
+Compared to void methods, value methods differ in 2 ways:
+
+- They declare the type of the return value.
+- They use at least one return statement to provide a return value.
+
+```cs
+public static int method() {
+    int x = 42;
+    return x; // return statement
+}
+```
+
+A call to this method could look something like this
+
+```cs
+int var = method();
+```
+
+And if we wanted to make this spicier, we could could allow the method to take arguments:
+
+```cs
+public class Program
+{
+	public static void Main () {
+	    int var = method(2); // notice how we are calling the method
+	    Console.WriteLine(var);
+	}
+
+	public static int method(int num) { // notice the change here
+        int x = 42 * num;
+        return x;
+    }
+}
+```
+
+# Return statements
+
+The type of the expression MUST match the return type.
+
+If you try to return with no expression or with an expression of the wrong type, then the compiler generates an error.
+
+```cs
+// valid cause im return an int
+public static int method1() {
+    int x = 42;
+    return x;
+}
+
+// valid cause i'm returning nothing :^)
+public static void method2() {
+    int x = 42;
+    return;
+}
+
+// TRASH ❌ does not match the return type and cannot implicitly convert >:^(
+public static int method3(double x) {
+    x++;
+    return x;
+}
+
+// TRASH ❌ does not match the return type and cannot implicitly convert >:^(
+public static double method4(int x) {
+    x++;
+    return x;
+}
+```
+
+# Dead code
+
+## What is it?
+
+Code that appears after a return statement, or somewhere where it can never be executed, is called dead code.
+
+```cs
+public static int method() {
+    int x = 42;
+    return x;
+    Console.WriteLine("i will never print 😭"); // dead code
+}
+```
+
+# Exercise ❤️
+
+Write a method `reverseConcat` that takes three input parameters of type String (s1,s2,s3). It should return a value of type String equal to the three input Strings concatenated together in reverse order. Call this from your main method and print the result.
+
+```cs
+// method call
+reverseConcat("!!", "World", "Hello");
+
+// expected output
+"HelloWorld!!"
+```
+
+# Return and Conditional Statements
+
+If you use return statements inside a conditional statement, you need to make sure that every possible instance of your program will reach a return statement.
+
+```cs
+// notice the return statement in each branch
+public static int absoluteValue(int x) {
+    if (x > 0) {
+        return x;
+    } else {
+        return -x;
+    }
+}
+```
+
+# Mini quiz 2
+
+## Q1
+
+Will it run?
+
+```cs
+public class Program
+{
+	public static void Main () {
+	    int result = executeTrash(42, "yeet");
+	    Console.WriteLine(result);
+	}
+
+	public static int executeTrash(int x, string y) {
+        if (x > 0) {
+            return x;
+            Console.WriteLine(y);
+        } else {
+            Console.WriteLine(y + y + y);
+            return;
+        }
+        return x++;
+    }
+}
+```
+
+No lol, the program is going to error our at the `return;` statement and there is a lot of bad practices going on here
+
+```cs
+public class Program
+{
+	public static void Main () {
+	    int result = executeTrash(42, "yeet"); // yeet hasn't been cool in a decade
+	    Console.WriteLine(result);
+	}
+
+	public static int executeTrash(int x, string y) {
+        if (x > 0) {
+            return x;
+            Console.WriteLine(y); // dead code
+        } else {
+            Console.WriteLine(y + y + y);
+            return; // doesn't match return type
+        }
+        return x++; // dead code
+    }
+}
+```
+
+## Q2
