@@ -172,6 +172,42 @@ public class Program
 
 👉 YES, the program will output `17 11`
 
+## Q6
+
+Will it run
+
+```cs
+public class Program
+{
+	public static void Main () {
+	    int x = 5;
+        method();
+	}
+
+	public static void method() {
+         x = x + 1;
+        Console.WriteLine(x);
+    }
+}
+```
+
+```cs
+public class Program
+{
+	public static void Main () {
+	    int x = 5; // scope of x
+        method(); // scope of x
+	}
+
+	public static void method() {
+         x = x + 1; // program breaks here
+        Console.WriteLine(x);
+    }
+}
+```
+
+👉 NO, `int x` is NOT in scope
+
 # Mini Quiz - Explanations
 
 As with methods, if we declare a variable inside a condition block, such variable only exists inside that block.
