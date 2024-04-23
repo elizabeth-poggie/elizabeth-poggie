@@ -46,7 +46,7 @@ ERROR!
 /tmp/VwTJp3aEqf.cs(10,21): error CS0103: The name 's' does not exist in the current context
 ```
 
-## Top down
+## Top down processing
 
 When inside a method:
 
@@ -54,9 +54,96 @@ When inside a method:
 - it ends to exists at the close curly bracket corresponding to the most recent open curly bracket.
 
 ```cs
-public static void method()
-{
+public static void method() { // enter the method
 	int num = 42; // variable begins it's life
 	num++; // the variable does things during it's existence
 } // variable is destroyed, rip variable
+```
+
+# Mini Quiz
+
+## Q1
+
+Will it run?
+
+```cs
+public static void method() {
+    int x = 5;
+	int y = 6;
+	int z = x + y;
+}
+```
+
+👉 YES, `int y` is in scope
+
+```cs
+public static void method() {
+    int x = 5;
+	int y = 6; // scope
+	int z = x + y; // scope
+}
+```
+
+## Q2
+
+Will it run?
+
+```cs
+public static void method() {
+    int x = 5;
+	int z = x + y;
+	int y = 6;
+}
+```
+
+👉 NO, `int y` is NOT in scope
+
+```cs
+public static void method() {
+    int x = 5;
+	int z = x + y;
+	int y = 6; // scope
+}
+```
+
+## Q3
+
+Will it run?
+
+```cs
+public static void method() {
+    int x = 5;
+	{
+		int y = 6; // scope
+		int z = x + y; // scope
+	}
+}
+```
+
+👉 YES, `int y` is in scope
+
+## Q3
+
+Will it run?
+
+```cs
+public static void method() {
+    int x = 5;
+	{
+		int y = 6;
+	}
+	int z = x + y;
+}
+```
+
+👉 NO, `int y` is NOT in scope
+
+```cs
+public static void method() {
+    int x = 5;
+	{
+		int y = 6; // scope
+	}
+	int z = x + y;
+}
 ```
