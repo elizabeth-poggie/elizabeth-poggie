@@ -434,3 +434,7 @@ public class Program
 ```
 
 YES, although a bit hard to follow
+
+# Exercise ❤️
+
+Write a method that computes the cube of a number :^)
