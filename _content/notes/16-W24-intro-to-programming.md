@@ -316,6 +316,18 @@ public static double method4(int x) {
 }
 ```
 
+# Exercise ❤️
+
+Write a method `reverseConcat` that takes three input parameters of type String (s1,s2,s3). It should return a value of type String equal to the three input Strings concatenated together in reverse order. Call this from your main method and print the result.
+
+```cs
+// method call
+reverseConcat("!!", "World", "Hello");
+
+// expected output
+"HelloWorld!!"
+```
+
 # Dead code
 
 ## What is it?
@@ -330,19 +342,7 @@ public static int method() {
 }
 ```
 
-# Exercise ❤️
-
-Write a method `reverseConcat` that takes three input parameters of type String (s1,s2,s3). It should return a value of type String equal to the three input Strings concatenated together in reverse order. Call this from your main method and print the result.
-
-```cs
-// method call
-reverseConcat("!!", "World", "Hello");
-
-// expected output
-"HelloWorld!!"
-```
-
-# Return and Conditional Statements
+# Returning and Conditional Statements
 
 If you use return statements inside a conditional statement, you need to make sure that every possible instance of your program will reach a return statement.
 
@@ -408,3 +408,29 @@ public class Program
 ```
 
 ## Q2
+
+Will it run?
+
+```cs
+public class Program
+{
+	public static void Main () {
+	    Console.WriteLine(processTrash(executeTrash(42)));
+	}
+
+	public static int executeTrash(int x) {
+        x++;
+        {
+            int y = 42;
+            x = x * y;
+        }
+        return x;
+    }
+
+    public static string processTrash(int x) {
+        return "Why would you do this lol " + x;
+    }
+}
+```
+
+YES, although a bit hard to follow
