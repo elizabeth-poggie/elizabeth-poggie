@@ -58,7 +58,7 @@ public class Program
 }
 ```
 
-This time we should see something like
+This time we should see something like:
 
 ```text
 6
