@@ -145,9 +145,11 @@ public class Program
         int[] originalNums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         int[] evenNums = onlyEven(originalNums);
 
-        Console.WriteLine("Original Array:");
+        Console.WriteLine("Original Numbers:");
         print(originalNums);
-        Console.WriteLine(); // extra space lol
+
+        // extra space lol
+        Console.WriteLine();
         Console.WriteLine("Even Numbers:");
         print(evenNums);
     }
@@ -172,6 +174,7 @@ public class Program
     {
         for(int i=0; i<nums.Length; i++)
         {
+            // this is not scalable, how could we improve it?
             if (nums[i] != 0) {
                 Console.Write(nums[i] + " ");
             }
@@ -184,6 +187,53 @@ public class Program
 👆 The above solution still isn't perfect tho, what can we do to improve it?
 
 # Another Example
+
+Lets write a method that takes an array as input and modifies the array such that all the elements are reversed.
+
+```cs
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+        // print original before modification
+        Console.WriteLine("Original Numbers:");
+        print(nums);
+
+        // reverse array
+        reverse(nums);
+
+        // extra space lol
+        Console.WriteLine();
+        Console.WriteLine("Reversed Numbers:");
+        print(nums);
+    }
+
+    public static void reverse(int[] nums)
+    {
+        int length = nums.Length;
+        for (int i = 0; i < length / 2; i++)
+        {
+            // temp storage to allow easy swapping
+            int temp = nums[i];
+            nums[i] = nums[length - i - 1];
+            nums[length - i - 1] = temp;
+        }
+    }
+
+    // keep method from previous example cause we are lazy
+    // We do not need to re-implement logic that's already accounted for :^)
+    public static void print(int[] nums)
+    {
+        for(int i=0; i<nums.Length; i++)
+        {
+            Console.Write(nums[i] + " ");
+        }
+        Console.WriteLine();
+    }
+}
+```
 
 # Lab time
 
