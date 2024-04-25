@@ -1,9 +1,9 @@
 ---
 # General Information
 category: "Intro to Programming"
-number: 11
+number: 12
 type: "Lecture"
-title: "Arrays III"
+title: "Multidimensional Arrays"
 created: "2024-03-21T12:17:29Z"
 ---
 
