@@ -52,47 +52,6 @@ public class Program
 
 Verify that your specific solution works using [this online calculator](https://www.metric-conversions.org/temperature/celsius-to-fahrenheit.htm?arg=90)
 
-# Variables - Hard mode
-
-## The Problem
-
-Write a program that takes a binary number as input, converts it to its decimal equivalent, and then prints the result.
-
-## The Solution
-
-```cs
-using System;
-
-public class Program
-{
-    public static void Main()
-    {
-        // Step 1 - get input
-        Console.WriteLine("Enter a binary number:");
-        string binaryInput = Console.ReadLine();
-
-
-        // Step 2 - convert from binary to decimal
-        long decimalValue = 0;
-        int exponent = 0;
-
-        for (int i = binaryInput.Length - 1; i >= 0; i--)
-        {
-            if (binaryInput[i] == '1')
-            {
-                decimalValue += (long) Math.Pow(2, exponent);
-            }
-            exponent++;
-        }
-
-        // Step 3 - output the result
-        Console.WriteLine("Decimal equivalent: " + decimalValue);
-    }
-}
-```
-
-Verify that your specific solution works using [this online calculator](https://www.rapidtables.com/convert/number/binary-to-decimal.html)
-
 # Conditional Statements - Easy Mode
 
 ## The Problem
@@ -221,9 +180,50 @@ public class Program
 }
 ```
 
-# Loops
+# Loops - Easy mode
 
 TBD
+
+# Loops - Hard mode
+
+## The Problem
+
+Write a program that takes a binary number as input, converts it to its decimal equivalent, and then prints the result.
+
+## The Solution
+
+```cs
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        // Step 1 - get input
+        Console.WriteLine("Enter a binary number:");
+        string binaryInput = Console.ReadLine();
+
+
+        // Step 2 - convert from binary to decimal
+        long decimalValue = 0;
+        int exponent = 0;
+
+        for (int i = binaryInput.Length - 1; i >= 0; i--)
+        {
+            if (binaryInput[i] == '1')
+            {
+                decimalValue += (long) Math.Pow(2, exponent);
+            }
+            exponent++;
+        }
+
+        // Step 3 - output the result
+        Console.WriteLine("Decimal equivalent: " + decimalValue);
+    }
+}
+```
+
+Verify that your specific solution works using [this online calculator](https://www.rapidtables.com/convert/number/binary-to-decimal.html)
 
 # Arrays
 
