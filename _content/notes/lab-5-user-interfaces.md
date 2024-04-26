@@ -16,13 +16,22 @@ created: "2024-04-26"
 
 # Goal
 
-Building off of your labs 3 and 4, your Hackathon project is ready to expand into the e-commerce market. In this project you will develop a simple website using WordPress following [these setup instructions](https://www.elizabethpoggie.com/notes/23-user-interfaces#getting-started). Compared to our previous Labs, you will find this relatively easy to work with :)
+Building off of your labs 3 and 4, your Hackathon project is ready to venture into the realm of e-commerce. This phase involves crafting a straightforward website using WordPress, following the guidance listed in [these setup instructions](https://www.elizabethpoggie.com/notes/23-user-interfaces#getting-started). Compared to our previous Labs, you will find this relatively easy to work with :)
 
 # Milestone 1 (15%) - Due May 7th
 
 ## General Requirements
 
 Your website should contain a full navigation with with a home page, an about page, and a reviews page. Each page should meet the below requirements
+
+# Unique Theme
+
+Use the wordpress Theme Selector to select a theme. Read the CSS for that theme and make changes as you see fit. When you make your own personal changes, document that with comments in the CSS and follow the below resources to learn how it's done:
+
+- [Step by step guide on How to Edit CSS & HTML in WordPress](https://www.theme-junkie.com/how-to-edit-css-in-wordpress/)
+- [Wordpress.org CSS documentation](https://developer.wordpress.org/advanced-administration/wordpress/css/)
+- [Wordpress.org Themes documentation](https://wordpress.org/documentation/article/work-with-themes/)
+- [Wordpress Site Design & Layout documentation](https://codex.wordpress.org/Site_Design_and_Layout)
 
 ## Home Page
 
@@ -54,7 +63,7 @@ Some ideas to get you started
 
 ## Reviews
 
-Solicit feedback from your peers on your Project and Labs. There is no limit to how many comments you should have, however aim to have at least 5. Each comment should contain:
+Solicit feedback from your peers on your project and labs. There is no limit to how many comments you should have, however aim to have at least 5. Each comment should contain:
 
 - A quote.
 - A photo or the avatar of the commentator.
@@ -65,6 +74,10 @@ Some idea's to get you started:
 - "WAY too salty and there's too much plastic and i mean it. also, i've gotten stranded on 143 too many deserted islands. i do not recommend the north pacific ocean. also way too cold, they really need to pay their electric bill." - [Laurel, Google Reviewer](https://maps.app.goo.gl/SZXzFqnvBh2CtJGv8)
 - "too much water!! i called an uber to drive me there, and they started saying things like “please, i have a family”, and “i don’t know what you mean!” overall bad experience." - [Deez, Ocean Anarchist](https://maps.app.goo.gl/a6NYV5kVP1BofNwq5)
 - "Lot of water" - [Soren, Ocean Enthusiast](https://maps.app.goo.gl/mnexhSKP5916kW9i6)
+
+## Grading
+
+Points will be awarded for effort, design, content, and originality of your site. Your site must also be ‘easy-to-use’.
 
 ## What to hand in
 
