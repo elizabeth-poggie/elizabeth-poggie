@@ -13,15 +13,48 @@ These are supplementary exercises for all material covered in class designed to 
 
 As a general rule, try to solve the problems independently before reading the solutions. Programming isn't about memorizing solutions ,but rather developing your skills through consistent practice :^)
 
-# Variables
+# Variables - Easy mode
 
-## Easy
+## The Problem
 
-## Medium
+Design a program that converts Celsius (C) temperatures to Fahrenheit (F) temperatures using this formula:
 
-## Hard
+```text
+F = 1.8 * C + 32
+```
+
+## The Solution
+
+```cs
+public class Program
+{
+    public static void Main()
+    {
+        // Step 1 - get input && validate it
+        Console.WriteLine("Enter the temp in Celcius:");
+        double celsius;
+
+        while (!double.TryParse(Console.ReadLine(), out celsius))
+        {
+          Console.WriteLine("Please enter a valid temperature lol");
+        }
+
+        // Step 2 - convert
+        double fahrenheit = 1.8 * celsius + 32;
+
+        // Step 3 - output the result
+        Console.WriteLine("Fahrenheit equivalent: " + fahrenheit);
+    }
+}
+```
+
+# Variables - Hard mode
+
+## The Problem
 
 Write a program that takes a binary number as input, converts it to its decimal equivalent, and then prints the result.
+
+## The Solution
 
 ```cs
 using System;
@@ -58,24 +91,6 @@ Verify that your specific solution works using [this online calculator](https://
 
 # Loops
 
-## Easy
-
-## Medium
-
-## Hard
-
 # Arrays
 
-## Easy
-
-## Medium
-
-## Hard
-
 # Methods
-
-## Easy
-
-## Medium
-
-## Hard
