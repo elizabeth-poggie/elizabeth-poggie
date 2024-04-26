@@ -23,11 +23,11 @@ Building off of your labs 3 and 4, your Hackathon project is ready to venture in
 
 ## Navigation
 
-Your website should contain a full navigation with with a home page, an about page, and a reviews page. Each page should meet the below requirements
+Your website should contain a navbar with a home page, about page, and reviews page. Each of these links should cover the below requirements...
 
 ## Theme Customization
 
-Use the wordpress Theme Selector to select a theme. Read the CSS for that theme and make changes as you see fit. When you make your own personal changes, document that with comments in the CSS and follow the below resources to learn how it's done:
+Use the Wordpress Theme Selector to select a theme. Read the CSS for that theme and make changes as you see fit. When you make your own personal changes, document that with comments in the CSS and follow the below resources to learn how it's done:
 
 - [Step by step guide on How to Edit CSS & HTML in WordPress](https://www.theme-junkie.com/how-to-edit-css-in-wordpress/)
 - [Wordpress.org CSS documentation](https://developer.wordpress.org/advanced-administration/wordpress/css/)
@@ -43,7 +43,13 @@ In your home page, you should have content that contains:
 - Your inspiration
 - Your impact
 
-Information should be logically organized for each section with images to make it a bit more interesting.
+Information should be logically organized for each section with images to make it a bit more interesting. You can source your images from:
+
+- [This canadian specific stock photo library](https://www.cira.ca/en/stock-gallery/)
+- [Pixabay](https://pixabay.com/)
+- [Unsplash](https://unsplash.com/)
+- Your own photos
+- ... or stuff you found online, however be sure to give credit where credit is due :^)
 
 ## About Us
 
