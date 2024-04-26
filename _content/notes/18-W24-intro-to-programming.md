@@ -13,6 +13,8 @@ These are supplementary exercises for all material covered in class designed to 
 
 As a general rule, try to solve the problems independently before reading the solutions. Programming isn't about memorizing solutions, but rather developing your skills through consistent practice :^)
 
+AS WELL, it's important to note that my solutions may not always be optimal. Problem-solving is inherently a creative process, and alternative approaches, as long as they are logically sound, will receive full marks.
+
 # Variables - Easy mode
 
 ## The Problem
