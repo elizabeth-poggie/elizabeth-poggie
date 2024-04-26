@@ -91,6 +91,74 @@ public class Program
 
 Verify that your specific solution works using [this online calculator](https://www.rapidtables.com/convert/number/binary-to-decimal.html)
 
+# Conditional Statements - Medium Mode
+
+## The Problem
+
+A company is preparing itself for Halloween. They intend to sell a box of chocolates for `11.99$` (use a constant). The company thought of improving its sales by providing discounts on mass sales as follows:
+
+- 5-9 👉 10% discount
+- 10-29 👉 25%
+- 30-49 👉 40%
+- 50 + 👉 50%
+
+Design a program that asks the user to enter the number of boxes purchased. The program should then display the amount of the discount (if any) and the total amount of the purchase after the discount.
+
+## The Solution
+
+```cs
+public class Program
+{
+    public static void Main()
+    {
+        // Step 1 - declare constants
+        const double pricePerBox = 11.99;
+        int boxes;
+
+        // Step 2 - prompt for input
+        Console.WriteLine("Welcome to our Halloween Chocolates sale!");
+        Console.WriteLine("Each box costs: " + pricePerBox+ "$");
+        Console.WriteLine("Please enter the number of boxes you want to purchase:");
+
+        // Step 3 - input validation
+        while (!int.TryParse(Console.ReadLine(), out boxes) || boxes <= 0)
+        {
+          Console.WriteLine("Invalid input. Please enter a positive integer.");
+        }
+
+        // Step 4 - compute the total cost BEFORE discount
+        double totalCost = boxes * pricePerBox;
+        double discount = 0;
+
+        // Step 5 - compute the discount
+        if (boxes >= 5 && boxes <= 9)
+        {
+            discount = totalCost * 0.10;
+        }
+        else if (boxes >= 10 && boxes <= 29)
+        {
+            discount = totalCost * 0.25;
+        }
+        else if (boxes >= 30 && boxes <= 49)
+        {
+            discount = totalCost * 0.40;
+        }
+        else if (boxes >= 50)
+        {
+            discount = totalCost * 0.50;
+        }
+
+        // Step 6 - compute the total AFTER discount
+        double discountedTotal = totalCost - discount;
+
+        // Step 7 - output the result
+        Console.WriteLine("Total cost before discount: " + totalCost.ToString("0.00"));
+        Console.WriteLine("Discount applied: " + discount.ToString("0.00"));
+        Console.WriteLine("Total cost after discount: " + discountedTotal.ToString("0.00"));
+    }
+}
+```
+
 # Loops
 
 # Arrays
