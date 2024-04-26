@@ -4,14 +4,14 @@ category: "Intro to Programming"
 number: 18
 type: "Lecture"
 title: "Supplementary Exercises"
-created: "2024-04-25"
+created: "2024-04-26"
 ---
 
 # Intro
 
 These are supplementary exercises for all material covered in class designed to give students as much practice as conceivably possible to prepare them for the final project and Test 3.
 
-As a general rule, try to solve the problems independently before reading the solutions. Programming isn't about memorizing solutions ,but rather developing your skills through consistent practice :^)
+As a general rule, try to solve the problems independently before reading the solutions. Programming isn't about memorizing solutions, but rather developing your skills through consistent practice :^)
 
 # Variables - Easy mode
 
