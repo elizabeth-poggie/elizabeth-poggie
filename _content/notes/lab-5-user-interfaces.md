@@ -118,6 +118,10 @@ Create a “Change theme” button that allows you to select a new custom theme 
 
 There should be at least 3 unique themes to choose from and the button should be easily accessible from the navbar.
 
+## Grading
+
+Points will be awarded for effort, design, content, and originality of your site. Your site must also be ‘easy-to-use’.
+
 ## What to hand in
 
-On LEA, you submit a text file (Notepad) with the URL of your WordPress website
+On LEA, submit one additional text file (Notepad). This time, write in your own words a few sentences summarizing your website and contributions to the project. Include techniques used, as well as resources (websites)
