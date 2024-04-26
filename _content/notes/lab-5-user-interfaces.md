@@ -11,7 +11,8 @@ created: "2024-04-26"
 
 - Worth: Milestone 1 - 15% // Milestone 2 - 15%
 - Due: Milestone 1 - May 7th, 2023 // Milestone 2 - May 16, 2023
-- Hand in: Submit a text file (Notepad) with the URL of your WordPress website on LEA.
+- Milestone 1 hand in: On LEA, submit a text file (Notepad) with the URL of your WordPress website inside this file.
+- Milestone 2 hand in: On LEA, submit one additional text file (Notepad). This time, write in your own words a few sentences summarizing your website and contributions to the project. Include techniques used, as well as resources (websites)
 - Late Penalty: Late submissions lose 10% per day to a maximum of 3 days. Nothing is accepted after 3 days and a grade of zero will be given.
 
 # Goal
@@ -20,11 +21,11 @@ Building off of your labs 3 and 4, your Hackathon project is ready to venture in
 
 # Milestone 1 (15%) - Due May 7th
 
-## General Requirements
+## Navigation
 
 Your website should contain a full navigation with with a home page, an about page, and a reviews page. Each page should meet the below requirements
 
-# Unique Theme
+## Theme Customization
 
 Use the wordpress Theme Selector to select a theme. Read the CSS for that theme and make changes as you see fit. When you make your own personal changes, document that with comments in the CSS and follow the below resources to learn how it's done:
 
@@ -44,7 +45,7 @@ In your home page, you should have content that contains:
 
 Information should be logically organized for each section with images to make it a bit more interesting.
 
-## About us
+## About Us
 
 Pitch yourself.
 
@@ -85,4 +86,28 @@ Submit a text file (Notepad) with the URL of your WordPress website on LEA :^)
 
 # Milestone 2 (15%) - Due May 16th
 
-In this part your implementing a merch page and a shopping cart - more details on that later ;)
+## Merch
+
+Create a new page called "Merch" and ensure this page is linked to your navbar. On this page, you should sell products related to your site’s concept. Some ideas to get you started:
+
+- [SSENSE Pets™️](https://www.ssense.com/en-us/everything-else/pets)
+- [dogecore](https://www.dogecore.com/collections/sweatshirt)
+- [Lizzo](https://store.warnermusic.ca/collections/lizzo?ref=https%3A%2F%2Fwww.lizzomusic.com%2F)
+
+## Shopping Cart Requirements
+
+You must implement a shopping cart – yes, use a plugin for this - and also link the page on your navbar. Please make sure your shopping cart has links to PayPal and Visa, as well, ensure navigation is correct and easy once the purchase is made.
+
+## Theme toggler
+
+Create a “Change theme” button that allows you to select a new custom theme from a list. Some ideas to get you started:
+
+- A dark mode, the background turns black with white text
+- 90s mode, the look and feel of the website is reminiscent of [this cardboard cup](https://s.abcnews.com/images/Lifestyle/HT_paper_cup_jef_150624_16x9_1600.jpg).
+- 70s mode, all images now encapsulate [this energy](https://i.pinimg.com/originals/c2/9d/99/c29d9973384c0dfbc3a5e74247a98b86.jpg).
+
+There should be at least 3 unique themes to choose from and the button should be easily accessible from the navbar.
+
+## What to hand in
+
+On LEA, you submit a text file (Notepad) with the URL of your WordPress website

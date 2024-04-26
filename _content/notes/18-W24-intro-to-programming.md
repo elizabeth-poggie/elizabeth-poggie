@@ -13,10 +13,32 @@ Exercises for all material covered in class designed to give students as much pr
 
 # Variables
 
+## Easy
+
+## Medium
+
+## Hard
+
 # Loops
+
+## Easy
+
+## Medium
+
+## Hard
 
 # Arrays
 
-# IO
+## Easy
+
+## Medium
+
+## Hard
 
 # Methods
+
+## Easy
+
+## Medium
+
+## Hard
