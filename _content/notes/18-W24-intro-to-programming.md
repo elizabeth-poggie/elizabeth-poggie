@@ -182,9 +182,110 @@ public class Program
 
 # Loops - Easy mode
 
-TBD
+## The Problem
 
-# Loops - Hard mode
+Write a program that takes two integers as input `n` and `m` and prints out the first `m` multiples of `n` on one line. For example:
+
+```text
+n = 2
+m = 3
+
+2 4 6
+```
+
+```text
+n = 3
+m = 2
+
+3 6
+```
+
+## The Solution
+
+```cs
+public class Program
+{
+    public static void Main()
+    {
+        // Step 1 - declare variables for storage
+        int n, m;
+
+        // Step 2 - prompt for n and validate it
+        Console.WriteLine("Give me an n plz");
+        while (!int.TryParse(Console.ReadLine(), out n))
+        {
+          Console.WriteLine("Please give me a valid number lol");
+        }
+
+        // Step 3 - prompt for m and validate it
+        Console.WriteLine("Give me an m plz");
+        while (!int.TryParse(Console.ReadLine(), out m))
+        {
+          Console.WriteLine("Please give me a valid number lol");
+        }
+
+        // Step 4 - output result
+        for (int i = 1; i <= m; i++)
+        {
+            Console.Write((n * i) + " ");
+        }
+
+        // Step 5 - indent to the next line when done
+        Console.WriteLine();
+    }
+}
+```
+
+# Loops - Medium mode
+
+## The Problem
+
+Write a program that prints the outline of a triangle made up of `*` signs one character at a time:
+
+```text
+*
+**
+* *
+*  *
+*   *
+*    *
+*     *
+*      *
+*       *
+**********
+```
+
+## The Solution
+
+```cs
+public class Program
+{
+    public static void Main()
+    {
+        // Step 1 - determine the height of the triangle
+        const int height = 10;
+
+        // Step 2 - output the result
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j <= i; j++)
+            {
+                if (j == 0 || j == i || i == height - 1)
+                {
+                    Console.Write("*");
+                }
+                else
+                {
+                    Console.Write(" ");
+                }
+            }
+            Console.WriteLine();
+        }
+    }
+}
+```
+
+# Loops - Medium mode
 
 ## The Problem
 
