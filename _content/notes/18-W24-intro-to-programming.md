@@ -91,6 +91,66 @@ public class Program
 
 Verify that your specific solution works using [this online calculator](https://www.rapidtables.com/convert/number/binary-to-decimal.html)
 
+# Conditional Statements - Easy Mode
+
+## The Problem
+
+Create a program that prompts the user to enter their exam score and calculates their grade based on the following scale:
+
+- A (90-100)
+- B (80-89)
+- C (70-79)
+- D (60-69)
+- F (0-59)
+
+## The Solution
+
+```cs
+public class Program
+{
+    public static void Main()
+    {
+        // Step 1 - declare variables for storage
+        int score;
+        char grade;
+
+        // Step 2 - prompt for input
+        Console.WriteLine("Plz enter your exam score:");
+
+        // Step 3 - input validation
+        while (!int.TryParse(Console.ReadLine(), out score) || score <= 0)
+        {
+          Console.WriteLine("Invalid input. Please enter a positive integer.");
+        }
+
+        // Step 4 - compute the letter grade
+        if (score >= 90 && score <= 100)
+        {
+            grade = 'A';
+        }
+        else if (score >= 80 && score <= 89)
+        {
+            grade = 'B';
+        }
+        else if (score >= 70 && score <= 79)
+        {
+            grade = 'C';
+        }
+        else if (score >= 60 && score <= 69)
+        {
+            grade = 'D';
+        }
+        else
+        {
+            grade = 'F';
+        }
+
+        // Step 5 - output the result
+        Console.WriteLine("Your grade is: " + grade);
+    }
+}
+```
+
 # Conditional Statements - Medium Mode
 
 ## The Problem
@@ -111,7 +171,7 @@ public class Program
 {
     public static void Main()
     {
-        // Step 1 - declare constants
+        // Step 1 - declare constants && variables for storage
         const double pricePerBox = 11.99;
         int boxes;
 
@@ -161,6 +221,12 @@ public class Program
 
 # Loops
 
+TBD
+
 # Arrays
 
+TBD
+
 # Methods
+
+TBD
