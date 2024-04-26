@@ -76,9 +76,9 @@ Some ideas to get you started
 
 Solicit feedback from your peers on your project and labs. There is no limit to how many comments you should have, however aim to have at least 5. Each comment should contain:
 
-- A quote.
-- A photo or the avatar of the commentator.
-- The commentators name and occupation. (And yes you can give each other fake job titles)
+- A quote
+- A photo or the avatar of the commentator
+- The commentators name and occupation (And yes you can give each other fake job titles)
 
 Some idea's to get you started:
 
