@@ -31,7 +31,7 @@ public class Program
     public static void Main()
     {
         // Step 1 - get input && validate it
-        Console.WriteLine("Enter the temp in Celcius:");
+        Console.WriteLine("Enter the temp in Celsius:");
         double celsius;
 
         while (!double.TryParse(Console.ReadLine(), out celsius))
@@ -47,6 +47,8 @@ public class Program
     }
 }
 ```
+
+Verify that your specific solution works using [this online calculator](https://www.metric-conversions.org/temperature/celsius-to-fahrenheit.htm?arg=90)
 
 # Variables - Hard mode
 
