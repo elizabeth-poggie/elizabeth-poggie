@@ -17,6 +17,52 @@ AS WELL, it's important to note that my solutions may not always be optimal. Pro
 
 # Variables - Easy mode
 
+## The problem
+
+Create a program that prompts the user to enter their name, age, and grade. Use variables to store this information and display it back to the user.
+
+## The Solution
+
+```cs
+public class Program
+{
+    public static void Main()
+    {
+        // Step 1 - declare variables for storage
+        int age, grade;
+
+        // Step 2 - Prompt the user to enter their name
+        Console.WriteLine("Plz enter your name:");
+        string name = Console.ReadLine();
+
+        // Step 3 - Prompt the user to enter their age
+        Console.WriteLine("PLz enter your age:");
+
+        while (!int.TryParse(Console.ReadLine(), out age) || age <= 0)
+        {
+          Console.WriteLine("Invalid input. Please enter a positive integer.");
+        }
+
+        // Step 4 - Prompt the user to enter their grade
+        Console.WriteLine("Plz enter your grade:");
+        while (!int.TryParse(Console.ReadLine(), out grade) || grade <= 0)
+        {
+          Console.WriteLine("Invalid input. Please enter a positive integer.");
+        }
+
+        // Step 5 - output the result
+        Console.WriteLine();
+        Console.WriteLine("Student Information ");
+        Console.WriteLine("*********************");
+        Console.WriteLine("Name: " + name);
+        Console.WriteLine("Age: " + age);
+        Console.WriteLine("Grade: " + grade);
+    }
+}
+```
+
+# Variables - Medium mode
+
 ## The Problem
 
 Design a program that converts Celsius (C) temperatures to Fahrenheit (F) temperatures using this formula:
