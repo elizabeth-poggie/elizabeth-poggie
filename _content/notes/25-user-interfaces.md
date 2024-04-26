@@ -89,7 +89,7 @@ This is what you will likely use in your future classes and careers. However for
 
 In your wordpress admin panel, install the plugin `SQL Buddy`, this runs directly in your wordpress website. This plugin makes it easy to manage your database table contents DIRECTLY from your WordPress dashboard.
 
-HOWEVER, the simplicity of this plugin comes at a cost. It's often avoided by most major companies due to security concerns. Installing this plugin on your WordPress site can potentially increase vulnerability to security risks. Lar companies typically opt for more secure alternatives like [phpmyadmin](https://www.phpmyadmin.net/) to avoid those risks.
+HOWEVER, the simplicity of this plugin comes at a cost. It's often avoided by most major companies due to security concerns. Installing this plugin on your WordPress site can potentially increase vulnerability to security risks. Consequently, larger companies typically opt for more secure alternatives like [phpmyadmin](https://www.phpmyadmin.net/) to avoid those risks.
 
 But we are students who just want to learn, so let's take a calculated risk and opt in for the simpler option :^)
 
