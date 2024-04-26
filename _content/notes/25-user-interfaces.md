@@ -74,11 +74,14 @@ Databases 🗄️
 
 ## Database management systems (DMS)
 
+- [DBeaver](https://dbeaver.io/)
 - [MySQL](https://www.mysql.com/)
+- [MySQL Workbench](https://www.mysql.com/products/workbench/)
 - [PostgreSQL](https://www.postgresql.org/)
+- [DataGrip](https://www.jetbrains.com/datagrip/?var=light)
 - [SQLite](https://www.sqlite.org/)
 - [phpmyadmin](https://www.phpmyadmin.net/)
-- ... and more
+- ... and SOOO much more
 
 This is what you will likely use in your future classes and careers. However for the purposes of this class, let's keep it simple ...
 

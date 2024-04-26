@@ -9,11 +9,15 @@ created: "2024-04-26"
 
 # Overview
 
-- Worth: Milestone 1 - 15% // Milestone 2 - 15%
-- Due: Milestone 1 - May 7th, 2023 // Milestone 2 - May 16, 2023
-- Milestone 1 hand in: On LEA, submit a text file (Notepad) with the URL of your WordPress website inside this file.
-- Milestone 2 hand in: On LEA, submit one additional text file (Notepad). This time, write in your own words a few sentences summarizing your website and contributions to the project. Include techniques used, as well as resources (websites)
-- Late Penalty: Late submissions lose 10% per day to a maximum of 3 days. Nothing is accepted after 3 days and a grade of zero will be given.
+📈 Worth: Milestone 1 - 15% // Milestone 2 - 15%
+
+📅 Due: Milestone 1 - May 7th, 2023 // Milestone 2 - May 16, 2023
+
+📠 Milestone 1 hand in: On LEA, submit a text file (Notepad) with the URL of your WordPress website inside this file.
+
+📠 Milestone 2 hand in: On LEA, submit one additional text file (Notepad). This time, write in your own words a few sentences summarizing your website and contributions to the project. Include techniques used, as well as resources (websites)
+
+👀 Late Penalty: Late submissions lose 10% per day to a maximum of 3 days. Nothing is accepted after 3 days and a grade of zero will be given.
 
 # Goal
 
@@ -51,7 +55,7 @@ Information should be logically organized for each section with images to make i
 - Your own photos
 - ... or stuff you found online, however be sure to give credit where credit is due :^)
 
-## About Us
+## About Page
 
 Pitch yourself.
 
@@ -68,7 +72,7 @@ Some ideas to get you started
 
 ... and feel free to hype yourself up :^) There's no shame in highlighting your strengths and showing off what you've got.
 
-## Reviews
+## Reviews Page
 
 Solicit feedback from your peers on your project and labs. There is no limit to how many comments you should have, however aim to have at least 5. Each comment should contain:
 
