@@ -69,19 +69,6 @@ By default, executing the command above will display all the files available in 
 
 Here, you have access to all the commands available in VSCode. Alternatively, you can also open this directly using the `F1` key.
 
-# Spell Checker
-
-Can't spell? You're not alone.
-
-- Add [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) to your extensions
-- All spelling mistakes are now highlighted with a blue underline, to correct it run the following:
-
-```md
-| PC 🖥️    | Mac 🍎  |
-| :------- | :------ |
-| `Ctrl+.` | `Cmd+.` |
-```
-
 # Format on Save
 
 Never think about formatting your code again.
@@ -132,6 +119,19 @@ Never think about formatting your code again.
 # Exercise ❤️
 
 Follow the above instructions to allow for autosaving and see what happens when you save all your labs.
+
+# Spell Checker
+
+Can't spell? You're not alone.
+
+- Add [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) to your extensions
+- All spelling mistakes are now highlighted with a blue underline, to correct it run the following:
+
+```md
+| PC 🖥️    | Mac 🍎  |
+| :------- | :------ |
+| `Ctrl+.` | `Cmd+.` |
+```
 
 # Color Coordinating your VSCode
 
