@@ -197,3 +197,40 @@ Or if navigating one character at a time is too slow for you, you can move word 
 | :----------------------- | :----------------------- |
 | `Ctrl+-->` OR `Ctrl+<--` | `Ctrl+-->` OR `Ctrl+<--` |
 ```
+
+What happens if you want to find a match on similar words? To find a match run
+
+```md
+| PC 🖥️    | Mac 🍎  |
+| :------- | :------ |
+| `Ctrl+D` | `Cmd+D` |
+```
+
+And to edit all matches at the same time, run the above until all matches are found. Now you can change the `console.log("Edit me");` in the below code snippet at the same time
+
+```js
+hello() {
+    console.log("Edit me");
+    alert("Hello there");
+}
+
+goodbye() {
+    console.log("Edit me");
+    alert("Goodbye !!");
+}
+
+scream() {
+    console.log("Edit me");
+    alert("AHHHHHHHH");
+}
+```
+
+This allows for multiline editing. If that's not cool enough for you, you can also run
+
+```md
+| PC 🖥️ & Mac 🍎 |
+| :------------- |
+| `Alt+Click`    |
+```
+
+To put the cursor in multiple places. This is especially useful for repetitive CSS properties.
