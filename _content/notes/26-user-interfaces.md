@@ -225,7 +225,7 @@ scream() {
 }
 ```
 
-This allows for multiline editing. If that's not cool enough for you, you can also run
+This allows for multiline editing. If that's not cool enough for you, you can also use this command ...
 
 ```md
 | PC 🖥️ & Mac 🍎 |
@@ -234,3 +234,58 @@ This allows for multiline editing. If that's not cool enough for you, you can al
 ```
 
 To put the cursor in multiple places. This is especially useful for repetitive CSS properties.
+
+# Exercise
+
+Consider the following HTML
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+    <style>
+      nav {
+        background-color: lightpink;
+        height: 10vh;
+      }
+      div {
+        background-color: peachpuff;
+      }
+      footer {
+        background-color: lightblue;
+        height: 20vh;
+      }
+      aside {
+        float: left;
+        height: 20vh;
+        background-color: lightgreen;
+      }
+      main {
+        height: 50vh;
+      }
+      section {
+        height: 100%;
+        background-color: lightcoral;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>i am a cool navbar</nav>
+    <main>
+      <aside>wow i am a side bar</aside>
+      <section>
+        <header>
+          <div>wow look at this div</div>
+        </header>
+        wow i am some cool main content
+      </section>
+    </main>
+    <footer>wow a footer</footer>
+  </body>
+</html>
+```
+
+Try adding padding to all the below CSS properties at the same time using VSCode commands.
