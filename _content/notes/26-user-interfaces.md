@@ -160,7 +160,7 @@ Ok cool we have a faster way to find things in the current file, but what about 
 
 Now type the symbol you are looking for :^)
 
-# 3 Devs for the price of 1
+# 3 Devs for the Price of 1
 
 Tired of writing repetitive CSS properties and want the computer to do it for you? Made a mistake and you now need to change the name of a variable in 100 places at once? Yes you can do that with VSCode.
 
@@ -206,7 +206,11 @@ What happens if you want to find a match on similar words? To find a match run
 | `Ctrl+D` | `Cmd+D` |
 ```
 
-And to edit all matches at the same time, run the above until all matches are found. Now you can change the `console.log("Edit me");` in the below code snippet at the same time
+Once you have matched all the same snippets, you can now edit them at the same time :^)
+
+# Exercise ❤️
+
+Consider the following JavaScript
 
 ```js
 hello() {
@@ -225,7 +229,11 @@ scream() {
 }
 ```
 
-This allows for multiline editing. If that's not cool enough for you, you can also use this command ...
+Try to edit all the `console.log("Edit me");` at the same time using VSCode Commands.
+
+# VSCode MultiCursor
+
+If that's not cool enough for you, you can also use this command to put the cursor in multiple places.
 
 ```md
 | PC 🖥️ & Mac 🍎 |
@@ -233,9 +241,9 @@ This allows for multiline editing. If that's not cool enough for you, you can al
 | `Alt+Click`    |
 ```
 
-To put the cursor in multiple places. This is especially useful for repetitive CSS properties.
+This is especially useful for repetitive CSS properties.
 
-# Exercise
+# Exercise ❤️
 
 Consider the following HTML
 
