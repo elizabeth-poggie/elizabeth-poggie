@@ -22,35 +22,38 @@ Never think about formatting your code again.
 
 ```json
 {
-  "editor.stickyScroll.enabled": true,
-  "eslint.format.enable": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "explorer.confirmDragAndDrop": false,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "explorer.confirmDelete": false,
-  "git.confirmSync": false,
-  "dotnet.help.firstView": "gettingStarted",
-  "extensions.confirmedUriHandlerExtensionIds": [
-    "ms-dotnettools.dotnet-interactive-vscode",
-    "ms-dotnettools.vscode-dotnet-pack"
-  ],
-  "window.zoomLevel": 2,
+  // ... other stuff ...
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {}
 }
 ```
 
-- These are the activated settings for your VSCode, I have a lot of customization given i have been adding things on over the years, however yours might be a bit more sparse.
+- These are the activated settings for your VSCode. For me, I have a lot of customization given i have been adding things here over the years, however yours might be a bit more sparse in comparison.
 - Now from the `Prettier - Code formatter`, paste in the below:
 
 ```json
-"editor.defaultFormatter": "esbenp.prettier-vscode",
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
+}
 ```
 
-- Restart your VSCode, and Voila, things format on save 🪄
+- to get something along the lines of ...
+
+```json
+{
+  // ... other stuff ...
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+```
+
+- Finally, restart your VSCode, and Voila, things format on save 🪄
 
 # Exercise ❤️
 
