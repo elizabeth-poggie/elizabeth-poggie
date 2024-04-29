@@ -117,10 +117,12 @@ Like learning an instrument, it will feel awkward at first and require some prac
 
 ## Command Pallet
 
+```md
 | PC 🖥️          | Mac 🍎         |
 | :------------- | :------------- |
 | `Ctr+P`        | `Cmd+P`        |
 | "Control Papa" | "Command Papa" |
+```
 
 By default it will let you see all the files available to you in your current directory. This is just the beginning tho. Type this into your command pallet
 
@@ -140,9 +142,11 @@ You can use `Ctrl-F` or `Cmd-F` to look for symbols / pieces of text in your fil
 
 This lists all the symbols, variables, and functions in the current file. Alternatively, if you want to be EVEN faster, run:
 
+```md
 | PC 🖥️         | Mac 🍎        |
 | :------------ | :------------ |
 | `Ctr+shift+.` | `Cmd+shift+.` |
+```
 
 Now you have a dropdown menu.
 
@@ -155,3 +159,7 @@ Ok cool we have a faster way to find things in the current file, but what about 
 ```
 
 Now type the symbol you are looking for :^)
+
+## 3 Devs for the price of 1
+
+Tired of writing repetitive CSS properties and want the computer to do it for you? Made a mistake and you now need to change the name of a variable in 100 places at once? Yes you can do that with VSCode.
