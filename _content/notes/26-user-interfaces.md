@@ -29,7 +29,7 @@ Never think about formatting your code again.
 ```
 
 - These are the activated settings for your VSCode. For me, I have a lot of customization given i have been adding things here over the years, however yours might be a bit more sparse in comparison.
-- Now from the `Prettier - Code formatter`, paste in the below:
+- Now from the `Prettier - Code formatter` Extension page, paste in the below:
 
 ```json
 {
