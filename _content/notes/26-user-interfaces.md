@@ -74,7 +74,7 @@ Here, you have access to all the commands available in VSCode. Alternatively, yo
 Never think about formatting your code again.
 
 - Add [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to your extensions
-- Open up the Settings using the command pallet:
+- Open up the `Settings` using the command pallet:
   - Keyboard shortcut: `Ctrl-P`
   - Activate the VSCode command options: `>`
   - Type "Preferences: Open Settings (UI)"
