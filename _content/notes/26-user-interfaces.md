@@ -87,7 +87,10 @@ Can't spell? You're not alone.
 Never think about formatting your code again.
 
 - Add [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to your extensions
-- Open up the Settings
+- Open up the Settings using the command pallet:
+  - Keyboard shortcut: `Ctrl-P`
+  - Activate the VSCode command options: `>`
+  - Type "Preferences: Open Settings (UI)"
 - Under `Editor: Format On Save`, select the option to "Format a file on save..." to activate the feature
 - Now, under `Code Actions on Save` "blah blah blah", select the option `Edit in settings.json`. This should open up something more or less like this:
 
