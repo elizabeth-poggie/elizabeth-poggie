@@ -77,7 +77,7 @@ Tired of having hundreds of lines of code and not knowing what class or function
 
 # Opening VSCode
 
-Love bash? Are you a terminal purest? [VSCode Command Line Interface (CLI) has you covered.](https://code.visualstudio.com/docs/editor/command-line)
+Are you a terminal purest? Love bash? [VSCode Command Line Interface (CLI) has you covered.](https://code.visualstudio.com/docs/editor/command-line)
 
 - First let's get the CLI for VSCode functionality set up.
 - Press `F1` to open up the command pallet
@@ -304,4 +304,4 @@ Consider the following HTML
 </html>
 ```
 
-Try adding padding to all the below CSS properties at the same time using VSCode commands.
+Try adding `padding` to all the below CSS properties at the same time using VSCode commands.
