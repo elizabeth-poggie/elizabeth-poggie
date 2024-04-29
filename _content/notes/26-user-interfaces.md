@@ -73,7 +73,7 @@ Tired of having hundreds of lines of code and not knowing what class or function
 
 # Opening VSCode
 
-Love bash? Are you a terminal purest? [VSCode has you covered.](https://code.visualstudio.com/docs/editor/command-line)
+Love bash? Are you a terminal purest? [VSCode Command Line Interface (CLI) has you covered.](https://code.visualstudio.com/docs/editor/command-line)
 
 - First let's get the CLI for VSCode functionality set up.
 - Press `F1` to open up the command pallet
@@ -92,3 +92,23 @@ code .
 ```bash
 code i-am-a-cool-file.md
 ```
+
+# VSCode Commands
+
+The less you rely on the mouse the better. Although VSCode allows you to use the mouse for everything making the tool approachable to newbies, for virtually everything you can do with a mouse, you can do with a keyboard. A keyboard shortcut is ALWAYS faster.
+
+```text
+Mouse
+❌ Slow
+❌ Repetitive
+❌ You don't look as cool
+
+Keyboard
+✅ FAST
+✅ Optimal
+✅ Your nerd friends will think your cool
+✅ Your normie friends will think you are a nerd
+✅ Your grandparents will be further confused at what you do for a living
+```
+
+Want to increase your productivity significantly? Want to spend less time working on your assignments? There is a lot to learn however just knowing a few will literally change your life.
