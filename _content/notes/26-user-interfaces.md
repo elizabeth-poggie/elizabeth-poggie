@@ -95,7 +95,7 @@ code i-am-a-cool-file.md
 
 # VSCode Commands
 
-The less you rely on the mouse the better. Although VSCode allows you to use the mouse for everything making the tool approachable to newbies, for virtually everything you can do with a mouse, you can do with a keyboard. A keyboard shortcut is ALWAYS faster.
+The less you rely on the mouse the better. Although VSCode allows you to use the mouse for everything making the tool approachable to newbies, although for virtually everything you can do with a mouse, you can do FASTER with a keyboard shortcut.
 
 ```text
 Mouse
