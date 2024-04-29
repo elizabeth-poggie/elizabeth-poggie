@@ -314,4 +314,4 @@ Consider the following HTML
 </html>
 ```
 
-Try adding `padding` to all the below CSS properties at the same time using VSCode commands.
+Try adding `padding` to all the CSS selectors at the same time using VSCode commands.
