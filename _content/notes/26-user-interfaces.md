@@ -1,15 +1,67 @@
 ---
 # General Information
 category: "User Interfaces"
-number: 25
+number: 26
 type: "Lecture"
-title: "VSCode Hacks"
+title: "VSCode Extensions && Commands"
 created: "2024-04-29"
 ---
 
 # 🚨 PLEASE NOTE 🚨
 
 If you want your midterm grades back faster, you will have to wait for me to implement the new layout to be less annoying
+
+# VSCode Commands
+
+The less you rely on the mouse the better. Although VSCode allows you to use the mouse for everything making the tool approachable to newbies, although for virtually everything you can do with a mouse, you can do FASTER with a keyboard shortcut.
+
+```text
+Mouse
+❌ Slow
+❌ Repetitive
+❌ You don't look as cool
+
+Keyboard
+✅ FAST
+✅ Optimal
+✅ Your nerd friends will think your cool
+✅ Your normie friends will think you are a nerd
+✅ Your grandparents will be further confused at what you do for a living
+```
+
+Want to increase your productivity significantly? Want to spend less time working on your assignments? There is a lot to learn, however just knowing a few will literally change your life.
+
+Like learning an instrument, it will feel awkward at first and require some practice. Over time, you will soon master the art of the keyboard and let go of your long term friend, the mouse, in favor of greener pastures.
+
+# Command Pallet
+
+```md
+| PC 🖥️          | Mac 🍎         |
+| :------------- | :------------- |
+| `Ctrl+P`       | `Cmd+P`        |
+| "Control Papa" | "Command Papa" |
+```
+
+By default it will let you see all the files available to you in your current directory. This is just the beginning tho. Type this into your command pallet
+
+```text
+>
+```
+
+And now you have access to all the commands available in VSCode (Alternatively open this up directly using `F1` too)
+
+# Spell Checker
+
+Can't spell? You're not alone.
+
+- Add [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) to your extensions
+- All spelling mistakes are now highlighted with a blue underline, to correct it run the following:
+
+```md
+| PC 🖥️    | Mac 🍎  |
+| :------- | :------ |
+| `Ctrl+.` | `Cmd+.` |
+```
 
 # Format on Save
 
@@ -59,19 +111,6 @@ Never think about formatting your code again.
 
 Follow the above instructions to allow for autosaving and see what happens when you save all your labs.
 
-# Spell Checker
-
-Can't spell? You're not alone.
-
-- Add [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) to your extensions
-- All spelling mistakes are now highlighted with a blue underline, to correct it run the following:
-
-```md
-| PC 🖥️    | Mac 🍎  |
-| :------- | :------ |
-| `Ctrl+.` | `Cmd+.` |
-```
-
 # Color Coordinating your VSCode
 
 - Add [Peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock) to your extensions
@@ -113,45 +152,6 @@ code i-am-a-cool-file.md
 # Exercise ❤️
 
 Follow the above instructions and try opening up your labs using this trick.
-
-# VSCode Commands
-
-The less you rely on the mouse the better. Although VSCode allows you to use the mouse for everything making the tool approachable to newbies, although for virtually everything you can do with a mouse, you can do FASTER with a keyboard shortcut.
-
-```text
-Mouse
-❌ Slow
-❌ Repetitive
-❌ You don't look as cool
-
-Keyboard
-✅ FAST
-✅ Optimal
-✅ Your nerd friends will think your cool
-✅ Your normie friends will think you are a nerd
-✅ Your grandparents will be further confused at what you do for a living
-```
-
-Want to increase your productivity significantly? Want to spend less time working on your assignments? There is a lot to learn, however just knowing a few will literally change your life.
-
-Like learning an instrument, it will feel awkward at first and require some practice. Over time, you will soon master the art of the keyboard and let go of your long term friend, the mouse, in favor of greener pastures.
-
-# Command Pallet
-
-```md
-| PC 🖥️          | Mac 🍎         |
-| :------------- | :------------- |
-| `Ctrl+P`       | `Cmd+P`        |
-| "Control Papa" | "Command Papa" |
-```
-
-By default it will let you see all the files available to you in your current directory. This is just the beginning tho. Type this into your command pallet
-
-```text
->
-```
-
-And now you have access to all the commands available in VSCode (Alternatively open this up directly using `F1` too)
 
 # Local Finder
 
