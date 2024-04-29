@@ -7,6 +7,10 @@ title: "VSCode Hacks"
 created: "2024-04-29"
 ---
 
+# 🚨 PLEASE NOTE 🚨
+
+If you want your midterm grades back faster, you will have to wait for me to implement the new layout to be less annoying
+
 # Format on Save
 
 Never think about formatting your code again.
@@ -36,7 +40,7 @@ Never think about formatting your code again.
 }
 ```
 
-- These are the activated settings for your VSCode, I have a lot of customization given i have been adding things on over the years.
+- These are the activated settings for your VSCode, I have a lot of customization given i have been adding things on over the years, however yours might be a bit more sparse.
 - Now from the `Prettier - Code formatter`, paste in the below:
 
 ```json
@@ -46,7 +50,7 @@ Never think about formatting your code again.
   }
 ```
 
-- Restart your VSCode and Voila, things format on save 🪄
+- Restart your VSCode, and Voila, things format on save 🪄
 
 # Exercise ❤️
 
@@ -57,7 +61,13 @@ Follow the above instructions to allow for autosaving and see what happens when 
 Can't spell? You're not alone.
 
 - Add [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) to your extensions
-- All spelling mistakes are now highlighted with a blue underline, to correct, hit it with a `Cmd+.` on Mac or `Ctrl+.` on PC.
+- All spelling mistakes are now highlighted with a blue underline, to correct it run the following:
+
+```md
+| PC 🖥️    | Mac 🍎  |
+| :------- | :------ |
+| `Ctrl+.` | `Cmd+.` |
+```
 
 # Color Coordinating your VSCode
 
@@ -244,9 +254,9 @@ Try to edit all the `console.log("Edit me");` at the same time using VSCode Comm
 If that's not cool enough for you, you can also use this command to put the cursor in multiple places.
 
 ```md
-| PC 🖥️ & Mac 🍎 |
-| :------------- |
-| `Alt+Click`    |
+| PC 🖥️       | Mac 🍎         |
+| :---------- | :------------- |
+| `Alt+Click` | `Option+Click` |
 ```
 
 This is especially useful for repetitive CSS properties.
