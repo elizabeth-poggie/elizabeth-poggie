@@ -48,6 +48,10 @@ Never think about formatting your code again.
 
 - Restart your VSCode and Voila, things format on save 🪄
 
+# Exercise ❤️
+
+Follow the above instructions to allow for autosaving and see what happens when you save all your labs.
+
 # Spell Checker
 
 Can't spell? You're not alone.
@@ -92,6 +96,10 @@ code .
 ```bash
 code i-am-a-cool-file.md
 ```
+
+# Exercise ❤️
+
+Follow the above instructions and try opening up your labs using this trick.
 
 # VSCode Commands
 
