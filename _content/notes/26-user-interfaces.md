@@ -119,7 +119,7 @@ Like learning an instrument, it will feel awkward at first and require some prac
 
 | PC 🖥️          | Mac 🍎         |
 | :------------- | :------------- |
-| `Ctr-P`        | `Cmd-P`        |
+| `Ctr+P`        | `Cmd+P`        |
 | "Control Papa" | "Command Papa" |
 
 By default it will let you see all the files available to you in your current directory. This is just the beginning tho. Type this into your command pallet
@@ -129,3 +129,29 @@ By default it will let you see all the files available to you in your current di
 ```
 
 And now you have access to all the commands available in VSCode (Alternatively open this up directly using `F1` too)
+
+## Local Finder
+
+You can use `Ctrl-F` or `Cmd-F` to look for symbols / pieces of text in your file, however this is what the normies do. Instead, let`s open up the Command Pallet and type the below:
+
+```text
+@
+```
+
+This lists all the symbols, variables, and functions in the current file. Alternatively, if you want to be EVEN faster, run:
+
+| PC 🖥️         | Mac 🍎        |
+| :------------ | :------------ |
+| `Ctr+shift+.` | `Cmd+shift+.` |
+
+Now you have a dropdown menu.
+
+## Global Finder
+
+Ok cool we have a faster way to find things in the current file, but what about for our entire project? Open up the Command Pallet and type the below:
+
+```text
+#
+```
+
+Now type the symbol you are looking for :^)
