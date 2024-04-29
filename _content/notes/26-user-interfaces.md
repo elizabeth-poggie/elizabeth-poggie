@@ -35,6 +35,25 @@ Like learning an instrument, it will feel awkward at first and require some prac
 
 # Command Pallet
 
+## What is it?
+
+The VSCode command palette is a feature in VSCode that allows you to access various commands and features VERY quickly.
+
+## What can you do here?
+
+It's a searchable interface that allows you to:
+
+- Type commands
+- Run commands
+- Find related actions
+- Find files
+- Change settings
+- ... and so much more
+
+## How do you access it?
+
+To ensure you always remember how to access the command palette, i have created the mnemonic "Control Papa" for PC users, and "Command Papa" for mac users. <3
+
 ```md
 | PC 🖥️          | Mac 🍎         |
 | :------------- | :------------- |
