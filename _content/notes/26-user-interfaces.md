@@ -61,13 +61,13 @@ To ensure you always remember how to access the command palette, i have created 
 | "Control Papa" | "Command Papa" |
 ```
 
-By default it will let you see all the files available to you in your current directory. This is just the beginning tho. Type this into your command pallet
+By default, executing the command above will display all the files available in your current project. However, this is just the beginning. NOW, input the following into your command pallet
 
 ```text
 >
 ```
 
-And now you have access to all the commands available in VSCode (Alternatively open this up directly using `F1` too)
+Here, you have access to all the commands available in VSCode. Alternatively, you can also open this directly using the `F1` key.
 
 # Spell Checker
 
