@@ -70,3 +70,25 @@ Tired of having hundreds of lines of code and not knowing what class or function
 - Go to the Settings
 - Under `Editor` › `Sticky Scroll: Scroll With Editor`, active the option "Enable Scrolling of Sticky Scroll with the editors horizontal scrollbar"
 - Enjoy :^)
+
+# Opening VSCode
+
+Love bash? Are you a terminal purest? [VSCode has you covered.](https://code.visualstudio.com/docs/editor/command-line)
+
+- First let's get the CLI for VSCode functionality set up.
+- Press `F1` to open up the command pallet
+- Type `Install 'code' command in PATH` in the command pallet
+- Now verify the installation by opening up your terminal and typing in `code --help` to ensure that the CLI is operational.
+- Now we are ready to work some magic 💅
+- Navigate to a directory you want to open using your terminal
+- Now run the below to launch your VSCode :^)
+
+```bash
+code .
+```
+
+- You can also open up specific files by running ...
+
+```bash
+code i-am-a-cool-file.md
+```
