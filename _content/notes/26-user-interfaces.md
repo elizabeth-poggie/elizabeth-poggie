@@ -111,4 +111,21 @@ Keyboard
 ✅ Your grandparents will be further confused at what you do for a living
 ```
 
-Want to increase your productivity significantly? Want to spend less time working on your assignments? There is a lot to learn however just knowing a few will literally change your life.
+Want to increase your productivity significantly? Want to spend less time working on your assignments? There is a lot to learn, however just knowing a few will literally change your life.
+
+Like learning an instrument, it will feel awkward at first and require some practice. Over time, you will soon master the art of the keyboard and let go of your long term friend, the mouse, in favor of greener pastures.
+
+## Command Pallet
+
+| PC 🖥️          | Mac 🍎         |
+| :------------- | :------------- |
+| `Ctr-P`        | `Cmd-P`        |
+| "Control Papa" | "Command Papa" |
+
+By default it will let you see all the files available to you in your current directory. This is just the beginning tho. Type this into your command pallet
+
+```text
+>
+```
+
+And now you have access to all the commands available in VSCode (Alternatively open this up directly using `F1` too)
