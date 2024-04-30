@@ -372,10 +372,6 @@ public class Program
 
 Verify that your specific solution works using [this online calculator](https://www.rapidtables.com/convert/number/binary-to-decimal.html)
 
-# Arrays
-
-TBD
-
 # Methods - Easy Mode
 
 ## The Problem
