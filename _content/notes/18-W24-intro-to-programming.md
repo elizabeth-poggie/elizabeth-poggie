@@ -376,6 +376,31 @@ Verify that your specific solution works using [this online calculator](https://
 
 TBD
 
-# Methods
+# Methods - Easy Mode
 
-TBD
+## The Problem
+
+Write a method that takes an integer as a parameter and returns true if it's even, and false if it's odd.
+
+## The Solution
+
+```cs
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int number = 6;
+
+        if (IsEven(number)) {
+            Console.WriteLine(number + " is even.");
+        } else {
+            Console.WriteLine(number + " is odd.");
+        }
+    }
+
+    public static bool IsEven(int num)
+    {
+        return num % 2 == 0;
+    }
+}
+```
