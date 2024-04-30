@@ -593,7 +593,7 @@ Write a program that sorts the elements of an integer array in ascending order u
 
 Bubble sort is a simple sorting algorithm that repeatedly steps through the array, compares adjacent elements, and swaps them if they are in the wrong order.
 
-## The basic recipe
+## Basic recipe
 
 Step 1) Start at the beginning of the array.
 
@@ -667,7 +667,9 @@ Step 5) Repeat steps 1-5 for each element in the list, until no more swaps are n
 
 start over again
 
+
 ... swap stuff ...
+
 
 {   3,   2,   5,   7,   9   }
 
