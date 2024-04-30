@@ -143,6 +143,6 @@ Hover over a line annotation and you can see who, what, where, and when that lin
 
 On the Left side of your VSCode, select the `GitLens Inspect` option. Here you get rich details and insights to what you're actively working on now :)
 
-## GitLens Inspect
+## GitLens
 
 On the Left side of your VSCode, select the `GitLens` option. Here there are even more features (that i haven't really explored tbh)
