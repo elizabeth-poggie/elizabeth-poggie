@@ -442,6 +442,42 @@ class Program
 }
 ```
 
+and with the above logic, we can actually implement our `isEven()` method with the above logic
+
+```cs
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int number = 6;
+
+        if (isEven(number)) {
+            Console.WriteLine(number + " is even.");
+        } else {
+            Console.WriteLine(number + " is odd.");
+        }
+    }
+
+    public static bool isEven(int num)
+    {
+        return mod(num, 2) == 0;
+    }
+
+    public static int mod(int dividend, int divisor)
+    {
+        if (divisor == 0)
+        {
+            throw new DivideByZeroException("Cannot divide by zero.");
+        }
+
+        int quotient = dividend / divisor;
+        int remainder = dividend - (quotient * divisor);
+
+        return remainder;
+    }
+}
+```
+
 # Methods - Medium Mode
 
 ## The Problem
