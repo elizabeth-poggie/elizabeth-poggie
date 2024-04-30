@@ -460,6 +460,7 @@ class Program
 
     public static bool isEven(int num)
     {
+        // custom logic
         return mod(num, 2) == 0;
     }
 
