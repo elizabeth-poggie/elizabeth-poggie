@@ -42,6 +42,7 @@ Click the bottom left corner that contains `main`, this should open up a display
 checkout detached
 -------------------------
 ...
+
 main
 ```
 
