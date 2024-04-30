@@ -658,7 +658,24 @@ Step 5) Continue this process until the end of the list is reached.
                        fini
 ```
 
-Repeat steps 1-5 for each element in the list, until no more swaps are needed. (at max this means going over the list `Length` number of times)
+Step 5) Repeat steps 1-5 for each element in the list, until no more swaps are needed. (at max this means going over the list `Length` number of times)
+
+```text
+{   3,   5,   2,   7,   9   }
+
+   👆
+
+start over again
+
+... swap stuff ...
+
+{   3,   2,   5,   7,   9   }
+
+                        👆
+
+                     end again
+
+```
 
 This algorithm is incredibly inefficient, however a fun first step into the world of algorithms.
 
