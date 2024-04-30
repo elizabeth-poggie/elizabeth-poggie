@@ -126,3 +126,23 @@ As an exercise:
 Next to the branch name in the bottom left corner there is a cute circular arrow button ♺
 
 Clicking that button is all you need to do to pull the latest changes.
+
+# GitLens
+
+Want to see all the history of a repo at a glance? Add the [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) extension to your VSCode.
+
+## Line annotations
+
+You now get historical context about line changes through annotation at the end of the current line and on the status bar :^)
+
+## Git blame
+
+Hover over a line annotation and you can see who, what, where, and when that line of code was created. Now when things go wrong its easier than ever to blame others for their mistakes ✨
+
+## GitLens Inspect
+
+On the Left side of your VSCode, select the `GitLens Inspect` option. Here you get rich details and insights to what you're actively working on now :)
+
+## GitLens Inspect
+
+On the Left side of your VSCode, select the `GitLens` option. Here there are even more features (that i haven't really explored tbh)
