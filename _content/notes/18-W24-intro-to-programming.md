@@ -391,16 +391,67 @@ class Program
     {
         int number = 6;
 
-        if (IsEven(number)) {
+        if (isEven(number)) {
             Console.WriteLine(number + " is even.");
         } else {
             Console.WriteLine(number + " is odd.");
         }
     }
 
-    public static bool IsEven(int num)
+    public static bool isEven(int num)
     {
         return num % 2 == 0;
     }
 }
 ```
+
+# Methods - Medium Mode
+
+## The Problem
+
+Write a method that takes a string as a parameter and returns the reverse of that string.
+
+## The Solution
+
+```cs
+class Program
+{
+    public static void Main(string[] args)
+    {
+        string original = "hello";
+        string reversed = reverseString(original);
+        Console.WriteLine("Reversed string: " + reversed);
+    }
+
+    static string reverseString(string str)
+    {
+        // Step 0 - convert string to character array
+        char[] charArray = str.ToCharArray();
+
+        // Step 1 - set counters
+        int start = 0;
+        int end = str.Length - 1;
+
+        while (start < end)
+        {
+            // Step 2 - swap characters at start and end
+            char temp = charArray[start];
+            charArray[start] = charArray[end];
+            charArray[end] = temp;
+
+            // Step 3 - shimmy to next
+            start++;
+            end--;
+        }
+
+        // Step 4 - convert to string
+        return new string(charArray);
+    }
+}
+```
+
+# Methods - Medium Mode
+
+## The Problem
+
+## The Solution
