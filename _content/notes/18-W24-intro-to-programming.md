@@ -589,6 +589,18 @@ class Program
 
 Write a program that sorts the elements of an integer array in ascending order using the bubble sort algorithm.
 
+## What is bubble sort?
+
+Bubble sort is a simple sorting algorithm that repeatedly steps through the array, compares adjacent elements, and swaps them if they are in the wrong order. This is the basic recipe:
+
+- Start at the beginning of the array.
+- Compare the first two elements. If the first element is greater than the second element, swap them.
+- Move to the next pair of elements (i.e., the second and third elements), and repeat step 2.
+- Continue this process until the end of the list is reached.
+- Repeat steps 1-4 for each element in the list, until no more swaps are needed.
+
+This algorithm is incredibly inefficient, however a fun first step into the world of algorithms.
+
 ## The Solution
 
 ```cs
@@ -599,9 +611,9 @@ class Program
         int[] nums = { 5, 3, 9, 2, 7 };
         bubbleSort(nums);
         print(nums);
-
     }
 
+    // printing an array so we see its contents as opposed to it's address
     public static void print(int[] nums) {
         foreach (int num in nums)
         {
@@ -612,10 +624,13 @@ class Program
     public static void bubbleSort(int[] nums)
     {
         int n = nums.Length;
+        // the max amount of potential array passes that are needed is the length of the array
         for (int i = 0; i < n - 1; i++)
         {
+            // step through each element of the array, swapping 2 elements at a time if needed
             for (int j = 0; j < n - i - 1; j++)
             {
+                // if a swap is needed, swap it
                 if (nums[j] > nums[j + 1])
                 {
                     int temp = nums[j];
