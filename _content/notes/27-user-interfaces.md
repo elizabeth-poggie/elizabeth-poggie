@@ -90,3 +90,32 @@ Let's say that the `main` branch changed since the last time you `pull`ed your c
 - Now your "Local Repository" has reflected those changes, to have the "Remote Repository" reflect those changes, click the "Sync Changes #" button
 
 # Resolving Merge Conflicts
+
+Let's say the main branch edited a particular code snippet that you also edited in your branch and you want to consolidate all the changes together. This is what is known as a "Merge Conflict". There are conflicting changes made to the same part of the code and `git` isn't sure which one is the change is needs to keep.
+
+Despite being very frustrating at times, conflict is inevitable whenever there is collaboration. VSCode allows you to handle those conflicts with ease and in a timely manner.
+
+## Merging
+
+- Navigate to the "Source Control" option on the left hand side of your VSCode.
+- Select the `...` option
+- Navigate to `Branch` and select `Merge` and choose to merge with the main
+
+## Resolving Conflicts
+
+When there are conflicting changes, a "Merge Changes" panel will pop up showing you the conflicting lines of code. Once visible you can go line by line and either:
+
+- Accept current changes (What you did in your branch)
+- Accept incoming changes (What is being merged from main)
+- Accept both changes
+
+Once resolved you can click the `+` button to stage the changes, leave the default commit message, and then "Sync" those changes with the "Remote Repository" :^)
+
+# Exercise ❤️
+
+As an exercise:
+
+- Try to edit the `README.md` file in your own branch.
+- Commit and push those changes
+- On my side, i will modify the `README.md` to be different
+- Now try to resolve the merge conflicts with main
