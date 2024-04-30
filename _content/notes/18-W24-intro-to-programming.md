@@ -591,13 +591,74 @@ Write a program that sorts the elements of an integer array in ascending order u
 
 ## What is bubble sort?
 
-Bubble sort is a simple sorting algorithm that repeatedly steps through the array, compares adjacent elements, and swaps them if they are in the wrong order. This is the basic recipe:
+Bubble sort is a simple sorting algorithm that repeatedly steps through the array, compares adjacent elements, and swaps them if they are in the wrong order.
 
-- Start at the beginning of the array.
-- Compare the first two elements. If the first element is greater than the second element, swap them.
-- Move to the next pair of elements (i.e., the second and third elements), and repeat step 2.
-- Continue this process until the end of the list is reached.
-- Repeat steps 1-4 for each element in the list, until no more swaps are needed.
+## The basic recipe
+
+Step 1) Start at the beginning of the array.
+
+```text
+{   5,   3,   9,   2,   7   }
+
+   👆
+```
+
+Step 2) Compare the first two elements.
+
+```text
+{   5,   3,   9,   2,   7   }
+
+   👆    👆
+
+ need 2 swap?
+```
+
+Step 3) If the first element is greater than the second element, swap them.
+
+```text
+{   3,   5,   9,   2,   7   }
+
+   👆    👆
+
+   SWAP !!!
+```
+
+Step 4) Move to the next pair of elements (i.e., the second and third elements), and repeat step 2.
+
+```text
+{   3,   5,   9,   2,   7   }
+
+         👆    👆
+
+       need 2 swap?
+```
+
+Step 5) Continue this process until the end of the list is reached.
+
+```text
+
+{   3,   5,   2,   9,   7   }
+
+             👆    👆
+
+             SWAP!!!
+...
+
+{   3,   5,   2,   7,   9   }
+
+                   👆    👆
+
+                   SWAP!!!
+...
+
+{   3,   5,   2,   7,   9   }
+
+                        👆
+
+                       fini
+```
+
+Repeat steps 1-5 for each element in the list, until no more swaps are needed. (at max this means going over the list `Length` number of times)
 
 This algorithm is incredibly inefficient, however a fun first step into the world of algorithms.
 
