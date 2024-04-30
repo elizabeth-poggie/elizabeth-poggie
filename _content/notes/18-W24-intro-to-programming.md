@@ -429,7 +429,7 @@ class Program
         // Step 1 - check to see if we are trying to divide by 0
         if (divisor == 0)
         {
-            throw new DivideByZeroException("Cannot divide by zero.");
+            throw new DivideByZeroException("Cannot divide by zero lol.");
         }
 
         // Step 2 - do math
@@ -467,7 +467,7 @@ class Program
     {
         if (divisor == 0)
         {
-            throw new DivideByZeroException("Cannot divide by zero.");
+            throw new DivideByZeroException("Cannot divide by zero lol.");
         }
 
         int quotient = dividend / divisor;
