@@ -2,8 +2,6 @@
 
 I am currently a lecturer @ John Abbott College, where I teach programming and web development.
 
-<hr>
-
 ### Want to chat?
 
 - [Portfolio](https://www.elizabethpoggie.com/)

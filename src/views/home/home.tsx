@@ -74,7 +74,7 @@ export function Home({ allCourses }: IProps) {
         <div className={styles.paragraphContainer}>
           <Text variant="p">
             When I am not hidden away in the corners of Penfield, you'll often
-            spot me at a farmers market , creating another strange piece of art
+            spot me at a farmers market, creating another strange piece of art
             or biting off more work than I can chew (again).
           </Text>
         </div>
