@@ -421,7 +421,7 @@ class Program
         int dividend = 10;
         int divisor = 3;
         int result = mod(dividend, divisor);
-        Console.WriteLine("Modulus of " + dividend + " % " + divisor + " = " + result);
+        Console.WriteLine("Mod of " + dividend + " % " + divisor + " = " + result);
     }
 
     public static int mod(int dividend, int divisor)
