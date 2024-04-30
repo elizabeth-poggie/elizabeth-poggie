@@ -112,6 +112,12 @@ When there are conflicting changes, a "Merge Changes" panel will pop up showing 
 
 Once resolved you can click the `+` button to stage the changes, leave the default commit message, and then "Sync" those changes with the "Remote Repository" :^)
 
+# Pulling changes
+
+Next to the branch name in the bottom left corner there is a cute circular arrow button ♺
+
+Clicking that button is all you need to do to pull the latest changes.
+
 # Exercise ❤️
 
 As an exercise:
@@ -120,12 +126,6 @@ As an exercise:
 - Commit and push those changes
 - On my side, i will modify the `README.md` to be different
 - Now try to resolve the merge conflicts with main
-
-## Pulling changes
-
-Next to the branch name in the bottom left corner there is a cute circular arrow button ♺
-
-Clicking that button is all you need to do to pull the latest changes.
 
 # GitLens
 
