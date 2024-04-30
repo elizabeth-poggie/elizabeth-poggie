@@ -519,3 +519,111 @@ class Program
     }
 }
 ```
+
+# Arrays - Easy Mode
+
+## The Problem
+
+Write a program that calculates the sum of all elements in an integer array.
+
+## The Solution
+
+```cs
+class Program
+{
+    public static void Main(string[] args)
+    {
+        // Step 1 - declare num array
+        int[] nums = { 1, 2, 3, 4, 5 };
+        int sum = 0;
+
+        // Step 2 - add all the numbers together
+        foreach (int num in nums)
+        {
+            sum += num;
+        }
+
+        // Step 3 - output the result
+        Console.WriteLine("Sum of array elements: " + sum);
+    }
+}
+```
+
+# Arrays - Easy Mode
+
+## The Problem
+
+Write a program that finds the maximum element in an integer array
+
+## The Solution
+
+```cs
+class Program
+{
+    public static void Main(string[] args)
+    {
+        // Step 1 - declare num array
+        int[] nums = { 1, 2, 3, 4, 5 };
+
+        // Step 2 - assume the first num in the array is the max (for now)
+        int max = nums[0];
+
+        // Step 3 - check the array to see if there is a larger num
+        foreach (int num in nums)
+        {
+            if (num > max)
+            {
+                max = num;
+            }
+        }
+
+        // Step 4 - output the result
+        Console.WriteLine("The max num is: " + max);
+    }
+}
+```
+
+# Arrays - Hard Mode
+
+## The Problem
+
+Write a program that sorts the elements of an integer array in ascending order using the bubble sort algorithm.
+
+## The Solution
+
+```cs
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int[] nums = { 5, 3, 9, 2, 7 };
+        bubbleSort(nums);
+        print(nums);
+
+    }
+
+    public static void print(int[] nums) {
+        foreach (int num in nums)
+        {
+            Console.Write(num + " ");
+        }
+    }
+
+    public static void bubbleSort(int[] nums)
+    {
+        int n = nums.Length;
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = 0; j < n - i - 1; j++)
+            {
+                if (nums[j] > nums[j + 1])
+                {
+                    int temp = nums[j];
+                    nums[j] = nums[j + 1];
+                    nums[j + 1] = temp;
+                }
+            }
+        }
+    }
+}
+```
