@@ -372,10 +372,353 @@ public class Program
 
 Verify that your specific solution works using [this online calculator](https://www.rapidtables.com/convert/number/binary-to-decimal.html)
 
-# Arrays
+# Methods - Easy Mode
 
-TBD
+## The Problem
 
-# Methods
+Write a method that takes an integer as a parameter and returns true if it's even, and false if it's odd.
 
-TBD
+## The Solution
+
+```cs
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int number = 6;
+
+        if (isEven(number)) {
+            Console.WriteLine(number + " is even.");
+        } else {
+            Console.WriteLine(number + " is odd.");
+        }
+    }
+
+    public static bool isEven(int num)
+    {
+        return num % 2 == 0;
+    }
+}
+```
+
+# Methods - Medium Mode
+
+## The Problem
+
+Write a method that implements the logic of `mod` (`%`)
+
+## The Solution
+
+```cs
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int dividend = 10;
+        int divisor = 3;
+        int result = mod(dividend, divisor);
+        Console.WriteLine("Mod of " + dividend + " % " + divisor + " = " + result);
+    }
+
+    public static int mod(int dividend, int divisor)
+    {
+        // Step 1 - check to see if we are trying to divide by 0
+        if (divisor == 0)
+        {
+            throw new DivideByZeroException("Cannot divide by zero lol.");
+        }
+
+        // Step 2 - do math
+        int quotient = dividend / divisor;
+        int remainder = dividend - (quotient * divisor);
+
+        // Step 3 - get reminder
+        return remainder;
+    }
+}
+```
+
+and with the above logic, we can actually implement our `isEven()` method with the above logic
+
+```cs
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int number = 6;
+
+        if (isEven(number)) {
+            Console.WriteLine(number + " is even.");
+        } else {
+            Console.WriteLine(number + " is odd.");
+        }
+    }
+
+    public static bool isEven(int num)
+    {
+        // custom logic
+        return mod(num, 2) == 0;
+    }
+
+    public static int mod(int dividend, int divisor)
+    {
+        if (divisor == 0)
+        {
+            throw new DivideByZeroException("Cannot divide by zero lol.");
+        }
+
+        int quotient = dividend / divisor;
+        int remainder = dividend - (quotient * divisor);
+
+        return remainder;
+    }
+}
+```
+
+# Methods - Medium Mode
+
+## The Problem
+
+Write a method that takes a string as a parameter and returns the reverse of that string.
+
+## The Solution
+
+```cs
+class Program
+{
+    public static void Main(string[] args)
+    {
+        string original = "hello";
+        string reversed = reverseString(original);
+        Console.WriteLine("Reversed string: " + reversed);
+    }
+
+    static string reverseString(string str)
+    {
+        // Step 0 - convert string to character array
+        char[] charArray = str.ToCharArray();
+
+        // Step 1 - set counters
+        int start = 0;
+        int end = str.Length - 1;
+
+        while (start < end)
+        {
+            // Step 2 - swap characters at start and end
+            char temp = charArray[start];
+            charArray[start] = charArray[end];
+            charArray[end] = temp;
+
+            // Step 3 - shimmy to next
+            start++;
+            end--;
+        }
+
+        // Step 4 - convert to string
+        return new string(charArray);
+    }
+}
+```
+
+# Arrays - Easy Mode
+
+## The Problem
+
+Write a program that calculates the sum of all elements in an integer array.
+
+## The Solution
+
+```cs
+class Program
+{
+    public static void Main(string[] args)
+    {
+        // Step 1 - declare num array
+        int[] nums = { 1, 2, 3, 4, 5 };
+        int sum = 0;
+
+        // Step 2 - add all the numbers together
+        foreach (int num in nums)
+        {
+            sum += num;
+        }
+
+        // Step 3 - output the result
+        Console.WriteLine("Sum of array elements: " + sum);
+    }
+}
+```
+
+# Arrays - Easy Mode
+
+## The Problem
+
+Write a program that finds the maximum element in an integer array
+
+## The Solution
+
+```cs
+class Program
+{
+    public static void Main(string[] args)
+    {
+        // Step 1 - declare num array
+        int[] nums = { 1, 2, 3, 4, 5 };
+
+        // Step 2 - assume the first num in the array is the max (for now)
+        int max = nums[0];
+
+        // Step 3 - check the array to see if there is a larger num
+        foreach (int num in nums)
+        {
+            if (num > max)
+            {
+                max = num;
+            }
+        }
+
+        // Step 4 - output the result
+        Console.WriteLine("The max num is: " + max);
+    }
+}
+```
+
+# Arrays - Hard Mode
+
+## The Problem
+
+Write a program that sorts the elements of an integer array in ascending order using the bubble sort algorithm.
+
+## What is bubble sort?
+
+Bubble sort is a simple sorting algorithm that repeatedly steps through the array, compares adjacent elements, and swaps them if they are in the wrong order.
+
+## Basic recipe
+
+Step 1) Start at the beginning of the array.
+
+```text
+{   5,   3,   9,   2,   7   }
+
+   👆
+```
+
+Step 2) Compare the first two elements.
+
+```text
+{   5,   3,   9,   2,   7   }
+
+   👆    👆
+
+ need 2 swap?
+```
+
+Step 3) If the first element is greater than the second element, swap them.
+
+```text
+{   3,   5,   9,   2,   7   }
+
+   👆    👆
+
+   SWAP !!!
+```
+
+Step 4) Move to the next pair of elements (i.e., the second and third elements), and repeat step 2.
+
+```text
+{   3,   5,   9,   2,   7   }
+
+         👆    👆
+
+       need 2 swap?
+```
+
+Step 5) Continue this process until the end of the list is reached.
+
+```text
+
+{   3,   5,   2,   9,   7   }
+
+             👆    👆
+
+             SWAP!!!
+...
+
+{   3,   5,   2,   7,   9   }
+
+                   👆    👆
+
+                   SWAP!!!
+...
+
+{   3,   5,   2,   7,   9   }
+
+                        👆
+
+                       fini
+```
+
+Step 5) Repeat steps 1-5 for each element in the list, until no more swaps are needed. (at max this means going over the list `Length` number of times)
+
+```text
+{   3,   5,   2,   7,   9   }
+
+   👆
+
+start over again
+
+
+... swap stuff ...
+
+
+{   3,   2,   5,   7,   9   }
+
+                        👆
+
+                     end again
+
+```
+
+This algorithm is incredibly inefficient, however a fun first step into the world of algorithms.
+
+## The Solution
+
+```cs
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int[] nums = { 5, 3, 9, 2, 7 };
+        bubbleSort(nums);
+        print(nums);
+    }
+
+    // printing an array so we see its contents as opposed to it's address
+    public static void print(int[] nums) {
+        foreach (int num in nums)
+        {
+            Console.Write(num + " ");
+        }
+    }
+
+    public static void bubbleSort(int[] nums)
+    {
+        int n = nums.Length;
+        // the max amount of potential array passes that are needed is the length of the array
+        for (int i = 0; i < n - 1; i++)
+        {
+            // step through each element of the array, swapping 2 elements at a time if needed
+            for (int j = 0; j < n - i - 1; j++)
+            {
+                // if a swap is needed, swap it
+                if (nums[j] > nums[j + 1])
+                {
+                    int temp = nums[j];
+                    nums[j] = nums[j + 1];
+                    nums[j + 1] = temp;
+                }
+            }
+        }
+    }
+}
+```
