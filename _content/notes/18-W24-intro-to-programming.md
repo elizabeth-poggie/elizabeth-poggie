@@ -409,6 +409,43 @@ class Program
 
 ## The Problem
 
+Write a method that implements the logic of `mod` (`%`)
+
+## The Solution
+
+```cs
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int dividend = 10;
+        int divisor = 3;
+        int result = mod(dividend, divisor);
+        Console.WriteLine("Modulus of " + dividend + " % " + divisor + " = " + result);
+    }
+
+    public static int mod(int dividend, int divisor)
+    {
+        // Step 1 - check to see if we are trying to divide by 0
+        if (divisor == 0)
+        {
+            throw new DivideByZeroException("Cannot divide by zero.");
+        }
+
+        // Step 2 - do math
+        int quotient = dividend / divisor;
+        int remainder = dividend - (quotient * divisor);
+
+        // Step 3 - get reminder
+        return remainder;
+    }
+}
+```
+
+# Methods - Medium Mode
+
+## The Problem
+
 Write a method that takes a string as a parameter and returns the reverse of that string.
 
 ## The Solution
@@ -449,9 +486,3 @@ class Program
     }
 }
 ```
-
-# Methods - Medium Mode
-
-## The Problem
-
-## The Solution
