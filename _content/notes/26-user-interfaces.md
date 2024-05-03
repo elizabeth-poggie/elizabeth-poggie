@@ -415,14 +415,29 @@ On the top navigation, select `Terminal` followed by `New Terminal`
 
 ## Slowish way
 
-At the bottom left of the screen, click the section of the bar that contains the icons `ⓧ 0 ⚠️ 0 ℹ 0`.
+At the bottom left of the screen, click the section of the bar that contains:
+
+```text
+ⓧ 0 ⚠️ 0 ℹ 0
+```
+
 This opens up all the problems, outputs, console, and terminal of your code.
 
 ## Fastest way
 
 ```md
-| PC 🖥️ & Mac 🍎                    |
-| :-------------------------------- |
-| Ctrl+`                            |
-| "Control get going - line number" |
+| PC 🖥️ & Mac 🍎 |
+| :------------- |
+| Ctrl+`         |
 ```
+
+# Multi - Terminals
+
+Usually you always need more than one terminal. Select the `+` icon to add a new terminal
+
+To keep things organized, right click on one of your terminals.
+Now you can change the `icon`, `color` and `name`. Enjoy.
+
+# VSCode Tasks
+
+Avoid running bash commands forever.
