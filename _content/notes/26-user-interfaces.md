@@ -229,16 +229,16 @@ And now use the `shift` key if you want to highlight something:
 ```md
 | PC 🖥️ & Mac 🍎                  |
 | :------------------------------ |
-| `shift+<--` OR `shift+-->`      |
+| `shift+⬅️` OR `shift+➡️`        |
 | "Shimmy left" OR "Shimmy right" |
 ```
 
 Or if navigating one character at a time is too slow for you, you can move word by word with the below command:
 
 ```md
-| PC 🖥️                    | Mac 🍎                   |
-| :----------------------- | :----------------------- |
-| `Ctrl+-->` OR `Ctrl+<--` | `Ctrl+-->` OR `Ctrl+<--` |
+| PC 🖥️                  | Mac 🍎                 |
+| :--------------------- | :--------------------- |
+| `Ctrl+⬅️` OR `Ctrl+➡️` | `Ctrl+➡️` OR `Ctrl+⬅️` |
 ```
 
 What happens if you want to find a match on similar words? To find a match run
@@ -340,3 +340,56 @@ Consider the following HTML
 ```
 
 Try adding `padding` to all the CSS selectors at the same time using VSCode commands.
+
+# Cutting
+
+If you want to move a line of code, the traditional way to do it is
+
+- select the line
+- copy it
+- delete it
+- ... and past it on the new line you want it to be at
+
+However this approach is lame.
+
+If your cursor is already on the line you want to cut, all you need to do is:
+
+```md
+| PC 🖥️    | Mac 🍎  |
+| :------- | :------ |
+| `Ctrl+x` | `Cmd+x` |
+```
+
+no highlighting necessary 💅✨
+
+# Even faster?
+
+This lets you "move" a line of code
+
+```md
+| PC 🖥️                | Mac 🍎                     |
+| :------------------- | :------------------------- |
+| `Alt+⬆️` or `Alt+⬇️` | `Option+⬆️` or `Option+⬇️` |
+```
+
+and this let's you duplicate lines of code
+
+```md
+| PC 🖥️                            | Mac 🍎                                 |
+| :------------------------------- | :------------------------------------- |
+| `Alt+shift+⬆️` or `Alt+shift+⬇️` | `Option+shift+⬆️` or `Option+shift+⬇️` |
+```
+
+# Comments
+
+If you are commenting out lines of code line by line, this is for you.
+
+Select a block of code that you want to comment and run...
+
+```md
+| PC 🖥️    | Mac 🍎  |
+| :------- | :------ |
+| `Ctrl+/` | `Cmd+/` |
+```
+
+now you can comment out entire blocks of code at once (instead of line by line)
