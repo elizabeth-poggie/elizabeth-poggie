@@ -341,6 +341,12 @@ Consider the following HTML
 
 Try adding `padding` to all the CSS selectors at the same time using VSCode commands.
 
+# Renaming HTML Tags
+
+You can use the above strat when it comes toi editing repetitive code, however if you are dealing specifically with `HTML`, then add the extension [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag) to be even faster
+
+This will automagically rename the closing tag when you edit the opening tag.
+
 # Cutting
 
 If you want to move a line of code, the traditional way to do it is
@@ -438,9 +444,23 @@ Usually you always need more than one terminal. Select the `+` icon to add a new
 To keep things organized, right click on one of your terminals.
 Now you can change the `icon`, `color` and `name`. Enjoy.
 
+# Multi-Window
+
+It is rare when any one developer has only one VSCode window open. How do we open multiple VSCode windows as fast as possible?
+
+The normies would select navigate to the top navigation, select `File` and click `New Window`. However we can do soooooo much better
+
+```md
+| PC 🖥️        | Mac 🍎      |
+| :----------- | :---------- |
+| Shift+Ctrl+N | Shift+Cmd+N |
+```
+
+Your welcome and enjoy
+
 # VSCode Tasks
 
-Avoid running bash commands forever with VSCode Tasks
+Avoid running bash commands forever with [VSCode Tasks](https://code.visualstudio.com/docs/editor/tasks). I am not going to get into this too much cause it's a can of worms, however mentioning it here for the curious and ambitious 👀
 
 # Custom Boilerplate code
 
@@ -475,3 +495,18 @@ Let's create our own custom snippets:
 ```
 
 have fun creating and enjoy ❤️
+
+# Renaming stuff across projects
+
+```text
+"There are only 2 hard things in Computer Science:
+Cache invalidation and naming things"
+
+Phil Karlton
+```
+
+Naming your code is hard so you will often be renaming things:
+
+- Right click on the variable/function you want to rename
+- select `Find All References`
+- Now use the `rename symbol` option to safely rename your stuff across multiple files
