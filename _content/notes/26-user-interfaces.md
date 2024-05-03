@@ -456,7 +456,7 @@ The normies would select navigate to the top navigation, select `File` and click
 | Shift+Ctrl+N | Shift+Cmd+N |
 ```
 
-Your welcome and enjoy
+Your welcome.
 
 # VSCode Tasks
 
@@ -510,3 +510,4 @@ Naming your code is hard so you will often be renaming things:
 - Right click on the variable/function you want to rename
 - select `Find All References`
 - Now use the `rename symbol` option to safely rename your stuff across multiple files
+- Have fun 💅
