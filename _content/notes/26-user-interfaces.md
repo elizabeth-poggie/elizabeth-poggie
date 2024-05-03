@@ -460,7 +460,58 @@ Your welcome.
 
 # VSCode Tasks
 
-Avoid running bash commands forever with [VSCode Tasks](https://code.visualstudio.com/docs/editor/tasks). I am not going to get into this too much cause it's a can of worms, however mentioning it here for the curious and ambitious 👀
+Avoid running bash commands forever with [VSCode Tasks](https://code.visualstudio.com/docs/editor/tasks):
+
+- Open up the command pallet by pressing `F1`
+- Run the command `Tasks: Configure Tasks`
+- Select `Create tasks.json file from template`
+- Click `Others`
+
+By default i should see `tasks.json` pop up containing something along the lines of:
+
+```json
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "echo",
+      "type": "shell",
+      "command": "echo Hello"
+    }
+  ]
+}
+```
+
+Now let's create a custom task called `sassy comment` that outputs a sassy comment for demonstration purposes
+
+```json
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "sassy comment",
+      "type": "shell",
+      "command": "echo 'Wisdom has been chasing you but you have always been faster'"
+    }
+  ]
+}
+```
+
+Save the above and now let's run it:
+
+- Open up the command pallet by pressing `F1`
+- Run the command `Tasks: Run Task`
+- You should see `sassy comment` listed at the top of your available custom tasks
+- Select `continue without scanning the task output`
+- Now at the bottom of your screen you should see that a new terminal has been created that contains the following:
+
+```text
+Wisdom has been chasing you but you have always been faster
+```
 
 # Custom Boilerplate code
 
