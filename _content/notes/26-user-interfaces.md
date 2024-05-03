@@ -393,3 +393,14 @@ Select a block of code that you want to comment and run...
 ```
 
 now you can comment out entire blocks of code at once (instead of line by line)
+
+# Better comments
+
+Add the extension [better comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments). Now your comments are color coordinated depending on the category of comment.
+
+- `TODO` - orange
+- `!` - red
+- `?` - blue
+- `*` - bright green
+
+And yes you configure these colors to be custom
