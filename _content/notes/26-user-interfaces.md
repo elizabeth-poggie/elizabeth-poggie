@@ -57,7 +57,7 @@ To ensure you always remember how to access the command palette, i have created 
 ```md
 | PC 🖥️          | Mac 🍎         |
 | :------------- | :------------- |
-| `Ctrl+P`       | `Cmd+P`        |
+| Ctrl+P         | Cmd+P          |
 | "Control Papa" | "Command Papa" |
 ```
 
@@ -128,9 +128,9 @@ Can't spell? You're not alone.
 - All spelling mistakes are now highlighted with a blue underline, to correct it run the following:
 
 ```md
-| PC 🖥️    | Mac 🍎  |
-| :------- | :------ |
-| `Ctrl+.` | `Cmd+.` |
+| PC 🖥️  | Mac 🍎 |
+| :----- | :----- |
+| Ctrl+. | Cmd+.  |
 ```
 
 # Color Coordinating your VSCode
@@ -186,9 +186,9 @@ You can use `Ctrl-F` or `Cmd-F` to look for symbols / pieces of text in your fil
 This lists all the symbols, variables, and functions in the current file. Alternatively, if you want to be EVEN faster, run:
 
 ```md
-| PC 🖥️          | Mac 🍎        |
-| :------------- | :------------ |
-| `Ctrl+shift+.` | `Cmd+shift+.` |
+| PC 🖥️        | Mac 🍎      |
+| :----------- | :---------- |
+| Ctrl+shift+. | Cmd+shift+. |
 ```
 
 Now you have a dropdown menu.
@@ -212,7 +212,7 @@ Instead of highlighting the line you want to edit with a mouse, run `Ctrl-G` and
 ```md
 | PC 🖥️ & Mac 🍎                    |
 | :-------------------------------- |
-| `Ctrl+G+2`                        |
+| Ctrl+G+2                          |
 | "Control get going - line number" |
 ```
 
@@ -221,7 +221,7 @@ If you want to move around use arrow keys, you can with this:
 ```md
 | PC 🖥️ & Mac 🍎 |
 | :------------- |
-| `<--` OR `-->` |
+| <-- OR -->     |
 ```
 
 And now use the `shift` key if you want to highlight something:
@@ -229,24 +229,24 @@ And now use the `shift` key if you want to highlight something:
 ```md
 | PC 🖥️ & Mac 🍎                  |
 | :------------------------------ |
-| `shift+⬅️` OR `shift+➡️`        |
+| shift+⬅️ OR shift+➡️            |
 | "Shimmy left" OR "Shimmy right" |
 ```
 
 Or if navigating one character at a time is too slow for you, you can move word by word with the below command:
 
 ```md
-| PC 🖥️                  | Mac 🍎                 |
-| :--------------------- | :--------------------- |
-| `Ctrl+⬅️` OR `Ctrl+➡️` | `Ctrl+➡️` OR `Ctrl+⬅️` |
+| PC 🖥️              | Mac 🍎             |
+| :----------------- | :----------------- |
+| Ctrl+⬅️ OR Ctrl+➡️ | Ctrl+➡️ OR Ctrl+⬅️ |
 ```
 
 What happens if you want to find a match on similar words? To find a match run
 
 ```md
-| PC 🖥️    | Mac 🍎  |
-| :------- | :------ |
-| `Ctrl+D` | `Cmd+D` |
+| PC 🖥️  | Mac 🍎 |
+| :----- | :----- |
+| Ctrl+D | Cmd+D  |
 ```
 
 Once you have matched all the same snippets, you can now edit them at the same time :^)
@@ -279,9 +279,9 @@ Try to edit all the `console.log("Edit me");` at the same time using VSCode Comm
 If that's not cool enough for you, you can also use this command to put the cursor in multiple places.
 
 ```md
-| PC 🖥️       | Mac 🍎         |
-| :---------- | :------------- |
-| `Alt+Click` | `Option+Click` |
+| PC 🖥️     | Mac 🍎       |
+| :-------- | :----------- |
+| Alt+Click | Option+Click |
 ```
 
 This is especially useful for repetitive CSS properties.
@@ -355,9 +355,9 @@ However this approach is lame.
 If your cursor is already on the line you want to cut, all you need to do is:
 
 ```md
-| PC 🖥️    | Mac 🍎  |
-| :------- | :------ |
-| `Ctrl+x` | `Cmd+x` |
+| PC 🖥️  | Mac 🍎 |
+| :----- | :----- |
+| Ctrl+x | Cmd+x  |
 ```
 
 no highlighting necessary 💅✨
@@ -367,17 +367,17 @@ no highlighting necessary 💅✨
 This lets you "move" a line of code
 
 ```md
-| PC 🖥️                | Mac 🍎                     |
-| :------------------- | :------------------------- |
-| `Alt+⬆️` or `Alt+⬇️` | `Option+⬆️` or `Option+⬇️` |
+| PC 🖥️            | Mac 🍎                 |
+| :--------------- | :--------------------- |
+| Alt+⬆️ or Alt+⬇️ | Option+⬆️ or Option+⬇️ |
 ```
 
 and this let's you duplicate lines of code
 
 ```md
-| PC 🖥️                            | Mac 🍎                                 |
-| :------------------------------- | :------------------------------------- |
-| `Alt+shift+⬆️` or `Alt+shift+⬇️` | `Option+shift+⬆️` or `Option+shift+⬇️` |
+| PC 🖥️                        | Mac 🍎                             |
+| :--------------------------- | :--------------------------------- |
+| Alt+shift+⬆️ or Alt+shift+⬇️ | Option+shift+⬆️ or Option+shift+⬇️ |
 ```
 
 # Comments
@@ -387,9 +387,9 @@ If you are commenting out lines of code line by line, this is for you.
 Select a block of code that you want to comment and run...
 
 ```md
-| PC 🖥️    | Mac 🍎  |
-| :------- | :------ |
-| `Ctrl+/` | `Cmd+/` |
+| PC 🖥️  | Mac 🍎 |
+| :----- | :----- |
+| Ctrl+/ | Cmd+/  |
 ```
 
 now you can comment out entire blocks of code at once (instead of line by line)
@@ -404,3 +404,25 @@ Add the extension [better comments](https://marketplace.visualstudio.com/items?i
 - `*` - bright green
 
 And yes you configure these colors to be custom
+
+# Terminal
+
+There are many sneaky ways of opening up the terminal in VSCode.
+
+## Slowest way
+
+On the top navigation, select `Terminal` followed by `New Terminal`
+
+## Slowish way
+
+At the bottom left of the screen, click the section of the bar that contains the icons `ⓧ 0 ⚠️ 0 ℹ 0`.
+This opens up all the problems, outputs, console, and terminal of your code.
+
+## Fastest way
+
+```md
+| PC 🖥️ & Mac 🍎                    |
+| :-------------------------------- |
+| Ctrl+`                            |
+| "Control get going - line number" |
+```
