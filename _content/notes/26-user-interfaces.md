@@ -3,8 +3,9 @@
 category: "User Interfaces"
 number: 26
 type: "Lecture"
-title: "VSCode Extensions && Commands"
+title: "VSCode Hacks"
 created: "2024-04-29"
+updated: "2024-05-03"
 ---
 
 # 🚨 PLEASE NOTE 🚨
@@ -345,7 +346,7 @@ Try adding `padding` to all the CSS selectors at the same time using VSCode comm
 
 You can use the above strat when it comes toi editing repetitive code, however if you are dealing specifically with `HTML`, then add the extension [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag) to be even faster
 
-This will auto-magically rename the closing tag when you edit the opening tag.
+This will 🌀 auto-magically 🌀 rename the closing tag when you edit the opening tag.
 
 # Renaming variables/functions across projects
 
@@ -384,7 +385,9 @@ If your cursor is already on the line you want to cut, all you need to do is:
 
 no highlighting necessary 💅✨
 
-# Even faster?
+## Can we go faster?
+
+Yes.
 
 This lets you "move" a line of code
 
@@ -420,7 +423,7 @@ Select a block of code that you want to comment and run...
 
 now you can comment out entire blocks of code at once (instead of line by line)
 
-# Better comments
+## Even Better comments
 
 Add the extension [better comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments). Now your comments are color coordinated depending on the category of comment.
 
@@ -457,16 +460,12 @@ This opens up all the problems, outputs, console, and terminal of your code.
 | Ctrl+`         |
 ```
 
-# Multi - Terminals
+## Multi - Terminals
 
 Usually you always need more than one terminal. Select the `+` icon to add a new terminal
 
 To keep things organized, right click on one of your terminals.
 Now you can change the `icon`, `color` and `name`. Enjoy.
-
-## Exercise ❤️
-
-Now you try it :^)
 
 # Multi-Window
 
@@ -573,4 +572,18 @@ Let's create our own custom snippets:
 }
 ```
 
-have fun creating and enjoy ❤️
+Adding snippets however can be tedious here so get the extension [Easy Snippet](https://marketplace.visualstudio.com/items?itemName=inu1255.easy-snippet). Notice that once you add this extension, a quotations icon appears on your left side bar. This is you "Snippet Manager"
+
+Now follow these easy steps
+
+- Highlight the code you want to turn into a snippet
+- Open up the command pallet and run the command `Easy Snippet: Create Snippet from Selection`
+- Give the selection a "key". This is the abbreviation associated with this snippet
+- Save and hit enter and now you should see your newly created snippet in the "Snippet Manager". Notice how the snippets are organized here according to language.
+
+To paste in this snippet:
+
+- type the abbreviation you created followed by `tab` or `enter`
+- And that's it
+
+You can customize these snippets according to your needs :^)
