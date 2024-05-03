@@ -116,7 +116,7 @@ Never think about formatting your code again.
 
 - Finally, restart your VSCode, and Voila, things format on save 🪄
 
-# Exercise ❤️
+## Exercise ❤️
 
 Follow the above instructions to allow for autosaving and see what happens when you save all your labs.
 
@@ -171,7 +171,7 @@ code .
 code i-am-a-cool-file.md
 ```
 
-# Exercise ❤️
+## Exercise ❤️
 
 Follow the above instructions and try opening up your labs using this trick.
 
@@ -251,7 +251,7 @@ What happens if you want to find a match on similar words? To find a match run
 
 Once you have matched all the same snippets, you can now edit them at the same time :^)
 
-# Exercise ❤️
+## Exercise ❤️
 
 Consider the following JavaScript
 
@@ -286,7 +286,7 @@ If that's not cool enough for you, you can also use this command to put the curs
 
 This is especially useful for repetitive CSS properties.
 
-# Exercise ❤️
+## Exercise ❤️
 
 Consider the following HTML
 
@@ -345,7 +345,23 @@ Try adding `padding` to all the CSS selectors at the same time using VSCode comm
 
 You can use the above strat when it comes toi editing repetitive code, however if you are dealing specifically with `HTML`, then add the extension [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag) to be even faster
 
-This will automagically rename the closing tag when you edit the opening tag.
+This will auto-magically rename the closing tag when you edit the opening tag.
+
+# Renaming variables/functions across projects
+
+```text
+"There are only 2 hard things in Computer Science:
+Cache invalidation and naming things"
+
+Phil Karlton
+```
+
+Naming your code is hard so you will often be renaming things:
+
+- Right click on the variable/function you want to rename
+- select `Find All References`
+- Now use the `rename symbol` option to safely rename your stuff across multiple files
+- Have fun 💅 ✨
 
 # Cutting
 
@@ -386,6 +402,10 @@ and this let's you duplicate lines of code
 | Alt+shift+⬆️ or Alt+shift+⬇️ | Option+shift+⬆️ or Option+shift+⬇️ |
 ```
 
+## Exercise ❤️
+
+Now you try it :^)
+
 # Comments
 
 If you are commenting out lines of code line by line, this is for you.
@@ -409,7 +429,7 @@ Add the extension [better comments](https://marketplace.visualstudio.com/items?i
 - `?` - blue
 - `*` - bright green
 
-And yes you configure these colors to be custom
+And yes you configure the colors to be custom.
 
 # Terminal
 
@@ -443,6 +463,10 @@ Usually you always need more than one terminal. Select the `+` icon to add a new
 
 To keep things organized, right click on one of your terminals.
 Now you can change the `icon`, `color` and `name`. Enjoy.
+
+## Exercise ❤️
+
+Now you try it :^)
 
 # Multi-Window
 
@@ -513,6 +537,10 @@ Save the above and now let's run it:
 Wisdom has been chasing you but you have always been faster
 ```
 
+## Exercise ❤️
+
+Follow the above instructions and create your own custom tasks.
+
 # Custom Boilerplate code
 
 Tired of writing the same code over and over?
@@ -546,19 +574,3 @@ Let's create our own custom snippets:
 ```
 
 have fun creating and enjoy ❤️
-
-# Renaming stuff across projects
-
-```text
-"There are only 2 hard things in Computer Science:
-Cache invalidation and naming things"
-
-Phil Karlton
-```
-
-Naming your code is hard so you will often be renaming things:
-
-- Right click on the variable/function you want to rename
-- select `Find All References`
-- Now use the `rename symbol` option to safely rename your stuff across multiple files
-- Have fun 💅
