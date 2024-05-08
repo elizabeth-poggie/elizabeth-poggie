@@ -106,20 +106,75 @@ char[,] board = {
 };
 ```
 
-## Method 3 - Prompt for input
+## Method 3 - Prompt user for input
 
 A method called `getUserMove` that takes the board as input and returns no value. This method uses `Console.ReadLine()` to get a user's move.
 
 A move is composed by two integers representing the position on the board where the user wants to write their symbol (`x`). For example:
 
 ```text
-What row do you want to make your move?
+What row do you want to make your move at?
 > 0
 And what column?
 > 0
 ```
 
 Notice how the first integer indicates the row, and the second integer indicates the column. HOWEVER, if the move is invalid, then the user should be prompted again for input. Keep asking the user for a new move, until they enter a valid one. Once the method receives a valid move, it carries it out by calling the `writeOnBoard` method with the valid inputs.
+
+## Method 4 - the power of AI
+
+## Method 5 - prompt AI for input
+
+## Method 6 - Winner?
+
+## Method 7 - Play
+
+In the main method, you should implement a game of Tic Tac Toe between the user and the AI using all the methods previously defined.
+
+Before beginning the actual game, the method should ask the user for their name and store it in an appropriate variable. Then, the method should ask the user for an integer indicating the dimension of the board the user wants to play with.
+
+```text
+What is your name?
+> Prof Poggie
+
+What sized board would you like to play on today?
+> 3
+```
+
+The method can then start to carry out a game of Tic Tac Toe. It first creates a board with the correct dimension:
+
+```text
++-+-+-+
+| | | |
++-+-+-+
+| | | |
++-+-+-+
+| | | |
++-+-+-+
+```
+
+and then ask for user input:
+
+```text
+What row do you want to make your move at?
+> 0
+And what column?
+> 0
+```
+
+The method should display the updated board each time a move is made:
+
+```text
++-+-+-+
+|x| | |
++-+-+-+
+| | | |
++-+-+-+
+| | | |
++-+-+-+
+```
+
+The players keep taking turns until either one of them wins or there are no more available moves. Whatever is the cause for ending the game, a message should be printed on the screen displaying the result of the game.
 
 # Checklist
 
