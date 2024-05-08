@@ -24,17 +24,28 @@ Write a program called `TicTacToe` that allows a user to play Tic Tac Toe agains
 
 Implement the following methods. Feel free to include any additional helper methods you deem necessary :)
 
-## Method 1
+## Method 1 - Generation
 
-Write a method called `createBoard` that takes as input one integer n, representing the dimension of the board, and returns an n by n array of characters. This 2D array of characters represents the board of the game. When the board is created, it should be completely empty. To represent this, the elements of the array should all be initialized with the space character `' '`
+Write a method called `createBoard` that takes as input one integer n, representing the dimension of the board, and returns an n by n array of characters. This 2D array of characters represents the board of the game. When the board is created, it should be completely empty. To represent this, the elements of the array should all be initialized with the space character `' '`. For example, calling this method like:
 
 ```cs
-char[,] board = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+createBoard(3);
 ```
 
-## Method 2
+should return a reference to the following array:
 
-Write a method called `displayBoard` that takes a 2D array of characters as input and prints out the board. For example, this is what an empty 4 by 4 board would look like this:
+```cs
+// indices - (row, col)
+char[,] board = {
+  {' ', ' ', ' '}, // (0,0) (0,1) (0,2)
+  {' ', ' ', ' '}, // (1,0) (1,1) (1,2)
+  {' ', ' ', ' '}  // (2,0) (2,1) (2,2)
+};
+```
+
+## Method 2 - Display
+
+Write a method called `displayBoard` that takes a 2D array of characters as input and prints out the board. For example, this is what an empty 4 by 4 board would look like:
 
 ```text
 +-+-+-+-+
@@ -48,7 +59,7 @@ Write a method called `displayBoard` that takes a 2D array of characters as inpu
 +-+-+-+-+
 ```
 
-And a 3 by 3 board that is currently in play would look like this:
+And this is what a 3 by 3 board that is currently in play would look like:
 
 ```text
 +-+-+-+
@@ -60,7 +71,40 @@ And a 3 by 3 board that is currently in play would look like this:
 +-+-+-+
 ```
 
-## Method 3
+## Method 3 - Making your Move
+
+Write a method `writeOnBoard` that takes as input the board (a 2 dimensional array of characters), the character to write, and two integers x and y representing the position on the board where the character should be written on. For Example:
+
+```cs
+// x ~ row // y ~ col
+public static void writeOnBoard(char[,] board, char letter, int x, int y) {
+  // do stuff
+}
+```
+
+Inside this method, validate if that is a valid move. If the move is invalid, the appropriate error message should be printed. For example, if your array is:
+
+```cs
+char[,] board = {
+  {'x', ' ', ' '},
+  {' ', 'o', ' '},
+  {'x', 'o', ' '}
+};
+```
+
+Then ...
+
+- `writeOnBoard(board,’x’,1,1)` should print something along the lines of "Space Taken"
+- `writeOnBoard(board,’x’,1,5)` should print something along the lines of "Out of Board Exception"\
+- `writeOnBoard(board,’x’,1,0)` should print no message and update the board accordingly:
+
+```cs
+char[,] board = {
+  {'x', ' ', ' '},
+  {'x', 'o', ' '}, // notice how (1,0) is updated
+  {'x', 'o', ' '}
+};
+```
 
 # Checklist
 
