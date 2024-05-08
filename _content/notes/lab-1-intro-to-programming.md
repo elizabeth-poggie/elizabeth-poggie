@@ -121,11 +121,45 @@ And what column?
 
 Notice how the first integer indicates the row, and the second integer indicates the column. HOWEVER, if the move is invalid, then the user should be prompted again for input. Keep asking the user for a new move, until they enter a valid one. Once the method receives a valid move, it carries it out by calling the `writeOnBoard` method with the valid inputs.
 
-## Method 4 - the power of AI
+## Method 4 - The power of AI
 
-## Method 5 - prompt AI for input
+Write a method called `checkForObviousMove` that takes the board as input and returns true if there’s an “obvious move” the AI should do, false otherwise. We consider to be an “obvious move” a move that would make the AI either win or avoid an obvious win for the user on the next turn. If such a move exist, then the method should carry it out by calling the `writeOnBoard` method with the appropriate inputs, and then return `true`. If no obvious move is possible, then the method should simply return `false`.
+
+For example, if my board is my board:
+
+```cs
+char[,] board = {
+  {'x', ' ', ' '},
+  {' ', 'o', ' '},
+  {'x', 'o', ' '}
+};
+```
+
+Then the obvious move for the AI to do is at position `(0,1)` cause this would make the AI win the game. So when `checkForObviousMove();` is called, then after the call is executed, then the board will be updated to:
+
+```cs
+char[,] board = {
+  {'x', 'o', ' '},
+  {' ', 'o', ' '},
+  {'x', 'o', ' '}
+};
+```
+
+and the method will return `true` :)
+
+## Method 5 - Prompt AI for input
+
+A method called getAIMove that takes the board as input and returns no value. This method should first check whether an “obvious move” is possible for the AI and carry it out by calling the checkForObviousMove method. If no “obvious move” was possible, then the AI chooses a move at random:
+
+If the move generated is invalid, then the method generates a new one. Once the method has generated a valid move, then it carries it out by calling the `writeOnBoard` method with the appropriate inputs.
 
 ## Method 6 - Winner?
+
+Write a method called `checkForWinner` that takes the board as input and returns a character. The method should check whether either the user or the AI have won the game:
+
+- if the user wins, return `x`
+- if the AI wins, return `o`
+- if no one wins, return `' '` (empty character)
 
 ## Method 7 - Play
 
