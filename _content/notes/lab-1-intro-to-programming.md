@@ -149,9 +149,11 @@ char[,] board = {
 
 and the method will return `true` :)
 
+NOTE: for this method, you can make the AI as smart or stupid as you would like it to be
+
 ## Method 5 - Prompt AI for input
 
-A method called getAIMove that takes the board as input and returns no value. This method should first check whether an “obvious move” is possible for the AI and carry it out by calling the checkForObviousMove method. If no “obvious move” was possible, then the AI chooses a move at random:
+A method called `getAIMove` that takes the board as input and returns no value. This method should first check whether an “obvious move” is possible for the AI and carry it out by calling the `checkForObviousMove` method. If no “obvious move” was possible, then the AI chooses a move at random:
 
 ```cs
 // Create a Random object - don't worry about what this means for now
@@ -232,7 +234,8 @@ What is your name?
 Hello Poggie !! How large of a board would you like to play on today?
 > 3
 
-Board Generated !!! Are you ready to play ?
+Board generated !!! Are you ready to play ?
+
 +-+-+-+
 | | | |
 +-+-+-+
