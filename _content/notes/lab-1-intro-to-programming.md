@@ -113,9 +113,11 @@ A method called `getUserMove` that takes the board as input and returns no value
 A move is composed by two integers representing the position on the board where the user wants to write their symbol (`x`). For example:
 
 ```text
-What row do you want to make your move at?
+Please enter your move.
+
+What row?
 > 0
-And what column?
+And column?
 > 0
 ```
 
@@ -151,6 +153,15 @@ and the method will return `true` :)
 
 A method called getAIMove that takes the board as input and returns no value. This method should first check whether an “obvious move” is possible for the AI and carry it out by calling the checkForObviousMove method. If no “obvious move” was possible, then the AI chooses a move at random:
 
+```cs
+// Create a Random object - don't worry about what this means for now
+Random random = new Random();
+
+// Create Random Rows && Cols - This creates 2 different random numbers between 0 and n
+int randomRow = random.Next(0, n + 1);
+int randomColumn = random.Next(0, n + 1);
+```
+
 If the move generated is invalid, then the method generates a new one. Once the method has generated a valid move, then it carries it out by calling the `writeOnBoard` method with the appropriate inputs.
 
 ## Method 6 - Winner?
@@ -169,9 +180,9 @@ Before beginning the actual game, the method should ask the user for their name 
 
 ```text
 What is your name?
-> Prof Poggie
+> Poggie
 
-What sized board would you like to play on today?
+Hello Poggie !! How large of a board would you like to play on today?
 > 3
 ```
 
@@ -190,9 +201,11 @@ The method can then start to carry out a game of Tic Tac Toe. It first creates a
 and then ask for user input:
 
 ```text
-What row do you want to make your move at?
+Please enter your move.
+
+What row?
 > 0
-And what column?
+And column?
 > 0
 ```
 
@@ -210,12 +223,83 @@ The method should display the updated board each time a move is made:
 
 The players keep taking turns until either one of them wins or there are no more available moves. Whatever is the cause for ending the game, a message should be printed on the screen displaying the result of the game.
 
+# Example IO
+
+```text
+What is your name?
+> Poggie
+
+Hello Poggie !! How large of a board would you like to play on today?
+> 3
+
+Board Generated !!! Are you ready to play ?
++-+-+-+
+| | | |
++-+-+-+
+| | | |
++-+-+-+
+| | | |
++-+-+-+
+
+************************************************************************
+
+Please enter your move.
+
+What row?
+> 0
+And column?
+> 0
+
++-+-+-+
+|x| | |
++-+-+-+
+| | | |
++-+-+-+
+| | | |
++-+-+-+
+
+************************************************************************
+
+It's the AI's turn:
+
++-+-+-+
+|x| | |
++-+-+-+
+|o| | |
++-+-+-+
+| | | |
++-+-+-+
+
+************************************************************************
+
+Please enter your move.
+
+What row?
+> 1
+And column?
+> 1
+
++-+-+-+
+|x| | |
++-+-+-+
+|o|x| |
++-+-+-+
+| | | |
++-+-+-+
+
+************************************************************************
+
+It's the AI's turn:
+
+...
+```
+
 # Checklist
 
 Ensure that your code contains:
 
 - A comment containing: You name and ID
-- Input validation, if needed
+- Input validation
 - Constant(s) where deemed appropriate
 - Custom methods that start with `public static`
 - NO external math libraries, the intention here is to test your abilities with loops, methods, and arrays.
