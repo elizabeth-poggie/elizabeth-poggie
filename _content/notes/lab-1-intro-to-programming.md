@@ -95,16 +95,31 @@ char[,] board = {
 Then ...
 
 - `writeOnBoard(board,’x’,1,1)` should print something along the lines of "Space Taken"
-- `writeOnBoard(board,’x’,1,5)` should print something along the lines of "Out of Board Exception"\
+- `writeOnBoard(board,’x’,1,5)` should print something along the lines of "Out of Board Exception"
 - `writeOnBoard(board,’x’,1,0)` should print no message and update the board accordingly:
 
 ```cs
 char[,] board = {
   {'x', ' ', ' '},
-  {'x', 'o', ' '}, // notice how (1,0) is updated
+  {'x', 'o', ' '}, // notice how (1,0) is updated with the character `x`
   {'x', 'o', ' '}
 };
 ```
+
+## Method 3 - Prompt for input
+
+A method called `getUserMove` that takes the board as input and returns no value. This method uses `Console.ReadLine()` to get a user's move.
+
+A move is composed by two integers representing the position on the board where the user wants to write their symbol (`x`). For example:
+
+```text
+What row do you want to make your move?
+> 0
+And what column?
+> 0
+```
+
+Notice how the first integer indicates the row, and the second integer indicates the column. HOWEVER, if the move is invalid, then the user should be prompted again for input. Keep asking the user for a new move, until they enter a valid one. Once the method receives a valid move, it carries it out by calling the `writeOnBoard` method with the valid inputs.
 
 # Checklist
 
