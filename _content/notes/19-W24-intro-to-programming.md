@@ -75,7 +75,9 @@ In our `.xaml` file we are going to be putting things like text boxes and button
 
 In the `.xaml.cs` file we are going to tell what the program to do when those visual elements are interacted with.
 
-## How do i add UI elements to our application?
+# User Interfaces
+
+How do i add UI elements to our application?
 
 Open up the `Toolbox` on the left hand side of your application. Here you will notice a bunch of fun elements that you can add to your `.xaml` file. Navigate to the `.xaml` and start by taking a `TextBlock` and dragging it onto the main UI window in the top center view of your application.
 
@@ -102,3 +104,29 @@ We can also code directly in in the `.xaml` file:
 ```
 
 And just like that you can size your element exactly the way you want it to be.
+
+# User Interaction
+
+How can we alter our `TextBlock` from behind the scenes?
+
+First let's update the `Name` of our `TextBlock`
+
+```xaml
+<Grid>
+    <TextBlock Name="tbHello" Text="Hello World" FontSize="100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+</Grid>
+```
+
+Now let's head over to our `.xaml.cs` file and in our `public MainWindow()` you can now access the block simply by typing:
+
+```cs
+tbHello
+```
+
+and by typing a period `.` you now get access to all it's methods and properties. So for example if instead we don't want the text to say `Hello World`, you can update it accordingly:
+
+```cs
+tbHello.Text = "Goodbye World! It's been good!"
+```
+
+So now when you save and run this, the text will be updated accordingly
