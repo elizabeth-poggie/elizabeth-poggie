@@ -69,10 +69,10 @@ For the purposes of this class, the goal is to become better programmers and not
 `MAUI` is a cross platform application and `WPF` is only windows, however `MAUI` is
 
 - Still in it's early stages
-- Not as established so little third party packages
-- Vast majority of businesses uses windows
+- Not as established so little third party packages.
+- It's in the process of maturing atm, however with time it will likely replace `WPF`
 
-If your intent is to be a better cross platform developer, `WPF` will still be a good stepping stone to this type of application later down the line
+If your intent is to be a better cross platform developer and use `MAUI`, `WPF` will still be a good stepping stone to this type of application later down the line :)
 
 ## Why not Windows Forms?
 
