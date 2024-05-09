@@ -79,6 +79,26 @@ In the `.xaml.cs` file we are going to tell what the program to do when those vi
 
 Open up the `Toolbox` on the left hand side of your application. Here you will notice a bunch of fun elements that you can add to your `.xaml` file. Navigate to the `.xaml` and start by taking a `TextBlock` and dragging it onto the main UI window in the top center view of your application.
 
-Notice that when we drag and drop it onto our form, our `.xaml` is updated to reflect those changes.
+Notice that when we drag and drop it onto our form, our `.xaml` is updated to reflect those changes:
 
-And that's it.
+```xaml
+<Grid>
+    <TextBlock HorizontalAlignment="Left" Margin="74,49,0,0" Text="Text Block" TextWrapping="Wrap" VerticalAlignment="Top"/>
+</Grid>
+```
+
+And that's it. However notice that the sizing and placing of our `TextBlock` is kinda awkward cause it's assumed our preferred placement.
+
+We can do better.
+
+## Making it more complicated
+
+We can also code directly in in the `.xaml` file:
+
+```xaml
+<Grid>
+    <TextBlock Text="Hello World" FontSize="100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+</Grid>
+```
+
+And just like that you can size your element exactly the way you want it to be.
