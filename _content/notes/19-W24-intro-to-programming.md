@@ -76,3 +76,7 @@ In our `.xaml` file we are going to be putting things like text boxes and button
 In the `.xaml.cs` file we are going to tell what the program to do when those visual elements are interacted with.
 
 ## How do i add UI elements to our application?
+
+Open up the `Toolbox` on the left hand side of your application. Here you will notice a bunch of fun elements that you can add to your `.xaml` file. Navigate to the `.xaml` and start by taking a `TextBlock` and dragging it onto the main UI window in the top center view of your application.
+
+Notice that when we drag and drop it onto our form, our `.xaml` is updated to reflect those changes
