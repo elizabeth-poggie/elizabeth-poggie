@@ -54,6 +54,8 @@ If you have worked with `yaml` or `html` this will look very similar
 
 # Why WPF?
 
+There is a lot of earning potential that comes with learning `WPF`, but first let's take a moment to appreciate why we are not learning other UI applications that are available to us in `.NET`
+
 ## Why no ASP.NET?
 
 `ASP.NET` is a web application that runs on multiple UIs however they are
