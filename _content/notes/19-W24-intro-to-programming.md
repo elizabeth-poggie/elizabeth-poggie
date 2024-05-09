@@ -52,6 +52,37 @@ in `XAML` it would look like this:
 
 If you have worked with `yaml` or `html` this will look very similar
 
+# Why WPF?
+
+## Why no ASP.NET?
+
+`ASP.NET` is a web application that runs on multiple UIs however they are
+
+- Browser Limited
+- User Interface focused
+- Design Driven - get ready for responsive design
+
+For the purposes of this class, the goal is to become better programmers and not better designers.
+
+## WHy not MAUI
+
+`MAUI` is a cross platform application and `WPF` is only windows, however `MAUI` is
+
+- Still in it's early stages
+- Not as established so little third party packages
+- Vast majority of businesses uses windows
+
+If your intent is to be a better cross platform developer, `WPF` will still be a good stepping stone to this type of application later down the line
+
+## Why not Windows Forms?
+
+`WinForms` is lame lmao
+
+- Its old
+- Phasing out
+- Limited Power
+- Limited potential, get ready to become obsolete asap
+
 # Getting Started
 
 To begin making your own WPF application:
