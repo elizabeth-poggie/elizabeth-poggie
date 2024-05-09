@@ -233,7 +233,7 @@ The method should display the updated board each time a move is made:
 
 The players keep taking turns until either one of them wins or there are no more available moves. Whatever is the cause for ending the game, a message should be printed on the screen displaying the result of the game.
 
-# Example IO
+# Sample IO
 
 ```text
 What is your name?
