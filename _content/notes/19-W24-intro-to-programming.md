@@ -51,3 +51,28 @@ in `XAML` it would look like this:
 ## Look familiar?
 
 If you have worked with `yaml` or `html` this will look very similar
+
+# Getting Started
+
+To begin making your own WPF application:
+
+- Navigate to `Visual Studio`
+- Select `WPF Application`
+- Name your project and select `place solution and project in the same directory`
+- Select `.NET 6.0` and then hit `Create`
+
+Now you are ready to go. When you run the app you get a blank screen which is the empty user interface of your project.
+
+## Main Window
+
+Notice that once you open your project, you have a `MainWindow.xaml` and `MainWindow.xaml.cs` file
+
+The `.xaml.cs` file is the "code behind" your user interface `.xaml` file. They work together to create an application
+
+## What does this mean for us?
+
+In our `.xaml` file we are going to be putting things like text boxes and buttons.
+
+In the `.xaml.cs` file we are going to tell what the program to do when those visual elements are interacted with.
+
+## How do i add UI elements to our application?
