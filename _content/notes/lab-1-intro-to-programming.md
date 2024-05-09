@@ -22,6 +22,8 @@ Write a program called `TicTacToe` that allows a user to play Tic Tac Toe agains
 
 Implement the following methods. Feel free to include any additional helper methods you deem necessary :)
 
+This may seem like a lot of work, however the intention here is to break down the task into manageable steps, ensuring that each one is clearly defined to set y'all up for success.
+
 ## Method 1 - Generation
 
 Write a method called `createBoard` that takes as input one integer `n`, representing the dimension of the board, and returns an `n` by `n` array of characters. This 2D array of characters represents the board of the game. When the board is created, it should be completely empty. To represent this, the elements of the array should all be initialized with the space character `' '`. For example, calling this method like:
@@ -71,11 +73,11 @@ And this is what a 3 by 3 board that is currently in play would look like:
 
 ## Method 3 - Making your Move
 
-Write a method `writeOnBoard` that takes as input the board (a 2 dimensional array of characters), the character to write, and two integers x and y representing the position on the board where the character should be written on. For Example:
+Write a method `writeOnBoard` that takes as input the board (a 2 dimensional array of characters), the character to write, and two integers x and y representing the position on the board where the character should be written on. The method returns `true` if the operation was successful and `false` if the move is impossible. For Example:
 
 ```cs
 // x ~ row // y ~ col
-public static void writeOnBoard(char[,] board, char letter, int x, int y) {
+public static bool writeOnBoard(char[,] board, char letter, int x, int y) {
   // do stuff
 }
 ```
