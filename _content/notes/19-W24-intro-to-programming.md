@@ -56,7 +56,7 @@ If you have worked with `yaml` or `html` this will look very similar
 
 There is a lot of earning potential that comes with learning `WPF`, but first let's take a moment to appreciate why we are not learning other UI applications that are available to us in `.NET`
 
-## Why no ASP.NET?
+## Why not ASP.NET?
 
 `ASP.NET` is a web application that runs on multiple UIs however they are
 
@@ -66,24 +66,24 @@ There is a lot of earning potential that comes with learning `WPF`, but first le
 
 For the purposes of this class, the goal is to become better programmers and not better designers.
 
-## WHy not MAUI
+## Why not MAUI
 
 `MAUI` is a cross platform application and `WPF` is only windows, however `MAUI` is
 
 - Still in it's early stages
 - Not as established so little third party packages.
-- It's in the process of maturing atm, however with time it will likely replace `WPF`
+- It's in the process of maturing, however with time it will likely replace `WPF`
 
-If your intent is to be a better cross platform developer and use `MAUI`, `WPF` will still be a good stepping stone to this type of application later down the line :)
+If your intent is to be a better cross platform developer, `WPF` will still be a good stepping stone to this type of application later down the line :)
 
 ## Why not Windows Forms?
 
 `WinForms` is lame lmao
 
-- Its old
-- Phasing out
-- Limited Power
-- Limited potential, get ready to become obsolete asap
+- It's old
+- It's phasing out
+- Has limited Power
+- and has limited career potential, get ready to become obsolete asap
 
 # Getting Started
 
@@ -98,19 +98,15 @@ Now you are ready to go. When you run the app you get a blank screen which is th
 
 ## Main Window
 
-Notice that once you open your project, you have a `MainWindow.xaml` and `MainWindow.xaml.cs` file
-
-The `.xaml.cs` file is the "code behind" your user interface `.xaml` file. They work together to create an application
+Notice that once you open your project, you have a `MainWindow.xaml` and `MainWindow.xaml.cs` file. The `.xaml.cs` file is the "code behind" your user interface `.xaml` file. They work together to create an application
 
 ## What does this mean for us?
 
-In our `.xaml` file we are going to be putting things like text boxes and buttons.
-
-In the `.xaml.cs` file we are going to tell what the program to do when those visual elements are interacted with.
+In our `.xaml` file we are going to be putting things like text boxes and buttons. In the `.xaml.cs` file we are going to tell what the program to do when those visual elements are interacted with.
 
 # User Interfaces
 
-How do i add UI elements to our application?
+## How do i add UI elements to our application?
 
 Open up the `Toolbox` on the left hand side of your application. Here you will notice a bunch of fun elements that you can add to your `.xaml` file. Navigate to the `.xaml` and start by taking a `TextBlock` and dragging it onto the main UI window in the top center view of your application.
 
@@ -140,7 +136,7 @@ And just like that you can size your element exactly the way you want it to be.
 
 # User Interaction
 
-How can we alter our `TextBlock` from behind the scenes?
+## How can we alter our TextBlock from behind the scenes?
 
 First let's update the `Name` of our `TextBlock`
 
