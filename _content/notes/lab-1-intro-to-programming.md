@@ -16,9 +16,7 @@ created: "2024-05-08"
 
 # The Problem
 
-# Getting Started
-
-Write a program called `TicTacToe` that allows a user to play Tic Tac Toe against an AI (the computer). You can assume that the user plays using the symbol `x`, while the AI uses the symbol `o`
+Write a program called `TicTacToe` that allows a user to play Tic Tac Toe against an AI. You can assume that the user plays using the symbol `x`, while the AI uses the symbol `o` :)
 
 # Problem Details
 
@@ -26,7 +24,7 @@ Implement the following methods. Feel free to include any additional helper meth
 
 ## Method 1 - Generation
 
-Write a method called `createBoard` that takes as input one integer n, representing the dimension of the board, and returns an n by n array of characters. This 2D array of characters represents the board of the game. When the board is created, it should be completely empty. To represent this, the elements of the array should all be initialized with the space character `' '`. For example, calling this method like:
+Write a method called `createBoard` that takes as input one integer `n`, representing the dimension of the board, and returns an `n` by `n` array of characters. This 2D array of characters represents the board of the game. When the board is created, it should be completely empty. To represent this, the elements of the array should all be initialized with the space character `' '`. For example, calling this method like:
 
 ```cs
 createBoard(3);
@@ -125,9 +123,17 @@ Notice how the first integer indicates the row, and the second integer indicates
 
 ## Method 4 - The power of AI
 
-Write a method called `checkForObviousMove` that takes the board as input and returns true if there’s an “obvious move” the AI should do, false otherwise. We consider to be an “obvious move” a move that would make the AI either win or avoid an obvious win for the user on the next turn. If such a move exist, then the method should carry it out by calling the `writeOnBoard` method with the appropriate inputs, and then return `true`. If no obvious move is possible, then the method should simply return `false`.
+Write a method called `checkForObviousMove` that takes the board as input and returns `true` if there’s an “obvious move” the AI should do, `false` otherwise.
 
-For example, if my board is my board:
+```cs
+public static bool checkForObviousMove(char[,] board) {
+  // do stuff
+}
+```
+
+We consider to be an “obvious move” a move that would make the AI either win or avoid an obvious win for the user on the next turn. If such a move exist, then the method should carry it out by calling the `writeOnBoard` method with the appropriate inputs, and then return `true`. If no obvious move is possible, then the method should simply return `false`.
+
+For example, if the board is:
 
 ```cs
 char[,] board = {
@@ -137,7 +143,7 @@ char[,] board = {
 };
 ```
 
-Then the obvious move for the AI to do is at position `(0,1)` cause this would make the AI win the game. So when `checkForObviousMove();` is called, then after the call is executed, then the board will be updated to:
+Then the obvious move for the AI to do is at position `(0,1)` cause this would make the AI win the game. So when `checkForObviousMove(board)` is called, then after the call is executed, then the board will be updated to:
 
 ```cs
 char[,] board = {
@@ -176,7 +182,7 @@ Write a method called `checkForWinner` that takes the board as input and returns
 
 ## Method 7 - Play
 
-In the main method, you should implement a game of Tic Tac Toe between the user and the AI using all the methods previously defined.
+In the `main` method, you should implement a game of Tic Tac Toe between the user and the AI using all the methods previously defined.
 
 Before beginning the actual game, the method should ask the user for their name and store it in an appropriate variable. Then, the method should ask the user for an integer indicating the dimension of the board the user wants to play with.
 
