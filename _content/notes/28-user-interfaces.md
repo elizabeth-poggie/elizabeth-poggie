@@ -13,7 +13,9 @@ This is your website's address and you can get your own :)
 
 # Domain Registration
 
-In 2023, Google cut a deal with Squarespace, transferring all of their domain registration rights. In a press release, Google's VP and GM of merchant shopping, said the sale is an effort to “sharpen our focus.” HOWEVER, based on online assessments, the deal's value is estimated at $180 million USD. I encourage the class to apply their critical thinking skills to discern the underlying motives behind this deal :^)
+In 2023, Google cut a deal with Squarespace, transferring all of their domain registration rights. In a press release, Google's VP and GM of merchant shopping, said the sale is an effort to “sharpen our focus.” HOWEVER, based on online assessments, the deal's value is estimated at $180 million USD.
+
+I encourage the class to apply their critical thinking skills to discern the underlying motives behind this deal :^)
 
 ## Where to buy?
 
@@ -28,18 +30,18 @@ Alternative resources that allow you to buy your own domain include:
 - [Bluehost](https://www.bluehost.com/)
 - ... and more !!
 
-## How much do they cost?
+## How much tho?
 
 The cost of domains can vary widely depending on several factors such as the domain extension (e.g., .com, .net, .org), the registrar you purchase from, any additional services or features bundled with the domain registration, and whether the domain is considered premium or standard.
 
 ```text
-CHEAPEST ($10 - $50 per year)
+👉 CHEAPEST ($10 - $50 per year)
 .com
 
-MID-TIER ($100 - $900 per year)
+👉 MID-TIER ($100 - $900 per year)
 .gov .edu
 
-EXPENSIVE (+ $1,000 per year)
+👉 EXPENSIVE (+ $1,000 per year)
 .inc
 .io
 .co

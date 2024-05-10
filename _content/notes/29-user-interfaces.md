@@ -12,15 +12,12 @@ created: "2024-05-10"
 Your website could go down at any point for a variety of reasons:
 
 - Wordpress updates
-- Hackers
 - Clashes with themes
 - Unexpected behavior after installing a plugin
 
 This helps you prevent loosing all your work when you make edits to your website :^)
 
-## Option 1
-
-Install `Updraft`:
+## Getting Started
 
 - Login to the backend of your wordpress website
 - Navigate to the `Plugins` tab and select `Add New Plugin`
@@ -28,7 +25,7 @@ Install `Updraft`:
 - Select the option `UpdraftPlus: WordPress Backup & Migration Plugin` with 3+ Million Active installations
 - Select `Install` and then click `Activate`
 
-Manual Backups:
+## Manual Backups
 
 - Navigate to your `Installed Plugins` page and select the `Settings` of `Updraft`
 - Select `Press here to start`, this should redirect you to a `Settings` page with the title `UpdraftPlus Backup/Restore`
@@ -37,7 +34,7 @@ Manual Backups:
 - Under `Existing backups`, your current backup should be listed underneath :)
 - And now you have a backup incase anything goes wrong :)
 
-Automatic Backups:
+## Automatic Backups
 
 - Navigate to your `Installed Plugins` page and select the `Settings` of `Updraft`
 - Select `Press here to start`, this should redirect you to a `Settings` page with the title `UpdraftPlus Backup/Restore`
@@ -47,7 +44,7 @@ Automatic Backups:
 
 This let's you sell stuff on your wordpress website :)
 
-Instal `WooCommerce`:
+## Getting Started
 
 - Login to the backend of your wordpress website
 - Navigate to the `Plugins` tab and select `Add New Plugin`
@@ -55,13 +52,13 @@ Instal `WooCommerce`:
 - Select the `WooCommerce` plugin as one of the first results. You will notice that there are 5+ million active installations and over 4 thousand reviews. This is how you know you have the legitimate plugin :^)
 - Select `Install` and then click `Activate` now you are ready 2 rumble :^)
 
-Activating `WooCommerce`:
+## Activating WooCommerce
 
 - Usually this will automatically pull up the setup wizard to begin formatting your website
 - However, you can also modify your e-commerce site by directly navigating to the `Settings` page.
 - This is where we will need to fill out information about your store.
 
-`WooCommerce` Subscriptions:
+## WooCommerce Subscriptions
 
 - `WooCommerce` is free, however if you want to improve your plan that is an option
 
