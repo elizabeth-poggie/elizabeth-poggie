@@ -47,6 +47,22 @@ EXPENSIVE (+ $1,000 per year)
 
 For example `poggie.ca` might cost $0.01 per year, however `pogie.com` might cost $16,464 per year. Costs vary widely and more premium names come at a higher price.
 
-# Domain Linking
+# Connecting Domains
 
 Once purchased, you will likely need to wait for DNS to create a record of your domain name. After about 72 hours, you will be able to work some magic :)
+
+## Customizing your DNS - Option 1
+
+You can use the Advanced Settings panel to make changes to your nameservers and glue DNS records together. By default, Squarespace’s default nameservers connect a domain by pointing to that domain’s DNS settings. You can actually customize this to to point to domains that have a specific location online.
+
+To customize your DNS Record:
+
+- Navigate to `DNS` and select `Nameserver Registration`
+- Once here, click the button `Add host record`
+- This should open up a panel that lets you enter the subdomain and IP address you want to link to your new name
+
+This is especially helpful if you don't want to use the default wordpress and prefer to have your own clean domain purchased through a domain registrar like Squarespace
+
+## Customizing your DNS - Option 2
+
+Alternatively, navigate to the settings page where your project lives. Usually there is a `Domains` panel that allows you to modify the domains that are assigned to your project or production deployments. Here you can directly modify the domain to be the one you just purchased. Fun fact, this is how this website is setup :^)
