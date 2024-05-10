@@ -48,3 +48,5 @@ EXPENSIVE (+ $1,000 per year)
 For example `poggie.ca` might cost $0.01 per year, however `pogie.com` might cost $16,464 per year. Costs vary widely and more premium names come at a pretty penny.
 
 # Domain Linking
+
+Once purchased, you will likely need to wait for DNS to create a record of your domain name. Once finished, now let's work some magic
