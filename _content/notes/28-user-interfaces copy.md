@@ -11,6 +11,12 @@ created: "2024-05-10"
 
 This let's you sell stuff on your wordpress website :)
 
+## Backing up your wordpress website
+
+Generally it's best practice to backup your wordpress website before adding new themes and installing new plugins.
+
+This helps you prevent loosing all your work when you make edits to your website :^)
+
 ## Getting started
 
 - Login to the backend of your wordpress website
