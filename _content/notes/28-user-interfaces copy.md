@@ -29,9 +29,12 @@ Installing `WooCommerce`:
 
 Activating `WooCommerce`:
 
-- Once active, navigate to the `Settings` page.
+- Usually this will automatically pull up the setup wizard to begin formatting your website
+- However, you can also modify your e-commerce site by directly navigating to the `Settings` page.
 - This is where we will need to fill out information about your store.
 
 `WooCommerce` Subscriptions:
 
 - `WooCommerce` is free, however if you want to improve your plan that is an option
+
+For now, let's keep it cheep and explore the free features of `WooCommerce`
