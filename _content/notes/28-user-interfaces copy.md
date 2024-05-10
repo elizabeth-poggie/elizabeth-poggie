@@ -9,7 +9,7 @@ created: "2024-05-10"
 
 # Backing up Wordpress
 
-Your website could go downa t any point for a variety of reasons:
+Your website could go down at any point for a variety of reasons:
 
 - Wordpress updates
 - Hackers
@@ -18,16 +18,41 @@ Your website could go downa t any point for a variety of reasons:
 
 This helps you prevent loosing all your work when you make edits to your website :^)
 
-## Getting started
+## Option 1
+
+Install `Updraft`:
+
+- Login to the backend of your wordpress website
+- Navigate to the `Plugins` tab and select `Add New Plugin`
+- Once here, search for `Updraft` in the `Search plugins...` textbox
+- Select the option `UpdraftPlus: WordPress Backup & Migration Plugin` with 3+ Million Active installations
+- Select `Install` and then click `Activate`
+
+Manual Backups:
+
+- Navigate to your `Installed Plugins` page and select the `Settings` of `Updraft`
+- Select `Press here to start`, this should redirect you to a `Settings` page with the title `UpdraftPlus Backup/Restore`
+- Select `Backup Now`
+- Wait a few moments for `Updraft` to work it's magic
+- Under `Existing backups`, your current backup should be listed underneath :)
+- And now you have a backup incase anything goes wrong :)
+
+Automatic Backups:
+
+- Navigate to your `Installed Plugins` page and select the `Settings` of `Updraft`
+- Select `Press here to start`, this should redirect you to a `Settings` page with the title `UpdraftPlus Backup/Restore`
+- Navigate to the `Settings` page and select what backup schedule you would like for your website
+
+# WooCommerce
 
 This let's you sell stuff on your wordpress website :)
 
-Installing `WooCommerce`:
+Instal `WooCommerce`:
 
 - Login to the backend of your wordpress website
 - Navigate to the `Plugins` tab and select `Add New Plugin`
 - Once here, search for `WooCommerce` in the `Search plugins...` textbox
-- Once loaded, you should see the `WooCommerce` plugin as one of the first results. You will notice that there are 5+ million active installations and over 4 thousand reviews. This is how you know you have the legitimate plugin :^)
+- Select the `WooCommerce` plugin as one of the first results. You will notice that there are 5+ million active installations and over 4 thousand reviews. This is how you know you have the legitimate plugin :^)
 - Select `Install` and then click `Activate` now you are ready 2 rumble :^)
 
 Activating `WooCommerce`:
