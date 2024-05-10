@@ -108,7 +108,7 @@ Create a new page called "Merch" and ensure this page is linked to your navbar. 
 
 You must implement a shopping cart – yes, use a plugin for this - and also link the page on your navbar. Please make sure your shopping cart has links to PayPal and Visa, as well, ensure navigation is correct and easy once the purchase is made.
 
-## Theme toggler
+## Theme toggler - 🚨 UPDATE - DON'T WORRY ABOUT THIS PART 🚨
 
 Create a “Change theme” button that allows you to select a new custom theme from a list. Some ideas to get you started:
 
