@@ -27,7 +27,11 @@ Installing `WooCommerce`:
 - Once loaded, you should see the `WooCommerce` plugin as one of the first results. You will notice that there are 5+ million active installations and over 4 thousand reviews. This is how you know you have the legitimate plugin :^)
 - Select `Install` and then click `Activate` now you are ready 2 rumble :^)
 
-Activating `WooCommerce`
+Activating `WooCommerce`:
 
 - Once active, navigate to the `Settings` page.
 - This is where we will need to fill out information about your store.
+
+`WooCommerce` Subscriptions:
+
+- `WooCommerce` is free, however if you want to improve your plan that is an option
