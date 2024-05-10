@@ -36,7 +36,7 @@ The cost of domains can vary widely depending on several factors such as the dom
 CHEAPEST ($10 - $50 per year)
 .com
 
-MID-TIER
+MID-TIER ($100 - $900 per year)
 .gov .edu
 
 EXPENSIVE (+ $1,000 per year)
@@ -45,8 +45,8 @@ EXPENSIVE (+ $1,000 per year)
 .co
 ```
 
-For example `poggie.ca` might cost $0.01 per year, however `pogie.com` might cost $16,464 per year. Costs vary widely and more premium names come at a pretty penny.
+For example `poggie.ca` might cost $0.01 per year, however `pogie.com` might cost $16,464 per year. Costs vary widely and more premium names come at a higher price.
 
 # Domain Linking
 
-Once purchased, you will likely need to wait for DNS to create a record of your domain name. Once finished, now let's work some magic
+Once purchased, you will likely need to wait for DNS to create a record of your domain name. After about 72 hours, you will be able to work some magic :)
