@@ -66,11 +66,34 @@ For now, let's keep it cheep and explore the free features of `WooCommerce`
 
 # Adding Products
 
-To start your business:
+Starting your business:
 
 - Select the `Products` tag and select `Add New`
 - First scroll down to `Product Data`, in the dropdown you can select what "Type" of product you want to add. By default you should see `Simple Product`
-  - `Variable Product` is like a T-Shirt that comes in different sizes
+  - `Variable Product` is like a T-Shirt that comes in different sizes and colors
   - a `Simple Product` is like a coffee mug that's one size fits all
 - Add a `Product Name`, `Description`, and `Product Image` to get started
 - There are a lot of features here, I invite y'all to explore
+
+If ever you want to go back and edit your product, you can do so by navigating back to the `Products` tag :)
+
+## TroubleShooting
+
+At this point we are testing the limits of our free server and you risk seeing the below:
+
+```text
+This site/page has used all available PHP / Apache processes allowed on a free hosting account.
+
+Refreshing the page once the number of Apache / PHP processes are reduced will cause the site to work
+
+We would recommend upgrading your hosting account at IFastNet Premium hosting accounts , premium hosting accounts have MUCH higher resource limits allocated.
+```
+
+# Payment Options
+
+Get paid:
+
+- First go into the `Settings` section of WooCommerce and set up the location and currency you will be dealing with
+- Now add the `WooCommerce Payments`, `WooCommerce PayPal Payments`, and `WooCommerce Stripe Payment Gateway` plugins to your Wordpress
+- Select the `Payments` tag and select `Connect your store` then `Finish Setup`
+- At this point you will need to add your own paypal information to hook up the accounts. If you dont have a paypal, simply create a simple account. You don't need to add a credit card just to create
