@@ -4,7 +4,7 @@ category: "User Interfaces"
 number: 29
 type: "Lecture"
 title: "WordPress 4 Profit"
-created: "2024-05-10"
+created: "2024-05-13"
 ---
 
 # Backing up Wordpress
