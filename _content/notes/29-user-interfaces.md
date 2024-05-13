@@ -89,6 +89,8 @@ Refreshing the page once the number of Apache / PHP processes are reduced will c
 We would recommend upgrading your hosting account at IFastNet Premium hosting accounts , premium hosting accounts have MUCH higher resource limits allocated.
 ```
 
+If this is the case, don't worry about it and focus on the visual elements.
+
 # Payment Options
 
 Get paid:
