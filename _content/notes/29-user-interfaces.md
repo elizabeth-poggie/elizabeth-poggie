@@ -63,3 +63,10 @@ This let's you sell stuff on your wordpress website :)
 - `WooCommerce` is free, however if you want to improve your plan that is an option
 
 For now, let's keep it cheep and explore the free features of `WooCommerce`
+
+# Adding Products
+
+To start your business:
+
+- Select the `Products` tag and select `Add New`
+- First scroll down to `Product Data`, in the dropdown you can select what "Type" of product you want to add. By default you should see `Simple Product`
