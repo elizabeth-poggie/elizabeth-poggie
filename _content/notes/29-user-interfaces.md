@@ -70,3 +70,7 @@ To start your business:
 
 - Select the `Products` tag and select `Add New`
 - First scroll down to `Product Data`, in the dropdown you can select what "Type" of product you want to add. By default you should see `Simple Product`
+  - `Variable Product` is like a T-Shirt that comes in different sizes
+  - a `Simple Product` is like a coffee mug that's one size fits all
+- Add a `Product Name`, `Description`, and `Product Image` to get started
+- There are a lot of features here, I invite y'all to explore
