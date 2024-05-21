@@ -15,90 +15,20 @@ interface IProps {
 }
 
 export function MDContent({ noteDetails }: IProps) {
-  const renderHeader = ({ id, children }) => {
-    return (
-      <div className={styles.mdHeader}>
-        <Link href={`#${id}`} scroll={false}>
-          <div className="js-toc-heading" id={id}>
-            <Text variant="h1">{children}</Text>
-          </div>
-        </Link>
-        <HorizontalLine />
-      </div>
-    );
-  };
-
-  const renderSubHeader = ({ children }) => {
-    return (
-      <div className={styles.mdSubHeader}>
-        <Text variant="h3">{children}</Text>
-      </div>
-    );
-  };
-
-  const renderImage = ({ children, src }) => {
-    return (
-      <div className={styles.codeBlock}>
-        <Image src={src} />
-      </div>
-    );
-  };
-
-  const renderUnorderedList = ({ children }) => {
-    return (
-      <ul>
-        <Text variant="p">{children}</Text>
-      </ul>
-    );
-  };
-
-  const renderParagraph = ({ children }) => {
-    return (
-      <div className={styles.mdParagraph}>
-        <Text variant="p">{children}</Text>
-      </div>
-    );
-  };
-
   return (
     <>
       <div className="js-toc-content">
         <Markdown
           rehypePlugins={[rehypeSlug]}
           components={{
-            h1: ({ id, children }) => renderHeader({ id, children }),
-            h2: ({ children }) => renderSubHeader({ children }),
-            p: ({ children }) => renderParagraph({ children }),
-            ul: ({ children }) => renderUnorderedList({ children }),
-            img: ({ children, src }) => renderImage({ children, src }),
-            a: ({ children, href }) => (
-              <TextLink
-                href={href}
-                color="green" // TODO - maybe come up with a stronger brand lol
-                decoration="underline"
-              >
-                {children}
-              </TextLink>
-            ),
-            code: ({ node, className, children, ...props }) => {
-              const match = /language-(\w+)/.exec(className || "");
-              return match ? (
-                <div className={styles.codeBlock}>
-                  <SyntaxHighlighter
-                    style={atomDark}
-                    language={match[1]}
-                    PreTag="div"
-                    {...props}
-                  >
-                    {String(children).replace(/\n$/, "")}
-                  </SyntaxHighlighter>
-                </div>
-              ) : (
-                <span className={styles.inlineCode} {...props}>
-                  {children}
-                </span>
-              );
-            },
+            h1: ({ id, children }) => MDHeader({ id, children }),
+            h2: ({ children }) => MDSubHeader({ children }),
+            p: ({ children }) => MDParagraph({ children }),
+            ul: ({ children }) => MDUnorderedList({ children }),
+            img: ({ src, alt }) => MDImage({ src, alt }),
+            a: ({ children, href }) => MDLink({ children, href }),
+            code: ({ node, className, children, ...props }) =>
+              MDCode({ node, className, children, ...props }),
           }}
         >
           {noteDetails.content}
@@ -107,3 +37,82 @@ export function MDContent({ noteDetails }: IProps) {
     </>
   );
 }
+
+// helper functions
+
+export const MDHeader = ({ id, children }) => {
+  return (
+    <div className={styles.mdHeader}>
+      <Link href={`#${id}`} scroll={false}>
+        <div className="js-toc-heading" id={id}>
+          <Text variant="h1">{children}</Text>
+        </div>
+      </Link>
+      <HorizontalLine />
+    </div>
+  );
+};
+
+export const MDSubHeader = ({ children }) => {
+  return (
+    <div className={styles.mdSubHeader}>
+      <Text variant="h3">{children}</Text>
+    </div>
+  );
+};
+
+export const MDImage = ({ src, alt }) => {
+  return (
+    <div className={styles.codeBlock}>
+      <Image src={src} />
+    </div>
+  );
+};
+
+export const MDUnorderedList = ({ children }) => {
+  return (
+    <ul>
+      <Text variant="p">{children}</Text>
+    </ul>
+  );
+};
+
+export const MDParagraph = ({ children }) => {
+  return (
+    <div className={styles.mdParagraph}>
+      <Text variant="p">{children}</Text>
+    </div>
+  );
+};
+
+export const MDLink = ({ children, href }) => {
+  return (
+    <TextLink
+      href={href}
+      color="green" // TODO - maybe come up with a stronger brand lol
+      decoration="underline"
+    >
+      {children}
+    </TextLink>
+  );
+};
+
+export const MDCode = ({ node, className, children, ...props }) => {
+  const match = /language-(\w+)/.exec(className || "");
+  return match ? (
+    <div className={styles.codeBlock}>
+      <SyntaxHighlighter
+        style={atomDark}
+        language={match[1]}
+        PreTag="div"
+        {...props}
+      >
+        {String(children).replace(/\n$/, "")}
+      </SyntaxHighlighter>
+    </div>
+  ) : (
+    <span className={styles.inlineCode} {...props}>
+      {children}
+    </span>
+  );
+};
