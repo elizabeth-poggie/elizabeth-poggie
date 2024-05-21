@@ -14,6 +14,7 @@
     "mdast-util-to-hast": "^13.1.0",
     "next": "latest",
     "next-images": "^1.8.5",
+    "next-mdx-remote": "^4.4.1",
     "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-burger-menu": "^3.0.9",
