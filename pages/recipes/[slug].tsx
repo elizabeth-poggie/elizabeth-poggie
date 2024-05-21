@@ -2,6 +2,7 @@ import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
 import fs from "fs";
 import { INote } from "../../src/interfaces/note";
+import { MDXRemote } from "next-mdx-remote";
 import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
@@ -18,7 +19,7 @@ export default function RecipeDetailsPage({
       <Head>
         <title>Poggie • {source.frontmatter.title}</title>
       </Head>
-      <Burger navItems={navItems} />
+      <MDXRemote {...source} />
     </>
   );
 }
