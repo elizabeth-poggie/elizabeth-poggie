@@ -11,8 +11,9 @@ import path from "path";
 
 export default function RecipeDetailsPage({
   source,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log(source);
+}: InferGetStaticPropsType<typeof getStaticProps> & {
+  source: { frontmatter: Omit<INote, "content"> }; // TODO - remove content prop used for md files, hack for now, cleanup later lol
+}) {
   return (
     <>
       <Meta />
