@@ -2,7 +2,6 @@ import Markdown from "react-markdown";
 import { INote } from "../../../interfaces/note";
 import rehypeSlug from "rehype-slug";
 import { Link, TextLink } from "../../navigation/link/link";
-import { PillButton } from "../../inputs/pill-button/pill-button";
 import { Text } from "../../typography/text/text";
 import { HorizontalLine } from "../horizontal-line/horizontal-line";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";

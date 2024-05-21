@@ -1,13 +1,7 @@
 import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import Markdown from "react-markdown";
-import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import styles from "./note-details.module.scss";
 import { Link, TextLink } from "../../components/navigation/link/link";
-import { Image } from "../../components/display/image/image";
-import rehypeSlug from "rehype-slug";
 import React from "react";
 import {
   TOC_NOTE_DETAILS_OPTIONS,
@@ -15,7 +9,6 @@ import {
 } from "../../components/navigation/toc/toc";
 import tocbot from "tocbot";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
-import { filterToColorMap } from "../notes/notes";
 import { relatedNotes } from "../../../pages/notes/[slug]";
 import { MDContent } from "../../components/display/md-content/md-content";
 
