@@ -2,29 +2,21 @@ import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
 import fs from "fs";
 import { INote } from "../../src/interfaces/note";
-import { NoteDetails } from "../../src/views/note-details/note-details";
 import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
-import { GetStaticPropsContext } from "next";
+import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
-import { Text } from "../../src/components/typography/text/text";
 
-export interface relatedNotes {
-  type: string;
-  notes: Pick<INote, "slug" | "title" | "number">[];
-}
-
-interface Props {
-  recipeDetails: INote;
-}
-
-export default function RecipeDetailsPage({ recipeDetails }: Readonly<Props>) {
+export default function RecipeDetailsPage({
+  source,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  console.log(source);
   return (
     <>
       <Meta />
       <Head>
-        <title>Poggie • {recipeDetails.title}</title>
+        <title>Poggie • {source.frontmatter.title}</title>
       </Head>
       <Burger navItems={navItems} />
     </>
@@ -42,13 +34,9 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
 
   const mdxSource = await serialize(source, { parseFrontmatter: true });
 
-  console.log(mdxSource);
-
   return {
     props: {
-      recipeDetails: {
-        ...mdxSource,
-      },
+      source: mdxSource,
     },
   };
 }
