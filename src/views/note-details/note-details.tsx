@@ -10,7 +10,7 @@ import {
 import tocbot from "tocbot";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { relatedNotes } from "../../../pages/notes/[slug]";
-import { MDContent } from "../../components/display/md-content/md-content";
+import { MDNoteContent } from "../../components/display/md-note-content/md-note-content";
 
 interface IProps {
   noteDetails: INote;
@@ -92,7 +92,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
           >
             <NotesSideBar related={relatedNotes} current={noteDetails} />
           </div>
-          <MDContent noteDetails={noteDetails} />
+          <MDNoteContent noteDetails={noteDetails} />
         </div>
       </div>
     </>

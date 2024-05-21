@@ -6,14 +6,14 @@ import { Text } from "../../typography/text/text";
 import { HorizontalLine } from "../horizontal-line/horizontal-line";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import styles from "./md-content.module.scss";
 import { Image } from "../image/image";
+import styles from "./md-note-content.module.scss";
 
 interface IProps {
   noteDetails: INote;
 }
 
-export function MDContent({ noteDetails }: IProps) {
+export function MDNoteContent({ noteDetails }: IProps) {
   return (
     <>
       <div className="js-toc-content">
