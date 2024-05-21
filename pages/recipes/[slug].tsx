@@ -8,12 +8,12 @@ import { navItems } from "..";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
+import { MDXNoteContent } from "../../src/components/display/mdx-note-content/mdx-note-content";
 
 // TODO - for now, remove content prop used for md files, but cleanup later lol
 type Frontmatter = Omit<INote, "content">;
 
-export interface MDXProps
-  extends InferGetStaticPropsType<typeof getStaticProps> {
+export interface MDXProps {
   source: MDXRemoteSerializeResult<Record<string, unknown>> & {
     frontmatter: Frontmatter;
   };
@@ -26,12 +26,11 @@ export default function RecipeDetailsPage({ source }: MDXProps) {
       <Head>
         <title>Poggie • {source.frontmatter.title}</title>
       </Head>
-      <MDXRemote {...source} />
+      <MDXNoteContent source={source} />
     </>
   );
 }
 
-// text link lol http://localhost:3000/recipes/focaccia
 export async function getStaticProps(ctx: GetStaticPropsContext) {
   const { slug } = ctx.params;
 
@@ -44,7 +43,11 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
 
   return {
     props: {
-      source: mdxSource,
+      source: {
+        compiledSource: mdxSource.compiledSource,
+        scope: mdxSource.scope,
+        frontmatter: mdxSource.frontmatter as Frontmatter, // Ensure frontmatter conforms to the expected type
+      },
     },
   };
 }
