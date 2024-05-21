@@ -2,18 +2,24 @@ import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
 import fs from "fs";
 import { INote } from "../../src/interfaces/note";
-import { MDXRemote } from "next-mdx-remote";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
 
-export default function RecipeDetailsPage({
-  source,
-}: InferGetStaticPropsType<typeof getStaticProps> & {
-  source: { frontmatter: Omit<INote, "content"> }; // TODO - remove content prop used for md files, hack for now, cleanup later lol
-}) {
+// TODO - for now, remove content prop used for md files, but cleanup later lol
+type Frontmatter = Omit<INote, "content">;
+
+export interface MDXProps
+  extends InferGetStaticPropsType<typeof getStaticProps> {
+  source: MDXRemoteSerializeResult<Record<string, unknown>> & {
+    frontmatter: Frontmatter;
+  };
+}
+
+export default function RecipeDetailsPage({ source }: MDXProps) {
   return (
     <>
       <Meta />
