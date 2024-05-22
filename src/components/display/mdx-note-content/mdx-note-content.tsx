@@ -8,6 +8,7 @@ import {
   MDSubHeader,
   MDUnorderedList,
 } from "../md-note-content/md-note-content";
+import Image from "next/image";
 
 export function MDXNoteContent({ source }: MDXProps) {
   // TODO - add more support when needed
@@ -19,8 +20,22 @@ export function MDXNoteContent({ source }: MDXProps) {
         h2: MDSubHeader,
         p: MDParagraph,
         ul: MDUnorderedList,
-        img: MDImage,
+        img: MDXImage,
       }}
     />
   );
 }
+
+/**
+ * lol
+ */
+export const MDXImage = ({ src, alt }) => {
+  // custom loader to resolve images better
+  const customImageLoader = ({ src }) => {
+    console.log("Image src:", src);
+    return `/${src}`; // Ensure all paths start with a leading slash
+  };
+  console.log("Image src:", src);
+
+  return <Image loader={customImageLoader} src={src} alt={alt} />;
+};
