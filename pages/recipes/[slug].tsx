@@ -9,6 +9,7 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
 import { MDXNoteContent } from "../../src/components/display/mdx-note-content/mdx-note-content";
+import { ArtDetails } from "../../src/views/art-details/art-details";
 
 // TODO - for now, remove content prop used for md files, but cleanup later lol
 type Frontmatter = Omit<INote, "content">;
@@ -19,14 +20,14 @@ export interface MDXProps {
   };
 }
 
-export default function RecipeDetailsPage({ source }: MDXProps) {
+export default function RecipeDetailsPage(props: MDXProps) {
   return (
     <>
       <Meta />
       <Head>
-        <title>Poggie • {source.frontmatter.title}</title>
+        <title>Poggie • Recipes</title>
       </Head>
-      <MDXNoteContent source={source} />
+      <ArtDetails {...props} />
     </>
   );
 }
@@ -34,6 +35,7 @@ export default function RecipeDetailsPage({ source }: MDXProps) {
 export async function getStaticProps(ctx: GetStaticPropsContext) {
   const { slug } = ctx.params;
 
+  // Step 1 - get the mdx content
   const source = fs.readFileSync(
     path.join("_content/recipes", slug as string, (slug + ".mdx") as string),
     "utf8"

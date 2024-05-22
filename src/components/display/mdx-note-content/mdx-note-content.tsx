@@ -3,6 +3,7 @@ import { INote } from "../../../interfaces/note";
 import { MDXRemote } from "next-mdx-remote";
 import {
   MDHeader,
+  MDImage,
   MDParagraph,
   MDSubHeader,
   MDUnorderedList,
@@ -18,6 +19,7 @@ export function MDXNoteContent({ source }: MDXProps) {
         h2: MDSubHeader,
         p: MDParagraph,
         ul: MDUnorderedList,
+        img: MDImage,
       }}
     />
   );
