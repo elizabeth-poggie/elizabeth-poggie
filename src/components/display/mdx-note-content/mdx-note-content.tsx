@@ -1,4 +1,4 @@
-import { MDXProps } from "../../../../pages/recipes/[slug]";
+import { MDXProps } from "../../../../pages/recipes-v1/[slug]";
 import { INote } from "../../../interfaces/note";
 import { MDXRemote } from "next-mdx-remote";
 import {
