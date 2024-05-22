@@ -37,5 +37,13 @@ export const MDXImage = ({ src, alt }) => {
   };
   console.log("Image src:", src);
 
-  return <Image loader={customImageLoader} src={src} alt={alt} />;
+  return (
+    <Image
+      loader={customImageLoader}
+      src={src}
+      alt={alt}
+      width={50}
+      height={50}
+    />
+  );
 };
