@@ -20,14 +20,16 @@ export function MDXNoteContent({ source }: MDXProps) {
         h2: MDSubHeader,
         p: MDParagraph,
         ul: MDUnorderedList,
-        img: MDXImage,
+        NextImage: (props: any) => {
+          return <Image alt={props.alt || "Image"} {...props} />;
+        },
       }}
     />
   );
 }
 
 /**
- * lol
+ * v1
  */
 export const MDXImage = ({ src, alt }) => {
   // custom loader to resolve images better
@@ -46,4 +48,11 @@ export const MDXImage = ({ src, alt }) => {
       height={50}
     />
   );
+};
+
+/**
+ * v2
+ */
+export const MDXNextImage = (props: any) => {
+  return <Image alt={props.alt || "Image"} {...props} />;
 };
