@@ -33,7 +33,7 @@ export const MDXImage = ({ src, alt }) => {
   // custom loader to resolve images better
   const customImageLoader = ({ src }) => {
     console.log("Image src:", src);
-    return `focaccia/${src}`;
+    return `focaccia/${src}`; // fix this one now lmao
   };
   console.log("Image src:", src);
 

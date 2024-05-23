@@ -18,6 +18,7 @@ export interface MDXProps {
   source: MDXRemoteSerializeResult<Record<string, unknown>> & {
     frontmatter: Frontmatter;
   };
+  baseSrc: string;
 }
 
 export default function RecipeDetailsPage(props: MDXProps) {
@@ -50,6 +51,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
         scope: mdxSource.scope,
         frontmatter: mdxSource.frontmatter as Frontmatter, // Ensure frontmatter conforms to the expected type
       },
+      baseSrc: `/recipes/${slug}/`,
     },
   };
 }
