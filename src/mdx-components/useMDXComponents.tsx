@@ -6,6 +6,7 @@ import {
   MDSubHeader,
   MDUnorderedList,
 } from "../components/display/md-note-content/md-note-content";
+import { MDXImage } from "../components/display/mdx-note-content/mdx-note-content";
 
 // This file allows you to provide custom React components
 // to be used in MDX files. You can import and use any
@@ -18,6 +19,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h2: MDSubHeader,
     p: MDParagraph,
     ul: MDUnorderedList,
-    img: MDImage,
+    img: MDXImage,
   };
 }

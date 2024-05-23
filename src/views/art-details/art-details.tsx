@@ -4,10 +4,12 @@ import { MDXNoteContent } from "../../components/display/mdx-note-content/mdx-no
 
 export function ArtDetails(props: MDXProps) {
   const { coverSrc } = props.source.frontmatter;
+  const baseSrc = "/recipes/focaccia/" + coverSrc;
+  console.log(baseSrc);
   return (
     <div>
       <MDXNoteContent {...props} />
-      <Image src={coverSrc} />
+      <Image src={baseSrc} />
     </div>
   );
 }
