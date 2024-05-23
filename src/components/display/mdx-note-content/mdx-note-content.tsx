@@ -33,7 +33,7 @@ export const MDXImage = ({ src, alt }) => {
   // custom loader to resolve images better
   const customImageLoader = ({ src }) => {
     console.log("Image src:", src);
-    return `/${src}`; // Ensure all paths start with a leading slash
+    return `/_content/recipes/${src}`;
   };
   console.log("Image src:", src);
 
