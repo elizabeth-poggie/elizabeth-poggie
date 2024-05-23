@@ -1,4 +1,4 @@
-import { MDXProps } from "../../../../pages/recipes-v1/[slug]";
+import { MDXProps } from "../../../../pages/recipes/[slug]";
 import { INote } from "../../../interfaces/note";
 import { MDXRemote } from "next-mdx-remote";
 import {
@@ -20,9 +20,7 @@ export function MDXNoteContent({ source }: MDXProps) {
         h2: MDSubHeader,
         p: MDParagraph,
         ul: MDUnorderedList,
-        NextImage: (props: any) => {
-          return <Image alt={props.alt || "Image"} {...props} />;
-        },
+        img: MDXImage,
       }}
     />
   );
@@ -35,7 +33,7 @@ export const MDXImage = ({ src, alt }) => {
   // custom loader to resolve images better
   const customImageLoader = ({ src }) => {
     console.log("Image src:", src);
-    return `/_content/recipes/${src}`;
+    return `focaccia/${src}`;
   };
   console.log("Image src:", src);
 

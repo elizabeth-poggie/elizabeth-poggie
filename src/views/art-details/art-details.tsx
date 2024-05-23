@@ -1,4 +1,4 @@
-import { MDXProps } from "../../../pages/recipes-v1/[slug]";
+import { MDXProps } from "../../../pages/recipes/[slug]";
 import { Image, MDXImageWrapper } from "../../components/display/image/image";
 import { MDXNoteContent } from "../../components/display/mdx-note-content/mdx-note-content";
 
