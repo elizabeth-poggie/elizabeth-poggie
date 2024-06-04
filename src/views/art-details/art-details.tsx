@@ -5,6 +5,7 @@ import { MDXNoteContent } from "../../components/display/mdx-note-content/mdx-no
 export function ArtDetails(props: MDXProps) {
   const { coverSrc } = props.source.frontmatter;
   const baseSrc = props.baseSrc + coverSrc;
+  console.log(baseSrc);
   return (
     <div>
       <MDXNoteContent {...props} />

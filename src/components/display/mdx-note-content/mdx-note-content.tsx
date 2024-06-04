@@ -3,7 +3,6 @@ import { INote } from "../../../interfaces/note";
 import { MDXRemote } from "next-mdx-remote";
 import {
   MDHeader,
-  MDImage,
   MDParagraph,
   MDSubHeader,
   MDUnorderedList,
@@ -26,17 +25,11 @@ export function MDXNoteContent({ source }: MDXProps) {
   );
 }
 
-/**
- * v1
- */
 export const MDXImage = ({ src, alt }) => {
   // custom loader to resolve images better
   const customImageLoader = ({ src }) => {
-    console.log("Image src:", src);
     return `focaccia/${src}`; // fix this one now lmao
   };
-  console.log("Image src:", src);
-
   return (
     <Image
       loader={customImageLoader}
@@ -46,11 +39,4 @@ export const MDXImage = ({ src, alt }) => {
       height={50}
     />
   );
-};
-
-/**
- * v2
- */
-export const MDXNextImage = (props: any) => {
-  return <Image alt={props.alt || "Image"} {...props} />;
 };

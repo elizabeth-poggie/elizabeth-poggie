@@ -1,5 +1,5 @@
 import { AppProps } from "next/app";
-import React, { useState } from "react";
+import React from "react";
 import styles from "../src/styles/app.module.scss";
 // @ts-ignore: Hacky work around to make my page not have visible scroll bars
 import noScrollStyles from "../src/styles/app.css";
