@@ -1,5 +1,4 @@
 import { MDXProps } from "../../../pages/recipes/[slug]";
-import { Image, MDXImageWrapper } from "../../components/display/image/image";
 import {
   MDXImage,
   MDXNoteContent,
@@ -7,9 +6,7 @@ import {
 
 export function ArtDetails(props: MDXProps) {
   const { coverSrc } = props.source.frontmatter;
-  const baseSrc = props.baseSrc + coverSrc;
-  console.log(baseSrc);
-  // will this work lmao
+
   return (
     <div>
       <MDXNoteContent {...props} />

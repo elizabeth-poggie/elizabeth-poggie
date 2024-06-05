@@ -18,7 +18,6 @@ export interface MDXProps {
   source: MDXRemoteSerializeResult<Record<string, unknown>> & {
     frontmatter: Frontmatter;
   };
-  baseSrc: string;
 }
 
 export default function RecipeDetailsPage(props: MDXProps) {
@@ -42,16 +41,17 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
     "utf8"
   );
 
+  // Step 2 - reformat
   const mdxSource = await serialize(source, { parseFrontmatter: true });
 
+  // Step 3 - return with proper types
   return {
     props: {
       source: {
         compiledSource: mdxSource.compiledSource,
         scope: mdxSource.scope,
-        frontmatter: mdxSource.frontmatter as Frontmatter, // Ensure frontmatter conforms to the expected type
+        frontmatter: mdxSource.frontmatter as Frontmatter,
       },
-      baseSrc: `/recipes/${slug}/`,
     },
   };
 }
