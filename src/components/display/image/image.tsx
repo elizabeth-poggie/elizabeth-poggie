@@ -33,6 +33,10 @@ interface IProps {
    */
   src: string;
   /**
+   * path of the image
+   */
+  alt?: string;
+  /**
    * predefined style variants
    *
    * @example "cover"
@@ -44,12 +48,20 @@ interface IProps {
    * @example "darken"
    */
   filter?: ImageFilter;
+  /**
+   * custom image loaders for MDX Content
+   *
+   * @example "darken"
+   */
+  customImageLoader?: ({ src }) => string;
 }
 
 export function Image({
   src,
+  alt = "didn't load lol",
   variant = "default",
   filter = "default",
+  customImageLoader,
 }: IProps) {
   /**
    * NextImage guarantees faster up page loads and better performance. In this use case, the prop `fill` will always be set to true since
@@ -64,12 +76,13 @@ export function Image({
   return (
     <div className={imageVariantToContainerStyleMap[variant]}>
       <NextImage
+        loader={customImageLoader}
         className={cs(
           imageVariantToStyleMap[variant],
           imageFilterToStyleMap[filter]
         )}
         src={src}
-        alt="didn't load lol"
+        alt={alt}
         fill={fill}
       />
     </div>

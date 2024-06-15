@@ -7,7 +7,7 @@ import {
   MDSubHeader,
   MDUnorderedList,
 } from "../md-note-content/md-note-content";
-import Image from "next/image";
+import { Image } from "../image/image";
 
 export function MDXNoteContent({ source }: MDXProps) {
   // TODO - add more support when needed
@@ -30,13 +30,5 @@ export const MDXImage = ({ src, alt }) => {
   const customImageLoader = ({ src }) => {
     return `focaccia/${src}`; // fix this one now lmao
   };
-  return (
-    <Image
-      loader={customImageLoader}
-      src={src}
-      alt={alt}
-      width={50}
-      height={50}
-    />
-  );
+  return <Image customImageLoader={customImageLoader} src={src} alt={alt} />;
 };
