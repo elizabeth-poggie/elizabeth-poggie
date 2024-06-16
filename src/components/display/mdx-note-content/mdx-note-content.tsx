@@ -25,10 +25,12 @@ export function MDXNoteContent({ source }: MDXProps) {
   );
 }
 
-export const MDXImage = ({ src, alt }) => {
+export const MDXImage = ({ src, slug }) => {
   // custom loader to resolve images better
   const customImageLoader = ({ src }) => {
-    return `focaccia/${src}`; // fix this one now lmao
+    console.log(slug);
+    return `${slug}/${src}`; // fix this one now lmao
   };
-  return <Image customImageLoader={customImageLoader} src={src} alt={alt} />;
+  console.log(slug);
+  return <Image customImageLoader={customImageLoader} src={src} />;
 };

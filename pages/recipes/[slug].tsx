@@ -15,6 +15,9 @@ import { ArtDetails } from "../../src/views/art-details/art-details";
 type Frontmatter = Omit<INote, "content">;
 
 export interface MDXProps {
+  /**
+   * Note Content
+   */
   source: MDXRemoteSerializeResult<Record<string, unknown>> & {
     frontmatter: Frontmatter;
   };

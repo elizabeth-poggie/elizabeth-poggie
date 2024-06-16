@@ -88,19 +88,3 @@ export function Image({
     </div>
   );
 }
-
-// TODO - probably remove this when i finally figure something else out lol
-interface IMDXProps extends IProps {
-  basePath: string;
-}
-
-export function MDXImageWrapper({ src, basePath, ...props }: IMDXProps) {
-  // Resolve the full path to the asset
-  const fullPath = path.join(basePath, src);
-  // Convert the absolute path to a relative path starting with `_content`
-  const relativePath = fullPath.replace(process.cwd(), "");
-
-  console.log(fullPath);
-
-  return <Image src={fullPath} {...props} />;
-}
