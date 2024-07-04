@@ -39,36 +39,6 @@
   padding-bottom: calc($unit * 6);
 }
 
-.inlineCode {
-  display: inline;
-  padding: 0 4px;
-  background-color: #1d1f21;
-  color: $color-off-yellow;
-  font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
-  font-size: 0.8rem;
-  border-radius: 5px;
-}
-
-.mdHeader {
-  margin-bottom: -0.9rem;
-  margin-top: 6.5rem;
-}
-
-.mdSubHeader {
-  margin-top: 2.5rem;
-  margin-bottom: 0.35em;
-}
-
-.mdParagraph {
-  text-align: justify;
-  padding-top: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.codeBlock {
-  margin: 1.5rem 0;
-}
-
 .noteTitle {
   padding-bottom: calc(2 * $unit);
 }
