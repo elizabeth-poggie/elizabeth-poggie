@@ -21,6 +21,11 @@ export interface MDXProps {
   source: MDXRemoteSerializeResult<Record<string, unknown>> & {
     frontmatter: Frontmatter;
   };
+  /**
+   * Base URL of where the images are located in the public && content folders
+   * Used to enable relative linking for static website generators
+   */
+  baseFolder?: string;
 }
 
 export default function RecipeDetailsPage(props: MDXProps) {
@@ -55,6 +60,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
         scope: mdxSource.scope,
         frontmatter: mdxSource.frontmatter as Frontmatter,
       },
+      baseFolder: "focaccia",
     },
   };
 }

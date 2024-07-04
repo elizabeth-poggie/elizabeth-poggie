@@ -6,10 +6,12 @@ import {
 
 export function ArtDetails(props: MDXProps) {
   const { coverSrc } = props.source.frontmatter;
+  const { baseFolder } = props;
+
   return (
     <div>
       <MDXNoteContent {...props} />
-      <MDXImage src={coverSrc} slug="focaccia" />
+      <MDXImage src={coverSrc} slug={baseFolder} />
     </div>
   );
 }

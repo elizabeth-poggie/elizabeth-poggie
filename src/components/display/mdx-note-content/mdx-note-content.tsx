@@ -9,8 +9,7 @@ import {
 } from "../md-note-content/md-note-content";
 import { Image } from "../image/image";
 
-export function MDXNoteContent({ source }: MDXProps) {
-  // TODO - add more support when needed
+export function MDXNoteContent({ source, baseFolder }: MDXProps) {
   return (
     <MDXRemote
       {...source}
@@ -19,7 +18,7 @@ export function MDXNoteContent({ source }: MDXProps) {
         h2: MDSubHeader,
         p: MDParagraph,
         ul: MDUnorderedList,
-        img: (props) => <MDXImage {...props} slug="focaccia" />,
+        img: (props) => <MDXImage {...props} slug={baseFolder} />,
       }}
     />
   );
@@ -32,10 +31,9 @@ interface IMDXImageProps {
 }
 
 export const MDXImage = ({ src, alt, slug }: IMDXImageProps) => {
-  // custom loader to resolve images better
+  // custom loader - kinda hacky but works lol
   const customImageLoader = ({ src }) => {
     return `${slug}/${src}`;
   };
-
   return <Image customImageLoader={customImageLoader} src={src} alt={alt} />;
 };
