@@ -2,13 +2,10 @@ import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
 import fs from "fs";
 import { INote } from "../../src/interfaces/note";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import { Burger } from "../../src/components/navigation/burger/Burger";
-import { navItems } from "..";
-import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { GetStaticPropsContext } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
-import { MDXNoteContent } from "../../src/components/display/mdx-note-content/mdx-note-content";
 import { ArtDetails } from "../../src/views/art-details/art-details";
 
 // TODO - for now, remove content prop used for md files, but cleanup later lol
