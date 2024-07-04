@@ -19,18 +19,23 @@ export function MDXNoteContent({ source }: MDXProps) {
         h2: MDSubHeader,
         p: MDParagraph,
         ul: MDUnorderedList,
-        img: MDXImage,
+        img: (props) => <MDXImage {...props} slug="focaccia" />,
       }}
     />
   );
 }
 
-export const MDXImage = ({ src, slug }) => {
+interface IMDXImageProps {
+  src?: string;
+  alt?: string;
+  slug: string;
+}
+
+export const MDXImage = ({ src, alt, slug }: IMDXImageProps) => {
   // custom loader to resolve images better
   const customImageLoader = ({ src }) => {
-    console.log(slug);
-    return `${slug}/${src}`; // fix this one now lmao
+    return `${slug}/${src}`;
   };
-  console.log(slug);
-  return <Image customImageLoader={customImageLoader} src={src} />;
+
+  return <Image customImageLoader={customImageLoader} src={src} alt={alt} />;
 };
