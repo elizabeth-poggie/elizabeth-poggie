@@ -12,6 +12,7 @@
   padding: calc(20 * $unit) calc(20 * $unit) calc(10 * $unit) calc(10 * $unit);
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .artContainer {
@@ -19,4 +20,5 @@
   height: 100vh;
   position: sticky;
   top: 0;
+  flex: 1;
 }
