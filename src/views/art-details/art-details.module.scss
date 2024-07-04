@@ -1,5 +1,22 @@
+@import "../../styles/variables.scss";
+
+.container {
+  display: flex;
+}
+
+.noteTitle {
+  padding-bottom: calc(2 * $unit);
+}
+
+.noteContainer {
+  padding: calc(20 * $unit) calc(20 * $unit) calc(10 * $unit) calc(10 * $unit);
+  display: flex;
+  flex-direction: column;
+}
+
 .artContainer {
-  width: 50vw;
+  width: 100vw;
   height: 100vh;
-  position: relative;
+  position: sticky;
+  top: 0;
 }
