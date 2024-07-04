@@ -60,7 +60,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
         scope: mdxSource.scope,
         frontmatter: mdxSource.frontmatter as Frontmatter,
       },
-      baseFolder: "focaccia",
+      baseFolder: slug,
     },
   };
 }
