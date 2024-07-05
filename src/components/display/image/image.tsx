@@ -10,6 +10,7 @@ const imageVariantToStyleMap = {
   lead: styles.lead,
   listItem: styles.listItem,
   galleryItem: styles.galleryItem,
+  galleryDetailsItem: styles.galleryDetailsItem,
 };
 
 const imageVariantToContainerStyleMap = {
@@ -19,6 +20,7 @@ const imageVariantToContainerStyleMap = {
   lead: styles.leadContainer,
   listItem: styles.listItemContainer,
   galleryItem: styles.galleryItemContainer,
+  galleryDetailsItem: styles.galleryDetailsItemContainer,
 };
 
 const imageFilterToStyleMap = {
@@ -33,7 +35,8 @@ type ImageVariant =
   | "thumbnail"
   | "lead"
   | "listItem"
-  | "galleryItem";
+  | "galleryItem"
+  | "galleryDetailsItem";
 
 export interface IImageProps {
   /**

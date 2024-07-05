@@ -37,6 +37,12 @@
   @extend .defaultContainer;
 }
 
+.galleryDetailsItemContainer {
+  width: 100%;
+  height: 100%;
+  @extend .defaultContainer;
+}
+
 // Variants
 .default {
   max-height: 100%;
@@ -69,6 +75,12 @@
 }
 
 .galleryItem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.galleryDetailsItem {
   width: 100%;
   height: 100%;
   object-fit: cover;
