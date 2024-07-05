@@ -10,12 +10,14 @@ import { Frontmatter, MDXProps } from "./[slug]";
 import { Art } from "../../src/views/art/art";
 import { recipeDirectory } from "../../src/utils/api";
 import { GetStaticPropsContext } from "next";
+import { Gallery } from "../../src/views/gallery/gallery";
 
 interface IProps {
-  allRecipes: INote[];
+  allNotes: INote[];
 }
 
-export default function RecipesPage({ allRecipes }: IProps) {
+export default function RecipesPage({ allNotes }: IProps) {
+  console.log("yeet" + allNotes);
   return (
     <>
       <Meta />
@@ -23,7 +25,7 @@ export default function RecipesPage({ allRecipes }: IProps) {
         <title>Poggie • Recipes</title>
       </Head>
       <Burger navItems={navItems} />
-      <Art allArt={allRecipes} />
+      <Gallery allNotes={allNotes} />
     </>
   );
 }
@@ -32,32 +34,33 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
   const recipesDirectory = path.join(process.cwd(), "_content/recipes");
   const recipeFiles = fs.readdirSync(recipesDirectory);
 
-  const allRecipes: MDXProps[] = [];
+  const allNotes: INote[] = [];
 
   for (const fileName of recipeFiles) {
     const source = fs.readFileSync(
       path.join(
-        "_content/recipes",
+        recipesDirectory,
         fileName as string,
         (fileName + ".mdx") as string
       ),
       "utf8"
     );
     const mdxSource = await serialize(source, { parseFrontmatter: true });
+    const mdxFontmatter: Frontmatter = mdxSource.frontmatter as Frontmatter;
 
-    allRecipes.push({
-      source: {
-        compiledSource: mdxSource.compiledSource,
-        scope: mdxSource.scope,
-        frontmatter: mdxSource.frontmatter as Frontmatter,
-      },
-      baseFolder: fileName,
+    allNotes.push({
+      title: mdxFontmatter.title,
+      slug: `/recipes/${fileName}`,
+      category: mdxFontmatter.category,
+      type: mdxFontmatter.type,
+      number: mdxFontmatter.number,
+      created: mdxFontmatter.created,
     });
   }
 
   return {
     props: {
-      allRecipes,
+      allNotes,
     },
   };
 }
