@@ -9,6 +9,7 @@ const imageVariantToStyleMap = {
   thumbnail: styles.thumbnail,
   lead: styles.lead,
   listItem: styles.listItem,
+  galleryItem: styles.galleryItem,
 };
 
 const imageVariantToContainerStyleMap = {
@@ -17,6 +18,7 @@ const imageVariantToContainerStyleMap = {
   thumbnail: styles.thumbnailContainer,
   lead: styles.leadContainer,
   listItem: styles.listItemContainer,
+  galleryItem: styles.galleryItemContainer,
 };
 
 const imageFilterToStyleMap = {
@@ -25,7 +27,13 @@ const imageFilterToStyleMap = {
 };
 
 type ImageFilter = "default" | "darken";
-type ImageVariant = "default" | "cover" | "thumbnail" | "lead" | "listItem";
+type ImageVariant =
+  | "default"
+  | "cover"
+  | "thumbnail"
+  | "lead"
+  | "listItem"
+  | "galleryItem";
 
 export interface IImageProps {
   /**

@@ -27,11 +27,23 @@ interface IMDXImageProps extends IImageProps {
   baseFolder: string;
 }
 
-export const MDXImage = ({ src, alt, baseFolder }: IMDXImageProps) => {
+export const MDXImage = ({
+  src,
+  alt,
+  baseFolder,
+  ...props
+}: IMDXImageProps) => {
   // custom loader - kinda hacky but works lol
   const customImageLoader = ({ src }) => {
     return `${baseFolder}/${src}`;
   };
   console.log(`${baseFolder}/${src}`);
-  return <Image customImageLoader={customImageLoader} src={src} alt={alt} />;
+  return (
+    <Image
+      {...props}
+      customImageLoader={customImageLoader}
+      src={src}
+      alt={alt}
+    />
+  );
 };

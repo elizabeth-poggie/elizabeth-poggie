@@ -31,6 +31,12 @@
   position: relative;
 }
 
+.galleryItemContainer {
+  width: 50vw;
+  height: 50vh;
+  @extend .defaultContainer;
+}
+
 // Variants
 .default {
   max-height: 100%;
@@ -60,6 +66,12 @@
   // Overrides for NextImage
   width: 400px !important;
   position: relative !important;
+}
+
+.galleryItem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .lead {

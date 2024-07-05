@@ -16,6 +16,22 @@
   gap: calc(4 * $unit);
 }
 
+.imgHolder {
+  position: relative;
+}
+
+.textHolder {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
 @media screen and (max-width: $bp-md) {
   .container {
     padding: calc(4 * $unit);
