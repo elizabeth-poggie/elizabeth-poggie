@@ -9,6 +9,8 @@ const imageVariantToStyleMap = {
   thumbnail: styles.thumbnail,
   lead: styles.lead,
   listItem: styles.listItem,
+  galleryItem: styles.galleryItem,
+  galleryDetailsItem: styles.galleryDetailsItem,
 };
 
 const imageVariantToContainerStyleMap = {
@@ -17,6 +19,8 @@ const imageVariantToContainerStyleMap = {
   thumbnail: styles.thumbnailContainer,
   lead: styles.leadContainer,
   listItem: styles.listItemContainer,
+  galleryItem: styles.galleryItemContainer,
+  galleryDetailsItem: styles.galleryDetailsItemContainer,
 };
 
 const imageFilterToStyleMap = {
@@ -25,13 +29,20 @@ const imageFilterToStyleMap = {
 };
 
 type ImageFilter = "default" | "darken";
-type ImageVariant = "default" | "cover" | "thumbnail" | "lead" | "listItem";
+type ImageVariant =
+  | "default"
+  | "cover"
+  | "thumbnail"
+  | "lead"
+  | "listItem"
+  | "galleryItem"
+  | "galleryDetailsItem";
 
-interface IProps {
+export interface IImageProps {
   /**
    * path of the image
    */
-  src: string;
+  src?: string;
   /**
    * path of the image
    */
@@ -62,7 +73,7 @@ export function Image({
   variant = "default",
   filter = "default",
   customImageLoader,
-}: IProps) {
+}: IImageProps) {
   /**
    * NextImage guarantees faster up page loads and better performance. In this use case, the prop `fill` will always be set to true since
    * we are *always* dynamically accessing our images.

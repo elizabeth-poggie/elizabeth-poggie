@@ -2,7 +2,6 @@ import { slide as Menu } from "react-burger-menu";
 import { ILink } from "../../../interfaces/note";
 import { Link, TextLink } from "../link/link";
 import { Cross } from "hamburger-react";
-import { Text } from "../../typography/text/text";
 import React from "react";
 import styles from "./Burger.module.scss";
 

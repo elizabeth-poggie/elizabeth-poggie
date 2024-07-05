@@ -1,0 +1,57 @@
+@import "../../styles/variables.scss";
+
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: calc(4 * $unit);
+  padding: calc(8 * $unit);
+  padding-top: 11vh;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 50% 1;
+  max-width: 50%;
+  gap: calc(4 * $unit);
+}
+
+.textHolder {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.imgHolder {
+  position: relative;
+  transition: opacity 0.3s ease 0s;
+}
+
+.imgHolder:hover {
+  background-color: #000;
+  opacity: 0.7;
+}
+
+@media screen and (max-width: $bp-md) {
+  .container {
+    padding: calc(4 * $unit);
+  }
+}
+
+@media screen and (max-width: $bp-sm) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: calc(4 * $unit);
+  }
+  .column {
+    flex: 100% 1;
+    max-width: 100%;
+  }
+}

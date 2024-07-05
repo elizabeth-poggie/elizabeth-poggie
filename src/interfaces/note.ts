@@ -35,7 +35,7 @@ export interface INote {
    * @example "as taught by Poggie in 2024"
    * @example "as made by Nana in 2012"
    */
-  subtitle: string;
+  subtitle?: string;
   /**
    * Group of belonging, Sorting relies on this member
    * @example "User Interfaces"
@@ -46,7 +46,7 @@ export interface INote {
    * @example "Lecture"
    * @example "Strategy"
    */
-  type: string;
+  type?: string;
   /**
    * number in series
    * @example 1
@@ -79,7 +79,12 @@ export interface INote {
    */
   color?: string;
   /**
+   * Base URL of where the images are located in the public && content folders
+   * Used to enable relative linking for static website generators
+   */
+  baseFolder?: string;
+  /**
    * Markdown
    */
-  content: string;
+  content?: string;
 }

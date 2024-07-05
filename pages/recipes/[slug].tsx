@@ -6,10 +6,12 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { GetStaticPropsContext } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
-import { ArtDetails } from "../../src/views/art-details/art-details";
+import { Burger } from "../../src/components/navigation/burger/Burger";
+import { navItems } from "..";
+import { GalleryDetails } from "../../src/views/gallery-details/gallery-details";
 
 // TODO - for now, remove content prop used for md files, but cleanup later lol
-type Frontmatter = Omit<INote, "content">;
+export type Frontmatter = Omit<INote, "content">;
 
 export interface MDXProps {
   /**
@@ -32,7 +34,8 @@ export default function RecipeDetailsPage(props: MDXProps) {
       <Head>
         <title>Poggie • Recipes</title>
       </Head>
-      <ArtDetails {...props} />
+      <Burger navItems={navItems} />
+      <GalleryDetails {...props} />
     </>
   );
 }

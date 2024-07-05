@@ -50,7 +50,7 @@ export default function NoteDetailsPage({
     <>
       <Meta />
       <Head>
-        <title>Poggie • {noteDetails.title}</title>
+        <title>Poggie • Notes</title>
       </Head>
       <Burger navItems={navItems} />
       <NoteDetails noteDetails={noteDetails} relatedNotes={relatedNotes} />
