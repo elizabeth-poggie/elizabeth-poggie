@@ -39,7 +39,7 @@ export interface IImageProps {
   /**
    * path of the image
    */
-  src: string;
+  src?: string;
   /**
    * path of the image
    */

@@ -34,7 +34,7 @@ export const MDXImage = ({
   ...props
 }: IMDXImageProps) => {
   // custom loader - kinda hacky but works lol
-  const customImageLoader = ({ src }) => {
+  const customImageLoader = ({ src }: { src: string }) => {
     return `${baseFolder}/${src}`;
   };
   console.log(`${baseFolder}/${src}`);
