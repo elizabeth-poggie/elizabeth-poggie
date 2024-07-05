@@ -16,10 +16,6 @@
   gap: calc(4 * $unit);
 }
 
-.imgHolder {
-  position: relative;
-}
-
 .textHolder {
   justify-content: center;
   align-items: center;
@@ -30,6 +26,16 @@
   right: 0;
   bottom: 0;
   z-index: 1;
+}
+
+.imgHolder {
+  position: relative;
+  transition: opacity 0.3s ease 0s;
+  display: inline-block; /* Ensure it wraps around the content */
+}
+
+.imgHolder:hover {
+  opacity: 0.7;
 }
 
 @media screen and (max-width: $bp-md) {

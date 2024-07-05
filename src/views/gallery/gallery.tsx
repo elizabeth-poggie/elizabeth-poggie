@@ -28,7 +28,6 @@ export function Gallery({ allNotes }: IProps) {
                   <div className={styles.textHolder}>
                     <Text>{note.title}</Text>
                   </div>
-
                   <MDXImage
                     src={note.coverSrc}
                     baseFolder={note.baseFolder}
