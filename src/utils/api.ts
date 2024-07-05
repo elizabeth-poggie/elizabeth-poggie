@@ -6,6 +6,7 @@ export const projectDirectory = join(process.cwd(), "_content/projects/");
 export const artDirectory = join(process.cwd(), "_content/art/");
 export const noteDirectory = join(process.cwd(), "_content/notes/");
 export const courseDirectory = join(process.cwd(), "_content/courses/");
+export const recipeDirectory = join(process.cwd(), "_content/recipes");
 
 // Read Directory Slugs
 export function getSlugs(directory: string) {
