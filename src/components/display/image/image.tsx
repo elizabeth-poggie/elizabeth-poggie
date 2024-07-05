@@ -27,7 +27,7 @@ const imageFilterToStyleMap = {
 type ImageFilter = "default" | "darken";
 type ImageVariant = "default" | "cover" | "thumbnail" | "lead" | "listItem";
 
-interface IProps {
+export interface IImageProps {
   /**
    * path of the image
    */
@@ -62,7 +62,7 @@ export function Image({
   variant = "default",
   filter = "default",
   customImageLoader,
-}: IProps) {
+}: IImageProps) {
   /**
    * NextImage guarantees faster up page loads and better performance. In this use case, the prop `fill` will always be set to true since
    * we are *always* dynamically accessing our images.

@@ -20,7 +20,7 @@ export function ArtDetails(props: MDXProps) {
         <MDXNoteContent {...props} />
       </div>
       <div className={styles.artContainer}>
-        <MDXImage src={coverSrc} slug={baseFolder} />
+        <MDXImage src={coverSrc} baseFolder={baseFolder} />
       </div>
     </div>
   );

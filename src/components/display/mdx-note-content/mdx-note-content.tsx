@@ -6,7 +6,7 @@ import {
   MDSubHeader,
   MDUnorderedList,
 } from "../md-note-content/md-note-content";
-import { Image } from "../image/image";
+import { IImageProps, Image } from "../image/image";
 
 export function MDXNoteContent({ source, baseFolder }: MDXProps) {
   return (
@@ -17,23 +17,21 @@ export function MDXNoteContent({ source, baseFolder }: MDXProps) {
         h2: MDSubHeader,
         p: MDParagraph,
         ul: MDUnorderedList,
-        img: (props) => <MDXImage {...props} slug={baseFolder} />,
+        img: (props) => <MDXImage {...props} baseFolder={baseFolder} />,
       }}
     />
   );
 }
 
-interface IMDXImageProps {
-  src?: string;
-  alt?: string;
-  slug: string;
+interface IMDXImageProps extends IImageProps {
+  baseFolder: string;
 }
 
-export const MDXImage = ({ src, alt, slug }: IMDXImageProps) => {
+export const MDXImage = ({ src, alt, baseFolder }: IMDXImageProps) => {
   // custom loader - kinda hacky but works lol
   const customImageLoader = ({ src }) => {
-    return `${slug}/${src}`;
+    return `${baseFolder}/${src}`;
   };
-  console.log(`${slug}/${src}`);
+  console.log(`${baseFolder}/${src}`);
   return <Image customImageLoader={customImageLoader} src={src} alt={alt} />;
 };
