@@ -55,6 +55,8 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
       type: mdxFontmatter.type,
       number: mdxFontmatter.number,
       created: mdxFontmatter.created,
+      coverSrc: mdxFontmatter.coverSrc,
+      baseFolder: `/recipes/${fileName}`,
     });
   }
 

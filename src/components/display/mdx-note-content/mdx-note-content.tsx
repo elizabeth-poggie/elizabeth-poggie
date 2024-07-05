@@ -34,5 +34,6 @@ export const MDXImage = ({ src, alt, slug }: IMDXImageProps) => {
   const customImageLoader = ({ src }) => {
     return `${slug}/${src}`;
   };
+  console.log(`${slug}/${src}`);
   return <Image customImageLoader={customImageLoader} src={src} alt={alt} />;
 };

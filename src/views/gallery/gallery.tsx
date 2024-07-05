@@ -24,7 +24,7 @@ export function Gallery({ allNotes }: IProps) {
           return (
             <>
               <TextLink href={note.slug}>{note.title}</TextLink>
-              <MDXImage src={note.coverSrc} slug="focaccia" />
+              <MDXImage src={note.coverSrc} slug={note.baseFolder} />
             </>
           );
         })}
