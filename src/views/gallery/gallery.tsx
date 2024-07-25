@@ -1,6 +1,5 @@
-import { Frontmatter } from "../../../pages/recipes/[slug]";
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
-import { Link, TextLink } from "../../components/navigation/link/link";
+import { Link } from "../../components/navigation/link/link";
 import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./gallery.module.scss";

@@ -5,7 +5,10 @@ import { navItems } from "..";
 import { INote } from "../../src/interfaces/note";
 import { GetStaticPropsContext } from "next";
 import { Gallery } from "../../src/views/gallery/gallery";
-import { getNotesForCategories } from "../../src/utils/helpers/noteFetchers";
+import { getAllNotesForCategories } from "../../src/utils/helpers/noteFetchers";
+
+export const RECIPES_CATEGORIES = ["bread"];
+export const RECIPES_BASE_FOLDER = "recipes";
 
 interface IProps {
   allNotes: INote[];
@@ -25,9 +28,10 @@ export default function RecipesPage({ allNotes }: IProps) {
 }
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  const categories = ["bread"];
-  const baseFolder = "recipes";
-  const allNotes: INote[] = getNotesForCategories(baseFolder, categories);
+  const allNotes: INote[] = getAllNotesForCategories(
+    RECIPES_BASE_FOLDER,
+    RECIPES_CATEGORIES
+  );
   return {
     props: {
       allNotes,
