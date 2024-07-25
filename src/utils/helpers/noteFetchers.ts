@@ -45,7 +45,7 @@ export const getAllNotesForCategories = (
 
       allNotes.push({
         title: mdxFontmatter.title,
-        slug: `${baseFolder}/${fileName}`,
+        slug: `${baseFolder}/${category}-${fileName}`,
         category: mdxFontmatter.category,
         type: mdxFontmatter.type,
         number: mdxFontmatter.number,
@@ -65,14 +65,15 @@ export const getNoteProps = async (
   categories: string[],
   category: string = "bread"
 ) => {
-  const { slug } = ctx.params;
+  const { slug } = ctx.params as { slug: string };
+  const cleanSlug: string = slug.replace(/.*-/, ""); // 🐌✨
 
   // Step 1 - get the mdx content
   const source = fs.readFileSync(
     path.join(
       `_content/${baseFolder}/${category}/`,
-      slug as string,
-      (slug + ".mdx") as string
+      cleanSlug,
+      cleanSlug + ".mdx"
     ),
     "utf8"
   );
@@ -88,7 +89,7 @@ export const getNoteProps = async (
         scope: mdxSource.scope,
         frontmatter: mdxSource.frontmatter as Frontmatter,
       },
-      baseFolder: slug,
+      baseFolder: `/${baseFolder}/${category}/${cleanSlug}`,
     },
   };
 };
@@ -102,25 +103,9 @@ export const getNotePaths = (
   return {
     paths: files.map((file) => ({
       params: {
-        slug: file,
+        slug: `${category}-${file}`,
       },
     })),
     fallback: false,
   };
-};
-
-/**
- * Helper function to recursively get all .mdx files
- * @param dir
- * @returns string[]
- */
-const getAllMdxFiles = (dir: string): string[] => {
-  const dirents = fs.readdirSync(dir, { withFileTypes: true });
-  const files = dirents.map((dirent) => {
-    const res = path.resolve(dir, dirent.name);
-    return dirent.isDirectory() ? getAllMdxFiles(res) : res;
-  });
-  return Array.prototype
-    .concat(...files)
-    .filter((file) => file.endsWith(".mdx"));
 };
