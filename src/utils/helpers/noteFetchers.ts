@@ -62,14 +62,15 @@ export const getAllNotesForCategories = (
 export const getNoteProps = async (
   ctx: GetStaticPropsContext,
   baseFolder: string,
-  categories: string[]
+  categories: string[],
+  category: string = "bread"
 ) => {
   const { slug } = ctx.params;
 
   // Step 1 - get the mdx content
   const source = fs.readFileSync(
     path.join(
-      "_content/recipes/bread",
+      `_content/${baseFolder}/${category}/`,
       slug as string,
       (slug + ".mdx") as string
     ),
@@ -92,8 +93,12 @@ export const getNoteProps = async (
   };
 };
 
-export const getNotePaths = (baseFolder: string, categories: string[]) => {
-  const files = fs.readdirSync("_content/recipes/bread");
+export const getNotePaths = (
+  baseFolder: string,
+  categories: string[],
+  category: string = "bread"
+) => {
+  const files = fs.readdirSync(`_content/${baseFolder}/${category}/`);
   return {
     paths: files.map((file) => ({
       params: {
@@ -102,4 +107,20 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
     })),
     fallback: false,
   };
+};
+
+/**
+ * Helper function to recursively get all .mdx files
+ * @param dir
+ * @returns string[]
+ */
+const getAllMdxFiles = (dir: string): string[] => {
+  const dirents = fs.readdirSync(dir, { withFileTypes: true });
+  const files = dirents.map((dirent) => {
+    const res = path.resolve(dir, dirent.name);
+    return dirent.isDirectory() ? getAllMdxFiles(res) : res;
+  });
+  return Array.prototype
+    .concat(...files)
+    .filter((file) => file.endsWith(".mdx"));
 };
