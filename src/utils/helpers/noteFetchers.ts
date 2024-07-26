@@ -74,7 +74,7 @@ export const getNoteProps = async (
   categories: string[]
 ) => {
   const { slug } = ctx.params as { slug: string };
-  const cleanSlug: string = slug.replace(/.*-/, ""); // 🐌✨
+  const cleanSlug: string = slug.replace(/^[^-]*-/, ""); // 🐌✨
 
   // Iterate through all categories to find the matching file
   for (const category of categories) {
@@ -107,7 +107,7 @@ export const getNoteProps = async (
   }
 
   // If no matching file is found, get angry
-  throw new Error(`No matching file found for slug: ${slug}`);
+  throw new Error(`No matching file found for slug: ${slug}, ${cleanSlug}`);
 };
 
 /**
