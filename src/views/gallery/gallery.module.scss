@@ -27,6 +27,8 @@
   right: 0;
   bottom: 0;
   z-index: 1;
+  opacity: 0; /* Hide text initially */
+  transition: opacity 0.3s ease 0s; /* Smooth transition for text appearance */
 }
 
 .imgHolder {
@@ -48,7 +50,11 @@
 }
 
 .imgHolder:hover::before {
-  opacity: 0.6;
+  opacity: 0.55;
+}
+
+.imgHolder:hover .textHolder {
+  opacity: 1; /* Show text on hover */
 }
 
 @media screen and (max-width: $bp-md) {
