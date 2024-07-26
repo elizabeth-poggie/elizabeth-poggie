@@ -18,6 +18,7 @@
 
 .textHolder {
   justify-content: center;
+  text-align: center;
   align-items: center;
   display: flex;
   position: absolute;
@@ -33,9 +34,21 @@
   transition: opacity 0.3s ease 0s;
 }
 
-.imgHolder:hover {
+.imgHolder::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: #000;
-  opacity: 0.7;
+  opacity: 0;
+  transition: opacity 0.3s ease 0s;
+  z-index: 1;
+}
+
+.imgHolder:hover::before {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: $bp-md) {
