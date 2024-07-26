@@ -6,11 +6,7 @@ import { getAllCourses } from "../src/utils/api";
 import { Burger } from "../src/components/navigation/burger/Burger";
 import { navItems } from ".";
 
-interface IProps {
-  allCourses: INote[];
-}
-
-export default function AboutPage({ allCourses }: Readonly<IProps>) {
+export default function AboutPage() {
   return (
     <>
       <Meta />
@@ -18,20 +14,7 @@ export default function AboutPage({ allCourses }: Readonly<IProps>) {
         <title>Elizabeth Poggie - About</title>
       </Head>
       <Burger navItems={navItems} />
-      <Home allCourses={allCourses} />
+      <Home />
     </>
   );
 }
-
-export const getStaticProps = async () => {
-  const allCourses = getAllCourses([
-    "slug",
-    "category",
-    "type",
-    "title",
-    "color",
-  ]);
-  return {
-    props: { allCourses },
-  };
-};

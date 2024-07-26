@@ -37,7 +37,8 @@ export const MDXImage = ({
   const customImageLoader = ({ src }: { src: string }) => {
     return `${baseFolder}/${src}`;
   };
-  console.log(`${baseFolder}/${src}`);
+
+  console.log("yeet" + baseFolder + " " + src);
   return (
     <Image
       {...props}

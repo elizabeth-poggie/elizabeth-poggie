@@ -4,29 +4,10 @@ import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./home.module.scss";
 
-interface IProps {
-  allCourses: INote[];
-}
-
-// TODO - make it so all these links navigate within the code base
 // TODO - maybe move this is a markdown file lol
-export function Home({ allCourses }: IProps) {
+export function Home() {
   return (
     <div className={styles.container}>
-      {/* <Text variant="title" align="center">
-        Courses
-      </Text>
-      <div className={styles.collection}>
-        {allCourses.map((course: INote) => {
-          return (
-            <CollectionItemLink href={`/courses/${course.slug}`} color="green">
-              <Text variant="h3" color="green">
-                {course.category}
-              </Text>
-            </CollectionItemLink>
-          );
-        })}
-      </div> */}
       <section className={styles.section}>
         <Text variant="title" align="center">
           About

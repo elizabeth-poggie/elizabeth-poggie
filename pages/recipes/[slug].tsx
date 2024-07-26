@@ -9,9 +9,12 @@ import path from "path";
 import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
 import { GalleryDetails } from "../../src/views/gallery-details/gallery-details";
-
-// TODO - for now, remove content prop used for md files, but cleanup later lol
-export type Frontmatter = Omit<INote, "content">;
+import {
+  Frontmatter,
+  getNotePaths,
+  getNoteProps,
+} from "../../src/utils/helpers/noteFetchers";
+import { RECIPES_BASE_FOLDER, RECIPES_CATEGORIES } from ".";
 
 export interface MDXProps {
   /**
@@ -41,38 +44,9 @@ export default function RecipeDetailsPage(props: MDXProps) {
 }
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  const { slug } = ctx.params;
-
-  // Step 1 - get the mdx content
-  const source = fs.readFileSync(
-    path.join("_content/recipes", slug as string, (slug + ".mdx") as string),
-    "utf8"
-  );
-
-  // Step 2 - reformat
-  const mdxSource = await serialize(source, { parseFrontmatter: true });
-
-  // Step 3 - return with proper types
-  return {
-    props: {
-      source: {
-        compiledSource: mdxSource.compiledSource,
-        scope: mdxSource.scope,
-        frontmatter: mdxSource.frontmatter as Frontmatter,
-      },
-      baseFolder: slug,
-    },
-  };
+  return getNoteProps(ctx, RECIPES_BASE_FOLDER, RECIPES_CATEGORIES);
 }
 
 export async function getStaticPaths() {
-  const files = fs.readdirSync("_content/recipes");
-  return {
-    paths: files.map((file) => ({
-      params: {
-        slug: file,
-      },
-    })),
-    fallback: false,
-  };
+  return getNotePaths(RECIPES_BASE_FOLDER, RECIPES_CATEGORIES);
 }

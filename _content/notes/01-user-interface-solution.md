@@ -251,7 +251,7 @@ When should you use floats vs flexbox? Give or draw your answer
 
 ## Answer
 
-[this](http://localhost:3000/notes/19-user-interfaces#flexbox-vs-grid-vs-floats)
+[this](https://www.elizabethpoggie.com/notes/19-user-interfaces#flexbox-vs-grid-vs-floats)
 
 TLDR:
 
