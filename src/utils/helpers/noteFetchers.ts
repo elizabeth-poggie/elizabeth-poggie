@@ -3,6 +3,7 @@ import { INote } from "../../interfaces/note";
 import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 // TODO - for now, remove content prop used for md files, but cleanup later lol
 export type Frontmatter = Omit<INote, "content">;
@@ -59,53 +60,82 @@ export const getAllNotesForCategories = (
   return allNotes;
 };
 
+/**
+ * Because i like to sort my different recipes by category, I'm making my life harder for myself
+ *
+ * @param ctx
+ * @param baseFolder
+ * @param categories
+ * @returns props
+ */
 export const getNoteProps = async (
   ctx: GetStaticPropsContext,
   baseFolder: string,
-  categories: string[],
-  category: string = "bread"
+  categories: string[]
 ) => {
   const { slug } = ctx.params as { slug: string };
   const cleanSlug: string = slug.replace(/.*-/, ""); // 🐌✨
 
-  // Step 1 - get the mdx content
-  const source = fs.readFileSync(
-    path.join(
+  // Iterate through all categories to find the matching file
+  for (const category of categories) {
+    const filePath = path.join(
       `_content/${baseFolder}/${category}/`,
       cleanSlug,
       cleanSlug + ".mdx"
-    ),
-    "utf8"
-  );
+    );
 
-  // Step 2 - reformat
-  const mdxSource = await serialize(source, { parseFrontmatter: true });
+    // Step 0 - make sure the file exists lol
+    if (fs.existsSync(filePath)) {
+      // Step 1 - get the mdx content
+      const source = fs.readFileSync(filePath, "utf8");
 
-  // Step 3 - return with proper types
-  return {
-    props: {
-      source: {
-        compiledSource: mdxSource.compiledSource,
-        scope: mdxSource.scope,
-        frontmatter: mdxSource.frontmatter as Frontmatter,
-      },
-      baseFolder: `/${baseFolder}/${category}/${cleanSlug}`,
-    },
-  };
+      // Step 2 - reformat
+      const mdxSource = await serialize(source, { parseFrontmatter: true });
+
+      // Step 3 - return with proper types
+      return {
+        props: {
+          source: {
+            compiledSource: mdxSource.compiledSource,
+            scope: mdxSource.scope,
+            frontmatter: mdxSource.frontmatter as Frontmatter,
+          },
+          baseFolder: `/${baseFolder}/${category}/${cleanSlug}`,
+        },
+      };
+    }
+  }
+
+  // If no matching file is found, get angry
+  throw new Error(`No matching file found for slug: ${slug}`);
 };
 
-export const getNotePaths = (
-  baseFolder: string,
-  categories: string[],
-  category: string = "bread"
-) => {
-  const files = fs.readdirSync(`_content/${baseFolder}/${category}/`);
+/**
+ * C A T E G O R I E S
+ *
+ * @param baseFolder
+ * @param categories
+ * @returns paths
+ */
+export const getNotePaths = (baseFolder: string, categories: string[]) => {
+  const paths: { params: { slug: string } }[] = [];
+
+  categories.forEach((category) => {
+    const categoryPath = path.join(`_content/${baseFolder}/${category}/`);
+    if (fs.existsSync(categoryPath)) {
+      const files = fs.readdirSync(categoryPath);
+      files.forEach((file) => {
+        paths.push({
+          params: {
+            slug: `${category}-${file}`,
+          },
+        });
+      });
+    }
+  });
+
   return {
-    paths: files.map((file) => ({
-      params: {
-        slug: `${category}-${file}`,
-      },
-    })),
+    paths,
     fallback: false,
   };
 };
