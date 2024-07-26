@@ -29,21 +29,26 @@
   position: sticky;
   top: 0;
   flex: 1;
+  order: 2;
 }
 
-@media screen and (max-width: $bp-sm) {
+.mobileNoteTitle {
+  display: none;
+}
+
+@media screen and (max-width: $bp-md) {
   .container {
-    display: flex;
-    flex-direction: column;
+    display: block;
   }
   .column {
     flex: 100% 1;
     max-width: 100%;
   }
-  /* @TODO - nothing is showing up lol */
   .artContainer {
     width: 100vw;
-    height: 40vh;
+    height: 100vh;
+    order: 1;
+    position: relative;
   }
   .noteContainer {
     padding: calc(20 * $unit) calc(10 * $unit) calc(10 * $unit) calc(10 * $unit);

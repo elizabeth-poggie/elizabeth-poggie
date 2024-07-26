@@ -12,6 +12,13 @@ export function GalleryDetails(props: MDXProps) {
   const { baseFolder } = props;
   return (
     <div className={styles.container}>
+      <div className={cs(styles.column, styles.artContainer)}>
+        <MDXImage
+          src={coverSrc}
+          baseFolder={baseFolder}
+          variant="galleryDetailsItem"
+        />
+      </div>
       <div className={styles.column}>
         <div className={styles.noteContainer}>
           <div className={styles.noteTitle}>
@@ -21,13 +28,6 @@ export function GalleryDetails(props: MDXProps) {
           <Text variant="subheading2">{subtitle}</Text>
           <MDXNoteContent {...props} />
         </div>
-      </div>
-      <div className={cs(styles.column, styles.artContainer)}>
-        <MDXImage
-          src={coverSrc}
-          baseFolder={baseFolder}
-          variant="galleryDetailsItem"
-        />
       </div>
     </div>
   );
