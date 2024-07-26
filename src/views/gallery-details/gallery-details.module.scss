@@ -12,7 +12,7 @@
   max-width: 50%;
 }
 
-.noteTitle {
+.year {
   padding-bottom: calc(2 * $unit);
 }
 
@@ -32,8 +32,13 @@
   order: 2;
 }
 
-.mobileNoteTitle {
+.smallNoteTitle {
   display: none;
+}
+
+.bigNoteTitle {
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: $bp-md) {
@@ -51,6 +56,34 @@
     position: relative;
   }
   .noteContainer {
-    padding: calc(20 * $unit) calc(10 * $unit) calc(10 * $unit) calc(10 * $unit);
+    padding: 20px;
+  }
+  .bigNoteTitle {
+    display: none;
+  }
+  .smallNoteTitle {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    padding: 20px;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    margin: 0;
+    z-index: 11;
+  }
+  .artContainer::before {
+    content: "";
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0) 60%
+    );
   }
 }
