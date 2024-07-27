@@ -11,7 +11,7 @@ export default function AboutPage() {
     <>
       <Meta />
       <Head>
-        <title>Elizabeth Poggie - About</title>
+        <title>Elizabeth Poggie • About</title>
       </Head>
       <Burger navItems={navItems} />
       <Home />

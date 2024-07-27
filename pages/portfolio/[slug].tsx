@@ -10,7 +10,7 @@ import {
   getNotePaths,
   getNoteProps,
 } from "../../src/utils/helpers/noteFetchers";
-import { RECIPES_BASE_FOLDER, RECIPES_CATEGORIES } from ".";
+import { PORTFOLIO_BASE_FOLDER, PORTFOLIO_CATEGORIES } from ".";
 
 export interface MDXProps {
   /**
@@ -40,9 +40,9 @@ export default function RecipeDetailsPage(props: MDXProps) {
 }
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  return getNoteProps(ctx, RECIPES_BASE_FOLDER, RECIPES_CATEGORIES);
+  return getNoteProps(ctx, PORTFOLIO_BASE_FOLDER, PORTFOLIO_CATEGORIES);
 }
 
 export async function getStaticPaths() {
-  return getNotePaths(RECIPES_BASE_FOLDER, RECIPES_CATEGORIES);
+  return getNotePaths(PORTFOLIO_BASE_FOLDER, PORTFOLIO_CATEGORIES);
 }
