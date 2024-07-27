@@ -86,10 +86,10 @@ created=$(date +'%Y-%m-%d')
 # Define the file name based on the title (replace spaces with hyphens and make lowercase)
 file_name=$(echo "$title" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
 
-# Ensure the target directory exists
+# target directories must exist
 target_dir="../_content/$directory/$category/$file_name"
 mkdir -p "$target_dir"
-mkdir -p "$target_dir/assets"
+mkdir -p "$target_dir/assets" # also an assets folder is nice
 
 # Define the content of the MDX file
 content="---
