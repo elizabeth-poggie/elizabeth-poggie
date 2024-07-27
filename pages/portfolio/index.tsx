@@ -7,7 +7,7 @@ import { GetStaticPropsContext } from "next";
 import { Gallery } from "../../src/views/gallery/gallery";
 import { getAllNotesForCategories } from "../../src/utils/helpers/noteFetchers";
 
-export const PORTFOLIO_CATEGORIES = ["art", "branding", "event", "hackathon"];
+export const PORTFOLIO_CATEGORIES = ["event"];
 export const PORTFOLIO_BASE_FOLDER = "portfolio";
 
 interface IProps {

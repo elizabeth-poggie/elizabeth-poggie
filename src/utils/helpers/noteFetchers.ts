@@ -48,8 +48,6 @@ export const getAllNotesForCategories = (
         title: mdxFontmatter.title,
         slug: `${baseFolder}/${category}-${fileName}`,
         category: mdxFontmatter.category,
-        type: mdxFontmatter.type,
-        number: mdxFontmatter.number,
         created: mdxFontmatter.created,
         coverSrc: mdxFontmatter.coverSrc,
         baseFolder: `${baseFolder}/${category}/${fileName}/`,
