@@ -30,7 +30,7 @@ CYAN='\033[0;36m'
 WHITE='\033[0;37m'
 NC='\033[0m' # No Color
 
-echo "📠  Let's get snoopy to copy and paste that for you... "
+echo "📠  Let's copy and paste that for you... "
 echo " "
 echo -e "${WHITE}  ,-~~-.___.${NC}"
 echo -e "${WHITE} / |  '     \\         ${GREEN}beep boop beep boop${NC}"
