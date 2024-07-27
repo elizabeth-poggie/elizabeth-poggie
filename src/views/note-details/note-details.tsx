@@ -90,7 +90,9 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
                 : styles.leftSideBar_default
             }
           >
-            <NotesSideBar related={relatedNotes} current={noteDetails} />
+            <div className={styles.tocInSideBar}>
+              <Toc />
+            </div>
           </div>
           <MDNoteContent noteDetails={noteDetails} />
         </div>
@@ -104,6 +106,14 @@ interface ISideBarProps {
   current: INote;
 }
 
+/**
+ *
+ * Old way of doing things, need to migrate lol
+ *
+ * @param param0
+ * @returns
+ * @deprecated
+ */
 const NotesSideBar = ({ related, current }: ISideBarProps) => {
   return (
     <aside>
