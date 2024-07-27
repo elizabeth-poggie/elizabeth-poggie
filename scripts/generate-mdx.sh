@@ -57,13 +57,13 @@ directory="${directories[$?]}"
 # Define categories based on the selected directory
 case $directory in
     "john-abbott-college")
-        categories=("user-interfaces" "intro-to-programming")
+        categories=("User Interfaces" "Intro to Programming")
         ;;
     "portfolio")
-        categories=("art" "branding" "event" "hackathon")
+        categories=("Art" "Branding" "Event" "Hackathon")
         ;;
     "recipes")
-        categories=("bread" "dessert" "snack")
+        categories=("Bread" "Dessert" "Snack")
         ;;
     *)
         echo "Invalid directory selected."
@@ -85,9 +85,10 @@ created=$(date +'%Y-%m-%d')
 
 # Define the file name based on the title (replace spaces with hyphens and make lowercase)
 file_name=$(echo "$title" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
+kebabed_category=$(echo "$category" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
 
 # target directories must exist
-target_dir="../_content/$directory/$category/$file_name"
+target_dir="../_content/$directory/$kebabed_category/$file_name"
 mkdir -p "$target_dir"
 mkdir -p "$target_dir/assets" # also an assets folder is nice
 
