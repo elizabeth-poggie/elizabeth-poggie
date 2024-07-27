@@ -48,34 +48,35 @@ capture_selection() {
     return $selected
 }
 
+# Prompt the user to select a directory
 echo "Enter a directory: "
 directories=("john-abbott-college" "portfolio" "recipes")
 capture_selection "${directories[@]}"
-directory=$?
+directory="${directories[$?]}"
 
-# Clear the screen and print the selected option
-clear
-
-categories=()
+# Define categories based on the selected directory
 case $directory in
-    0)
+    "john-abbott-college")
         categories=("user-interfaces" "intro-to-programming")
         ;;
-    1)
+    "portfolio")
         categories=("art" "branding" "event" "hackathon")
         ;;
-    2)
+    "recipes")
         categories=("bread" "dessert" "snack")
+        ;;
+    *)
+        echo "Invalid directory selected."
+        exit 1
         ;;
 esac
 
+# Prompt the user to select a category
 echo "Enter category: "
 capture_selection "${categories[@]}"
-category=$?
+category="${categories[$?]}"
 
-# Clear the screen and continue
-clear
-
+# Prompt the user to enter a title
 echo "Enter title: "
 read title
 
@@ -84,6 +85,11 @@ created=$(date +'%Y-%m-%d')
 
 # Define the file name based on the title (replace spaces with hyphens and make lowercase)
 file_name=$(echo "$title" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
+
+# Ensure the target directory exists
+target_dir="../_content/$directory/$category/$file_name"
+mkdir -p "$target_dir"
+mkdir -p "$target_dir/assets"
 
 # Define the content of the MDX file
 content="---
@@ -95,6 +101,6 @@ coverSrc: \"./assets/\"
 ---"
 
 # Write the content to the MDX file
-echo -e "$content" > "_content/$directory/$category/$file_name/$file_name.mdx"
+echo -e "$content" > "$target_dir/$file_name.mdx"
 
-echo "MDX file generated: $file_name"
+echo "MDX file generated: $target_dir/$file_name.mdx"
