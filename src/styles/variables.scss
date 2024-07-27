@@ -20,10 +20,10 @@ $text-xs: 0.7rem;
 // BREAKPOINTS ------------------------------------------------------------------------------------------
 // Mobile
 $bp-sm: 576px;
-// Tablet
-$bp-md: 768px;
-// Desktop [992px+]
-$bp-lg: 992px;
+// Smaller Computers && IPads (pro included)
+$bp-md: 1024px;
+// Larger Desktops
+$bp-lg: 1025px;
 
 // UTILS ------------------------------------------------------------------------------------------------
 $unit: 5px;
