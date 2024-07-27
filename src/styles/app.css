@@ -10,7 +10,7 @@
   top: 20px;
   filter: invert(100%) sepia(96%) saturate(15%) hue-rotate(229deg)
     brightness(104%) contrast(105%);
-  z-index: 3 !important;
+  z-index: 999 !important;
 }
 
 /*
@@ -21,7 +21,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   position: fixed;
   height: 100%;
   width: 20% !important;
-  z-index: 2 !important;
+  z-index: 998 !important;
 }
 
 /* General sidebar styles */
@@ -49,7 +49,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* Styling of overlay */
 .bm-overlay {
-  z-index: 1 !important;
+  z-index: 997 !important;
 }
 
 /* Tablet breakpoint - $bp-md: 768px
