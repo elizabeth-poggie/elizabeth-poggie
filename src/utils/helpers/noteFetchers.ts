@@ -98,7 +98,7 @@ export const getNoteProps = async (
             scope: mdxSource.scope,
             frontmatter: mdxSource.frontmatter as Frontmatter,
           },
-          baseFolder: `/${baseFolder}/${category}/${cleanSlug}`,
+          baseFolder: `/${baseFolder}/${category}/${cleanSlug}/`,
         },
       };
     }
