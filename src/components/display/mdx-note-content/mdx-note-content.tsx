@@ -2,6 +2,7 @@ import { MDXProps } from "../../../../pages/recipes/[slug]";
 import { MDXRemote } from "next-mdx-remote";
 import {
   MDHeader,
+  MDLink,
   MDParagraph,
   MDSubHeader,
   MDUnorderedList,
@@ -17,6 +18,7 @@ export function MDXNoteContent({ source, baseFolder }: MDXProps) {
         h2: MDSubHeader,
         p: MDParagraph,
         ul: MDUnorderedList,
+        a: ({ children, href }) => MDLink({ children, href }),
         img: (props) => <MDXImage {...props} baseFolder={baseFolder} />,
       }}
     />
