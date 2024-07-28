@@ -31,7 +31,7 @@ export default function RecipeDetailsPage(props: MDXProps) {
     <>
       <Meta />
       <Head>
-        <title>Poggie • Recipes</title>
+        <title>Poggie • Portfolio</title>
       </Head>
       <Burger navItems={navItems} />
       <GalleryDetails {...props} />
