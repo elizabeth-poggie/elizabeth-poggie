@@ -14,7 +14,7 @@ interface IProps {
   allNotes: INote[];
 }
 
-export default function RecipesPage({ allNotes }: IProps) {
+export default function PortfolioPage({ allNotes }: IProps) {
   return (
     <>
       <Meta />
