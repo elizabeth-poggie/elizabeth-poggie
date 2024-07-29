@@ -88,7 +88,7 @@ file_name=$(echo "$title" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
 kebabed_category=$(echo "$category" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
 
 # target directories must exist
-target_dir="../_content/$directory/$kebabed_category/$file_name"
+target_dir="_content/$directory/$kebabed_category/$file_name"
 mkdir -p "$target_dir"
 mkdir -p "$target_dir/assets" # also an assets folder is nice
 

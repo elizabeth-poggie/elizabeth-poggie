@@ -4,7 +4,9 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "note": "./scripts/generate-mdx.sh",
+    "snoopy": "./scripts/duplicate-assets.sh"
   },
   "dependencies": {
     "@next/mdx": "^14.2.3",

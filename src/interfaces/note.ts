@@ -51,7 +51,7 @@ export interface INote {
    * number in series
    * @example 1
    */
-  number: number; // TODO - maybe replace with better logic in the future
+  number?: number; // TODO - maybe replace with better logic in the future
   /**
    * Date of creation in UTC
    */

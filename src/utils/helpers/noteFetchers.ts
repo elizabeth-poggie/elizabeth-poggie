@@ -48,8 +48,6 @@ export const getAllNotesForCategories = (
         title: mdxFontmatter.title,
         slug: `${baseFolder}/${category}-${fileName}`,
         category: mdxFontmatter.category,
-        type: mdxFontmatter.type,
-        number: mdxFontmatter.number,
         created: mdxFontmatter.created,
         coverSrc: mdxFontmatter.coverSrc,
         baseFolder: `${baseFolder}/${category}/${fileName}/`,
@@ -100,7 +98,7 @@ export const getNoteProps = async (
             scope: mdxSource.scope,
             frontmatter: mdxSource.frontmatter as Frontmatter,
           },
-          baseFolder: `/${baseFolder}/${category}/${cleanSlug}`,
+          baseFolder: `/${baseFolder}/${category}/${cleanSlug}/`,
         },
       };
     }
