@@ -9,42 +9,26 @@ interface IProps {
 }
 
 export function Gallery({ allNotes }: IProps) {
-  const col1 = allNotes.slice(0, allNotes.length / 2);
-  const col2 = allNotes.slice(allNotes.length / 2);
-
-  const renderColumn = (colNote: INote[]) => {
-    if (!colNote.length) {
-      return null;
-    }
-
-    return (
-      <div className={styles.column}>
-        {colNote.map((note: INote) => {
-          return (
-            <>
-              <Link href={note.slug}>
-                <div className={styles.imgHolder}>
-                  <div className={styles.textHolder}>
-                    <Text>{note.title}</Text>
-                  </div>
-                  <MDXImage
-                    src={note.coverSrc}
-                    baseFolder={note.baseFolder}
-                    variant="galleryItem"
-                  />
-                </div>
-              </Link>
-            </>
-          );
-        })}
-      </div>
-    );
-  };
-
   return (
     <div className={styles.container}>
-      {renderColumn(col1)}
-      {renderColumn(col2)}
+      {allNotes.map((note: INote) => {
+        return (
+          <>
+            <Link href={note.slug}>
+              <div className={styles.imgHolder}>
+                <div className={styles.textHolder}>
+                  <Text>{note.title}</Text>
+                </div>
+                <MDXImage
+                  src={note.coverSrc}
+                  baseFolder={note.baseFolder}
+                  variant="galleryItem"
+                />
+              </div>
+            </Link>
+          </>
+        );
+      })}
     </div>
   );
 }
