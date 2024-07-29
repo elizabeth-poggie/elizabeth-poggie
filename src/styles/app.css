@@ -6,8 +6,8 @@
 .bm-burger-button {
   position: fixed;
   width: 50px;
-  right: 20px;
-  top: 20px;
+  right: 25px; /* justification on page */
+  top: 20px; /* justification on page */
   filter: invert(100%) sepia(96%) saturate(15%) hue-rotate(229deg)
     brightness(104%) contrast(105%);
   z-index: 999 !important;
@@ -52,11 +52,15 @@ Note: Beware of modifying this element as it can break the animations - you shou
   z-index: 997 !important;
 }
 
-/* Tablet breakpoint - $bp-md: 768px
-   Desktop breakpoint - $bp-lg: 992px */
-@media screen and (max-width: 992px) {
+/* Tablet breakpoint - $bp-md: 1024px
+   Desktop breakpoint - $bp-lg: +1025px */
+@media screen and (max-width: 1024px) {
   .bm-menu-wrap {
-    width: 50% !important;
+    width: 40% !important;
+  }
+  .bm-burger-button {
+    right: 5px; /* justification on page */
+    top: 15px; /* justification on page */
   }
 }
 
@@ -64,5 +68,10 @@ Note: Beware of modifying this element as it can break the animations - you shou
 @media screen and (max-width: 576px) {
   .bm-menu-wrap {
     width: 100% !important;
+  }
+
+  .bm-burger-button {
+    right: 5px; /* justification on page */
+    top: 15px; /* justification on page */
   }
 }

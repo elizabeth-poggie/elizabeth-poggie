@@ -22,7 +22,7 @@ export function Gallery({ allNotes }: IProps) {
 
   const renderFilters = () => {
     return (
-      <nav>
+      <nav className={styles.filters}>
         {uniqueCategories.map((category: string) => {
           return (
             <>

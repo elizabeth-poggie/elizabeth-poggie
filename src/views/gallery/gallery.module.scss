@@ -4,8 +4,12 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: calc(4 * $unit);
-  padding: calc(8 * $unit);
-  padding-top: 11vh;
+  padding: calc(5 * $unit) calc(8 * $unit) calc(8 * $unit) calc(8 * $unit);
+}
+
+.filters {
+  padding-top: calc(5 * $unit);
+  padding-left: calc(8 * $unit);
 }
 
 .textHolder {
@@ -61,8 +65,9 @@
     flex-direction: column;
     padding: calc(4 * $unit);
   }
-  .column {
-    flex: 100% 1;
-    max-width: 100%;
+
+  .filters {
+    padding-top: calc(4 * $unit);
+    padding-left: calc(4 * $unit);
   }
 }
