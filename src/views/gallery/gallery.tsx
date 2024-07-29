@@ -1,25 +1,63 @@
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
+import { useState } from "react";
+import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { Link } from "../../components/navigation/link/link";
 import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
+import { sortByCreatedDescending } from "../../utils/helpers/noteSorters";
 import styles from "./gallery.module.scss";
 
 interface IProps {
   allNotes: INote[];
 }
 
+const getUniqueCategories = (notes: INote[]) => {
+  const categories = notes.map((note) => note.category);
+  const uniqueCategories = Array.from(new Set<string>(categories));
+  return uniqueCategories;
+};
+
 export function Gallery({ allNotes }: IProps) {
-  const col1 = allNotes.slice(0, allNotes.length / 2);
-  const col2 = allNotes.slice(allNotes.length / 2);
+  const [sortedNotes, setSortedNotes] = useState(
+    sortByCreatedDescending(allNotes)
+  );
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const uniqueCategories = ["All", ...getUniqueCategories(allNotes)];
 
-  const renderColumn = (colNote: INote[]) => {
-    if (!colNote.length) {
-      return null;
-    }
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+    const filteredNotes =
+      category === "All"
+        ? sortByCreatedDescending(allNotes)
+        : sortByCreatedDescending(
+            allNotes.filter((note) => note.category === category)
+          );
+    setSortedNotes(filteredNotes);
+  };
 
+  const renderFilters = () => {
     return (
-      <div className={styles.column}>
-        {colNote.map((note: INote) => {
+      <nav className={styles.filters}>
+        {uniqueCategories.map((category: string) => {
+          const isSelected = category === selectedCategory;
+          return (
+            <PillButton
+              key={category}
+              title={category}
+              onClick={() => handleCategoryClick(category)}
+              color={isSelected ? "green" : "default"}
+            />
+          );
+        })}
+      </nav>
+    );
+  };
+
+  return (
+    <>
+      {renderFilters()}
+      <div className={styles.container}>
+        {sortedNotes.map((note: INote) => {
           return (
             <>
               <Link href={note.slug}>
@@ -38,13 +76,6 @@ export function Gallery({ allNotes }: IProps) {
           );
         })}
       </div>
-    );
-  };
-
-  return (
-    <div className={styles.container}>
-      {renderColumn(col1)}
-      {renderColumn(col2)}
-    </div>
+    </>
   );
 }
