@@ -1,4 +1,5 @@
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
+import { useState } from "react";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { Link } from "../../components/navigation/link/link";
 import { Text } from "../../components/typography/text/text";
@@ -17,17 +18,35 @@ const getUniqueCategories = (notes: INote[]) => {
 };
 
 export function Gallery({ allNotes }: IProps) {
-  const sortedNotes = sortByCreatedDescending(allNotes);
-  const uniqueCategories = getUniqueCategories(allNotes);
+  const [sortedNotes, setSortedNotes] = useState(
+    sortByCreatedDescending(allNotes)
+  );
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const uniqueCategories = ["All", ...getUniqueCategories(allNotes)];
+
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+    const filteredNotes =
+      category === "All"
+        ? sortByCreatedDescending(allNotes)
+        : sortByCreatedDescending(
+            allNotes.filter((note) => note.category === category)
+          );
+    setSortedNotes(filteredNotes);
+  };
 
   const renderFilters = () => {
     return (
       <nav className={styles.filters}>
         {uniqueCategories.map((category: string) => {
+          const isSelected = category === selectedCategory;
           return (
-            <>
-              <PillButton title={category} onClick={() => {}} />
-            </>
+            <PillButton
+              key={category}
+              title={category}
+              onClick={() => handleCategoryClick(category)}
+              color={isSelected ? "green" : "default"}
+            />
           );
         })}
       </nav>
