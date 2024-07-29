@@ -1,6 +1,6 @@
 ---
 # General Information
-title: "Computer Taskforce"
+title: "Project Management"
 year: "2020"
 coverSrc: "/assets/projects/2020-mcgill-computer-taskforce/cover.png"
 categories: ["Coordination", "Development", "Branding"]
