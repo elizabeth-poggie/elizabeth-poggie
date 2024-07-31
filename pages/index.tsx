@@ -8,6 +8,10 @@ import { sortByCreatedDescending } from "../src/utils/helpers/noteSorters";
 import { Text } from "../src/components/typography/text/text";
 export const navItems: ILink[] = [
   {
+    href: "/",
+    text: "Home",
+  },
+  {
     href: "/notes",
     text: "Notes",
   },

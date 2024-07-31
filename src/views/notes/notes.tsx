@@ -2,11 +2,9 @@ import React from "react";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import { ListItem } from "../../components/display/list-item/list-item";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
-import { ListLayout } from "../../components/layout/list-layout/list-layout";
 import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
-import { TextLink } from "../../components/navigation/link/link";
 import { TextButton } from "../../components/inputs/text-button/text-button";
 import { ScrollableContainer } from "../../components/layout/scrollable-container/scrollable-container";
 

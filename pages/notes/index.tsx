@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { INote } from "../../src/interfaces/note";
-import { sortByCreatedDescending } from "../../src/utils/helpers/noteSorters";
 import Meta from "../../src/views/meta/meta";
 import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";

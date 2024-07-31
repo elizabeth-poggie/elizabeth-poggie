@@ -42,7 +42,7 @@ export default function NoteDetailsPage(props: IProps) {
     <>
       <Meta />
       <Head>
-        <title>Poggie • Notes</title>
+        <title>Poggie • JAC </title>
       </Head>
       <Burger navItems={navItems} />
       <MdxNoteDetails {...props} />
