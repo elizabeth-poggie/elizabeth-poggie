@@ -1,6 +1,4 @@
 import { Text } from "../../components/typography/text/text";
-import { INote } from "../../interfaces/note";
-import styles from "./note-details.module.scss";
 import { Link, TextLink } from "../../components/navigation/link/link";
 import React from "react";
 import {
@@ -10,22 +8,9 @@ import {
 import tocbot from "tocbot";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { MDNoteContent } from "../../components/display/md-note-content/md-note-content";
+import { MDXProps } from "../../../pages/recipes/[slug]";
 
-export interface relatedNotes {
-  type: string;
-  notes: Pick<INote, "slug" | "title">[]; // TODO - might be weird since am deprecating number
-}
-
-interface IProps {
-  noteDetails: INote;
-  relatedNotes?: relatedNotes[];
-}
-
-/**
- * @param param0
- * @deprecated migrating to note-details-v2
- */
-export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
+export function MdxNoteDetails(props: MDXProps) {
   const [isInContent, setIsInContent] = React.useState<boolean>();
   const observedContentRef = React.useRef(null);
 
@@ -96,7 +81,11 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
                 : styles.leftSideBar_default
             }
           >
-            <NotesSideBar related={relatedNotes} current={noteDetails} />
+            <section className={styles.sideBarSection}>
+              <div className={styles.tocInSideBar}>
+                <Toc />
+              </div>
+            </section>
           </div>
           <MDNoteContent noteDetails={noteDetails} />
         </div>
@@ -104,53 +93,3 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
     </>
   );
 }
-
-interface ISideBarProps {
-  related?: relatedNotes[];
-  current: INote;
-}
-
-const NotesSideBar = ({ related, current }: ISideBarProps) => {
-  return (
-    <aside>
-      {related.map((related: relatedNotes) => {
-        return (
-          <section key={related.type} className={styles.sideBarSection}>
-            <section className={styles.sideBarSectionHeader}>
-              <header>
-                <Text variant="p" style="capitalize" color="white">
-                  {related.type}s
-                </Text>
-              </header>
-            </section>
-            {related.notes?.map((item) => {
-              const isActiveLink = item.title === current.title;
-              return (
-                <div key={item.slug}>
-                  <TextLink
-                    href={`/notes/${item.slug}`}
-                    variant="subheading"
-                    onClick={() =>
-                      tocbot.refresh({
-                        ...TOC_NOTE_DETAILS_OPTIONS,
-                        hasInnerContainers: true,
-                      })
-                    }
-                    color={isActiveLink ? "white" : "grey"}
-                  >
-                    {item.title}
-                  </TextLink>
-                  {isActiveLink ? (
-                    <div className={styles.tocInSideBar}>
-                      <Toc />
-                    </div>
-                  ) : null}
-                </div>
-              );
-            })}
-          </section>
-        );
-      })}
-    </aside>
-  );
-};

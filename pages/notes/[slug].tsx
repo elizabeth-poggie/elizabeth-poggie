@@ -13,20 +13,10 @@ import {
 } from "../../src/utils/helpers/noteFetchers";
 import { GetStaticPropsContext } from "next";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { NoteDetailsV2 } from "../../src/views/mdx-note-details/mdx-note-details";
+import { MDXProps } from "../recipes/[slug]";
 
-interface IProps {
-  /**
-   * Note Content
-   */
-  source: MDXRemoteSerializeResult<Record<string, unknown>> & {
-    frontmatter: Frontmatter;
-  };
-  /**
-   * Base URL of where the images are located in the public && content folders
-   * Used to enable relative linking for static website generators
-   */
-  baseFolder?: string;
-}
+interface IProps extends MDXProps {}
 
 type CategoryProperties = {
   color: string;
