@@ -71,7 +71,7 @@ export const getNoteProps = async (
   categories: string[]
 ) => {
   const { slug } = ctx.params as { slug: string };
-  const cleanSlug: string = slug.replace(/^[^-]*_/, ""); // 🐌✨
+  const cleanSlug: string = slug.replace(/^[^_]*_/, ""); // 🐌✨
 
   // Iterate through all categories to find the matching file
   for (const category of categories) {

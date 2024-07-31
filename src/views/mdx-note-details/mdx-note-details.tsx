@@ -1,18 +1,18 @@
 import { Text } from "../../components/typography/text/text";
-import { Link, TextLink } from "../../components/navigation/link/link";
 import React from "react";
 import {
   TOC_NOTE_DETAILS_OPTIONS,
   Toc,
 } from "../../components/navigation/toc/toc";
 import tocbot from "tocbot";
-import { PillButton } from "../../components/inputs/pill-button/pill-button";
-import { MDNoteContent } from "../../components/display/md-note-content/md-note-content";
 import { MDXProps } from "../../../pages/recipes/[slug]";
+import styles from "./mdx-note-details.module.scss";
+import { MDXNoteContent } from "../../components/display/mdx-note-content/mdx-note-content";
 
 export function MdxNoteDetails(props: MDXProps) {
   const [isInContent, setIsInContent] = React.useState<boolean>();
   const observedContentRef = React.useRef(null);
+  const { title, tag } = props.source.frontmatter;
 
   const handleScroll = () => {
     if (!observedContentRef.current) {
@@ -53,17 +53,10 @@ export function MdxNoteDetails(props: MDXProps) {
     return (
       <header className={styles.header}>
         <div className={styles.noteTitle}>
-          <Text variant="h3">{noteDetails.type}</Text>
+          <Text variant="h3">{tag}</Text>
         </div>
         <div className={styles.noteTitle}>
-          <Text variant="title">{noteDetails.title}</Text>
-        </div>
-        <div>
-          {noteDetails.link ? (
-            <Link href={noteDetails.link.href}>
-              <PillButton title={noteDetails.link.text} onClick={() => null} />
-            </Link>
-          ) : null}
+          <Text variant="title">{title}</Text>
         </div>
       </header>
     );
@@ -87,7 +80,7 @@ export function MdxNoteDetails(props: MDXProps) {
               </div>
             </section>
           </div>
-          <MDNoteContent noteDetails={noteDetails} />
+          <MDXNoteContent {...props} />
         </div>
       </div>
     </>

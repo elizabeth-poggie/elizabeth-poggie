@@ -1,20 +1,16 @@
 import Head from "next/head";
-import Meta from "../../src/views/meta/meta";
-import { getAllNotes, getBySlug, noteDirectory } from "../../src/utils/api";
-import { INote } from "../../src/interfaces/note";
-import { NoteDetails } from "../../src/views/note-details/note-details";
-import { Burger } from "../../src/components/navigation/burger/Burger";
-import { navItems } from "..";
-import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from ".";
+import Meta from "../../../src/views/meta/meta";
+import { Burger } from "../../../src/components/navigation/burger/Burger";
+import { navItems } from "../..";
+import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from "..";
 import {
-  Frontmatter,
   getNotePaths,
   getNoteProps,
-} from "../../src/utils/helpers/noteFetchers";
+} from "../../../src/utils/helpers/noteFetchers";
 import { GetStaticPropsContext } from "next";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { NoteDetailsV2 } from "../../src/views/mdx-note-details/mdx-note-details";
-import { MDXProps } from "../recipes/[slug]";
+import { MdxNoteDetails } from "../../../src/views/mdx-note-details/mdx-note-details";
+import { MDXProps } from "../../recipes/[slug]";
+import { Text } from "../../../src/components/typography/text/text";
 
 interface IProps extends MDXProps {}
 
@@ -49,15 +45,10 @@ export default function NoteDetailsPage(props: IProps) {
         <title>Poggie • Notes</title>
       </Head>
       <Burger navItems={navItems} />
+      <MdxNoteDetails {...props} />
     </>
   );
 }
-
-type Params = {
-  params: {
-    slug: string;
-  };
-};
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
   return getNoteProps(ctx, NOTES_BASE_FOLDER, NOTES_CATEGORIES);

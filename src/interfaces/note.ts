@@ -50,7 +50,6 @@ export interface INote {
    * Type of content, Filtering relies on this member
    * @example "Lecture"
    * @example "Strategy"
-   * @deprecated using tags now for generic code
    */
   tag?: string;
   /**
