@@ -5,15 +5,27 @@ import { INote } from "../../src/interfaces/note";
 import { NoteDetails } from "../../src/views/note-details/note-details";
 import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
+import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from ".";
+import {
+  Frontmatter,
+  getNotePaths,
+  getNoteProps,
+} from "../../src/utils/helpers/noteFetchers";
+import { GetStaticPropsContext } from "next";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
-export interface relatedNotes {
-  type: string;
-  notes: Pick<INote, "slug" | "title" | "number">[];
-}
-
-interface Props {
-  noteDetails: INote;
-  relatedNotes?: relatedNotes[];
+interface IProps {
+  /**
+   * Note Content
+   */
+  source: MDXRemoteSerializeResult<Record<string, unknown>> & {
+    frontmatter: Frontmatter;
+  };
+  /**
+   * Base URL of where the images are located in the public && content folders
+   * Used to enable relative linking for static website generators
+   */
+  baseFolder?: string;
 }
 
 type CategoryProperties = {
@@ -30,22 +42,16 @@ type CategoryMap = {
 export const categoryMap: CategoryMap = {
   "User Interfaces": {
     color: "green",
-    relatedTypes: ["Lecture", "Lab", "Solution"],
   },
   "Intro to Programming": {
     color: "yellow",
-    relatedTypes: ["Lecture", "Lab"],
   },
   Admin: {
     color: "white",
-    relatedTypes: ["Rubric", "Office Hour"],
   },
 };
 
-export default function NoteDetailsPage({
-  noteDetails,
-  relatedNotes,
-}: Readonly<Props>) {
+export default function NoteDetailsPage(props: IProps) {
   return (
     <>
       <Meta />
@@ -53,7 +59,6 @@ export default function NoteDetailsPage({
         <title>Poggie • Notes</title>
       </Head>
       <Burger navItems={navItems} />
-      <NoteDetails noteDetails={noteDetails} relatedNotes={relatedNotes} />
     </>
   );
 }
@@ -64,54 +69,10 @@ type Params = {
   };
 };
 
-export async function getStaticProps({ params }: Params) {
-  const details = getBySlug(
-    params.slug,
-    [
-      "slug",
-      "category",
-      "type",
-      "number",
-      "title",
-      "subtitle",
-      "link",
-      "content",
-    ],
-    noteDirectory
-  );
-
-  const allNotes = getAllNotes(["slug", "category", "type", "number", "title"]);
-
-  // Col 1
-  const relatedNotes = [];
-  categoryMap[details.category].relatedTypes?.map((type: string) => {
-    const notesByType = allNotes.filter(
-      (note) => note.category === details.category && note.type === type
-    );
-    if (notesByType.length > 0) relatedNotes.push({ type, notes: notesByType });
-  });
-
-  return {
-    props: {
-      noteDetails: {
-        ...details,
-      },
-      relatedNotes,
-    },
-  };
+export async function getStaticProps(ctx: GetStaticPropsContext) {
+  return getNoteProps(ctx, NOTES_BASE_FOLDER, NOTES_CATEGORIES);
 }
 
 export async function getStaticPaths() {
-  const notes = getAllNotes(["slug"]);
-
-  return {
-    paths: notes.map((post) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      };
-    }),
-    fallback: false,
-  };
+  return getNotePaths(NOTES_BASE_FOLDER, NOTES_CATEGORIES);
 }

@@ -9,8 +9,12 @@ import {
 } from "../../components/navigation/toc/toc";
 import tocbot from "tocbot";
 import { PillButton } from "../../components/inputs/pill-button/pill-button";
-import { relatedNotes } from "../../../pages/notes/[slug]";
 import { MDNoteContent } from "../../components/display/md-note-content/md-note-content";
+
+export interface relatedNotes {
+  type: string;
+  notes: Pick<INote, "slug" | "title">[]; // TODO - might be weird since am deprecating number
+}
 
 interface IProps {
   noteDetails: INote;
@@ -60,9 +64,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
     return (
       <header className={styles.header}>
         <div className={styles.noteTitle}>
-          <Text variant="h3">
-            {noteDetails.type} {noteDetails.number}
-          </Text>
+          <Text variant="h3">{noteDetails.type}</Text>
         </div>
         <div className={styles.noteTitle}>
           <Text variant="title">{noteDetails.title}</Text>
@@ -90,9 +92,7 @@ export function NoteDetails({ noteDetails, relatedNotes }: Readonly<IProps>) {
                 : styles.leftSideBar_default
             }
           >
-            <div className={styles.tocInSideBar}>
-              <Toc />
-            </div>
+            <NotesSideBar related={relatedNotes} current={noteDetails} />
           </div>
           <MDNoteContent noteDetails={noteDetails} />
         </div>
@@ -106,14 +106,6 @@ interface ISideBarProps {
   current: INote;
 }
 
-/**
- *
- * Old way of doing things, need to migrate lol
- *
- * @param param0
- * @returns
- * @deprecated
- */
 const NotesSideBar = ({ related, current }: ISideBarProps) => {
   return (
     <aside>
@@ -128,8 +120,7 @@ const NotesSideBar = ({ related, current }: ISideBarProps) => {
               </header>
             </section>
             {related.notes?.map((item) => {
-              const isActiveLink =
-                item.title === current.title && item.number === current.number;
+              const isActiveLink = item.title === current.title;
               return (
                 <div key={item.slug}>
                   <TextLink
@@ -143,7 +134,7 @@ const NotesSideBar = ({ related, current }: ISideBarProps) => {
                     }
                     color={isActiveLink ? "white" : "grey"}
                   >
-                    {item.number}. {item.title}
+                    {item.title}
                   </TextLink>
                   {isActiveLink ? (
                     <div className={styles.tocInSideBar}>
