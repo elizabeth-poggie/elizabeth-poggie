@@ -46,7 +46,7 @@ export const getAllNotesForCategories = (
 
       allNotes.push({
         title: mdxFontmatter.title,
-        slug: `${baseFolder}/${category}-${fileName}`,
+        slug: `${baseFolder}/${category}_${fileName}`,
         category: mdxFontmatter.category,
         created: mdxFontmatter.created,
         coverSrc: mdxFontmatter.coverSrc,
@@ -72,7 +72,7 @@ export const getNoteProps = async (
   categories: string[]
 ) => {
   const { slug } = ctx.params as { slug: string };
-  const cleanSlug: string = slug.replace(/^[^-]*-/, ""); // 🐌✨
+  const cleanSlug: string = slug.replace(/^[^-]*_/, ""); // 🐌✨
 
   // Iterate through all categories to find the matching file
   for (const category of categories) {
@@ -125,7 +125,7 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
       files.forEach((file) => {
         paths.push({
           params: {
-            slug: `${category}-${file}`,
+            slug: `${category}_${file}`,
           },
         });
       });
