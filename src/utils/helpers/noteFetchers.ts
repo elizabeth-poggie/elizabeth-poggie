@@ -3,7 +3,6 @@ import { INote } from "../../interfaces/note";
 import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 // TODO - for now, remove content prop used for md files, but cleanup later lol
 export type Frontmatter = Omit<INote, "content">;
@@ -49,7 +48,7 @@ export const getAllNotesForCategories = (
         slug: `${baseFolder}/${category}_${fileName}`,
         category: mdxFontmatter.category,
         created: mdxFontmatter.created,
-        coverSrc: mdxFontmatter.coverSrc,
+        coverSrc: mdxFontmatter.coverSrc ?? null,
         baseFolder: `${baseFolder}/${category}/${fileName}/`,
       });
     }

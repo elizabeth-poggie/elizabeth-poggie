@@ -45,13 +45,16 @@ export interface INote {
    * Type of content, Sorting relies on this member
    * @example "Lecture"
    * @example "Strategy"
+   * @deprecated using tags now for generic code
    */
   type?: string;
   /**
-   * number in series
-   * @example 1
+   * Type of content, Filtering relies on this member
+   * @example "Lecture"
+   * @example "Strategy"
+   * @deprecated using tags now for generic code
    */
-  number?: number; // TODO - maybe replace with better logic in the future
+  tag?: string;
   /**
    * Date of creation in UTC
    */
@@ -66,16 +69,19 @@ export interface INote {
   coverSrc?: string;
   /**
    * paths to gallery images
+   * @deprecated using mdx files now, no need for fancy galleries anymore
    */
   gallerySrc?: string[];
   /**
    * Link to related content
    * @type ILink
    * @example {text: "slides", href: "path/to/slides.pdf"}
+   * @deprecated students don't like slides
    */
   link?: ILink;
   /**
    * Markdown
+   * @deprecated creating a brand strategy, colours will be handled differently
    */
   color?: string;
   /**
@@ -85,6 +91,7 @@ export interface INote {
   baseFolder?: string;
   /**
    * Markdown
+   * @deprecated using MDX now
    */
   content?: string;
 }
