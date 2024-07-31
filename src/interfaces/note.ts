@@ -10,14 +10,12 @@ export interface ILink {
  * @member {string} title header
  * @member {string} subtitle subheader
  * @member {string} category group of belonging
- * @member {string} type type of content
+ * @member {string} label type of content
  * @member {string} number number in series
  * @member {string} created date of creation
  * @member {string} updated date of update
  * @member {string} coverSrc path to cover image
- * @member {string} gallerySrc path to gallery images
  * @member {ILink} link link to related content
- * @member {string} content note content in markdown
  */
 export interface INote {
   /**
