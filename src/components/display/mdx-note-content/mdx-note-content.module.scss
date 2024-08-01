@@ -1,0 +1,15 @@
+@import "../../../styles/variables.scss";
+
+.inlineCode {
+  display: inline;
+  padding: 0 4px;
+  background-color: #1d1f21;
+  color: $color-off-yellow;
+  font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
+  font-size: 0.8rem;
+  border-radius: 5px;
+}
+
+.codeBlock {
+  margin: 1.5rem 0;
+}
