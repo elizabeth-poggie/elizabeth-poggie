@@ -91,7 +91,11 @@ interface IMDLinkProps extends NextLinkProps {
 }
 
 export const MDLink = ({ children, href, baseFolder }: IMDLinkProps) => {
-  const reformatedLink = baseFolder ? `${baseFolder}/${href}` : href;
+  const reformatedLink =
+    baseFolder && href.toString().includes("./assets")
+      ? `${baseFolder}/${href}`
+      : href;
+
   return (
     <TextLink
       href={reformatedLink}

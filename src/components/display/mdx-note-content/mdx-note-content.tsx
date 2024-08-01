@@ -40,7 +40,6 @@ export const MDXImage = ({
     return `${baseFolder}/${src}`;
   };
 
-  console.log("yeet" + baseFolder + " " + src);
   return (
     <Image
       {...props}
