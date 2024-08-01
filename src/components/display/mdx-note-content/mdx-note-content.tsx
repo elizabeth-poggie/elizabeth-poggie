@@ -18,7 +18,7 @@ export function MDXNoteContent({ source, baseFolder }: MDXProps) {
         h2: MDSubHeader,
         p: MDParagraph,
         ul: MDUnorderedList,
-        a: ({ children, href }) => MDLink({ children, href }),
+        a: ({ children, href }) => MDLink({ children, href, baseFolder }),
         img: (props) => <MDXImage {...props} baseFolder={baseFolder} />,
       }}
     />
