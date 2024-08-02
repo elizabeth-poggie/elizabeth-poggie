@@ -24,7 +24,7 @@ export function MDXNoteContent({ source, baseFolder }: MDXProps) {
         a: ({ children, href }) => MDLink({ children, href, baseFolder }),
         img: (props) => <MDXImage {...props} baseFolder={baseFolder} />,
         code: ({ className, children, ...props }) =>
-          MdxCode({ className, children, ...props }),
+          mdxCode({ className, children, ...props }),
       }}
     />
   );
@@ -55,7 +55,7 @@ export const MDXImage = ({
   );
 };
 
-export const MdxCode = ({ className, children, ...props }) => {
+export const mdxCode = ({ className, children, ...props }) => {
   const match = /language-(\w+)/.exec(className || "");
   return match ? (
     <div className={styles.codeBlock}>

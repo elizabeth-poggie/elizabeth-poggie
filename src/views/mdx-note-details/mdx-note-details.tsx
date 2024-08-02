@@ -6,8 +6,8 @@ import {
 } from "../../components/navigation/toc/toc";
 import tocbot from "tocbot";
 import { MDXProps } from "../../../pages/recipes/[slug]";
-import styles from "./mdx-note-details.module.scss";
 import { MDXNoteContent } from "../../components/display/mdx-note-content/mdx-note-content";
+import styles from "./mdx-note-details.module.scss";
 
 export function MdxNoteDetails(props: MDXProps) {
   const [isInContent, setIsInContent] = React.useState<boolean>();

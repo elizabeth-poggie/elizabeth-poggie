@@ -3,7 +3,6 @@ import Meta from "../src/views/meta/meta";
 import { ILink, INote } from "../src/interfaces/note";
 import { getAllNotes } from "../src/utils/api";
 import { Burger } from "../src/components/navigation/burger/Burger";
-import { Notes } from "../src/views/notes/notes";
 import { sortByCreatedDescending } from "../src/utils/helpers/noteSorters";
 import { Text } from "../src/components/typography/text/text";
 export const navItems: ILink[] = [
