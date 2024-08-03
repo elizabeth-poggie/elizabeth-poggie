@@ -11,20 +11,7 @@ import {
   getNoteProps,
 } from "../../src/utils/helpers/noteFetchers";
 import { PORTFOLIO_BASE_FOLDER, PORTFOLIO_CATEGORIES } from ".";
-
-export interface MDXProps {
-  /**
-   * Note Content
-   */
-  source: MDXRemoteSerializeResult<Record<string, unknown>> & {
-    frontmatter: Frontmatter;
-  };
-  /**
-   * Base URL of where the images are located in the public && content folders
-   * Used to enable relative linking for static website generators
-   */
-  baseFolder?: string;
-}
+import { MDXProps } from "../recipes/[slug]";
 
 export default function RecipeDetailsPage(props: MDXProps) {
   return (

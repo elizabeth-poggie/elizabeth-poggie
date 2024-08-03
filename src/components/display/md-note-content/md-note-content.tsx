@@ -1,5 +1,6 @@
 import Markdown from "react-markdown";
 import { INote } from "../../../interfaces/note";
+import NextLink, { LinkProps as NextLinkProps } from "next/link";
 import rehypeSlug from "rehype-slug";
 import { Link, TextLink } from "../../navigation/link/link";
 import { Text } from "../../typography/text/text";
@@ -84,10 +85,20 @@ export const MDParagraph = ({ children }) => {
   );
 };
 
-export const MDLink = ({ children, href }) => {
+interface IMDLinkProps extends NextLinkProps {
+  children: React.ReactNode;
+  baseFolder?: string;
+}
+
+export const MDLink = ({ children, href, baseFolder }: IMDLinkProps) => {
+  const reformatedLink =
+    baseFolder && href.toString().includes("./assets")
+      ? `${baseFolder}/${href}`
+      : href;
+
   return (
     <TextLink
-      href={href}
+      href={reformatedLink}
       color="green" // TODO - maybe come up with a stronger brand lol
       decoration="underline"
     >

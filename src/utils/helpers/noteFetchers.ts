@@ -3,7 +3,6 @@ import { INote } from "../../interfaces/note";
 import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 // TODO - for now, remove content prop used for md files, but cleanup later lol
 export type Frontmatter = Omit<INote, "content">;
@@ -46,10 +45,10 @@ export const getAllNotesForCategories = (
 
       allNotes.push({
         title: mdxFontmatter.title,
-        slug: `${baseFolder}/${category}-${fileName}`,
+        slug: `${baseFolder}/${category}_${fileName}`,
         category: mdxFontmatter.category,
         created: mdxFontmatter.created,
-        coverSrc: mdxFontmatter.coverSrc,
+        coverSrc: mdxFontmatter.coverSrc ?? null,
         baseFolder: `${baseFolder}/${category}/${fileName}/`,
       });
     }
@@ -72,7 +71,7 @@ export const getNoteProps = async (
   categories: string[]
 ) => {
   const { slug } = ctx.params as { slug: string };
-  const cleanSlug: string = slug.replace(/^[^-]*-/, ""); // 🐌✨
+  const cleanSlug: string = slug.replace(/^[^_]*_/, ""); // 🐌✨
 
   // Iterate through all categories to find the matching file
   for (const category of categories) {
@@ -125,7 +124,7 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
       files.forEach((file) => {
         paths.push({
           params: {
-            slug: `${category}-${file}`,
+            slug: `${category}_${file}`,
           },
         });
       });

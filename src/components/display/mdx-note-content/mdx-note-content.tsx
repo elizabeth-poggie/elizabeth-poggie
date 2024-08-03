@@ -7,7 +7,11 @@ import {
   MDSubHeader,
   MDUnorderedList,
 } from "../md-note-content/md-note-content";
+import rehypeSlug from "rehype-slug";
 import { IImageProps, Image } from "../image/image";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import styles from "./mdx-note-content.module.scss";
 
 export function MDXNoteContent({ source, baseFolder }: MDXProps) {
   return (
@@ -18,8 +22,10 @@ export function MDXNoteContent({ source, baseFolder }: MDXProps) {
         h2: MDSubHeader,
         p: MDParagraph,
         ul: MDUnorderedList,
-        a: ({ children, href }) => MDLink({ children, href }),
+        a: ({ children, href }) => MDLink({ children, href, baseFolder }),
         img: (props) => <MDXImage {...props} baseFolder={baseFolder} />,
+        code: ({ className, children, ...props }) =>
+          mdxCode({ className, children, ...props }),
       }}
     />
   );
@@ -40,7 +46,6 @@ export const MDXImage = ({
     return `${baseFolder}/${src}`;
   };
 
-  console.log("yeet" + baseFolder + " " + src);
   return (
     <Image
       {...props}
@@ -48,5 +53,25 @@ export const MDXImage = ({
       src={src}
       alt={alt}
     />
+  );
+};
+
+export const mdxCode = ({ className, children, ...props }) => {
+  const match = /language-(\w+)/.exec(className || "");
+  return match ? (
+    <div className={styles.codeBlock}>
+      <SyntaxHighlighter
+        style={atomDark}
+        language={match[1]}
+        PreTag="div"
+        {...props}
+      >
+        {String(children).replace(/\n$/, "")}
+      </SyntaxHighlighter>
+    </div>
+  ) : (
+    <span className={styles.inlineCode} {...props}>
+      {children}
+    </span>
   );
 };

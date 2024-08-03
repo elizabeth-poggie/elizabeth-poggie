@@ -4,7 +4,7 @@ import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./home.module.scss";
 
-// TODO - maybe move this is a markdown file lol
+// TODO - Just import my README.md it's SOOOOO much easier lol (1 place to maintain it)
 export function Home() {
   return (
     <div className={styles.container}>
@@ -14,25 +14,8 @@ export function Home() {
         </Text>
         <div className={styles.paragraphContainer}>
           <Text variant="p">
-            I am currently a lecturer @ John Abbott College , where I teach{" "}
-            <TextLink
-              variant="p"
-              href="/notes/01-W24-intro-to-programming"
-              decoration="underline"
-              color="green"
-            >
-              programming
-            </TextLink>{" "}
-            and{" "}
-            <TextLink
-              variant="p"
-              href="/notes/01-user-interfaces"
-              decoration="underline"
-              color="green"
-            >
-              web development
-            </TextLink>
-            .
+            I am currently a lecturer @ John Abbott College, the community
+            manager @ Marché Sainte-Anne, and a freelance artist.
           </Text>
         </div>
         <div className={styles.paragraphContainer}>
@@ -40,16 +23,7 @@ export function Home() {
             Since 2019, I've been merging my technical expertise with my love of
             problem-solving by working on highly interdisciplinary projects. In
             the right environment, I like to blend creativity into my work by
-            adding{" "}
-            <TextLink
-              variant="p"
-              href="/art"
-              decoration="underline"
-              color="green"
-            >
-              my own artistic touch
-            </TextLink>
-            .
+            adding my own artistic touch.
           </Text>
         </div>
         <div className={styles.paragraphContainer}>
