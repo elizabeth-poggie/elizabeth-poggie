@@ -47,10 +47,12 @@ export default function Index({ allNotes }: Readonly<IProps>) {
         }}
       >
         <Text variant="title">⛔️ Warning ⛔️</Text>
-        <Text>
-          This site is very much under construction in preparation for the
-          upcoming school year
-        </Text>
+        <div style={{ textAlign: "center" }}>
+          <Text>
+            This site is very much under construction in preparation for the
+            upcoming school year
+          </Text>
+        </div>
         <br></br>
         <Text variant="subheading" style="italics">
           Please return in 1 - 2 business weeks ...
