@@ -7,6 +7,7 @@ import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
 import { TextButton } from "../../components/inputs/text-button/text-button";
 import { ScrollableContainer } from "../../components/layout/scrollable-container/scrollable-container";
+import { sortByCreatedDescending } from "../../utils/helpers/noteSorters";
 
 interface IProps {
   allNotes: INote[];
@@ -20,7 +21,8 @@ export const filterToColorMap = {
 };
 
 export function Notes({ allNotes }: IProps) {
-  const [filteredNotes, setFilteredNotes] = React.useState(allNotes);
+  const sortedNotes = sortByCreatedDescending(allNotes);
+  const [filteredNotes, setFilteredNotes] = React.useState(sortedNotes);
   const [activeFilter, setActiveFilter] = React.useState<
     string | "John Abbott College"
   >("John Abbott College");

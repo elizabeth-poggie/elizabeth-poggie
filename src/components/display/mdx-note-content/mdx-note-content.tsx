@@ -7,6 +7,7 @@ import {
   MDSubHeader,
   MDUnorderedList,
 } from "../md-note-content/md-note-content";
+import rehypeSlug from "rehype-slug";
 import { IImageProps, Image } from "../image/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
