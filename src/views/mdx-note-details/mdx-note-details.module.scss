@@ -3,55 +3,42 @@
 .header {
   text-align: center;
   padding: 0 0 calc($unit * 10) 0;
+  width: 50%;
 }
 
 .container {
   padding: calc(20 * $unit) 0 calc(40 * $unit) calc(20 * $unit);
-  margin: auto;
-  width: 50%;
+  width: 100%; // Make the container take the full width
+  display: flex;
+  flex-direction: column;
+  align-items: center; // Center align items
 }
 
-.leftSideBar_default {
-  position: absolute;
-  width: 20%;
-  left: 0;
-  padding: 0 0 0 calc($unit * 8);
-}
-
-.leftSideBar_sticky {
-  position: fixed;
-  top: 0;
-  padding: calc($unit * 8) 0 0 calc($unit * 8);
-  @extend .leftSideBar_default;
-}
-
-.tocInSideBar {
-  padding-left: 20px;
-  margin-top: 7.5px;
-  margin-bottom: 7.5px;
-}
-
-.sideBarSectionHeader {
-  margin-bottom: 7.5px;
+.main {
+  display: flex;
+  max-width: 1200px; // Add a max-width to limit the content width
 }
 
 .sideBarSection {
-  padding-bottom: calc($unit * 6);
+  width: 20%;
 }
 
-.noteTitle {
-  padding-bottom: calc(2 * $unit);
+.tocInSideBar {
+  position: sticky;
+  top: 0;
+  padding-left: 20px;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
 }
 
 @media screen and (max-width: $bp-lg) {
   .container {
     padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
     float: none;
-    width: 90%;
   }
-  .leftSideBar_default,
-  .leftSideBar_sticky {
-    display: none;
+
+  .header {
+    width: 70%;
   }
 }
 
@@ -61,8 +48,15 @@
     float: none;
   }
 
-  .leftSideBar_default,
-  .leftSideBar_sticky {
+  .main {
+    flex-direction: column; // Stack the content and sidebar vertically on smaller screens
+  }
+
+  .sideBarSection {
     display: none;
+  }
+
+  .header {
+    width: 80%;
   }
 }

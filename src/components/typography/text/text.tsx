@@ -85,6 +85,16 @@ export interface ITextProps {
    * @example "underline"
    */
   decoration?: TextDecoration;
+  /**
+   * Bottom padding as a function of $unit
+   * @example 1
+   */
+  gutterBottom?: number;
+  /**
+   * Top padding as a function of $unit
+   * @example 1
+   */
+  gutterCeiling?: number;
   id?: string; // probs need to extend the attribute class here instead lol
 }
 
@@ -96,9 +106,11 @@ export function Text({
   color = "offWhite",
   style = "normal",
   decoration = "none",
+  gutterBottom = 0,
+  gutterCeiling = 0,
 }: Readonly<ITextProps>) {
   return (
-    <span
+    <div
       id={id}
       className={cs(
         textVariantToStyleMap[variant],
@@ -107,8 +119,12 @@ export function Text({
         colorToStyleMap[color],
         decorationToStyleMap[decoration]
       )}
+      style={{
+        paddingBottom: `calc(${gutterBottom} * 5px)`,
+        paddingTop: `calc(${gutterCeiling} * 5px)`,
+      }}
     >
       {children}
-    </span>
+    </div>
   );
 }

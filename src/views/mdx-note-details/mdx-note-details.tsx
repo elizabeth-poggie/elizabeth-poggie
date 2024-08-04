@@ -10,54 +10,17 @@ import { MDXNoteContent } from "../../components/display/mdx-note-content/mdx-no
 import styles from "./mdx-note-details.module.scss";
 
 export function MdxNoteDetails(props: MDXProps) {
-  const [isInContent, setIsInContent] = React.useState<boolean>();
-  const observedContentRef = React.useRef(null);
   const { title, type } = props.source.frontmatter;
-
-  const handleScroll = () => {
-    if (!observedContentRef.current) {
-      return;
-    }
-    const { offsetTop } = observedContentRef.current;
-    const position = window.pageYOffset;
-    if (position + 16 >= offsetTop) {
-      tocbot.refresh({
-        ...TOC_NOTE_DETAILS_OPTIONS,
-        hasInnerContainers: true,
-      });
-      setIsInContent(true);
-    } else if (position < offsetTop) {
-      tocbot.refresh({
-        ...TOC_NOTE_DETAILS_OPTIONS,
-        hasInnerContainers: true,
-      });
-      setIsInContent(false);
-    }
-  };
-
-  React.useEffect(() => {
-    if (!observedContentRef.current) {
-      return;
-    }
-
-    // custom styling - configure side bar to become sticky once we enter the content
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      // remove listener
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [observedContentRef]);
 
   const renderNoteHeader = () => {
     return (
       <header className={styles.header}>
-        <div className={styles.noteTitle}>
-          <Text variant="h3">{type}</Text>
-        </div>
-        <div className={styles.noteTitle}>
-          <Text variant="title">{title}</Text>
-        </div>
+        <Text variant="h3" gutterBottom={2}>
+          {type}
+        </Text>
+        <Text variant="title" gutterBottom={2}>
+          {title}
+        </Text>
       </header>
     );
   };
@@ -66,22 +29,14 @@ export function MdxNoteDetails(props: MDXProps) {
     <>
       <div className={styles.container}>
         {renderNoteHeader()}
-        <div ref={observedContentRef}>
-          <div
-            className={
-              isInContent
-                ? styles.leftSideBar_sticky
-                : styles.leftSideBar_default
-            }
-          >
-            <section className={styles.sideBarSection}>
-              <div className={styles.tocInSideBar}>
-                <Toc />
-              </div>
-            </section>
-          </div>
+        <main className={styles.main}>
+          <section className={styles.sideBarSection}>
+            <div className={styles.tocInSideBar}>
+              <Toc />
+            </div>
+          </section>
           <MDXNoteContent {...props} />
-        </div>
+        </main>
       </div>
     </>
   );
