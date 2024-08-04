@@ -15,19 +15,21 @@ import styles from "./mdx-note-content.module.scss";
 
 export function MDXNoteContent({ source, baseFolder }: MDXProps) {
   return (
-    <MDXRemote
-      {...source}
-      components={{
-        h1: MDHeader,
-        h2: MDSubHeader,
-        p: MDParagraph,
-        ul: MDUnorderedList,
-        a: ({ children, href }) => MDLink({ children, href, baseFolder }),
-        img: (props) => <MDXImage {...props} baseFolder={baseFolder} />,
-        code: ({ className, children, ...props }) =>
-          mdxCode({ className, children, ...props }),
-      }}
-    />
+    <div className="js-toc-content">
+      <MDXRemote
+        {...source}
+        components={{
+          h1: MDHeader,
+          h2: MDSubHeader,
+          p: MDParagraph,
+          ul: MDUnorderedList,
+          a: ({ children, href }) => MDLink({ children, href, baseFolder }),
+          img: (props) => <MDXImage {...props} baseFolder={baseFolder} />,
+          code: ({ className, children, ...props }) =>
+            mdxCode({ className, children, ...props }),
+        }}
+      />
+    </div>
   );
 }
 

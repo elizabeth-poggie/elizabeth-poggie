@@ -41,10 +41,11 @@ export function MDNoteContent({ noteDetails }: IProps) {
 // helper functions
 
 export const MDHeader = ({ id, children }) => {
+  const idText = children.replace(/ /g, "_").toLowerCase();
   return (
     <div className={styles.mdHeader}>
-      <Link href={`#${id}`} scroll={false}>
-        <div className="js-toc-heading" id={id}>
+      <Link href={`#${idText}`} scroll={false}>
+        <div className="js-toc-heading" id={idText}>
           <Text variant="h1">{children}</Text>
         </div>
       </Link>
