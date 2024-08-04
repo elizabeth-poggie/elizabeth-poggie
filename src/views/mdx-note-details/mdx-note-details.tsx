@@ -12,7 +12,7 @@ import styles from "./mdx-note-details.module.scss";
 export function MdxNoteDetails(props: MDXProps) {
   const [isInContent, setIsInContent] = React.useState<boolean>();
   const observedContentRef = React.useRef(null);
-  const { title, tag } = props.source.frontmatter;
+  const { title, type } = props.source.frontmatter;
 
   const handleScroll = () => {
     if (!observedContentRef.current) {
@@ -53,7 +53,7 @@ export function MdxNoteDetails(props: MDXProps) {
     return (
       <header className={styles.header}>
         <div className={styles.noteTitle}>
-          <Text variant="h3">{tag}</Text>
+          <Text variant="h3">{type}</Text>
         </div>
         <div className={styles.noteTitle}>
           <Text variant="title">{title}</Text>
