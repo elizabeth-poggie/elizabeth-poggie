@@ -3,12 +3,13 @@
 .header {
   text-align: center;
   padding: 0 0 calc($unit * 10) 0;
-  width: 50%;
+  width: 100%;
+  max-width: 50%;
+  margin: 0 auto; // Center the header
 }
 
 .container {
   padding: calc(20 * $unit) 0 calc(40 * $unit) calc(20 * $unit);
-  width: 100%; // Make the container take the full width
   display: flex;
   flex-direction: column;
   align-items: center; // Center align items
@@ -16,11 +17,16 @@
 
 .main {
   display: flex;
+  width: 100%;
   max-width: 1200px; // Add a max-width to limit the content width
 }
 
 .sideBarSection {
   width: 20%;
+}
+
+.contentSection {
+  width: 60%;
 }
 
 .tocInSideBar {
@@ -38,7 +44,7 @@
   }
 
   .header {
-    width: 70%;
+    max-width: 70%;
   }
 }
 
@@ -57,6 +63,6 @@
   }
 
   .header {
-    width: 80%;
+    max-width: 80%;
   }
 }

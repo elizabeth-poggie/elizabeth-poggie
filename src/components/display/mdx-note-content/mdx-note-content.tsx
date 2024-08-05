@@ -12,6 +12,9 @@ import { IImageProps, Image } from "../image/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import styles from "./mdx-note-content.module.scss";
+import { Link } from "../../navigation/link/link";
+import { Text } from "../../typography/text/text";
+import { HorizontalLine } from "../horizontal-line/horizontal-line";
 
 export function MDXNoteContent({ source, baseFolder }: MDXProps) {
   return (
@@ -19,7 +22,7 @@ export function MDXNoteContent({ source, baseFolder }: MDXProps) {
       <MDXRemote
         {...source}
         components={{
-          h1: MDHeader,
+          h1: MDXHeader,
           h2: MDSubHeader,
           p: MDParagraph,
           ul: MDUnorderedList,
@@ -75,5 +78,19 @@ export const mdxCode = ({ className, children, ...props }) => {
     <span className={styles.inlineCode} {...props}>
       {children}
     </span>
+  );
+};
+
+export const MDXHeader = ({ children }) => {
+  const idText = children.replace(/ /g, "_").toLowerCase();
+  return (
+    <div className={styles.mdHeader}>
+      <Link href={`#${idText}`} scroll={false}>
+        <div className="js-toc-heading" id={idText}>
+          <Text variant="h1">{children}</Text>
+        </div>
+      </Link>
+      <HorizontalLine />
+    </div>
   );
 };

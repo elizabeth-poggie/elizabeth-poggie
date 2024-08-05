@@ -35,7 +35,9 @@ export function MdxNoteDetails(props: MDXProps) {
               <Toc />
             </div>
           </section>
-          <MDXNoteContent {...props} />
+          <section className={styles.contentSection}>
+            <MDXNoteContent {...props} />
+          </section>
         </main>
       </div>
     </>
