@@ -1,13 +1,10 @@
 import { Text } from "../../components/typography/text/text";
 import React from "react";
-import {
-  TOC_NOTE_DETAILS_OPTIONS,
-  Toc,
-} from "../../components/navigation/toc/toc";
-import tocbot from "tocbot";
+import { Toc } from "../../components/navigation/toc/toc";
 import { MDXProps } from "../../../pages/recipes/[slug]";
 import { MDXNoteContent } from "../../components/display/mdx-note-content/mdx-note-content";
 import styles from "./mdx-note-details.module.scss";
+import { Collapsible } from "../../components/layout/collapsible/collapsible";
 
 export function MdxNoteDetails(props: MDXProps) {
   const { title, type } = props.source.frontmatter;
@@ -37,6 +34,9 @@ export function MdxNoteDetails(props: MDXProps) {
           </section>
           <section className={styles.contentSection}>
             <MDXNoteContent {...props} />
+          </section>
+          <section>
+            <Collapsible />
           </section>
         </main>
       </div>
