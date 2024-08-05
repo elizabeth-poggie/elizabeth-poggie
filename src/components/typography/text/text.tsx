@@ -110,7 +110,7 @@ export function Text({
   gutterCeiling = 0,
 }: Readonly<ITextProps>) {
   return (
-    <div
+    <span
       id={id}
       className={cs(
         textVariantToStyleMap[variant],
@@ -120,11 +120,12 @@ export function Text({
         decorationToStyleMap[decoration]
       )}
       style={{
+        display: gutterBottom || gutterCeiling ? `block` : `inline`, // adding padding assumes you are a block type. default is inline for links.
         paddingBottom: `calc(${gutterBottom} * 5px)`,
         paddingTop: `calc(${gutterCeiling} * 5px)`,
       }}
     >
       {children}
-    </div>
+    </span>
   );
 }
