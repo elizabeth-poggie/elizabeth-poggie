@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Text } from "../../typography/text/text";
 import styles from "./collapsible.module.scss";
 
-export function Collapsible() {
+interface IProps {
+  title: string;
+}
+
+export function Collapsible({ title }: IProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
@@ -14,11 +18,13 @@ export function Collapsible() {
         className={`${styles.collapsible} ${isOpen ? styles.active : ""}`}
         onClick={handleToggle}
       >
-        Open Collapsible
+        <Text variant="h3" gutterBottom={2}>
+          {title}
+        </Text>
       </button>
       {isOpen && (
         <div className={styles.content}>
-          <Text>
+          <Text variant="subheading">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

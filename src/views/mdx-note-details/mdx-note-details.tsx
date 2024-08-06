@@ -35,8 +35,10 @@ export function MdxNoteDetails(props: MDXProps) {
           <section className={styles.contentSection}>
             <MDXNoteContent {...props} />
           </section>
-          <section>
-            <Collapsible />
+          <section className={styles.sideBarSection}>
+            <section className={styles.collapsibleInSideBar}>
+              <Collapsible title={type} />
+            </section>
           </section>
         </main>
       </div>
