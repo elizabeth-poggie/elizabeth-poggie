@@ -43,15 +43,13 @@ export interface INote {
    * Type of content, Sorting relies on this member
    * @example "Lecture"
    * @example "Strategy"
-   * @deprecated using tags now for generic code
    */
   type?: string;
   /**
    * Type of content, Filtering relies on this member
-   * @example "Lecture"
-   * @example "Strategy"
+   * @example ["Project Management", "Public speaking"]
    */
-  tag?: string;
+  tags?: string[];
   /**
    * Date of creation in UTC
    */
