@@ -28,7 +28,7 @@
 .collapsibleInSideBar {
   top: 0;
   padding-top: 30px;
-  padding-left: 100px;
+  padding-left: 120px;
   margin-top: 7.5px;
   margin-bottom: 7.5px;
 }
@@ -64,12 +64,36 @@
 
 @media screen and (max-width: $bp-md) {
   .container {
+    padding: calc(20 * $unit) calc(20 * $unit) 0 calc(20 * $unit);
+    float: none;
+  }
+
+  .sideBarSection {
+    display: none;
+  }
+
+  .main {
+    flex-direction: column;
+  }
+
+  .header {
+    max-width: 70%;
+    padding: 0 0 calc($unit * 15) 0;
+  }
+
+  .contentSection {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: $bp-sm) {
+  .container {
     padding: calc(20 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
     float: none;
   }
 
   .main {
-    flex-direction: column; // Stack the content and sidebar vertically on smaller screens
+    flex-direction: column;
   }
 
   .sideBarSection {

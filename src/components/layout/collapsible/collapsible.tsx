@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Text } from "../../typography/text/text";
 import styles from "./collapsible.module.scss";
-import { Image } from "../../display/image/image";
 
 interface IProps {
   title: string;
