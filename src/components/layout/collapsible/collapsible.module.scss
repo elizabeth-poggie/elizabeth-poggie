@@ -1,3 +1,5 @@
+@import "../../../styles/variables.scss";
+
 .collapsible {
   background-color: transparent;
   width: 100%;
@@ -5,13 +7,19 @@
   text-align: left;
   outline: none;
   cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.active,
-.collapsible:hover {
-  background-color: #555;
+.active .arrow,
+.collapsible:hover .arrow {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
 }
 
 .content {
+  padding-top: $unit;
   overflow: hidden;
+  max-width: 200px;
+  padding-left: 5px;
 }
