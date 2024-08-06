@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Text } from "../../typography/text/text";
 import styles from "./collapsible.module.scss";
+import { ILink } from "../../../interfaces/note";
 
 interface IProps {
   title: string;
+  children: React.ReactNode;
 }
 
-export function Collapsible({ title }: IProps) {
+export function Collapsible({ title, children }: IProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
@@ -25,19 +27,27 @@ export function Collapsible({ title }: IProps) {
           <ArrowIcon />
         </div>
       </button>
-      {isOpen && (
-        <div className={styles.content}>
-          <Text variant="subheading" color="grey" gutterBottom={0.5}>
-            Link
-          </Text>
-          <Text variant="subheading" color="grey">
-            Link
-          </Text>
-        </div>
-      )}
+      {isOpen && <div className={styles.content}>{children}</div>}
     </>
   );
 }
+
+interface ICollapsibleLinkListProps {
+  links?: ILink[];
+}
+
+export const CollapsibleLinkList = ({ links }: ICollapsibleLinkListProps) => {
+  return (
+    <>
+      <Text variant="subheading" color="grey" gutterBottom={0.5}>
+        Link
+      </Text>
+      <Text variant="subheading" color="grey">
+        Link
+      </Text>
+    </>
+  );
+};
 
 export const ArrowIcon = () => (
   <svg

@@ -4,7 +4,10 @@ import { Toc } from "../../components/navigation/toc/toc";
 import { MDXProps } from "../../../pages/recipes/[slug]";
 import { MDXNoteContent } from "../../components/display/mdx-note-content/mdx-note-content";
 import styles from "./mdx-note-details.module.scss";
-import { Collapsible } from "../../components/layout/collapsible/collapsible";
+import {
+  Collapsible,
+  CollapsibleLinkList,
+} from "../../components/layout/collapsible/collapsible";
 
 export function MdxNoteDetails(props: MDXProps) {
   const { title, type } = props.source.frontmatter;
@@ -37,7 +40,9 @@ export function MdxNoteDetails(props: MDXProps) {
           </section>
           <section className={styles.sideBarSection}>
             <section className={styles.collapsibleInSideBar}>
-              <Collapsible title={type} />
+              <Collapsible title={type}>
+                <CollapsibleLinkList />
+              </Collapsible>
             </section>
           </section>
         </main>
