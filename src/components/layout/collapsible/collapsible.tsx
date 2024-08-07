@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Text } from "../../typography/text/text";
 import styles from "./collapsible.module.scss";
 import { ILink } from "../../../interfaces/note";
+import { TextLink } from "../../navigation/link/link";
 
 interface IProps {
   title: string;
@@ -33,18 +34,24 @@ export function Collapsible({ title, children }: IProps) {
 }
 
 interface ICollapsibleLinkListProps {
-  links?: ILink[];
+  links: ILink[];
 }
 
 export const CollapsibleLinkList = ({ links }: ICollapsibleLinkListProps) => {
   return (
     <>
-      <Text variant="subheading" color="grey" gutterBottom={0.5}>
-        Link
-      </Text>
-      <Text variant="subheading" color="grey">
-        Link
-      </Text>
+      {links.map((link: ILink) => {
+        return (
+          <TextLink
+            variant="subheading"
+            color="grey"
+            gutterBottom={0.5}
+            href={link.href}
+          >
+            {link.text}
+          </TextLink>
+        );
+      })}
     </>
   );
 };

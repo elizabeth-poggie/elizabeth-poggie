@@ -68,7 +68,8 @@ export const getAllNotesForCategories = (
 export const getNoteProps = async (
   ctx: GetStaticPropsContext,
   baseFolder: string,
-  categories: string[]
+  categories: string[],
+  getRelatedNotes?: (baseFolder: string, categories: string[]) => CategoryMap
 ) => {
   const { slug } = ctx.params as { slug: string };
   const cleanSlug: string = slug.replace(/^[^_]*_/, ""); // 🐌✨
@@ -98,6 +99,9 @@ export const getNoteProps = async (
             frontmatter: mdxSource.frontmatter as Frontmatter,
           },
           baseFolder: `/${baseFolder}/${category}/${cleanSlug}/`,
+          relatedNotes: getRelatedNotes
+            ? getRelatedNotes(baseFolder, categories)
+            : null,
         },
       };
     }
@@ -135,4 +139,28 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
     paths,
     fallback: false,
   };
+};
+
+export type CategoryMap = {
+  [key in string]: INote[];
+};
+
+export const getRelatedNotesByType = (
+  baseFolder: string,
+  categories: string[]
+): CategoryMap => {
+  // Get all the notes
+  const allNotes: INote[] = getAllNotesForCategories(baseFolder, categories);
+
+  // Get the keys
+  const allTypes = allNotes.flatMap((note) => note.type);
+  const uniqueTypes = Array.from(new Set(allTypes));
+
+  // Create a map of type to notes
+  const categoryMap: CategoryMap = uniqueTypes.reduce((map, type) => {
+    map[type] = allNotes.filter((note) => note.type.includes(type));
+    return map;
+  }, {} as CategoryMap);
+
+  return categoryMap;
 };
