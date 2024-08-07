@@ -4,10 +4,9 @@ import { Burger } from "../../../src/components/navigation/burger/Burger";
 import { navItems } from "../..";
 import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from "..";
 import {
-  getAllNotesForCategories,
   getNotePaths,
   getNoteProps,
-  getRelatedNotesByType,
+  getRelatedNotesSortedByType,
 } from "../../../src/utils/helpers/noteFetchers";
 import { GetStaticPropsContext } from "next";
 import { MdxNoteDetails } from "../../../src/views/mdx-note-details/mdx-note-details";
@@ -31,7 +30,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
     ctx,
     NOTES_BASE_FOLDER,
     NOTES_CATEGORIES,
-    getRelatedNotesByType
+    getRelatedNotesSortedByType
   );
 }
 

@@ -1,11 +1,16 @@
 import fs from "fs";
-import { INote } from "../../interfaces/note";
+import { ILink, INote } from "../../interfaces/note";
 import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";
+import { getUniqueTypes } from "./noteAttributeFetchers";
 
 // TODO - for now, remove content prop used for md files, but cleanup later lol
 export type Frontmatter = Omit<INote, "content">;
+
+export type CategoryToLinkMap = {
+  [key in string]: ILink[];
+};
 
 /**
  * Because I love relative linking, organizing things in a component-driven style, and categorizing my notes, I'm making my life harder than it needs to be :^)
@@ -69,7 +74,10 @@ export const getNoteProps = async (
   ctx: GetStaticPropsContext,
   baseFolder: string,
   categories: string[],
-  getRelatedNotes?: (baseFolder: string, categories: string[]) => CategoryMap
+  getRelatedNotes?: (
+    baseFolder: string,
+    categories: string[]
+  ) => CategoryToLinkMap
 ) => {
   const { slug } = ctx.params as { slug: string };
   const cleanSlug: string = slug.replace(/^[^_]*_/, ""); // 🐌✨
@@ -141,26 +149,24 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
   };
 };
 
-export type CategoryMap = {
-  [key in string]: INote[];
-};
-
-export const getRelatedNotesByType = (
+// problem in this function lol
+export const getRelatedNotesSortedByType = (
   baseFolder: string,
   categories: string[]
-): CategoryMap => {
+): CategoryToLinkMap => {
   // Get all the notes
   const allNotes: INote[] = getAllNotesForCategories(baseFolder, categories);
-
-  // Get the keys
-  const allTypes = allNotes.flatMap((note) => note.type);
-  const uniqueTypes = Array.from(new Set(allTypes));
+  const uniqueTypes = getUniqueTypes(allNotes);
 
   // Create a map of type to notes
-  const categoryMap: CategoryMap = uniqueTypes.reduce((map, type) => {
-    map[type] = allNotes.filter((note) => note.type.includes(type));
+  const categoryMap: CategoryToLinkMap = uniqueTypes.reduce((map, type) => {
+    map[type] = allNotes
+      .filter((note) => note.type.includes(type))
+      .map((note: INote) => {
+        return { text: note.title, href: note.slug };
+      });
     return map;
-  }, {} as CategoryMap);
+  }, {} as CategoryToLinkMap);
 
   return categoryMap;
 };

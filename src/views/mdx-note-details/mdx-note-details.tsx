@@ -8,10 +8,12 @@ import {
   Collapsible,
   CollapsibleLinkList,
 } from "../../components/layout/collapsible/collapsible";
+import { CategoryToLinkMap } from "../../utils/helpers/noteFetchers";
 
 export function MdxNoteDetails(props: MDXProps) {
   const { title, type } = props.source.frontmatter;
-
+  const relatedNotes: CategoryToLinkMap = props.relatedNotes;
+  console.log(relatedNotes);
   const renderNoteHeader = () => {
     return (
       <header className={styles.header}>

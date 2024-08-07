@@ -43,9 +43,9 @@ export const CollapsibleLinkList = ({ links }: ICollapsibleLinkListProps) => {
       {links.map((link: ILink) => {
         return (
           <TextLink
+            key={link.href}
             variant="subheading"
             color="grey"
-            gutterBottom={0.5}
             href={link.href}
           >
             {link.text}
