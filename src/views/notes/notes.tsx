@@ -17,7 +17,7 @@ interface IProps {
 export const filterToColorMap = {
   // Categories
   "User Interfaces": "green",
-  "Intro to Programming": "yellow",
+  "Web Programming I": "yellow",
 };
 
 export function Notes({ allNotes }: IProps) {
