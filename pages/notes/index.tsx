@@ -7,7 +7,11 @@ import { Notes } from "../../src/views/notes/notes";
 import { getAllNotesForCategories } from "../../src/utils/helpers/noteFetchers";
 import { GetStaticPropsContext } from "next";
 
-export const NOTES_CATEGORIES = ["user-interfaces", "web-programming-i"];
+export const NOTES_CATEGORIES = [
+  "user-interfaces",
+  "web-programming-i",
+  "Admin",
+];
 export const NOTES_BASE_FOLDER = "john-abbott-college";
 
 interface IProps {
