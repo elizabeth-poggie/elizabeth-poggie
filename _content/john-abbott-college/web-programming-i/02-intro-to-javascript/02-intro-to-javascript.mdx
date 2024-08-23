@@ -70,9 +70,7 @@ Market share for several browsers between 1995 and 2010, illustrating the First 
 
 ## The 2000s
 
-This era saw the rise and fall of ECMAScript 4, ActionScript, and Flash.
-
-Think of this as the dark ages of JavaScript.
+This era saw the rise and fall of ECMAScript 4, ActionScript, and Flash. Think of this as the dark ages of JavaScript.
 
 ## Modern JavaScript
 
@@ -154,6 +152,8 @@ Now with Node we can run JavaScript outside of a browser allowing us to use Java
 
 This innovation is largely why it continues to establish itself as the most popular coding language.
 
+![node](./assets/node.jpg)
+
 ## Why care?
 
 We will cover Node a bit later in week 4. For now why this is so cool is that:
@@ -172,13 +172,19 @@ Node.js is widely adopted by developers and companies for building scalable, hig
 
 Let's open up Chrome DevTools and try the following
 
+## Variables
+
 ```js
-// 👉 Variables
 let name = "wow";
 let name = 30; // dynamic typing in action
 const isLearningJavaScript = true;
+```
 
-// 👉 Objects
+## Objects
+
+More on this later, but for now...
+
+```js
 let date = new Date();
 let person = {
   firstName: "Ford",
@@ -186,12 +192,18 @@ let person = {
   age: 25,
   isStudent: true,
 };
+```
 
-// 👉 Arrays
+## Arrays
+
+```js
 let brandsWithFruits = ["apple", "banana boat"];
 let numbers = [1, 2, 3, 4, 5];
+```
 
-// 👉 Conditions
+## Conditions
+
+```js
 if (condition) {
   // do stuff
 } else if (otherCondition) {
@@ -199,8 +211,11 @@ if (condition) {
 } else {
   // default stuff
 }
+```
 
-// 👉 Loops
+## Loops
+
+```js
 for (let i = 0; i < 5; i++) {
   console.log("Counting: " + i);
 }
@@ -209,20 +224,21 @@ let fruitBasket = ["apple", "banana", "cherry"];
 fruitBasket.forEach((fruit) => {
   console.log("I have a " + fruit);
 });
+```
 
-// 👉 Functions
+## Functions
+
+```js
 function greet(name) {
   return "Hello, " + name + "!";
 }
-
-// ... and so much more
 ```
 
-And this is just the beginning.
+... and so much more. This is just the beginning.
 
-## What's the interactive part?
+# Dynamic Webpages
 
-We can actually select and modify styles on the fly. Let’s open up Google and try modifying the CSS using JavaScript.
+What's the interactive part? We can actually select and modify styles on the fly. Let’s open up Google and try modifying the CSS using JavaScript.
 
 ```js
 // JS to make google pink
@@ -298,7 +314,7 @@ console.log(test()); // 1. test() is invoked
 // 4. what test() returns is then logged, in this case that's undefined
 ```
 
-# Mini Quiz
+# Mini Quiz 1
 
 What do you think is going to be logged to console when this script is run?
 
@@ -320,7 +336,7 @@ undefined
 
 The lines of code in `test` will only be run when they are executed. Even if the test function is defined before the `console.log("hi")`, `console.log("Hi")` is the first line of executed code. console.log("Hello World") will only be run after, when `test()` is executed on the next line.
 
-## Mini Quiz 2
+# Mini Quiz 2
 
 What will be logged to console when this script is run?
 
@@ -359,9 +375,11 @@ function goAwaySpider() {
 
 # Homework
 
-- Why was ECMAScript 5 considered the rebirth of JavaScript?
-- When was the latest version of JavaScript released? What is its official name?
-- Write a nested loop in JavaScript that prints out all the different seat combinations in a theater. Theater seats often display a row and seat number to help theatergoers find their seats. If there are 26 rows (0 to 25) and 100 seats (0 to 99) in each row, then some of the potential combinations are listed below:
+Why was ECMAScript 5 considered the rebirth of JavaScript?
+
+When was the latest version of JavaScript released? What is its official name?
+
+Write a nested loop in JavaScript that prints out all the different seat combinations in a theater. Theater seats often display a row and seat number to help theatergoers find their seats. If there are 26 rows (0 to 25) and 100 seats (0 to 99) in each row, then some of the potential combinations are listed below:
 
 ```text
 0-0
