@@ -217,15 +217,124 @@ We can actually select and modify styles on the fly. Let’s open up Google and 
 document.body.style.backgroundColor = "pink";
 ```
 
-You can use JavaScript to dynamically alter styles, hide elements, or create interactive effects.
+You will notice that as you type in each of thes key words, you will see everything you have access to modify. This is how you can dynamically alter styles, hide elements, or create interactive effects.
 
 # Exercise 1
 
-Try to dynamically change the logo of google to your favorite animal.
+Try to dynamically change the logo of google to your favorite animal. Feel free to use any resources you desire. Part of web development is being an effective googler.
+
+## Solution Code
+
+Using DevTools, select the main logo to find out where the tag is located. You will notice that the "alt" tag is "Google". We can work with that.
+
+```js
+// Step 1) Select the logo using JavaScript
+let logo = document.querySelector("img[alt='Google']");
+// Step 2) Now that it's selected we can modify the src, the logo is highlighted. Let's change the src :^)
+logo.src =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn9RwtnZI2hl3ZvsE5Aa7Dv_jDobsNu20D7Q&s"; // cat URL
+```
+
+Nothing has happened yet we changed the src. Why? Let's have a closer look at the logo that lives in the HTML. It seems that we have another link we need to modify.
+
+```js
+// Step 3) Modify the other link of the logo
+logo.srcset =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn9RwtnZI2hl3ZvsE5Aa7Dv_jDobsNu20D7Q&s"; // cat URL
+```
+
+# Functions
+
+What does a function return, what is called? First let's take the following [Pen](https://codepen.io/elizabeth-poggie/pen/LYKmyLo) and run the following code
+
+```js
+function test() {
+  console.log("Hello World");
+}
+```
+
+What do you think is going to happen when I run it? Nothing? Why?
+
+You need to call a function to make the function run.
+
+```js
+// Fixing the previous code
+function test() {
+  console.log("Hello World");
+}
+test();
+```
+
+What will be logged to console when this script is run?
+
+```js
+// Fixing the previous code
+function test() {
+  console.log("Hello World");
+}
+console.log(test());
+```
+
+first `"Hello World"` will be logged from the execution of the test function. Then the console will show `undefined`, when it logs the return of the call to test. Shown again below:
+
+```js
+function test() {
+  console.log("Hello World"); // 2. Hello World is Logged
+  // 3. test returns nothing. therefore undefined is returned
+}
+console.log(test()); // 1. test() is invoked
+// 4. what test() returns is then logged, in this case that's undefined
+```
+
+# Mini Quiz
+
+What do you think is going to be logged to console when this script is run?
+
+```js
+function test() {
+  console.log("Hello World");
+}
+console.log("Hi");
+console.log(test());
+```
+
+## Solution
+
+```text
+Hi
+Hello World
+undefined
+```
+
+The lines of code in `test` will only be run when they are executed. Even if the test function is defined before the `console.log("hi")`, `console.log("Hi")` is the first line of executed code. console.log("Hello World") will only be run after, when `test()` is executed on the next line.
+
+## Mini Quiz 2
+
+What will be logged to console when this script is run?
+
+```js
+function test() {
+  console.log("Hello World");
+}
+console.log(test);
+```
+
+## Solution
+
+Then the console will log the test function object. The test function is never invoked.
+
+```text
+function test()
+    {
+        console.log( "Hello World" );
+    }
+```
+
+We will cover objects soon, so no worries about that.
 
 # Exercise 2
 
-Theory is cool, but let's put it in action. Fork the [Pen](https://codepen.io/elizabeth-poggie/pen/xxojdba) and try to make the spider go away. We will go over the solution soon.
+Let's put everything together. Fork the [Pen](https://codepen.io/elizabeth-poggie/pen/xxojdba) and try to make the spider go away. We will go over the solution in a few mins.
 
 ## Solution code
 
@@ -234,4 +343,20 @@ Theory is cool, but let's put it in action. Fork the [Pen](https://codepen.io/el
 function goAwaySpider() {
   document.querySelector("#no").style.visibility = "hidden";
 }
+```
+
+# Homework
+
+- Why was ECMAScript 5 considered the rebirth of JavaScript?
+- When was the latest version of JavaScript released? What is its official name?
+- Write a nested loop in JavaScript that prints out all the different seat combinations in a theater. Theater seats often display a row and seat number to help theatergoers find their seats. If there are 26 rows (0 to 25) and 100 seats (0 to 99) in each row, then some of the potential combinations are listed below:
+
+```text
+0-0
+0-1
+0-2
+...
+25-97
+25-98
+25-99
 ```
