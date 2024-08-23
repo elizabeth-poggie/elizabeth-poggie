@@ -249,11 +249,11 @@ You will notice that as you type in each of thes key words, you will see everyth
 
 # Exercise 1
 
-Try to dynamically change the logo of google to your favorite animal. Feel free to use any resources you desire. Part of web development is being an effective googler.
+Try dynamically changing the Google logo to your favorite animal. Use any resources you like—part of web development is being an effective Googler
 
 ## Solution Code
 
-Using DevTools, select the main logo to find out where the tag is located. You will notice that the "alt" tag is "Google". We can work with that.
+Using DevTools, select the main logo to find out where the tag is located. You will notice that the `alt` tag is "Google". We can work with that.
 
 ```js
 // Step 1) Select the logo using JavaScript
@@ -263,7 +263,7 @@ logo.src =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn9RwtnZI2hl3ZvsE5Aa7Dv_jDobsNu20D7Q&s"; // cat URL
 ```
 
-Nothing has happened yet we changed the src. Why? Let's have a closer look at the logo that lives in the HTML. It seems that we have another link we need to modify.
+Nothing has happened yet we changed the `src`. Why? Let's have a closer look at the logo that lives in the HTML. It seems that we have another link we need to modify.
 
 ```js
 // Step 3) Modify the other link of the logo
