@@ -36,11 +36,29 @@ I’ve posted the assignment rubric on my website. Since I’m human and can som
 
 # JavaScript Homework Recap
 
-Why was ECMAScript 5 considered the rebirth of JavaScript?
+## Why was ECMAScript 5 considered the rebirth of JavaScript?
 
-When was the latest version of JavaScript released? What is its official name?
+ECMAScript 5 or ES5 for short was released in 2009. To this day, it continues to be considered the rebirth of JavaScript because it introduced significant improvements and features:
 
-Write a nested loop in JavaScript that prints out all the different seat combinations in a theater. Theater seats often display a row and seat number to help theatergoers find their seats. If there are 26 rows (0 to 25) and 100 seats (0 to 99) in each row, then some of the potential combinations are listed below:
+- Strict mode
+- JSON support
+- Array methods such as `forEach`, `map`, `filter`
+- Property descriptors
+- More robust error handling
+
+These additions made JavaScript more reliable, maintainable, and capable of handling more complex applications, paving the way for the modern web dev. But what are these terms? Why do we care about this? More on this _very_ soon.
+
+## When was the latest version of JavaScript released? What is its official name?
+
+As of August 25, 2024 the latest version of JavaScript is ECMAScript 2023, officially known as ES14. Some of the highlights include:
+
+- Array methods such as `findLast`, `findLastIndex`
+- Shebangs (`#!`), which have long been a staple in bash scripts, were introduced to JavaScript just last year. (Technically, these are also called Hashbangs by the nerds, so feel free to use whichever term you like.)
+- ...and [a lot of other cool stuff](https://tc39.es/ecma262/), though that's beyond the scope of this class.
+
+## Write a nested loop in JavaScript that prints out all the different seat combinations in a theater.
+
+Theater seats often display a row and seat number to help theatergoers find their seats. If there are 26 rows (0 to 25) and 100 seats (0 to 99) in each row, then some of the potential combinations are listed below:
 
 ```text
 0-0
@@ -51,6 +69,18 @@ Write a nested loop in JavaScript that prints out all the different seat combina
 25-98
 25-99
 ```
+
+To do this in JavaScript, you use the for loops you have grown to know very well:
+
+```js
+for (let row = 0; row < 26; row++) {
+  for (let seat = 0; seat < 100; seat++) {
+    console.log(`${row}-${seat}`);
+  }
+}
+```
+
+There are plenty of ways to solve this problem, and one of them can be done in just a single line. More on this in week 10 ;)
 
 # JavaScript Recap
 
