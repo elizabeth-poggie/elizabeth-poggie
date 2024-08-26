@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "More on Objects"
+title: "More on Functions"
 created: "2024-08-25"
 coverSrc: "./assets/"
 ---
@@ -56,9 +56,9 @@ As of August 25, 2024 the latest version of JavaScript is ECMAScript 2023, offic
 - Shebangs (`#!`), which have long been a staple in bash scripts, were introduced to JavaScript just last year. (Technically, these are also called Hashbangs by the nerds, so feel free to use whichever term you like.)
 - ...and [a lot of other cool stuff](https://tc39.es/ecma262/), though that's beyond the scope of this class.
 
-## Write a nested loop in JavaScript that prints out all the different seat combinations in a theater.
+# Exercise 0
 
-Theater seats often display a row and seat number to help theatergoers find their seats. If there are 26 rows (0 to 25) and 100 seats (0 to 99) in each row, then some of the potential combinations are listed below:
+Write a nested loop in JavaScript that prints out all the different seat combinations in a theater. Theater seats often display a row and seat number to help theatergoers find their seats. If there are 26 rows (0 to 25) and 100 seats (0 to 99) in each row, then some of the potential combinations are listed below:
 
 ```text
 0-0
@@ -70,6 +70,10 @@ Theater seats often display a row and seat number to help theatergoers find thei
 25-99
 ```
 
+For those of you who haven't started this yet, fork the [Pen](https://codepen.io/elizabeth-poggie/pen/bGPKqRJ) and give it a shot before I cover the solution
+
+# Solution
+
 To do this in JavaScript, you use the for loops you have grown to know very well:
 
 ```js
@@ -78,6 +82,28 @@ for (let row = 0; row < 26; row++) {
     console.log(`${row}-${seat}`);
   }
 }
+```
+
+Now we can bring this idea to the Pen:
+
+```js
+// Select the element where the seat combinations will be displayed
+const seatDisplay = document.getElementById("seat-combinations");
+
+// Initialize an empty array to store the seat combinations
+let combinations = [];
+
+// Loop through each row
+for (let row = 0; row < 26; row++) {
+  // Loop through each seat in the current row
+  for (let seat = 0; seat < 100; seat++) {
+    // Add the combination to the array
+    combinations.push(`${row}-${seat}`);
+  }
+}
+
+// Display all combinations as a string in the <pre> element
+seatDisplay.textContent = combinations.join("\n");
 ```
 
 There are plenty of ways to solve this problem, and one of them can be done in just a single line. More on this in week 10 ;)
@@ -172,4 +198,55 @@ function addCat() {
 }
 ```
 
-# Objects
+# Exercise 2
+
+Let's explore the beauty of HTML, CSS, and JavaScript work together. For the following Pen and this time, instead of adding a name to a list, you will be adding a url to a gallery.
+
+## Solution
+
+```js
+// 👉 Step 0 ) Initialize the Array with some items
+// ------------------------------------------------
+// The 'clowder' array contains a list of initial cat image URLs.
+var clowder = [
+  "https://miro.medium.com/v2/resize:fit:1000/1*6ZpFPuftEFRVNtDL5IMXXw.jpeg",
+  "https://i.pinimg.com/1200x/c3/0a/ae/c30aae89cfdb0dff8af33fe4fdea348a.jpg",
+  "https://i.pinimg.com/236x/29/44/b9/2944b90350f444679dff98674fa36ec1.jpg",
+];
+
+// 👉 Step 1) Display cats on the page
+// -----------------------------------
+// There are different ways to select elements by ID in HTML, this is one of them.
+var gallery = $("#gallery");
+
+// 👉 Step 2) Loop through items and build the list
+// ------------------------------------------------
+// First, clear any existing content in the list to avoid duplication.
+gallery.empty();
+
+// Iterate over each item in the 'clowder' array.
+clowder.forEach(function (item) {
+  // Create an image element and set its source to the item URL.
+  var img = $("<img>").attr("src", item).attr("alt", "Cat");
+  // Append the image element to the gallery.
+  gallery.append(img);
+});
+
+// 👉 Step 3) Implement addCat() function
+// ---------------------------------------
+function addCat() {
+  var newItem = prompt("Add a new cat URL to the clowder");
+  // Check if the user provided a URL (i.e., the input is not empty).
+  if (newItem) {
+    // Add the new image URL to the 'clowder' array.
+    clowder.push(newItem);
+    // Append the new image to the gallery.
+    var img = $("<img>").attr("src", newItem).attr("alt", "Cat Image");
+    gallery.append(img);
+  }
+}
+```
+
+# Input validation
+
+What if the user inputs something that isn’t a URL? Instead of displaying a proper image, it will show the alt attribute. This is where input validation comes in handy. We’ll discuss this topic more in Week 3 :^)
