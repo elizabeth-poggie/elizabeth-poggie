@@ -10,7 +10,7 @@ import { GetStaticPropsContext } from "next";
 export const NOTES_CATEGORIES = [
   "user-interfaces",
   "web-programming-i",
-  "Admin",
+  "admin",
 ];
 export const NOTES_BASE_FOLDER = "john-abbott-college";
 

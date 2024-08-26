@@ -1,0 +1,195 @@
+---
+# General Information
+category: "Web Programming I"
+title: "More on Functions"
+created: "2024-08-25"
+coverSrc: "./assets/"
+---
+
+# Polling Recap
+
+## How would you rate your current understanding of JavaScript?
+
+Most people rated themselves between 1 and 4. Beyond what we discussed last class, what do you remember about JavaScript and programming in general?
+
+## What are your weekdays like?
+
+About 80% of you are carrying a full-time school load, and 95% of you are balancing this class with other major responsibilities outside the classroom. To respect these commitments, part of our class time will be dedicated to working on assignments. I'll treat this time like a real-world industry experience, walking around the room to answer questions while you work on developing your features.
+
+## How would you describe your computer resources at home?
+
+Around 90% of you have a good personal laptop at home. For the remaining 10%, I'll ensure you have plenty of time in class to get your work done.
+
+## How do you prefer to learn and receive instruction?
+
+We see a strong preference for Lectures, Group Work, and Exercises, each getting over 45% of the vote, with Hands-on practice leading the way at 75%, closely followed by Notes at 70%. Supplementary reading materials and videos seemed deeply un-popular, and slides seem to be a bit of a controversial choice. However, for our visual learners, I'll ensure there's plenty of visual content to compensate for the decision to not rely heavily on slides. I'll make sure there's plenty of visual content to make up for not relying heavily on slides. I'll include images in my notes to support your learning, and midway through the semester, feel free to send me a MIO if you'd like more diagrams included.
+
+## Evaluations for you
+
+I’ve posted the assignment rubric on my website. Since I’m human and can sometimes overlook details, I want to ensure that all students are graded fairly. If I find a mistake on one assignment, I aim to address it for all assignments. To handle this more consistently, I’m actually using partial automation for grading, as I trust a bot to catch errors more reliably than I can. If either the bot or I miss something, please send me a personal MIO or submit a bug report on GitHub Issues once the repo is public so I can correct it.
+
+# JavaScript Homework Recap
+
+## Why was ECMAScript 5 considered the rebirth of JavaScript?
+
+ECMAScript 5 or ES5 for short was released in 2009. To this day, it continues to be considered the rebirth of JavaScript because it introduced significant improvements and features:
+
+- Strict mode
+- JSON support
+- Array methods such as `forEach`, `map`, `filter`
+- Property descriptors
+- More robust error handling
+
+These additions made JavaScript more reliable, maintainable, and capable of handling more complex applications, paving the way for the modern web dev. But what are these terms? Why do we care about this? More on this _very_ soon.
+
+## When was the latest version of JavaScript released? What is its official name?
+
+As of August 25, 2024 the latest version of JavaScript is ECMAScript 2023, officially known as ES14. JavaScript's real name is ECMAScript and some of the highlights include:
+
+- Array methods such as `findLast`, `findLastIndex`
+- Shebangs (`#!`), which have long been a staple in bash scripts, were introduced to JavaScript just last year. (Technically, these are also called Hashbangs by the nerds, so feel free to use whichever term you like.)
+- ...and [a lot of other cool stuff](https://tc39.es/ecma262/), though that's beyond the scope of this class.
+
+# Exercise 0
+
+Write a nested loop in JavaScript that prints out all the different seat combinations in a theater. Theater seats often display a row and seat number to help theatergoers find their seats. If there are 26 rows (0 to 25) and 100 seats (0 to 99) in each row, then some of the potential combinations are listed below:
+
+```text
+0-0
+0-1
+0-2
+...
+25-97
+25-98
+25-99
+```
+
+For those of you who haven't started this yet, fork the [Pen](https://codepen.io/elizabeth-poggie/pen/bGPKqRJ) and give it a shot before I cover the solution
+
+## Solution
+
+To do this in JavaScript, you use the for loops you have grown to know very well:
+
+```js
+for (let row = 0; row < 26; row++) {
+  for (let seat = 0; seat < 100; seat++) {
+    console.log(`${row}-${seat}`);
+  }
+}
+```
+
+Now we can bring this idea to the Pen:
+
+```js
+// Select the element where the seat combinations will be displayed
+const seatDisplay = document.getElementById("seat-combinations");
+
+// Initialize an empty array to store the seat combinations
+let combinations = [];
+
+// Loop through each row
+for (let row = 0; row < 26; row++) {
+  // Loop through each seat in the current row
+  for (let seat = 0; seat < 100; seat++) {
+    // Add the combination to the array
+    combinations.push(`${row}-${seat}`);
+  }
+}
+
+// Display all combinations as a string in the <pre> element
+seatDisplay.textContent = combinations.join("\n");
+```
+
+There are plenty of ways to solve this problem, and one of them can be done in just a single line. More on this in week 10 ;)
+
+# Functions Recap
+
+## Why do we love functions?
+
+- They allow us to write reusable code snippets.
+- Functions can accept parameters, perform operations, and return an output based on the arguments passed in.
+
+```js
+function myFunction(parameter1, parameter2) {
+  // stuff
+}
+```
+
+Functions are run by calling them like this:
+
+```js
+myFunction(parameter1, parameter2);
+```
+
+## What does this look like in action?
+
+Let's take a tour of my notes and see how this works:
+
+- Function Definitions: Check out where I define my functions 👉 [noteFetchers.ts](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/src/utils/helpers/noteFetchers.ts), [noteSorters](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/src/utils/helpers/noteSorters.ts)
+- Function Calls: See where I call these functions 👉 [/pages/notes](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/pages/notes/index.tsx) and [/pages/portfolio](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/pages/portfolio/index.tsx)
+
+If you're wondering why I didn’t use many images in the spring, it's because Next.js, the framework I use, doesn’t support relative linking with assets out of the box. The functions I implemented over the summer now allow me to organize my notes in a component-driven style, with links dynamically built at runtime.
+
+I’m linking my GitHub repo here on purpose. Feel free to explore it—it's a great learning opportunity if you're curious about how I code. And if you think my code could be better, go ahead and file a [GitHub Issue](https://github.com/elizabeth-poggie/elizabeth-poggie/issues) on my repo.
+
+# Arrays Recap
+
+Given that you probably spent your first year of the program thinking about Arrays, I won't go too deeply into this.
+
+```js
+var myArray = [];
+var myArray = [value1, value2, value3];
+```
+
+What makes this different to the arrays you guys are comfortable with? They can be of any kind of data, even mixed:
+
+```js
+var mixedArray = ["test", 42, true, "moreTesting"];
+```
+
+# Exercise 1
+
+Fork the following [Pen](https://codepen.io/elizabeth-poggie/pen/WNqyROJ) and implement the `addCat()` function
+
+## Solution
+
+```js
+// 👉 Step 0 ) Initialize the Array with some items
+// ------------------------------------------------
+// The 'clowder' array contains a list of initial cat names.
+var clowder = ["Long Cat", "Cute Cat", "Cowboy Cat"];
+
+// 👉 Step 1) Display cats on the page
+// -----------------------------------
+// There are different ways to select elements by ID in HTML, this is one of them.
+var list = $("#the-items-list");
+// Get the parent element of the list. This will be used later if needed.
+var parent = list.parent();
+
+// 👉 Step 2) Loop through items and build the list
+// ------------------------------------------------
+// First, clear any existing content in the list to avoid duplication.
+list.empty(); // Clear the list first to be safe
+
+// Iterate over each item in the 'clowder' array.
+clowder.forEach(function (item) {
+  // Append each item as a new list item ('<li>') to the unordered list.
+  list.append("<li>" + item + "</li>");
+});
+
+// 👉 Step 3) Implement addCat() function
+// ---------------------------------------
+// This function is called when the "Add Cat" button is clicked.
+function addCat() {
+  // Prompt the user to enter a new cat name.
+  var newItem = prompt("Add a new cat to the clowder");
+
+  // Check if the user provided a name (i.e., the input is not empty).
+  if (newItem) {
+    // Append the new item as a list item ('<li>') to the unordered list.
+    list.append("<li>" + newItem + "</li>");
+  }
+}
+```
+
+This syntax might seem intimidating, but don’t worry, we’re going to take a step back and explore it in more detail, gradually building up to this example.
