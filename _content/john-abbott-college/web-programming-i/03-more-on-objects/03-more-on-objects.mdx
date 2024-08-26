@@ -24,12 +24,6 @@ Around 90% of you have a good personal laptop at home. For the remaining 10%, I'
 
 We see a strong preference for Lectures, Group Work, and Exercises, each getting over 45% of the vote, with Hands-on practice leading the way at 75%, closely followed by Notes at 70%. Supplementary reading materials and videos seemed deeply un-popular, and slides seem to be a bit of a controversial choice. However, for our visual learners, I'll ensure there's plenty of visual content to compensate for the decision to not rely heavily on slides. I'll make sure there's plenty of visual content to make up for not relying heavily on slides. I'll include images in my notes to support your learning, and midway through the semester, feel free to send me a MIO if you'd like more diagrams included.
 
-## Anything else you would like me to know?
-
-Thank you for the kind comments on the Google form and evaluations from last semester. I'm really looking forward to having you all as students. As a teacher, I don't always see the impact I have, but your feedback made my year. After moving from the world of corporate performance evaluations to reading your feedback, it helped me decide to stick with teaching for at least the next few years before I start considering something new.
-
-For the first time in my career, I can genuinely say I’m excited to work with you all this upcoming semester. Please never hesitate to pitch ideas for improving the class :^)
-
 ## Evaluations for you
 
 I’ve posted the assignment rubric on my website. Since I’m human and can sometimes overlook details, I want to ensure that all students are graded fairly. If I find a mistake on one assignment, I aim to address it for all assignments. To handle this more consistently, I’m actually using partial automation for grading, as I trust a bot to catch errors more reliably than I can. If either the bot or I miss something, please send me a personal MIO or submit a bug report on GitHub Issues once the repo is public so I can correct it.
@@ -193,60 +187,7 @@ function addCat() {
   // Check if the user provided a name (i.e., the input is not empty).
   if (newItem) {
     // Append the new item as a list item ('<li>') to the unordered list.
-    $("#the-items-list").append("<li>" + newItem + "</li>");
+    list.append("<li>" + newItem + "</li>");
   }
 }
 ```
-
-# Exercise 2
-
-Let's explore the beauty of HTML, CSS, and JavaScript work together. For the following Pen and this time, instead of adding a name to a list, you will be adding a url to a gallery.
-
-## Solution
-
-```js
-// 👉 Step 0 ) Initialize the Array with some items
-// ------------------------------------------------
-// The 'clowder' array contains a list of initial cat image URLs.
-var clowder = [
-  "https://miro.medium.com/v2/resize:fit:1000/1*6ZpFPuftEFRVNtDL5IMXXw.jpeg",
-  "https://i.pinimg.com/1200x/c3/0a/ae/c30aae89cfdb0dff8af33fe4fdea348a.jpg",
-  "https://i.pinimg.com/236x/29/44/b9/2944b90350f444679dff98674fa36ec1.jpg",
-];
-
-// 👉 Step 1) Display cats on the page
-// -----------------------------------
-// There are different ways to select elements by ID in HTML, this is one of them.
-var gallery = $("#gallery");
-
-// 👉 Step 2) Loop through items and build the list
-// ------------------------------------------------
-// First, clear any existing content in the list to avoid duplication.
-gallery.empty();
-
-// Iterate over each item in the 'clowder' array.
-clowder.forEach(function (item) {
-  // Create an image element and set its source to the item URL.
-  var img = $("<img>").attr("src", item).attr("alt", "Cat");
-  // Append the image element to the gallery.
-  gallery.append(img);
-});
-
-// 👉 Step 3) Implement addCat() function
-// ---------------------------------------
-function addCat() {
-  var newItem = prompt("Add a new cat URL to the clowder");
-  // Check if the user provided a URL (i.e., the input is not empty).
-  if (newItem) {
-    // Add the new image URL to the 'clowder' array.
-    clowder.push(newItem);
-    // Append the new image to the gallery.
-    var img = $("<img>").attr("src", newItem).attr("alt", "Cat Image");
-    gallery.append(img);
-  }
-}
-```
-
-# Input validation
-
-What if the user inputs something that isn’t a URL? Instead of displaying a proper image, it will show the alt attribute. This is where input validation comes in handy. We’ll discuss this topic more in Week 3 :^)
