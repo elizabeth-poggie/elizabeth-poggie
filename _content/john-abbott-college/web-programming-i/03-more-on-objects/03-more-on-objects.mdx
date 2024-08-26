@@ -82,6 +82,94 @@ for (let row = 0; row < 26; row++) {
 
 There are plenty of ways to solve this problem, and one of them can be done in just a single line. More on this in week 10 ;)
 
-# JavaScript Recap
+# Functions Recap
+
+## Why do we love functions?
+
+- They allow us to write reusable code snippets.
+- Functions can accept parameters, perform operations, and return an output based on the arguments passed in.
+
+```js
+function myFunction(parameter1, parameter2) {
+  // stuff
+}
+```
+
+Functions are run by calling them like this:
+
+```js
+myFunction(parameter1, parameter2);
+```
+
+## What does this look like in action?
+
+Let's take a tour of my notes and see how this works:
+
+- Function Definitions: Check out where I define my functions 👉 [noteFetchers.ts](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/src/utils/helpers/noteFetchers.ts), [noteSorters](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/src/utils/helpers/noteSorters.ts)
+- Function Calls: See where I call these functions 👉 [/pages/notes](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/pages/notes/index.tsx) and [/pages/portfolio](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/pages/portfolio/index.tsx)
+
+If you're wondering why I didn’t use many images in the spring, it's because Next.js, the framework I use, doesn’t support relative linking with assets out of the box. The functions I implemented over the summer now allow me to organize my notes in a component-driven style, with links dynamically built at runtime.
+
+I’m linking my GitHub repo here on purpose. Feel free to explore it—it's a great learning opportunity if you're curious about how I code. And if you think my code could be better, go ahead and file a [GitHub Issue](https://github.com/elizabeth-poggie/elizabeth-poggie/issues) on my repo. on my repo. If you’re familiar with Pull Requests, you’re welcome to create a [PR](https://github.com/elizabeth-poggie/elizabeth-poggie/pulls). The code is open-source, and I’m always open to contributions ;)
+
+# Arrays Recap
+
+Given that you probably spent your first year of the program thinking about Arrays, I won't go too deeply into this.
+
+```js
+var myArray = [];
+var myArray = [value1, value2, value3];
+```
+
+What makes this different to the arrays you guys are comfortable with? They can be of any kind of data, even mixed for those of you who want to live dangerously
+
+```js
+var mixedArray = ["test", 42, true, "moreTesting"];
+```
+
+# Exercise 1
+
+Fork the following [Pen](https://codepen.io/elizabeth-poggie/pen/WNqyROJ) and implement the `addCat()` function
+
+## Solution
+
+```js
+// 👉 Step 0 ) Initialize the Array with some items
+// ------------------------------------------------
+// The 'clowder' array contains a list of initial cat names.
+var clowder = ["Long Cat", "Cute Cat", "Cowboy Cat"];
+
+// 👉 Step 1) Display cats on the page
+// -----------------------------------
+// There are different ways to select elements by ID in HTML, this is one of them.
+var list = $("#the-items-list");
+// Get the parent element of the list. This will be used later if needed.
+var parent = list.parent();
+
+// 👉 Step 2) Loop through items and build the list
+// ------------------------------------------------
+// First, clear any existing content in the list to avoid duplication.
+list.empty(); // Clear the list first to be safe
+
+// Iterate over each item in the 'clowder' array.
+clowder.forEach(function (item) {
+  // Append each item as a new list item ('<li>') to the unordered list.
+  list.append("<li>" + item + "</li>");
+});
+
+// 👉 Step 3) Implement addCat() function
+// ---------------------------------------
+// This function is called when the "Add Cat" button is clicked.
+function addCat() {
+  // Prompt the user to enter a new cat name.
+  var newItem = prompt("Add a new cat to the clowder");
+
+  // Check if the user provided a name (i.e., the input is not empty).
+  if (newItem) {
+    // Append the new item as a list item ('<li>') to the unordered list.
+    $("#the-items-list").append("<li>" + newItem + "</li>");
+  }
+}
+```
 
 # Objects
