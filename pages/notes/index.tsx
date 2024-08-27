@@ -9,6 +9,7 @@ import { GetStaticPropsContext } from "next";
 
 export const NOTES_CATEGORIES = [
   "user-interfaces",
+  "computerized-systems",
   "web-programming-i",
   "admin",
 ];

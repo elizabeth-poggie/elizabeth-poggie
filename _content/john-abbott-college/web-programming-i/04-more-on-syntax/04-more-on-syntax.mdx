@@ -115,7 +115,44 @@ There’s plenty more to explore, but this should give you a solid introduction 
 
 # Exercise 0
 
-Input an exercise here.
+For the [Pen](https://codepen.io/elizabeth-poggie/pen/NWZzOQg?editors=0012) and implement the functions
+
+## Solution
+
+```js
+const cats = [];
+
+function addCat(cat) {
+  cats.push(cat);
+  console.log(`${cat} has been added.`);
+  console.log("Current cats in the array:", cats);
+}
+
+function sellLastCat() {
+  if (cats.length === 0) {
+    console.log("No cats left to sell!");
+  } else {
+    const soldCat = cats.pop();
+    console.log(`${soldCat} has been sold.`);
+    console.log("Current cats in the array:", cats);
+  }
+}
+
+function totalCats() {
+  console.log(`Total number of cats: ${cats.length}`);
+}
+
+// Adding 4 Cats
+addCat("Cute Cat");
+addCat("Long Cat");
+addCat("Cowboy Cat");
+addCat("Chonky Cat");
+
+sellLastCat(); // Selling Chonky Cat
+sellLastCat(); // Selling Cowboy Cat
+
+totalCats(); // Display the total remaining cats
+```
 
 # Variable Declaration
 
@@ -252,8 +289,48 @@ Best practice is to use `const` by default and `let` when you need to reassign. 
 
 # Exercise 1
 
-TODO - variable declaration
+For the following Pen and Complete the following logic:
+
+- Create an adoption center name, this shouldn't change over the course of your program
+- Initialize a variable that represents the total number of adopted cats.
+- Implement a function that simulates adopting a cat.
+
+```js
+const centerName = "Cute Cats Adoption Center";
+let adoptedCats = 0;
+
+function adoptCat() {
+  adoptedCats++;
+  console.log(`Total adopted cats: ${adoptedCats}`);
+}
+```
 
 # Exercise 2
 
-TODO - variable declaration
+In this exercise, you'll manage a global array of cat names and use the `adoptCat()` function to randomly select a cat for adoption. This will help you understand variable scope and random selection in JavaScript.
+
+What you will need to randomly select a cat:
+
+```js
+Math.floor(Math.random() * arrayLength);
+```
+
+## Solution
+
+```js
+const centerName = "Cute Cats Adoption Center";
+let adoptedCats = 0;
+const catNames = ["Cute Cat", "Long Cat", "Cowboy Cat", "Fat Cat", "Simba"];
+
+function adoptCat() {
+  adoptedCats++;
+
+  // Randomly select a cat from the catNames array
+  let randomIndex = Math.floor(Math.random() * catNames.length);
+  let adoptedCat = catNames[randomIndex];
+
+  // Log the adopted cat's name
+  console.log(`Adopted cat: ${adoptedCat}`);
+  console.log(`Total adopted cats: ${adoptedCats}`);
+}
+```
