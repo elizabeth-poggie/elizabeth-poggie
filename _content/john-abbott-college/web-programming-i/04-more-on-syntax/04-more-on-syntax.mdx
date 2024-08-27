@@ -67,7 +67,7 @@ In JavaScript, an array is a special type of object used to store multiple value
 
 ## Array Creation
 
-You've got several options
+Declaring them, you've got several options
 
 ```js
 let cats = ["Cute Cat", "Long Cat", "Cowboy Cat"]; // You can use the classic [] brackets
@@ -210,7 +210,7 @@ example();
 console.log(x + " " + y); // ReferenceError: y is not defined
 ```
 
-Unlike `var`, it is not initialized with `undefined`. If you try to access it before its declaration, you’ll get a ReferenceError.
+Unlike `var`, it is not initialized with `undefined`. If you try to access it before its declaration, you’ll get a `ReferenceError`.
 
 ```js
 var x = 42;
@@ -246,7 +246,7 @@ example();
 console.log(x + " " + y); // ReferenceError: y is not defined
 ```
 
-`const` behaves similarly to `let` ff you try to access it before its declaration, you’ll also get a ReferenceError.
+`const` behaves similarly to `let` if you try to access it before its declaration, you’ll also get a `ReferenceError`.
 
 ```js
 const x = 42;
@@ -291,9 +291,9 @@ Best practice is to use `const` by default and `let` when you need to reassign. 
 
 For the following Pen and Complete the following logic:
 
-- Create an adoption center name, this shouldn't change over the course of your program
-- Initialize a variable that represents the total number of adopted cats.
-- Implement a function that simulates adopting a cat.
+- Create an adoption center name, this shouldn't change over the course of your program.
+- Initialize a variable to track the total number of cats adopted.
+- Implement a function that simulates the process of adopting a cat.
 
 ```js
 const centerName = "Cute Cats Adoption Center";
@@ -334,3 +334,7 @@ function adoptCat() {
   console.log(`Total adopted cats: ${adoptedCats}`);
 }
 ```
+
+# Next class
+
+There will be a 5-minute quiz next class. It won’t count toward your grade; it’s just to show you the expected format and how much preparation you should do.
