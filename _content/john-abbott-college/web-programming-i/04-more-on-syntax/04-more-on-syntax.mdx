@@ -89,7 +89,9 @@ The behavior of an array in JavaScript acts very similarly to what you see in Li
 
 ```js
 let cats = ["Cute Cat", "Long Cat", "Cowboy Cat"];
-console.log(cats[0]);
+console.log(cats.length);
+cats = ["One Cat"];
+console.log(cats.length);
 ```
 
 ## Array Methods
@@ -104,7 +106,7 @@ cats.push("one cat", "two cat");
 // You can also remove the last item from an array
 cats.pop();
 // You can get the length of an array
-let total = cats.length();
+let total = cats.length;
 console.log(total);
 // You can find the index of a specific item in the array
 let index = cats.indexOf("Long Cat");
@@ -328,6 +330,7 @@ function adoptCat() {
   // Randomly select a cat from the catNames array
   let randomIndex = Math.floor(Math.random() * catNames.length);
   let adoptedCat = catNames[randomIndex];
+  // alternatively, you can use `var` since it is function-scoped, meaning it is accessible within the function it is declared in
 
   // Log the adopted cat's name
   console.log(`Adopted cat: ${adoptedCat}`);
