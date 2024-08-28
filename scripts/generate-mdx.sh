@@ -57,7 +57,7 @@ directory="${directories[$?]}"
 # Define categories based on the selected directory
 case $directory in
     "john-abbott-college")
-        categories=("User Interfaces" "Intro to Programming" "Web Programming I" "Admin")
+        categories=("Web Programming I" "Computerized Systems" "Admin" "User Interfaces" "Intro to Programming")
         ;;
     "portfolio")
         categories=("Art" "Branding" "Event" "Hackathon")
