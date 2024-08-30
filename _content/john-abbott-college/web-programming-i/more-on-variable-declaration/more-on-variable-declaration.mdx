@@ -1,0 +1,20 @@
+---
+# General Information
+category: "Web Programming I"
+title: "More on Variable Declaration"
+created: "2024-08-30"
+coverSrc: "./assets/"
+---
+
+# Variable Declaration Continued
+
+`let`, `const`, and `var` are all used to declare variables. Best practice is to use `const` by default and `let` when you need to reassign. `var` tends to come in handy if you need function-scoped variables, though this is less common in modern JavaScript.
+
+# Scope
+
+Last class we touched on the difference between function scope and block scope. For variables, the lifetime of a JavaScript variable starts when it is declared. Local variables are deleted when the function is completed and they are no longer in scope.
+
+- When trying to access an identifier, the JavaScript Engine will first look in the current function. If it doesn't find anything, it will continue to the next outer function to see if it can find the identifier there. It will keep doing this until it reaches the global scope.
+- Global identifiers are a bad idea. They can lead to bad variable names, conflicting variable names, and confusing code.
+
+# Hoisting
