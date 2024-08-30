@@ -29,10 +29,10 @@ function example() {
   // a locally scoped variable
   const x = 24;
   console.log(x);
-  // end of y's lifetime
+  // end of local x's lifetime
 }
 example();
-// end of x's lifetime
+// end of global x's lifetime
 ```
 
 When trying to access an identifier, the JavaScript Engine will first look in the current function:
