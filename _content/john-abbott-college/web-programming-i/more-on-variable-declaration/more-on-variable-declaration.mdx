@@ -128,7 +128,7 @@ In this example, only the declarations of variables are hoisted to the top of th
 
 ## What can be hoisted?
 
-Only variables declared with `var` are hoisted. Variable declaration is not hoisted when a variable is declared with `let` or `const`
+Only variables declared with `var` are hoisted. Declarations made with `let` or `const` are not hoisted.
 
 ## What are more examples of hoisting?
 
@@ -136,15 +136,15 @@ This code WILL NOT run:
 
 ```js
 test = "hi"; // ReferenceError: Cannot access 'test' before initialization
-let test = "bye"; // no hoisting here
+let test = "bye"; // No hoisting for 'let' or 'const'
 console.log(test);
 ```
 
 This code WILL run and print `"bye"`:
 
 ```js
-test = "hi"; // no error 👉 variable declared using var is hoisted
-var test = "bye"; // no hoisting here
+test = "hi"; // no error 👉 variable declared using 'var' is hoisted
+var test = "bye"; // Variable declaration is hoisted
 console.log(test);
 ```
 
@@ -160,13 +160,13 @@ This code WILL NOT run:
 
 ```js
 console.log(test); // ReferenceError: Cannot access 'test' before initialization
-let test = "bye"; // no hoisting here
+let test = "bye"; // No hoisting for 'let' or 'const'
 console.log(test);
 ```
 
 # Objects
 
-JavaScript objects are a data structure that allow you to store collections of related data and more complex entities. They are made up of key-value pairs, where each key is a string (or a symbol) that is associated with a value, which can be of any data type, including functions or another object.
+JavaScript objects are a data structure that allow you to store collections of related data and more complex entities. They are made up of key-value pairs, where each key is a string (or a symbol) that is associated with a value, which can be of any data type, including functions or even other objects.
 
 ```js
 const student = {
@@ -179,9 +179,13 @@ const student = {
 };
 ```
 
-Notice how they are comma delimitated.
+In this example, the `student` object includes properties like `firstName`, `lastName`, and `id`, as well as a method `greeting` that returns a string. This helps keep my code ✨ CLEAN ✨
+
+_NOTE: properties and methods within the object are separated by commas._
 
 ## Accessing Properties
+
+You can access object properties in a couple of ways:
 
 ```js
 // You can access it like you may be familiar with arrays
@@ -190,15 +194,17 @@ student["firstName"];
 // dot notation is also fair game
 student.firstName;
 
-// to invoke a function its like this
+// Invoking a method
 student.greeting();
 ```
 
 ## Property Conventions
 
-- Never use quotation marks
-- use `camelCase` naming conventions
-- Never start with a number, include spaces, and use hyphens
+When naming properties, follow these conventions:
+
+- Do not use quotation marks around property names.
+- Use `camelCase` for naming conventions
+- Avoid starting property names with a number, including spaces, or using hyphens.
 
 ```js
 // trash example
@@ -212,23 +218,28 @@ const betterCar = {
   modelName: "tesla",
 };
 console.log(betterCar.modelName); // tesla
-
 ```
+
+Following these conventions helps ensure your code is clean and avoids weird errors at run time.
 
 # Exercise 1
 
-Create a breakfast object to represent the following menu item.
+Create a breakfast object to represent the following menu item:
 
 ```text
 The Lumberjack - $9.95
 eggs, sausage, toast, hashbrowns, pancakes
 ```
 
-The object should contain properties for the `name`, `price`, and `ingredients`
+Your object should include the following properties:
+
+- `name`: The name of the menu item
+- `price`: The price of the menu item
+- `ingredients`: An array of ingredients included in the menu item
 
 ## Solution
 
-Here is the JavaScript Object:
+Here is an example of how you might structure the JavaScript Object:
 
 ```js
 const breakfast = {
@@ -238,7 +249,7 @@ const breakfast = {
 };
 ```
 
-and here is how you format it so that it prints nicely:
+Here is how you format the string so that it prints nicely:
 
 ```js
 console.log(
@@ -249,9 +260,9 @@ console.log(
 
 # Accessing properties from within an object
 
-Within an object method, the `this` keyword refers to the object itself, allowing you to access other properties and methods of the object.
+Within an object method, the `this` keyword refers to the object itself, allowing you to access other properties and methods.
 
-Going back to our breakfast example, let's say I wanted to add an ingredient to the array. What would that look like?
+Using our breakfast example, let's say we want to add an ingredient to the ingredients array. Here’s how you might do that:
 
 ```js
 const breakfast = {
@@ -264,7 +275,7 @@ const breakfast = {
 };
 ```
 
-And when we run the below, we will get the updated object:
+When you run the following code, it will update the object:
 
 ```js
 // ofc coffee MUST be included
@@ -278,7 +289,7 @@ console.log(
 );
 ```
 
-However we are already duplicating code here, that's bad practice. Let's make our solution more concise:
+To avoid duplicating code and to make our solution more concise, we can add a `print` method to the `breakfast` object:
 
 ```js
 const breakfast = {
@@ -289,7 +300,7 @@ const breakfast = {
     this.ingredients.push(newIngrediant);
   },
   print: function () {
-    // create a print function
+    // Print the details of the breakfast
     console.log(
       `${this.name} - $${this.price} \n${this.ingredients.toString()}`
     );
@@ -297,7 +308,7 @@ const breakfast = {
 };
 ```
 
-and now to see any updates to our object we simply just need to run:
+Now, to see any updates to our object, we can simply call:
 
 ```js
 breakfast.print();
