@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "More on Variable Declaration"
+title: "Hoisting, Objects, and Scope"
 created: "2024-08-30"
 coverSrc: "./assets/"
 ---
@@ -153,3 +153,56 @@ console.log(test); // ReferenceError: Cannot access 'test' before initialization
 let test = "bye"; // no hoisting here
 console.log(test);
 ```
+
+# Objects
+
+JavaScript objects are a data structure that allow you to store collections of related data and more complex entities. They are made up of key-value pairs, where each key is a string (or a symbol) that is associated with a value, which can be of any data type, including functions or another object.
+
+```js
+const student = {
+  firstName: "Arthur",
+  lastName: "Dent",
+  id: 1234567,
+  greeting: function () {
+    return "don't panic";
+  },
+};
+```
+
+Notice how they are comma delimitated.
+
+## Accessing Properties
+
+```js
+// You can access it like you may be familiar with arrays
+student["firstName"];
+
+// dot notation is also fair game
+student.firstName;
+
+// to invoke a function its like this
+student.greeting();
+```
+
+## Property Conventions
+
+- Never use quotation marks
+- use `camelCase` naming conventions
+- Never start with a number, include spaces, and use hyphens
+
+```js
+// trash example
+var car = {
+  "model name": "tesla",
+};
+console.log(car.model name); // Uncaught SyntaxError: missing ) after argument list
+
+// good example
+const betterCar = {
+  modelName: "tesla",
+};
+console.log(betterCar.modelName); // tesla
+
+```
+
+# Exercise 1
