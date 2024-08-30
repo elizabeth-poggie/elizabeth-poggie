@@ -206,3 +206,126 @@ console.log(betterCar.modelName); // tesla
 ```
 
 # Exercise 1
+
+Create a breakfast object to represent the following menu item.
+
+```text
+The Lumberjack - $9.95
+eggs, sausage, toast, hashbrowns, pancakes
+```
+
+The object should contain properties for the `name`, `price`, and `ingredients`
+
+## Solution
+
+Here is the JavaScript Object:
+
+```js
+const breakfast = {
+  name: "The Lumberjack",
+  price: 9.95,
+  ingredients: ["eggs", "sausage", "toast", "hashbrowns", "pancakes"],
+};
+```
+
+and here is how you format it so that it prints nicely:
+
+```js
+console.log(
+  `${breakfast.name} - $${breakfast.price} \n
+  ${breakfast.ingredients.toString()}`
+);
+```
+
+# Accessing properties from within an object
+
+Within an object method, the `this` keyword refers to the object itself, allowing you to access other properties and methods of the object.
+
+Going back to our breakfast example, let's say I wanted to add an ingredient to the array. What would that look like?
+
+```js
+const breakfast = {
+  name: "The Lumberjack",
+  price: 9.95,
+  ingredients: ["eggs", "sausage", "toast", "hashbrowns", "pancakes"],
+  addIngredient: function (newIngredient) {
+    this.ingredients.push(newIngredient); // notice the `this` keyword
+  },
+};
+```
+
+And when we run the below, we will get the updated object:
+
+```js
+// ofc coffee MUST be included
+breakfast.addIngredient("coffee");
+
+// now print again
+console.log(
+  `${breakfast.name} - $${
+    breakfast.price
+  } \n${breakfast.ingredients.toString()}`
+);
+```
+
+However we are already duplicating code here, that's bad practice. Let's make our solution more concise:
+
+```js
+const breakfast = {
+  name: "The Lumberjack",
+  price: 9.95,
+  ingredients: ["eggs", "sausage", "toast", "hashbrowns", "pancakes"],
+  addIngredient: function (newIngrediant) {
+    this.ingredients.push(newIngrediant);
+  },
+  print: function () {
+    // create a print function
+    console.log(
+      `${this.name} - $${this.price} \n${this.ingredients.toString()}`
+    );
+  },
+};
+```
+
+and now to see any updates to our object we simply just need to run:
+
+```js
+breakfast.print();
+```
+
+# Exercise 2
+
+Create an object called `instagramProfile`. This object should include the following three properties:
+
+- Your `name`
+- the number of `friends` you have
+- an array of `messages` you've posted as strings
+
+Additionally, the object should contain two functions:
+
+- `addFriend()` that increases the friend count by 1
+- `removeFriend()` that decreases the friend count by 1
+
+## Solution
+
+```js
+const instagramProfile = {
+  name: "Poggie",
+  friends: 80,
+  messages: [
+    "HELLO",
+    "Is this really what's popular these days?",
+    "I feel like a boomer",
+  ],
+
+  addFriend: function () {
+    this.friends++;
+  },
+
+  removeFriend: function () {
+    if (this.friends > 0) {
+      this.friends -= 1;
+    }
+  },
+};
+```
