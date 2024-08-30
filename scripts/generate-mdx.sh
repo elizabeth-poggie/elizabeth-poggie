@@ -60,7 +60,7 @@ case $directory in
         categories=("Web Programming I" "Computerized Systems" "Admin" "User Interfaces" "Intro to Programming")
         ;;
     "portfolio")
-        categories=("Art" "Branding" "Event" "Hackathon")
+        categories=("Art" "Branding" "Management" "Hackathon")
         ;;
     "recipes")
         categories=("Bread" "Dessert" "Snack")
