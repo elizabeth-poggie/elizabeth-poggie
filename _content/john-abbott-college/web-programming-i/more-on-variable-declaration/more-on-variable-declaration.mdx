@@ -91,7 +91,7 @@ Going back to my code, since I am tracking my base folder with the below constan
 const NOTES_BASE_FOLDER = "john-abbott-college";
 ```
 
-What happens if I take a job at another college? Or if I want to add my notes from undergrad? Well now I have a lot of code that I need to refactor and a variable to deprecate. At the moment the choice here is fine as my website has a relatively small code base and not that many users dependent on its functionality.
+What happens if I take a job at another college? Or if I want to add my notes from undergrad? Well now I have a lot of code that I need to refactor and a variable to deprecate. At the moment the choice here is fine as my website has a relatively small code base and not that many users dependent on its functionality, however this will become a future problem in the next 5 years.
 
 ## Best Practices
 
@@ -119,3 +119,37 @@ Only the declaration is hoisted, not the initialization => value is `undefined` 
 ## What can be hoisted?
 
 Only variables declared with `var` are hoisted. Variable declaration is not hoisted when a variable is declared with `let` or `const`
+
+## What are more examples of hoisting?
+
+This code WILL NOT run:
+
+```js
+test = "hi"; // ReferenceError: Cannot access 'test' before initialization
+let test = "bye"; // no hoisting here
+console.log(test);
+```
+
+This code WILL run and print `"bye"`:
+
+```js
+test = "hi"; // no error 👉 variable declared using var is hoisted
+var test = "bye"; // no hoisting here
+console.log(test);
+```
+
+This code WILL run:
+
+```js
+console.log(test); // undefined 👉 only the declaration is hoisted
+var test = "bye";
+console.log(test); // bye
+```
+
+This code WILL NOT run:
+
+```js
+console.log(test); // ReferenceError: Cannot access 'test' before initialization
+let test = "bye"; // no hoisting here
+console.log(test);
+```
