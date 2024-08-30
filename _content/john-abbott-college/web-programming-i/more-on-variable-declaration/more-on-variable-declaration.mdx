@@ -8,11 +8,19 @@ coverSrc: "./assets/"
 
 # Variable Declaration Continued
 
-Last class we looked at all the different ways we could declare variables. Best practice is to use `const` by default and `let` when you need to reassign. `var` tends to come in handy if you need function-scoped variables, though this is less common in modern JavaScript.
+In our last class, we explored the various ways to declare variables in JavaScript. The best practice is to use `const` by default, reserving `let` for cases where reassignment is necessary. While `var` can be useful when you need function-scoped variables, it is less common in modern JavaScript.
+
+```js
+const x = "I am the best";
+let y = "use me in loops and such";
+var z = "Why are you using me 👀";
+```
 
 # Scope
 
-Last class we touched on the difference between function scope and block scope. For variables, the lifetime of a JavaScript variable starts when it is declared. Local variables are deleted when the function is completed and they are no longer in scope.
+In our previous class, we discussed the difference between function scope and block scope. The lifetime of a JavaScript variable begins when it is declared. Local variables exist only within the function or block where they are defined and are removed when the function or block completes, meaning they are no longer accessible.
+
+Understanding the scope of variables helps in managing and organizing code effectively, ensuring that variables are used correctly within their intended context.
 
 ```js
 // a globally scoped variable
@@ -27,7 +35,7 @@ example();
 // end of x's lifetime
 ```
 
-When trying to access an identifier, the JavaScript Engine will first look in the current function.
+When trying to access an identifier, the JavaScript Engine will first look in the current function:
 
 ```js
 const x = 42;
@@ -38,7 +46,7 @@ function example() {
 example();
 ```
 
-If it doesn't find anything, it will continue to the next outer function to see if it can find the identifier there. It will keep doing this until it reaches the global scope.
+If it does not find the identifier in the current scope, JavaScript will search for it in the next outer scope. This process continues until it reaches the global scope.
 
 ```js
 const x = 42;
@@ -49,23 +57,23 @@ function example() {
 example();
 ```
 
-Global identifiers come with a risk, so it's essential to understand when it's appropriate to use them. Some examples are variables, functions, or objects that are accessible from anywhere in your code.
+Global identifiers can introduce risks, so it is important to understand when their use is appropriate. Examples of global identifiers include variables, functions, or objects that can be accessed from any part of your code. Being mindful of their scope helps prevent potential conflicts and unintended behaviors.
 
 # Global Identifiers
 
 ## Constants or Configuration Values
 
-If you have values that should remain consistent throughout the entire application and are unlikely to change, such as environment variables or configuration settings, this is when they come in handy:
+Global identifiers are useful for values that should remain consistent throughout your entire application and are unlikely to change, such as environment variables or configuration settings. For example:
 
 ```js
 const BASE_URL = "https://example.com/";
 ```
 
-A best practice is to use CAPS to declare a variable type.
+It is a best practice to use uppercase letters with underscores to declare these constants, making it clear that they are intended to never change.
 
 ## Libraries
 
-When you're building or using a library or framework that needs to expose a set of functions or variables globally, global identifiers are often necessary.
+When you are developing or utilizing a library or framework that needs to make certain functions or variables accessible across different parts of your application, global identifiers can be necessary. For example:
 
 ```js
 window.myLibrary = {
@@ -73,36 +81,38 @@ window.myLibrary = {
 };
 ```
 
+In this case, global identifiers ensure that the library’s functions and variables are available throughout your application, allowing different parts of your code to interact with them.
+
 ## What does this look like in action?
 
-Constants: Check out where I define my constants 👉 [NOTES_BASE_FOLDER](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/pages/notes/index.tsx#L16). Why? Well I can be sure that the notes I create will only ever be for John Abbott College.
+For an example of defining constants, take a look at where I set up my constants 👉 [NOTES_BASE_FOLDER](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/pages/notes/index.tsx#L16). This setup ensures that the notes I create are specifically tied to John Abbott College.
 
 ## The Risks
 
-That being said, global identifiers are to mainly be avoided. Why?
+Despite their usefulness, global identifiers should generally be avoided. Here’s why:
 
-- Global identifiers can lead to conflicts, especially in large projects or when integrating multiple libraries.
-- They can be easily accessed and modified by any script running on the page, which could lead to security vulnerabilities.
-- Global identifiers can make unit testing harder since their state persists across different tests, more on that in Web 2 tho
+- Conflict Risk 👉 Global identifiers can lead to conflicts, especially in larger projects or when integrating multiple libraries.
+- Security Concerns 👉 They can be accessed and modified by any script on the page, which might create security vulnerabilities.
+- Testing Challenges 👉 They can complicate unit testing because their state persists across different tests. This will be covered in Web 2.
 
-Going back to my code, since I am tracking my base folder with the below constant:
+Returning to my code, I use the following constant to track my base folder:
 
 ```js
 const NOTES_BASE_FOLDER = "john-abbott-college";
 ```
 
-What happens if I take a job at another college? Or if I want to add my notes from undergrad? Well now I have a lot of code that I need to refactor and a variable to deprecate. At the moment the choice here is fine as my website has a relatively small code base and not that many users dependent on its functionality, however this will become a future problem in the next 5 years.
+If I switch to a new job at another college or want to include notes from my undergraduate studies, I’ll face the challenge of refactoring a lot of code and deprecating a variable. While this approach works for my current small codebase and limited user base, it could become a significant issue in the next five years as the project grows.
 
 ## Best Practices
 
-- Limit the use of global identifiers as much as possible. Prefer using local scope, modules, or closures to contain your variables and functions.
-- Modern JavaScript allows for module systems where variables and functions are scoped to the module, reducing the need for globals.
+- Minimize Global Identifiers 👉 Use global identifiers sparingly. Instead, prefer local scope, functions, or closures to manage your variables and functions. This approach helps keep your code organized and prevents potential conflicts.
+- Leverage Module Systems 👉 Modern JavaScript supports module systems that confine variables and functions to the module level. However this concept is outside the scope of this lecture.
 
 # Hoisting
 
 ## What is it?
 
-This is just a fancy way of saying that a variable can be used before it is declared. Going back to one of our examples from last class:
+Hoisting is a concept in JavaScript that allows variables and functions to be used before they are explicitly declared in the code. Here’s an example from our last class:
 
 ```js
 var x = 42;
@@ -114,7 +124,7 @@ function example() {
 example();
 ```
 
-Only the declaration is hoisted, not the initialization => value is `undefined` until an actual assignment statement is encountered.
+In this example, only the declarations of variables are hoisted to the top of their scope, not their initializations. As a result, `y` is `undefined` when it is first accessed because its value is assigned later in the code.
 
 ## What can be hoisted?
 
