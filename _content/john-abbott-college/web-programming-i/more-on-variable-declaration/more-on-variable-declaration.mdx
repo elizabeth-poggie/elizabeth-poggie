@@ -8,13 +8,114 @@ coverSrc: "./assets/"
 
 # Variable Declaration Continued
 
-`let`, `const`, and `var` are all used to declare variables. Best practice is to use `const` by default and `let` when you need to reassign. `var` tends to come in handy if you need function-scoped variables, though this is less common in modern JavaScript.
+Last class we looked at all the different ways we could declare variables. Best practice is to use `const` by default and `let` when you need to reassign. `var` tends to come in handy if you need function-scoped variables, though this is less common in modern JavaScript.
 
 # Scope
 
 Last class we touched on the difference between function scope and block scope. For variables, the lifetime of a JavaScript variable starts when it is declared. Local variables are deleted when the function is completed and they are no longer in scope.
 
-- When trying to access an identifier, the JavaScript Engine will first look in the current function. If it doesn't find anything, it will continue to the next outer function to see if it can find the identifier there. It will keep doing this until it reaches the global scope.
-- Global identifiers are a bad idea. They can lead to bad variable names, conflicting variable names, and confusing code.
+```js
+// a globally scoped variable
+const x = 42;
+function example() {
+  // a locally scoped variable
+  const x = 24;
+  console.log(x);
+  // end of y's lifetime
+}
+example();
+// end of x's lifetime
+```
+
+When trying to access an identifier, the JavaScript Engine will first look in the current function.
+
+```js
+const x = 42;
+function example() {
+  const x = 24;
+  console.log(x); // 24 will print because it is in the current function
+}
+example();
+```
+
+If it doesn't find anything, it will continue to the next outer function to see if it can find the identifier there. It will keep doing this until it reaches the global scope.
+
+```js
+const x = 42;
+function example() {
+  const y = 24;
+  console.log(x); // 42 will print because it is declared globally
+}
+example();
+```
+
+Global identifiers come with a risk, so it's essential to understand when it's appropriate to use them. Some examples are variables, functions, or objects that are accessible from anywhere in your code.
+
+# Global Identifiers
+
+## Constants or Configuration Values
+
+If you have values that should remain consistent throughout the entire application and are unlikely to change, such as environment variables or configuration settings, this is when they come in handy:
+
+```js
+const BASE_URL = "https://example.com/";
+```
+
+A best practice is to use CAPS to declare a variable type.
+
+## Libraries
+
+When you're building or using a library or framework that needs to expose a set of functions or variables globally, global identifiers are often necessary.
+
+```js
+window.myLibrary = {
+  greet: "hallo",
+};
+```
+
+## What does this look like in action?
+
+Constants: Check out where I define my constants 👉 [NOTES_BASE_FOLDER](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/pages/notes/index.tsx#L16). Why? Well I can be sure that the notes I create will only ever be for John Abbott College.
+
+## The Risks
+
+That being said, global identifiers are to mainly be avoided. Why?
+
+- Global identifiers can lead to conflicts, especially in large projects or when integrating multiple libraries.
+- They can be easily accessed and modified by any script running on the page, which could lead to security vulnerabilities.
+- Global identifiers can make unit testing harder since their state persists across different tests, more on that in Web 2 tho
+
+Going back to my code, since I am tracking my base folder with the below constant:
+
+```js
+const NOTES_BASE_FOLDER = "john-abbott-college";
+```
+
+What happens if I take a job at another college? Or if I want to add my notes from undergrad? Well now I have a lot of code that I need to refactor and a variable to deprecate. At the moment the choice here is fine as my website has a relatively small code base and not that many users dependent on its functionality.
+
+## Best Practices
+
+- Limit the use of global identifiers as much as possible. Prefer using local scope, modules, or closures to contain your variables and functions.
+- Modern JavaScript allows for module systems where variables and functions are scoped to the module, reducing the need for globals.
 
 # Hoisting
+
+## What is it?
+
+This is just a fancy way of saying that a variable can be used before it is declared. Going back to one of our examples from last class:
+
+```js
+var x = 42;
+function example() {
+  console.log(x + " " + y); // 42 undefined
+  var y = 24;
+  console.log(x + " " + y); // 42 24
+}
+example();
+```
+
+Only the declaration is hoisted, not the initialization => value is `undefined` until an actual assignment statement is encountered.
+
+## What can be hoisted?
+
+Only variables declared with `var` are hoisted. Variable declaration is not hoisted when a variable is declared with `let` or `const`
