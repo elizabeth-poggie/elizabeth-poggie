@@ -5,3 +5,36 @@ title: "Quiz Answers - JavaScript Recap"
 created: "2024-09-02"
 coverSrc: "./assets/"
 ---
+
+# Question 1
+
+A program can be considered to be written in a scripting programming language when:
+
+❌ A compilation step is required before it can be run.
+✅ The code is usually interpreted rather than compiled.
+❌ It is only written in JavaScript.
+❌ It contains ancient characters.
+
+## Why?
+
+A scripting programming language typically refers to a language where the code is executed directly, often by an interpreter, rather than being compiled into machine code first. This allows for faster development, as you can run the code immediately without waiting for a compilation step. However, in languages like JavaScript, this can sometimes lead to issues going unnoticed until later, when unexpected `undefined` behavior starts to appear due to overlooked errors.
+
+# Question 2
+
+Given this JavaScript code:
+
+```js
+var test = [12, ["hi", 12], "hi"];
+```
+
+What would `test[1]` resolve to?
+
+❌ `undefined`
+❌ `"hi"`
+✅ `["hi", 12]`
+❌ `12`
+❌ `["hi"]`
+
+## Why?
+
+In JavaScript, arrays are "zero-indexed", meaning that the index of the first element is `0`, the second element is `1`, and so on.
