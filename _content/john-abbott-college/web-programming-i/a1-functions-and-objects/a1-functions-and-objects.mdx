@@ -1,0 +1,68 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Assignment 1 - Functions and Objects"
+created: "2024-09-02"
+coverSrc: "./assets/"
+---
+
+# Overview
+
+- Worth: This lab will count towards the Assignment portion of your final grade at `7%`
+- Due: `September 21 @ 2:00am` - I recommend submitting by `September 20 @ 9:00pm` to ensure good sleep, however for those who thrive under last-minute pressure, you have until later that evening 👀
+- Hand In: A `.zip` file containing your folder (work) onto LEA.
+- Late Penalty: Late submissions lose 10% per day to a maximum of 3 days. Nothing is accepted after 3 days and a grade of zero will be given.
+
+# Grading Criteria
+
+Refer to here for my generic approach: [Assignment Rubric](https://www.elizabethpoggie.com/notes/john-abbott-college/admin_rubric)
+
+In this Assignment, I will specifically be looking for:
+
+- Inputs: The function takes in the specified inputs.
+- Logic: The function logic returns the expected results in all possible scenarios with minimal complexity.
+- Outputs: The functions return the expected output.
+- Name: Meaningful names, without abbreviations, that relay exactly what the function does or the variables and parameters represent
+
+# Q1 - Cookie Clicker Challenge
+
+## Your task
+
+Create a JavaScript function that determines the winner of a 3-round cookie-clicking competition. Your function should take in two objects, each representing a player in the competition.
+
+## Function
+
+Each of the two objects your function takes in should have only `three` properties:
+
+- A property that identifies the player (e.g. `name`).
+- The number of cookies they start with (an `integer`).
+- An array containing the number of cookies clicked in each of the 3 rounds. The first number in the array is the number of cookies clicked in round 1, the second number for round 2, and the third for round 3.
+
+## The function returns
+
+The value of the property that identifies the player who collected the most cookies in total after the 3 rounds.
+
+## Additional details
+
+- Each round adds to the player’s total cookies.
+- In case of a tie, return "It's a tie!" or another identifier of your choice.
+
+I will invoke and evaluate your function. You may include sample objects you used to test your function if you want to.
+
+## Example IO
+
+Given the sample data:
+
+- Jim 👉 starting cookies: 10, cookies clicked per round: [5,8,7]
+- Pam 👉 starting cookies: 15, cookies clicked per round: [6,7,9]
+
+The function would output:
+
+```text
+Winner: Pam 🎉
+```
+
+Because ...
+
+- Jim's total cookies = 10 + (5 + 8 + 7) = 30
+- Pam's total cookies = 15 + (6 + 7 + 9) = 37
