@@ -53,7 +53,8 @@ function hasPassedBoatingSchool(student) {
   const allFeedback = [];
 
   // Calculate the total score
-  for (let test of student.tests) {
+  for (let i = 0; i < student.tests.length; i++) {
+    let test = student.tests[i];
     total += test.grade;
     allFeedback.push(test.feedback);
   }
@@ -170,7 +171,8 @@ function hasDiscountEligibility(user) {
   let totalSpent = 0;
 
   // Calculate the total amount spent
-  for (let purchase of user.purchases) {
+  for (let i = 0; i < user.purchases.length; i++) {
+    let purchase = user.purchases[i];
     totalSpent += purchase.amount;
   }
 
@@ -186,6 +188,92 @@ function hasDiscountEligibility(user) {
 console.log(hasDiscountEligibility(user)); // true
 ```
 
-# Arrays for Days
+# Arrays continued
 
-# Exercise 2
+Going back to what we know about arrays, these are the functions we know so far:
+
+```js
+// Add a single item to the end of an array
+myArray.push(item);
+// Add multiple items to the end of an array
+myArray.push(item1, item2);
+// Remove the last item from an array
+myArray.pop();
+// Get the length of an array
+myArray.length;
+// Find the index of a specific item in the array
+myArray.indexOf(findItem);
+```
+
+These allow us to dynamically resize and search the array much like a list data structure that you are familiar with from previous classes. But there are a few more that are worth knowing...
+
+## Splicing
+
+```js
+// You can get the length of an array
+myArray.splice(removeFromIndex, removeNumberOfElements, replacement1, replacement2, ...);
+```
+
+With `splice`, you can remove one or more elements from an array at a specific index as opposed to `pop()` which only lets you modify at the very end. For example:
+
+```js
+const fruits = ["apple", "banana", "cherry", "date"];
+fruits.splice(1, 1);
+console.log(fruits); // ["apple", "cherry", "date"]
+```
+
+`splice` can also be used to insert new elements into an array at a specific index, effectively "`splice`ing" them into place. For example:
+
+```js
+const fruits = ["apple", "cherry", "date"];
+fruits.splice(1, 0, "banana");
+console.log(fruits); // ["apple", "banana", "cherry", "date"]
+```
+
+## Iterating
+
+The `forEach()` method iterates over the array without the need of an explicitly defined index. For example, going back to our boating school example, this is how we iterated over all the testing scores:
+
+```js
+// Traditional loop
+for (let i = 0; i < student.tests.length; i++) {
+  let test = student.tests[i];
+  total += test.grade;
+}
+```
+
+Alternatively, this can also be written like this:
+
+```js
+// Slightly fancier loops
+for (let test of student.tests) {
+  total += test.grade;
+}
+```
+
+And using what we know about this `forEach()` method, we can do the following 1 liner:
+
+```js
+// Even fancier loops
+student.tests.forEach(function (x) {
+  total += test.grade;
+});
+```
+
+And if anyone is curious about arrow notation, you can get this very sleek gentleman right here:
+
+```js
+// SLEEK loops 👌
+student.tests.forEach((test) => {
+  total += test.grade;
+});
+```
+
+In summary:
+
+- `forEach()` does not modify the original array
+- `forEach()` returns nothing and therefore the return value is `undefined`
+
+However, there is an even sleeker way you can iterate over the contents of a loop 👀
+
+## Mapping
