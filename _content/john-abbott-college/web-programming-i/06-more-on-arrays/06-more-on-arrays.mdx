@@ -1,17 +1,133 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "More on Arrays"
+title: "Objects & Functions & Arrays!! OH MY!!"
 created: "2024-09-02"
 coverSrc: "./assets/"
 ---
 
-# Objects and Functions
+# Brief Recap
 
-Last class we explored objects, now lets mix together our knowledge
+- JavaScript is dynamically typed and allows you to get away with a lot of shenanigans.
+- `const` is the best, `let` for reassignment needs, and `var` is like the weird uncle you try to avoid at family gatherings. While you should understand how it works, it's best to be avoided.
+- JavaScript objects are pretty cool and powerful. You can store a lot of neat things in them including related properties, methods (functions that belong to the object), and even other objects.
+- Global variables are bad news and can cause problems down the line. Although it might seem like a minor decision, using global variables can quickly cause problems that affect your entire codebase. It's best to avoid them to prevent painful refactoring sessions and maintain cleaner, more manageable code.
+
+TLDR: Good code starts with solid foundations.
+
+# Functions that take objects
+
+Let's start building on complexity and create a function that takes objects as parameters.
+
+## Example 1
+
+Let’s create a function that determines if SpongeBob passes his boating school based on his grades. We’ll use an object to store SpongeBob’s information, including his name and a list of his grades.
+
+```js
+const student = {
+  name: "SpongeBob SquarePants",
+  // Grades from different tests
+  tests: [
+    {
+      grade: 40,
+      feedback: ["Ran into the Krusty Krab"],
+    },
+    {
+      grade: 35,
+      feedback: ["Crashed the boat 5 times", "Inflated Mrs. Puff"],
+    },
+    {
+      grade: 10,
+      feedback: ["Classified as a public menace on the road."],
+    },
+  ],
+  // The standards are high in Bikini Bottom
+  passingGrade: 85,
+};
+```
+
+We want to create a function that checks if SpongeBob’s average grade is above the passing grade. If it is, he gets his license and graduates from boating school; otherwise, he does not.
+
+```js
+// Function Declaration
+function hasPassedBoatingSchool(student) {
+  let total = 0;
+  const numberOfGrades = student.tests.length;
+  const allFeedback = [];
+
+  // Calculate the total score
+  for (let test of student.tests) {
+    total += test.grade;
+    allFeedback.push(test.feedback);
+  }
+
+  // Calculate the average score
+  const averageGrade = total / numberOfGrades;
+
+  // Determine if the student passes and provide feedback if not
+  if (averageGrade >= student.passingGrade) {
+    return `${student.name} has graduated 🧑‍🎓`;
+  } else {
+    return `
+        ${student.name} 
+        has not passed boating school. Please refer to the below feedback: \n 
+        ${allFeedback.toString()}
+    `;
+  }
+}
+```
+
+In this example, the `hasPassedBoatingSchool` function takes a student object as a parameter, calculates the average of the grades, and checks if it meets or exceeds the passing grade. If the student does not pass boating school it outputs a result explaining what the student needs to work on to improve.
+
+Example Usage:
+
+```js
+const feedback = hasPassedBoatingSchool(student);
+console.log(feedback);
+```
+
+Expected Output:
+
+```text
+
+```
+
+The function is generic, because let's say we create another object with the same properties, we can use the function to evaluate this other student as well:
+
+```js
+const student = {
+  name: "Patrick Star",
+  // Grades from different tests
+  tests: [
+    {
+      grade: 100,
+      feedback: ["Perfect Run."],
+    },
+    {
+      grade: 95,
+      feedback: ["Perfect.", "Such a smooth ride"],
+    },
+  ],
+  // The standards are high in Bikini Bottom
+  passingGrade: 85,
+};
+
+const feedback = hasPassedBoatingSchool(student);
+console.log(feedback);
+```
+
+Which will give the following output:
+
+```text
+
+```
+
+# Exercise 1
 
 # Code Resilience
 
 Returning all code paths effectively
 
 # Arrays for Days
+
+# Exercise 2
