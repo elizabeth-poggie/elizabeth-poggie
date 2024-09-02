@@ -26,11 +26,17 @@ In this Assignment, I will specifically be looking for:
 
 # Q1 - Cookie Clicker Challenge
 
-## Your task
+`Worth 20 marks`
+
+## The Pitch
+
+Taking inspiration from your Intro to Web development class, you decided to create a competitive cookie clicker game using JavaScript. The game consists of 3 rounds and only the player with the highest cookies per second (CPS) will emerge victorius
+
+## Your Task
 
 Create a JavaScript function that determines the winner of a 3-round cookie-clicking competition. Your function should take in two objects, each representing a player in the competition.
 
-## Function
+## Object Spec
 
 Each of the two objects your function takes in should have only `three` properties:
 
@@ -38,7 +44,7 @@ Each of the two objects your function takes in should have only `three` properti
 - The number of cookies they start with (an `integer`).
 - An array containing the number of cookies clicked in each of the 3 rounds. The first number in the array is the number of cookies clicked in round 1, the second number for round 2, and the third for round 3.
 
-## The function returns
+## Function Spec
 
 The value of the property that identifies the player who collected the most cookies in total after the 3 rounds.
 
@@ -53,8 +59,8 @@ I will invoke and evaluate your function. You may include sample objects you use
 
 Given the sample data:
 
-- Jim 👉 starting cookies: 10, cookies clicked per round: [5,8,7]
-- Pam 👉 starting cookies: 15, cookies clicked per round: [6,7,9]
+- Jim 👉 Starting cookies: 10; Cookies clicked per round: [5,8,7]
+- Pam 👉 Starting cookies: 15; Cookies clicked per round: [6,7,9]
 
 The function would output:
 
@@ -62,7 +68,64 @@ The function would output:
 Winner: Pam 🎉
 ```
 
-Because ...
+This is because:
 
 - Jim's total cookies = 10 + (5 + 8 + 7) = 30
 - Pam's total cookies = 15 + (6 + 7 + 9) = 37
+
+Pam has a higher CPS rate compared to Jim and therefore has more cookies.
+
+# Q1 - Anti-Social Networking
+
+`Worth 30 marks`
+
+## The Pitch
+
+You are a founder of an obscure social networking platform that suggests friends based on shared enemies.
+
+```cs
+"The enemy of my enemy is my friend"
+```
+
+Inspired by this ancient proverb, your task is to implement the core features needed to attract funding for your questionable project.
+
+## Your Task
+
+Create a JavaScript function and a user object with inner methods. Your function should take in two user objects.
+
+## Object Spec
+
+Both user objects should have properties for:
+
+- Username: A string representing the user's online handle.
+- Join year: The year the user joined the social network.
+- Last active year: The last year the user was active (you can choose how to represent someone who is still active).
+- Location code: A string representing the user's location (e.g. postal code).
+- List of enemies: An array of usernames representing the user's known enemies on the network.
+
+The `FIRST` user object should contain the following methods (inside the object):
+
+- Method 1: Takes in the join year and the last active year of another user and returns `true` or `false`, depending on whether the two users were active on the social network during the same period.
+- Method 2: Takes in another user object and returns `true` or `false`, depending on whether the two users share any mutual enemies (i.e., if both users have at least one username in their enemies list).
+
+## Function Spec
+
+The main function should determine if the two users are likely to have become allies due to their mutual enemies by returning:
+
+- `null` if the two users are not likely to have interacted online due to lack of mutual enemies or differing active periods.
+- A `string` indicating a potential alliance if they share at least one mutual enemy (e.g., "Potential allies due to mutual enemies").
+
+## Example IO
+
+Given the sample data:
+
+- Jim 👉 Joined in 2020; Last active in 2023; Location Code: "SCR"; Enemies: ["Dwight", "Charles Miner"]
+- Pam 👉 Joined in 2021; Last active in 2024; Location Code: "SCR"; Enemies: ["Dwight"]
+
+The function would output:
+
+```text
+Result: Potential allies due to mutual enemies
+```
+
+This is because Jim and Pam share `Dwight` as a common enemy. If Jim and Pam had no mutual enemies or their active periods didn’t overlap, the function would return `null`.
