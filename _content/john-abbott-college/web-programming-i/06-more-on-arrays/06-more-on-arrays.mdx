@@ -19,8 +19,6 @@ TLDR: Good code starts with solid foundations.
 
 Let's start building on complexity and create a function that takes objects as parameters.
 
-## Example 1
-
 Let’s create a function that determines if SpongeBob passes his boating school based on his grades. We’ll use an object to store SpongeBob’s information, including his name and a list of his grades.
 
 ```js
@@ -69,9 +67,9 @@ function hasPassedBoatingSchool(student) {
     return `${student.name} has graduated 🧑‍🎓`;
   } else {
     return `
-        ${student.name} 
-        has not passed boating school. Please refer to the below feedback: \n 
-        ${allFeedback.toString()}
+        ${
+          student.name
+        } has not passed boating school. Please see the below feedback: \n ${allFeedback.toString()}
     `;
   }
 }
@@ -89,13 +87,14 @@ console.log(feedback);
 Expected Output:
 
 ```text
-
+SpongeBob SquarePants has not passed boating school. Please see the below feedback:
+Ran into the Krusty Krab,Crashed the boat 5 times,Inflated Mrs. Puff,Classified as a public menace on the road.
 ```
 
 The function is generic, because let's say we create another object with the same properties, we can use the function to evaluate this other student as well:
 
 ```js
-const student = {
+const student2 = {
   name: "Patrick Star",
   // Grades from different tests
   tests: [
@@ -112,14 +111,14 @@ const student = {
   passingGrade: 85,
 };
 
-const feedback = hasPassedBoatingSchool(student);
-console.log(feedback);
+const feedback2 = hasPassedBoatingSchool(student2);
+console.log(feedback2);
 ```
 
 Which will give the following output:
 
 ```text
-
+Patrick Star has graduated 🧑‍🎓
 ```
 
 # Exercise 1
