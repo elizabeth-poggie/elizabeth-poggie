@@ -17,11 +17,10 @@ TLDR: Good code starts with solid foundations.
 
 # Functions that take objects
 
-Let's start building on complexity and create a function that takes objects as parameters.
-
-Let’s create a function that determines if SpongeBob passes his boating school based on his grades. We’ll use an object to store SpongeBob’s information, including his name and a list of his grades.
+Let's start building on complexity and create a function that takes objects as parameters. we'll determine if SpongeBob passes his boating school based on his grades. We'll use an object to store SpongeBob's information, including his name and a list of his grades.
 
 ```js
+// Step 1 👉 create an object
 const student = {
   name: "SpongeBob SquarePants",
   // Grades from different tests
@@ -44,10 +43,10 @@ const student = {
 };
 ```
 
-We want to create a function that checks if SpongeBob’s average grade is above the passing grade. If it is, he gets his license and graduates from boating school; otherwise, he does not.
+Now we'll create a function to check if SpongeBob’s average grade is above the passing grade. If it is, he gets his license and graduates from boating school; otherwise, he does not.
 
 ```js
-// Function Declaration
+// Step 2 👉 Function Declaration
 function hasPassedBoatingSchool(student) {
   let total = 0;
   const numberOfGrades = student.tests.length;
@@ -77,21 +76,21 @@ function hasPassedBoatingSchool(student) {
 
 In this example, the `hasPassedBoatingSchool` function takes a student object as a parameter, calculates the average of the grades, and checks if it meets or exceeds the passing grade. If the student does not pass boating school it outputs a result explaining what the student needs to work on to improve.
 
-Example Usage:
+_Example Usage:_
 
 ```js
 const feedback = hasPassedBoatingSchool(student);
 console.log(feedback);
 ```
 
-Expected Output:
+_Expected Output:_
 
 ```text
 SpongeBob SquarePants has not passed boating school. Please see the below feedback:
 Ran into the Krusty Krab,Crashed the boat 5 times,Inflated Mrs. Puff,Classified as a public menace on the road.
 ```
 
-The function is generic, because let's say we create another object with the same properties, we can use the function to evaluate this other student as well:
+The function is generic, and can be used with other student objects with the same structure. For example, if we create another student object with similar properties, we can use the function to evaluate this new student as well:
 
 ```js
 const student2 = {
@@ -115,17 +114,77 @@ const feedback2 = hasPassedBoatingSchool(student2);
 console.log(feedback2);
 ```
 
-Which will give the following output:
+_Expected Output:_
 
 ```text
 Patrick Star has graduated 🧑‍🎓
 ```
 
+And just like that, we're using our knowledge of objects to write cleaner, more effective JavaScript code :^)
+
 # Exercise 1
 
-# Code Resilience
+Create a function to determine if a user is eligible for a discount based on their purchase history. Use an object to store the user's information, including their name, the amount of their purchases, and their membership status.
 
-Returning all code paths effectively
+## Part A - Object Spec
+
+Use an object to store the user's information, including their name, the amount of their purchases, their membership status, and the minimum amount required for a discount. Their purchases should be stored as an array of objects with the following properties:
+
+```js
+{
+    amount: 650,
+    item: "Laptop",
+}
+```
+
+## Part B - Function Spec
+
+Create a function to check if the user is eligible for a discount. If the total amount of their purchases meets or exceeds the minimum amount required and they are a premium member, they get a discount. Otherwise, they do not.
+
+## Solution
+
+```js
+// Step 1 👉 Create an object
+const user = {
+  name: "Arthur Dent",
+  purchases: [
+    {
+      amount: 650,
+      item: "Laptop",
+    },
+    {
+      amount: 50,
+      item: "Mouse",
+    },
+    {
+      amount: 200,
+      item: "Monitor",
+    },
+  ],
+  isPremiumMember: true,
+  minimumAmountForDiscount: 500,
+};
+
+// Step 2 👉 Function Declaration
+function hasDiscountEligibility(user) {
+  let totalSpent = 0;
+
+  // Calculate the total amount spent
+  for (let purchase of user.purchases) {
+    totalSpent += purchase.amount;
+  }
+
+  // Determine if the user is eligible for a discount
+  if (totalSpent >= user.minimumAmountForDiscount && user.isPremiumMember) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// Step 3 👉 Example IO
+console.log(hasDiscountEligibility(user)); // true
+```
 
 # Arrays for Days
 
