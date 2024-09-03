@@ -10,7 +10,7 @@ coverSrc: "./assets/"
 
 Building on what we learnt last class, a lot of things could be considered a computer that works exclusively with 1s and 0s. So how do we get from that to what we know, love, and use every day?
 
-In this class we will look at how we go from simple 1s and 0s to transistors, to hardware all the way up to operating systems and application software.
+In this week we will look at how we go from simple 1s and 0s to transistors, to hardware all the way up to operating systems and application software.
 
 # Hardware and Software
 
@@ -143,7 +143,7 @@ Computers are complicated, just like with people, and mastering even a single co
 
 # How do computers store information?
 
-Computers only think in terms of 1s and 0s (binary). Every bit of information on your computer is coded in binary and the your computer will translate one set of of 1s and 0s to another when displaying information on your screen.
+Computers operate using a binary system, where every piece of data is represented by a series of 1s and 0s. Your computer encodes and decodes this binary data to display information on your screen.
 
 ```text
 10101010101010    ↔️    🔍😭
@@ -151,13 +151,13 @@ Computers only think in terms of 1s and 0s (binary). Every bit of information on
 
 ## What is a file?
 
-On a computer, you probably have pictures, word documents, saved video games, applications, code, plus a whole lot more. It would be very difficult if every time you opened Word, every document that you ever wrote was all smushed together.
+On a computer, files can include a variety of content such as pictures, documents, video games, applications, and code. Imagine if every time you opened Word, all your documents were jumbled together:
 
 ```text
 literally everything on your computer    ↔️    🔍😭
 ```
 
-So, to make your life easier, your computer organizes data into discrete elements, called files. Each file has the data for one thing only, for example, one picture, one Word Document, one application, etc.
+To keep things organized, your computer uses files to separate data into distinct elements. Each file contains specific data, like one picture, one document, or one application.
 
 ```text
 📁       📁         📁          ↔️    🔍👀
@@ -165,7 +165,7 @@ So, to make your life easier, your computer organizes data into discrete element
 image    word doc    excel
 ```
 
-In the old days, files used to be a document that was printed on paper. Today, most people refer to files as a document of some kind (picture, code, Word, etc) that is stored on your computer.
+In the past, "files" referred to physical documents stored in folders. Today, files are digital documents stored on your computer.
 
 ```text
 files for boomers:
@@ -178,38 +178,50 @@ files for gen alpha:
 📱
 ```
 
-As we progress in society, the way information gets further abstracted away from how we store information on a computer.
+As technology evolves, the way we interact with files continues to become more abstract.
 
 ## How are files organized?
 
-Before computers were everywhere, most people and companies organized their files into folders.
+Before computers became widespread, people and companies organized their physical files into folders.
 
 ```text
-📁
+file           folder
+📁       ➡       🗂️
 ```
 
-Each folder would have a name, describing what types of files it contained (example: ‘Project 1‘, ‘Project 2‘)
+Each folder had a name describing its contents, such as 'Project 1' or 'Project 2'.
 
 ```text
-📁           📁
+🗂️          🗂️
 ⬆           ⬆
 project 1    project 2
 ```
 
-Maybe, if the number of files were large, the owner of a company might reorganize their files, so that the folder ‘Project 1‘ might be contain more folders (example: grades, lectures, etc.)
+For larger collections of files, folders could contain subfolders. For example, 'Project 1' might include additional folders like 'grades' and 'lectures'.
 
 ```text
     project 1
-      📁
+      🗂️
       ⬆
-📁          📁
+🗂️          🗂️
 ⬆          ⬆
 grades      lectures
 ```
 
-With the advent of computers, we went from storing files on paper, in paper folders, in filing cabinets, to storing files on computers easier, the people in charge decided to use the same names.
+And inside these sub folders we would have actual files:
 
-So, in a folder you can have files and other folders. Since folders are not longer physical things, we need a way to envision them. In short, folders (or directories) are organized into a tree format:
+```text
+    project 1
+      🗂️
+      ⬆
+🗂️          🗂️
+⬆          ⬆
+📁📁📁      📁📁📁
+⬆          ⬆
+excel       pdf
+```
+
+With computers, we moved from physical folders to digital ones, but the concept remained similar. Folders, or directories, are organized in a tree-like structure:
 
 ```md
 documents
@@ -227,17 +239,17 @@ documents
 
 ## What does this look like on our computers?
 
-Welcome to `File Explorer`, the way you will be navigating your information over the entirety of this course.
+Welcome to `File Explorer`, where you'll navigate through your files during this course.
 
 ![file_explorer](./assets/file_explorer.png)
 
-In the image above the top line indicates all of the folders relative to each other:
+In the image above, the top line shows the folder hierarchy:
 
 ```text
 Sandy > Science-CompSci > QuestionPool > ReadCSV > Solution_01
 ```
 
-means that the folder Sandy contains the folder Science-CompSci which contains …
+This means the folder 'Sandy' contains 'Science-CompSci', which contains...
 
 ```md
 Sandy
@@ -247,34 +259,28 @@ Sandy
 │ │ │ ├── Solution_01
 ```
 
-And the list of files in the main window are the files that are contained in the folder `Solution_01`
+The list of files in the main window represents the contents of the `'Solution_01'` folder in a tree like hierarchy.
 
 # What is a file extensions?
 
-The file extension is defined as the last bit of a file name that follows the last dot (.)
-
-Example: `code.py` has a file extension` .py`. A word document typically has the extension `.docx`, so the filename is typically assignment `1.docx`.
+A file extension is the last part of a file name, following the final dot (.), indicating the file type. For example, `code.py` has a file extension` .py`, and a Word document typically has the extension `.docx`.
 
 ## Why don’t I see them in File Explorer?
 
-The developers at Microsoft have designed File Explorer to be easy(?) for non-programmers to use, and so by default they hide the file extension.
+By default, File Explorer hides file extensions to simplify the user interface. However, as a programmer, it's crucial to know file extensions.
 
-But, you are now a programmer, and you absolutely need to know what the file extensions are.
+To view file extensions:
 
-To see the detailed file view:
+- Open `File Explorer`, go to "View," and select "Details."
+- Check the "File name extensions" box.
 
-- In File Explorer, navigate to "View" and select "Details"
-- You should see a "File name extensions" checkbox option. Click that!!
-
-Enabling file extensions allow you to understand what sorts of files you are dealing with.
+Seeing file extensions helps you understand what type of file you’re working with.
 
 ## Why do we use File Extensions?
 
-The file extensions give a hint to the operating system (Windows/Linux/Mac) as to what type of data is in the file. So if the extension is .`png` then the operating system knows that it is a picture, and if you double click the filename in File Explorer, it will call the appropriate program that can show you the picture.
+File extensions signal the operating system (Windows, Linux, Mac) about the file type. For example, a `.png` extension indicates an image file. Double-clicking such a file opens it with the appropriate program. Similarly, a `.docx` file opens with Microsoft Word.
 
-Likewise if the file extension is `.docx`, double clicking the file in File Explorer will open Microsoft Office which in turn will read the file and display it to you.
-
-Some important File Extensions in this course:
+Important Extensions in this course:
 
 - Images: `.png` `.jpeg` `.gif`
 - Documents: `.docx` `.txt` `.html`
@@ -307,16 +313,16 @@ TLDR: ALWAYS extract the compressed file before working on it.
 
 # Exercise 1
 
-In this exercise you will be creating a compressed folder. To get started
+In this exercise, you will create a compressed folder:
 
-- Create a folder called `practice-2`
-- Inside this folder, create a subfolder or each type:
+- Create a folder named `practice-2`
+- Inside this folder, create subfolders for each type
   - Images
   - Documents
-- Save several images of your favorite animal to your `practice-2 > Images` directory.
-  - Take a screenshot that shows your different file extensions of the image. Are they `png`, `jpg`, or a `gif`?
-  - Drag and drop your screenshot into your `practice-2 > Images` directory.
-- Now open up excel where you will create and save an empty excel file:
-  - Select `Save As` and store it under your `practice-2 > Documents`
-- Compress your `practice-2` folder
-- Rename your `practice-2` folder to be your `student ID` and upload it to Lea
+- Save several images of your favorite animal in the `practice-2 > Images` directory.
+  - Take a screenshot showing the file extensions of your images. Are they `png`, `jpg`, or a `gif`?
+  - Drag and drop your screenshot into the `practice-2 > Images` directory.
+- Open Excel and create an empty file:
+  - Save this file under `practice-2 > Documents`
+- Compress your `practice-2` folder.
+- Rename the folder to your student ID and upload it to LEA.
