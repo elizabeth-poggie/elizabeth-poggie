@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "Computerized Systems"
-title: "Hardware, Software, and Operating Systems"
+title: "Hardware and Storage"
 created: "2024-09-03"
 coverSrc: "./assets/"
 ---
@@ -329,17 +329,48 @@ In this exercise, you will create a compressed folder:
 
 # Computer Storage
 
-Ok so now we know how to interact with an output device (monitor) that displays storage information in a way that makes sense to humans. But what is happening under the hood? While we operate on files and folders that makes sense to us, what does the CPU, or the computer's brain operate on that makes sense to the computer?
+Now that we understand how to interact with an output device like a monitor, which displays storage information in a way that makes sense to us, let’s explore what happens behind the scenes. While we deal with files and folders that make sense to our brains, the CPU, or the computer's brain, operates on data in a way that is specific to the computer.
 
 ## RAM
 
-Like the memory in the human brain, computer memory stores data. Also like human memory, there is both short-term (temporary) and long-term (permanent) memory storage. The `RAM` (Random Access Memory), is used to temporarily hold information while the CPU is processing it. Think of this as the computer’s work area, it works similarly to your "short term" memory.
+Much like the memory in the human brain, computer memory stores data. There are two types of computer memory: short-term (temporary) and long-term (permanent).
 
-The CPU does not access information directly form the Hard drive because the Hard drive is very slow compared to the CPU (it would have to wait too long). Therefore the RAM temporarily loads data and instructions and passes it to the CPU.
+```text
+Processor        Temporary           Permanent
+                  Storage             Storage
 
-The more RAM you have, the more programs you can open at the same time which is why gamers are fixated on getting a lot of RAM when getting a computer. They need a lot of "short term memory" to be able to run these massive simulations smoothy
 
-However, once the computer is powered off, all information is erased from the RAM. So if we need RAM to run our games, programs, and surf the web, how do we still get access to this information after we have turned off and back on our computer?
+🧠          ↔️   i am hungry.      The good ol' days
+
+💾          ↔️        🫙                  💿
+```
+
+The `RAM` (Random Access Memory), is used to temporarily hold information while the CPU is processing it. Think of this as the computer’s work area, it works similarly to your "short term" memory. Do you need to know that on September 3rd, 2024 at 12:00pm that you were craving poutine? Absolutely not. This information is "temporary" similar to how "temporary" information is in RAM.
+
+```text
+🧠          ↔️   i am hungry.      The good ol' days
+
+💾          ↔️        🫙                  💿
+                     ⬆
+                     RAM
+```
+
+The CPU doesn’t access information directly from the hard drive because it's too slow for the CPU's needs. Instead, data and instructions are temporarily loaded into RAM for quick access.
+
+```text
+🧠          ↔️     i am hungry.    ↔️   In the good ol' days i ate poutine
+                      ⬆                           ⬆
+                  short term                   long term
+
+
+💾          ↔️        🫙        ↔️         💿
+                     ⬆                   ⬆
+                     RAM              long term
+```
+
+More RAM means more programs can run simultaneously, which is why gamers and power users often seek out high amounts of RAM. They need ample "short-term memory" to run complex simulations smoothly. Going back to our analogy, the more "short-term memory" we have, the more food options we can keep in our brain at a given single instant.
+
+However, once the computer is turned off, all information in RAM is erased. So, how does the computer retain information after being powered off?
 
 ## Storage Discs
 
