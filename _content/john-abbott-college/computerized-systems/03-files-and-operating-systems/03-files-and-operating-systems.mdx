@@ -225,10 +225,98 @@ documents
 │ │ ├── instructions.pdf
 ```
 
-# What is Software?
+## What does this look like on our computers?
 
-The software, on the other hand, provides the instructions that tell the hardware what to do.
+Welcome to `File Explorer`, the way you will be navigating your information over the entirety of this course.
 
-The operating system acts as the middleman, managing the communication between the hardware and the application software.
+![file_explorer](./assets/file_explorer.png)
 
-When you run a program, the operating system interprets the software's instructions, sending them to the CPU to be processed. The CPU then executes these instructions, performing calculations, moving data, and interacting with other hardware components as needed.
+In the image above the top line indicates all of the folders relative to each other:
+
+```text
+Sandy > Science-CompSci > QuestionPool > ReadCSV > Solution_01
+```
+
+means that the folder Sandy contains the folder Science-CompSci which contains …
+
+```md
+Sandy
+├── Science-CompSci
+│ ├── QuestionPool
+│ │ ├── ReadCSV
+│ │ │ ├── Solution_01
+```
+
+And the list of files in the main window are the files that are contained in the folder `Solution_01`
+
+# What is a file extensions?
+
+The file extension is defined as the last bit of a file name that follows the last dot (.)
+
+Example: `code.py` has a file extension` .py`. A word document typically has the extension `.docx`, so the filename is typically assignment `1.docx`.
+
+## Why don’t I see them in File Explorer?
+
+The developers at Microsoft have designed File Explorer to be easy(?) for non-programmers to use, and so by default they hide the file extension.
+
+But, you are now a programmer, and you absolutely need to know what the file extensions are.
+
+To see the detailed file view:
+
+- In File Explorer, navigate to "View" and select "Details"
+- You should see a "File name extensions" checkbox option. Click that!!
+
+Enabling file extensions allow you to understand what sorts of files you are dealing with.
+
+## Why do we use File Extensions?
+
+The file extensions give a hint to the operating system (Windows/Linux/Mac) as to what type of data is in the file. So if the extension is .`png` then the operating system knows that it is a picture, and if you double click the filename in File Explorer, it will call the appropriate program that can show you the picture.
+
+Likewise if the file extension is `.docx`, double clicking the file in File Explorer will open Microsoft Office which in turn will read the file and display it to you.
+
+Some important File Extensions in this course:
+
+- Images: `.png` `.jpeg` `.gif`
+- Documents: `.docx` `.txt` `.html`
+- Audio: `.mp3` `.flac`
+- Compressed files: `.zip`
+
+# Compressing / Uncompressing files
+
+There are multiple ways to create a single file from a set of other files (LEA only accepts one document). We will only be discussing one method in this document.
+
+## Compressing Files
+
+- Open file explorer.
+- To `zip`, select the files that you want to zip together, and right-click. Select `send to` then `compressed folder`
+
+A new zipped folder with the same name is created in the same location. To rename it, right-click the folder and select `Rename` and then type the new name
+
+## Extracting Files
+
+- Locate the `zip`ped folder that you want to `unzip` (extract)
+- Do one of the following:
+  - to unzip a single file or folder, open the zipped folder then drag the file or folder to the new location. This way works but is deeply inefficient.
+  - To unzip all the con6tents of the zipped folder at once, right click the folder and select `Extract All`
+
+## Misleading Information
+
+If you have double-clicked on a `zip` file, it will open a new window showing all the files within the zip file. This can be misleading because it looks just the same as if the files have been unzipped. However the contents of the zipped file are "READ ONLY". You will not be able to modify the contents unless you first `Extract` them.
+
+TLDR: ALWAYS extract the compressed file before working on it.
+
+# Exercise 1
+
+In this exercise you will be creating a compressed folder. To get started
+
+- Create a folder called `practice-2`
+- Inside this folder, create a subfolder or each type:
+  - Images
+  - Documents
+- Save several images of your favorite animal to your `practice-2 > Images` directory.
+  - Take a screenshot that shows your different file extensions of the image. Are they `png`, `jpg`, or a `gif`?
+  - Drag and drop your screenshot into your `practice-2 > Images` directory.
+- Now open up excel where you will create and save an empty excel file:
+  - Select `Save As` and store it under your `practice-2 > Documents`
+- Compress your `practice-2` folder
+- Rename your `practice-2` folder to be your `student ID` and upload it to Lea
