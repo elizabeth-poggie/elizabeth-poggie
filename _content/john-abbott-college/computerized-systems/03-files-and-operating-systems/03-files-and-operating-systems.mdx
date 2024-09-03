@@ -6,7 +6,7 @@ created: "2024-09-03"
 coverSrc: "./assets/"
 ---
 
-# Intro to Operating Systems
+# Computer Systems
 
 Building on what we learnt last class, a lot of things could be considered a computer that works exclusively with 1s and 0s. So how do we get from that to what we know, love, and use every day?
 
@@ -140,6 +140,90 @@ You observing transistors and being confused:
 Just as understanding brain signals requires a PHD in neuroscience, understanding the full workings of binary and CPU processes is way beyond the scope of a single lecture, and even of an undergraduate computer science course.
 
 Computers are complicated, just like with people, and mastering even a single component can lead to an entire field of study.
+
+# How do computers store information?
+
+Computers only think in terms of 1s and 0s (binary). Every bit of information on your computer is coded in binary and the your computer will translate one set of of 1s and 0s to another when displaying information on your screen.
+
+```text
+10101010101010    ↔️    🔍😭
+```
+
+## What is a file?
+
+On a computer, you probably have pictures, word documents, saved video games, applications, code, plus a whole lot more. It would be very difficult if every time you opened Word, every document that you ever wrote was all smushed together.
+
+```text
+literally everything on your computer    ↔️    🔍😭
+```
+
+So, to make your life easier, your computer organizes data into discrete elements, called files. Each file has the data for one thing only, for example, one picture, one Word Document, one application, etc.
+
+```text
+📁       📁         📁          ↔️    🔍👀
+⬆       ⬆          ⬆
+image    word doc    excel
+```
+
+In the old days, files used to be a document that was printed on paper. Today, most people refer to files as a document of some kind (picture, code, Word, etc) that is stored on your computer.
+
+```text
+files for boomers:
+🗃️
+
+files for zoomers:
+📁
+
+files for gen alpha:
+📱
+```
+
+As we progress in society, the way information gets further abstracted away from how we store information on a computer.
+
+## How are files organized?
+
+Before computers were everywhere, most people and companies organized their files into folders.
+
+```text
+📁
+```
+
+Each folder would have a name, describing what types of files it contained (example: ‘Project 1‘, ‘Project 2‘)
+
+```text
+📁           📁
+⬆           ⬆
+project 1    project 2
+```
+
+Maybe, if the number of files were large, the owner of a company might reorganize their files, so that the folder ‘Project 1‘ might be contain more folders (example: grades, lectures, etc.)
+
+```text
+    project 1
+      📁
+      ⬆
+📁          📁
+⬆          ⬆
+grades      lectures
+```
+
+With the advent of computers, we went from storing files on paper, in paper folders, in filing cabinets, to storing files on computers easier, the people in charge decided to use the same names.
+
+So, in a folder you can have files and other folders. Since folders are not longer physical things, we need a way to envision them. In short, folders (or directories) are organized into a tree format:
+
+```md
+documents
+├── english
+│ ├── Assignment 1.docx
+│ ├── Assignment 2.docx
+├── computerized-systems
+│ ├── Assignment 1
+│ │ ├── raw-info.xls
+│ │ ├── summary.pdf
+│ ├── Assignment 2
+│ │ ├── raw-info.xls
+│ │ ├── instructions.pdf
+```
 
 # What is Software?
 
