@@ -35,50 +35,54 @@ Software is a set of instructions that tells the hardware what to do and how to 
 
 ## Origin Story
 
-Early computers could only run 1 program at a time. A programmer would write one at their desk on a "punch card" then carry it to be executed by a room sized computer. This process was deeply manual requiring someone to operate and the overall program could take days to weeks to finish executing before giving an output. You could imagine that this was less than ideal as if a programmer introduced a single bug with their program, the consequences were costly.
+In the early days of computing, machines could only run one program at a time. Programmers would write their code on punch cards and carry them to a room-sized computer for execution. This process was labor-intensive, requiring manual operation and often taking days or even weeks to produce an output. If a programmer made a single mistake, it could be incredibly costly.
 
-With the advent of transistors, computers became exponentially faster and smaller and we needed a way for computers to operate themselves and therefore operating systems were born.
+With the advent of transistors, computers became exponentially faster and smaller. This created a need for a more efficient way to manage these machines, leading to the birth of operating systems.
 
-## What are operating systems?
+## What are Operating Systems?
 
-Operating Systems (OS) are programs with special privileges that allow them to work directly with the hardware. This is what gives them the ability to manage other programs. It is typically the first program to start when the computer is turned on and all other programs then get turned on by the OS.
+Operating systems (OS) are specialized programs with the ability to manage hardware directly. They control all other programs on a computer, making them essential for its operation. The OS is typically the first program to start when you turn on a computer, and it handles the launching and management of all other software.
 
-## Why is it so neat to have self managing computers?
+## Why are Self-Managing Computers so neat?
 
-They got their start in the 1950s, as computers became more widespread and more powerful. The very first OSs augmented the mundane and tedious task of loading programs by hand.
+Operating systems began to emerge in the 1950s as computers became more powerful and widespread. Early OSs helped automate the tedious tasks of loading and managing programs, making computers more accessible and efficient.
 
-## What were the early problems?
+## Early Challenges
 
-The early problems with one-off computers arose from the fact that each machine was unique, requiring programmers to write code specifically tailored to the hardware of that particular device. As computers became more widespread, this lack of standardization became a significant issue, as programs written for one machine often didn't work on another. Even when the CPUs were the same, differences in input and output devices meant that programmers had to write low-level code, understanding the intricate details of each device.
+Initially, each computer was unique, requiring programmers to write code specifically tailored to the hardware of that particular machine. This lack of standardization was problematic as programs written for one computer often didn't work on another. Even when the CPUs were similar, differences in input and output devices meant that programmers had to write low-level code, requiring deep knowledge of each device.
 
-What made the problem worse was that programmers rarely had access to all the different models of devices they were coding for and their manuals. In a lot of ways, writing code then was like throwing stuff at the wall and hoping it'd stick. Another way to think about this is imagine if every time you got a new pair of headphones, you had to read hundred of pages of manuals to configure your phone to connect to this device. You would probably try a million things and pray for it to work. Yeah it was like that.
+To make things worse, programmers rarely had access to all the different models of devices they were coding for, making it a process of trial and error. Imagine if every time you got a new pair of headphones, you had to read hundreds of pages of manuals just to configure your phone to connect to them. Yeah it was like that for early programmers.
 
-## How did we fix these problems?
+## How were these Problems Solved?
 
-To address these issues, the computing industry moved towards standardization and the development of operating systems. Operating systems provided a common interface between the hardware and software, allowing programmers to write code that could run on different machines without needing to know the specifics of each device.
-
-Did you need to know what printer you were connected to? What monitor you were working on? Whether you had an ergonomic mouse vs a standard one? Absolutely not.
+The industry addressed these challenges by moving towards standardization and developing operating systems. OSs provided a common interface between the hardware and software, allowing programs to run on different machines without needing specific adjustments for each device.
 
 This abstraction meant that instead of writing low-level code for every possible configuration, programmers could rely on the operating system to handle the details, making their programs more portable and easier to maintain.
 
-## Early operating systems
+## Early Operating Systems
 
-The most influential of early operating systems was Multics released in 1969, however it sparked some controversy as
-one of it's creators, Denis Ritchie, claimed that it was "it was over-engineered... There was too much in it." and so he went off to create "Unix".
+One of the most influential early operating systems was Multics, released in 1969. However, it sparked some controversy as
+one of it's creators, Denis Ritchie, claimed that "it was over-engineered... There was too much in it." This led him to develop "Unix", a simpler OS.
 
-## What do you think was the early solution to error handling in the OS?
+## Early Error Handling
 
-If there's an error, they would have this routine called `PANIC`, and when it is called, the machine crashes and goes into an vegetable like state.
+n the early days, if an error occurred in the OS, it would trigger a routine called `PANIC`, causing the machine go into a vegetable like state.
+
+![panic](./assets/panic.png)
 
 Why would we ever want this?
 
-It was simpler and cheeper so the OS could run on diverse hardware. By leaving out any effective error handling, the OS was portable and consequently it went on to become all the rage in the 70s and 80s.
+It was a simpler and more cost-effective solution that allowed the OS to run on a variety of hardware. Despite its limitations, this approach made the OS more portable and it went on to become all the rage in the 70s and 80s.
 
-Eventually there came other OS that dominated the market share in the 90s, you might have heard of them, "Microsoft" that even had it's own janky way of handling errors.
+Later, operating systems like Microsoft Windows introduced their own methods of error handling, including the infamous "Blue Screen of Death," which signaled that a program crashed so badly that it took down the entire operating system.
 
-How many of you ever encountered a blue screen of death? This is the result of a program that crashed so badly that it took down the entire operating system.
+![panic](./assets/blue.png)
 
-## What are some examples of Modern Operating Systems?
+Have you ever encountered this screen?
+
+## Modern Operating Systems
+
+Today, modern operating systems include:
 
 - MacOS
 - Windows
@@ -86,15 +90,15 @@ How many of you ever encountered a blue screen of death? This is the result of a
 - Android
 - Linux
 
-## Why are modern operating systems cool?
+## Why are Modern Operating Systems Cool?
 
-They are a set of programs that:
+Modern OSs are more than cool because they:
 
-- Run inside the hardware
-- Communicates with and manages the hardware
-- Hosts and runs application software, allowing application software to work with CPU Performs general housekeeping tasks for your computer: like system maintenance and file compression
-- User Interface: how users interact with the computer (command line, menu, or Graphical User Interface -GUI)
-- Can multitask
+- Run directly on the hardware
+- Manage and communicate with the hardware, so we don't have to.
+- Host and run application software, allowing it to work with the CPU, so we don't need to think about it.
+- Provide a user interface for interaction.
+- Support multitasking, allowing multiple programs to run simultaneously.
 
 # Achnologements
 
