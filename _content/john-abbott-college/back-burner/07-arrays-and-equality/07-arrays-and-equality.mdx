@@ -1,0 +1,204 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Arrays and Equality"
+created: "2024-09-04"
+coverSrc: "./assets/"
+---
+
+# Arrays continued
+
+Going back to what we know about arrays, these are the functions we know so far:
+
+```js
+// Add a single item to the end of an array
+myArray.push(item);
+// Add multiple items to the end of an array
+myArray.push(item1, item2);
+// Remove the last item from an array
+myArray.pop();
+// Get the length of an array
+myArray.length;
+// Find the index of a specific item in the array
+myArray.indexOf(findItem);
+```
+
+These allow us to dynamically resize and search the array much like a list data structure that you are familiar with from previous classes. But there are a few more that are worth knowing...
+
+## Splicing
+
+```js
+// You can get the length of an array
+myArray.splice(removeFromIndex, removeNumberOfElements, replacement1, replacement2, ...);
+```
+
+With `splice`, you can remove one or more elements from an array at a specific index as opposed to `pop()` which only lets you modify at the very end. For example:
+
+```js
+const fruits = ["apple", "banana", "cherry", "date"];
+fruits.splice(1, 1);
+console.log(fruits); // ["apple", "cherry", "date"]
+```
+
+`splice` can also be used to insert new elements into an array at a specific index, effectively "`splice`ing" them into place. For example:
+
+```js
+const fruits = ["apple", "cherry", "date"];
+fruits.splice(1, 0, "banana");
+console.log(fruits); // ["apple", "banana", "cherry", "date"]
+```
+
+This is also particularly useful when you need to replace specific elements by removing some and inserting new ones in their place. For example:
+
+```js
+const fruits = ["apple", "banana", "cherry", "date"];
+fruits.splice(1, 1, "blueberry");
+console.log(fruits); // ["apple", "blueberry", "cherry", "date"]
+```
+
+Whether you need to remove, insert, or replace elements, `splice` gives you the power to manipulate arrays in a way that other methods don’t. Why would we ever need this? Well one example is in e-commerce sites. `splice` can be used to manage a user's shopping cart. For example, when a user removes an item from their cart, you can use `splice` to update the array of items.
+
+```js
+const cart = [
+  { id: 1, name: "Laptop", price: 650 },
+  { id: 2, name: "Phone", price: 500 },
+  { id: 3, name: "Headphones", price: 100 },
+];
+
+// Remove the phone
+cart.splice(1, 1);
+// Print cart
+console.log(cart);
+```
+
+Another could be managing a playlist where users might want to add, remove, or reorder songs. I invite you to think of potential use cases for this method :^)
+
+## Iterating
+
+The `forEach()` method iterates over the array without the need of an explicitly defined index. For example, going back to our boating school example, this is how we iterated over all the testing scores:
+
+```js
+// Traditional loop
+for (let i = 0; i < student.tests.length; i++) {
+  let test = student.tests[i];
+  total += test.grade;
+}
+```
+
+Alternatively, this can also be written like this:
+
+```js
+// Slightly fancier loops
+for (let test of student.tests) {
+  total += test.grade;
+}
+```
+
+And using what we know about this `forEach()` method, we can do the following 1 liner:
+
+```js
+// Even fancier loops
+student.tests.forEach(function (x) {
+  total += test.grade;
+});
+```
+
+And if anyone is curious about arrow notation, you can get this very sleek gentleman right here:
+
+```js
+// SLEEK loops 👌
+student.tests.forEach((test) => {
+  total += test.grade;
+});
+```
+
+In summary:
+
+- `forEach()` does not modify the original array
+- `forEach()` returns nothing and therefore the return value is `undefined`
+
+However, there is an even sleeker way you can iterate over the contents of a loop, however thats for much later 👀
+
+# Exercise 2
+
+Let's build on our previous `cart` example by making the code more efficient and organized. We'll refactor the code to use the `forEach()` loop to determine the user's eligibility for a discount. We'll also add a few more methods to manage the cart:
+
+- Method 1: a user should be able to remove an item from their cart
+- Method 2: a user should be able to add an item at the TOP of their cart
+- Method 3: a user should be able to apply a promo code to update the cost of a specific item in their cart
+
+## The Solution
+
+```js
+// Step 1 👉 Update the Function
+function hasDiscountEligibility(user) {
+  let totalSpent = 0;
+
+  // NOTICE the usage of `forEach`
+  user.cart.forEach((purchase) => {
+    totalSpent += purchase.amount;
+  });
+
+  return totalSpent >= user.minimumAmountForDiscount && user.isPremiumMember;
+}
+
+// Step 2 👉 Update our Object
+const user = {
+  name: "Arthur Dent",
+  cart: [
+    {
+      amount: 650,
+      item: "Laptop",
+    },
+    {
+      amount: 50,
+      item: "Mouse",
+    },
+    {
+      amount: 200,
+      item: "Monitor",
+    },
+  ],
+  isPremiumMember: true,
+  minimumAmountForDiscount: 500,
+
+  // Method 1: Remove an item from the cart
+  removeItemFromCart: function (index) {
+    if (index >= 0 && index < this.cart.length) {
+      this.cart.splice(index, 1);
+    }
+  },
+
+  // Method 2: Add an item to the top of the cart
+  addItemToTopOfCart(newItem) {
+    this.cart.splice(0, 0, newItem);
+  },
+
+  // Method 3: Apply a promo code to update the cost of an item in the cart
+  applyPromoCode: function (item, promoDiscount) {
+    this.cart.forEach((purchase) => {
+      if (purchase.item === item) {
+        purchase.amount -= promoDiscount;
+      }
+    });
+  },
+};
+
+// Step 3 - Example IO
+// Can they get a discount?
+console.log(hasDiscountEligibility(user));
+
+// Remove the second item (Mouse) from the cart
+user.removeItemFromCart(1);
+console.log(user.cart);
+
+// Add a new item (Headphones) to the top of the cart
+user.addItemToTopOfCart({ amount: 100, item: "Headphones" });
+console.log(user.cart);
+
+// Apply promo code
+user.applyPromoCode("Monitor", 50);
+console.log(user.cart);
+```
+
+Notice the different ways I used to declare functions in my above object 👀 However, what matters is staying consistent with what you choose. Food for thought, how could we modify our `hasDiscountEligibility` function to be an object method instead?
