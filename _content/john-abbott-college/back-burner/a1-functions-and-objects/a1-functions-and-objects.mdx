@@ -1,0 +1,135 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Assignment 1 - Functions and Objects"
+created: "2024-09-02"
+coverSrc: "./assets/"
+---
+
+# Overview
+
+- Worth: This lab will count towards the Assignment portion of your final grade at `7%`
+- Due: `September 21 @ 2:00am` - I recommend submitting by `September 20 @ 9:00pm` to ensure good sleep, however for those who thrive under last-minute pressure, you have until the deadline later that evening 👀
+- Submission: Upload a `.zip` file containing your work folder to LEA. This folder should include a single `HTML` file with all JavaScript in the appropriate location.
+- Late Penalty: Late submissions lose 10% per day to a maximum of 3 days. Nothing is accepted after 3 days and a grade of zero will be given.
+
+# Grading Criteria
+
+Refer to my general approach here: [Assignment Rubric](https://www.elizabethpoggie.com/notes/john-abbott-college/admin_rubric)
+
+For this assignment, I will specifically be assessing:
+
+- Inputs: The function correctly takes in the specified inputs.
+- Logic: The function’s logic produces the expected results across all possible scenarios with minimal complexity.
+- Outputs: The function returns the expected output.
+- Naming: All names (functions, variables, parameters) should be meaningful, non-abbreviated, and clearly convey their purpose.
+
+# Q1 - Cookie Clicker Challenge
+
+`Worth 20 marks`
+
+## The Pitch
+
+Taking inspiration from your Intro to Web development class, you’ve decided to create a competitive Cookie Clicker game using JavaScript. The game consists of 3 rounds, and only the player with the highest cookies per second (CPS) will emerge victorious.
+
+## Your Task
+
+Create a JavaScript function that determines the winner of a 3-round cookie-clicking competition. Your function should take in two objects, each representing a player in the competition.
+
+## Object Spec
+
+Each of the two objects should have exactly three properties:
+
+- Player Identifier: A property that identifies the player (e.g., name).
+- Starting Cookies: The number of cookies the player begins with (an integer).
+- Cookies Per Round: An array containing the number of cookies clicked in each of the 3 rounds. The first number in the array represents the cookies clicked in round 1, the second in round 2, and the third in round 3.
+
+## Function Spec
+
+Your function should identify the player who collected the most cookies in total after the 3 rounds.
+
+## Additional details
+
+- Each round’s cookies are added to the player’s total.
+- In case of a tie, return "It's a tie!" or another identifier of your choice.
+
+I will invoke and evaluate your function. You are welcome to include sample objects you used to test your function.
+
+## Example IO
+
+Given the sample data:
+
+- Jim 👉 Starting cookies: 10; Cookies clicked per round: [5,8,7]
+- Pam 👉 Starting cookies: 15; Cookies clicked per round: [6,7,9]
+
+The function would output:
+
+```text
+Winner: Pam 🎉
+```
+
+This is because:
+
+- Jim's total cookies = 10 + (5 + 8 + 7) = 30
+- Pam's total cookies = 15 + (6 + 7 + 9) = 37
+
+Pam has a higher CPS rate compared to Jim, and therefore has more cookies.
+
+# Q1 - Anti-Social Networking
+
+`Worth 30 marks`
+
+## The Pitch
+
+You are a founder of an obscure social networking platform that suggests friends based on shared enemies.
+
+```cs
+"The enemy of my enemy is my friend"
+```
+
+Inspired by this ancient proverb, your task is to implement the core features needed to attract funding for your questionable project.
+
+## Your Task
+
+Create a JavaScript function and a user object with inner methods. Your function should take in two user objects.
+
+## Object Spec
+
+Both user objects should have properties for:
+
+- Username: A string representing the user's online handle.
+- Join year: The year the user joined the social network.
+- Last active year: The last year the user was active (you can choose how to represent someone who is still active).
+- Location code: A string representing the user's location (e.g. postal code).
+- List of enemies: An array of usernames representing the user's known enemies on the network.
+
+The `FIRST` user object should contain the following methods (inside the object):
+
+- Method 1: Takes in the join year and the last active year of another user and returns `true` or `false`, depending on whether the two users were active on the social network during the same period.
+- Method 2: Takes in another user object and returns `true` or `false`, depending on whether the two users share any mutual enemies (i.e., if both users have at least one username in their enemies list).
+
+## Function Spec
+
+The main function should determine if the two users are likely to have become allies due to their mutual enemies by returning:
+
+- `null` if the two users are not likely to have interacted online due to lack of mutual enemies or differing active periods.
+- A `string` indicating a potential alliance if they share at least one mutual enemy (e.g., "Potential allies due to mutual enemies").
+
+## Additional details
+
+I will invoke and evaluate your function with your provided user objects.
+
+## Example IO
+
+Given the sample data:
+
+- Jim 👉 Joined in 2020; Last active in 2023; Location Code: "SCR"; Enemies: ["Dwight", "Charles Miner"]
+- Pam 👉 Joined in 2021; Last active in 2024; Location Code: "SCR"; Enemies: ["Dwight"]
+
+The function would output:
+
+```text
+Result: Potential allies due to mutual enemies
+```
+
+This is because Jim and Pam share `Dwight` as a common enemy. If Jim and Pam had no mutual enemies or their active periods didn’t overlap, the function would return `null`.
