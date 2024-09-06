@@ -429,3 +429,30 @@ console.log(letterGrade); // 'B'
 However it can be a bit harder to read, so if you find yourself doing this, try to stick to `if-else` or `switch` cases (more on that later)
 
 # Exercise 2
+
+Let's again build on our previous `cart` example by introducing even more properties:
+
+- `loyaltyTier`: This determines the loyalty level of your user. (e.g. `"Gold"`, `"Silver"`, `"Bronze"`);
+
+and create methods that leverage these properties:
+
+- Method 1: a user should have access to exclusive product launches if they are a premium member AND are either a "Gold" or "Silver" loyalty tier.
+
+## Solution
+
+```js
+const user = {
+  // ... other stuff ... (refer to Exercise 1's solution) ...
+
+  // New property
+  loyaltyTier: "Gold",
+
+  // New Method
+  hasAccessToExclusiveLaunches: function () {
+    return this.isPremiumMember &&
+      (this.loyaltyTier === "Gold" || this.loyaltyTier === "Silver")
+      ? "Mark your calendars, there is an exclusive launch coming this friday"
+      : "What launch? How did you find this method? Go away";
+  },
+};
+```
