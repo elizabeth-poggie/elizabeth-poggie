@@ -301,3 +301,46 @@ console.log(!"hello"); // false
 ```
 
 ## Ternary Operator (?:)
+
+The JavaScript ternary operator is a concise way to perform conditional operations. It provides a shorthand for the `if-else` statement and is commonly used for simple conditional expressions.
+
+```js
+// Traditional "if-else"
+if (condition) {
+  exprIfTrue;
+} else {
+  exprIfFalse;
+}
+
+// JavaScript "if-else"
+condition ? exprIfTrue : exprIfFalse;
+```
+
+Why? Because web programmers are lazy. Why write 5 lines of code when you can do just 1:
+
+```js
+const averageGrade = 88;
+let hasPassed = averageGrade >= 60 ? "Yeeeeee" : "Nope";
+console.log(hasPassed); // 'Yeeeeee'
+```
+
+You can also nest them like so:
+
+```js
+const averageGrade = 88;
+let letterGrade =
+  averageGrade >= 90
+    ? "A"
+    : averageGrade >= 80
+    ? "B"
+    : averageGrade >= 70
+    ? "C"
+    : averageGrade >= 60
+    ? "D"
+    : "F";
+console.log(letterGrade); // 'B'
+```
+
+However it can be a bit harder to read, so if you find yourself doing this, try to stick to `if-else` or `switch` cases (more on that later)
+
+# Exercise 3
