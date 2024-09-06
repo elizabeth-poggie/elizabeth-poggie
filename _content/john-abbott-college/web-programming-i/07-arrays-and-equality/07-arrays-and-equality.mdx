@@ -459,17 +459,35 @@ const user = {
 
 # The DOM
 
-We return to concepts from our beloved User Interfaces where we begin to build in complexity by taking the JavaScript logic we have learnt so far and combine it with `HTML` and `CSS`
+As we dive deeper into building interactive User Interfaces, we'll explore how to integrate the JavaScript concepts we've learned with `HTML` and `CSS` to create dynamic webpages
 
-The document object is provided by the browser and is a representation of the HTML document. This document object is not part of JavaScript, but is expected to already exist and be freely accessible to JavaScript Code.
+## What is the DOM?
 
-## Quick summary
+The Document Object Model (DOM) represents the structure of an HTML document as a tree of objects, which JavaScript can interact with. Although the DOM is not a part of the JavaScript language itself, it is an essential interface provided by the browser that allows JavaScript to engage and access the content and structure of a webpage.
 
-The DOM is not:
+## Key Points
+
+The DOM is _NOT_:
 
 - Part of the JavaScript Language
 
 The DOM is:
 
-- Constructed from the browser
-- Is globally accessible by JavaScript code using the document object
+- Constructed by the browser
+- Accessible `globally` via the document object in JavaScript.
+
+## The DOM and Trees
+
+The Document Object Model (DOM) is organized as a tree structure with interconnected nodes, each representing a part of the HTML document:
+
+![DOM](./assets/dom.png)
+
+Each node in this tree is an object accessible through JavaScript. Just like other JavaScript objects, DOM nodes have key-value pairs. These pairs include both data and functions. For example, you can access specific elements in the DOM using methods like ...
+
+```js
+const element = document.getElementById("footer");
+```
+
+This line of code returns the HTML element with the ID `footer` if it exists. If no such element is found, it returns `null`.
+
+## Changing Properties
