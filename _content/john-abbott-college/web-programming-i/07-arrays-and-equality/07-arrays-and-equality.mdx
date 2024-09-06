@@ -263,13 +263,41 @@ console.log(0 && 1); // 0
 Why? Since `0` is falsy, the `&&` operator immediately returns `0` without evaluating `1`. What about if we put 2 strings:
 
 ```js
-console.log("hello " && "world"); // world
+console.log("hello" && "world"); // world
 ```
 
-Why? `"hello "` is truthy because it is non-empty and `"world"` is also truthy. Therefore the result of "world" is returned because the `&&` operator returns the last operand when all operands are truthy. Why? Because JavaScript :^)
+Why? `"hello"` is truthy because it is non-empty and `"world"` is also truthy. Therefore the result of "world" is returned because the `&&` operator returns the last operand when all operands are truthy. Why? Because JavaScript :^)
 
 ## OR (||)
 
+The `||` operator returns `true` if at least one of the operands is `true`. If the first operand is `true`, the second operand is not evaluated.
+
+```js
+console.log(false || true); // true
+```
+
+HOWEVER, like the `&&` operator, it can also return non-boolean values. Logical `||` returns the first truthy value it encounters, or the last value if all are falsy. For example:
+
+```js
+console.log(0 || 1); // 1
+```
+
+Why? Because `1` is truthy. Alternatively with 2 strings, you should expect the following behavior:
+
+```js
+console.log("hello" || "world"); // hello
+```
+
+Why? Well this time both are truthy and `"hello"` came first so `"hello"` gets printed
+
 ## NOT (!)
+
+The `!` operator inverts the Boolean value of its operand. It returns `true` if the operand is `false`, and `false` if the operand is `true`. The `!` operator can also be used to convert non-Boolean values to Boolean values.
+
+```js
+console.log(!false); // true
+console.log(!0); // true
+console.log(!"hello"); // false
+```
 
 ## Ternary Operator (?:)
