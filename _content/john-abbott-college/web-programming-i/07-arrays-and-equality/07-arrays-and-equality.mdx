@@ -121,6 +121,93 @@ However, there is an even sleeker way you can iterate over the contents of a loo
 
 # Exercise 1
 
+Let's build on our previous `cart` example from last class by making the code more efficient and organized.
+
+- Method 1: use the `forEach()` loop to determine the user's eligibility for a discount.
+- Method 2: a user should be able to add an item from their cart.
+- Method 3: a user should be able to remove an item from their cart using just the item's index in the array.
+
+```js
+// Exercise 1 👇
+const user = {
+  name: "Arthur Dent",
+  cart: [
+    {
+      amount: 650,
+      item: "Laptop",
+    },
+    {
+      amount: 50,
+      item: "Mouse",
+    },
+    {
+      amount: 200,
+      item: "Monitor",
+    },
+  ],
+  isPremiumMember: true,
+  minimumAmountForDiscount: 500,
+  isEligibleForDiscount: function () {
+    // add code here
+  },
+  addToCart: function (newItem) {
+    // add code here
+  },
+  removeItemFromCart: function (index) {
+    // add code here
+  },
+};
+```
+
+## Solution
+
+```js
+const user = {
+  name: "Arthur Dent",
+  cart: [
+    {
+      amount: 650,
+      item: "Laptop",
+    },
+    {
+      amount: 50,
+      item: "Mouse",
+    },
+    {
+      amount: 200,
+      item: "Monitor",
+    },
+  ],
+  isPremiumMember: true,
+  minimumAmountForDiscount: 500,
+
+  // Method 1 👉 determine eligibility for a discount
+  isEligibleForDiscount: function () {
+    let totalAmount = 0;
+
+    this.cart.forEach((item) => {
+      totalAmount += item.amount;
+    });
+
+    return totalAmount >= this.minimumAmountForDiscount || this.isPremiumMember;
+  },
+
+  // Method 2 👉 add a new item to the cart
+  addToCart: function (newItem) {
+    this.cart.push(newItem);
+  },
+
+  // Method 3 👉 remove an item from the cart
+  removeItemFromCart: function (index) {
+    if (index >= 0 && index < this.cart.length) {
+      this.cart.splice(index, 1);
+    }
+  },
+};
+```
+
+Food for thought: how do you think we could improve the above solution so that you remove an item from the cart based on the item's `barcode`? 👀
+
 # JavaScript Equality
 
 For everyone who watched the full conference video on [WTFJS](https://www.youtube.com/watch?v=et8xNAc2ic8), today we are going finally to explore why he referred to the `==` as the "dick".
@@ -240,8 +327,6 @@ Their types are the same??? Despite this, they are different kinds of objects. A
 
 Do not use the `==` operator.
 
-# Exercise 2
-
 # JavaScript Logical Operators
 
 They are commonly used in conditions and control flow statements. Here are some of the primary logical operators and how they work:
@@ -343,4 +428,4 @@ console.log(letterGrade); // 'B'
 
 However it can be a bit harder to read, so if you find yourself doing this, try to stick to `if-else` or `switch` cases (more on that later)
 
-# Exercise 3
+# Exercise 2
