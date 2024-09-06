@@ -228,7 +228,7 @@ What is happening here????? `null` and `undefined` are considered equal to each 
 console.log([] == {}); // false
 ```
 
-ok so arrays and objects are not the same. BUT:
+ok so arrays and objects are not the same. BUT...
 
 ```js
 console.log(typeof [] == typeof {}); // true
@@ -239,3 +239,37 @@ Their types are the same??? Despite this, they are different kinds of objects. A
 ## What's the take away
 
 Do not use the `==` operator.
+
+# Exercise 2
+
+# JavaScript Logical Operators
+
+They are commonly used in conditions and control flow statements. Here are some of the primary logical operators and how they work:
+
+## AND (&&)
+
+The `&&` operator returns true if both operands are `true`, and `false` otherwise. It also is lazy, meaning if the first operand is `false`, the second operand is not evaluated because the result is already determined.
+
+```js
+console.log(false && true); // false
+```
+
+HOWEVER, the Logical `&&` can also return non-Boolean values. It returns the first falsy value it encounters, or the last value if all are truthy. For example the below prints `0`:
+
+```js
+console.log(0 && 1); // 0
+```
+
+Why? Since `0` is falsy, the `&&` operator immediately returns `0` without evaluating `1`. What about if we put 2 strings:
+
+```js
+console.log("hello " && "world"); // world
+```
+
+Why? `"hello "` is truthy because it is non-empty and `"world"` is also truthy. Therefore the result of "world" is returned because the `&&` operator returns the last operand when all operands are truthy. Why? Because JavaScript :^)
+
+## OR (||)
+
+## NOT (!)
+
+## Ternary Operator (?:)
