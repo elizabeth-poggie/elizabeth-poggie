@@ -2,7 +2,7 @@
 # General Information
 category: "Web Programming I"
 title: "Arrays and Equality"
-created: "2024-09-04"
+created: "2024-09-06"
 coverSrc: "./assets/"
 ---
 
@@ -119,4 +119,123 @@ In summary:
 
 However, there is an even sleeker way you can iterate over the contents of a loop, however thats for much later 👀
 
+# Exercise 1
+
 # JavaScript Equality
+
+For everyone who watched the full conference video on [WTFJS](https://www.youtube.com/watch?v=et8xNAc2ic8), today we are going finally to explore why he referred to the `==` as the "dick".
+
+For starters, in JavaScript, shockingly `===` and `==` do not mean the same thing:
+
+- When using triple `===` in JavaScript, we are testing form "strict" equality. This means both the `type` and `value` are being compared at the same time.
+
+- When using double equals in JavaScript we are testing for "loose" equality. Double equals also performs a _type coercion_
+
+# Type Coercion Side Tangent
+
+Type coercion in programming refers to the automatic or implicit conversion of values from one data type to another. In languages like JavaScript, this often happens when values of different types are compared or when operations are performed that expect a certain type of value.
+
+Going back to one of our earlier examples:
+
+```js
+let result = "5" - 2; // 3
+```
+
+JavaScript converts the string `5` to a number, and then subtracts `2` from `5`, resulting in `3`. Alternatively:
+
+```js
+let result = "5" + 2; // 52
+```
+
+JavaScript converts the number `2` to a string, and then concatenates that with `5`, resulting in `52`.
+
+```js
+let result = true + true; // 2
+```
+
+Here JavaScript is converting `true` into 1, and so `1+1` is `2` :^)
+
+In the case with `==` equality, _type coercion_ means that two values are compared only AFTER attempting to convert them into a common type. What does that mean for you?
+
+# Comparisons that are Unfortunately Valid
+
+## Comparing a Number and a String
+
+```js
+console.log(5 == "5"); // true
+```
+
+This makes sense because the string `5` is coerced into the number `5`, and the comparison evaluates to `true`.
+
+## Comparing a Boolean and a Number
+
+```js
+console.log(0 == false); // true
+```
+
+This also makes sense because in this case, `false` is coerced into the number `0`, so the comparison is `true`.
+
+## Comparing a Boolean and a string
+
+```js
+console.log("" == false); // true
+```
+
+An empty string `""` is coerced into `false`, so the comparison evaluates to `true`.
+
+## Comparing null and undefined
+
+```js
+console.log(null == undefined); // true
+```
+
+In JavaScript, `null` and `undefined` are considered equal with `==`, but they are not equal with `===` because it's JavaScript.
+
+```js
+console.log(null === undefined); // false :^)
+```
+
+## Compounding Coercions
+
+Both sides of the `==` can be coerced. For example:
+
+```js
+console.log("0" == false); // true
+```
+
+This is unfortunately valid because:
+
+- the string `"0"` is coerced into a number
+- the boolean `false` is coerced into a number
+- both these numbers are then compared `0 == 0`
+- And thus it prints `true` :^)
+
+# Comparisons that are Strangely not Valid
+
+Ok so that's weird, but what's weirder are the things that are not allowed.
+
+## Comparing null with a Boolean
+
+```js
+console.log(null == false); // false
+```
+
+What is happening here????? `null` and `undefined` are considered equal to each other ONLY for `==` but not to other values. That means `null == undefined` is `true`, but `null == false` is `false`.
+
+## Comparing Arrays with Object
+
+```js
+console.log([] == {}); // false
+```
+
+ok so arrays and objects are not the same. BUT:
+
+```js
+console.log(typeof [] == typeof {}); // true
+```
+
+Their types are the same??? Despite this, they are different kinds of objects. Arrays are specialized objects with additional array methods and properties, while plain objects are general-purpose collections of key-value pairs.
+
+## What's the take away
+
+Do not use the `==` operator.
