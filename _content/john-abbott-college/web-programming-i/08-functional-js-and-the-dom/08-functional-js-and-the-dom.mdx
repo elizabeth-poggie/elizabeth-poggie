@@ -47,7 +47,7 @@ The Cons:
 
 What exactly do all these concepts mean in code, let's get into it :)
 
-## Pure Functions
+# Pure Functions
 
 When we talk about functional programming, the subject of a "pure" function comes up a lot. What is a pure function? It returns the same result provided the same parameters. For example:
 
@@ -70,6 +70,8 @@ function add(a, b) {
 If we use the `Math` object to return a random number, then even if the parameters are called the same, then the return value is ALWAYS going to be DIFFERENT.
 
 Why am I mentioning this? In JavaScript, not all functions can be pure.
+
+## Purity vs Impurity
 
 ```js
 // This is an "impure" function
@@ -101,7 +103,7 @@ function add(a) {
 add(2); // 10
 ```
 
-Why?
+Why is this pure?
 
 - The function DEPENDS on its input.
 - It ALWAYS produces the same output for the same input.
@@ -117,35 +119,99 @@ To summarize, a pure function is a function that:
 - ALWAYS returns the same output given the same inputs.
 - Has no side effects, meaning it does not modify any external state or rely on it.
 
-## Traditional vs Functional
+# Traditional Programming vs Functional Programming
 
 Going back to our original way of traversing an array:
 
 ```js
-let nums = [1, 2, 3];
+const nums = [1, 2, 3];
+let total = 0;
 
 for (let i = 0; i < nums.length; i++) {
-  nums[i] = nums[i] + 1;
+  total = total + nums[i];
 }
 
-console.log(nums); // [2, 3, 4]
+console.log(total); // 6
 ```
 
 In the above loop we are traversing an array and increasing each item by 1. To adapt the above to be a more functional programming style, we are going to put a lot of focus on the details. Now what do I mean by that?
 
 Well in our loop, we are doing 2 things:
 
-- We are iterating over an array
-- We are performing an action over EACH item in in our array
+- Part 1) We are iterating over an array
+- Part 2) We are performing an action over EACH item in in our array
 
 ```js
-// array
-let nums = [1, 2, 3];
-// iterator
+// ...
+
+// Part 1) iterator using a for loop
 for (let i = 0; i < nums.length; i++) {
-  // action
-  nums[i] = nums[i] + 1;
+  // Part 2) action
+  total = total + nums[i];
+}
+
+// ...
+```
+
+What happens in a functional programming style is that we can disconnect the 2 an present the same thing BUT in a cleaner way.
+
+We can rewrite the `for` loops to use a `forEach()` method that iterates over the loop.
+
+```js
+const nums = [1, 2, 3];
+let total = 0;
+
+// Part 1) iterator using forEach()
+nums.forEach(function (num) {
+  // Part 2) action
+  total += num;
+});
+
+console.log(total); // 6
+```
+
+The above still respects our 2 important parts except now our action and iterator are INDEPENDENT from each other.
+
+HOWEVER, this is not a pure function still. Why? It depends on and modifies external state (e.g. `total`). How do we fix this to become "PURE"? More on that in week 10 where we explore even MORE array methods including `map`, `filter`, and my favorite `reduce`.
+
+Why is this so cool? We can put whatever function we want in here. Like lego blocks, you can build whatever structure you want. Your iterators can be interchanged with other iterators and your functions can be reused with other iterators.
+
+## Example
+
+Let's say we created the following "PURE" functions in one part of our code base.
+
+```js
+// Function to log elements
+function logElement(element) {
+  console.log(element);
+}
+
+// Function to check if the element is even
+function checkEven(element) {
+  if (typeof element !== "number" || !Number.isInteger(element)) {
+    throw new Error("What are you doing giving me trash?");
+  }
+  const output = element % 2 === 0 ? element + " is even" : element + " is odd";
+  console.log(output);
 }
 ```
 
-What happens in a functional programming style is that we can
+We can actually use these functions in multiple ways. For starters, on just individual elements of type `number`
+
+```js
+console.log(checkEven(42)); // 42 is even
+console.log(checkEven(13)); // 13 is odd
+console.log(checkEven("hello")); // trash
+console.log(checkEven(19.99)); // trash
+console.log(logElement(":^)")); // :^)
+```
+
+And we can also plug them directly into our array to be used:
+
+```js
+const nums = [1, 2, 3, 4, 5];
+nums.forEach(checkEven);
+nums.forEach(logElement);
+```
+
+Because the action AND iterator are decoupled from each other, if we ever need to make an adjustment to the `checkEven` function, the changes will impact all areas of the code base that use it.
