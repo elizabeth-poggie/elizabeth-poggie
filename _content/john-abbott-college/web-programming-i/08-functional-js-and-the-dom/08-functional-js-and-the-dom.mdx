@@ -1,0 +1,151 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Functional JS & the DOM"
+created: "2024-09-08"
+coverSrc: "./assets/"
+---
+
+# What is Functional Programming?
+
+## Introduction
+
+Last class I introduced the `forEach()` loop for working with arrays, assuming you were already familiar with the idea of passing functions as arguments. I built on the material from previous instructors, however, after reviewing your program outline, I found out that this concept is only introduced at the end of Programming 4.
+
+This raises a couple of questions:
+
+- Why is this class scheduled before you've learned this concept?
+- How has this issue gone unnoticed until now?
+
+I'll be discussing this with the department to address the curriculum gap. In the meantime, I’ll give you a quick crash course on passing functions as arguments, since it’s a fundamental part of JavaScript and comes up frequently in its syntax.
+
+## Who uses Functional Programming?
+
+- Web developers (e.g. you guys in this class) for array manipulation cause we love clean code and efficiency.
+- Data Scientists because it's ability to handle large datasets with less errors.
+- Financial Institutions, specifically Banks, because its _stateless_ meaning it avoids maintaining or modifying state.
+
+## Pros & Cons of Functional Programming
+
+The Pros:
+
+- It's clean
+- Syntactic Efficiency.
+- Reduction of Errors. You will make less mistakes in the long run.
+
+The Cons:
+
+- More abstract therefore a steeper learning curve. You are coding more "symbolically".
+
+## What are the Key Concepts?
+
+- Pure Functions: Functions that, given the same inputs, always produce the same outputs without causing any side effects (such as modifying variables outside the function).
+
+- Immutability: In functional programming, data is not modified. Instead, new data is created when changes are needed, avoiding the concept of mutable state.
+
+- No Side Effects: Since pure functions do not alter any state, they don't produce unexpected results that depend on external factors.
+
+What exactly do all these concepts mean in code, let's get into it :)
+
+## Pure Functions
+
+When we talk about functional programming, the subject of a "pure" function comes up a lot. What is a pure function? It returns the same result provided the same parameters. For example:
+
+```js
+// This is a "pure" function
+function add(a, b) {
+  return a + b; // returns a + b
+}
+```
+
+This is "pure" because when we call the function `add(2,5);` it will ALWAYS return `7`. The results are PREDICTABLE. What would make this function "impure"?
+
+```js
+// This is an "impure" function
+function add(a, b) {
+  return Math.random(); // returns ????
+}
+```
+
+If we use the `Math` object to return a random number, then even if the parameters are called the same, then the return value is ALWAYS going to be DIFFERENT.
+
+Why am I mentioning this? In JavaScript, not all functions can be pure.
+
+```js
+// This is an "impure" function
+const c = 9;
+function add(a, b) {
+  return c + a;
+}
+add(2, 5); // 10
+```
+
+The above is an "impure function" because `add` uses the external constant `c` and therefore the result of the function is influenced by something other than its arguements `a` and `b`, making it "impure". How could we modify this function to make it pure?
+
+```js
+// This is STILL an "impure" function
+const c = 9;
+function add(a, b) {
+  return 9 + a;
+}
+add(2, 5); // 10
+```
+
+Even though the function no longer depends on the external variable `c`, it still uses the fixed value `9` internally. This makes the function less flexible and not purely dependent on its input parameters. The value of b is also unused, which may not be what you'd expect in a truly pure function. Ok so how do we fix it if we want to have a `const 9` that it relies on and also be "pure"?
+
+```js
+// This is a "pure" function
+function add(a) {
+  return 9 + a;
+}
+add(2); // 10
+```
+
+Why?
+
+- The function DEPENDS on its input.
+- It ALWAYS produces the same output for the same input.
+- It is STATELESS and doesn't modify external state OR rely on external variables.
+
+Why does this matter when it comes to programming functionally in JS? You don't want to change the state of your application. Why functions? Going back to what we know about scope, the state of your function does not impact the state of your application, or in other words, whatever happens in that function, stays in that function.
+
+## Summary
+
+To summarize, a pure function is a function that:
+
+- Depends only on its input parameters and not on any external state or variables.
+- ALWAYS returns the same output given the same inputs.
+- Has no side effects, meaning it does not modify any external state or rely on it.
+
+## Traditional vs Functional
+
+Going back to our original way of traversing an array:
+
+```js
+let nums = [1, 2, 3];
+
+for (let i = 0; i < nums.length; i++) {
+  nums[i] = nums[i] + 1;
+}
+
+console.log(nums); // [2, 3, 4]
+```
+
+In the above loop we are traversing an array and increasing each item by 1. To adapt the above to be a more functional programming style, we are going to put a lot of focus on the details. Now what do I mean by that?
+
+Well in our loop, we are doing 2 things:
+
+- We are iterating over an array
+- We are performing an action over EACH item in in our array
+
+```js
+// array
+let nums = [1, 2, 3];
+// iterator
+for (let i = 0; i < nums.length; i++) {
+  // action
+  nums[i] = nums[i] + 1;
+}
+```
+
+What happens in a functional programming style is that we can
