@@ -10,46 +10,46 @@ coverSrc: "./assets/"
 
 ## Introduction
 
-Last class I introduced the `forEach()` loop for working with arrays, assuming you were already familiar with the idea of passing functions as arguments. I built on the material from previous instructors, however, after reviewing your program outline, I found out that this concept is only introduced at the end of Programming 4.
+n our last class, I introduced the `forEach()` loop for working with arrays, assuming you were already familiar with the idea of passing functions as arguments. However, after reviewing your program outline, I found out that this concept is only introduced at the end of Programming 4.
 
 This raises a couple of questions:
 
-- Why is this class scheduled before you've learned this concept?
+- Why is this class scheduled before you’ve covered this concept?
 - How has this issue gone unnoticed until now?
 
-I'll be discussing this with the department to address the curriculum gap. In the meantime, I’ll give you a quick crash course on passing functions as arguments, since it’s a fundamental part of JavaScript and comes up frequently in its syntax.
+I will be discussing this issue with the department to address the curriculum gap. In the meantime, I’ll provide a quick crash course on passing functions as arguments, as it’s a fundamental aspect of JavaScript and frequently appears in its syntax.
 
 ## Who uses Functional Programming?
 
-- Web developers (e.g. you guys in this class) for array manipulation cause we love clean code and efficiency.
-- Data Scientists because it's ability to handle large datasets with less errors.
-- Financial Institutions, specifically Banks, because its _stateless_ meaning it avoids maintaining or modifying state.
+- Web developers 👉 Including you in this class, use functional programming for array manipulation to write cleaner and more efficient code.
+- Data Scientists 👉 Appreciate its ability to handle large datasets with fewer errors.
+- Financial Institutions 👉 Banks and other financial institutions use it for its stateless nature, which avoids maintaining or modifying state.
 
 ## Pros & Cons of Functional Programming
 
 The Pros:
 
-- It's clean
-- Syntactic Efficiency.
-- Reduction of Errors. You will make less mistakes in the long run.
+- Clean Code 👉 Promotes clarity and simplicity.
+- Syntactic Efficiency 👉 Allows for concise and expressive code.
+- Reduction of Errors 👉 Decreases the likelihood of mistakes over time.
 
 The Cons:
 
-- More abstract therefore a steeper learning curve. You are coding more "symbolically".
+- Abstract Concepts 👉 Can be more challenging to learn due to its abstract nature and symbolic coding style.
 
-## What are the Key Concepts?
+## Key Concepts
 
-- Pure Functions: Functions that, given the same inputs, always produce the same outputs without causing any side effects (such as modifying variables outside the function).
+- Pure Functions 👉 Functions that, given the same inputs, always produce the same outputs without causing any side effects (such as modifying variables outside the function).
 
-- Immutability: In functional programming, data is not modified. Instead, new data is created when changes are needed, avoiding the concept of mutable state.
+- Immutability 👉 In functional programming, data is not modified. Instead, new data is created when changes are needed, avoiding the concept of mutable state.
 
-- No Side Effects: Since pure functions do not alter any state, they don't produce unexpected results that depend on external factors.
+- No Side Effects 👉 Since pure functions do not alter any state, they don't produce unexpected results that depend on external factors.
 
 What exactly do all these concepts mean in code, let's get into it :)
 
 # Pure Functions
 
-When we talk about functional programming, the subject of a "pure" function comes up a lot. What is a pure function? It returns the same result provided the same parameters. For example:
+In functional programming, a “pure” function is one that consistently returns the same result given the same parameters. For example:
 
 ```js
 // This is a "pure" function
@@ -58,7 +58,9 @@ function add(a, b) {
 }
 ```
 
-This is "pure" because when we call the function `add(2,5);` it will ALWAYS return `7`. The results are PREDICTABLE. What would make this function "impure"?
+This is "pure" because when we call the function `add(2,5);` it will ALWAYS return `7`. The results are PREDICTABLE.
+
+What would make this function "impure"?
 
 ```js
 // This is an "impure" function
@@ -67,9 +69,9 @@ function add(a, b) {
 }
 ```
 
-If we use the `Math` object to return a random number, then even if the parameters are called the same, then the return value is ALWAYS going to be DIFFERENT.
+Since `Math.random()` generates different values each time, the function does not produce consistent results, making it "impure".
 
-Why am I mentioning this? In JavaScript, not all functions can be pure.
+Why am I mentioning this? Well, in JavaScript not all functions are "pure".
 
 ## Purity vs Impurity
 
