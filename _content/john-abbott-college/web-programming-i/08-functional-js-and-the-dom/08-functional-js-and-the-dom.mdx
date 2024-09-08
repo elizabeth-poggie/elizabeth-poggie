@@ -75,16 +75,20 @@ Why am I mentioning this? Well, in JavaScript not all functions are "pure".
 
 ## Purity vs Impurity
 
+Consider this impure function:
+
 ```js
 // This is an "impure" function
 const c = 9;
 function add(a, b) {
   return c + a;
 }
-add(2, 5); // 10
+add(2, 5); // 11
 ```
 
-The above is an "impure function" because `add` uses the external constant `c` and therefore the result of the function is influenced by something other than its arguements `a` and `b`, making it "impure". How could we modify this function to make it pure?
+Here, the function `add` depends on the external constant `c`, making it impure because its result is influenced by something OTHER THAN its parameters.
+
+What if we instead modify the function to use a fixed value internally:
 
 ```js
 // This is STILL an "impure" function
@@ -92,38 +96,38 @@ const c = 9;
 function add(a, b) {
   return 9 + a;
 }
-add(2, 5); // 10
+add(2, 5); // 11
 ```
 
-Even though the function no longer depends on the external variable `c`, it still uses the fixed value `9` internally. This makes the function less flexible and not purely dependent on its input parameters. The value of b is also unused, which may not be what you'd expect in a truly pure function. Ok so how do we fix it if we want to have a `const 9` that it relies on and also be "pure"?
+Although it no longer depends on the external variable `c`, it still uses a fixed value `9` internally, which reduces its flexibility and purity while leaving `b` unused. To make it pure, it should only depend on its input:
 
 ```js
 // This is a "pure" function
 function add(a) {
   return 9 + a;
 }
-add(2); // 10
+add(2); // 11
 ```
 
-Why is this pure?
+This function is pure because it:
 
-- The function DEPENDS on its input.
-- It ALWAYS produces the same output for the same input.
-- It is STATELESS and doesn't modify external state OR rely on external variables.
+- DEPENDS ONLY on its input.
+- ALWAYS returns the same output given the SAME inputs.
+- Is STATELESS and doesn't modify external state OR rely on external variables.
 
-Why does this matter when it comes to programming functionally in JS? You don't want to change the state of your application. Why functions? Going back to what we know about scope, the state of your function does not impact the state of your application, or in other words, whatever happens in that function, stays in that function.
+In other words, whatever happens in that function, stays in that function.
 
 ## Summary
 
-To summarize, a pure function is a function that:
+In summary, a pure function:
 
-- Depends only on its input parameters and not on any external state or variables.
-- ALWAYS returns the same output given the same inputs.
-- Has no side effects, meaning it does not modify any external state or rely on it.
+- Depends solely on its input parameters, not on external state or variables.
+- Always returns the same output given the same inputs.
+- Has no side effects and does not modify or rely on external state.
 
 # Traditional Programming vs Functional Programming
 
-Going back to our original way of traversing an array:
+Let’s revisit our original approach to traversing an array:
 
 ```js
 const nums = [1, 2, 3];
