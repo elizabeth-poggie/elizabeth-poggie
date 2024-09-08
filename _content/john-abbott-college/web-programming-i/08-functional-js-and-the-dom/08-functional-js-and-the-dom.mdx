@@ -218,8 +218,6 @@ nums.forEach(logElement);
 
 Since the action and iterator are decoupled, any changes made to the `checkEven` will automatically affect all parts of the codebase that use it. This modularity makes your code more maintainable :^)
 
-## Exercise 1
-
 # The DOM
 
 As we dive deeper into building interactive User Interfaces, we'll explore how to integrate the JavaScript concepts we've learned with `HTML` and `CSS` to create dynamic webpages
@@ -255,29 +253,43 @@ This line of code returns the HTML element with the ID `footer` if it exists. If
 
 # DOM Properties
 
-The `HTMLElement` object is packed with _MANY_ properties. And when I say a lot, I mean _A LOT_. You can explore the complete list of properties [here](https://www.w3schools.com/jsref/dom_obj_all.asp)
-
-However not all properties are created equal. Here are a few key _element properties_ that are particularly useful:
+The `HTMLElement` object comes with a vast number of properties. To give you a sense of just how many, you can explore the complete list [here](https://www.w3schools.com/jsref/dom_obj_all.asp). While not every property may be useful for every task, here are a few key properties that are particularly neat:
 
 ## innerHTML
 
-`element.innerHTML` 👉 Modifying this property changes the content of the element. For example, setting `element.innerHTML` to a new value will update the text or HTML inside that element.
+`element.innerHTML` lets you modify the content of an element. For example, setting `element.innerHTML` to a new value will update the text or HTML inside that element.
+
+```js
+const contentDiv = document.getElementById("content");
+contentDiv.innerHTML = "Hello World"; // "Hello World"
+```
 
 ## id
 
-`element.id` 👉 Sets or gets the `id` attribute of an element. This is useful for uniquely identifying an element within the DOM.
+`element.id` is used to get or set the `id` attribute of an element. This is useful for uniquely identifying elements within the DOM. For instance, if you want to set the `id` of a button to `submitBtn`, you can do:
+
+```js
+const button = document.querySelector("button");
+button.id = "submitBtn"; // new id
+```
 
 ## style
 
-`element.style` 👉 Provides access to the inline styles of an element. You can use it to change the appearance of the element directly through JavaScript.
+`element.style` allows you to access and modify the inline styles of an element. For example, if you want to change the background color of a `<div>` to blue, you can use:
 
-## setAttribute
-
-`element.setAttribute(name, value)` 👉 Sets a specified attribute on an element to a given value. This method is useful for setting any attribute that doesn’t have a direct property.
+```js
+const myDiv = document.querySelector(".box");
+myDiv.style.backgroundColor = "blue";
+```
 
 ## children
 
-`element.children`👉 Returns a live HTMLCollection of child elements of the specified element.
+`element.children` returns a live HTMLCollection of the child elements of a specified element. For example, if you have a `<ul>` with several `<li>` items and want to get all the child list items, you can use:
+
+```js
+const list = document.querySelector("ul");
+const items = list.children; // wow, so many kids
+```
 
 # DOM Methods
 
@@ -287,6 +299,8 @@ Here are a few key _document methods_ you will use a lot:
 
 `document.getElementById(id)` 👉 This method returns an element with the specified id.
 
+## querySelector
+
 ## getElementsByClassName
 
 `document.getElementsByClassName(name)` 👉 This method returns a collection of elements with the specified class name, encapsulated in an HTMLCollection. Since a class name can be used by multiple elements, this method is designed to handle multiple matches.
@@ -294,6 +308,10 @@ Here are a few key _document methods_ you will use a lot:
 ## getElementsByTagName
 
 `document.getElementsByTagName(name)` 👉 Similar to the class name method, this one returns a collection of elements with the specified tag name. This method also returns an HTMLCollection, as tag names can be shared by several elements.
+
+## setAttribute
+
+`element.setAttribute(name, value)` 👉 Sets a specified attribute on an element to a given value. This method is useful for setting any attribute that doesn’t have a direct property.
 
 # Exercise 2
 
