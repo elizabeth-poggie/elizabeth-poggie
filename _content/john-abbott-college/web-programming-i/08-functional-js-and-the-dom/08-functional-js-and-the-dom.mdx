@@ -297,21 +297,52 @@ Here are a few key _document methods_ you will use a lot:
 
 ## getElementById
 
-`document.getElementById(id)` 👉 This method returns an element with the specified id.
+`document.getElementById(id)` returns the element with the specified `id`. This method is handy when you need to select a single, unique element.
+
+```js
+const header = document.getElementById("main-header");
+header.innerHTML = "Hello World";
+```
 
 ## querySelector
 
+`document.querySelector(selector)` returns the first element that matches the specified CSS selector.
+
+```js
+const firstButton = document.querySelector(".btn-primary");
+firstButton.style.backgroundColor = "blue";
+```
+
 ## getElementsByClassName
 
-`document.getElementsByClassName(name)` 👉 This method returns a collection of elements with the specified class name, encapsulated in an HTMLCollection. Since a class name can be used by multiple elements, this method is designed to handle multiple matches.
+`document.getElementsByClassName(name)` returns a collection of elements with the specified class name, enclosed in an `HTMLCollection`. Since class names can be shared among multiple elements, this method handles multiple matches efficiently.
+
+```js
+const buttons = document.getElementsByClassName("btn");
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].style.border = "2px solid red";
+}
+```
 
 ## getElementsByTagName
 
-`document.getElementsByTagName(name)` 👉 Similar to the class name method, this one returns a collection of elements with the specified tag name. This method also returns an HTMLCollection, as tag names can be shared by several elements.
+`document.getElementsByTagName(name)` returns a collection of elements with the specified tag name, also enclosed in an HTMLCollection. Like `getElementsByClassName`, it manages multiple elements sharing the same tag name.
+
+```js
+const paragraphs = document.getElementsByTagName("p");
+for (let i = 0; i < paragraphs.length; i++) {
+  paragraphs[i].style.fontSize = "18px";
+}
+```
 
 ## setAttribute
 
-`element.setAttribute(name, value)` 👉 Sets a specified attribute on an element to a given value. This method is useful for setting any attribute that doesn’t have a direct property.
+`element.setAttribute(name, value)` sets a specified attribute on an element to a given value. This method is particularly useful for attributes that do not have a direct property.
+
+```js
+const link = document.querySelector("a");
+link.setAttribute("href", "test.com");
+```
 
 # Exercise 2
 
