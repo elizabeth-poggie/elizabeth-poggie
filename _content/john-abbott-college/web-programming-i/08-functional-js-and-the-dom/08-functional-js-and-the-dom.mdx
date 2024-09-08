@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "Functional JS & the DOM"
+title: "Functional JS & The DOM"
 created: "2024-09-08"
 coverSrc: "./assets/"
 ---
@@ -215,3 +215,124 @@ nums.forEach(logElement);
 ```
 
 Because the action AND iterator are decoupled from each other, if we ever need to make an adjustment to the `checkEven` function, the changes will impact all areas of the code base that use it.
+
+## Exercise 1
+
+# The DOM
+
+As we dive deeper into building interactive User Interfaces, we'll explore how to integrate the JavaScript concepts we've learned with `HTML` and `CSS` to create dynamic webpages
+
+## What is the DOM?
+
+The Document Object Model (DOM) represents the structure of an HTML document as a tree of objects, which JavaScript can interact with. Although the DOM is not a part of the JavaScript language itself, it is an essential interface provided by the browser that allows JavaScript to engage and access the content and structure of a webpage.
+
+## Key Points
+
+The DOM is _NOT_:
+
+- Part of the JavaScript Language
+
+The DOM is:
+
+- Constructed by the browser
+- Accessible `globally` via the document object in JavaScript.
+
+## The DOM and Trees
+
+The Document Object Model (DOM) is organized as a tree structure with interconnected nodes, each representing a part of the HTML document:
+
+![DOM](./assets/dom.png)
+
+Each node in this tree is an object accessible through JavaScript. Just like other JavaScript objects, DOM nodes have key-value pairs. These pairs include both data and functions. For example, you can access specific elements in the DOM using methods like ...
+
+```js
+const element = document.getElementById("footer");
+```
+
+This line of code returns the HTML element with the ID `footer` if it exists. If no such element is found, it returns `null`.
+
+# DOM Properties
+
+The `HTMLElement` object is packed with _MANY_ properties. And when I say a lot, I mean _A LOT_. You can explore the complete list of properties [here](https://www.w3schools.com/jsref/dom_obj_all.asp)
+
+However not all properties are created equal. Here are a few key _element properties_ that are particularly useful:
+
+## innerHTML
+
+`element.innerHTML` 👉 Modifying this property changes the content of the element. For example, setting `element.innerHTML` to a new value will update the text or HTML inside that element.
+
+## id
+
+`element.id` 👉 Sets or gets the `id` attribute of an element. This is useful for uniquely identifying an element within the DOM.
+
+## style
+
+`element.style` 👉 Provides access to the inline styles of an element. You can use it to change the appearance of the element directly through JavaScript.
+
+## setAttribute
+
+`element.setAttribute(name, value)` 👉 Sets a specified attribute on an element to a given value. This method is useful for setting any attribute that doesn’t have a direct property.
+
+## children
+
+`element.children`👉 Returns a live HTMLCollection of child elements of the specified element.
+
+# DOM Methods
+
+Here are a few key _document methods_ you will use a lot:
+
+## getElementById
+
+`document.getElementById(id)` 👉 This method returns an element with the specified id.
+
+## getElementsByClassName
+
+`document.getElementsByClassName(name)` 👉 This method returns a collection of elements with the specified class name, encapsulated in an HTMLCollection. Since a class name can be used by multiple elements, this method is designed to handle multiple matches.
+
+## getElementsByTagName
+
+`document.getElementsByTagName(name)` 👉 Similar to the class name method, this one returns a collection of elements with the specified tag name. This method also returns an HTMLCollection, as tag names can be shared by several elements.
+
+# Exercise 2
+
+So far we have been working mainly in CodePen, today is when we finally return to VSCode. Copy and paste the Pen on LEA into your VSCode and complete the exercise.
+
+## Solution
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FUNKY DOM Example</title>
+    <style>
+      .highlight {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="header">Welcome to the FUNKY DOM Example</h1>
+    <p class="description">This is an example paragraph.</p>
+
+    <script>
+      const header = document.getElementById("header"); // Fixed
+      console.log("Header:", header);
+
+      // Change the content of the header
+      header.innerHTML = "Content Updated!"; // Fixed
+      console.log("Updated Header Content:", header.innerHTML);
+
+      // Access the paragraph element by its class
+      const paragraphs = document.getElementsByClassName("description"); // Fixed
+      const paragraph = paragraphs[0]; // Get the first element from the HTMLCollection
+      console.log("Paragraph:", paragraph);
+
+      // Add a class to the paragraph
+      paragraph.className = "highlight"; // Fixed
+      console.log("Paragraph Class Name:", paragraph.className);
+    </script>
+  </body>
+</html>
+```
