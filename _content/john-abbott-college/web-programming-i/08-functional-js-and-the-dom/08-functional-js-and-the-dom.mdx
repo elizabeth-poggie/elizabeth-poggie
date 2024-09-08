@@ -140,28 +140,24 @@ for (let i = 0; i < nums.length; i++) {
 console.log(total); // 6
 ```
 
-In the above loop we are traversing an array and increasing each item by 1. To adapt the above to be a more functional programming style, we are going to put a lot of focus on the details. Now what do I mean by that?
+In this example, we are iterating over an array and adding each item to a `total`. To adopt a more functional programming style, we’ll focus on separating these two tasks:
 
-Well in our loop, we are doing 2 things:
-
-- Part 1) We are iterating over an array
-- Part 2) We are performing an action over EACH item in in our array
+- Part 1) Iterating over the array
+- Part 2) Performing an action on each item in the array
 
 ```js
 // ...
 
-// Part 1) iterator using a for loop
+// Part 1) Iterator using a for loop
 for (let i = 0; i < nums.length; i++) {
-  // Part 2) action
+  // Part 2) Action
   total = total + nums[i];
 }
 
 // ...
 ```
 
-What happens in a functional programming style is that we can disconnect the 2 an present the same thing BUT in a cleaner way.
-
-We can rewrite the `for` loops to use a `forEach()` method that iterates over the loop.
+In functional programming, these two tasks are separated, leading to a cleaner approach. We can rewrite the `for` loops using the `forEach()` method:
 
 ```js
 const nums = [1, 2, 3];
@@ -176,11 +172,11 @@ nums.forEach(function (num) {
 console.log(total); // 6
 ```
 
-The above still respects our 2 important parts except now our action and iterator are INDEPENDENT from each other.
+In this version, the iterator (`forEach()`) and the action (adding to `total`) are INDEPENDENT of each other.
 
-HOWEVER, this is not a pure function still. Why? It depends on and modifies external state (e.g. `total`). How do we fix this to become "PURE"? More on that in week 10 where we explore even MORE array methods including `map`, `filter`, and my favorite `reduce`.
+However, this function still isn’t pure. Why? Because it modifies and depends on external state (e.g. `total`). . To achieve purity, we need to avoid altering external state. We’ll cover this in more detail in week 10, where we’ll explore additional array methods like `map`, `filter`, and my favorite, `reduce`.
 
-Why is this so cool? We can put whatever function we want in here. Like lego blocks, you can build whatever structure you want. Your iterators can be interchanged with other iterators and your functions can be reused with other iterators.
+Why is this so cool? ust like building with Lego blocks, you can mix and match functions and iterators to create various structures. This modularity allows you to reuse and combine functions in different ways, enhancing your code’s maintainability and readability.
 
 ## Example
 
