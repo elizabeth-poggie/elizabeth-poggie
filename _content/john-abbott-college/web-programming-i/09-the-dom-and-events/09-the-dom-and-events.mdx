@@ -6,7 +6,9 @@ created: "2024-09-10"
 coverSrc: "./assets/"
 ---
 
-# Recap
+# Quick Recap
+
+## Equality
 
 Always use the "strict" equality in JavaScript for comparison.
 
@@ -26,3 +28,96 @@ console.log("0" == 12 < 11); // true
 ```
 
 Note: while i'm not going to test you on `==` black magic, it's important to remember the difference between `==` and `===` when it comes to comparison.
+
+## Functional Programming
+
+To adopt a more functional programming style, you need have these 2 parts:
+
+- Part 1) An Iterator
+- Part 2) An action to perform on each item in the array
+
+In part 2, our "action" needs to be a "pure" function such that it:
+
+- Depends solely on its input parameters, not on external state or variables.
+- Always returns the same output given the same inputs.
+- Has no side effects and does not modify or rely on external state.
+
+```js
+// init an array
+const nums = [1, 2, 3, 4, 5];
+
+// This is a "pure" function
+function ahh(element) {
+  console.log("ahhhhhhhhh ", element);
+}
+
+// Our iterator (forEach) performing an action (ahh) on each element (1,2,3,4,5)
+nums.forEach(ahh);
+```
+
+## The DOM
+
+The DOM is _NOT_:
+
+- Part of the JavaScript Language
+
+The DOM is:
+
+- Constructed by the browser
+- Accessible `globally` via the `document` object in JavaScript.
+
+# More fun DOM Techniques
+
+## DOM Methods continued
+
+These guys can return multiple element objects in an `HTMLCollection`. This is because class names or tags can return more than one matching HTML element in the DOM.
+
+```js
+let someClasses = document.getElementsByClassName(name);
+let someTags = document.getElementsByTagName(name);
+```
+
+You can access individual elements using array indices like `someClasses[0]` or `someTags[0]`.
+
+however, what happens if we want to do a change to ALL the elements in the array and we don't know how many elements are contained in that array?
+
+Given the following HTML, let's apply a style to all list items
+
+```html
+<body>
+  <ul>
+    <li>item 1</li>
+    <li>item 2</li>
+    <li>item 3</li>
+  </ul>
+</body>
+```
+
+Let's first apply our knowledge of functional programming :^)
+
+```js
+// first let's get the tags
+const someTags = document.getElementsByTagName("li");
+
+// Convert HTMLCollection to an array
+const tagArray = Array.from(someTags);
+
+// now lets iterate over each of these elements in the array
+tagArray.forEach(function (tag) {
+  tag.style.color = "red";
+});
+```
+
+Alternatively, if you want to stick to loops here you can traverse the `HTMLCollection` like this:
+
+```js
+// first let's get the tags
+const someTags = document.getElementsByTagName("li");
+
+// Iterate over the HTMLCollection
+for (let i = 0; i < someTags.length; i++) {
+  someTags[i].style.color = "red";
+}
+```
+
+Well why would we ever want to dynamically change the styles? Let's do an example.

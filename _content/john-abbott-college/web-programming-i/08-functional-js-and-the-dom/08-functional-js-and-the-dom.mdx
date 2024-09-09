@@ -174,9 +174,9 @@ console.log(total); // 6
 
 In this version, the iterator (`forEach()`) and the action (adding to `total`) are INDEPENDENT of each other.
 
-However, this function still isn’t pure. Why? Because it modifies and depends on external state (e.g. `total`). . To achieve purity, we need to avoid altering external state. We’ll cover this in more detail in week 10, where we’ll explore additional array methods like `map`, `filter`, and my favorite, `reduce`.
+However, this function still isn’t pure. Why? Because it modifies and depends on external state (e.g. `total`). To achieve purity, we need to avoid altering external state. We’ll cover this in more detail in week 10, where we’ll explore additional array methods like `map`, `filter`, and my favorite, `reduce`.
 
-Why is this so cool? ust li ke building with Lego blocks, you can mix and match functions and iterators to create various structures. This modularity allows you to reuse and combine functions in different ways, enhancing your code’s maintainability and readability.
+Why is this so cool? Just like building with Lego blocks, you can mix and match functions and iterators to create various structures. This modularity allows you to reuse and combine functions in different ways, enhancing your code’s maintainability and readability.
 
 ## Example
 
@@ -235,7 +235,7 @@ The DOM is _NOT_:
 The DOM is:
 
 - Constructed by the browser
-- Accessible `globally` via the document object in JavaScript.
+- Accessible `globally` via the `document` object in JavaScript.
 
 ## The DOM and Trees
 
@@ -284,7 +284,7 @@ myDiv.style.backgroundColor = "blue";
 
 ## children
 
-`element.children` returns a live HTMLCollection of the child elements of a specified element. For example, if you have a `<ul>` with several `<li>` items and want to get all the child list items, you can use:
+`element.children` returns a live `HTMLCollection` of the child elements of a specified element. For example, if you have a `<ul>` with several `<li>` items and want to get all the child list items, you can use:
 
 ```js
 const list = document.querySelector("ul");
