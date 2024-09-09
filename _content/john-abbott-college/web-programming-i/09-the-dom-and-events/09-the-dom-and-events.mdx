@@ -235,3 +235,94 @@ You're building yet another TODO list app. Given the HTML list below, your task 
   </body>
 </html>
 ```
+
+# Adding HTML Elements
+
+There are several ways to add HTML elements dynamically in JavaScript.
+
+## innerHTML
+
+So far we have only demonstrated how to modify text using this guy, but you can also insert elements this way too
+
+```js
+const container = document.getElementById("container");
+container.innerHTML = "<p>This is a cool paragraph</p>";
+```
+
+However, even though this approach might be easy and concise, it can be less efficient and comes with security risks.
+
+## createElement() and appendChild()
+
+This is a more DOM-friendly way to create and add elements. It gives you more control over each element and is generally safer.
+
+```js
+const container = document.getElementById("container");
+
+// Create a new <p> element
+const newParagraph = document.createElement("p");
+newParagraph.textContent = "This is a dynamically created paragraph.";
+
+// Append the new element to the container
+container.appendChild(newParagraph);
+```
+
+This method allows you to build elements and their content programmatically, which is better than just raw dogging the `<body>` element with `innerHTML`
+
+## insertAdjacentHTML()
+
+This final method allows you to insert HTML elements at specific positions relative to an existing element
+
+```js
+const container = document.getElementById("container");
+
+// Insert HTML before the container's end tag
+container.insertAdjacentHTML("beforeend", "<p>I am an ending paragraph</p>");
+
+// Insert HTML at the start of the container
+container.insertAdjacentHTML("afterbegin", "<p>I am a starting paragraph</p>");
+```
+
+This method allows you to insert HTML:
+
+- `beforebegin` 👉 Before the container itself.
+- `afterbegin` 👉 Just inside the container, before its first child.
+- `beforeend` 👉 Just inside the container, after its last child.
+- `afterend` 👉 After the container itself.
+
+What does this look like in the HTML document?
+
+```html
+<!-- beforebegin -->
+<p>
+  <!-- afterbegin -->
+  existing content
+  <!-- beforeend -->
+</p>
+<!-- afterend -->
+```
+
+# Exercise 2
+
+Open up Chrome DevTools and add the following on `johnabbott.qc.ca`:
+
+- Add a fresh `<p>` element to the first heading
+- Append an `<h4>` element AFTER the first heading
+
+## Solution
+
+In the console, add the following JavaScript snippets:
+
+```js
+// first get the first heading
+const headings = document.getElementsByTagName("h1");
+
+// Step 1) Add a <p> to the first heading
+const newP = document.createElement("p");
+newP.textContent = "HELLO JAC";
+headings[0].appendChild(newP);
+
+// Step 2) Add a <h4> after the first heading
+headings[0].insertAdjacentHTML("afterend", "<h4>This is VALID????</h4>");
+```
+
+Food for thought, what other stuff do you think you could modify pragmatically 👀

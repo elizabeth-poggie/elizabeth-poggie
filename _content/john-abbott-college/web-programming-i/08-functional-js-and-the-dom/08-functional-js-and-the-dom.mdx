@@ -257,12 +257,28 @@ The `HTMLElement` object comes with a vast number of properties. To give you a s
 
 ## innerHTML
 
-`element.innerHTML` lets you modify the content of an element. For example, setting `element.innerHTML` to a new value will update the text or HTML inside that element.
+`element.innerHTML` lets you modify the content of an element. For example, setting `element.innerHTML` to a new value will update the text OR HTML inside that element.
 
 ```js
 const contentDiv = document.getElementById("content");
-contentDiv.innerHTML = "Hello World"; // "Hello World"
+contentDiv.innerHTML = "<strong>Hello World</strong>"; // "Hello World"
 ```
+
+## innerText
+
+`element.innerText` lets or retrieves the text content inside an element, but it ignores any HTML tags. If you assign HTML content, the HTML tags will be treated as plain text and displayed exactly as written.
+
+```js
+const textContentDiv = document.getElementById("textContent");
+textContentDiv.innerText = "<strong>Hello World</strong>";
+```
+
+How does this compare to `element.innerHTML`?
+
+- `innerHTML` 👉 Parses and renders HTML tags.
+- `innerText` 👉 Treats all content as plain text, ignoring any HTML tags.
+
+You can use either one, it depends on your use case.
 
 ## id
 
