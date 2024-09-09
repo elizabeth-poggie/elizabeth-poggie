@@ -1,0 +1,28 @@
+---
+# General Information
+category: "Web Programming I"
+title: "The DOM & Events"
+created: "2024-09-10"
+coverSrc: "./assets/"
+---
+
+# Recap
+
+Always use the "strict" equality in JavaScript for comparison.
+
+Why? When using `===` we are comparing the `type` and `value` at the same time.
+
+On the other hand, if you use `==` you are performing a "loose" equality and JavaScript is performing a _type coercion_. What does this mean? Two values are compared only AFTER attempting to convert them into a common type.
+
+```js
+console.log(34 === 20 + 14); // true
+console.log(34 === true); // false
+console.log(34 == true); // false
+console.log(1 == true); // true
+console.log("3" === 3); // false
+console.log("3" == 3); // true
+console.log("3" === 12 < 11); // false
+console.log("0" == 12 < 11); // true
+```
+
+Note: while i'm not going to test you on `==` black magic, it's important to remember the difference between `==` and `===` when it comes to comparison.
