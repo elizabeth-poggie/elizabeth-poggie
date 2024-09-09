@@ -121,3 +121,117 @@ for (let i = 0; i < someTags.length; i++) {
 ```
 
 Well why would we ever want to dynamically change the styles? Let's do an example.
+
+# Example 1
+
+You're building yet another TODO list app. Given the HTML list below, your task is to check off specific items based on a JavaScript array. This array represents tasks the user completed the day before.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO List</title>
+  </head>
+  <body>
+    <h1>To-Do List</h1>
+    <ul id="checkbox-list">
+      <li>
+        <input type="checkbox" />
+        <label>Go to Web 1</label>
+      </li>
+      <li>
+        <input type="checkbox" />
+        <label>Eat a Snack</label>
+      </li>
+      <li>
+        <input type="checkbox" />
+        <label>Exercise</label>
+      </li>
+      <li>
+        <input type="checkbox" />
+        <label>Sleep</label>
+      </li>
+    </ul>
+
+    <script>
+      // Items that should be pre-checked
+      const checkedItems = ["Exercise", "Go to Web 1"];
+
+      // Get the list of <li> elements
+      const checkboxList = null; // fix me
+
+      // Step 1) Convert the list to an array
+      const boxes = null; // fix me
+
+      // Step 2) Loop through each item and check the box if necessary
+      boxes.forEach(function (item) {
+        // Select the checkbox and label inside each <li>
+        const checkbox = null; // fix me
+        const label = null; // fix me
+
+        // Step 3) Check the box if the item is in the checkedItems array
+        // fix me
+      });
+    </script>
+  </body>
+</html>
+```
+
+## Solution
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO List</title>
+  </head>
+  <body>
+    <h1>To-Do List</h1>
+    <ul id="checkbox-list">
+      <li>
+        <input type="checkbox" />
+        <label>Go to Web 1</label>
+      </li>
+      <li>
+        <input type="checkbox" />
+        <label>Eat a Snack</label>
+      </li>
+      <li>
+        <input type="checkbox" />
+        <label>Exercise</label>
+      </li>
+      <li>
+        <input type="checkbox" />
+        <label>Sleep</label>
+      </li>
+    </ul>
+
+    <script>
+      // Items that should be pre-checked
+      const checkedItems = ["Exercise", "Go to Web 1"];
+
+      // Get the list of <li> elements
+      const checkboxList = document.getElementsByTagName("li");
+
+      // Step 1: Convert the list to an array
+      const boxes = Array.from(checkboxList);
+
+      // Step 2: Loop through each item and check the box if necessary
+      boxes.forEach(function (item) {
+        // Select the checkbox and label inside each <li>
+        const checkbox = item.querySelector("input");
+        const label = item.querySelector("label").textContent;
+
+        // Step 3) Check the box if the item is in the checkedItems array
+        if (checkedItems.includes(label)) {
+          checkbox.checked = true;
+        }
+      });
+    </script>
+  </body>
+</html>
+```
