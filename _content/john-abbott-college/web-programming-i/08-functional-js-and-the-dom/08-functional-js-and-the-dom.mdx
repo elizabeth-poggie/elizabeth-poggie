@@ -346,7 +346,43 @@ link.setAttribute("href", "test.com");
 
 # Exercise 2
 
-So far we have been working mainly in CodePen, today is when we finally return to VSCode. Copy and paste the Pen on LEA into your VSCode and complete the exercise.
+So far we have been working mainly in CodePen, today is when we finally return to VSCode. Copy and paste the [Pen](https://codepen.io/elizabeth-poggie/pen/abgPVWy?editors=1000) on LEA into your VSCode and complete the exercise:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FUNKY DOM Example</title>
+    <style>
+      .highlight {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="header">Welcome to the FUNKY DOM Example</h1>
+    <p class="description">This is an example paragraph.</p>
+
+    <script>
+      // Access the header element by its ID
+      const header = null; // @fix-me - this is wrong
+      console.log("Header:", header);
+
+      // Change the content of the header
+      header.fixMe = "fix me"; // @fix-me - this is wrong
+
+      // Access the paragraph element by its class
+      const paragraph = null; // @fix-me - this is wrong
+      console.log("Paragraph:", paragraph);
+
+      // Add a class to the paragraph
+      paragraph.fixMe = "highlight"; // @fix-me - this is wrong
+    </script>
+  </body>
+</html>
+```
 
 ## Solution
 
