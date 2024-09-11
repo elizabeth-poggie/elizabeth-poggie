@@ -52,10 +52,16 @@ export const getAllNotesForCategories = (
             ? `${baseFolder}/${category}`
             : `${baseFolder}/${category}_${fileNameWithoutExtension}`;
 
+          // Extract the source content
           const source = fs.readFileSync(fullPath, "utf8");
           const mdxSource = await serialize(source, { parseFrontmatter: true });
           const mdxFrontmatter: Frontmatter =
             mdxSource.frontmatter as Frontmatter;
+
+          // Construct the image path while removing _
+          const fullBaseFolderPath = path
+            .join(baseFolder, category)
+            .replace(/_/g, "/");
 
           allNotes.push({
             title: mdxFrontmatter.title,
@@ -63,7 +69,7 @@ export const getAllNotesForCategories = (
             category: mdxFrontmatter.category,
             created: mdxFrontmatter.created,
             coverSrc: mdxFrontmatter.coverSrc ?? null,
-            baseFolder: `${baseFolder}/${category}/`,
+            baseFolder: fullBaseFolderPath,
           });
         }
       }
@@ -134,6 +140,9 @@ export const getNoteProps = async (
         ? getRelatedNotes(baseFolder, categories)
         : null;
 
+      // Construct the image path
+      const fullBaseFolderPath = `/${baseFolder}/${subCategoryPath.join("/")}`;
+
       return {
         props: {
           source: {
@@ -144,7 +153,7 @@ export const getNoteProps = async (
               type: type || null,
             },
           },
-          baseFolder: `/${baseFolder}/${category}/${subCategoryPath}`,
+          baseFolder: fullBaseFolderPath,
           relatedNotes,
         },
       };
