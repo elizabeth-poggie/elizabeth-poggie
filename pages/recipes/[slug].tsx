@@ -6,7 +6,7 @@ import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
 import { GalleryDetails } from "../../src/views/gallery-details/gallery-details";
 import {
-  CategoryMap,
+  CategoryToLinkMap,
   Frontmatter,
   getNotePaths,
   getNoteProps,
@@ -28,7 +28,7 @@ export interface MDXProps {
   /**
    * Show relatedNotes on the page?
    */
-  relatedNotes?: CategoryMap;
+  relatedNotes?: CategoryToLinkMap;
 }
 
 export default function RecipeDetailsPage(props: MDXProps) {
