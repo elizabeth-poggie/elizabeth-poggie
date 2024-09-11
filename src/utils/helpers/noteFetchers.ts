@@ -12,6 +12,31 @@ export type CategoryToLinkMap = {
   [key in string]: ILink[];
 };
 
+const findFileInDirectory = (
+  dirPath: string,
+  targetFile: string
+): string | null => {
+  const filesAndDirs = fs.readdirSync(dirPath);
+
+  for (const fileOrDir of filesAndDirs) {
+    const fullPath = path.join(dirPath, fileOrDir);
+
+    if (fs.lstatSync(fullPath).isDirectory()) {
+      const result = findFileInDirectory(fullPath, targetFile);
+      if (result) {
+        return result;
+      }
+    } else if (
+      fileOrDir.endsWith(".mdx") &&
+      fileOrDir.replace(".mdx", "") === targetFile
+    ) {
+      return fullPath;
+    }
+  }
+
+  return null;
+};
+
 /**
  * Because I love relative linking, organizing things in a component-driven style, and categorizing my notes, I'm making my life harder than it needs to be :^)
  *
@@ -26,37 +51,53 @@ export const getAllNotesForCategories = (
   const allNotes: INote[] = [];
   const baseDirectory = path.join(process.cwd(), `_content/${baseFolder}`);
 
-  categories.forEach(async (category: string) => {
-    const categoryPath = path.join(baseDirectory, category);
-
+  // Function to recursively get all notes, including in subfolders
+  const getNotesFromFolder = (categoryPath: string, category: string) => {
     if (!fs.existsSync(categoryPath)) {
       console.log(`Category path does not exist: ${categoryPath}`);
       return;
     }
 
-    const files = fs.readdirSync(categoryPath);
+    const filesAndFolders = fs.readdirSync(categoryPath);
 
-    for (const fileName of files) {
-      const source = fs.readFileSync(
-        path.join(
-          categoryPath,
-          fileName as string,
-          (fileName + ".mdx") as string
-        ),
-        "utf8"
-      );
-      const mdxSource = await serialize(source, { parseFrontmatter: true });
-      const mdxFontmatter: Frontmatter = mdxSource.frontmatter as Frontmatter;
+    filesAndFolders.forEach(async (fileOrFolder) => {
+      const fullPath = path.join(categoryPath, fileOrFolder);
 
-      allNotes.push({
-        title: mdxFontmatter.title,
-        slug: `${baseFolder}/${category}_${fileName}`,
-        category: mdxFontmatter.category,
-        created: mdxFontmatter.created,
-        coverSrc: mdxFontmatter.coverSrc ?? null,
-        baseFolder: `${baseFolder}/${category}/${fileName}/`,
-      });
-    }
+      // Check if it's a directory (i.e., a subfolder)
+      if (fs.lstatSync(fullPath).isDirectory()) {
+        // Recursive call to handle subfolders
+        getNotesFromFolder(fullPath, `${category}_${fileOrFolder}`);
+      } else {
+        // Handle files (assuming they're .mdx files)
+        if (fileOrFolder.endsWith(".mdx")) {
+          const fileNameWithoutExtension = fileOrFolder.replace(".mdx", "");
+
+          // Avoid adding the file name twice if it's the same as the last folder name
+          const slug = category.endsWith(fileNameWithoutExtension)
+            ? `${baseFolder}/${category}`
+            : `${baseFolder}/${category}_${fileNameWithoutExtension}`;
+
+          const source = fs.readFileSync(fullPath, "utf8");
+          const mdxSource = await serialize(source, { parseFrontmatter: true });
+          const mdxFrontmatter: Frontmatter =
+            mdxSource.frontmatter as Frontmatter;
+
+          allNotes.push({
+            title: mdxFrontmatter.title,
+            slug,
+            category: mdxFrontmatter.category,
+            created: mdxFrontmatter.created,
+            coverSrc: mdxFrontmatter.coverSrc ?? null,
+            baseFolder: `${baseFolder}/${category}/`,
+          });
+        }
+      }
+    });
+  };
+
+  categories.forEach((category: string) => {
+    const categoryPath = path.join(baseDirectory, category);
+    getNotesFromFolder(categoryPath, category);
   });
 
   return allNotes;
@@ -80,25 +121,38 @@ export const getNoteProps = async (
   ) => CategoryToLinkMap
 ) => {
   const { slug } = ctx.params as { slug: string };
-  const cleanSlug: string = slug.replace(/^[^_]*_/, ""); // 🐌✨
+
+  // Split slug to handle nested structure
+  const parts = slug.split("_");
+  const categorySlug = parts.slice(0, -1).join("_");
+  const fileName = parts.slice(-1)[0]; // Last part is the file name
+
+  console.log(`Looking for file with slug: ${slug}`);
+  console.log(`Category path: ${baseFolder}/${categorySlug}`);
+  console.log(`File name: ${fileName}`);
 
   // Iterate through all categories to find the matching file
   for (const category of categories) {
-    const filePath = path.join(
-      `_content/${baseFolder}/${category}/`,
-      cleanSlug,
-      cleanSlug + ".mdx"
+    const categoryPath = path.join(
+      process.cwd(),
+      `_content/${baseFolder}/${category}`
     );
 
-    // Step 0 - make sure the file exists lol
-    if (fs.existsSync(filePath)) {
-      // Step 1 - get the mdx content
+    console.log(`Searching in category path: ${categoryPath}`);
+
+    // Find the file path within the category
+    const filePath = findFileInDirectory(categoryPath, fileName);
+
+    if (filePath) {
+      console.log(`Found file at: ${filePath}`);
+
+      // Get the MDX content
       const source = fs.readFileSync(filePath, "utf8");
 
-      // Step 2 - reformat
+      // Reformat
       const mdxSource = await serialize(source, { parseFrontmatter: true });
 
-      // Step 3 - return with proper types
+      // Return with proper types
       return {
         props: {
           source: {
@@ -106,7 +160,7 @@ export const getNoteProps = async (
             scope: mdxSource.scope,
             frontmatter: mdxSource.frontmatter as Frontmatter,
           },
-          baseFolder: `/${baseFolder}/${category}/${cleanSlug}/`,
+          baseFolder: `/${baseFolder}/${categorySlug}`,
           relatedNotes: getRelatedNotes
             ? getRelatedNotes(baseFolder, categories)
             : null,
@@ -115,8 +169,8 @@ export const getNoteProps = async (
     }
   }
 
-  // If no matching file is found, get angry
-  throw new Error(`No matching file found for slug: ${slug}, ${cleanSlug}`);
+  // If no matching file is found, throw an error
+  throw new Error(`No matching file found for slug: ${slug}`);
 };
 
 /**
@@ -129,18 +183,41 @@ export const getNoteProps = async (
 export const getNotePaths = (baseFolder: string, categories: string[]) => {
   const paths: { params: { slug: string } }[] = [];
 
-  categories.forEach((category) => {
-    const categoryPath = path.join(`_content/${baseFolder}/${category}/`);
+  // Recursive function to handle subfolders and build slugs
+  const getPathsFromFolder = (categoryPath: string, currentSlug: string) => {
     if (fs.existsSync(categoryPath)) {
-      const files = fs.readdirSync(categoryPath);
-      files.forEach((file) => {
-        paths.push({
-          params: {
-            slug: `${category}_${file}`,
-          },
-        });
+      const filesAndFolders = fs.readdirSync(categoryPath);
+
+      filesAndFolders.forEach((fileOrFolder) => {
+        const fullPath = path.join(categoryPath, fileOrFolder);
+
+        if (fs.lstatSync(fullPath).isDirectory()) {
+          // Recurse into subfolder and append to the current slug
+          getPathsFromFolder(fullPath, `${currentSlug}_${fileOrFolder}`);
+        } else {
+          // Ensure we're only handling .mdx files
+          if (fileOrFolder.endsWith(".mdx")) {
+            const fileNameWithoutExtension = fileOrFolder.replace(".mdx", "");
+
+            // Construct the slug, avoiding duplicates
+            const slug = currentSlug.endsWith(fileNameWithoutExtension)
+              ? `${currentSlug}`
+              : `${currentSlug}_${fileNameWithoutExtension}`;
+
+            paths.push({
+              params: {
+                slug,
+              },
+            });
+          }
+        }
       });
     }
+  };
+
+  categories.forEach((category) => {
+    const categoryPath = path.join(`_content/${baseFolder}/${category}`);
+    getPathsFromFolder(categoryPath, category);
   });
 
   return {
