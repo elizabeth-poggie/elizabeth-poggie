@@ -37,7 +37,7 @@ At John Abbott, the classes you would want to focus on are ...
 - Web Programming ||
 - Web Programming |||
 
-## How is Java script used?
+## How is JavaScript used?
 
 - Web / Mobile Apps
 - Real-time Networking Apps

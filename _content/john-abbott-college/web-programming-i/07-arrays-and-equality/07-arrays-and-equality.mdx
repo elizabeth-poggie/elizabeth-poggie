@@ -1,0 +1,458 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Arrays and Equality"
+created: "2024-09-06"
+coverSrc: "./assets/"
+---
+
+# Arrays continued
+
+Going back to what we know about arrays, these are the functions we know so far:
+
+```js
+// Add a single item to the end of an array
+myArray.push(item);
+// Add multiple items to the end of an array
+myArray.push(item1, item2);
+// Remove the last item from an array
+myArray.pop();
+// Get the length of an array
+myArray.length;
+// Find the index of a specific item in the array
+myArray.indexOf(findItem);
+```
+
+These allow us to dynamically resize and search the array much like a list data structure that you are familiar with from previous classes. But there are a few more that are worth knowing...
+
+## Splicing
+
+```js
+// You can get the length of an array
+myArray.splice(removeFromIndex, removeNumberOfElements, replacement1, replacement2, ...);
+```
+
+With `splice`, you can remove one or more elements from an array at a specific index as opposed to `pop()` which only lets you modify at the very end. For example:
+
+```js
+const fruits = ["apple", "banana", "cherry", "date"];
+fruits.splice(1, 1);
+console.log(fruits); // ["apple", "cherry", "date"]
+```
+
+`splice` can also be used to insert new elements into an array at a specific index, effectively "`splice`ing" them into place. For example:
+
+```js
+const fruits = ["apple", "cherry", "date"];
+fruits.splice(1, 0, "banana");
+console.log(fruits); // ["apple", "banana", "cherry", "date"]
+```
+
+This is also particularly useful when you need to replace specific elements by removing some and inserting new ones in their place. For example:
+
+```js
+const fruits = ["apple", "banana", "cherry", "date"];
+fruits.splice(1, 1, "blueberry");
+console.log(fruits); // ["apple", "blueberry", "cherry", "date"]
+```
+
+Whether you need to remove, insert, or replace elements, `splice` gives you the power to manipulate arrays in a way that other methods don’t. Why would we ever need this? Well one example is in e-commerce sites. `splice` can be used to manage a user's shopping cart. For example, when a user removes an item from their cart, you can use `splice` to update the array of items.
+
+```js
+const cart = [
+  { id: 1, name: "Laptop", price: 650 },
+  { id: 2, name: "Phone", price: 500 },
+  { id: 3, name: "Headphones", price: 100 },
+];
+
+// Remove the phone
+cart.splice(1, 1);
+// Print cart
+console.log(cart);
+```
+
+Another could be managing a playlist where users might want to add, remove, or reorder songs. I invite you to think of potential use cases for this method :^)
+
+## Iterating
+
+The `forEach()` method iterates over the array without the need of an explicitly defined index. For example, going back to our boating school example, this is how we iterated over all the testing scores:
+
+```js
+// Traditional loop
+for (let i = 0; i < student.tests.length; i++) {
+  let test = student.tests[i];
+  total += test.grade;
+}
+```
+
+Alternatively, this can also be written like this:
+
+```js
+// Slightly fancier loops
+for (let test of student.tests) {
+  total += test.grade;
+}
+```
+
+And using what we know about this `forEach()` method, we can do the following 1 liner:
+
+```js
+// Even fancier loops
+student.tests.forEach(function (x) {
+  total += test.grade;
+});
+```
+
+And if anyone is curious about arrow notation, you can get this very sleek gentleman right here:
+
+```js
+// SLEEK loops 👌
+student.tests.forEach((test) => {
+  total += test.grade;
+});
+```
+
+In summary:
+
+- `forEach()` does not modify the original array
+- `forEach()` returns nothing and therefore the return value is `undefined`
+
+However, there is an even sleeker way you can iterate over the contents of a loop, however thats for much later 👀
+
+# Exercise 1
+
+Let's build on our previous `cart` example from last class by making the code more efficient and organized.
+
+- Method 1: use the `forEach()` loop to determine the user's eligibility for a discount.
+- Method 2: a user should be able to add an item from their cart.
+- Method 3: a user should be able to remove an item from their cart using just the item's index in the array.
+
+```js
+// Exercise 1 👇
+const user = {
+  name: "Arthur Dent",
+  cart: [
+    {
+      amount: 650,
+      item: "Laptop",
+    },
+    {
+      amount: 50,
+      item: "Mouse",
+    },
+    {
+      amount: 200,
+      item: "Monitor",
+    },
+  ],
+  isPremiumMember: true,
+  minimumAmountForDiscount: 500,
+  isEligibleForDiscount: function () {
+    // add code here
+  },
+  addToCart: function (newItem) {
+    // add code here
+  },
+  removeItemFromCart: function (index) {
+    // add code here
+  },
+};
+```
+
+## Solution
+
+```js
+const user = {
+  name: "Arthur Dent",
+  cart: [
+    {
+      amount: 650,
+      item: "Laptop",
+    },
+    {
+      amount: 50,
+      item: "Mouse",
+    },
+    {
+      amount: 200,
+      item: "Monitor",
+    },
+  ],
+  isPremiumMember: true,
+  minimumAmountForDiscount: 500,
+
+  // Method 1 👉 determine eligibility for a discount
+  isEligibleForDiscount: function () {
+    let totalAmount = 0;
+
+    this.cart.forEach((item) => {
+      totalAmount += item.amount;
+    });
+
+    return totalAmount >= this.minimumAmountForDiscount || this.isPremiumMember;
+  },
+
+  // Method 2 👉 add a new item to the cart
+  addToCart: function (newItem) {
+    this.cart.push(newItem);
+  },
+
+  // Method 3 👉 remove an item from the cart
+  removeItemFromCart: function (index) {
+    if (index >= 0 && index < this.cart.length) {
+      this.cart.splice(index, 1);
+    }
+  },
+};
+```
+
+Food for thought: how do you think we could improve the above solution so that you remove an item from the cart based on the item's `barcode`? 👀
+
+# JavaScript Equality
+
+For everyone who watched the full conference video on [WTFJS](https://www.youtube.com/watch?v=et8xNAc2ic8), today we are going finally to explore why he referred to the `==` as the "dick".
+
+For starters, in JavaScript, shockingly `===` and `==` do not mean the same thing:
+
+- When using triple `===` in JavaScript, we are testing form "strict" equality. This means both the `type` and `value` are being compared at the same time.
+
+- When using double equals in JavaScript we are testing for "loose" equality. Double equals also performs a _type coercion_
+
+# Type Coercion Side Tangent
+
+Type coercion in programming refers to the automatic or implicit conversion of values from one data type to another. In languages like JavaScript, this often happens when values of different types are compared or when operations are performed that expect a certain type of value.
+
+Going back to one of our earlier examples:
+
+```js
+let result = "5" - 2; // 3
+```
+
+JavaScript converts the string `5` to a number, and then subtracts `2` from `5`, resulting in `3`. Alternatively:
+
+```js
+let result = "5" + 2; // 52
+```
+
+JavaScript converts the number `2` to a string, and then concatenates that with `5`, resulting in `52`.
+
+```js
+let result = true + true; // 2
+```
+
+Here JavaScript is converting `true` into 1, and so `1+1` is `2` :^)
+
+In the case with `==` equality, _type coercion_ means that two values are compared only AFTER attempting to convert them into a common type. What does that mean for you?
+
+# Comparisons that are Unfortunately Valid
+
+## Comparing a Number and a String
+
+```js
+console.log(5 == "5"); // true
+```
+
+This makes sense because the string `5` is coerced into the number `5`, and the comparison evaluates to `true`.
+
+## Comparing a Boolean and a Number
+
+```js
+console.log(0 == false); // true
+```
+
+This also makes sense because in this case, `false` is coerced into the number `0`, so the comparison is `true`.
+
+## Comparing a Boolean and a string
+
+```js
+console.log("" == false); // true
+```
+
+An empty string `""` is coerced into `false`, so the comparison evaluates to `true`.
+
+## Comparing null and undefined
+
+```js
+console.log(null == undefined); // true
+```
+
+In JavaScript, `null` and `undefined` are considered equal with `==`, but they are not equal with `===` because it's JavaScript.
+
+```js
+console.log(null === undefined); // false :^)
+```
+
+## Compounding Coercions
+
+Both sides of the `==` can be coerced. For example:
+
+```js
+console.log("0" == false); // true
+```
+
+This is unfortunately valid because:
+
+- the string `"0"` is coerced into a number
+- the boolean `false` is coerced into a number
+- both these numbers are then compared `0 == 0`
+- And thus it prints `true` :^)
+
+# Comparisons that are Strangely not Valid
+
+Ok so that's weird, but what's weirder are the things that are not allowed.
+
+## Comparing null with a Boolean
+
+```js
+console.log(null == false); // false
+```
+
+What is happening here????? `null` and `undefined` are considered equal to each other ONLY for `==` but not to other values. That means `null == undefined` is `true`, but `null == false` is `false`.
+
+## Comparing Arrays with Object
+
+```js
+console.log([] == {}); // false
+```
+
+ok so arrays and objects are not the same. BUT...
+
+```js
+console.log(typeof [] == typeof {}); // true
+```
+
+Their types are the same??? Despite this, they are different kinds of objects. Arrays are specialized objects with additional array methods and properties, while plain objects are general-purpose collections of key-value pairs.
+
+## What's the take away
+
+Do not use the `==` operator.
+
+# JavaScript Logical Operators
+
+They are commonly used in conditions and control flow statements. Here are some of the primary logical operators and how they work:
+
+## AND (&&)
+
+The `&&` operator returns true if both operands are `true`, and `false` otherwise. It also is lazy, meaning if the first operand is `false`, the second operand is not evaluated because the result is already determined.
+
+```js
+console.log(false && true); // false
+```
+
+HOWEVER, the Logical `&&` can also return non-Boolean values. It returns the first falsy value it encounters, or the last value if all are truthy. For example the below prints `0`:
+
+```js
+console.log(0 && 1); // 0
+```
+
+Why? Since `0` is falsy, the `&&` operator immediately returns `0` without evaluating `1`. What about if we put 2 strings:
+
+```js
+console.log("hello" && "world"); // world
+```
+
+Why? `"hello"` is truthy because it is non-empty and `"world"` is also truthy. Therefore the result of "world" is returned because the `&&` operator returns the last operand when all operands are truthy. Why? Because JavaScript :^)
+
+## OR (||)
+
+The `||` operator returns `true` if at least one of the operands is `true`. If the first operand is `true`, the second operand is not evaluated.
+
+```js
+console.log(false || true); // true
+```
+
+HOWEVER, like the `&&` operator, it can also return non-boolean values. Logical `||` returns the first truthy value it encounters, or the last value if all are falsy. For example:
+
+```js
+console.log(0 || 1); // 1
+```
+
+Why? Because `1` is truthy. Alternatively with 2 strings, you should expect the following behavior:
+
+```js
+console.log("hello" || "world"); // hello
+```
+
+Why? Well this time both are truthy and `"hello"` came first so `"hello"` gets printed
+
+## NOT (!)
+
+The `!` operator inverts the Boolean value of its operand. It returns `true` if the operand is `false`, and `false` if the operand is `true`. The `!` operator can also be used to convert non-Boolean values to Boolean values.
+
+```js
+console.log(!false); // true
+console.log(!0); // true
+console.log(!"hello"); // false
+```
+
+## Ternary Operator (?:)
+
+The JavaScript ternary operator is a concise way to perform conditional operations. It provides a shorthand for the `if-else` statement and is commonly used for simple conditional expressions.
+
+```js
+// Traditional "if-else"
+if (condition) {
+  exprIfTrue;
+} else {
+  exprIfFalse;
+}
+
+// JavaScript "if-else"
+condition ? exprIfTrue : exprIfFalse;
+```
+
+Why? Because web programmers are lazy. Why write 5 lines of code when you can do just 1:
+
+```js
+const averageGrade = 88;
+let hasPassed = averageGrade >= 60 ? "Yeeeeee" : "Nope";
+console.log(hasPassed); // 'Yeeeeee'
+```
+
+You can also nest them like so:
+
+```js
+const averageGrade = 88;
+let letterGrade =
+  averageGrade >= 90
+    ? "A"
+    : averageGrade >= 80
+    ? "B"
+    : averageGrade >= 70
+    ? "C"
+    : averageGrade >= 60
+    ? "D"
+    : "F";
+console.log(letterGrade); // 'B'
+```
+
+However it can be a bit harder to read, so if you find yourself doing this, try to stick to `if-else` or `switch` cases (more on that later)
+
+# Exercise 2
+
+Let's again build on our previous `cart` example by introducing even more properties:
+
+- `loyaltyTier`: This determines the loyalty level of your user. (e.g. `"Gold"`, `"Silver"`, `"Bronze"`);
+
+and create methods that leverage these properties:
+
+- Method 1: a user should have access to exclusive product launches if they are a premium member AND are either a "Gold" or "Silver" loyalty tier.
+
+## Solution
+
+```js
+const user = {
+  // ... other stuff ... (refer to Exercise 1's solution) ...
+
+  // New property
+  loyaltyTier: "Gold",
+
+  // New Method
+  hasAccessToExclusiveLaunches: function () {
+    return this.isPremiumMember &&
+      (this.loyaltyTier === "Gold" || this.loyaltyTier === "Silver")
+      ? "Mark your calendars, there is an exclusive launch coming this friday"
+      : "What launch? How did you find this method? Go away";
+  },
+};
+```
