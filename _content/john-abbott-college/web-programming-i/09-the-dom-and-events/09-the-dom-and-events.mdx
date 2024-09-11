@@ -1,0 +1,332 @@
+---
+# General Information
+category: "Web Programming I"
+title: "The DOM & Adding Elements"
+created: "2024-09-10"
+coverSrc: "./assets/"
+---
+
+# Quick Recap
+
+## Equality
+
+Always use the "strict" equality in JavaScript for comparison.
+
+Why? When using `===` we are comparing the `type` and `value` at the same time.
+
+On the other hand, if you use `==` you are performing a "loose" equality and JavaScript is performing a _type coercion_. What does this mean? Two values are compared only AFTER attempting to convert them into a common type.
+
+```js
+console.log(34 === 20 + 14); // true
+console.log(34 === true); // false
+console.log(34 == true); // false
+console.log(1 == true); // true
+console.log("3" === 3); // false
+console.log("3" == 3); // true
+console.log("3" === 12 < 11); // false
+console.log("0" == 12 < 11); // true
+```
+
+Note: while i'm not going to test you on `==` black magic, it's important to remember the difference between `==` and `===` when it comes to comparison.
+
+## Functional Programming
+
+To adopt a more functional programming style, you need have these 2 parts:
+
+- Part 1) An Iterator
+- Part 2) An action to perform on each item in the array
+
+In part 2, our "action" needs to be a "pure" function such that it:
+
+- Depends solely on its input parameters, not on external state or variables.
+- Always returns the same output given the same inputs.
+- Has no side effects and does not modify or rely on external state.
+
+```js
+// init an array
+const nums = [1, 2, 3, 4, 5];
+
+// This is a "pure" function
+function ahh(element) {
+  console.log("ahhhhhhhhh ", element);
+}
+
+// Our iterator (forEach) performing an action (ahh) on each element (1,2,3,4,5)
+nums.forEach(ahh);
+```
+
+## The DOM
+
+The DOM is _NOT_:
+
+- Part of the JavaScript Language
+
+The DOM is:
+
+- Constructed by the browser
+- Accessible `globally` via the `document` object in JavaScript.
+
+# More fun DOM Techniques
+
+## DOM Methods continued
+
+These guys can return multiple element objects in an `HTMLCollection`. This is because class names or tags can return more than one matching HTML element in the DOM.
+
+```js
+let someClasses = document.getElementsByClassName(name);
+let someTags = document.getElementsByTagName(name);
+```
+
+You can access individual elements using array indices like `someClasses[0]` or `someTags[0]`.
+
+however, what happens if we want to do a change to ALL the elements in the array and we don't know how many elements are contained in that array?
+
+Given the following HTML, let's apply a style to all list items
+
+```html
+<body>
+  <ul>
+    <li>item 1</li>
+    <li>item 2</li>
+    <li>item 3</li>
+  </ul>
+</body>
+```
+
+Let's first apply our knowledge of functional programming :^)
+
+```js
+// first let's get the tags
+const someTags = document.getElementsByTagName("li");
+
+// Convert HTMLCollection to an array
+const tagArray = Array.from(someTags);
+
+// now lets iterate over each of these elements in the array
+tagArray.forEach(function (tag) {
+  tag.style.color = "red";
+});
+```
+
+Alternatively, if you want to stick to loops here you can traverse the `HTMLCollection` like this:
+
+```js
+// first let's get the tags
+const someTags = document.getElementsByTagName("li");
+
+// Iterate over the HTMLCollection
+for (let i = 0; i < someTags.length; i++) {
+  someTags[i].style.color = "red";
+}
+```
+
+Well why would we ever want to dynamically change the styles? Let's do an example.
+
+# Example 1
+
+You're building yet another TODO list app. Given the HTML list below, your task is to check off specific items based on a JavaScript array. This array represents tasks the user completed the day before.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO List</title>
+  </head>
+  <body>
+    <h1>To-Do List</h1>
+    <ul id="checkbox-list">
+      <li>
+        <input type="checkbox" />
+        <label>Go to Web 1</label>
+      </li>
+      <li>
+        <input type="checkbox" />
+        <label>Eat a Snack</label>
+      </li>
+      <li>
+        <input type="checkbox" />
+        <label>Exercise</label>
+      </li>
+      <li>
+        <input type="checkbox" />
+        <label>Sleep</label>
+      </li>
+    </ul>
+
+    <script>
+      // Items that should be pre-checked
+      const checkedItems = ["Exercise", "Go to Web 1"];
+
+      // Get the list of <li> elements
+      const checkboxList = null; // fix me
+
+      // Step 1) Convert the list to an array
+      const boxes = null; // fix me
+
+      // Step 2) Loop through each item and check the box if necessary
+      boxes.forEach(function (item) {
+        // Select the checkbox and label inside each <li>
+        const checkbox = null; // fix me
+        const label = null; // fix me
+
+        // Step 3) Check the box if the item is in the checkedItems array
+        // fix me
+      });
+    </script>
+  </body>
+</html>
+```
+
+## Solution
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO List</title>
+  </head>
+  <body>
+    <h1>To-Do List</h1>
+    <ul id="checkbox-list">
+      <li>
+        <input type="checkbox" />
+        <label>Go to Web 1</label>
+      </li>
+      <li>
+        <input type="checkbox" />
+        <label>Eat a Snack</label>
+      </li>
+      <li>
+        <input type="checkbox" />
+        <label>Exercise</label>
+      </li>
+      <li>
+        <input type="checkbox" />
+        <label>Sleep</label>
+      </li>
+    </ul>
+
+    <script>
+      // Items that should be pre-checked
+      const checkedItems = ["Exercise", "Go to Web 1"];
+
+      // Get the list of <li> elements
+      const checkboxList = document.getElementsByTagName("li");
+
+      // Step 1: Convert the list to an array
+      const boxes = Array.from(checkboxList);
+
+      // Step 2: Loop through each item and check the box if necessary
+      boxes.forEach(function (item) {
+        // Select the checkbox and label inside each <li>
+        const checkbox = item.querySelector("input");
+        const label = item.querySelector("label").textContent;
+
+        // Step 3) Check the box if the item is in the checkedItems array
+        if (checkedItems.includes(label)) {
+          checkbox.checked = true;
+        }
+      });
+    </script>
+  </body>
+</html>
+```
+
+# Adding HTML Elements
+
+There are several ways to add HTML elements dynamically in JavaScript.
+
+## innerHTML
+
+So far we have only demonstrated how to modify text using this guy, but you can also insert elements this way too
+
+```js
+const container = document.getElementById("container");
+container.innerHTML = "<p>This is a cool paragraph</p>";
+```
+
+However, even though this approach might be easy and concise, it can be less efficient and comes with security risks.
+
+## createElement() and appendChild()
+
+This is a more DOM-friendly way to create and add elements. It gives you more control over each element and is generally safer.
+
+```js
+const container = document.getElementById("container");
+
+// Create a new <p> element
+const newParagraph = document.createElement("p");
+newParagraph.textContent = "This is a dynamically created paragraph.";
+
+// Append the new element to the container
+container.appendChild(newParagraph);
+```
+
+This method allows you to build elements and their content programmatically, which is better than just raw dogging the `<body>` element with `innerHTML`
+
+## insertAdjacentHTML()
+
+This final method allows you to insert HTML elements at specific positions relative to an existing element
+
+```js
+const container = document.getElementById("container");
+
+// Insert HTML before the container's end tag
+container.insertAdjacentHTML("beforeend", "<p>I am an ending paragraph</p>");
+
+// Insert HTML at the start of the container
+container.insertAdjacentHTML("afterbegin", "<p>I am a starting paragraph</p>");
+```
+
+This method allows you to insert HTML:
+
+- `beforebegin` 👉 Before the container itself.
+- `afterbegin` 👉 Just inside the container, before its first child.
+- `beforeend` 👉 Just inside the container, after its last child.
+- `afterend` 👉 After the container itself.
+
+What does this look like in the HTML document?
+
+```html
+<!-- beforebegin -->
+<p>
+  <!-- afterbegin -->
+  existing content
+  <!-- beforeend -->
+</p>
+<!-- afterend -->
+```
+
+# Exercise 2
+
+Open up Chrome DevTools and add the following on `johnabbott.qc.ca`:
+
+- Add a fresh `<p>` element to the first heading
+- Append an `<h4>` element AFTER the first heading
+
+## Solution
+
+In the console, add the following JavaScript snippets:
+
+```js
+// first get the first heading
+const headings = document.getElementsByTagName("h1");
+
+// Step 1) Add a <p> to the first heading
+const newP = document.createElement("p");
+newP.textContent = "HELLO JAC";
+headings[0].appendChild(newP);
+
+// Step 2) Add a <h4> after the first heading
+headings[0].insertAdjacentHTML("afterend", "<h4>This is VALID????</h4>");
+```
+
+Food for thought, what other stuff do you think you could modify programmatically 👀
+
+# Friday
+
+Don't forget the quiz on friday which will focus on equality and the DOM.
