@@ -41,11 +41,15 @@ export function MdxNoteDetails(props: MDXProps) {
             <MDXNoteContent {...props} />
           </section>
           <section className={styles.sideBarSection}>
-            <section className={styles.collapsibleInSideBar}>
-              <Collapsible title={type}>
-                <CollapsibleLinkList links={[{ text: "beep", href: "boop" }]} />
-              </Collapsible>
-            </section>
+            {type ? (
+              <section className={styles.collapsibleInSideBar}>
+                <Collapsible title={type}>
+                  <CollapsibleLinkList
+                    links={[{ text: "beep", href: "boop" }]}
+                  />
+                </Collapsible>
+              </section>
+            ) : null}
           </section>
         </main>
       </div>

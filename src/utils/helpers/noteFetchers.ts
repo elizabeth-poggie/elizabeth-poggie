@@ -12,31 +12,6 @@ export type CategoryToLinkMap = {
   [key in string]: ILink[];
 };
 
-const findFileInDirectory = (
-  dirPath: string,
-  targetFile: string
-): string | null => {
-  const filesAndDirs = fs.readdirSync(dirPath);
-
-  for (const fileOrDir of filesAndDirs) {
-    const fullPath = path.join(dirPath, fileOrDir);
-
-    if (fs.lstatSync(fullPath).isDirectory()) {
-      const result = findFileInDirectory(fullPath, targetFile);
-      if (result) {
-        return result;
-      }
-    } else if (
-      fileOrDir.endsWith(".mdx") &&
-      fileOrDir.replace(".mdx", "") === targetFile
-    ) {
-      return fullPath;
-    }
-  }
-
-  return null;
-};
-
 /**
  * Because I love relative linking, organizing things in a component-driven style, and categorizing my notes, I'm making my life harder than it needs to be :^)
  *
@@ -124,12 +99,18 @@ export const getNoteProps = async (
 
   // Split slug to handle nested structure
   const parts = slug.split("_");
-  const categorySlug = parts.slice(0, -1).join("_");
-  const fileName = parts.slice(-1)[0]; // Last part is the file name
+  const fileName = parts.slice(-1)[0];
+  const subCategoryPath = parts;
 
-  console.log(`Looking for file with slug: ${slug}`);
-  console.log(`Category path: ${baseFolder}/${categorySlug}`);
-  console.log(`File name: ${fileName}`);
+  // Ensure that the baseFolder and category names are excluded from type candidates
+  const filteredTypeCandidates = subCategoryPath.filter(
+    (type) =>
+      type !== baseFolder && !categories.includes(type) && type !== fileName
+  );
+
+  // Set the type based on filtered candidates, default to empty if none match
+  const type =
+    filteredTypeCandidates.length > 0 ? filteredTypeCandidates.pop() : "";
 
   // Iterate through all categories to find the matching file
   for (const category of categories) {
@@ -138,32 +119,33 @@ export const getNoteProps = async (
       `_content/${baseFolder}/${category}`
     );
 
-    console.log(`Searching in category path: ${categoryPath}`);
-
     // Find the file path within the category
     const filePath = findFileInDirectory(categoryPath, fileName);
 
     if (filePath) {
       console.log(`Found file at: ${filePath}`);
 
-      // Get the MDX content
+      // Extract note content
       const source = fs.readFileSync(filePath, "utf8");
-
-      // Reformat
       const mdxSource = await serialize(source, { parseFrontmatter: true });
 
-      // Return with proper types
+      // Extract all related notes
+      const relatedNotes = getRelatedNotes
+        ? getRelatedNotes(baseFolder, categories)
+        : null;
+
       return {
         props: {
           source: {
             compiledSource: mdxSource.compiledSource,
             scope: mdxSource.scope,
-            frontmatter: mdxSource.frontmatter as Frontmatter,
+            frontmatter: {
+              ...(mdxSource.frontmatter as Frontmatter),
+              type: type || null,
+            },
           },
-          baseFolder: `/${baseFolder}/${categorySlug}`,
-          relatedNotes: getRelatedNotes
-            ? getRelatedNotes(baseFolder, categories)
-            : null,
+          baseFolder: `/${baseFolder}/${category}/${subCategoryPath}`,
+          relatedNotes,
         },
       };
     }
@@ -246,4 +228,29 @@ export const getRelatedNotesSortedByType = (
   }, {} as CategoryToLinkMap);
 
   return categoryMap;
+};
+
+const findFileInDirectory = (
+  dirPath: string,
+  targetFile: string
+): string | null => {
+  const filesAndDirs = fs.readdirSync(dirPath);
+
+  for (const fileOrDir of filesAndDirs) {
+    const fullPath = path.join(dirPath, fileOrDir);
+
+    if (fs.lstatSync(fullPath).isDirectory()) {
+      const result = findFileInDirectory(fullPath, targetFile);
+      if (result) {
+        return result;
+      }
+    } else if (
+      fileOrDir.endsWith(".mdx") &&
+      fileOrDir.replace(".mdx", "") === targetFile
+    ) {
+      return fullPath;
+    }
+  }
+
+  return null;
 };
