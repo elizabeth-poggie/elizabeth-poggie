@@ -41,15 +41,18 @@ export const CollapsibleLinkList = ({ links }: ICollapsibleLinkListProps) => {
   return (
     <>
       {links.map((link: ILink) => {
+        console.log(link.href);
         return (
-          <TextLink
-            key={link.href}
-            variant="subheading"
-            color="grey"
-            href={link.href}
-          >
-            {link.text}
-          </TextLink>
+          <div className={styles.listItem}>
+            <TextLink
+              key={link.href}
+              variant="subheading"
+              color="grey"
+              href={link.href}
+            >
+              {link.text}
+            </TextLink>
+          </div>
         );
       })}
     </>

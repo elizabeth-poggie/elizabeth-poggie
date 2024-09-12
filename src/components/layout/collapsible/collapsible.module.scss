@@ -24,3 +24,9 @@
   max-width: 200px;
   padding-left: 5px;
 }
+
+.listItem {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

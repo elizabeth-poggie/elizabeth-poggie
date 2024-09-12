@@ -27,7 +27,6 @@ export function MdxNoteDetails(props: MDXProps) {
     );
   };
 
-  console.log("yeet", relatedNotes);
   const renderRelatedNotes = () => {
     if (!type || !relatedNotes || !relatedNotes[type]) {
       return null;
