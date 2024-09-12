@@ -33,7 +33,7 @@ export default function Index({ allNotes }: Readonly<IProps>) {
 }
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  const allNotes: INote[] = getAllNotesForCategories(
+  const allNotes: INote[] = await getAllNotesForCategories(
     NOTES_BASE_FOLDER,
     NOTES_CATEGORIES
   );

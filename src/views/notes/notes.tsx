@@ -46,6 +46,8 @@ export function Notes({ allNotes }: IProps) {
       }),
     ].filter(onlyUnique);
 
+    console.log("yeet yeet", allNotes);
+
     return (
       <article>
         <header>

@@ -28,7 +28,7 @@ export default function PortfolioPage({ allNotes }: IProps) {
 }
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  const allNotes: INote[] = getAllNotesForCategories(
+  const allNotes: INote[] = await getAllNotesForCategories(
     PORTFOLIO_BASE_FOLDER,
     PORTFOLIO_CATEGORIES
   );

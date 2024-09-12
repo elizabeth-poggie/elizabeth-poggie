@@ -3,7 +3,6 @@ import { ILink, INote } from "../../interfaces/note";
 import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";
-import { getUniqueTypes } from "./noteAttributeFetchers";
 
 // TODO - for now, remove content prop used for md files, but cleanup later lol
 export type Frontmatter = Omit<INote, "content">;
@@ -19,15 +18,15 @@ export type CategoryToLinkMap = {
  * @param categories e.g. bread
  * @returns INote[]
  */
-export const getAllNotesForCategories = (
+export const getAllNotesForCategories = async (
   baseFolder: string,
   categories: string[]
-): INote[] => {
+): Promise<INote[]> => {
   const allNotes: INote[] = [];
   const baseDirectory = path.join(process.cwd(), `_content/${baseFolder}`);
 
   // Function to recursively get all notes, including in subfolders
-  const getNotesFromFolder = (categoryPath: string, category: string) => {
+  const getNotesFromFolder = async (categoryPath: string, category: string) => {
     if (!fs.existsSync(categoryPath)) {
       console.log(`Category path does not exist: ${categoryPath}`);
       return;
@@ -63,12 +62,22 @@ export const getAllNotesForCategories = (
             .join(baseFolder, category)
             .replace(/_/g, "/");
 
+          // Extract the type from the folder structure
+          const subCategoryPath = category.split("_");
+          const type = getType(
+            subCategoryPath,
+            baseFolder,
+            categories,
+            fileNameWithoutExtension
+          );
+
           allNotes.push({
             title: mdxFrontmatter.title,
             slug,
             category: mdxFrontmatter.category,
             created: mdxFrontmatter.created,
             coverSrc: mdxFrontmatter.coverSrc ?? null,
+            type,
             baseFolder: fullBaseFolderPath,
           });
         }
@@ -76,10 +85,12 @@ export const getAllNotesForCategories = (
     });
   };
 
-  categories.forEach((category: string) => {
-    const categoryPath = path.join(baseDirectory, category);
-    getNotesFromFolder(categoryPath, category);
-  });
+  await Promise.all(
+    categories.map((category) => {
+      const categoryPath = path.join(baseDirectory, category);
+      return getNotesFromFolder(categoryPath, category);
+    })
+  );
 
   return allNotes;
 };
@@ -95,11 +106,7 @@ export const getAllNotesForCategories = (
 export const getNoteProps = async (
   ctx: GetStaticPropsContext,
   baseFolder: string,
-  categories: string[],
-  getRelatedNotes?: (
-    baseFolder: string,
-    categories: string[]
-  ) => CategoryToLinkMap
+  categories: string[]
 ) => {
   const { slug } = ctx.params as { slug: string };
 
@@ -107,16 +114,7 @@ export const getNoteProps = async (
   const parts = slug.split("_");
   const fileName = parts.slice(-1)[0];
   const subCategoryPath = parts;
-
-  // Ensure that the baseFolder and category names are excluded from type candidates
-  const filteredTypeCandidates = subCategoryPath.filter(
-    (type) =>
-      type !== baseFolder && !categories.includes(type) && type !== fileName
-  );
-
-  // Set the type based on filtered candidates, default to empty if none match
-  const type =
-    filteredTypeCandidates.length > 0 ? filteredTypeCandidates.pop() : "";
+  const type = getType(subCategoryPath, baseFolder, categories, fileName);
 
   // Iterate through all categories to find the matching file
   for (const category of categories) {
@@ -136,9 +134,11 @@ export const getNoteProps = async (
       const mdxSource = await serialize(source, { parseFrontmatter: true });
 
       // Extract all related notes
-      const relatedNotes = getRelatedNotes
-        ? getRelatedNotes(baseFolder, categories)
-        : null;
+      const relatedNotes = await getRelatedNotesByType(
+        baseFolder,
+        category,
+        type
+      );
 
       // Construct the image path
       const fullBaseFolderPath = `/${baseFolder}/${subCategoryPath.join("/")}`;
@@ -217,24 +217,26 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
   };
 };
 
-// problem in this function lol
-export const getRelatedNotesSortedByType = (
+export const getRelatedNotesByType = async (
   baseFolder: string,
-  categories: string[]
-): CategoryToLinkMap => {
-  // Get all the notes
-  const allNotes: INote[] = getAllNotesForCategories(baseFolder, categories);
-  const uniqueTypes = getUniqueTypes(allNotes);
+  category: string,
+  type: string
+): Promise<CategoryToLinkMap> => {
+  const allNotes: INote[] = await getAllNotesForCategories(baseFolder, [
+    category,
+  ]);
 
-  // Create a map of type to notes
-  const categoryMap: CategoryToLinkMap = uniqueTypes.reduce((map, type) => {
-    map[type] = allNotes
-      .filter((note) => note.type.includes(type))
-      .map((note: INote) => {
-        return { text: note.title, href: note.slug };
-      });
-    return map;
-  }, {} as CategoryToLinkMap);
+  // Filter notes by the given type and subcategory
+  const filteredNotes = allNotes.filter(
+    (note) => note.type === type && note.type === type
+  );
+
+  const categoryMap: CategoryToLinkMap = {
+    [type]: filteredNotes.map((note: INote) => ({
+      text: note.title,
+      href: note.slug,
+    })),
+  };
 
   return categoryMap;
 };
@@ -262,4 +264,23 @@ const findFileInDirectory = (
   }
 
   return null;
+};
+
+const getType = (
+  subCategoryPath: string[],
+  baseFolder: string,
+  categories: string[],
+  fileName: string
+): string | null => {
+  // Ensure that the baseFolder and category names are excluded from type candidates
+  const filteredTypeCandidates = subCategoryPath.filter(
+    (type) =>
+      type !== baseFolder && !categories.includes(type) && type !== fileName
+  );
+
+  // Set the type based on filtered candidates, default to empty if none match
+  const type =
+    filteredTypeCandidates.length > 0 ? filteredTypeCandidates.pop() : null;
+
+  return type;
 };

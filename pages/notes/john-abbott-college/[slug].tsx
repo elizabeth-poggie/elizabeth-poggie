@@ -6,7 +6,6 @@ import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from "..";
 import {
   getNotePaths,
   getNoteProps,
-  getRelatedNotesSortedByType,
 } from "../../../src/utils/helpers/noteFetchers";
 import { GetStaticPropsContext } from "next";
 import { MdxNoteDetails } from "../../../src/views/mdx-note-details/mdx-note-details";
@@ -26,12 +25,7 @@ export default function NoteDetailsPage(props: MDXProps) {
 }
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  return getNoteProps(
-    ctx,
-    NOTES_BASE_FOLDER,
-    NOTES_CATEGORIES,
-    getRelatedNotesSortedByType
-  );
+  return getNoteProps(ctx, NOTES_BASE_FOLDER, NOTES_CATEGORIES);
 }
 
 export async function getStaticPaths() {

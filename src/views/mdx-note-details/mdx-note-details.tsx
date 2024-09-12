@@ -27,6 +27,26 @@ export function MdxNoteDetails(props: MDXProps) {
     );
   };
 
+  console.log("yeet", relatedNotes);
+  const renderRelatedNotes = () => {
+    if (!type || !relatedNotes || !relatedNotes[type]) {
+      return null;
+    }
+
+    const links = relatedNotes[type].map((note) => ({
+      text: note.text,
+      href: note.href,
+    }));
+
+    return (
+      <section className={styles.collapsibleInSideBar}>
+        <Collapsible title={type}>
+          <CollapsibleLinkList links={links} />
+        </Collapsible>
+      </section>
+    );
+  };
+
   return (
     <>
       <div className={styles.container}>
@@ -41,15 +61,7 @@ export function MdxNoteDetails(props: MDXProps) {
             <MDXNoteContent {...props} />
           </section>
           <section className={styles.sideBarSection}>
-            {type ? (
-              <section className={styles.collapsibleInSideBar}>
-                <Collapsible title={type}>
-                  <CollapsibleLinkList
-                    links={[{ text: "beep", href: "boop" }]}
-                  />
-                </Collapsible>
-              </section>
-            ) : null}
+            {renderRelatedNotes()}
           </section>
         </main>
       </div>
