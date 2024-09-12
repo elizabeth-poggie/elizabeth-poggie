@@ -18,9 +18,11 @@ export function MdxNoteDetails(props: MDXProps) {
   const renderNoteHeader = () => {
     return (
       <header className={styles.header}>
-        <Text variant="h3" gutterBottom={2} style="capitalize">
-          {pluralToSingular(type)}
-        </Text>
+        {type ? (
+          <Text variant="h3" gutterBottom={2} style="capitalize">
+            {pluralToSingular(type)}
+          </Text>
+        ) : null}
         <Text variant="title" gutterBottom={2}>
           {title}
         </Text>
