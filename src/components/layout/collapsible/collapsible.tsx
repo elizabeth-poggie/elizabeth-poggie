@@ -21,7 +21,7 @@ export function Collapsible({ title, children }: IProps) {
         className={`${styles.collapsible} ${isOpen ? styles.active : ""}`}
         onClick={handleToggle}
       >
-        <Text variant="h3" gutterBottom={1}>
+        <Text variant="h3" gutterBottom={1} style="capitalize">
           {title}
         </Text>
         <div className={styles.arrow}>

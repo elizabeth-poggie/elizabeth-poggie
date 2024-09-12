@@ -9,6 +9,7 @@ import {
   CollapsibleLinkList,
 } from "../../components/layout/collapsible/collapsible";
 import { CategoryToLinkMap } from "../../utils/helpers/noteFetchers";
+import { pluralToSingular } from "../../utils/helpers/textFormatters";
 
 export function MdxNoteDetails(props: MDXProps) {
   const { title, type } = props.source.frontmatter;
@@ -17,8 +18,8 @@ export function MdxNoteDetails(props: MDXProps) {
   const renderNoteHeader = () => {
     return (
       <header className={styles.header}>
-        <Text variant="h3" gutterBottom={2}>
-          {type}
+        <Text variant="h3" gutterBottom={2} style="capitalize">
+          {pluralToSingular(type)}
         </Text>
         <Text variant="title" gutterBottom={2}>
           {title}
