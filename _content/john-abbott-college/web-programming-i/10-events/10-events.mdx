@@ -159,7 +159,7 @@ camera4.addEventListener("click", () => showAlert("fluffcrate_9000"));
 
 # Exercise 2
 
-Create an event listener such that the profile changes to a new image of your choice when the user hovers over their avatar and reverts back when they are no longer hovering
+Create an event listener such that the profile changes to a new image of your choice when the user hovers over their profile and reverts back when they are no longer hovering.
 
 ## Solution
 
@@ -182,23 +182,90 @@ const originalImages = {
   profile4: "./images/box-cat.jpeg",
 };
 
-function handleMouseOver(event) {
-  const profileId = event.target.id;
-  event.target.src = hoverImages[profileId];
+function handleMouseOver(element) {
+  const profileId = element.id;
+  element.src = hoverImages[profileId];
 }
 
-function handleMouseLeave(event) {
-  const profileId = event.target.id;
-  event.target.src = originalImages[profileId];
+// Function to handle mouseleave event
+function handleMouseLeave(element) {
+  const profileId = element.id;
+  element.src = originalImages[profileId];
 }
 
-// call functions
-profile1.addEventListener("mouseover", handleMouseOver);
-profile1.addEventListener("mouseleave", handleMouseLeave);
-profile2.addEventListener("mouseover", handleMouseOver);
-profile2.addEventListener("mouseleave", handleMouseLeave);
-profile3.addEventListener("mouseover", handleMouseOver);
-profile3.addEventListener("mouseleave", handleMouseLeave);
-profile4.addEventListener("mouseover", handleMouseOver);
-profile4.addEventListener("mouseleave", handleMouseLeave);
+// Attach event listeners to each profile element
+profile1.addEventListener("mouseover", () => handleMouseOver(profile1));
+profile1.addEventListener("mouseleave", () => handleMouseLeave(profile1));
+
+profile2.addEventListener("mouseover", () => handleMouseOver(profile2));
+profile2.addEventListener("mouseleave", () => handleMouseLeave(profile2));
+
+profile3.addEventListener("mouseover", () => handleMouseOver(profile3));
+profile3.addEventListener("mouseleave", () => handleMouseLeave(profile3));
+
+profile4.addEventListener("mouseover", () => handleMouseOver(profile4));
+profile4.addEventListener("mouseleave", () => handleMouseLeave(profile4));
 ```
+
+# JQuery
+
+## What is it?
+
+jQuery is a fast and small JavaScript library! You can read more about it [here](https://jquery.com/)
+
+## Why do we care?
+
+Writing JavaScript can be painful most of the time. It makes things like HTML document manipulation, event handling, and a whole bunch of other things much easier.
+
+## How to Use jQuery?
+
+You know all the million methods used to `getElementById()`, `getElementsByClassName()`, or `getElementsByTagName()`? Well in your console in Chrome DevTools, `$` is a variable, mapped to the jQuery function and it makes accessing all this information easier
+
+```js
+// 👉 Select elements with a class
+$(".someClass"); // better way
+document.getElementsByClassName("someClass"); // lame way
+
+// 👉 Select the element with an ID
+$("#myId"); // better way
+document.getElementById("myId"); // lame way
+
+// 👉 Select all <p> elements
+$("p"); // better way
+document.getElementsByTagName("p"); // lame way
+```
+
+# Accessing JQuery
+
+To use jQuery in your projects, you need to include the jQuery library in your HTML document.
+
+## via CDNs
+
+The easiest way to include jQuery is by using a Content Delivery Network (CDN). This method provides a hosted version of jQuery that you can include directly in your HTML file. Here’s how:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- other head stuff ... -->
+
+    <!-- ADD THE BELOW HERE -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  </head>
+  <body>
+    <!-- other html stuff ... -->
+    <script>
+      // other js stuff ...
+    </script>
+  </body>
+</html>
+```
+
+no need for `type="text/javascript"` inside the `<script>` tag. It is the default
+scripting language in HTML5 on all modern browsers
+
+## via Local Hosting
+
+Alternatively, you can download the jQuery library and include it locally in your project. However that takes longer so we aren't going to do that lol.
+
+# JQuery Selectors
