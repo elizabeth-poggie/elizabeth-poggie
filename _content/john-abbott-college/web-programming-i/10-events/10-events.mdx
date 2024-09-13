@@ -1,0 +1,47 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Events & Event Listeners"
+created: "2024-09-13"
+coverSrc: "./assets/"
+---
+
+# HTML Events
+
+An HTML even can be something the browser does, or something a user does. A few common examples are:
+
+- An HTML web page has finished loading
+- An HTML input field was changed
+- An HTML button was clicked
+
+## Common Events
+
+For those that are curious, you can see the full list [here](https://www.w3schools.com/jsref/dom_obj_event.asp), however for the purposes of this class here are the ones you will be focusing on:
+
+- `click` 👉 Triggered when an element is clicked.
+- `dblclick` 👉 Triggered when an element is double-clicked.
+- `change` 👉 Triggered when the value of an input element has been changed.
+- `mouseover` 👉 Triggered when the mouse pointer hovers over an element.
+- `mouseout` 👉 Triggered when the mouse pointer leaves an element.
+- `load` 👉 Triggered when an element (usually an image or script) has finished loading.
+
+## Reacting to Events
+
+What could JavaScript do in response? You could associate some JavaScript code to the occurrence of an event on an HTML element. For example:
+
+```js
+<button onclick="doStuff()">What are you doing?</button>
+```
+
+here the element attribute `onclick` is going to run the JavaScript method `doStuff()` when the user triggers a `click` event on the `button` element.
+
+```html
+<button onclick="doStuff()">What are you doing?</button>
+<script>
+  function doStuff() {
+    alert("I'm doing stuff, excuse you.");
+  }
+</script>
+```
+
+What's happening here is that you are listening for the `click` event to occur in order send your `alert()` to the browser. You are "Listening" for events.
