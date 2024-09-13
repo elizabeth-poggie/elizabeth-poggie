@@ -365,3 +365,33 @@ When "Make Paperclip" is clicked:
 The end result should look something like [Universal Paperclips](https://www.decisionproblem.com/paperclips/index2.html), as captured below:
 
 ![demo](./assets/1.png)
+
+## Solution
+
+```html
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Universal Paperclips</title>
+    <!-- NOTICE THE IMPORT -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  </head>
+  <body>
+    <h2 id="paperclip-count">Paperclips: 0</h2>
+    <button id="make-paperclip">Make Paperclip</button>
+    <script>
+      let paperclipCount = 0;
+
+      function makePaperclip() {
+        paperclipCount++;
+        $("#paperclip-count").text("Paperclips: " + paperclipCount);
+      }
+
+      // Event handler for button click - could use the traditional way tho, it's fair game.
+      $("#make-paperclip").click(makePaperclip);
+      $("#make-paperclip").click(makePaperclip);
+    </script>
+  </body>
+</html>
+```
