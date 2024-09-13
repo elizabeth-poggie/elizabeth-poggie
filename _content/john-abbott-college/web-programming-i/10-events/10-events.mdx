@@ -8,7 +8,7 @@ coverSrc: "./assets/"
 
 # HTML Events
 
-An HTML even can be something the browser does, or something a user does. A few common examples are:
+HTML events can occur due to browser actions or user interactions. Here are a few common examples:
 
 - An HTML web page has finished loading
 - An HTML input field was changed
@@ -16,7 +16,7 @@ An HTML even can be something the browser does, or something a user does. A few 
 
 ## Common Events
 
-For those that are curious, you can see the full list [here](https://www.w3schools.com/jsref/dom_obj_event.asp), however for the purposes of this class here are the ones you will be focusing on:
+For those that are curious, you can see the full list [here](https://www.w3schools.com/jsref/dom_obj_event.asp). For this class, focus on the following events:
 
 - `click` 👉 Triggered when an element is clicked.
 - `dblclick` 👉 Triggered when an element is double-clicked.
@@ -27,13 +27,13 @@ For those that are curious, you can see the full list [here](https://www.w3schoo
 
 ## Reacting to Events
 
-What could JavaScript do in response? You could associate some JavaScript code to the occurrence of an event on an HTML element. For example:
+JavaScript can respond to events by executing code when certain actions occur on HTML elements. For example:
 
 ```js
 <button onclick="doStuff()">What are you doing?</button>
 ```
 
-here the element attribute `onclick` is going to run the JavaScript method `doStuff()` when the user triggers a `click` event on the `button` element.
+here, the attribute `onclick` on the `button` element triggers `doStuff()` function when the `button` is clicked.
 
 ```html
 <button onclick="doStuff()">What are you doing?</button>
@@ -45,11 +45,11 @@ here the element attribute `onclick` is going to run the JavaScript method `doSt
 </script>
 ```
 
-What's happening here is that you are "listening" for the `click` event to occur in order send your `alert()` to the browser.
+In this code, the `doStuff()` function updates the content of the `<p>` element with the id `stuff` to display a message. The `onclick` attribute is used to "listen" for the click event on the button and execute the specified function in response.
 
 ## Event Listeners
 
-Instead of specifying it on an attribute in the HTML, you could add an event listener to a given event on an object (the document, a specific HTML element, etc.) all in JavaScript:
+Instead of using HTML attributes to handle events, you can use JavaScript to add "event listeners" to elements on your page. For example:
 
 ```html
 <button>What are you doing?</button>
@@ -61,9 +61,11 @@ Instead of specifying it on an attribute in the HTML, you could add an event lis
 </script>
 ```
 
+In this example, the `addEventListener` method is used to attach a `click` event listener to the `document`. When the `document` is clicked, the specified function is executed, updating the content of the `<p>` element.
+
 ## Arts & Crafts
 
-Why is this so cool? well now we can have a lot more fun creating interactive web pages. Let's say we have the below HTML page with a sad cat:
+Why is this so cool? Now we can have a lot more fun creating interactive web pages. Let's say we have the below HTML page with a sad cat:
 
 ```html
 <!DOCTYPE html>
@@ -85,24 +87,24 @@ Why is this so cool? well now we can have a lot more fun creating interactive we
 </html>
 ```
 
-However we want to dynamically change the image url to a cat being petted upon `mouseenter`. Well we can do that :^) Add the below code to the `<script>` section:
+Suppose we want to change the image to a happy cat when the mouse hovers over it (`mouseenter` event) and revert it back to the sad cat when the mouse leaves (`mouseleave` event). Well we can do that :^)
+
+Add the following to the `<script>` section
 
 ```js
 const image = document.getElementById("cat");
 image.addEventListener("mouseenter", () => {
   image.src = "./pet-cat.png";
 });
-```
 
-However this approach is still incomplete. we need to change the image back to the original upon `mouseleave`.
-
-```js
 image.addEventListener("mouseleave", () => {
   image.src = "./sad-cat.jpg";
 });
 ```
 
-Purfection. However now there is room to clean up our code so the solution is more maintainable. Lets do that:
+Purfection. This code listens for `mouseenter` and `mouseleave` events on the image and updates the `src` attribute to show the appropriate cat image >:^)
+
+To improve code maintainability, you can define the image URLs as constants and organize the JavaScript code a bit better:
 
 ```html
 <!DOCTYPE html>
@@ -139,7 +141,9 @@ Purfection. However now there is room to clean up our code so the solution is mo
 
 # Exercise 1
 
-Create an event listener such that it opens up an "alert" each time a user clicks the camera. Make sure to put the right cat name in the alert message
+Create an event listener that displays an `alert` whenever a user clicks on a camera. Make sure the `alert` message reflects the correct cat name.
+
+## Solution
 
 ```js
 const camera1 = document.getElementById("camera1");
@@ -159,7 +163,7 @@ camera4.addEventListener("click", () => showAlert("fluffcrate_9000"));
 
 # Exercise 2
 
-Create an event listener such that the profile changes to a new image of your choice when the user hovers over their profile and reverts back when they are no longer hovering.
+Set up an event listener to change the profile image when a user hovers over it. The image should revert to the original when the user moves the mouse away.
 
 ## Solution
 
