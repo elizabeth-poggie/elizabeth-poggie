@@ -4,15 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Demo</title>
+    <style>
+      #cat {
+        width: 200px;
+        height: auto;
+      }
+    </style>
   </head>
   <body>
-    <button onclick="doStuff()">What are you doing?</button>
-    <p id="stuff"></p>
+    <img id="cat" src="./sad-cat.jpg" alt="sad cat" />
     <script>
-      function doStuff() {
-        document.getElementById("stuff").innerHTML =
-          "I'm doing stuff, excuse you.";
-      }
+      const image = document.getElementById("cat");
+      const sadCatSrc = "./sad-cat.jpg";
+      const happyCatSrc = "./pet-cat.png";
+
+      image.addEventListener("mouseenter", () => {
+        image.src = happyCatSrc;
+      });
+
+      image.addEventListener("mouseleave", () => {
+        image.src = sadCatSrc;
+      });
     </script>
   </body>
 </html>

@@ -60,3 +60,79 @@ Instead of specifying it on an attribute in the HTML, you could add an event lis
   });
 </script>
 ```
+
+## Arts & Crafts
+
+Why is this so cool? well now we can have a lot more fun creating interactive web pages. Let's say we have the below HTML page with a sad cat:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cat Pat Demo</title>
+    <style>
+      #cat {
+        width: 200px;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="cat" src="./sad-cat.jpg" alt="sad cat" />
+  </body>
+</html>
+```
+
+However we want to dynamically change the image url to a cat being petted upon `mouseenter`. Well we can do that :^) Add the below code to the `<script>` section:
+
+```js
+const image = document.getElementById("cat");
+image.addEventListener("mouseenter", () => {
+  image.src = "./pet-cat.png";
+});
+```
+
+However this approach is still incomplete. we need to change the image back to the original upon `mouseleave`.
+
+```js
+image.addEventListener("mouseleave", () => {
+  image.src = "./sad-cat.jpg";
+});
+```
+
+Purfection. However now there is room to clean up our code so the solution is more maintainable. Lets do that:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cat Pat Demo</title>
+    <style>
+      #cat {
+        width: 200px;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="cat" src="./sad-cat.jpg" alt="sad cat" />
+    <script>
+      const image = document.getElementById("cat");
+      const sadCatSrc = "./sad-cat.jpg";
+      const happyCatSrc = "./pet-cat.png";
+
+      image.addEventListener("mouseenter", () => {
+        image.src = happyCatSrc;
+      });
+
+      image.addEventListener("mouseleave", () => {
+        image.src = sadCatSrc;
+      });
+    </script>
+  </body>
+</html>
+```
