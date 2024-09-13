@@ -207,7 +207,7 @@ profile4.addEventListener("mouseover", () => handleMouseOver(profile4));
 profile4.addEventListener("mouseleave", () => handleMouseLeave(profile4));
 ```
 
-# JQuery
+# Introduction to JQuery
 
 ## What is it?
 
@@ -269,3 +269,80 @@ scripting language in HTML5 on all modern browsers
 Alternatively, you can download the jQuery library and include it locally in your project. However that takes longer so we aren't going to do that lol.
 
 # JQuery Selectors
+
+Once jQuery is included in your project, you can use it like so:
+
+```js
+$(selector).action();
+```
+
+What does this all mean?
+
+- `$` 👉 The jQuery function.
+- `selector` 👉 A jQuery selector to target elements.
+- `action` 👉 The action you want to perform.
+
+What are your options to target elements? You have 3:
+
+```js
+$("tag");
+$(".class");
+$("#id");
+```
+
+## DOM Manipulation
+
+Now changing content is a bit easier to:
+
+```js
+// Modify Text
+$("p").text("Wow!!!!");
+
+// Modify HTML
+$("#coolDiv").html("<strong>a VERY bold WOW</strong>");
+
+// Modify Attributes
+$("img").attr("src", "./cats/pet-cat.png");
+```
+
+## Event Listeners
+
+In HTML to directly listen to an event, it would look like this:
+
+```html
+<button onclick="handleEvent()">Click Me!</button>
+```
+
+Where:
+
+- `handleEvent()` is the handler
+- `onclick` is the listener
+- and there is NO NEED for a selector
+
+In pure JavaScript, it would look like this:
+
+```js
+document
+  .getElementsByTagName("button")[0]
+  .addEventListener("click", handleEvent);
+```
+
+Where:
+
+- `handleEvent` is the handler
+- `addEventListener("click", ...)` is the listener
+- `document.getElementsByTagName("button")[0]` is the selector
+
+However that is a very ugly approach. We can rewrite this in JQuery to be the following:
+
+```js
+$("button").on("click", handleEvent);
+```
+
+Where:
+
+- `handleEvent` is the handler
+- `on( "click", ...)` is the listener
+- `$( "button" )` is the selector
+
+Which is MUCH cleaner and easier on our retinas.
