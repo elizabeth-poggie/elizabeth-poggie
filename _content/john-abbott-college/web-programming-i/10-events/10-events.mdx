@@ -215,15 +215,15 @@ profile4.addEventListener("mouseleave", () => handleMouseLeave(profile4));
 
 ## What is it?
 
-jQuery is a fast and small JavaScript library! You can read more about it [here](https://jquery.com/)
+jQuery is a lightweight and fast JavaScript library. You can learn more about it [here](https://jquery.com/)
 
 ## Why do we care?
 
-Writing JavaScript can be painful most of the time. It makes things like HTML document manipulation, event handling, and a whole bunch of other things much easier.
+Writing vanilla JavaScript can be painful most of the time. jQuery makes common tasks easier, making it painless to work with HTML documents, handle events, and perform a whole bunch of other operations.
 
 ## How to Use jQuery?
 
-You know all the million methods used to `getElementById()`, `getElementsByClassName()`, or `getElementsByTagName()`? Well in your console in Chrome DevTools, `$` is a variable, mapped to the jQuery function and it makes accessing all this information easier
+You’re probably familiar with methods like `getElementById()`, `getElementsByClassName()`, or `getElementsByTagName()`? If you open up Chrome DevTools in console, you will notice you have access to the `$` symbol. What is it? the `$` symbol represents jQuery and provides a simpler way to access elements:
 
 ```js
 // 👉 Select elements with a class
@@ -241,11 +241,11 @@ document.getElementsByTagName("p"); // lame way
 
 # Accessing jQuery
 
-To use jQuery in your projects, you need to include the jQuery library in your HTML document.
+To use jQuery in your projects, include the jQuery library in your HTML document.
 
-## via CDNs
+## Via CDNs
 
-The easiest way to include jQuery is by using a Content Delivery Network (CDN). This method provides a hosted version of jQuery that you can include directly in your HTML file. Here’s how:
+The easiest way to add jQuery is by using a Content Delivery Network (CDN). This method provides a hosted version of jQuery that you can include directly in your HTML file:
 
 ```html
 <!DOCTYPE html>
@@ -265,40 +265,39 @@ The easiest way to include jQuery is by using a Content Delivery Network (CDN). 
 </html>
 ```
 
-no need for `type="text/javascript"` inside the `<script>` tag. It is the default
-scripting language in HTML5 on all modern browsers
+There’s no need to specify `type="text/javascript"` inside the `<script>` tag, as JavaScript is the default scripting language in HTML5 for all modern browsers.
 
-## via Local Hosting
+## Via Local Hosting
 
-Alternatively, you can download the jQuery library and include it locally in your project. However that takes longer so we aren't going to do that lol.
+Alternatively, you can download jQuery and include it locally in your project. However, that takes longer so we aren't going to do that lol.
 
 # Working with jQuery
 
-## Selectors
+## jQuery Selectors
 
-Once jQuery is included in your project, you can use it like so:
+Once jQuery is included, you can use it as follows:
 
 ```js
 $(selector).action();
 ```
 
-What does this all mean?
+Here’s what each part means:
 
-- `$` 👉 The jQuery function.
-- `selector` 👉 A jQuery selector to target elements.
-- `action` 👉 The action you want to perform.
+- `$` 👉 represents the jQuery function.
+- `selector` 👉 is a jQuery selector to target elements.
+- `action` 👉 is the action you want to perform.
 
-What are your options to target elements? You have 3:
+Common selectors include:
 
 ```js
-$("tag");
-$(".class");
-$("#id");
+$("tag"); // Selects elements by <tag>
+$(".class"); // Selects elements by css .class
+$("#id"); // Selects elements by "id"
 ```
 
-## DOM Manipulation
+## jQuery DOM Manipulation
 
-Now changing content is a bit easier to:
+Modifying content becomes simpler:
 
 ```js
 // Modify Text
@@ -311,9 +310,9 @@ $("#coolDiv").html("<strong>a VERY bold WOW</strong>");
 $("img").attr("src", "./cats/pet-cat.png");
 ```
 
-## Event Listeners
+## jQuery Event Listeners
 
-In HTML to directly listen to an event, it would look like this:
+In HTML, adding an event listener directly might look like this:
 
 ```html
 <button onclick="handleEvent()">Click Me!</button>
@@ -321,11 +320,11 @@ In HTML to directly listen to an event, it would look like this:
 
 Where:
 
-- `handleEvent()` is the handler
-- `onclick` is the listener
+- `handleEvent()` is the handler function
+- `onclick` is the event listener attribute
 - and there is NO NEED for a selector
 
-In pure JavaScript, it would look like this:
+In pure JavaScript, it would be:
 
 ```js
 document
@@ -335,11 +334,11 @@ document
 
 Where:
 
-- `handleEvent` is the handler
-- `addEventListener("click", ...)` is the listener
+- `handleEvent` is the handler function
+- `addEventListener("click", ...)` is the event listener method
 - `document.getElementsByTagName("button")[0]` is the selector
 
-However that is a very ugly approach. We can rewrite this in JQuery to be the following:
+Using jQuery simplifies this to:
 
 ```js
 $("button").on("click", handleEvent);
@@ -347,26 +346,28 @@ $("button").on("click", handleEvent);
 
 Where:
 
-- `handleEvent` is the handler
-- `on( "click", ...)` is the listener
+- `handleEvent` is the handler function
+- `on( "click", ...)` event listener method
 - `$( "button" )` is the selector
 
 Which is MUCH cleaner and easier on our retinas.
 
 # Exercise 3
 
-Get into groups of up to 4 people, if you prefer to work independently that's ok too. Together you are going to create the foundations for a paperclip clicker game using JQuery.
+Form groups of up to 4 people, or feel free to work solo if that's more your style. Together, you’re going to build the foundation for a simple paperclip clicker game using jQuery.
 
-For this task:
+## The HTML
 
-- Add one button to an HTML document that contains the text "Make Paperclip"
-- At the top of the screen it should contain the text "Paperclips: " followed by the number of paper clips made.
+- Add a button to your HTML that says "Make Paperclip"
+- At the top of the page, display "Paperclips: " followed by the number of paperclips created.
 
-When "Make Paperclip" is clicked:
+## The JS
 
-- change the text on it to be the next number.
+When the "Make Paperclip" button is clicked:
 
-The end result should look something like [Universal Paperclips](https://www.decisionproblem.com/paperclips/index2.html), as captured below:
+- Update the number of paperclips at the top.
+
+Your end result should look something like [Universal Paperclips](https://www.decisionproblem.com/paperclips/index2.html), as captured below:
 
 ![demo](./assets/1.png)
 
