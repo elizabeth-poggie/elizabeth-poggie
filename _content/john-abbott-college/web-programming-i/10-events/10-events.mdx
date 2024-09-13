@@ -37,11 +37,26 @@ here the element attribute `onclick` is going to run the JavaScript method `doSt
 
 ```html
 <button onclick="doStuff()">What are you doing?</button>
+<p id="stuff"></p>
 <script>
   function doStuff() {
-    alert("I'm doing stuff, excuse you.");
+    document.getElementById("stuff").innerHTML = "I'm doing stuff, excuse you.";
   }
 </script>
 ```
 
-What's happening here is that you are listening for the `click` event to occur in order send your `alert()` to the browser. You are "Listening" for events.
+What's happening here is that you are "listening" for the `click` event to occur in order send your `alert()` to the browser.
+
+## Event Listeners
+
+Instead of specifying it on an attribute in the HTML, you could add an event listener to a given event on an object (the document, a specific HTML element, etc.) all in JavaScript:
+
+```html
+<button>What are you doing?</button>
+<p id="stuff"></p>
+<script>
+  document.addEventListener("click", function () {
+    document.getElementById("stuff").innerHTML = "I'm doing stuff, excuse you.";
+  });
+</script>
+```

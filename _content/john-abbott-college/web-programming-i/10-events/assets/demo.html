@@ -7,9 +7,11 @@
   </head>
   <body>
     <button onclick="doStuff()">What are you doing?</button>
+    <p id="stuff"></p>
     <script>
       function doStuff() {
-        alert("I'm doing stuff, excuse you.");
+        document.getElementById("stuff").innerHTML =
+          "I'm doing stuff, excuse you.";
       }
     </script>
   </body>
