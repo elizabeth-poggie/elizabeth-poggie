@@ -148,11 +148,57 @@ const camera3 = document.getElementById("camera3");
 const camera4 = document.getElementById("camera4");
 
 function showAlert(catName) {
-  alert(`This is ${catName}`);
+  alert(`Sending a photo to ${catName}`);
 }
 
 camera1.addEventListener("click", () => showAlert("chonky_boi_420"));
 camera2.addEventListener("click", () => showAlert("sleepy_bean"));
 camera3.addEventListener("click", () => showAlert("yee-paw"));
 camera4.addEventListener("click", () => showAlert("fluffcrate_9000"));
+```
+
+# Exercise 2
+
+Create an event listener such that the profile changes to a new image of your choice when the user hovers over their avatar and reverts back when they are no longer hovering
+
+## Solution
+
+```js
+const hoverImages = {
+  profile1:
+    "https://i.pinimg.com/originals/e8/66/95/e866952236eae173834989268c360194.jpg",
+  profile2:
+    "https://i.pinimg.com/originals/e8/66/95/e866952236eae173834989268c360194.jpg",
+  profile3:
+    "https://i.pinimg.com/originals/e8/66/95/e866952236eae173834989268c360194.jpg",
+  profile4:
+    "https://i.pinimg.com/originals/e8/66/95/e866952236eae173834989268c360194.jpg",
+};
+
+const originalImages = {
+  profile1: "./images/chonky-cat.jpeg",
+  profile2: "./images/sleepy-cat.png",
+  profile3: "./images/sad-cat.jpg",
+  profile4: "./images/box-cat.jpeg",
+};
+
+function handleMouseOver(event) {
+  const profileId = event.target.id;
+  event.target.src = hoverImages[profileId];
+}
+
+function handleMouseLeave(event) {
+  const profileId = event.target.id;
+  event.target.src = originalImages[profileId];
+}
+
+// call functions
+profile1.addEventListener("mouseover", handleMouseOver);
+profile1.addEventListener("mouseleave", handleMouseLeave);
+profile2.addEventListener("mouseover", handleMouseOver);
+profile2.addEventListener("mouseleave", handleMouseLeave);
+profile3.addEventListener("mouseover", handleMouseOver);
+profile3.addEventListener("mouseleave", handleMouseLeave);
+profile4.addEventListener("mouseover", handleMouseOver);
+profile4.addEventListener("mouseleave", handleMouseLeave);
 ```
