@@ -136,3 +136,23 @@ Purfection. However now there is room to clean up our code so the solution is mo
   </body>
 </html>
 ```
+
+# Exercise 1
+
+Create an event listener such that it opens up an "alert" each time a user clicks the camera. Make sure to put the right cat name in the alert message
+
+```js
+const camera1 = document.getElementById("camera1");
+const camera2 = document.getElementById("camera2");
+const camera3 = document.getElementById("camera3");
+const camera4 = document.getElementById("camera4");
+
+function showAlert(catName) {
+  alert(`This is ${catName}`);
+}
+
+camera1.addEventListener("click", () => showAlert("chonky_boi_420"));
+camera2.addEventListener("click", () => showAlert("sleepy_bean"));
+camera3.addEventListener("click", () => showAlert("yee-paw"));
+camera4.addEventListener("click", () => showAlert("fluffcrate_9000"));
+```
