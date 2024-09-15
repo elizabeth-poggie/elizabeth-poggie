@@ -1,0 +1,84 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Form Validation"
+created: "2024-09-17"
+coverSrc: "./assets/"
+---
+
+# Forms
+
+All user interaction requires validation. Users should be prevented from adding trash as input to prevent unexpected program behavior.
+
+## Why?
+
+There are three main reasons:
+
+- We want to get the right data, in the right format.
+- We want to protect our users' data. (e.g. secure passwords)
+- We want to protect ourselves. (e.g. nasty users)
+
+## Validation MATTERS
+
+Before submitting data to the server, it is important to ensure all required form controls are filled out, in the correct format. For example, without input validation the user experience is impacted:
+
+```text
+❌ BAD - no input validation ❌
+
+(client) 💻 🗑️ -- POST --> 🗑️ 🗃️ (server wondering why you gave it trash)
+```
+
+By factoring in client-side form validation, it helps ensure data submitted matches the expected inputs and or requirements. This improves the user experience because by catching invalid data on the client-side, the user can fix it straight away:
+
+```text
+✅ GOOD - input validation ✅
+
+(client) 💻 🗑️ -- 🛑 (nope) -- POST --> 🗃️ (server has no knowledge of the occurrence of trash)
+```
+
+Another way to think about this is instead of sending an emotionally driven text to a friend and them wondering why you are being nasty:
+
+```text
+❌ BAD - you did not account for your target audience ❌
+
+(you) 🧑 🗑️ -- POST --> 🗑️ 💑 (your loved ones)
+```
+
+You can run it by ChatGPT to reformat the text, ensuring it's constructive:
+
+```text
+✅ GOOD - you can now refactor what you want to say ✅
+
+(you) 🧑 🗑️ -- 🛑 (ChatGPT) --> 💑 (your loved ones)
+```
+
+These principals not only help you maintain relationships with the people you care about, but they also serve to proactively address any errors in form submissions before they occur :^)
+
+# Form Attributes
+
+Forms are composed of 3 different parts:
+
+- `action` 👉 the action to be performed when the form is submitted
+- `target` 👉 defines if the submitted result will open in a new tab, frame or current window.
+- `method` 👉 specifies the HTTP method (GET or POST) to be used when the form is submitted.
+
+The action to be performed when the form is submitted
+
+## What does this look like in the code?
+
+```html
+<!-- Part 1 - Action -->
+<form action="/submit_stuff.php">
+  <label for="nameF">Username</label>
+  <input type="text" name="nameFirst" id="nameF" />
+
+  <label for="nameL">Password</label>
+  <input type="text" name="nameLast" id="nameL" />
+
+  <input type="submit" value="Login in" />
+</form>
+```
+
+# Friday Quiz
+
+Go over the notes for Event Listeners and jQuery, this will be the focus for the Quiz this week.
