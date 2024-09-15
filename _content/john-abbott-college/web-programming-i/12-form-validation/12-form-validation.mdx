@@ -58,26 +58,60 @@ These principals not only help you maintain relationships with the people you ca
 
 Forms are composed of 3 different parts:
 
-- `action` 👉 the action to be performed when the form is submitted
-- `target` 👉 defines if the submitted result will open in a new tab, frame or current window.
-- `method` 👉 specifies the HTTP method (GET or POST) to be used when the form is submitted.
-
-The action to be performed when the form is submitted
+- `action` 👉 Specifies what action to perform when the form is submitted. This is usually a URL where the form data should be sent. (e.g. to a server)
+- `target` 👉 Defines where the result of the form submission will be displayed. For example, you can open the result in a new tab or in the current window.
+- `method` 👉 Specifies the HTTP method to use when submitting the form, either GET or POST.
 
 ## What does this look like in the code?
 
 ```html
-<!-- Part 1 - Action -->
-<form action="/submit_stuff.php">
-  <label for="nameF">Username</label>
-  <input type="text" name="nameFirst" id="nameF" />
-
-  <label for="nameL">Password</label>
-  <input type="text" name="nameLast" id="nameL" />
-
-  <input type="submit" value="Login in" />
+<!-- Notice the 3 parts below -->
+<form action="submit-form.php" target="_blank" method="post">
+  <!-- other form content here -->
 </form>
 ```
+
+## Explanation
+
+- `action="submit-form.php"` 👉 When the form is submitted, the data will be sent to `submit-form.php`.
+- `target="_blank"` 👉 The result will open in a new tab.
+- `method="post"` 👉 The form will use the POST method, which sends the data securely without including it in the URL.
+
+# GET vs POST
+
+But what does "GET" mean? What does "POST" mean? For now what you need to know is:
+
+- "GET", retries data
+- "POST", sends data
+
+Another way to think of this concept is that you want to put a message in an old school envelope, you're either sending it to a specific address or receiving it from one.
+
+```text
+✉️ -- POST --> 📫 @ address
+
+✉️ <-- GET -- 📫 @ address
+```
+
+Going back to our course content, the 'address' corresponds to a URL where the 'server' or 'backend' resides, and the 'method' indicates whether we're sending ('POST') or receiving ('GET') data.
+
+```text
+✉️ -- POST --> 🗃️ @ url
+
+✉️ <-- GET -- 🗃️ @ url
+```
+
+In our example, our "url" is `submit-form.php`, our method is `post`, and the data we are sending is the result of a user data submission.
+
+## What does the data look like when it's being sent?
+
+Well it depends:
+
+- With a GET method the data is submitted and visible in the URL bar (i.e. to the user).
+- With a POST method, the data is encoded in the `html` request body and can be encrypted (with `https`).
+
+As a general rule: ALWAYS use POST if the form data contains sensitive information. Why? you don't want a users password, email, phone number to be leaked.
+
+Would you trust your friends with all your social media credentials? Would you trust your family? Your partner even? This is why we us POST requests. What people don't know, it can't be used against you :^)
 
 # Friday Quiz
 
