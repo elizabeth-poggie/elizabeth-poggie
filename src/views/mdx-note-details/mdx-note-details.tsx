@@ -9,18 +9,22 @@ import {
   CollapsibleLinkList,
 } from "../../components/layout/collapsible/collapsible";
 import { CategoryToLinkMap } from "../../utils/helpers/noteFetchers";
-import { pluralToSingular } from "../../utils/helpers/textFormatters";
+import {
+  pluralToSingular,
+  replaceHyphensWithSpaces,
+} from "../../utils/helpers/textFormatters";
 
 export function MdxNoteDetails(props: MDXProps) {
   const { title, type } = props.source.frontmatter;
   const relatedNotes: CategoryToLinkMap = props.relatedNotes;
+  const noteType = type ? replaceHyphensWithSpaces(type) : null;
   console.log(relatedNotes);
   const renderNoteHeader = () => {
     return (
       <header className={styles.header}>
         {type ? (
           <Text variant="h3" gutterBottom={2} style="capitalize">
-            {pluralToSingular(type)}
+            {pluralToSingular(noteType)}
           </Text>
         ) : null}
         <Text variant="title" gutterBottom={2}>
@@ -42,7 +46,7 @@ export function MdxNoteDetails(props: MDXProps) {
 
     return (
       <section className={styles.collapsibleInSideBar}>
-        <Collapsible title={type}>
+        <Collapsible title={noteType}>
           <CollapsibleLinkList links={links} />
         </Collapsible>
       </section>
