@@ -1,0 +1,25 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Universal Paperclips</title>
+  </head>
+  <body>
+    <h2 id="paperclip-count">Paperclips: 0</h2>
+    <button id="make-paperclip">Make Paperclip</button>
+    <script>
+      let paperclipCount = 0;
+      const button = document.getElementById("make-paperclip");
+
+      // Define paperclip making function
+      function makePaperclip() {
+        paperclipCount++;
+        const count = document.getElementById("paperclip-count");
+        count.textContent = "Paperclips: " + paperclipCount;
+      }
+
+      // Event handler for button click
+      button.addEventListener("click", makePaperclip);
+    </script>
+  </body>
+</html>
