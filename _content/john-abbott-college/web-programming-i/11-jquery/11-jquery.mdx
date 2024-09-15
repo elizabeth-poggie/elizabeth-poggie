@@ -233,7 +233,7 @@ Which is MUCH cleaner and easier on our retinas.
 
 # Exercise 1
 
-Form groups of up to 4 people, or feel free to work solo if that's more your style. Together, you’re going to build the foundation for a simple paperclip clicker game.
+Form groups of up to 3 people, or feel free to work solo if that's more your style. Together, you’re going to build the foundation for a simple paperclip clicker game.
 
 ## The HTML
 
@@ -248,7 +248,7 @@ When the "Make Paperclip" button is clicked:
 
 Your end result should look something like [Universal Paperclips](https://www.decisionproblem.com/paperclips/index2.html), as captured below:
 
-![demo](./assets/1.png)
+![demo](./assets/3.png)
 
 ## jQuery Solution
 
@@ -267,14 +267,14 @@ Your end result should look something like [Universal Paperclips](https://www.de
     <script>
       let paperclipCount = 0;
 
+      // Define paperclip making function
       function makePaperclip() {
         paperclipCount++;
         $("#paperclip-count").text("Paperclips: " + paperclipCount);
       }
 
-      // Event handler for button click - could use the traditional way tho, it's fair game.
-      $("#make-paperclip").click(makePaperclip);
-      $("#make-paperclip").click(makePaperclip);
+      // Event handler for button click
+      $("#make-paperclip").on("click", makePaperclip);
     </script>
   </body>
 </html>
@@ -282,4 +282,32 @@ Your end result should look something like [Universal Paperclips](https://www.de
 
 ## Pure JS Solution
 
-TBD
+Without using jQuery, your solution might look something like this:
+
+```html
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Universal Paperclips</title>
+  </head>
+  <body>
+    <h2 id="paperclip-count">Paperclips: 0</h2>
+    <button id="make-paperclip">Make Paperclip</button>
+    <script>
+      let paperclipCount = 0;
+      const button = document.getElementById("make-paperclip");
+
+      // Define paperclip making function
+      function makePaperclip() {
+        paperclipCount++;
+        const count = document.getElementById("paperclip-count");
+        count.textContent = "Paperclips: " + paperclipCount;
+      }
+
+      // Event handler for button click
+      button.addEventListener("click", makePaperclip);
+    </script>
+  </body>
+</html>
+```
