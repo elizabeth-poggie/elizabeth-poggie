@@ -8,7 +8,7 @@ coverSrc: "./assets/"
 
 # Why do i need to learn this?
 
-This library is one of the most popular tools for JavaScript, powering over 80% of the top 1 million websites globally. It’s more widely used than the major frameworks you've probably heard of, such as Angular, Vue, and React combined
+This library is one of the most popular tools for JavaScript, powering over 80% of the top 1 million websites globally. It’s more widely used than the major frameworks you've probably heard of, such as Angular, Vue, and React combined.
 
 JavaScript is an ugly language and we want to write less of it. This is how you do that.
 
@@ -58,13 +58,17 @@ CDNs significantly reduce the time it takes for data to travel between the user 
 
 ## Where do I access the jQuery CDN?
 
-The official jQuery CDN can be accessed through the following URL: [https://code.jquery.com/](https://code.jquery.com/). To use the latest version, insert the following in the `<head>` of your HTML page:
+The official jQuery CDN can be accessed through the following URL: [code.jquery.com](https://code.jquery.com/). Select the latest version in the format you desire and copy and paste that into your `<head>` section
+
+![demo](./assets/1.png)
+
+Alternatively, insert the following in the `<head>` of your HTML page:
 
 ```js
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 ```
 
-If you want to use the google hosted jQuery for whatever reason, that can be accessed through this URL: [https://developers.google.com/speed/libraries](https://developers.google.com/speed/libraries). To used the latest version, insert the following in the `<head>` of your HTML page
+If you want to use the google hosted jQuery for whatever reason, that can be accessed through this URL: [developers.google.com](https://developers.google.com/speed/libraries). To used the latest version, insert the following in the `<head>` of your HTML page
 
 ```js
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -88,15 +92,38 @@ Here’s what each part means:
 - `selector` 👉 is a jQuery selector to target elements. (e.g. `tag`, `.class`, `#id` )
 - `action` 👉 is the action you want to perform. (e.g. `.text()`, `.html()`)
 
-Cam I do multiple actions?
+## Can you do multiple actions?
 
-- Yes, we are going to explore the idea of method chaining shortly
+Yes, we are going to explore the idea of method chaining shortly
 
 ```js
 $(selector).action().anotherAction().evenMoreActions();
 ```
 
-## jQuery DOM Manipulation
+## What is the $ symbol anyways?
+
+In jQuery, the `$` is simply how you use the jQuery function. You know how you call functions in JavaScript like so?
+
+```js
+callingACoolFunction("some parameters");
+```
+
+The `$` sign works similarly. Except instead of passing any parameters like you do in your custom functions, the `$()` expects a _selector_ as input
+
+```js
+$(".myCoolClass");
+```
+
+For those that are curious, there is a longer way that you can access the jQuery Library:
+
+```js
+$(".myCoolClass");
+jQuery(".myCoolClass");
+```
+
+jQuery uses the `$` because it's a quick and easier to use.
+
+# DOM Manipulation made easier
 
 Modifying content becomes simpler:
 
