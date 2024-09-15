@@ -46,21 +46,21 @@ Alternatively, you can download jQuery and include it locally in your project. H
 
 ## Via Copy and Pasting
 
-If you were determined enough, you could copy the source code from [github](https://github.com/jquery/jquery) nd paste it directly into your header `<script>` tag. While this is possible, it’s not the best practice and can make your simple HTML doc much beefier than it needs to be.
+If you were determined enough, you could copy the source code from [github](https://github.com/jquery/jquery) and paste it directly into your header `<script>` tag. While this is possible, it’s not the best practice and can make your simple HTML doc much beefier than it needs to be.
 
 Why mention this? In JavaScript, a "library" is a collection of pre-written code that offers helpful functions and tools to solve common problems without starting from scratch. Think of it like saving all your assignment functions in one place for easy reuse across projects. Fun fact: I do this too. You think I start every website project from scratch? Absolutely not. Why would I when I have all these handy functions ready to go?
 
-Using a CDN keeps your code clean and efficient. Copy-pasting the library code into your header is like reinventing the wheel. It's unnecessary and time-consuming. Stick to the CDN method.
+Using a CDN keeps your code clean and efficient. Copy-pasting the library code into your header is like reinventing the wheel. Stick to the CDN method.
 
-## Do I need to memorize this?
-
-Absolutely not. Just copy and paste the library import `<script>` tag when needed.
-
-## CDN Side Tangent
+# CDN Side Tangent
 
 ## What are CDNs?
 
-A CDN, or Content Delivery Network, is a system of servers distributed globally. When a user requests a file, such as a JavaScript library, the CDN delivers it from the server closest to the user's location rather than retrieving it from the original server, which might be located far away. For example, if a user is in Montreal, the CDN will serve the file from a nearby server, reducing delays.
+A CDN, or Content Delivery Network, is a global network of servers designed to deliver content efficiently. When a user requests a file, such as a JavaScript library, the CDN serves it from the server closest to the user's location rather than from the original, potentially distant server.
+
+![demo](./assets/2.png)
+
+For example, if a user is in Montreal, the CDN will serve the file from a nearby server, reducing delays.
 
 ## Why are CDNs cool?
 
@@ -144,7 +144,9 @@ $("#coolDiv").html("<strong>a VERY bold WOW</strong>");
 $("img").attr("src", "./cats/pet-cat.png");
 ```
 
-## jQuery Event Listeners
+# jQuery Event Listeners
+
+## The Original Method
 
 In HTML, adding an event listener directly might look like this:
 
@@ -186,9 +188,9 @@ Where:
 
 Which is MUCH cleaner and easier on our retinas.
 
-# Exercise 3
+# Exercise 1
 
-Form groups of up to 4 people, or feel free to work solo if that's more your style. Together, you’re going to build the foundation for a simple paperclip clicker game using jQuery.
+Form groups of up to 4 people, or feel free to work solo if that's more your style. Together, you’re going to build the foundation for a simple paperclip clicker game.
 
 ## The HTML
 
