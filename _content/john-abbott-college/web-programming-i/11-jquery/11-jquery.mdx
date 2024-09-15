@@ -52,7 +52,7 @@ Why mention this? In JavaScript, a "library" is a collection of pre-written code
 
 Using a CDN keeps your code clean and efficient. Copy-pasting the library code into your header is like reinventing the wheel. Stick to the CDN method.
 
-# CDN Side Tangent
+# CDN Crash Course
 
 ## What are CDNs?
 
@@ -123,7 +123,10 @@ $(".myCoolClass");
 For those that are curious, there is a longer way that you can access the jQuery Library:
 
 ```js
+// the best way to access jQuery
 $(".myCoolClass");
+
+// the inconvenient way to access jQuery
 jQuery(".myCoolClass");
 ```
 
@@ -131,7 +134,19 @@ jQuery uses the `$` because it's a quick and easier to use.
 
 # DOM Manipulation made easier
 
-Modifying content becomes simpler:
+There are a lot of methods you have access to via the `$` symbol which you can see [here](https://api.jquery.com/). The ones you will care the most about in the context of this course are listed below.
+
+## Hide/Show
+
+```js
+// Hide an element
+$("p").hide();
+
+// Show an element
+$("p").show();
+```
+
+## Change Content/Attributes
 
 ```js
 // Modify Text
@@ -144,9 +159,33 @@ $("#coolDiv").html("<strong>a VERY bold WOW</strong>");
 $("img").attr("src", "./cats/pet-cat.png");
 ```
 
+## Style Modifications
+
+```js
+// Change a css style
+$("div").css("background-color", "yellow");
+
+// Add a style class
+$("#coolDiv").addClass("active");
+
+// Remove a style class
+$(".someClass").removeClass("active");
+
+// Create animations by changing CSS properties
+$("p").animate(
+  {
+    width: "300px",
+    opacity: 0.5,
+  },
+  1000
+);
+```
+
+As well as event handling....
+
 # jQuery Event Listeners
 
-## The Original Method
+## The Attribute Way
 
 In HTML, adding an event listener directly might look like this:
 
@@ -159,6 +198,8 @@ Where:
 - `handleEvent()` is the handler function
 - `onclick` is the event listener attribute
 - and there is NO NEED for a selector
+
+## The Pure JavaScript Way
 
 In pure JavaScript, it would be:
 
@@ -174,7 +215,9 @@ Where:
 - `addEventListener("click", ...)` is the event listener method
 - `document.getElementsByTagName("button")[0]` is the selector
 
-Using jQuery simplifies this to:
+## The jQuery Way (the best)
+
+Using jQuery, this simplifies this to:
 
 ```js
 $("button").on("click", handleEvent);
@@ -207,7 +250,7 @@ Your end result should look something like [Universal Paperclips](https://www.de
 
 ![demo](./assets/1.png)
 
-## Solution
+## jQuery Solution
 
 ```html
 <html lang="en">
@@ -236,3 +279,7 @@ Your end result should look something like [Universal Paperclips](https://www.de
   </body>
 </html>
 ```
+
+## Pure JS Solution
+
+TBD
