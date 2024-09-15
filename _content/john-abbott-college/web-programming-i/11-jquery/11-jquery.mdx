@@ -14,11 +14,11 @@ JavaScript is an ugly language and we want to write less of it. This is how you 
 
 # Accessing jQuery
 
-To use jQuery in your projects, include the jQuery library in your HTML document.
+To use jQuery in your projects, you need to include the jQuery library in your HTML document.
 
 ## Via CDNs
 
-The easiest way to add jQuery is by using a Content Delivery Network (CDN). This method provides a hosted version of jQuery that you can include directly in your HTML file:
+The easiest way to add jQuery is by using a Content Delivery Network (CDN). This method provides a hosted version of jQuery that you can directly include in your HTML file:
 
 ```html
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ The easiest way to add jQuery is by using a Content Delivery Network (CDN). This
 </html>
 ```
 
-There’s no need to specify `type="text/javascript"` inside the `<script>` tag, as JavaScript is the default scripting language in HTML5 for all modern browsers.
+You don’t need to specify type="text/javascript" inside the `<script>` tag because JavaScript is the default scripting language in HTML5 for _ALL_ modern browsers.
 
 ## Via Local Hosting
 
@@ -46,13 +46,15 @@ Alternatively, you can download jQuery and include it locally in your project. H
 
 ## Via Copy and Pasting
 
-If you were determined enough you could copy the source code from [github](https://github.com/jquery/jquery) into your header `<script>` tag and that would also work however not the best practice.
+If you were determined enough, you could copy the source code from [github](https://github.com/jquery/jquery) nd paste it directly into your header `<script>` tag. While this is possible, it’s not the best practice and can make your simple HTML doc much beefier than it needs to be.
 
-Why am i mentioning this? In JavaScript, a library is a collection of pre-written code that provides helpful functions and tools to solve common problems without having to write everything from scratch. It would be like taking all your assignment functions and saving it in one place to be `import`ed in every project.
+Why mention this? In JavaScript, a "library" is a collection of pre-written code that offers helpful functions and tools to solve common problems without starting from scratch. Think of it like saving all your assignment functions in one place for easy reuse across projects. Fun fact: I do this too. You think I start every website project from scratch? Absolutely not. Why would I when I have all these handy functions ready to go?
 
-In the case with jQuery, instead of accessing the library with a CDN which makes your code cleaner, you could "plagiarize" the source code functions by just pasting them directly in the header where you define it from "scratch" yourself.
+Using a CDN keeps your code clean and efficient. Copy-pasting the library code into your header is like reinventing the wheel. It's unnecessary and time-consuming. Stick to the CDN method.
 
-But that takes too long, stick to the CDN method.
+## Do I need to memorize this?
+
+Absolutely not. Just copy and paste the library import `<script>` tag when needed.
 
 ## CDN Side Tangent
 
@@ -81,10 +83,6 @@ If you want to use the google hosted jQuery for whatever reason, that can be acc
 ```js
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 ```
-
-## Do I need to memorize this?
-
-Absolutely not, I just copy and paste this sort of information.
 
 # Recap on Syntax
 
