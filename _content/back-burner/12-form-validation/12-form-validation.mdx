@@ -1,0 +1,120 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Form Validation"
+created: "2024-09-17"
+coverSrc: "./assets/"
+---
+
+# Forms
+
+All user interaction needs proper validation. Users should be prevented from adding trash as input to avoid unexpected program behavior.
+
+## Why is Validation Important?
+
+There are three main reasons:
+
+- We need the right data, in the right format.
+- We need to protect our users' information. (e.g. secure passwords)
+- We need to protect ourselves. (e.g. nasty users)
+
+## Validation MATTERS
+
+Before submitting data to the server, it’s important to ensure that all the required form fields are filled in correctly. Without input validation, the user experience takes a hit:
+
+```text
+❌ BAD - no input validation ❌
+
+(client) 💻 🗑️ -- POST --> 🗑️ 🗃️ (server wondering why you gave it trash)
+```
+
+By adding client-side validation, we can make sure the data matches the required format or rules before it's sent. This not only prevents bad data from reaching the server but also improves the user experience by allowing users to correct mistakes right away:
+
+```text
+✅ GOOD - input validation ✅
+
+(client) 💻 🗑️ -- 🛑 (nope) -- POST --> 🗃️ (server with no knowledge of the occurrence of trash)
+```
+
+Think of it like sending an impulsive, emotionally driven text to a friend without thinking:
+
+```text
+❌ BAD - you did not account for your target audience ❌
+
+(you) 🧑 🗑️ -- POST --> 🗑️ 💑 (your loved ones, confused by your message)
+```
+
+Now imagine if you could run that text by ChatGPT first to make sure it’s clearer and more constructive:
+
+```text
+✅ GOOD - you can now refactor what you want to say ✅
+
+(you) 🧑 🗑️ -- 🛑 (ChatGPT) --> 💑 (your loved ones)
+```
+
+Just like thoughtful communication helps you maintain relationships with the people you care about, input validation ensures your forms are trash free before they even hit the server :^)
+
+# Form Attributes
+
+Forms consist of three key components:
+
+- `action` 👉 Defines where the form data should be sent when submitted, typically a server URL.
+- `target` 👉 Defines where the result of the form submission will be displayed. For example, you can open the result in a new tab or in the current window.
+- `method` 👉 Determines the HTTP method used when submitting the form, usually either GET or POST.
+
+## What does this look like in the code?
+
+```html
+<!-- Notice the 3 parts below -->
+<form action="submit-form.php" target="_blank" method="post">
+  <!-- other form content here -->
+</form>
+```
+
+## Explanation
+
+- `action="submit-form.php"` 👉 When the form is submitted, the data will be sent to `submit-form.php`.
+- `target="_blank"` 👉 The result will open in a new tab.
+- `method="post"` 👉 The form will use the POST method, which sends the data securely without including it in the URL.
+
+# GET vs POST
+
+So, what do "GET" and "POST" actually mean? For now, here’s the basic idea:
+
+- "GET" retries data
+- "POST" sends data
+
+Think of it like mailing a letter:
+
+```text
+✉️ -- POST --> 📫 @ address
+
+✉️ <-- GET -- 📫 @ address
+```
+
+In our example, the 'address' is the URL (like `submit-form.php`), and the `method` tells the server whether we’re sending ("POST") or retrieving ("GET") data.
+
+```text
+✉️ -- POST --> 🗃️ @ url
+
+✉️ <-- GET -- 🗃️ @ url
+```
+
+In this case, the URL is `submit-form.php`, we’re using POST, and the data we’re sending is the result of a user’s input in the form.
+
+## What does the data look like when it’s sent?
+
+It depends on the method:
+
+- With GET, the data is visible in the URL (which means the user can see it).
+- With POST, the data is sent in the request body and can be encrypted if using `https`.
+
+## The Rule of Thumb
+
+Always use POST when the form contains sensitive information. Why? You don’t want someone’s password, email, or phone number to be exposed.
+
+Would you share your social media passwords with your friends? Your family? Your partner? Probably not. That’s why we use POST requests, what people don’t see can’t be exploited.
+
+# Friday Quiz
+
+Go over the notes for the DOM, Event Listeners, and jQuery, this will be the focus for the Quiz this week.
