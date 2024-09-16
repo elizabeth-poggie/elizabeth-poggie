@@ -4,28 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
   </head>
   <body>
-    <form
-      action="submit-form.php"
-      target="_blank"
-      method="post"
-      onsubmit="return submitForm()"
-    >
+    <form action="submit-form.php" target="_blank" method="post">
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" placeholder="your@email.ca" />
       <input type="submit" value="Submit" />
     </form>
     <script>
-      function submitForm() {
-        const email = document.getElementById("email").value;
+      $(document).ready(function() {
+      $('form').on('submit', function(event) {
+        const email = $('#email').val();
         if (email === "") {
           alert("What is this trash");
-          return false; // Prevent trash
-        } else {
-          return true; // Allow submission
+          event.preventDefault(); // Prevent form submission
         }
-      }
+      });
+    });
     </script>
   </body>
 </html>

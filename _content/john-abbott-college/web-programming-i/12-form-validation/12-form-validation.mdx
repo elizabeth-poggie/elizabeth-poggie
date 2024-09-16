@@ -245,10 +245,82 @@ Despite being the default option, how many of you encountered this specific erro
 
 ## Option 2 - An Inline Event Listener
 
-If i wanted a more custom & modern error message, I would need to use an event listener:
+If i wanted a more custom & modern error message, I would need to use an event listener. To start, I would need to include `onsubmit="return submitForm()"` to add the inline event listener:
+
+```html
+<form
+  action="submit-form.php"
+  target="_blank"
+  method="post"
+  onsubmit="return handleSubmit()"
+>
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" placeholder="your@email.ca" />
+  <input type="submit" value="Submit" />
+</form>
+```
+
+And without jQuery, my vanilla JavaScript would look like the following:
 
 ```js
+function handleSubmit() {
+  const email = document.getElementById("email").value;
+  if (email === "") {
+    alert("What is this trash");
+    return false; // Prevent trash
+  } else {
+    return true; // Allow submission
+  }
+}
+```
 
+However, we can do better.
+
+## Option 3 - Vanilla JavaScript Event Listener
+
+Instead of making changes to the HTML form, we could create a vanilla JavaScript Event Listener as follows:
+
+```js
+// notice that we take an event as input
+function handleSubmit(event) {
+  const email = document.getElementById("email").value;
+  if (email === "") {
+    alert("What is this trash");
+    // Notice the "preventDefault"
+    event.preventDefault();
+  }
+}
+
+// Step 1 - get the form
+const form = document.getElementsByTagName("form")[0];
+
+// Step 2 - add a listener
+form.addEventListener("submit", handleSubmit);
+```
+
+Whatever that's written in vanilla JS can be done cleaner with jQuery. However before we explore the best way of doing this, we need to first understand what "DOM Ready" is.
+
+# The jQuery way
+
+Whatever that's written in vanilla JS can be done cleaner with jQuery. First import it at the top:
+
+```html
+ <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+```
+
+Next, change your script code:
+
+```js
+$(document).ready(function () {
+  $("form").on("submit", function (event) {
+    const email = $("#email").val();
+    if (email === "") {
+      alert("What is this trash");
+      event.preventDefault(); // Prevent form submission
+    }
+  });
+});
 ```
 
 # Friday Quiz
