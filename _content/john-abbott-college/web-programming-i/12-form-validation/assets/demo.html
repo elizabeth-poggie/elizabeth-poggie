@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form
+      action="submit-form.php"
+      target="_blank"
+      method="post"
+      onsubmit="return submitForm()"
+    >
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="your@email.ca" />
+      <input type="submit" value="Submit" />
+    </form>
+    <script>
+      function submitForm() {
+        const email = document.getElementById("email").value;
+        if (email === "") {
+          alert("What is this trash");
+          return false; // Prevent trash
+        } else {
+          return true; // Allow submission
+        }
+      }
+    </script>
+  </body>
+</html>

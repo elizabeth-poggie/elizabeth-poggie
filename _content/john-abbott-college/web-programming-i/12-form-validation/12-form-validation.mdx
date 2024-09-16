@@ -213,12 +213,39 @@ Let's say I had the following form:
 <form action="submit-form.php" target="_blank" method="post">
   <label for="email">Email:</label>
   <input type="email" id="email" name="email" placeholder="your@email.ca" />
+  <input type="submit" value="Submit" />
 </form>
 ```
 
 And I wanted to handle the submission of the form effectively. What could I do?
 
-## Pure HTML Solution
+## Option 1 - Pure HTML
+
+I could a `required` field to the `input` of type `email`
+
+```html
+<form action="submit-form.php" target="_blank" method="post">
+  <label for="email">Email:</label>
+  <input
+    type="email"
+    id="email"
+    name="email"
+    placeholder="your@email.ca"
+    required
+  />
+  <input type="submit" value="Submit" />
+</form>
+```
+
+which should give me something like the following as an error message
+
+![demo](./assets/1.png)
+
+Despite being the default option, how many of you encountered this specific error message in your lives? Probably never.
+
+## Option 2 - An Inline Event Listener
+
+If i wanted a more custom & modern error message, I would need to use an event listener:
 
 ```js
 
