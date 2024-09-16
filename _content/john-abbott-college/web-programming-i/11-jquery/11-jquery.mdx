@@ -187,6 +187,39 @@ $("p").animate(
 
 As well as event handling....
 
+# Poggie demo
+
+- jQuery API
+- jQuery Access / Chrome Access
+
+```html
+<body>
+  <p>WOW</p>
+  <script>
+    $("p").hide();
+    $("p").show();
+    $("p").text("Wow!!!!");
+    $("p").html("<strong>WOWOWOWOWOWOW</strong>");
+    $("p").css("background-color", "red");
+    $("p").animate(
+      {
+        width: "300px",
+        opacity: 0.5,
+      },
+      1000
+    );
+  </script>
+</body>
+```
+
+# Exercise 1
+
+Complete the following jQuery exercises:
+
+- [Selectors](https://www.w3schools.com/jquery/exercise_jq.asp?filename=exercise_jq_selectors1)
+- [Hide/Show](https://www.w3schools.com/jquery/exercise_jq.asp?filename=exercise_jq_hide_show1)
+- [CSS](https://www.w3schools.com/jquery/exercise_jq.asp?filename=exercise_jq_css1)
+
 # jQuery Event Listeners
 
 ## The Attribute Way
@@ -235,7 +268,7 @@ Where:
 
 Which is MUCH cleaner and easier on our retinas.
 
-# Exercise 1
+# Exercise 2
 
 Form groups of up to 3 people, or feel free to work solo if that's more your style. Together, you’re going to build the foundation for a simple paperclip clicker game.
 
@@ -316,7 +349,34 @@ Without using jQuery, your solution might look something like this:
 </html>
 ```
 
-# Exercise 2
+## HTML Solution
+
+```html
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Universal Paperclips</title>
+  </head>
+  <body>
+    <h2 id="paperclip-count">Paperclips: 0</h2>
+    <button onclick="makePaperclip()">Make Paperclip</button>
+
+    <script>
+      let paperclipCount = 0;
+
+      // Define paperclip making function
+      function makePaperclip() {
+        paperclipCount++;
+        document.getElementById("paperclip-count").innerText =
+          "Paperclips: " + paperclipCount;
+      }
+    </script>
+  </body>
+</html>
+```
+
+# Supplementary Exercise
 
 Let's take this to the next level by adding a business section that tracks and updates business stats. We'll create three sections:
 
