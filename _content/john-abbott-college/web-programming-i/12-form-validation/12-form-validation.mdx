@@ -115,6 +115,115 @@ Always use POST when the form contains sensitive information. Why? You don’t w
 
 Would you share your social media passwords with your friends? Your family? Your partner? Probably not. That’s why we use POST requests, what people don’t see can’t be exploited.
 
+# User Interaction
+
+Use the `<input>` element as much as possible.
+
+## Why?
+
+Using the `<input>` element improves accessibility, provides built-in validation, enhances mobile experience, and ensures consistent behavior across ALL browsers. It reduces the need for custom JavaScript code, making forms cleaner for both the user and the developer.
+
+TLDR: with the `<input>` element, you will be writing LESS JavaScript
+
+## How?
+
+To use the HTML `<input>` element, you include it in your `<form>` to accept user input:
+
+```html
+<!-- Form parent -->
+<form action="submit-form.php" target="_blank" method="post">
+  <!-- ... other stuff ... -->
+
+  <!-- Notice the attributes -->
+  <input type="email" id="email" name="email" placeholder="your@email.ca" />
+
+  <!-- ... other stuff ... -->
+</form>
+```
+
+## What do the different attributes mean?
+
+- `type` 👉 Defines the kind of input
+- `id` 👉 UNIQUELY Identifies an element on the page
+- `name` 👉 Identifies the input data when the form is submitted
+- `placeholder` 👉 A hint to the user about what to enter
+- `min` && `max` 👉 Constraints for inputs like numbers or dates
+- `value` 👉 Represents the current or default data for the input
+
+## Input Types
+
+You can specify different types of input, such as text, email, number, and [SOOOOO much more](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types). For the purposes of this class tho, please see below a few notable ones:
+
+```html
+<!-- Text -->
+<input type="text" name="username" />
+
+<!-- Email -->
+<input type="email" name="email" />
+
+<!-- Password -->
+<input type="password" name="password" />
+
+<!-- Numbers, with optional min/max -->
+<input type="number" name="age" min="1" max="100" />
+
+<!-- Date -->
+<input type="date" name="birthday" />
+
+<!-- Checkbox -->
+<input type="checkbox" name="subscribe" />
+
+<!-- Radio -->
+<input type="radio" name="gender" value="male" /> Male
+<input type="radio" name="gender" value="female" /> Female
+
+<!-- Submit -->
+<input type="submit" value="Submit" />
+```
+
+## Form Labels
+
+The `<label>` element associates a text caption with an `<input>` field. Going back to our original example:
+
+```html
+<form action="submit-form.php" target="_blank" method="post">
+  <!-- Notice the label -->
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" placeholder="your@email.ca" />
+  <!-- ... other stuff ... -->
+</form>
+```
+
+## Why labels?
+
+Using `<label>` for `<input>` has two major advantages compared to other text elements we are familiar with
+
+- Screen readers can read out the label when the user is focused on the form input.
+- Clicking on the label will focus/activate the input.
+
+If you decide to go with regular text fields like `<h1>`, `<h3>`, and `<p>`, you will get none of the above advantages.
+
+# Form Redirection
+
+In User Interfaces you learnt how to use plain HTML to ensure validation. Today we are going to bring this to the next level with an event listener.
+
+Let's say I had the following form:
+
+```html
+<form action="submit-form.php" target="_blank" method="post">
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" placeholder="your@email.ca" />
+</form>
+```
+
+And I wanted to handle the submission of the form effectively. What could I do?
+
+## Pure HTML Solution
+
+```js
+
+```
+
 # Friday Quiz
 
 Go over the notes for the DOM, Event Listeners, and jQuery, this will be the focus for the Quiz this week.
