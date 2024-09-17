@@ -1,0 +1,125 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Equality & The DOM"
+created: "2024-09-17"
+coverSrc: "./assets/"
+---
+
+# Question 1
+
+Which of these equality checks will log true in the console? Half of the answers listed below are correct 👀
+
+- ❌ console.log( "4" === 4 );
+- ❌ console.log( "four" === 4 );
+- ✅ console.log( 4 === 4 );
+- ❌ console.log( 4 = 4 );
+- ✅ console.log( "4" == 4 );
+- ✅ console.log( "four" === "four" );
+
+## Why?
+
+- `4 === 4` 👉 strict equality, same value and type
+- `"4" == 4` 👉 loose equality with type coercion
+- `"four" === "four"` 👉 strict equality, same value and type
+
+# Question 2
+
+When strict equality is performed in JavaScript, the two compared values:
+
+- ❌ must be booleans.
+- ✅ must be of the same data type, or the result will be false.
+- ❌ are coerced to the same type before comparing values.
+- ❌ must be of the same data value, or the result will be false.
+
+## Why?
+
+Strict equality (`===`) compares both the VALUE and the TYPE. If the values have DIFFERENT types, they are considered not equal _regardless_ of their actual values. While the values must be the same for strict equality to return true, _it’s the data type that must also be the same_. The statement is not fully correct without mentioning the data type requirement.
+
+# Question 3
+
+Which options below best describe the DOM? Select all that apply
+
+- ❌ available to the JavaScript as a string in a variable called document
+- ✅ an object of the loaded HTML page
+- ❌ a function you can call to change elements of a loaded web page.
+- ✅ created by the browser
+- ❌ an object you must create in your JavaScript code before you could use it
+- ❌ a data structure stored as JSON that can be accessed through the browser's API
+
+## Why?
+
+The DOM is an object model of the HTML page created by the browser, allowing JavaScript to interact with the structure of the document.
+
+## Detailed Reasoning
+
+What the DOM is:
+
+- ✅ an object of the loaded HTML page 👉 The DOM represents the structure of the HTML page as a tree of objects. Each element, attribute, and text in the HTML is represented as a node in this tree.
+- ✅ created by the browser 👉 The browser automatically creates the DOM when it loads an HTML document. This allows JavaScript to interact with and manipulate the page.
+
+What the DOM is not:
+
+- ❌ available to the JavaScript as a string in a variable called document 👉 The DOM is not a string but an object model. The document object provides access to the DOM, but it is not a string.
+- ❌ a function you can call to change elements of a loaded web page 👉 The DOM is not a function. It is a model that allows you to interact with the document structure. Methods and properties of the document object (like getElementById or querySelector) allow you to change elements, but the DOM itself is not a function.
+- ❌ an object you must create in your JavaScript code before you could use it 👉 The DOM is automatically created by the browser, and you don’t need to create it manually in JavaScript.
+- ❌ a data structure stored as JSON that can be accessed through the browser's API 👉 The DOM is not stored as JSON. It is a hierarchical tree structure of objects representing the HTML elements, accessible through the browser's API, but not in JSON format.
+
+# Question 4
+
+Given the following CodePen
+
+```js
+var test = {
+  maximumMark: 15,
+  numberOfQuestions: 5,
+  weightOfEachQuestion: 3,
+  description: "Test 1",
+  testMark: 0,
+  updateMark: function (markForOneQuestion) {
+    // code inserted here
+  },
+};
+```
+
+Which code snippet added as the body of the updateMark function is the best and would result in a console log of 5 when the file is loaded on a browser?
+
+```js
+return markForOneQuestion; // ❌
+```
+
+```js
+this.testMark = this.testMark + markForOneQuestion;
+return this.testMark; // ✅
+```
+
+```js
+testMark = testMark + markForOneQuestion;
+return this.testMark; // ❌
+```
+
+```js
+return this.testMark; // ❌
+```
+
+## Why?
+
+- `return markForOneQuestion;` ❌ This snippet returns the value of markForOneQuestion, but does not update testMark.
+- `this.testMark = this.testMark + markForOneQuestion; return this.testMark;` ✅ correct answer :^)
+- `testMark = testMark + markForOneQuestion; return this.testMark;` ❌ This snippet attempts to use `testMark` without `this`.
+- `return this.testMark;` ❌ This snippet only returns the current value of `testMark`
+
+# Question 5
+
+What is the main difference between var and let in JavaScript?
+
+- ❌ Variables declared with `var` are block-scoped, while variables declared with `let` are only globally-scoped.
+- ❌ A common best practice is to avoid using `let` and instead prefer `var` whenever possible.
+- ❌ Both `var` and `let` are hoisted and initialized with undefined.
+- ✅ Variables declared with `var` can be re-declared in the same scope, while variables declared with `let` cannot.
+
+## Why?
+
+- `var`: Variables declared with `var` are function-scoped or globally-scoped if declared outside a function. This means that they are accessible throughout the entire function or global context. `var` allows re-declaration within the same scope, which can lead to _trash code and bugs_.
+
+- `let`: Variables declared with `let` are block-scoped, meaning they are only accessible within the block where they are defined. This helps to prevent issues related to variable re-declaration in the same scope and allows for _more predictable and manageable code_.
