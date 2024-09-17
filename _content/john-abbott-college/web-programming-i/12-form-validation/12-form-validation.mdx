@@ -298,29 +298,81 @@ const form = document.getElementsByTagName("form")[0];
 form.addEventListener("submit", handleSubmit);
 ```
 
-Whatever that's written in vanilla JS can be done cleaner with jQuery. However before we explore the best way of doing this, we need to first understand what "DOM Ready" is.
+Whatever that's written in vanilla JS can be done cleaner with jQuery. However before we explore the best way of doing this form submission, we need to first understand what "DOM Safety" is. But that's Friday's problem.
 
-# The jQuery way
+# Exercise 1
 
-Whatever that's written in vanilla JS can be done cleaner with jQuery. First import it at the top:
+Take the above example and change it such that:
+
+- It uses custom messages and no alerts
+- It contains an "accept terms of service" checkbox button.
 
 ```html
- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-</head>
-```
-
-Next, change your script code:
-
-```js
-$(document).ready(function () {
-  $("form").on("submit", function (event) {
-    const email = $("#email").val();
+<form action="submit-form.php" target="_blank" method="post">
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" placeholder="your@email.ca" />
+  <input type="submit" value="Submit" />
+</form>
+<script>
+  function handleSubmit(event) {
+    const email = document.getElementById("email").value;
     if (email === "") {
       alert("What is this trash");
-      event.preventDefault(); // Prevent form submission
+      event.preventDefault();
     }
-  });
-});
+  }
+  const form = document.getElementsByTagName("form")[0];
+  form.addEventListener("submit", handleSubmit);
+</script>
+```
+
+## Solution
+
+The form should look something close to this
+
+```html
+<form id="myForm" action="submit-form.php" target="_blank" method="post">
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="your@email.ca" />
+    <p id="emailWarningMessage" class="warning">Email field cannot be empty.</p>
+  </div>
+  <div>
+    <label for="terms">
+      <input type="checkbox" id="terms" name="terms" />
+      Accept terms of service
+    </label>
+    <p id="termsWarningMessage" class="warning">
+      You must accept the terms of service.
+    </p>
+  </div>
+  <input type="submit" value="Submit" />
+</form>
+```
+
+And the script could be close to this:
+
+```js
+function handleSubmit(event) {
+  // Declare important constants
+  const email = document.getElementById("email").value;
+  // or ... const email = $('#email').val();
+
+  const terms = document.getElementById("terms").checked;
+  // or ... $('#terms').is(':checked');
+
+  // Check if the email field is empty
+  if (email === "") {
+    $("#emailWarningMessage").show();
+  }
+
+  // Check if terms are accepted
+  if (!terms) {
+    $("#termsWarningMessage").show();
+  }
+}
+
+document.getElementById("myForm").addEventListener("submit", handleSubmit);
 ```
 
 # Friday Quiz

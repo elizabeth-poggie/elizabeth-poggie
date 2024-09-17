@@ -3,26 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-</head>
+    <title>Form Validation</title>
+    <!-- jQuery import -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .warning {
+        color: red;
+        font-size: 0.9em;
+        display: none;
+      }
+      div {
+        padding-bottom: 10px;
+      }
+    </style>
   </head>
   <body>
-    <form action="submit-form.php" target="_blank" method="post">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" placeholder="your@email.ca" />
+    <form id="myForm" action="submit-form.php" target="_blank" method="post">
+      <div>
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="your@email.ca"
+        />
+        <p id="emailWarningMessage" class="warning">
+          Email field cannot be empty.
+        </p>
+      </div>
+      <div>
+        <label for="terms">
+          <input type="checkbox" id="terms" name="terms" />
+          Accept terms of service
+        </label>
+        <p id="termsWarningMessage" class="warning">
+          You must accept the terms of service.
+        </p>
+      </div>
       <input type="submit" value="Submit" />
     </form>
     <script>
-      $(document).ready(function() {
-      $('form').on('submit', function(event) {
-        const email = $('#email').val();
+      function handleSubmit(event) {
+        // Declare important constants
+        const email = document.getElementById("email").value;
+        // or ... const email = $('#email').val();
+
+        const terms = document.getElementById("terms").checked;
+        // or ... $('#terms').is(':checked');
+
+        // Check if the email field is empty
         if (email === "") {
-          alert("What is this trash");
-          event.preventDefault(); // Prevent form submission
+          $("#emailWarningMessage").show();
         }
-      });
-    });
+
+        // Check if terms are accepted
+        if (!terms) {
+          $("#termsWarningMessage").show();
+        }
+      }
+
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", handleSubmit);
     </script>
   </body>
 </html>
