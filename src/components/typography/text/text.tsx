@@ -36,6 +36,7 @@ const colorToStyleMap = {
 const decorationToStyleMap = {
   none: null,
   underline: styles.underline,
+  bold: styles.bold,
 };
 
 type TextAlign = "left" | "center" | "right" | "justify";
@@ -51,7 +52,7 @@ type TextVariant =
 
 type TextStyle = "normal" | "italics" | "uppercase" | "capitalize";
 
-type TextDecoration = "none" | "underline";
+type TextDecoration = "none" | "underline" | "bold";
 
 type TextColor = "white" | "grey" | "green" | "offWhite" | "yellow";
 

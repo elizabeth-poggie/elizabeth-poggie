@@ -9,6 +9,11 @@ import { TextButton } from "../../components/inputs/text-button/text-button";
 import { ScrollableContainer } from "../../components/layout/scrollable-container/scrollable-container";
 import { sortByCreatedDescending } from "../../utils/helpers/noteSorters";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
+import { Link } from "../../components/navigation/link/link";
+import {
+  formatDate,
+  pluralToSingular,
+} from "../../utils/helpers/textFormatters";
 
 interface IProps {
   allNotes: INote[];
@@ -77,41 +82,29 @@ export function Notes({ allNotes }: IProps) {
     );
   };
 
-  const renderList = () => {
-    return (
-      <>
-        {filteredNotes.map((note: INote, i: number) => {
-          // date logic for list items
-          const currentDate = note.updated
-            ? new Date(note.updated) // priority given to updated
-            : new Date(note.created);
-          const displayDate = currentDate.getFullYear() ? (
-            <Text>
-              {`${currentDate.toLocaleString("default", {
-                month: "short",
-              })} ${currentDate.getFullYear()}`}
-            </Text>
-          ) : null;
+  const renderListItem = (note: INote) => {
+    const { slug, title, subtitle, category, type, created, updated } = note;
+    const currentDate = formatDate(updated ?? created);
 
-          return (
-            <div key={note.slug}>
-              <ListItem
-                title={note.title}
-                href={`/notes/${note.slug}`}
-                rightContent={displayDate}
-                subContent={
-                  <PillButton
-                    color={filterToColorMap[note.category]}
-                    title={note.category}
-                    onClick={() => null}
-                  />
-                }
-              />
-              {i === filteredNotes.length - 1 ? null : <HorizontalLine />}
-            </div>
-          );
-        })}
-      </>
+    return (
+      <Link href={`/notes/${slug}`}>
+        <div className={styles.listItem}>
+          <Text color="grey">{currentDate}</Text>
+          <Text variant="h2" gutterBottom={1} color="white">
+            {title}
+          </Text>
+          <Text
+            variant="subheading"
+            gutterBottom={1}
+            style="italics"
+            color="grey"
+          >
+            {type ? `${pluralToSingular(type)}, ` : null}
+            {category}
+          </Text>
+        </div>
+        <HorizontalLine />
+      </Link>
     );
   };
 
@@ -127,7 +120,9 @@ export function Notes({ allNotes }: IProps) {
     return (
       <div className={styles.mainContent}>
         <HorizontalLine />
-        <section className={styles.content}>{renderList()}</section>
+        <section className={styles.content}>
+          <>{filteredNotes.map((note: INote) => renderListItem(note))}</>
+        </section>
       </div>
     );
   };

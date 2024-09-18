@@ -45,3 +45,11 @@ export const replaceHyphensWithSpaces = (input: string): string => {
   }
   return input.replace(/-/g, " ");
 };
+
+export const formatDate = (dateString: string): string => {
+  const date = new Date(dateString);
+
+  return `${date.toLocaleString("default", {
+    month: "short",
+  })} ${date.getFullYear()}`;
+};
