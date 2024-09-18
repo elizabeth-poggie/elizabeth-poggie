@@ -6,20 +6,22 @@ import { TextLink } from "../../navigation/link/link";
 
 interface IProps {
   title: string;
+  isOpen?: boolean;
   children: React.ReactNode;
+  onClick: () => void;
 }
 
-export function Collapsible({ title, children }: IProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
+export function Collapsible({
+  title,
+  children,
+  isOpen = false,
+  onClick,
+}: IProps) {
   return (
     <>
       <button
         className={`${styles.collapsible} ${isOpen ? styles.active : ""}`}
-        onClick={handleToggle}
+        onClick={onClick}
       >
         <Text variant="h3" gutterBottom={1} style="capitalize">
           {title}
@@ -65,6 +67,41 @@ export const CollapsibleLinkList = ({
     </>
   );
 };
+
+interface ICollapsibleListProps {
+  collapsibles: { title: string; content: React.ReactNode }[];
+  currentType?: string;
+}
+
+export function CollapsibleList({
+  collapsibles,
+  currentType,
+}: ICollapsibleListProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(
+    collapsibles.findIndex((collapsible) => collapsible.title === currentType)
+  );
+
+  const handleToggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <div>
+      {collapsibles.map((collapsible, index) => (
+        <section className={styles.collapsibleItem}>
+          <Collapsible
+            key={index}
+            title={collapsible.title}
+            isOpen={openIndex === index}
+            onClick={() => handleToggle(index)}
+          >
+            {collapsible.content}
+          </Collapsible>
+        </section>
+      ))}
+    </div>
+  );
+}
 
 export const ArrowIcon = () => (
   <svg

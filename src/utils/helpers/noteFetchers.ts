@@ -3,6 +3,7 @@ import { ILink, INote } from "../../interfaces/note";
 import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";
+import { replaceHyphensWithSpaces } from "./textFormatters";
 
 // TODO - for now, remove content prop used for md files, but cleanup later lol
 export type Frontmatter = Omit<INote, "content">;
@@ -77,7 +78,7 @@ export const getAllNotesForCategories = async (
             category: mdxFrontmatter.category,
             created: mdxFrontmatter.created,
             coverSrc: mdxFrontmatter.coverSrc ?? null,
-            type,
+            type: replaceHyphensWithSpaces(type) || null,
             baseFolder: fullBaseFolderPath,
           });
         }
@@ -134,11 +135,7 @@ export const getNoteProps = async (
       const mdxSource = await serialize(source, { parseFrontmatter: true });
 
       // Extract all related notes
-      const relatedNotes = await getRelatedNotesByType(
-        baseFolder,
-        category,
-        type
-      );
+      const relatedNotes = await getRelatedNotesByType(baseFolder, category);
 
       // Construct the image path
       const fullBaseFolderPath = `/${baseFolder}/${subCategoryPath.join("/")}`;
@@ -150,7 +147,7 @@ export const getNoteProps = async (
             scope: mdxSource.scope,
             frontmatter: {
               ...(mdxSource.frontmatter as Frontmatter),
-              type: type || null,
+              type: replaceHyphensWithSpaces(type) || null,
             },
           },
           baseFolder: fullBaseFolderPath,
@@ -219,22 +216,31 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
 
 export const getRelatedNotesByType = async (
   baseFolder: string,
-  category: string,
-  type: string
+  category: string
 ): Promise<CategoryToLinkMap> => {
   const allNotes: INote[] = await getAllNotesForCategories(baseFolder, [
     category,
   ]);
 
-  // Filter notes by the given type and subcategory
-  const filteredNotes = allNotes.filter((note) => note.type === type);
+  // Group notes by their type
+  const categoryMap: CategoryToLinkMap = allNotes.reduce((acc, note) => {
+    const { type } = note;
 
-  const categoryMap: CategoryToLinkMap = {
-    [type]: filteredNotes.map((note: INote, index: number) => ({
-      text: `${index + 1}. ${note.title}`,
+    if (type == null) {
+      return acc;
+    }
+
+    if (!acc[type]) {
+      acc[type] = [];
+    }
+
+    acc[type].push({
+      text: `${acc[type].length + 1}. ${note.title}`,
       href: `/notes/${note.slug}`,
-    })),
-  };
+    });
+
+    return acc;
+  }, {} as CategoryToLinkMap);
 
   return categoryMap;
 };
