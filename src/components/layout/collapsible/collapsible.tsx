@@ -82,14 +82,16 @@ export function CollapsibleList({ collapsibles }: ICollapsibleListProps) {
   return (
     <div>
       {collapsibles.map((collapsible, index) => (
-        <Collapsible
-          key={index}
-          title={collapsible.title}
-          isOpen={openIndex === index}
-          onClick={() => handleToggle(index)}
-        >
-          {collapsible.content}
-        </Collapsible>
+        <section className={styles.collapsibleItem}>
+          <Collapsible
+            key={index}
+            title={collapsible.title}
+            isOpen={openIndex === index}
+            onClick={() => handleToggle(index)}
+          >
+            {collapsible.content}
+          </Collapsible>
+        </section>
       ))}
     </div>
   );
