@@ -1,8 +1,7 @@
-@import "../../styles/variables.scss";
+@import "../../../styles/variables.scss";
 
 .header {
   text-align: center;
-  padding: 0 0 calc($unit * 25) 0;
   width: 100%;
   max-width: 50%;
   margin: 0 auto;
@@ -61,7 +60,6 @@
 
   .header {
     max-width: 70%;
-    padding: 0 0 calc($unit * 15) 0;
   }
 
   .contentSection {
@@ -71,7 +69,6 @@
 
 @media screen and (max-width: $bp-sm) {
   .container {
-    padding: calc(20 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
     float: none;
   }
 
@@ -85,7 +82,6 @@
 
   .header {
     max-width: 80%;
-    padding: 0 0 calc($unit * 15) 0;
   }
 
   .contentSection {

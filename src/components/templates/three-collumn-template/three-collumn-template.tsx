@@ -17,7 +17,7 @@ export function ThreeColumnTemplate({
   return (
     <>
       <div className={styles.container}>
-        {header}
+        <header className={styles.header}>{header}</header>
         <main className={styles.main}>
           <section className={styles.sideBarSection}>{leftSidebar}</section>
           <section className={styles.contentSection}>{mainContent}</section>
