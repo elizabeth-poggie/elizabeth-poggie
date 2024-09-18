@@ -35,19 +35,23 @@ export function Collapsible({ title, children }: IProps) {
 
 interface ICollapsibleLinkListProps {
   links: ILink[];
+  selectedText?: string;
 }
 
-export const CollapsibleLinkList = ({ links }: ICollapsibleLinkListProps) => {
+export const CollapsibleLinkList = ({
+  links,
+  selectedText,
+}: ICollapsibleLinkListProps) => {
   return (
     <>
       {links.map((link: ILink) => {
-        console.log(link.href);
+        const isSelected = link.text.includes(selectedText);
         return (
           <div className={styles.listItem}>
             <TextLink
               key={link.href}
               variant="subheading"
-              color="grey"
+              color={isSelected ? "white" : "grey"}
               href={link.href}
             >
               {link.text}

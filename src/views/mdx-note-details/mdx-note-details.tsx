@@ -47,7 +47,7 @@ export function MdxNoteDetails(props: MDXProps) {
     return (
       <section className={styles.collapsibleInSideBar}>
         <Collapsible title={noteType}>
-          <CollapsibleLinkList links={links} />
+          <CollapsibleLinkList links={links} selectedText={title} />
         </Collapsible>
       </section>
     );
