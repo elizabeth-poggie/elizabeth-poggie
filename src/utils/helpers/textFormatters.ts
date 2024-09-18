@@ -40,5 +40,8 @@ export const pluralToSingular = (text: string): string => {
 };
 
 export const replaceHyphensWithSpaces = (input: string): string => {
+  if (!input) {
+    return null;
+  }
   return input.replace(/-/g, " ");
 };
