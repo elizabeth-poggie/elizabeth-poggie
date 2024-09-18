@@ -10,6 +10,7 @@ import styles from "./mdx-note-details.module.scss";
 import {
   Collapsible,
   CollapsibleLinkList,
+  CollapsibleList,
 } from "../../components/layout/collapsible/collapsible";
 import { CategoryToLinkMap } from "../../utils/helpers/noteFetchers";
 import {
@@ -61,15 +62,22 @@ export function MdxNoteDetails(props: MDXProps) {
       href: note.href,
     }));
 
-    return (
-      <section className={styles.collapsibleInSideBar}>
-        <Collapsible title={noteType}>
+    const collapsibles = [
+      {
+        title: noteType,
+        content: (
           <CollapsibleLinkList
             links={links}
             selectedText={title}
             handleOnClick={refreshToc}
           />
-        </Collapsible>
+        ),
+      },
+    ];
+
+    return (
+      <section className={styles.collapsibleInSideBar}>
+        <CollapsibleList collapsibles={collapsibles} />
       </section>
     );
   };
