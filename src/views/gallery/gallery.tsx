@@ -6,16 +6,11 @@ import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import { sortByCreatedDescending } from "../../utils/helpers/noteSorters";
 import styles from "./gallery.module.scss";
+import { getUniqueCategories } from "../../utils/helpers/noteAttributeFetchers";
 
 interface IProps {
   allNotes: INote[];
 }
-
-const getUniqueCategories = (notes: INote[]) => {
-  const categories = notes.map((note) => note.category);
-  const uniqueCategories = Array.from(new Set<string>(categories));
-  return uniqueCategories;
-};
 
 export function Gallery({ allNotes }: IProps) {
   const [sortedNotes, setSortedNotes] = useState(

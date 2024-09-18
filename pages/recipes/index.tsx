@@ -28,7 +28,7 @@ export default function RecipesPage({ allNotes }: IProps) {
 }
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  const allNotes: INote[] = getAllNotesForCategories(
+  const allNotes: INote[] = await getAllNotesForCategories(
     RECIPES_BASE_FOLDER,
     RECIPES_CATEGORIES
   );

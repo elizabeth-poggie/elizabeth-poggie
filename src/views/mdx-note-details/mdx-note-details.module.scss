@@ -2,67 +2,110 @@
 
 .header {
   text-align: center;
-  padding: 0 0 calc($unit * 10) 0;
+  padding: 0 0 calc($unit * 25) 0;
+  width: 100%;
+  max-width: 50%;
+  margin: 0 auto;
 }
 
 .container {
-  padding: calc(20 * $unit) 0 calc(40 * $unit) calc(20 * $unit);
+  padding: calc(20 * $unit) calc(20 * $unit) calc(40 * $unit) calc(20 * $unit);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: auto;
-  width: 50%;
 }
 
-.leftSideBar_default {
-  position: absolute;
-  width: 20%;
-  left: 0;
-  padding: 0 0 0 calc($unit * 8);
+.main {
+  display: flex;
+  width: 100%;
 }
 
-.leftSideBar_sticky {
-  position: fixed;
+.sideBarSection {
+  width: 25%;
+}
+
+.collapsibleInSideBar {
   top: 0;
-  padding: calc($unit * 8) 0 0 calc($unit * 8);
-  @extend .leftSideBar_default;
-}
-
-.tocInSideBar {
-  padding-left: 20px;
+  padding-top: 30px;
+  padding-left: 120px;
   margin-top: 7.5px;
   margin-bottom: 7.5px;
 }
 
-.sideBarSectionHeader {
+.contentSection {
+  padding-top: 30px;
+  width: 50%;
+}
+
+.tocInSideBar {
+  position: sticky;
+  top: 0;
+  padding-top: 30px;
+  padding-left: 20px;
+  margin-top: 7.5px;
   margin-bottom: 7.5px;
-}
-
-.sideBarSection {
-  padding-bottom: calc($unit * 6);
-}
-
-.noteTitle {
-  padding-bottom: calc(2 * $unit);
 }
 
 @media screen and (max-width: $bp-lg) {
   .container {
     padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
     float: none;
-    width: 90%;
   }
-  .leftSideBar_default,
-  .leftSideBar_sticky {
-    display: none;
+
+  .header {
+    max-width: 70%;
+  }
+
+  .contentSection {
+    width: 100%;
   }
 }
 
 @media screen and (max-width: $bp-md) {
   .container {
+    padding: calc(20 * $unit) calc(20 * $unit) 0 calc(20 * $unit);
+    float: none;
+  }
+
+  .sideBarSection {
+    display: none;
+  }
+
+  .main {
+    flex-direction: column;
+  }
+
+  .header {
+    max-width: 70%;
+    padding: 0 0 calc($unit * 15) 0;
+  }
+
+  .contentSection {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: $bp-sm) {
+  .container {
     padding: calc(20 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
     float: none;
   }
 
-  .leftSideBar_default,
-  .leftSideBar_sticky {
+  .main {
+    flex-direction: column;
+  }
+
+  .sideBarSection {
     display: none;
+  }
+
+  .header {
+    max-width: 80%;
+    padding: 0 0 calc($unit * 15) 0;
+  }
+
+  .contentSection {
+    width: 100%;
   }
 }
