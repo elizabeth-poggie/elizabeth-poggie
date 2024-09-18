@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./three-collumn.module.scss";
+import styles from "./three-collumn-template.module.scss";
 
 interface IProps {
   header: React.ReactNode;
