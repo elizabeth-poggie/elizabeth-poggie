@@ -14,6 +14,7 @@ import {
   formatDate,
   pluralToSingular,
 } from "../../utils/helpers/textFormatters";
+import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
 
 interface IProps {
   allNotes: INote[];
@@ -83,7 +84,16 @@ export function Notes({ allNotes }: IProps) {
   };
 
   const renderListItem = (note: INote) => {
-    const { slug, title, subtitle, category, type, created, updated } = note;
+    const {
+      slug,
+      title,
+      coverSrc,
+      baseFolder,
+      category,
+      type,
+      created,
+      updated,
+    } = note;
     const currentDate = formatDate(updated ?? created);
 
     return (
@@ -95,13 +105,16 @@ export function Notes({ allNotes }: IProps) {
           </Text>
           <Text
             variant="subheading"
-            gutterBottom={1}
+            gutterBottom={coverSrc ? 6 : 1}
             style="italics"
             color="grey"
           >
             {type ? `${pluralToSingular(type)}, ` : null}
             {category}
           </Text>
+          {coverSrc ? (
+            <MDXImage baseFolder={baseFolder} src={coverSrc} alt={title} />
+          ) : null}
         </div>
         <HorizontalLine />
       </Link>
