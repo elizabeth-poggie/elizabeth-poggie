@@ -226,15 +226,21 @@ export const getRelatedNotesByType = async (
     category,
   ]);
 
-  // Filter notes by the given type and subcategory
-  const filteredNotes = allNotes.filter((note) => note.type === type);
+  // Group notes by their type
+  const categoryMap: CategoryToLinkMap = allNotes.reduce((acc, note) => {
+    const { type } = note;
 
-  const categoryMap: CategoryToLinkMap = {
-    [type]: filteredNotes.map((note: INote, index: number) => ({
-      text: `${index + 1}. ${note.title}`,
+    if (!acc[type]) {
+      acc[type] = [];
+    }
+
+    acc[type].push({
+      text: `${acc[type].length + 1}. ${note.title}`,
       href: `/notes/${note.slug}`,
-    })),
-  };
+    });
+
+    return acc;
+  }, {} as CategoryToLinkMap);
 
   return categoryMap;
 };

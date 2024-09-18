@@ -53,17 +53,17 @@ export function MdxNoteDetails(props: MDXProps) {
   };
 
   const renderRelatedNotes = () => {
-    if (!type || !relatedNotes || !relatedNotes[type]) {
+    if (!relatedNotes) {
       return null;
     }
 
-    const links = relatedNotes[type].map((note) => ({
-      text: note.text,
-      href: note.href,
-    }));
+    const collapsibles = Object.keys(relatedNotes).map((noteType) => {
+      const links = relatedNotes[noteType].map((note) => ({
+        text: note.text,
+        href: note.href,
+      }));
 
-    const collapsibles = [
-      {
+      return {
         title: noteType,
         content: (
           <CollapsibleLinkList
@@ -72,8 +72,8 @@ export function MdxNoteDetails(props: MDXProps) {
             handleOnClick={refreshToc}
           />
         ),
-      },
-    ];
+      };
+    });
 
     return (
       <section className={styles.collapsibleInSideBar}>
