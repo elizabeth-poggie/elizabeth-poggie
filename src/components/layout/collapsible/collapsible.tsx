@@ -36,11 +36,13 @@ export function Collapsible({ title, children }: IProps) {
 interface ICollapsibleLinkListProps {
   links: ILink[];
   selectedText?: string;
+  handleOnClick?: () => void;
 }
 
 export const CollapsibleLinkList = ({
   links,
   selectedText,
+  handleOnClick,
 }: ICollapsibleLinkListProps) => {
   return (
     <>
@@ -53,6 +55,7 @@ export const CollapsibleLinkList = ({
               variant="subheading"
               color={isSelected ? "white" : "grey"}
               href={link.href}
+              onClick={() => handleOnClick()}
             >
               {link.text}
             </TextLink>

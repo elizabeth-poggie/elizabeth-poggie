@@ -1,6 +1,9 @@
 import { Text } from "../../components/typography/text/text";
-import React from "react";
-import { Toc } from "../../components/navigation/toc/toc";
+import React, { useEffect } from "react";
+import {
+  Toc,
+  TOC_NOTE_DETAILS_OPTIONS,
+} from "../../components/navigation/toc/toc";
 import { MDXProps } from "../../../pages/recipes/[slug]";
 import { MDXNoteContent } from "../../components/display/mdx-note-content/mdx-note-content";
 import styles from "./mdx-note-details.module.scss";
@@ -13,12 +16,26 @@ import {
   pluralToSingular,
   replaceHyphensWithSpaces,
 } from "../../utils/helpers/textFormatters";
+import tocbot from "tocbot";
+import { useRouter } from "next/router";
 
 export function MdxNoteDetails(props: MDXProps) {
   const { title, type } = props.source.frontmatter;
   const relatedNotes: CategoryToLinkMap = props.relatedNotes;
   const noteType = type ? replaceHyphensWithSpaces(type) : null;
-  console.log(relatedNotes);
+  const router = useRouter();
+
+  const refreshToc = () => {
+    tocbot.refresh({
+      ...TOC_NOTE_DETAILS_OPTIONS,
+      hasInnerContainers: true,
+    });
+  };
+
+  React.useEffect(() => {
+    refreshToc();
+  }, [router.asPath]);
+
   const renderNoteHeader = () => {
     return (
       <header className={styles.header}>
@@ -47,7 +64,11 @@ export function MdxNoteDetails(props: MDXProps) {
     return (
       <section className={styles.collapsibleInSideBar}>
         <Collapsible title={noteType}>
-          <CollapsibleLinkList links={links} selectedText={title} />
+          <CollapsibleLinkList
+            links={links}
+            selectedText={title}
+            handleOnClick={refreshToc}
+          />
         </Collapsible>
       </section>
     );
