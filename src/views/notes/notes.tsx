@@ -8,6 +8,7 @@ import styles from "./notes.module.scss";
 import { TextButton } from "../../components/inputs/text-button/text-button";
 import { ScrollableContainer } from "../../components/layout/scrollable-container/scrollable-container";
 import { sortByCreatedDescending } from "../../utils/helpers/noteSorters";
+import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 
 interface IProps {
   allNotes: INote[];
@@ -47,7 +48,7 @@ export function Notes({ allNotes }: IProps) {
     ].filter(onlyUnique);
 
     return (
-      <article>
+      <nav className={styles.nav}>
         <header>
           <TextButton
             onClick={() => {
@@ -72,7 +73,7 @@ export function Notes({ allNotes }: IProps) {
             </div>
           );
         })}
-      </article>
+      </nav>
     );
   };
 
@@ -114,21 +115,29 @@ export function Notes({ allNotes }: IProps) {
     );
   };
 
-  return (
-    <main className={styles.container}>
+  const renderTitle = () => {
+    return (
       <header className={styles.titleWrapper}>
         <Text variant="title">Notes</Text>
       </header>
-      <HorizontalLine />
-      <aside className={styles.leftSideBar}>
-        {renderFilterRow("category")}
-      </aside>
-      <section className={styles.content}>
-        <ScrollableContainer isLockWindowEnabled={true}>
-          {renderList()}
-        </ScrollableContainer>
-      </section>
-      <aside className={styles.rightSideBar}></aside>
-    </main>
+    );
+  };
+
+  const renderMainContent = () => {
+    return (
+      <div className={styles.mainContent}>
+        <HorizontalLine />
+        <section className={styles.content}>{renderList()}</section>
+      </div>
+    );
+  };
+
+  return (
+    <ThreeColumnTemplate
+      header={renderTitle()}
+      rightSidebar={""}
+      mainContent={renderMainContent()}
+      leftSidebar={renderFilterRow("category")}
+    />
   );
 }

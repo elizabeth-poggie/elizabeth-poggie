@@ -92,7 +92,11 @@ export function MdxNoteDetails(props: MDXProps) {
   };
 
   const renderNotes = () => {
-    return <MDXNoteContent {...props} />;
+    return (
+      <div className={styles.mainContent}>
+        <MDXNoteContent {...props} />;
+      </div>
+    );
   };
 
   return (
