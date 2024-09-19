@@ -5,7 +5,7 @@ print_menu() {
     local options=("$@")
     for i in "${!options[@]}"; do
         if [ $i -eq $selected ]; then
-            printf "\e[1;32m> ${options[$i]}\e[0m\n"  # Highlight selected option
+            printf "\e[1;32m> ${options[$i]}\e[0m\n" 
         else
             printf "  ${options[$i]}\n"
         fi
@@ -16,8 +16,6 @@ print_menu() {
 capture_selection() {
     local options=("$@")
     selected=0
-
-    # Hide the cursor
     tput civis
 
     while true; do
@@ -42,9 +40,7 @@ capture_selection() {
         fi
     done
 
-    # Show the cursor
     tput cnorm
-
     return $selected
 }
 
@@ -76,6 +72,34 @@ echo "Enter category: "
 capture_selection "${categories[@]}"
 category="${categories[$?]}"
 
+# Define sub categories based on category selection
+subcategories=()
+if [ "$directory" = "john-abbott-college" ]; then
+    case $category in
+        "Web Programming I")
+            subcategories=("lectures" "assignments" "quiz-answers")
+            ;;
+        "Computerized Systems")
+            subcategories=("lectures" "assignments")
+            ;;
+        "Admin")
+            subcategories=("instructor-info" "schedules")
+            ;;
+        "User Interfaces")
+            subcategories=("lectures" "assignments")
+            ;;
+        *)
+            echo "No subcategories available for this category."
+            exit 1
+            ;;
+    esac
+    
+    # Prompt the user to select a subcategory
+    echo "Select a sub category: "
+    capture_selection "${subcategories[@]}"
+    subcategory="${subcategories[$?]}"
+fi
+
 # Prompt the user to enter a title
 echo "Enter title: "
 read title
@@ -87,8 +111,14 @@ created=$(date +'%Y-%m-%d')
 file_name=$(echo "$title" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
 kebabed_category=$(echo "$category" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
 
-# target directories must exist
-target_dir="_content/$directory/$kebabed_category/$file_name"
+# Create target directories based on the directory, category, and subfolder (if applicable)
+if [ "$directory" = "john-abbott-college" ]; then
+    kebabed_sub_category=$(echo "$subcategory" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
+    target_dir="_content/$directory/$kebabed_category/$kebabed_sub_category/$file_name"
+else
+    target_dir="_content/$directory/$kebabed_category/$file_name"
+fi
+
 mkdir -p "$target_dir"
 mkdir -p "$target_dir/assets" # also an assets folder is nice
 
