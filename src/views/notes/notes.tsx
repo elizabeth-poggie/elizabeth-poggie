@@ -100,7 +100,7 @@ export function Notes({ allNotes }: IProps) {
       <Link href={`/notes/${slug}`}>
         <div className={styles.listItem}>
           <Text color="grey">{currentDate}</Text>
-          <Text variant="h2" gutterBottom={1} color="white">
+          <Text variant="h2" gutterBottom={2} color="white">
             {title}
           </Text>
           <Text
