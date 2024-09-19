@@ -120,7 +120,8 @@ fi
 
 # Count existing files in the directory to assign the next number
 file_count=$(ls "$target_dir" | grep -E '^[0-9]+-' | wc -l)
-next_number=$(printf "%02d" $((file_count + 1)))
+next_number_unformatted=$((file_count + 1))
+next_number=$(printf "%02d" $next_number_unformatted)
 
 # Append the number to the file name
 file_name="$next_number-$file_name"
@@ -131,6 +132,7 @@ content="---
 category: \"$category\"
 title: \"$title\"
 created: \"$created\"
+number: $next_number_unformatted
 ---"
 
 # Create the target directories
