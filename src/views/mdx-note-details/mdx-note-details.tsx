@@ -15,6 +15,7 @@ import { CategoryToLinkMap } from "../../utils/helpers/noteFetchers";
 import { pluralToSingular } from "../../utils/helpers/textFormatters";
 import tocbot from "tocbot";
 import { useRouter } from "next/router";
+import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 
 export function MdxNoteDetails(props: MDXProps) {
   const { title, type } = props.source.frontmatter;
@@ -35,9 +36,9 @@ export function MdxNoteDetails(props: MDXProps) {
 
   const renderNoteHeader = () => {
     return (
-      <header className={styles.header}>
+      <header className={styles.title}>
         {type ? (
-          <Text variant="h3" gutterBottom={2} style="capitalize">
+          <Text variant="h3" gutterBottom={4} style="capitalize">
             {pluralToSingular(noteType)}
           </Text>
         ) : null}
@@ -82,24 +83,28 @@ export function MdxNoteDetails(props: MDXProps) {
     );
   };
 
-  return (
-    <>
-      <div className={styles.container}>
-        {renderNoteHeader()}
-        <main className={styles.main}>
-          <section className={styles.sideBarSection}>
-            <div className={styles.tocInSideBar}>
-              <Toc />
-            </div>
-          </section>
-          <section className={styles.contentSection}>
-            <MDXNoteContent {...props} />
-          </section>
-          <section className={styles.sideBarSection}>
-            {renderRelatedNotes()}
-          </section>
-        </main>
+  const renderToc = () => {
+    return (
+      <div className={styles.tocInSideBar}>
+        <Toc />
       </div>
-    </>
+    );
+  };
+
+  const renderNotes = () => {
+    return (
+      <div className={styles.mainContent}>
+        <MDXNoteContent {...props} />;
+      </div>
+    );
+  };
+
+  return (
+    <ThreeColumnTemplate
+      mainContent={renderNotes()}
+      header={renderNoteHeader()}
+      rightSidebar={renderRelatedNotes()}
+      leftSidebar={renderToc()}
+    />
   );
 }

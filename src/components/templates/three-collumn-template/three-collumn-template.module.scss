@@ -1,0 +1,94 @@
+@import "../../../styles/variables.scss";
+
+.header {
+  text-align: center;
+  width: 100%;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.container {
+  padding: calc(20 * $unit) calc(20 * $unit) calc(40 * $unit) calc(20 * $unit);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+}
+
+.sideBarSection {
+  width: 25%;
+}
+
+.contentSection {
+  width: 50%;
+}
+
+@media screen and (max-width: $bp-lg) {
+  .container {
+    padding: calc(20 * $unit) calc(40 * $unit) 0 calc(40 * $unit);
+    float: none;
+  }
+
+  .sideBarSection {
+    display: none;
+  }
+
+  .header {
+    max-width: 70%;
+  }
+
+  .contentSection {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: $bp-md) {
+  .container {
+    padding: calc(20 * $unit) calc(20 * $unit) 0 calc(20 * $unit);
+    float: none;
+  }
+
+  .sideBarSection {
+    display: none;
+  }
+
+  .main {
+    flex-direction: column;
+  }
+
+  .header {
+    max-width: 70%;
+  }
+
+  .contentSection {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: $bp-sm) {
+  .container {
+    float: none;
+    padding: calc(10 * $unit) calc(4 * $unit) calc(4 * $unit) calc(4 * $unit);
+  }
+
+  .main {
+    flex-direction: column;
+  }
+
+  .sideBarSection {
+    display: none;
+  }
+
+  .header {
+    max-width: 90%;
+  }
+
+  .contentSection {
+    width: 100%;
+  }
+}

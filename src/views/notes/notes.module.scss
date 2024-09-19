@@ -2,49 +2,22 @@
 
 .titleWrapper {
   text-align: center;
-  padding-bottom: 10px;
 }
 
-.container {
-  padding: calc(20 * $unit) 0 calc(40 * $unit) calc(20 * $unit);
-  margin: auto;
-  width: 50%;
+.listItem {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
-.leftSideBar {
-  position: absolute;
-  width: 20%;
-  left: 0;
-  padding: 0 0 0 calc($unit * 8);
+.nav {
+  position: sticky;
+  top: 0;
+  padding-top: 30px;
+  padding-left: 20px;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
 }
 
-.rightSideBar {
-  flex: 1;
-  padding: 0 calc($unit * 8) 0 0;
-}
-
-.content {
-  height: 80vh;
-}
-
-@media screen and (max-width: $bp-lg) {
-  .container {
-    padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
-    float: none;
-    width: 90%;
-  }
-  .leftSideBar {
-    display: none;
-  }
-}
-
-@media screen and (max-width: $bp-sm) {
-  .container {
-    padding: calc(20 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
-    float: none;
-  }
-
-  .leftSideBar {
-    display: none;
-  }
+.mainContent {
+  padding-top: 30px;
 }

@@ -98,7 +98,6 @@ content="---
 category: \"$category\"
 title: \"$title\"
 created: \"$created\"
-coverSrc: \"./assets/\"
 ---"
 
 # Write the content to the MDX file

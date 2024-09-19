@@ -92,9 +92,13 @@
   text-underline-offset: 3px;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 // Variants
 .title {
-  font-size: $text-xxl;
+  font-size: 2.2rem;
   letter-spacing: 0.2em;
   line-height: 1.6;
   padding-bottom: 0.5em;
@@ -103,7 +107,7 @@
 }
 
 .h1 {
-  font-size: $text-xl;
+  font-size: 1.5rem;
   letter-spacing: 0.2em;
   line-height: 1.4;
   padding-bottom: 0.3em;
@@ -112,13 +116,13 @@
 }
 
 .h2 {
-  font-size: $text-lg;
+  font-size: 1.3rem;
   padding-bottom: 0.25em;
   @include header;
 }
 
 .h3 {
-  font-size: $text-lg;
+  font-size: 1.3rem;
   padding-bottom: 0.25em;
   @include header2;
 }
@@ -128,8 +132,9 @@
   @include body;
 }
 
+/* these are the same lol */
 .subheading2 {
-  font-size: $text-xs;
+  font-size: $text-sm;
   @include body;
 }
 
@@ -138,4 +143,23 @@
   line-height: 1.75;
   letter-spacing: 0.02em;
   @include body;
+}
+
+/* Font sizes for MOBILE*/
+@media screen and (max-width: $bp-sm) {
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .h1 {
+    font-size: 1.25rem;
+  }
+
+  .h2 {
+    font-size: 1.2rem;
+  }
+
+  .h3 {
+    font-size: 1.2rem;
+  }
 }

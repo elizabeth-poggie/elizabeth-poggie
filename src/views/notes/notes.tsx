@@ -8,6 +8,13 @@ import styles from "./notes.module.scss";
 import { TextButton } from "../../components/inputs/text-button/text-button";
 import { ScrollableContainer } from "../../components/layout/scrollable-container/scrollable-container";
 import { sortByCreatedDescending } from "../../utils/helpers/noteSorters";
+import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
+import { Link } from "../../components/navigation/link/link";
+import {
+  formatDate,
+  pluralToSingular,
+} from "../../utils/helpers/textFormatters";
+import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
 
 interface IProps {
   allNotes: INote[];
@@ -47,7 +54,7 @@ export function Notes({ allNotes }: IProps) {
     ].filter(onlyUnique);
 
     return (
-      <article>
+      <nav className={styles.nav}>
         <header>
           <TextButton
             onClick={() => {
@@ -72,63 +79,73 @@ export function Notes({ allNotes }: IProps) {
             </div>
           );
         })}
-      </article>
+      </nav>
     );
   };
 
-  const renderList = () => {
-    return (
-      <>
-        {filteredNotes.map((note: INote, i: number) => {
-          // date logic for list items
-          const currentDate = note.updated
-            ? new Date(note.updated) // priority given to updated
-            : new Date(note.created);
-          const displayDate = currentDate.getFullYear() ? (
-            <Text>
-              {`${currentDate.toLocaleString("default", {
-                month: "short",
-              })} ${currentDate.getFullYear()}`}
-            </Text>
-          ) : null;
+  const renderListItem = (note: INote) => {
+    const {
+      slug,
+      title,
+      coverSrc,
+      baseFolder,
+      category,
+      type,
+      created,
+      updated,
+    } = note;
+    const currentDate = formatDate(updated ?? created);
 
-          return (
-            <div key={note.slug}>
-              <ListItem
-                title={note.title}
-                href={`/notes/${note.slug}`}
-                rightContent={displayDate}
-                subContent={
-                  <PillButton
-                    color={filterToColorMap[note.category]}
-                    title={note.category}
-                    onClick={() => null}
-                  />
-                }
-              />
-              {i === filteredNotes.length - 1 ? null : <HorizontalLine />}
-            </div>
-          );
-        })}
-      </>
+    return (
+      <Link href={`/notes/${slug}`}>
+        <div className={styles.listItem}>
+          <Text color="grey">{currentDate}</Text>
+          <Text variant="h2" gutterBottom={2} color="white">
+            {title}
+          </Text>
+          <Text
+            variant="subheading"
+            gutterBottom={coverSrc ? 6 : 1}
+            style="italics"
+            color="grey"
+          >
+            {type ? `${pluralToSingular(type)}, ` : null}
+            {category}
+          </Text>
+          {coverSrc ? (
+            <MDXImage baseFolder={baseFolder} src={coverSrc} alt={title} />
+          ) : null}
+        </div>
+        <HorizontalLine />
+      </Link>
+    );
+  };
+
+  const renderTitle = () => {
+    return (
+      <header className={styles.titleWrapper}>
+        <Text variant="title">Notes</Text>
+      </header>
+    );
+  };
+
+  const renderMainContent = () => {
+    return (
+      <div className={styles.mainContent}>
+        <HorizontalLine />
+        <section className={styles.content}>
+          <>{filteredNotes.map((note: INote) => renderListItem(note))}</>
+        </section>
+      </div>
     );
   };
 
   return (
-    <main className={styles.container}>
-      <header className={styles.titleWrapper}>
-        <Text variant="title">Notes</Text>
-      </header>
-      <HorizontalLine />
-      <aside className={styles.leftSideBar}>
-        {renderFilterRow("category")}
-      </aside>
-      <section className={styles.content}>
-        <ScrollableContainer isLockWindowEnabled={true}>
-          {renderList()}
-        </ScrollableContainer>
-      </section>
-      <aside className={styles.rightSideBar}></aside>
-    </main>
+    <ThreeColumnTemplate
+      header={renderTitle()}
+      rightSidebar={""}
+      mainContent={renderMainContent()}
+      leftSidebar={renderFilterRow("category")}
+    />
   );
 }

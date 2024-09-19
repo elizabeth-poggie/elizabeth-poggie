@@ -10,20 +10,16 @@ $color-white: #fff;
 // TYPOGRAPHY -------------------------------------------------------------------------------------------
 
 // Size
-$text-xxl: 2.2rem;
-$text-xl: 1.5rem;
-$text-lg: 1.25rem;
 $text-md: 1rem;
 $text-sm: 0.7rem;
-$text-xs: 0.7rem;
 
 // BREAKPOINTS ------------------------------------------------------------------------------------------
 // Mobile
-$bp-sm: 576px;
+$bp-sm: 700px;
 // Smaller Computers && IPads (pro included)
-$bp-md: 1024px;
+$bp-md: 1100px;
 // Larger Desktops
-$bp-lg: 1025px;
+$bp-lg: 1300px;
 
 // UTILS ------------------------------------------------------------------------------------------------
 $unit: 5px;
