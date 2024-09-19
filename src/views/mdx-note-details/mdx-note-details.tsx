@@ -38,7 +38,7 @@ export function MdxNoteDetails(props: MDXProps) {
     return (
       <header className={styles.title}>
         {type ? (
-          <Text variant="h3" gutterBottom={2} style="capitalize">
+          <Text variant="h3" gutterBottom={4} style="capitalize">
             {pluralToSingular(noteType)}
           </Text>
         ) : null}
