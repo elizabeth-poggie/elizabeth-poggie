@@ -93,7 +93,7 @@ if [ "$directory" = "john-abbott-college" ]; then
             exit 1
             ;;
     esac
-    
+
     # Prompt the user to select a subcategory
     echo "Select a sub category: "
     capture_selection "${subcategories[@]}"
@@ -110,17 +110,20 @@ created=$(date +'%Y-%m-%d')
 # Define the file name based on the title (replace spaces with hyphens and make lowercase)
 file_name=$(echo "$title" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
 kebabed_category=$(echo "$category" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
-
 # Create target directories based on the directory, category, and subfolder (if applicable)
 if [ "$directory" = "john-abbott-college" ]; then
     kebabed_sub_category=$(echo "$subcategory" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
-    target_dir="_content/$directory/$kebabed_category/$kebabed_sub_category/$file_name"
+    target_dir="_content/$directory/$kebabed_category/$kebabed_sub_category"
 else
-    target_dir="_content/$directory/$kebabed_category/$file_name"
+    target_dir="_content/$directory/$kebabed_category"
 fi
 
-mkdir -p "$target_dir"
-mkdir -p "$target_dir/assets" # also an assets folder is nice
+# Count existing files in the directory to assign the next number
+file_count=$(ls "$target_dir" | grep -E '^[0-9]+-' | wc -l)
+next_number=$(printf "%02d" $((file_count + 1)))
+
+# Append the number to the file name
+file_name="$next_number-$file_name"
 
 # Define the content of the MDX file
 content="---
@@ -130,7 +133,11 @@ title: \"$title\"
 created: \"$created\"
 ---"
 
-# Write the content to the MDX file
-echo -e "$content" > "$target_dir/$file_name.mdx"
+# Create the target directories
+mkdir -p "$target_dir/$file_name"
+mkdir -p "$target_dir/$file_name/assets"
 
-echo "MDX file generated: $target_dir/$file_name.mdx"
+# Write the content to the MDX file
+echo -e "$content" > "$target_dir/$file_name/$file_name.mdx"
+
+echo "MDX file generated: $target_dir/$file_name/$file_name.mdx"
