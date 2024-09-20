@@ -22,9 +22,13 @@ The `event.preventDefault()` method in JavaScript is used to stop the default ac
 
 When you submit a form or click a button with `type="submit"`, the browser's default behavior is to reload the page and send the form data to the server. This "default" behavior stems from the traditional use of forms for server-side processing, whereas we often want to handle form submissions client-side with JavaScript.
 
+![demo](./assets/3.png)
+
 ## Why Do I Need This for Submit Events?
 
-f your goal is to manage the form data with JavaScript to create custom error messages or perform validation, ou must prevent the default form submission behavior. This is why using `event.preventDefault()` in form submission handlers is necessary.
+If your goal is to manage the form data with JavaScript to create custom error messages or perform validation, ou must prevent the default form submission behavior. This is why using `event.preventDefault()` in form submission handlers is necessary.
+
+![demo](./assets/1.png)
 
 ## What about onSubmit="" ?
 
@@ -35,9 +39,13 @@ The onSubmit event handler can be written in two common ways to prevent a form f
 
 Returning `false` from an `onSubmit` event handler is an _older_ approach that implicitly prevents the default action of the event, just like `event.preventDefault()`.
 
+![demo](./assets/2.png)
+
 ## Why Do I Not Need This for Click Events?
 
-When using an `onclick` event on a button, the browser does not trigger any default behavior like page reload or data submission. Instead, the code within your `onclick` event runs directly, without needing to prevent anything.
+When using an `onclick` event on a button, the browser does not trigger ANY default behavior like page reload or data submission. Instead, the code within your `onclick` event runs directly, without needing to prevent anything.
+
+![demo](./assets/4.png)
 
 ## Summary
 
@@ -362,7 +370,7 @@ For those that are curious, you can read more about the concepts here:
 
 ## Why care?
 
-o, we have different events to remember, but what makes the `load` event remarkable? The `load` event is closely related to lazy loading, as both concepts aim to improve page performance and user experience by managing how resources are loaded. We will explore this in more detail on Monday. For now, let’s get familiar with the syntax through the following exercise:
+So, we have different events to remember, but what makes the `load` event remarkable? The `load` event is closely related to lazy loading, as both concepts aim to improve page performance and user experience by managing how resources are loaded. We will explore this in more detail next week. For now, let’s get familiar with the syntax through the following exercise:
 
 # Exercise 2
 
