@@ -204,8 +204,92 @@ If you want to include more in your work, go for it :)
 
 ## Solution
 
-```html
+To start, copy and paste the styles directly from Omnivox:
 
+```css
+.wrongUser {
+  background-color: #ffcdd2;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  padding: 20px;
+  margin: 0.5rem 0 1rem 0;
+  color: #b71c1c;
+  font-size: 16px;
+  display: none;
+}
+
+.warning {
+  color: #f44336;
+  font-size: 0.8rem;
+  display: none;
+}
+```
+
+Your HTML should close to the following:
+
+```html
+<div id="errorMessage" class="wrongUser">
+  <h2>Error</h2>
+  <p>Your username or password is invalid.</p>
+  <p>
+    Please ensure you have selected the correct user type above and try again.
+  </p>
+</div>
+<form id="loginForm">
+  <div>
+    <label for="studentId">Student ID:</label>
+    <input type="text" id="studentId" placeholder="Enter Student ID" />
+    <span class="warning" id="idError"
+      >The 'Student ID' field is required.</span
+    >
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Enter Password" />
+    <span class="warning" id="passwordError"
+      >The 'Password' field is required.</span
+    >
+  </div>
+  <input type="submit" value="Login" />
+</form>
+```
+
+And finally add the JavaScript code:
+
+```js
+$(document).ready(function () {
+  $("#loginForm").on("submit", function (event) {
+    event.preventDefault();
+
+    // Get the values from the form fields
+    var studentId = $("#studentId").val();
+    var password = $("#password").val();
+
+    // error showing
+    if (!studentId) {
+      $("#idError").show();
+    }
+
+    if (!password) {
+      $("#passwordError").show();
+    }
+
+    // if we showed an error, we should exit early
+    if (!studentId || !password) {
+      return;
+    }
+
+    // Example user
+    if (studentId === "42" && password === "password") {
+      alert("Redirecting to LEA ...");
+
+      // Redirect (for demo purposes)
+      window.location.href = "https://johnabbott.omnivox.ca/intr/";
+    } else {
+      $("#errorMessage").show();
+    }
+  });
+});
 ```
 
 # Load
