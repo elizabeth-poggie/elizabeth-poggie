@@ -45,6 +45,8 @@ Returning `false` from an `onSubmit` event handler is an _older_ approach that i
 
 When using an `onclick` event on a button, the browser does not trigger ANY default behavior like page reload or data submission. Instead, the code within your `onclick` event runs directly, without needing to prevent anything.
 
+In other words, think of this as lawless territory.
+
 ![demo](./assets/4.png)
 
 ## Summary
@@ -142,7 +144,7 @@ However, mixing vanilla JavaScript with jQuery may lead to complexity. This is w
 
 The jQuery `.ready()` function ensures that your code runs only after the DOM is fully loaded and ready to be used.
 
-## How Is This State Captured in Our Webpage?
+## How is this State Captured in our Webpage?
 
 `.ready()` listens for the `DOMContentLoaded` event. This event signals that the HTML document has been completely loaded and parsed, making all DOM elements accessible.
 
@@ -181,7 +183,7 @@ Returning to our earlier example, here’s how it looks when adapted to work wit
 
 In this example, we wait until the DOM is fully ready using `$(document).ready()` before adding a submit event listener to the form. The listener prevents the default submission if the username field is empty and displays an error message.
 
-## Why Can't I Just Use .on()?
+## Why can't I just use .on()?
 
 Wrapping your jQuery code in `$(document).ready()` is important to ensure that the DOM is fully loaded before your JavaScript executes:
 
@@ -190,7 +192,7 @@ Wrapping your jQuery code in `$(document).ready()` is important to ensure that t
 
 Think of this as like DOM consent. You can only access the DOM when it is ready, and the DOM communicates it's consent is through the `DOMContentLoaded` event.
 
-## Can We Use This Same Concept for Images?
+## Can we use this same concept for Images?
 
 No lol.
 
@@ -355,6 +357,8 @@ window.addEventListener("load", function () {
 The `window` object represents the entire browser `window`, including all content on the page, such as images, styles, and external resources. That's why the `load` event is tied to `window`, as it fires only after everything in that window is fully loaded.
 
 The `document` object, on the other hand, refers solely to the HTML document. It doesn't need to wait for external resources, which is why the `DOMContentLoaded` event is tied to `document`. It fires as soon as the DOM is ready.
+
+![demo](./assets/image.png)
 
 ## When to use what
 
