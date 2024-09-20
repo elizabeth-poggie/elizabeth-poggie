@@ -38,6 +38,90 @@ To summarize the key differences:
 - Form Submission Triggers a Page Reload
 - Button Click Doesn’t Trigger a Reload
 
-## Example
+## Examples
+
+To demonstrate the differences of these concepts. Let's first take a look at how `event.preventDefault()` is used:
+
+```html
+<form id="myForm" action="submit-form.php" target="_blank" method="post">
+  <div>
+    <input type="text" placeholder="Your name" />
+    <span id="nope" class="warning">no form submission 4 you</span>
+  </div>
+  <input type="submit" value="Submit" />
+</form>
+
+<script>
+  document
+    .getElementById("myForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault(); /* notice this */
+      $("#nope").show();
+    });
+</script>
+```
+
+if you wanted to use an inline event listener, you could do this, but it would be bad form:
+
+```html
+<form
+  id="myForm"
+  action="submit-form.php"
+  target="_blank"
+  method="post"
+  onsubmit="event.preventDefault(); $('#nope').show();"
+>
+  <div>
+    <input type="text" placeholder="Your name" />
+    <span id="nope" class="warning">no form submission 4 you</span>
+  </div>
+  <input type="submit" value="Submit" />
+</form>
+```
+
+Adopting the old school way of handing `onSubmit`, your code may look like this:
+
+```html
+<form
+  id="myForm"
+  action="submit-form.php"
+  target="_blank"
+  method="post"
+  onsubmit="return handleSubmit()"
+>
+  <div>
+    <input type="text" placeholder="Your name" />
+    <span id="nope" class="warning">no form submission 4 you</span>
+  </div>
+
+  <input type="submit" value="Submit" />
+</form>
+
+<script>
+  function handleSubmit() {
+    $("#nope").show();
+    return false;
+  }
+</script>
+```
+
+and compared to a simple button, we don't need to prevent any default behavior because there is nothing to stop.
+
+```html
+<div>
+  <button id="myButton">I'm a cool button</button>
+  <span id="yup" class="ok">button click 4 u</span>
+</div>
+
+<script>
+  document.getElementById("myButton").addEventListener("click", function () {
+    $("#yup").show();
+  });
+</script>
+```
+
+However we have been mixing vanilla JavaScript AND jQuery. There has to be a better way.
 
 # DOMReady
+
+The `DOMReady` event in JavaScript refers to the point when the DOM has been fully loaded and parsed. This event is different from window.onload, which fires when the entire page, including all resources like images and stylesheets, has loaded.
