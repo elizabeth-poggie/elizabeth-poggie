@@ -361,13 +361,6 @@ The `document` object, on the other hand, refers solely to the HTML document. It
 - `DOMContentLoaded` 👉 Fires when the DOM is ready and therefore uses the `document`
 - `load` 👉 Fires when _everything_ is fully loaded and therefore uses the `window`
 
-# Official Documentation
-
-For those that are curious, you can read more about the concepts here:
-
-- [jQuery .ready()](https://api.jquery.com/ready/)
-- [DOMContentLoaded, load, beforeunload, unload](https://javascript.info/onload-ondomcontentloaded)
-
 ## Why care?
 
 So, we have different events to remember, but what makes the `load` event remarkable? The `load` event is closely related to lazy loading, as both concepts aim to improve page performance and user experience by managing how resources are loaded. We will explore this in more detail next week. For now, let’s get familiar with the syntax through the following exercise:
@@ -403,3 +396,10 @@ Working independently, use the `load` event to manipulate elements after all res
   });
 </script>
 ```
+
+# Official Documentation
+
+For those that are curious, you can read more about the concepts here:
+
+- [jQuery .ready()](https://api.jquery.com/ready/)
+- [DOMContentLoaded, load, beforeunload, unload](https://javascript.info/onload-ondomcontentloaded)
