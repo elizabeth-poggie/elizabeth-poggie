@@ -359,3 +359,39 @@ For those that are curious, you can read more about the concepts here:
 
 - [jQuery .ready()](https://api.jquery.com/ready/)
 - [DOMContentLoaded, load, beforeunload, unload](https://javascript.info/onload-ondomcontentloaded)
+
+## Why care?
+
+o, we have different events to remember, but what makes the `load` event remarkable? The `load` event is closely related to lazy loading, as both concepts aim to improve page performance and user experience by managing how resources are loaded. We will explore this in more detail on Monday. For now, let’s get familiar with the syntax through the following exercise:
+
+# Exercise 2
+
+Working independently, use the `load` event to manipulate elements after all resources are fully loaded using jQuery.
+
+## The Task
+
+- Create a single HTML file.
+- Inside the file, set up a basic structure with a heading and an image with the following url `https://via.placeholder.com/150`
+- Use the load event to change the heading and image once everything on the page has fully loaded.
+
+## Solution
+
+```html
+<h1 id="pageHeading">Loading...</h1>
+<img
+  id="exampleImage"
+  src="https://via.placeholder.com/150"
+  alt="Placeholder Image"
+/>
+
+<script>
+  // Use the load event to change the heading text
+  $(window).on("load", function () {
+    $("#pageHeading").text("Wow this has finally loaded!");
+    $("#exampleImage").attr(
+      "src",
+      "https://upload.wikimedia.org/wikipedia/en/3/3d/Longcat_is_loooooooooong.jpg"
+    );
+  });
+</script>
+```

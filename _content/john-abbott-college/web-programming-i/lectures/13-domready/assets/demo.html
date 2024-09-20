@@ -36,5 +36,23 @@
       }
     </style>
   </head>
-  <body></body>
+  <body>
+    <h1 id="pageHeading">Loading...</h1>
+    <img
+      id="exampleImage"
+      src="https://via.placeholder.com/150"
+      alt="Placeholder Image"
+    />
+
+    <script>
+      // Use the load event to change the heading text
+      $(window).on("load", function () {
+        $("#pageHeading").text("Wow this has finally loaded!");
+        $("#exampleImage").attr(
+          "src",
+          "https://upload.wikimedia.org/wikipedia/en/3/3d/Longcat_is_loooooooooong.jpg"
+        );
+      });
+    </script>
+  </body>
 </html>
