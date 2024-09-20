@@ -120,8 +120,58 @@ and compared to a simple button, we don't need to prevent any default behavior b
 </script>
 ```
 
-However we have been mixing vanilla JavaScript AND jQuery. There has to be a better way.
+However we have been mixing vanilla JavaScript AND jQuery. There has to be a better way and this is where we get into the importance of the jQuery `.ready()` function.
 
-# DOMReady
+# $().ready()
 
-The `DOMReady` event in JavaScript refers to the point when the DOM has been fully loaded and parsed. This event is different from window.onload, which fires when the entire page, including all resources like images and stylesheets, has loaded.
+The jQuery `.ready()` function ensures that your code runs only after the DOM is fully loaded and ready to be used.
+
+## How is this state captured in our webpage?
+
+`.ready()` listens for the `DOMContentLoaded` event. This event signals that the HTML document has been completely loaded and parsed, making all DOM elements accessible.
+
+## How does this work?
+
+- Event Listening: When you use `$(document).ready()`, jQuery attaches an event listener to the document. This listener waits for the `DOMContentLoaded` event to fire.
+- Code Execution: Once the DOM is ready, any code inside the `.ready()` function is executed. This allows you to safely manipulate DOM elements without running into issues where elements are not yet available.
+
+## How does this relate to form validation?
+
+When working with forms, you often need to validate form data or manipulate elements before a form is submitted. DOM manipulation for validation purposes can be done within the DOMReady event handler, ensuring that all form elements are available for you to work with.
+
+Going back to our original example, let's change it to work with `.ready()`
+
+```html
+<form id="myForm" action="submit-form.php" target="_blank" method="post">
+  <div>
+    <input type="text" placeholder="Your name" />
+    <span id="nope" class="warning">no form submission 4 you</span>
+  </div>
+  <input type="submit" value="Submit" />
+</form>
+
+<script>
+  // First ensure the DOM is fully loaded.
+  $(document).ready(function () {
+    // Event listener for form submission
+    $("#myForm").on("submit", function (event) {
+      // Prevent the default form submission
+      event.preventDefault();
+      $("#nope").show();
+    });
+  });
+</script>
+```
+
+In this example, we wait until the DOM is fully ready using $(document).ready() before adding a submit event listener to the form. The listener prevents the default form submission if the username field is empty and shows an error message.
+
+## Why can't I just have the .on()
+
+You need to wrap your jQuery code in `$(document).ready()` to ensure that the DOM is fully loaded before your JavaScript runs:
+
+- If your script runs before the DOM is fully loaded, it won't find the elements (like `#myForm`) because they haven't been created yet. Without `$(document).ready()`, trying to attach event handlers or perform actions on those elements might fail
+- It’s a common best practice in jQuery to use `$(document).ready()` to prevent potential problems, especially in larger applications where scripts may be placed in different locations. Things might be simpler now, but unpredictable behavior is bad news when working in larger apps.
+
+Think of this as like DOM consent. Only when the DOM is ready, can you access the DOM. The way the DOM communicates it's consent is through the `DOMContentLoaded` event.
+
+## DOMContentLoaded vs Load
