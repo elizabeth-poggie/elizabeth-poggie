@@ -174,4 +174,51 @@ You need to wrap your jQuery code in `$(document).ready()` to ensure that the DO
 
 Think of this as like DOM consent. Only when the DOM is ready, can you access the DOM. The way the DOM communicates it's consent is through the `DOMContentLoaded` event.
 
+However what happens when we want to add event listener to an image instead of a form in a larger project? For this we need a new event.
+
+# Load
+
+The `load` event is important, especially in managing web pages and their resources.
+
+## Why is Load important?
+
+The `load` vent triggers when the entire page, including all dependent resources like images and stylesheets, has finished loading. Attempting to manipulate elements before they are fully loaded can lead to errors, as those elements may not yet be present in the DOM.
+
 ## DOMContentLoaded vs Load
+
+The `DOMContentLoaded` and `load` events are both important for handling when content is available in the browser, but they serve different purposes and are triggered at different times.
+
+## Timing is EVERYTHING
+
+`DOMContentLoaded` fires when the DOM is fully constructed, without waiting for stylesheets, images, or other external resources. It’s ideal for running scripts that need to interact with the DOM but do not depend on other resources. A common use case is for `<form>` submissions.
+
+```js
+// Using jQuery
+$(document).ready(function () {
+  console.log("DOM is ready");
+});
+
+// Using pure JS
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM is ready");
+});
+```
+
+`load` fires when _everything_ on the page, including all resources like images and stylesheets, is completely loaded. This is important for scripts that manipulate images or _require_ fully loaded styles.
+
+```js
+// Using jQuery
+$(window).on("load", function () {
+  console.log("EVERYTHING is loaded");
+});
+
+// Using pure JS
+window.addEventListener("load", function () {
+  console.log("Everything is fully loaded");
+});
+```
+
+## When to use what
+
+- `DOMContentLoaded` 👉 Fires when the DOM is ready
+- `load` 👉 Fires when _everything_ is fully loaded
