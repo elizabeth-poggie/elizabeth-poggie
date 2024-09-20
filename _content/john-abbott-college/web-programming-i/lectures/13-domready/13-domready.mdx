@@ -6,4 +6,38 @@ created: "2024-09-20"
 number: 13
 ---
 
+# event.preventDefault()
+
+You use `event.preventDefault()` in JavaScript to stop the _default_ action that is triggered by an event.
+
+## Why do I need to use this for form submissions?
+
+When you submit a form and when a button with `type="submit"` is clicked, the default behavior is for the browser to reload the page and send the form data to the server. This happens because forms were originally designed for server-side processing and now we are doing things client-side in JavaScript land.
+
+## Why do I need this for submit events?
+
+If you want to handle the form data using JavaScript because you want to create custom error messages and need to prevent the default form submission behavior, _you need to prevent the default form submission behavior_.
+
+This is why `event.preventDefault()` in form submission handlers is necessary.
+
+## What about onSubmit="" ?
+
+The onSubmit event handler in forms can be written in two common ways to prevent the form from submitting and reloading the page:
+
+- Using `event.preventDefault()`
+- Returning `false` from the handler
+
+Returning `false` from an `onSubmit` event handler is an _older_ approach to prevent form submission. In HTML, when an event handler returns `false`, it implicitly prevents the default action of the event, just like `event.preventDefault()`.
+
+## Why do I not need this for click events?
+
+When you use an `onclick` event on a button, no default behavior like page reload or data submission is triggered by the browser. Instead, the code inside your `onclick` event runs directly without needing to prevent anything.
+
+To summarize the key differences:
+
+- Form Submission Triggers a Page Reload
+- Button Click Doesn’t Trigger a Reload
+
+## Example
+
 # DOMReady
