@@ -292,21 +292,21 @@ $(document).ready(function () {
 });
 ```
 
-# Load
+# The Load Event
 
-The `load` event is important, especially in managing web pages and their resources.
+The `load` event plays an important role in managing web pages and their resources.
 
 ## Why is Load important?
 
-The `load` vent triggers when the entire page, including all dependent resources like images and stylesheets, has finished loading. Attempting to manipulate elements before they are fully loaded can lead to errors, as those elements may not yet be present in the DOM.
+The `load` event triggers when the entire page, including all external resources like images and stylesheets, has finished loading. Trying to manipulate elements before they are fully loaded can result in errors, as those elements might not yet exist in the DOM.
 
 ## DOMContentLoaded vs Load
 
 The `DOMContentLoaded` and `load` events are both important for handling when content is available in the browser, but they serve different purposes and are triggered at different times.
 
-## Timing is EVERYTHING
+## Timing is Everything
 
-`DOMContentLoaded` fires when the DOM is fully constructed, without waiting for stylesheets, images, or other external resources. It’s ideal for running scripts that need to interact with the DOM but do not depend on other resources. A common use case is for `<form>` submissions.
+The `DOMContentLoaded` event fires when the DOM is fully constructed, without waiting for stylesheets, images, or other external resources. This makes it perfect for scripts that need to interact with the DOM but don't depend on other resources. A common use case would be handling `<form>` submissions or modifying text content.
 
 ```js
 // Using jQuery
@@ -320,7 +320,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 ```
 
-`load` fires when _everything_ on the page, including all resources like images and stylesheets, is completely loaded. This is important for scripts that manipulate images or _require_ fully loaded styles.
+On the other hand, the `load` event fires when _everything_ on the page, including all resources like images and stylesheets, are completely loaded. This is essential for scripts that need to manipulate images, apply styles, or rely on all external resources being available.
 
 ```js
 // Using jQuery
@@ -334,7 +334,20 @@ window.addEventListener("load", function () {
 });
 ```
 
+## Why Does Load Use Window?
+
+The `window` object represents the entire browser `window`, including all content on the page, such as images, styles, and external resources. That's why the `load` event is tied to `window`, as it fires only after everything in that window is fully loaded.
+
+The `document` object, on the other hand, refers solely to the HTML document. It doesn't need to wait for external resources, which is why the `DOMContentLoaded` event is tied to `document`. It fires as soon as the DOM is ready.
+
 ## When to use what
 
-- `DOMContentLoaded` 👉 Fires when the DOM is ready
-- `load` 👉 Fires when _everything_ is fully loaded
+- `DOMContentLoaded` 👉 Fires when the DOM is ready and therefore uses the `document`
+- `load` 👉 Fires when _everything_ is fully loaded and therefore uses the `window`
+
+# Official Documentation
+
+For those that are curious, you can read more about the concepts here:
+
+- [jQuery .ready()](https://api.jquery.com/ready/)
+- [DOMContentLoaded, load, beforeunload, unload](https://javascript.info/onload-ondomcontentloaded)
