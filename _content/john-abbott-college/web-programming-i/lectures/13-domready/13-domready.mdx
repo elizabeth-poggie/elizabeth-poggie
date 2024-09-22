@@ -4,15 +4,16 @@ category: "Web Programming I"
 title: "DOMReady Form Validation"
 created: "2024-09-20"
 number: 13
+coverSrc: "./assets/1.png"
 ---
 
 # Mastering jQuery Motivation
 
 By the end of today's class, you will have the essential tools to understand how [this guy's code](https://levels.io/hoodmaps/) works.
 
-What make's "this guy" so special? He created a mini startup called [Hoodmaps](https://hoodmaps.com/?ref=levels.io), building it in public from the very first line of code to a fully functioning web app that made it to the front page of Reddit, attracting over 300,000 users.
+What make's "this guy" so special? He created a mini startup while streaming it on [Twitch](https://www.youtube.com/watch?v=FN144KdOIGM), starting from the very first line of code and transforming it into a fully functioning web app that has attracted over 300,000 users.
 
-He recorded the entire journey on [Twitch](https://www.youtube.com/watch?v=FN144KdOIGM). If you're curious, you can explore all his other projects on his [Twitter](https://x.com/levelsio)
+If you're curious, you can explore all his other projects on his [Twitter](https://x.com/levelsio).
 
 # event.preventDefault()
 
@@ -208,15 +209,6 @@ Head over to [Omnivox](https://johnabbott.omnivox.ca/Login/Account/Login?ReturnU
 
 - A _Student ID_ field
 - A _Password_ field
-- Custom error handling, displayed as follows:
-
-```md
-# Error
-
-Your Username or your password is invalid.
-
-Make sure you have selected the correct type of user above and try again.
-```
 
 If you want to include more in your work, go for it :)
 
@@ -225,17 +217,6 @@ If you want to include more in your work, go for it :)
 To start, copy and paste the styles directly from Omnivox:
 
 ```css
-.wrongUser {
-  background-color: #ffcdd2;
-  border-radius: 6px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  padding: 20px;
-  margin: 0.5rem 0 1rem 0;
-  color: #b71c1c;
-  font-size: 16px;
-  display: none;
-}
-
 .warning {
   color: #f44336;
   font-size: 0.8rem;
@@ -246,13 +227,6 @@ To start, copy and paste the styles directly from Omnivox:
 Your HTML should close to the following:
 
 ```html
-<div id="errorMessage" class="wrongUser">
-  <h2>Error</h2>
-  <p>Your username or password is invalid.</p>
-  <p>
-    Please ensure you have selected the correct user type above and try again.
-  </p>
-</div>
 <form id="loginForm">
   <div>
     <label for="studentId">Student ID:</label>
@@ -275,8 +249,11 @@ Your HTML should close to the following:
 And finally add the JavaScript code:
 
 ```js
+// before running any code, the DOM needs to be ready
 $(document).ready(function () {
+  // listen for a submit event on the login form
   $("#loginForm").on("submit", function (event) {
+    // prevent default behavior
     event.preventDefault();
 
     // Get the values from the form fields
@@ -290,21 +267,6 @@ $(document).ready(function () {
 
     if (!password) {
       $("#passwordError").show();
-    }
-
-    // if we showed an error, we should exit early
-    if (!studentId || !password) {
-      return;
-    }
-
-    // Example user
-    if (studentId === "42" && password === "password") {
-      alert("Redirecting to LEA ...");
-
-      // Redirect (for demo purposes)
-      window.location.href = "https://johnabbott.omnivox.ca/intr/";
-    } else {
-      $("#errorMessage").show();
     }
   });
 });
