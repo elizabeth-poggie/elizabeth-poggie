@@ -9,13 +9,13 @@ coverSrc: "./assets/4.png"
 
 # Introduction
 
-We have been learning about Event Listeners for the last bit and different types of events. Today, we are going to make more sense of this conceptually.
+We've been exploring Event Listeners and various types of events for a little while now. Today, we are going to make these concepts clearer
 
-Today's class focus will be on the ideas of event propagation, bubbling, and capturing. What are all these spooky terms? It's best explained with an example.
+The focus of today’s class will be on event propagation, bubbling, and capturing. What are all these spooky terms? It's best explained with an example.
 
-# Event Bubbling
+# Event Bubbling Example
 
-Let's say we got three `<div>` elements organized in this order:
+Let's say we got three `<div>` elements nested like this:
 
 ```js
 <div class="one">
@@ -25,7 +25,7 @@ Let's say we got three `<div>` elements organized in this order:
 </div>
 ```
 
-And we want to make the `<div>` easier to interact with by adding the following styles
+We want to make these `<div>` elements easier to interact with, so let's apply some styles:
 
 ```css
 div {
@@ -42,7 +42,7 @@ div {
 }
 ```
 
-If we add the following vanilla JavaScript to our `<script>` tag, what do you think is going to `console.log()` when we click the inner most `<div>`?
+Now, if we add this JavaScript to our `<script>` tag, what do you think will be logged to the console when we click on the innermost `<div>`?
 
 ```js
 const divs = document.querySelectorAll("div");
@@ -64,31 +64,31 @@ two
 one
 ```
 
-Wait ok what's happening here. We just clicked on the `.third` one, but in the console we have `two` and `one` also being printed? Why?
+Wait ok, what's happening here? We just clicked the `.three` div, but the console also logged `two` and `one`. Why?
 
-Well if we navigate to our `Elements` tab in Chrome Devtools, we didn't just click on the `<div>` with class `three`, we also clicked on `two` which is in `one` which is in the `body` which is in the `html` which is in the current tab which is in chrome which is on your computer which is sitting in John Abbott, and so on...
+If we check the Elements tab in Chrome DevTools, we’ll see that clicking the `three` div, we also clicked on `two`, which is inside `one`, which is in the `body`, then `html`, and all the way up to Chrome itself.
 
 ![demo](./assets/1.png)
 
-It just keeps zooming out and out. This is the core concept of "bubbling".
+It’s like we keep zooming out layer by layer. This is the core idea of "bubbling."
 
 ## What is bubbling?
 
-The browser will figure out what you clicked on, but it will also trigger clicks up every element up the DOM tree.
-
-Think of this as the butterfly effect of the DOM.
+When you click an element, the event "bubbles" up through its parent elements. The browser not only identifies the element you clicked on but also triggers click events for every parent element up the DOM tree.
 
 ![butterfly](./assets/4.png)
 
-# Example
+Think of this as A "butterfly effect" in the DOM.
 
-Lets say we add an event listener of `click` to the body, what do you think is going to happen next?
+# Example continued...
+
+To further illustrate this concept, lets say we add an event listener of `click` to the body. What do you think will happen?
 
 ```js
 document.body.addEventListener("click", logClass);
 ```
 
-Well, we should see the following:
+You’ll see this logged to the console:
 
 ```text
 three
@@ -97,17 +97,27 @@ one
 body
 ```
 
-Here the event will ripple all the way to the top of the document and trigger `click`s on those elements. You don't always see that because you may not be listening for them, but they are there and this behavior becomes evident when we have multiple nested event listeners.
+In this case, the event will propagate all the way up the document, triggering `click` events on each of the elements. Normally, you might not notice it because you’re not listening for those events, but with multiple nested event listeners, this behavior becomes clear.
 
 ## How does this work in JavaScript?
 
-The way that this works in modern browsers is that the browser will first do something called a "capture", when you click on the element it will actually ripple down from top down to capture all those events. It hasn't fired them yet they are just being temporarily stored. What the browser is doing is trying to figure out what you clicked. Once it knows where you have clicked, it will finally begin triggering that from the bottom up.
+Modern browsers handle this process by first "capturing" events. When you click on an element, the browser starts from the top of the DOM tree, moving downward, temporarily capturing events without firing them yet.
+
+![demo](./assets/5.png)
+
+The browser is trying to figure out exactly what you clicked. Once it determines the target, it triggers events from the bottom up.
 
 ![demo](./assets/3.png)
 
+## What triggers the event?
+
+Your "click" action, however more precisely, the `target`.
+
+In JavaScript, `event.target` refers to the element that triggered the event. When an event occurs (like a click), the browser creates an event object that contains various properties and methods to provide information about the event.
+
 ## How can we prevent this?
 
-If we want to prevent this from happening we can alter our `addEventListener` as follows:
+If you want to prevent this bubbling behavior, you can modify the `addEventListener` method as follows:
 
 ```js
 divs.forEach(function (div) {
@@ -118,7 +128,7 @@ divs.forEach(function (div) {
 });
 ```
 
-Which will cause the following logs:
+With `capture: true`, the event listener will now log:
 
 ```text
 one
@@ -126,11 +136,11 @@ two
 three
 ```
 
-Why? `capture: true` will cause our function to run not on the bubble up, but the capture down.
+This happens because `capture: true` ensures that the function is triggered during the capturing phase (as the event moves down the tree) rather than during the bubbling phase (as it moves back up).
 
-That is what capture means. The event is being "captured". Think of this as the zooming in of your camera and you are trying to focus on a particular element, and in our case this is the inner most `<div>`.
+Think of "capture" as zooming in on the element before focusing on it. In this case, we're focusing on the innermost `<div>` first.
 
-However the default of this "options" object is "false":
+By default, this "options" object has `capture: false`, meaning events are handled during the bubbling phase:
 
 ```js
 divs.forEach(function (div) {
@@ -142,7 +152,7 @@ divs.forEach(function (div) {
 
 ## How do we prevent bubbling?
 
-Ok so we see how events bubble up. First lets change our function as follows:
+Now that we understand how events bubble up, let's modify our function to stop this behavior:
 
 ```js
 function logClass(event) {
@@ -151,14 +161,26 @@ function logClass(event) {
 }
 ```
 
-What is going to happen if we click the inner most div? This time we should just see this printed to console:
+If we click the innermost `<div>`, only this will be printed:
 
 ```text
 three
 ```
 
-Why? What happens once it runs the function once, it will no longer trigger events on the parents
+Why? Once the event runs this function, `stopPropagation()` prevents it from continuing up the DOM tree and triggering events on parent elements.
 
-## How does this relate to DOMReady?
+# DOMContentLoaded && Event Bubbling
 
-## How does this relate to Load?
+## What is DOMContentLoaded?
+
+`DOMContentLoaded` prepares the DOM and ensures it's fully loaded before event listeners (and therefore bubbling) can be used.
+
+## Why is this important for Event Bubbling?
+
+`DOMContentLoaded` ensures that the DOM structure is ready and accessible, meaning that event listeners (such as those needed for event bubbling) can be attached safely.
+
+![demo](./assets/6.png)
+
+If there is no DOM, there is no `target` which means there are no elements to attach an event listener to.
+
+## How do we revise our example to be safe?

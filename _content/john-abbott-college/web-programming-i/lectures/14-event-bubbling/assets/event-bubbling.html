@@ -24,27 +24,12 @@
       background-color: coral;
     }
   </style>
-  <body class="body">
+  <body>
     <div class="one">
       <div class="two">
         <div class="three"></div>
       </div>
     </div>
-    <script>
-      const divs = document.querySelectorAll("div");
-
-      function logClass(event) {
-        console.log(this.classList.value);
-        event.stopPropagation(); // notice me
-      }
-
-      divs.forEach(function (div) {
-        div.addEventListener("click", logClass, {
-          capture: false, // notice me
-        });
-      });
-
-      document.body.addEventListener("click", logClass);
-    </script>
+    <script></script>
   </body>
 </html>
