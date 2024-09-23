@@ -20,43 +20,59 @@ Exactly what you think it is, a giant grid of columns and rows.
 
 For the purposes of this class we will be focusing on excel, however a lot of the logic covered for this product is applicable for all spreadsheet software.
 
-## Who uses Excel
+# Excel
 
-Its one of the most popular tools on the planet. The application has about 750 000 000 million users worldwide and is present in almost every company that exists.
+## Who uses Excel?
 
-# Cell References
+Its one of the most popular tools on the planet. The application has about 750,000,000 million users worldwide and is present in almost every company that exists.
 
-📖 For this section of the notes please refer to the following resources from GCF Global
+## Why is it so popular?
 
-[Relative and Absolute Cell References](https://edu.gcfglobal.org/en/excel/relative-and-absolute-cell-references/1/)
+It makes it really easy to analyze large sets of data.
 
-The above chapter includes a practice workbook that we will complete in class.
+## How do you get started?
+
+Open up excel and let's get started. We will explore it together.
+
+# Overview
+
+## Workbooks
+
+A workbook is the entire Excel file that can contain multiple sheets (or tabs). Each workbook can be saved independently.
+
+## Worksheet (Tab)
+
+Each workbook consists of one or more worksheets, often referred to as tabs. Each worksheet contains a grid of cells where data is entered.
+
+## Cell
+
+Cells are the basic units of a worksheet, organized into a grid of rows and columns. Each cell is identified by its cell reference, which combines the column letter and row number. (e.g. A1, B2, C3, etc)
+
+## Rows & Columns
+
+Rows run horizontally and are numbered (e.g. 1,2,3)
+Columns run vertically and are labeled with letters (e.g. A, B, C)
+
+# Functions
+
+## Summary
+
+- `=AVERAGE()`
+- `=MIN()`
+- `=MAX()`
+- `=STDEV()`
 
 # Exercise 1
 
-To get started, open the [practice workbook](./assets/excel_cellreferences_practice.xlsx).
+To get started, download the excel sheet on Lea. This contains the box office figures for the highest grossing movies each year, from 1915 to 2022.
 
-## Taxes
+# Cell References
 
-- Click the Paper Goods tab in the bottom-left of the workbook.
-- In cell D4, enter a formula that multiplies the unit price in B4, the quantity in C4, and the tax rate in E2. Make sure to use an absolute cell reference for the tax rate because it will be the same in every cell.
-- Use the fill handle to copy the formula you just created to cells D5:D12.
-- Change the tax rate in cell E2 to 6.5%. Notice that all of your cells have updated.
+## Summary
 
-## Invoices
+- Relative Cell References
+- Absolute Cell References
 
-- Click the Catering Invoice tab.
-- Delete the value in cell C5 and replace it with a reference to the total cost of the paper goods. Hint: The cost of the paper goods is in cell E13 on the Paper Goods worksheet.
-- Use the same steps from above to calculate the sales tax for each item on the Menu Order worksheet. The total cost in cell E14 should update. Then, in cell C4 of the Catering Invoice worksheet, create a cell reference to the total you just calculated. Note: If you used our practice workbook to follow along during the lesson, you may have already completed this step.
+# Exercise 2
 
-# Insert Entire Excel sheet into word
-
-Navigate to the `Insert` tab and select `Object`
-
-![demo](./assets/1.png)
-
-This should open up the below panel. Once here select `From File` for Mac users 🍎 or `Create from File` for windows users 🖥️:
-
-![demo](./assets/2.png)
-
-Browse for the file location of what excel sheet you want to link and that's it.
+To get started, download the excel sheet on Lea. This contains a list of the 20 richest people in the United States in 2024. For this exercise you will be estimating their net income after taxes and hydro.
