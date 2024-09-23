@@ -33,12 +33,15 @@
     <script>
       const divs = document.querySelectorAll("div");
 
-      function logClass() {
+      function logClass(event) {
         console.log(this.classList.value);
+        event.stopPropagation(); // notice me
       }
 
       divs.forEach(function (div) {
-        div.addEventListener("click", logClass);
+        div.addEventListener("click", logClass, {
+          capture: false, // notice me
+        });
       });
 
       document.body.addEventListener("click", logClass);

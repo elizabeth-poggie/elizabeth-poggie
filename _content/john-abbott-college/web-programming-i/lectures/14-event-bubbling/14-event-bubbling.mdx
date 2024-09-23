@@ -104,3 +104,61 @@ Here the event will ripple all the way to the top of the document and trigger `c
 The way that this works in modern browsers is that the browser will first do something called a "capture", when you click on the element it will actually ripple down from top down to capture all those events. It hasn't fired them yet they are just being temporarily stored. What the browser is doing is trying to figure out what you clicked. Once it knows where you have clicked, it will finally begin triggering that from the bottom up.
 
 ![demo](./assets/3.png)
+
+## How can we prevent this?
+
+If we want to prevent this from happening we can alter our `addEventListener` as follows:
+
+```js
+divs.forEach(function (div) {
+  // this is an "options" object
+  div.addEventListener("click", logClass, {
+    capture: true, // notice me
+  });
+});
+```
+
+Which will cause the following logs:
+
+```text
+one
+two
+three
+```
+
+Why? `capture: true` will cause our function to run not on the bubble up, but the capture down.
+
+That is what capture means. The event is being "captured". Think of this as the zooming in of your camera and you are trying to focus on a particular element, and in our case this is the inner most `<div>`.
+
+However the default of this "options" object is "false":
+
+```js
+divs.forEach(function (div) {
+  div.addEventListener("click", logClass, {
+    capture: false, // notice me AGAIN
+  });
+});
+```
+
+## How do we prevent bubbling?
+
+Ok so we see how events bubble up. First lets change our function as follows:
+
+```js
+function logClass(event) {
+  console.log(this.classList.value);
+  event.stopPropagation(); // notice me
+}
+```
+
+What is going to happen if we click the inner most div? This time we should just see this printed to console:
+
+```text
+three
+```
+
+Why? What happens once it runs the function once, it will no longer trigger events on the parents
+
+## How does this relate to DOMReady?
+
+## How does this relate to Load?
