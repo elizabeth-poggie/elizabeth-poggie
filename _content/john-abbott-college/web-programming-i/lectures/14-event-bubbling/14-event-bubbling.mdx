@@ -173,14 +173,64 @@ Why? Once the event runs this function, `stopPropagation()` prevents it from con
 
 ## What is DOMContentLoaded?
 
-`DOMContentLoaded` prepares the DOM and ensures it's fully loaded before event listeners (and therefore bubbling) can be used.
+The `DOMContentLoaded` event ensures that the entire DOM has been fully constructed and is ready for interaction. Without the DOM, you can't attach event listeners.
 
 ## Why is this important for Event Bubbling?
 
-`DOMContentLoaded` ensures that the DOM structure is ready and accessible, meaning that event listeners (such as those needed for event bubbling) can be attached safely.
+For event bubbling to work, the DOM structure must be fully loaded. The `DOMContentLoaded` event guarantees that all elements are available and accessible. Without this event, you might try to attach event listeners too early—before the elements are present in the DOM, which would prevent bubbling.
 
 ![demo](./assets/6.png)
 
-If there is no DOM, there is no `target` which means there are no elements to attach an event listener to.
+In other words, if the DOM hasn't loaded, there are no elements (no `event.target`) for your event listeners to attach to, so they won't trigger.
 
-## How do we revise our example to be safe?
+# How do we make our example to be safe?
+
+To ensure our event listeners are attached at the right time, we need to revise the example to run only after the `DOMContentLoaded` event has fired. This way, we guarantee that the DOM is fully parsed, and we can safely attach event listeners for event bubbling.
+
+## Unsafe example
+
+```js
+function logClass() {
+  console.log(this.classList.value);
+}
+
+const divs = document.querySelectorAll("div");
+
+divs.forEach(function (div) {
+  div.addEventListener("click", logClass);
+});
+```
+
+## Safe Example (Vanilla JS)
+
+Using Vanilla JS, you can achieve the following:
+
+```js
+function logClass() {
+  console.log(this.classList.value);
+}
+
+// only the part of the code that attempts to access the DOM needs to be protected
+document.addEventListener("DOMContentLoaded", function () {
+  const divs = document.querySelectorAll("div");
+
+  divs.forEach(function (div) {
+    div.addEventListener("click", logClass);
+  });
+});
+```
+
+Now, the code ensures that the DOM is fully loaded before attaching the event listeners, making the bubbling process reliable in larger code bases.
+
+# Safe Example (jQuery)
+
+For our jQuery enthusiasts, you can also achieve the same with the following:
+
+```js
+// everything done in JS can be done in fewer lines with jQuery
+$(document).ready(function () {
+  $("div").on("click", function () {
+    console.log($(this).attr("class"));
+  });
+});
+```
