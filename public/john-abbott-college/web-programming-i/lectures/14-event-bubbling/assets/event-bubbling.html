@@ -24,17 +24,13 @@
       background-color: coral;
     }
   </style>
-  <body>
+  <body class="body">
     <div class="one">
       <div class="two">
         <div class="three"></div>
       </div>
     </div>
     <script>
-      //   $("div").on("click", function () {
-      //     console.log($(this).attr("class"));
-      //   });
-
       const divs = document.querySelectorAll("div");
 
       function logClass() {
@@ -44,6 +40,8 @@
       divs.forEach(function (div) {
         div.addEventListener("click", logClass);
       });
+
+      document.body.addEventListener("click", logClass);
     </script>
   </body>
 </html>

@@ -4,9 +4,10 @@ category: "Web Programming I"
 title: "Event Bubbling"
 created: "2024-09-22"
 number: 14
+coverSrc: "./assets/4.png"
 ---
 
-# Quick Recap
+# Introduction
 
 We have been learning about Event Listeners for the last bit and different types of events. Today, we are going to make more sense of this conceptually.
 
@@ -65,7 +66,9 @@ one
 
 Wait ok what's happening here. We just clicked on the `.third` one, but in the console we have `two` and `one` also being printed? Why?
 
-Well if we navigate to our `Elements` tab in Chrome Devtools, we didn't just click on the dive with class `three`, we also clicked on `two` which is in `one` which is in the `body` which is in the `html` which is in the current tab which is in chrome which is on your computer which is sitting in John Abbott, and so on...
+Well if we navigate to our `Elements` tab in Chrome Devtools, we didn't just click on the `<div>` with class `three`, we also clicked on `two` which is in `one` which is in the `body` which is in the `html` which is in the current tab which is in chrome which is on your computer which is sitting in John Abbott, and so on...
+
+![demo](./assets/1.png)
 
 It just keeps zooming out and out. This is the core concept of "bubbling".
 
@@ -75,10 +78,29 @@ The browser will figure out what you clicked on, but it will also trigger clicks
 
 Think of this as the butterfly effect of the DOM.
 
-# Summary
+![butterfly](./assets/4.png)
 
-Defines the order in which events occur.
+# Example
 
-Bubbling: Start from the child and work up to the parent
+Lets say we add an event listener of `click` to the body, what do you think is going to happen next?
 
-Capturing: Start with the parent and work to the child
+```js
+document.body.addEventListener("click", logClass);
+```
+
+Well, we should see the following:
+
+```text
+three
+two
+one
+body
+```
+
+Here the event will ripple all the way to the top of the document and trigger `click`s on those elements. You don't always see that because you may not be listening for them, but they are there and this behavior becomes evident when we have multiple nested event listeners.
+
+## How does this work in JavaScript?
+
+The way that this works in modern browsers is that the browser will first do something called a "capture", when you click on the element it will actually ripple down from top down to capture all those events. It hasn't fired them yet they are just being temporarily stored. What the browser is doing is trying to figure out what you clicked. Once it knows where you have clicked, it will finally begin triggering that from the bottom up.
+
+![demo](./assets/3.png)
