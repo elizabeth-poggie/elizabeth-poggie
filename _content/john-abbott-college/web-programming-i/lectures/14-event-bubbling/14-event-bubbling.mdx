@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "Event Bubbling"
+title: "Event Bubbling && Minification"
 created: "2024-09-22"
 number: 14
 coverSrc: "./assets/4.png"
@@ -254,3 +254,59 @@ If your script is placed at the bottom of the HTML, just before the closing `</b
 # Future Proofing Event Bubbling
 
 As projects grow, the DOM structure becomes more complex and loading times can vary as well as the script position may change depending on a company's best practices. This is when waiting for `DOMContentLoaded` becomes important to ensure that all elements are available before interacting with them.
+
+# Exercise 1
+
+## The Task
+
+Today, you will recreate the butterfly effect. Using the current example, place a butterfly image in the center div. When a user clicks on the butterfly, the outer divs will gradually change their color.
+
+Hint: Use this css property to delay the changing of the background:
+
+```js
+div.style.transition = "background-color 4s";
+```
+
+## Solution (HTML)
+
+```html
+<div class="one">
+  <div class="two">
+    <div class="three">
+      <img id="butterfly" alt="butterfly" src="some-url.com" />
+    </div>
+  </div>
+</div>
+```
+
+## Solution (Vanilla JS)
+
+Using vanilla JS with detailed comments, this would be the solution:
+
+```js
+const butterfly = document.getElementById("butterfly");
+const divs = document.querySelectorAll("div");
+
+// listen for DOMReady
+document.addEventListener("DOMContentLoaded", function () {
+  // Listen for click on butterfly
+  butterfly.addEventListener("click", function () {
+    console.log("wow you clicked me");
+  });
+
+  // now propagate that event to the parents
+  divs.forEach(function (div) {
+    div.addEventListener("click", function () {
+      console.log(this.classList.value);
+      div.style.transition = "background-color 4s";
+      div.style.backgroundColor = `blue`;
+    });
+  });
+});
+```
+
+This code demonstrates two key concepts in JavaScript: event handling and event bubbling.
+
+- Event Handing: The code sets up an event listener on the butterfly element. When the butterfly image is clicked, it logs "wow you clicked me" to the console. This shows how to attach an event handler to a specific element.
+
+- Event Bubbling: After setting up the click event for the butterfly, the code adds click event listeners to all div elements on the page. When any div is clicked, it changes its background color to blue with a lovely transition.
