@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <style>
+    div {
+      padding: 50px;
+    }
+    .one {
+      background-color: lavender;
+    }
+    .two {
+      background-color: mistyrose;
+    }
+    .three {
+      background-color: coral;
+    }
+  </style>
+  <body>
+    <div class="one">
+      <div class="two">
+        <div class="three"></div>
+      </div>
+    </div>
+    <script>
+      //   $("div").on("click", function () {
+      //     console.log($(this).attr("class"));
+      //   });
+
+      const divs = document.querySelectorAll("div");
+
+      function logClass() {
+        console.log(this.classList.value);
+      }
+
+      divs.forEach(function (div) {
+        div.addEventListener("click", logClass);
+      });
+    </script>
+  </body>
+</html>

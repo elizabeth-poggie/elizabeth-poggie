@@ -8,11 +8,13 @@ number: 14
 
 # Quick Recap
 
-We have been learning about Event Listeners for the last bit and different types of events and today we are going to make more sense of this conceptually.
+We have been learning about Event Listeners for the last bit and different types of events. Today, we are going to make more sense of this conceptually.
+
+Today's class focus will be on the ideas of event propagation, bubbling, and capturing. What are all these spooky terms? It's best explained with an example.
 
 # Event Bubbling
 
-Let's say we got three divs organized in this order:
+Let's say we got three `<div>` elements organized in this order:
 
 ```js
 <div class="one">
@@ -21,6 +23,57 @@ Let's say we got three divs organized in this order:
   </div>
 </div>
 ```
+
+And we want to make the `<div>` easier to interact with by adding the following styles
+
+```css
+div {
+  padding: 50px;
+}
+.one {
+  background-color: lavender;
+}
+.two {
+  background-color: mistyrose;
+}
+.three {
+  background-color: coral;
+}
+```
+
+If we add the following vanilla JavaScript to our `<script>` tag, what do you think is going to `console.log()` when we click the inner most `<div>`?
+
+```js
+const divs = document.querySelectorAll("div");
+
+function logClass() {
+  console.log(this.classList.value);
+}
+
+divs.forEach(function (div) {
+  div.addEventListener("click", logClass);
+});
+```
+
+We should see this printed:
+
+```text
+three
+two
+one
+```
+
+Wait ok what's happening here. We just clicked on the `.third` one, but in the console we have `two` and `one` also being printed? Why?
+
+Well if we navigate to our `Elements` tab in Chrome Devtools, we didn't just click on the dive with class `three`, we also clicked on `two` which is in `one` which is in the `body` which is in the `html` which is in the current tab which is in chrome which is on your computer which is sitting in John Abbott, and so on...
+
+It just keeps zooming out and out. This is the core concept of "bubbling".
+
+## What is bubbling?
+
+The browser will figure out what you clicked on, but it will also trigger clicks up every element up the DOM tree.
+
+Think of this as the butterfly effect of the DOM.
 
 # Summary
 
