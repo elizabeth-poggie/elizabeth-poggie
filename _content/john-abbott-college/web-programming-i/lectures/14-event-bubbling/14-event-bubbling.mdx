@@ -173,19 +173,21 @@ Why? Once the event runs this function, `stopPropagation()` prevents it from con
 
 ## What is DOMContentLoaded?
 
-The `DOMContentLoaded` event ensures that the entire DOM has been fully constructed and is ready for interaction. Without the DOM, you can't attach event listeners.
+The `DOMContentLoaded` event ensures that the entire DOM is fully constructed and ready to be interacted with.
 
 ## Why is this important for Event Bubbling?
 
-For event bubbling to work, the DOM structure must be fully loaded. The `DOMContentLoaded` event guarantees that all elements are available and accessible. Without this event, you might try to attach event listeners too early—before the elements are present in the DOM, which would prevent bubbling.
+For event bubbling to work, the DOM structure MUST be fully loaded. The `DOMContentLoaded` event guarantees that all elements are available and accessible. . If you try to attach event listeners before this event, they won't work because the elements you're trying to bind them to might not exist yet.
 
 ![demo](./assets/6.png)
 
-In other words, if the DOM hasn't loaded, there are no elements (no `event.target`) for your event listeners to attach to, so they won't trigger.
+In other words, if the DOM hasn't loaded, there are no elements (no `event.target`) for your event listeners to attach to, which would stop "bubbling" from happening.
 
 # How do we make our example to be safe?
 
-To ensure our event listeners are attached at the right time, we need to revise the example to run only after the `DOMContentLoaded` event has fired. This way, we guarantee that the DOM is fully parsed, and we can safely attach event listeners for event bubbling.
+To ensure that event listeners are attached at the right time, we need to wait until the `DOMContentLoaded` event fires.
+
+Going back to our unsafe example...
 
 ## Unsafe example
 
@@ -201,9 +203,11 @@ divs.forEach(function (div) {
 });
 ```
 
+Here we are risking unpredictable behavior. Ff the DOM isn't loaded yet, no event listeners will be attached and In larger code bases this would be bad practice.
+
 ## Safe Example (Vanilla JS)
 
-Using Vanilla JS, you can achieve the following:
+Using Vanilla JS, you can fix the code as follows:
 
 ```js
 function logClass() {
@@ -220,11 +224,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 ```
 
-Now, the code ensures that the DOM is fully loaded before attaching the event listeners, making the bubbling process reliable in larger code bases.
+Now, the code guarantees that event listeners are added only when the DOM is ready, ensuring reliable bubbling behavior in larger applications.
 
 # Safe Example (jQuery)
 
-For our jQuery enthusiasts, you can also achieve the same with the following:
+For our jQuery enthusiasts, you can achieve the same result with fewer lines:
 
 ```js
 // everything done in JS can be done in fewer lines with jQuery
@@ -234,3 +238,19 @@ $(document).ready(function () {
   });
 });
 ```
+
+# Why did the Event Bubbling work without DOMReady?
+
+In small, simple projects, you might not notice DOM issues because of ...
+
+## Simple DOM structure
+
+In smaller codebases, the DOM structure is often simpler, meaning that the HTML may load quickly.
+
+## Script position
+
+If your script is placed at the bottom of the HTML, just before the closing `</body>` tag, it will run after the browser has loaded all elements above it. This can sometimes give the impression that event listeners are working even without waiting for `DOMContentLoaded`.
+
+# Future Proofing Event Bubbling
+
+As projects grow, the DOM structure becomes more complex and loading times can vary as well as the script position may change depending on a company's best practices. This is when waiting for `DOMContentLoaded` becomes important to ensure that all elements are available before interacting with them.
