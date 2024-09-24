@@ -16,15 +16,15 @@ Exactly what you think it is, a giant grid of columns and rows.
 - Microsoft Excel
 - Google Sheets
 - Apple Numbers
-- ... and more
+- ... and many others
 
-For the purposes of this class we will be focusing on excel, however a lot of the logic covered for this product is applicable for all spreadsheet software.
+For this class, we’ll be focusing primarily on Excel. However, most of the concepts and logic we’ll cover can be applied across almost any spreadsheet software you might use. I personally use Google Sheets.
 
 # Excel
 
 ## Who uses Excel?
 
-Its one of the most popular tools on the planet. The application has about 750,000,000 million users worldwide and is present in almost every company that exists.
+Its one of the most popular tools on the planet. With around 750 million users globally, Excel is present in almost every company that exists.
 
 ## Why is it so popular?
 
@@ -38,27 +38,27 @@ Open up excel and let's get started. We will explore it together.
 
 ## Workbooks
 
-A workbook is the entire Excel file that can contain multiple sheets (or tabs). Each workbook can be saved independently.
+A workbook is the entire Excel file, and it can contain multiple sheets (also known as tabs). Each workbook is saved as a standalone file, allowing you to manage related sets of data in one place.
 
 ## Worksheet (Tab)
 
-Each workbook consists of one or more worksheets, often referred to as tabs. Each worksheet contains a grid of cells where data is entered.
+Each workbook includes one or more worksheets, commonly referred to as tabs. These worksheets are where the data is stored and displayed in a grid format made up of rows and columns.
 
 ## Rows & Columns
 
-Rows run horizontally and are numbered (e.g. 1,2,3), while columns run vertically and are labeled with letters (e.g. A, B, C)
+Rows are _horizontal_ and _numbered_ (e.g., 1, 2, 3), while columns are _vertical_ and _labeled_ with letters (e.g., A, B, C). Together, they form the grid that organizes your data.
 
 ![demo](./assets/1.png)
 
 ## Cell
 
-Cells are the basic units of a worksheet, organized into a grid of rows and columns. Each cell is identified by its _cell reference_, which combines the column letter and row number. (e.g. C3)
+Cells are the individual units within a worksheet where data is entered. Each cell is identified by its unique _cell reference_, which combines the column letter and row number (e.g., C3).
 
 ![demo](./assets/2.png)
 
 ## Formula Bar
 
-When you select a cell, the formula bar shows the contents of that cell. It may contain contents such as:
+When you click on a cell, the formula bar displays what’s inside that cell. This can include:
 
 - Text, numbers, data
 - Formulas
@@ -66,7 +66,9 @@ When you select a cell, the formula bar shows the contents of that cell. It may 
 
 ## Ranges
 
-A range is a selection of two or more cells. You can refer to a range using the starting cell and the ending cell. Ranges can be for specific columns or for a combination of many many columns.
+A range is a selection of two or more cells, often used for performing calculations or applying formatting. You refer to a range by its starting and ending cells (e.g. A1:A10).
+
+Ranges can be simple or span across multiple rows and columns:
 
 ![demo](./assets/4.png)
 
@@ -76,17 +78,17 @@ When we work with excel, we love to use functions.
 
 ## Inserting Functions
 
-First, select the cell you would like to modify. Next, navigate to the formulas tab and select "Insert Function", this should open up a formula builder to help you get started.
+To insert a function, first select the cell where you want the result. Then, go to the Formulas tab and click on "Insert Function." This will open a formula builder to guide you through setting up your function.
 
 ![demo](./assets/3.png)
 
-You will notice that once you select "Insert Function", its auto-magically inserts an `=` sign. This is because when you start remembering all these function by heart, you can just enter that to insert.
+You'll notice that when you click "Insert Function," Excel automatically inserts an `=` sign. That's because, once you get used to Excel, you can start typing functions directly by just beginning with `=`.
 
-For our functions, we can insert a number or a _cell reference_
+For functions, you can enter values manually or reference a specific cell by using its _cell reference_.
 
 # Demo 1
 
-Let's compute the following in excel given a data set of the instagram accounts with the most followers in 2024:
+Let's practice some basic functions using a dataset of the Instagram accounts with the most followers in 2024.
 
 - `=AVERAGE()`
 - `=MIN()`
@@ -95,7 +97,7 @@ Let's compute the following in excel given a data set of the instagram accounts 
 
 # Exercise 1
 
-Now it's your turn. Download the excel sheet on Lea. This contains the box office figures for the highest grossing movies each year, from 1915 to 2022.
+Now it’s your turn. Download the Excel sheet on Lea, which contains box office figures for the highest-grossing movies from 1915 to 2022. Use the functions above to analyze the data.
 
 # Cell References
 
@@ -103,17 +105,20 @@ You will be using this a lot.
 
 ## Overview
 
-There are two types of cell references: relative and absolute. Relative and absolute references behave differently when copied and filled to other cells. Relative references change when a formula is copied to another cell. Absolute references, on the other hand, remain constant no matter where they are copied.
+There are two main types of cell references: relative and absolute. These references act differently when copied to other cells. Whats the difference?
+
+- _Relative references_ change based on where the formula is copied
+- _Absolute references_ remain fixed no matter where they are copied
 
 ## Relative References
 
-By default, all cell references are relative references. When copied across multiple cells, they change based on the relative position of rows and columns. For example, let's say we create the following formula in cell C1 of the first row:
+By default, cell references are relative. This means they change when you copy them to other cells, adjusting based on the position of the rows and columns. For example, if you enter this formula in cell `C1`:
 
 ```text
 =A1+B1
 ```
 
-When we copy row 1 to row 2, the formula will now become:
+And then copy it to row 2, it will automatically adjust to:
 
 ```text
  =A2+B2
@@ -123,23 +128,23 @@ This tends to be most handy when we need to repeat the same calculation across m
 
 ## Absolute references
 
-There may be a time when you don't want a cell reference to change when copied to other cells. Unlike relative references, absolute references do not change when copied or filled. There have 3 general forms:
+Sometimes, you don’t want a cell reference to change when copied. That’s where absolute references come in. You can lock part or all of a reference by adding the $ symbol. Here are the three common forms:
 
 - `$A$2` 👉 The column and the row do not change when copied
 - `A$2` 👉 The row does not change when copied
 - `$A2` 👉 The column does not change when copied
 
-In Excel, when we add a `$` symbol next to part of the cell reference, that is the part that is remaining constant.
+By using `$`, you ensure that the part of the reference with the `$` remains constant.
 
 ## Sheet References
 
-Excel allows you to refer to any cell on any worksheet. To do this, you'll simply need to begin the cell reference with the _worksheet name_ followed by an exclamation point (!). For example:
+In Excel, you can also reference cells from different worksheets. To do this, start with the `'Worksheet Name'` followed by an exclamation mark `!`. For example:
 
 ```text
 'Worksheet Name'!A1
 ```
 
-The above references a cell A1 on Sheet named "Worksheet Name"
+This refers to cell `A1` on the worksheet called `'Worksheet Name'`. Notice the single quotations. This is because if a worksheet name contains a space, you'll need to include single quotation marks (' ') around the name for this to work.
 
 # Demo 2
 
@@ -149,12 +154,21 @@ Let's say we have a bunch of students and we need to calculate their final grade
 Final Grade = Total - (Number of mistakes * Penalty per mistake)
 ```
 
-However what happens if we want to factor in the late penalty? Then the equation would look more like:
+The above calculates the total grade is reduced by the number of mistakes multiplied by the penalty per mistake However, what happens if we want to factor in the late penalty? Then the equation would look more like:
 
 ```text
 Final Grade = (Total - Number of mistakes * Penalty per mistake) * (1 -  Number of days late * late penalty)
 ```
 
+The expression `(1 -  Number of days late * late penalty)` adjusts the final grade based on how many days late the submission is. By taking the product of the mistake penalty and the days late penalty, we get the student grade.
+
 # Exercise 2
 
-To get started, download the excel sheet on Lea. This contains a list of the 20 richest people in the United States in 2024. For this exercise you will be estimating their net income after taxes and hydro.
+Download the Excel sheet on Lea that contains a list of the 20 richest people in the U.S. for 2024. Your task is to estimate their net income after deducting taxes and hydro fees.
+
+# Documentation
+
+Refer to here for the following resources:
+
+- [Functions](https://edu.gcfglobal.org/en/excel/functions/1/)
+- [Relative and Absolute Cell References](https://edu.gcfglobal.org/en/excel/relative-and-absolute-cell-references/1/)
