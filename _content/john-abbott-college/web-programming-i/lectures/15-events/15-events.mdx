@@ -1,0 +1,75 @@
+---
+# General Information
+category: "Web Programming I"
+title: "events"
+created: "2024-09-24"
+number: 15
+---
+
+# Event Recap
+
+## Why do we love events?
+
+Web development revolves around creating interactive and dynamic experiences for users, and events are at the heart of that interactivity
+
+## Why do elements propagate events?
+
+Event propagation is a fundamental concept in web development that explains how events are handled in the document
+
+## How do events propagate?
+
+The DOM is structured like a tree, with parent and child elements. When an event occurs on a specific target element (like a button), it first triggers that element's event handler. After executing the handler on the target element, the event bubbles up to its parent element, then to the grandparent, and so on, until it reaches the root of the DOM. This allows parent elements to also respond to events that happen on their children and becomes particularly evident when we have nested event handlers.
+
+## How do identify the target?
+
+Before the event reaches the target element, it can also be captured as it travels down the DOM tree. This is called event capturing, where the event starts from the root and goes down to the target element.
+
+# Event Objects
+
+An event object is created automatically by the browser when an event occurs in the DOM. This object contains information about the event, including details like the type of event, the target element, and additional properties specific to the event type
+
+## How is it made?
+
+- Step 1: Event Trigger 👉 When a user interacts with an element (e.g., clicking a button), the browser detects this interaction and triggers the corresponding event.
+- Step 2: Automatic Creation 👉 The browser automatically creates an event object specific to that event and passes it to the event handler function.
+- Step 3: The event object contains various properties (e.g. `type`, `target`) and methods (e.g. `preventDefault()`, `stopPropagation()`, etc.) that developers can use to interact with the event.
+
+## Button Example
+
+```html
+<button id="myButton">Click Me!</button>
+
+<script>
+  const button = document.getElementById("myButton");
+
+  button.addEventListener("click", function (event) {
+    console.log("Event Type:", event.type); // notice me
+    console.log("Target Element:", event.target); // notice me
+  });
+</script>
+```
+
+## Form Example
+
+Going back to our forms from last week:
+
+```html
+<form id="myForm">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" />
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  const form = document.getElementById("myForm");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // notice me
+    const username = event.target.username.value; // notice me
+  });
+</script>
+```
+
+## Friday Quiz
+
+The remainder of the class is for quiet study. I will post all the notes shortly and read over everything that contains information on forms and event bubbling.
