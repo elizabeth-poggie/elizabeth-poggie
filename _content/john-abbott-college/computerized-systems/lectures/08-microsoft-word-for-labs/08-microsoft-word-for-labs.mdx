@@ -84,7 +84,7 @@ You will notice that once you select "Insert Function", its auto-magically inser
 
 For our functions, we can insert a number or a _cell reference_
 
-## Demo
+# Demo 1
 
 Let's compute the following in excel given a data set of the instagram accounts with the most followers in 2024:
 
@@ -99,10 +99,61 @@ Now it's your turn. Download the excel sheet on Lea. This contains the box offic
 
 # Cell References
 
-## Summary
+You will be using this a lot.
 
-- Relative Cell References
-- Absolute Cell References
+## Overview
+
+There are two types of cell references: relative and absolute. Relative and absolute references behave differently when copied and filled to other cells. Relative references change when a formula is copied to another cell. Absolute references, on the other hand, remain constant no matter where they are copied.
+
+## Relative References
+
+By default, all cell references are relative references. When copied across multiple cells, they change based on the relative position of rows and columns. For example, let's say we create the following formula in cell C1 of the first row:
+
+```text
+=A1+B1
+```
+
+When we copy row 1 to row 2, the formula will now become:
+
+```text
+ =A2+B2
+```
+
+This tends to be most handy when we need to repeat the same calculation across multiple rows or columns.
+
+## Absolute references
+
+There may be a time when you don't want a cell reference to change when copied to other cells. Unlike relative references, absolute references do not change when copied or filled. There have 3 general forms:
+
+- `$A$2` 👉 The column and the row do not change when copied
+- `A$2` 👉 The row does not change when copied
+- `$A2` 👉 The column does not change when copied
+
+In Excel, when we add a `$` symbol next to part of the cell reference, that is the part that is remaining constant.
+
+## Sheet References
+
+Excel allows you to refer to any cell on any worksheet. To do this, you'll simply need to begin the cell reference with the _worksheet name_ followed by an exclamation point (!). For example:
+
+```text
+'Worksheet Name'!A1
+```
+
+The above references a cell A1 on Sheet named "Worksheet Name"
+
+# Demo 2
+
+Let's say we have a bunch of students and we need to calculate their final grade. How do we do that?
+
+```text
+Final Grade = Total - (Number of mistakes * Penalty per mistake)
+```
+
+However what happens if we want to factor in the late penalty? Then the equation would look more like:
+
+```text
+Final Grade = (Total - Number of mistakes * Penalty per mistake) * (1 -  Number of days late * late penalty)
+```
 
 # Exercise 2
 
