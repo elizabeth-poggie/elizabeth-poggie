@@ -73,6 +73,142 @@ Going back to our forms from last week:
 </script>
 ```
 
+# Event Bubbling Best Practices
+
+Last class we focused on how event bubbling works, now we are going to learn how to use it effectively.
+
+## Why?
+
+Event bubbling is has several use cases on when it's handy:
+
+- Event Delegation 👉 Instead of adding event listeners to each child element, you can attach a single listener to a parent element. This improves performance.
+- Keeping it Simple 👉 Having a single listener for a group of elements simplifies the codebase.
+
+## Good Example
+
+Here is an example of effective Event Delegation:
+
+```html
+<ul id="itemList">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+<script>
+  const itemList = document.getElementById("itemList");
+
+  // Event listener on the parent element
+  itemList.addEventListener("click", function (event) {
+    if (event.target.tagName === "LI") {
+      alert(`You clicked: ${event.target.textContent}`);
+    }
+  });
+</script>
+```
+
+This is a good example because instead of attaching event listeners to each list item, you attach one listener to the parent `<ul>` element.
+
+## Bad Example
+
+If i wanted to write this code poorly, I could do the following:
+
+```html
+<ul id="itemList">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+<script>
+  const items = document.querySelectorAll("#itemList li");
+
+  // Adding event listeners to each <li>
+  items.forEach((item) => {
+    item.addEventListener("click", function () {
+      alert(`You clicked: ${item.textContent}`);
+    });
+  });
+</script>
+```
+
+Attaching individual click event listeners to each list item instead of using event delegation.
+
+## Exercise (Optional)
+
+I invite you guys to tinker with the Butterfly example from yesterday and apply best practices
+
+# Use Strict
+
+`"use strict";` is a directive in JavaScript that enables strict mode, which is a way to opt into a restricted variant of JavaScript.
+
+## Why use it?
+
+It helps catch common coding errors and unsafe actions, making JavaScript thankfully easier to work with.
+
+## How to use it?
+
+You can put it at the beginning of script OR at beginning of function to apply for only that function.
+
+```js
+"use strict";
+const stuff = "stuff";
+// other stuff
+```
+
+```js
+"use strict";
+function doStuff() {
+  console.log("doing stuff");
+}
+```
+
+## Benefits
+
+Prevents Undeclared Variables 👉 In strict mode, assigning a value to an undeclared variable will throw a `ReferenceError`.
+
+```js
+x = 3.14; // ReferenceError: x is not defined
+```
+
+Prevents duplicate Parameter Names 👉 In strict mode, you cannot have duplicate parameter names in function declarations, which helps prevent confusion.
+
+```js
+"use strict";
+function addStuff(x, x, y) {
+  return x + x + y; // Uncaught SyntaxError: Duplicate parameter name not allowed in this context
+}
+```
+
+## Official Documentation
+
+Check out the official docs on `Strict` mode [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode).
+
+To quote the official documentation:
+
+```text
+JavaScript's strict mode is a way to opt in to a restricted variant of JavaScript,
+thereby implicitly opting-out of "sloppy mode"
+```
+
+## Where does it work?
+
+It's ignored by older browsers like Internet Explorer, however if you are using Chrome you should be good.
+
+# Exercise 1
+
+Get together in groups of up to 4 people and if you prefer to work independently, thats ok too.
+
+## The Task
+
+Write the worst JavaScript you can get away with that still compiles. Refer to the [official documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) for inspiration.
+
+Compare what happens before and after. What is the worst peice of code you can write that only gets flagged as an error in strict more?
+
+## Submission
+
+Send me a MIO containing the code after class and members of your group after class. The code that is the ugliest will receive a prize on Friday.
+
 ## Friday Quiz
 
-The remainder of the class is for quiet study. I will post all the notes shortly and read over everything that contains information on forms and event bubbling.
+The remainder of the class is for quiet study. I will post all the notes shortly and read over everything that contains information on form validation and event bubbling.
