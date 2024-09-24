@@ -1,38 +1,57 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "events"
+title: "Events && Strict Mode"
 created: "2024-09-24"
 number: 15
+coverSrc: "./assets/handle.png"
 ---
 
 # Event Recap
 
 ## Why do we love events?
 
-Web development revolves around creating interactive and dynamic experiences for users, and events are at the heart of that interactivity
+Web development focuses on crafting interactive and dynamic experiences for users, and events are at the heart of that interactivity
 
 ## Why do elements propagate events?
 
-Event propagation is a fundamental concept in web development that explains how events are handled in the document
+Event propagation is a key concept in web development that describes how events are managed within the document.
 
 ## How do events propagate?
 
-The DOM is structured like a tree, with parent and child elements. When an event occurs on a specific target element (like a button), it first triggers that element's event handler. After executing the handler on the target element, the event bubbles up to its parent element, then to the grandparent, and so on, until it reaches the root of the DOM. This allows parent elements to also respond to events that happen on their children and becomes particularly evident when we have nested event handlers.
+The DOM is structured like a tree, consisting of parent and child elements. When an event occurs on a specific _target_ element, such as a button, it first activates that element's event handler.
 
-## How do identify the target?
+![tree](./assets/image.png)
 
-Before the event reaches the target element, it can also be captured as it travels down the DOM tree. This is called event capturing, where the event starts from the root and goes down to the target element.
+After executing the handler on the target element, the event "bubbles" up to its parent element, then to the grandparent, and so on, until it reaches the root of the DOM. This allows parent elements to also respond to events that happen on their children and becomes particularly evident when we have nested event handlers.
+
+## How do we identify the target?
+
+Before reaching the target element, an event can also be captured while descending through the DOM tree. This process is known as event capturing, where the event starts from the root and travels down to the _target_ element.
 
 # Event Objects
 
-An event object is created automatically by the browser when an event occurs in the DOM. This object contains information about the event, including details like the type of event, the target element, and additional properties specific to the event type
+An _event object_ is automatically created by the browser whenever an event occurs in the DOM.
 
-## How is it made?
+![tree](./assets/handle.png)
 
-- Step 1: Event Trigger 👉 When a user interacts with an element (e.g., clicking a button), the browser detects this interaction and triggers the corresponding event.
-- Step 2: Automatic Creation 👉 The browser automatically creates an event object specific to that event and passes it to the event handler function.
-- Step 3: The event object contains various properties (e.g. `type`, `target`) and methods (e.g. `preventDefault()`, `stopPropagation()`, etc.) that developers can use to interact with the event.
+## How is an Event made?
+
+Once you click the browser, the following is triggered:
+
+- Step 1: Event Trigger 👉 When a user interacts with an element, such as clicking a button, the browser detects this action and "triggers" the relevant event.
+- Step 2: Automatic Creation 👉 The browser then _automatically_ generates an event object specific to that interaction and passes it to the event handler function. The event object contains various properties (e.g. `type`, `target`) and methods (e.g. `preventDefault()`, `stopPropagation()`, etc.). Developers can use these tools to effectively manage the event and its effects.
+
+Once the event is triggered, it enters the capturing phase, where it travels from the root of the DOM down to the target element:
+
+- Step 4: Capturing Phase 👉 The event starts at the document root and propagates down through each parent element to reach the target.
+- Step 5: Target 👉 This is where the event can be handled by the target element’s own event listeners
+
+After the event reaches the target, it then bubbles back up to the root:
+
+- Step 6: Bubbling phase 👉 Any listeners on the ancestor elements that do not specify the capturing phase will be invoked.
+
+This entire process occurs each time you interact with the browser.
 
 ## Button Example
 
@@ -75,11 +94,11 @@ Going back to our forms from last week:
 
 # Event Bubbling Best Practices
 
-Last class we focused on how event bubbling works, now we are going to learn how to use it effectively.
+In our last class, we explored how event bubbling works. Now, we will learn how to use it effectively.
 
 ## Why?
 
-Event bubbling is has several use cases on when it's handy:
+Event bubbling has several practical applications that make it valuable:
 
 - Event Delegation 👉 Instead of adding event listeners to each child element, you can attach a single listener to a parent element. This improves performance.
 - Keeping it Simple 👉 Having a single listener for a group of elements simplifies the codebase.
@@ -140,24 +159,29 @@ I invite you guys to tinker with the Butterfly example from yesterday and apply 
 
 # Use Strict
 
-`"use strict";` is a directive in JavaScript that enables strict mode, which is a way to opt into a restricted variant of JavaScript.
+To quote the official documentation:
+
+```text
+JavaScript's strict mode is a way to opt in to a restricted variant of JavaScript,
+thereby implicitly opting-out of "sloppy mode"
+```
 
 ## Why use it?
 
-It helps catch common coding errors and unsafe actions, making JavaScript thankfully easier to work with.
+Using strict mode helps catch common coding errors and unsafe practices, making JavaScript easier and safer to work with.
 
 ## How to use it?
 
-You can put it at the beginning of script OR at beginning of function to apply for only that function.
+You can place the _directive_ at the beginning of a script or at the start of a function to apply it only to that function.
 
 ```js
-"use strict";
+"use strict"; // notice me
 const stuff = "stuff";
 // other stuff
 ```
 
 ```js
-"use strict";
+"use strict"; // notice me
 function doStuff() {
   console.log("doing stuff");
 }
@@ -165,13 +189,13 @@ function doStuff() {
 
 ## Benefits
 
-Prevents Undeclared Variables 👉 In strict mode, assigning a value to an undeclared variable will throw a `ReferenceError`.
+Prevents Undeclared Variables 👉 In strict mode, trying to assign a value to an undeclared variable will throw a `ReferenceError`.
 
 ```js
 x = 3.14; // ReferenceError: x is not defined
 ```
 
-Prevents duplicate Parameter Names 👉 In strict mode, you cannot have duplicate parameter names in function declarations, which helps prevent confusion.
+Prevents duplicate Parameter Names 👉 Strict mode disallows duplicate parameter names in function declarations.
 
 ```js
 "use strict";
@@ -182,18 +206,11 @@ function addStuff(x, x, y) {
 
 ## Official Documentation
 
-Check out the official docs on `Strict` mode [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode).
+For more information, check out the official documentation on strict mode [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode).
 
-To quote the official documentation:
+## Compatibility
 
-```text
-JavaScript's strict mode is a way to opt in to a restricted variant of JavaScript,
-thereby implicitly opting-out of "sloppy mode"
-```
-
-## Where does it work?
-
-It's ignored by older browsers like Internet Explorer, however if you are using Chrome you should be good.
+Strict mode is ignored by older browsers, such as Internet Explorer. However, if you are using modern browsers like Chrome, you should be good to go.
 
 # Exercise 1
 
@@ -201,14 +218,14 @@ Get together in groups of up to 4 people and if you prefer to work independently
 
 ## The Task
 
-Write the worst JavaScript you can get away with that still compiles. Refer to the [official documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) for inspiration.
+Write the worst JavaScript code you can that still compiles. Refer to the [official documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) for inspiration.
 
-Compare what happens before and after. What is the worst peice of code you can write that only gets flagged as an error in strict more?
+Compare your results before and after applying strict mode. What is the worst piece of trash you can create that only gets flagged as an error when applying `"use strict";`?
 
 ## Submission
 
-Send me a MIO containing the code after class and members of your group after class. The code that is the ugliest will receive a prize on Friday.
+Please send me a message in MIO containing your code and the names of your group members after class. The ugliest piece of code will win a prize on Friday.
 
-## Friday Quiz
+# Friday Quiz
 
-The remainder of the class is for quiet study. I will post all the notes shortly and read over everything that contains information on form validation and event bubbling.
+If you submit before the end of class, use the remaining time for quiet study. Take this opportunity to review everything related to form validation and event bubbling as this will be the focus this Friday.
