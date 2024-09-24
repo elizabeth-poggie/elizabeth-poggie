@@ -54,7 +54,7 @@ An event object is created automatically by the browser when an event occurs in 
 Going back to our forms from last week:
 
 ```html
-<form id="myForm">
+<form id="myForm" action="submit-form.php" target="_blank" method="post">
   <label for="username">Username:</label>
   <input type="text" id="username" name="username" />
   <button type="submit">Submit</button>
@@ -64,8 +64,11 @@ Going back to our forms from last week:
   const form = document.getElementById("myForm");
 
   form.addEventListener("submit", function (event) {
+    console.log("Event Type:", event.type); // notice me
+    console.log("Target Element:", event.target); // notice me
     event.preventDefault(); // notice me
     const username = event.target.username.value; // notice me
+    console.log(username);
   });
 </script>
 ```
