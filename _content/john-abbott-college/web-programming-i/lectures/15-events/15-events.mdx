@@ -42,7 +42,9 @@ Once you click the browser, the following is triggered:
 - Step 1: Event Trigger 👉 When a user interacts with an element, such as clicking a button, the browser detects this action and "triggers" the relevant event.
 - Step 2: Automatic Creation 👉 The browser then _automatically_ generates an event object specific to that interaction and passes it to the event handler function. The event object contains various properties (e.g. `type`, `target`) and methods (e.g. `preventDefault()`, `stopPropagation()`, etc.). Developers can use these tools to effectively manage the event and its effects.
 
-Once the event is triggered, it enters the capturing phase, where it travels from the root of the DOM down to the target element:
+## What is the Event LifeCycle?
+
+Going back to what we understand about propagation, once the event is triggered, it enters the capturing phase, where it travels from the root of the DOM down to the target element:
 
 - Step 4: Capturing Phase 👉 The event starts at the document root and propagates down through each parent element to reach the target.
 - Step 5: Target 👉 This is where the event can be handled by the target element’s own event listeners
@@ -54,6 +56,8 @@ After the event reaches the target, it then bubbles back up to the root:
 This entire process occurs each time you interact with the browser.
 
 ## Button Example
+
+Let's take a closer look at the event object in the context of buttons...
 
 ```html
 <button id="myButton">Click Me!</button>
@@ -70,7 +74,7 @@ This entire process occurs each time you interact with the browser.
 
 ## Form Example
 
-Going back to our forms from last week:
+Going back to our forms from last week...
 
 ```html
 <form id="myForm" action="submit-form.php" target="_blank" method="post">
@@ -101,7 +105,7 @@ In our last class, we explored how event bubbling works. Now, we will learn how 
 Event bubbling has several practical applications that make it valuable:
 
 - Event Delegation 👉 Instead of adding event listeners to each child element, you can attach a single listener to a parent element. This improves performance.
-- Keeping it Simple 👉 Having a single listener for a group of elements simplifies the codebase.
+- Keeping it Simple 👉 Having a single listener for a group of elements simplifies the codebase. We don't need to add as many event listeners.
 
 ## Good Example
 
@@ -153,9 +157,9 @@ If i wanted to write this code poorly, I could do the following:
 
 Attaching individual click event listeners to each list item instead of using event delegation.
 
-## Exercise (Optional)
+# Exercise (Optional)
 
-I invite you guys to tinker with the Butterfly example from yesterday and apply best practices
+I invite you guys to experiment with the Butterfly example from yesterday and apply best practices.
 
 # Use Strict
 
@@ -212,13 +216,13 @@ For more information, check out the official documentation on strict mode [here]
 
 Strict mode is ignored by older browsers, such as Internet Explorer. However, if you are using modern browsers like Chrome, you should be good to go.
 
-# Exercise 1
+# Exercise (Group Competition)
 
 Get together in groups of up to 4 people and if you prefer to work independently, thats ok too.
 
 ## The Task
 
-Write the worst JavaScript code you can that still compiles. Refer to the [official documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) for inspiration.
+Write the worst JavaScript code you can possibly think of that still compiles. Refer to the [official documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) for inspiration.
 
 Compare your results before and after applying strict mode. What is the worst piece of trash you can create that only gets flagged as an error when applying `"use strict";`?
 
