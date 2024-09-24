@@ -3,33 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Events</title>
+    <title>Event Bubbling</title>
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
+    <style>
+      div {
+        padding: 50px;
+      }
+      .one {
+        background-color: lavender;
+      }
+      .two {
+        background-color: mistyrose;
+      }
+      .three {
+        background-color: coral;
+      }
+    </style>
   </head>
-  <style>
-    div {
-      padding: 50px;
-    }
-    .one {
-      background-color: lavender;
-    }
-    .two {
-      background-color: mistyrose;
-    }
-    .three {
-      background-color: coral;
-    }
-  </style>
   <body>
     <div class="one">
       <div class="two">
         <div class="three"></div>
       </div>
     </div>
-    <script></script>
   </body>
 </html>
