@@ -17,17 +17,17 @@ Web development focuses on crafting interactive and dynamic experiences for user
 
 Event propagation is a key concept in web development that describes how events are managed within the document.
 
+## How do we identify the cause of the event?
+
+Before reaching the source of the event, or _target_ element, an event is captured while descending through the DOM tree. This process is known as "event capturing", where the event starts from the root and travels down to the _target_ element.
+
 ## How do events propagate?
 
-The DOM is structured like a tree, consisting of parent and child elements. When an event occurs on a specific _target_ element, such as a button, it first activates that element's event handler.
+Once the event has been captured and we reach the _target_ element, it activates that element's event handler.
 
 ![tree](./assets/image.png)
 
 After executing the handler on the target element, the event "bubbles" up to its parent element, then to the grandparent, and so on, until it reaches the root of the DOM. This allows parent elements to also respond to events that happen on their children and becomes particularly evident when we have nested event handlers.
-
-## How do we identify the target?
-
-Before reaching the target element, an event can also be captured while descending through the DOM tree. This process is known as event capturing, where the event starts from the root and travels down to the _target_ element.
 
 # Event Objects
 
