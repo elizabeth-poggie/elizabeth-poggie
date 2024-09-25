@@ -1,0 +1,111 @@
+---
+# General Information
+category: "Web Programming I"
+title: "jQuery & Events"
+created: "2024-09-24"
+number: 1
+---
+
+# Question 1
+
+What is jQuery?
+
+- ❌ An extension of Node.js
+- ✅ A JavaScript library
+- ❌ A module used in C# that you need to import
+- ❌ A globally accessible object, similar to the document object
+
+## Why?
+
+jQuery is a JavaScript library because it simplifies common tasks
+
+# Question 2
+
+What is the main advantage that made jQuery appealing to JavaScript developers?
+
+- ❌ You can use it in script code and run it on any browser without having to add any additional script tags
+- ❌ It provides a built-in database for managing user data
+- ✅ It simplifies complex JavaScript tasks with a straightforward, easy-to-use syntax
+- ❌ Developers love dollar signs ($) both in their code and bank account
+
+## Why?
+
+Similar to the previous questions answer, the main advantage that made jQuery appealing to JavaScript developers is that it simplifies complex JavaScript tasks. As well, jQuery functions internally take care of extra handling for browser compatibility issues making it easier to work with for devs.
+
+# Question 3
+
+Why use a Content Delivery Network (CDN) for accessing jQuery?
+
+- ❌ Avoid using CDNs, always copy and paste the source code directly
+- ✅ It speeds up load times by delivering jQuery from servers closest to the user
+- ❌ It reduces the amount of code you need to write
+- ❌ It automatically updates jQuery to the latest version
+
+## Why?
+
+A CDN distributes files (like jQuery) across multiple servers around the world, so when someone visits your site, they load jQuery from a server geographically close to them. This reduces _latency_ and improves loading speed.
+
+## Question 4
+
+Given this HTML file, which of the following changes would correctly add a click event handler to the `<h1>` element?
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1 id="first">Priority</h1>
+    <script>
+      function alterUser() {
+        alert("Hey!");
+      }
+    </script>
+  </body>
+</html>
+```
+
+❌ adding this line to the script:
+
+```js
+document.getElementById("first").addEventListener("click", alertUser());
+```
+
+❌ adding this line to the script:
+
+```js
+document.getElementById("first").addEventListener("onclick", alertUser());
+```
+
+❌ replacing the HTML for the h1 element with:
+
+```html
+<h1 id="first" click="alertUser">Priority</h1>
+```
+
+✅ adding this line to the script:
+
+```js
+document.getElementById("first").addEventListener("click", alertUser);
+```
+
+❌ replacing the HTML for the h1 element with:
+
+```html
+<h1 id="first" click="alertUser()">Priority</h1>
+```
+
+## Why?
+
+`addEventListener("click", alertUser)` correctly attaches the `alertUser` function as the handler for the `click` event. The function reference is passed, so the function will only execute when the `<h1>` is clicked.
+
+# Question 5
+
+Why do we use Event Listeners in the `<script>` tag?
+
+- ❌ To automatically generate event handlers for all HTML elements
+- ✅ To manage events in a more organized and scalable way compared to inline event handlers
+- ❌ To avoid using jQuery so we can use vanilla JavaScript
+- ❌ To improve website performance by minimizing the amount of code in the HTML
+
+## Why?
+
+Using event listeners in the `<script>` tag allows you to separate JavaScript from HTML, making your code easier to maintain and update. You can attach multiple event listeners to a single element or dynamically add/remove them as needed.
