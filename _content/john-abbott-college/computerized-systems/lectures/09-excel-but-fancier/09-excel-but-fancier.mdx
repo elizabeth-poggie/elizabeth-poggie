@@ -12,9 +12,24 @@ number: 9
 
 Excel has a lot of functions, you could use your mouse to click or you could simply type `=` followed by the first few letters of the equation you want to do.
 
+![functions](./assets/Functions.gif)
+
 ## Cell References
 
 Why are there dollar signs around some cell references and not others? Or in other words, what is the difference between Relative and Absolute references?
 
-- No dollar signs / Relative Referencing 👉 When you copy a formula with relative references to another cell, Excel adjusts the cell references based on the relative position of the new cell.
-- Dollar signs / Absolute Referencing 👉 Remains fixed when you copy a formula
+No dollar signs / Relative Referencing 👉 When you copy a formula with relative references to another cell, Excel adjusts the cell references based on the relative position of the new cell.
+
+![refs](./assets/relative-references.gif)
+
+Dollar signs / Absolute Referencing 👉 Remains fixed when you copy a formula
+
+![refs](./assets/absolute-references.gif)
+
+However, if you choose to not put dollar signs next to a particular column or row to "lock it in place", you will get the following unexpected behavior
+
+![broken](./assets/broken.gif)
+
+# Lazy Dollars Signs
+
+## Formatting
