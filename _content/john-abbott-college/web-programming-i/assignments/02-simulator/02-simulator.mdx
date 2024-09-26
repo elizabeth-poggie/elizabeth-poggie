@@ -1,8 +1,8 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "Strategy Simulator"
-created: "2024-09-26"
+title: "HTML Forms"
+created: "2024-09-27"
 number: 2
 ---
 
@@ -15,10 +15,62 @@ number: 2
 
 # Doughboy Roulette
 
-## The Pitch
-
 Peeking the interest of an [Angel Investor](https://en.wikipedia.org/wiki/Angel_investor), your Assignment 1 has successfully secured the funding it needs to take your project to the next level.
 
-Using HTML Forms, you will create a cookie-themed strategy game inspired by the indie tabletop horror game [Buckshot Roulette](https://en.wikipedia.org/wiki/Buckshot_Roulette). Your version is intended to reach a wider audience, so it will need to be family-friendly and align with [College Policies](https://johnabbott.qc.ca/the-college/official-documents/)
+Using HTML Forms, you will create a cookie-themed strategy game inspired by the indie tabletop horror game [Buckshot Roulette](https://en.wikipedia.org/wiki/Buckshot_Roulette). Your version is intended to reach a wider audience, so it will need to be family-friendly and align with [College Policies](https://johnabbott.qc.ca/the-college/official-documents/).
 
-# The Task
+# Gameplay
+
+The game consists of three rounds. _For this assignment you will only need to implement one round_.
+
+## Starting a Round
+
+At the start of a round, the computer-controlled Dealer loads an empty tin with a certain number of real and fake cookies. Each player is given 4 starting cookies and a set of 2 items that give the player different advantages throughout the game.
+
+## Turns
+
+The player then chooses to either give a cookie to the dealer or attempt to eat a cookie. Depending on what the player chooses, if the cookie is fake, then either the player or the Dealer loses one of their starting cookies, but if the cookie is real, the player either eats the cookie and continues their turn, or forfeits the tin to the Dealer who plays their turn.
+
+## Ending a Round
+
+The round ends when any one player rounds out of their starting cookies. If the tin is emptied and neither party has lost all of their starting cookies, the Dealer loads the tin again with another selection of real and fake cookies.
+
+## Special Items
+
+- A magnifying glass, which reveals the cookie currently in the tin
+- A coupon to Maxi, which restores one starting cookie
+- A milkshake, which safely racks the tin, ejecting the fake cookie without any negative consequences and effectively skipping a turn.
+- An iPad, which distracts the opponent causing them to skip their next turn.
+
+# HTML Specifications
+
+## Assignment Structure
+
+## Starting Screen
+
+Before starting the game, the player submit the following form:
+
+- Player Name:
+- Player Age:
+
+Do not allow the browser to submit the form unless the user has provided a name and a valid age. If the user inputs trash, a user-friendly message should appear.
+
+Once the user enters a valid input, they should be redirected to the "Game Play" screen
+
+## Gameplay Screen
+
+At the top of the screen both players stats should be listed with the following information:
+
+- Player name
+- Starting cookies
+- The list of items they have available to them
+- A small icon that identifies which player's turn it is.
+
+In the middle of the screen there should be a tin of cookies
+
+At the bottom of the screen, there should be a list of the available options to the user:
+
+- Their items, represented as a list of radio buttons. Players typically can use only one item per turn, consequently all items should be listed as a selection of radio buttons
+- Eat cookie
+- Pass cookie
+- Pass the tin
