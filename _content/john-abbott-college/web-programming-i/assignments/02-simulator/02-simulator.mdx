@@ -21,25 +21,25 @@ Using HTML Forms, you will create a cookie-themed strategy game inspired by the 
 
 # Gameplay
 
-The game consists of three rounds. _For this assignment you will only need to implement one round_.
+The game consists of three rounds. _For this assignment, you will only need to implement one round._
 
 ## Starting a Round
 
-At the start of a round, the computer-controlled Dealer loads an empty tin with a certain number of real and fake cookies. Each player is given 4 starting cookies and a set of 2 items that give the player different advantages throughout the game.
+At the beginning of a round, each player is given 3 cookies and a set of 4 items that provide various advantages throughout the game. The computer-controlled Dealer then fills an empty tin with 3 real cookies and 2 fake cookies in a random order
 
 ## Turns
 
-The player then chooses to either give a cookie to the dealer or attempt to eat a cookie. Depending on what the player chooses, if the cookie is fake, then either the player or the Dealer loses one of their starting cookies, but if the cookie is real, the player either eats the cookie and continues their turn, or forfeits the tin to the Dealer who plays their turn.
+During their turn, the player chooses to either give a cookie to the Dealer or attempt to eat a cookie from the tin. If the player selects a cookie and it is fake, either the player or the Dealer loses one of their starting cookies. If the cookie is real, the player can either eat it and attempt to eat more cookies or forfeit the tin to the Dealer, allowing the Dealer to take their turn.
 
 ## Ending a Round
 
-The round ends when any one player rounds out of their starting cookies. If the tin is emptied and neither party has lost all of their starting cookies, the Dealer loads the tin again with another selection of real and fake cookies.
+The round concludes when any player runs out of their starting cookies. If the tin is emptied and neither player has lost all their cookies, the Dealer refills the tin with a new selection of real and fake cookies.
 
 ## Special Items
 
-- A magnifying glass, which reveals the cookie currently in the tin
+- A magnifying glass, which reveals the cookie currently at the top of the tin
 - A coupon to Maxi, which restores one starting cookie
-- A milkshake, which safely racks the tin, ejecting the fake cookie without any negative consequences and effectively skipping a turn.
+- A milkshake, which safely clears the tin of a fake cookie without any negative consequences and skips the player's turn
 - An iPad, which distracts the opponent causing them to skip their next turn.
 
 # HTML Specifications
@@ -68,9 +68,9 @@ At the top of the screen both players stats should be listed with the following 
 
 In the middle of the screen there should be a tin of cookies
 
-At the bottom of the screen, there should be a list of the available options to the user:
+At the bottom of the screen, there should be a list of the available options to the user. They can choose to:
 
-- Their items, represented as a list of radio buttons. Players typically can use only one item per turn, consequently all items should be listed as a selection of radio buttons
-- Eat cookie
-- Pass cookie
-- Pass the tin
+- Use an item, represented as a list of radio buttons. Players typically can use only one item per turn.
+- Pass or eat a cookie from the tin, represented as a list of radio buttons.
+
+Once a turn ends
