@@ -6,6 +6,10 @@ created: "2024-09-26"
 number: 9
 ---
 
+# Why learn it?
+
+Usually what happens when you progress in your career, you get rewarded with higher pay and excel spreadsheets. Although it might be a bit dry at times, understanding this tool now will set you up for success in the long run.
+
 # Recap
 
 ## Functions
@@ -18,18 +22,73 @@ Excel has a lot of functions, you could use your mouse to click or you could sim
 
 Why are there dollar signs around some cell references and not others? Or in other words, what is the difference between Relative and Absolute references?
 
-No dollar signs / Relative Referencing 👉 When you copy a formula with relative references to another cell, Excel adjusts the cell references based on the relative position of the new cell.
+## Relative Referencing
+
+When you copy a formula with relative references to another cell, Excel adjusts the cell references based on the relative position of the new cell.
 
 ![refs](./assets/relative-references.gif)
 
-Dollar signs / Absolute Referencing 👉 Remains fixed when you copy a formula
+## Absolute Referencing
+
+Remains fixed when you copy a formula
 
 ![refs](./assets/absolute-references.gif)
+
+## Locking
 
 However, if you choose to not put dollar signs next to a particular column or row to "lock it in place", you will get the following unexpected behavior
 
 ![broken](./assets/broken.gif)
 
-# Lazy Dollars Signs
+## Lazy Dollars Signs
 
-## Formatting
+To add dollar signs without needing to manually click, when u select the cell you are interested in, tap `f4` on Windows or `fn+f4` on Mac to toggle `$` signs
+
+![broken](./assets/f4.gif)
+
+# Custom Style Formatting
+
+Basic formatting will improve the readability of your workbook
+
+## Text Styling
+
+A lot of what you can do in word, you can also in Excel.
+
+- Font Size
+- Colors
+- Text Alignment
+
+## Cell Styling
+
+To make your charts and tables easier to read, you can change the following:
+
+- Borders
+- Fill
+
+# Custom Number Formatting
+
+Excel let's you customize the following types of data:
+
+- $
+- %
+- Dates
+- Times
+- Fractions
+- ...and so much more
+
+## How?
+
+- Highlight the cells you want format
+- Right click the highlight and select `Format Cells`
+- This should open up a new view where you can now select
+
+![demo](./assets/formatting.gif)
+
+# Exercise 1
+
+I'm attaching a somewhat rough Excel sheet that shows the distribution of global audiences for Instagram and Facebook in 2024, organized by age group. Your job is to make the following updates:
+
+- Add the Instagram user data using relative references.
+- Add the Facebook user data using relative references.
+- Format the table to improve readability, using text and cell styling for better presentation.
+- Adjust the numbers so they are displayed as percentages, with 1 decimal place for accuracy.
