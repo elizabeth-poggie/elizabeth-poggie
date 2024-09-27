@@ -210,7 +210,7 @@ const packageName = require("package-name");
 
 # Exercise 1
 
-As an exercise, try setting up a project with node and installing `express` and `lodash`
+As an exercise, try setting up a project with node and installing `express` and `lodash` and try to use `lodash` in your index.js by looking through the [official docs](https://lodash.com/docs/4.17.15)
 
 ## Solution
 
@@ -223,4 +223,23 @@ Your package.json should look something like this:
     "lodash": "^4.17.21"
   }
 }
+```
+
+And your `index.js` should look something like this:
+
+```js
+"use strict";
+
+const _ = require("lodash");
+
+const cats = [
+  { user: "Charlie", age: 2 },
+  { user: "Olive", age: 3 },
+  { user: "Bill", age: 2 },
+  { user: "Snuffles", age: 10 }, // only one older cat
+];
+
+const groupedCats = _.groupBy(cats, "age");
+
+console.log(groupedCats);
 ```
