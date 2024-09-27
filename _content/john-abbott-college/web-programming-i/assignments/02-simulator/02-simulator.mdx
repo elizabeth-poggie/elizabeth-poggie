@@ -13,7 +13,7 @@ number: 2
 - Submission: Upload a `.zip` file containing your work folder to LEA.
 - Late Penalty: Late submissions lose 10% per day to a maximum of 3 days. Nothing is accepted after 3 days and a grade of zero will be given.
 
-# Doughboy Roulette
+# Cookie Roulette
 
 Peeking the interest of an [Angel Investor](https://en.wikipedia.org/wiki/Angel_investor), your Assignment 1 has successfully secured the funding it needs to take your project to the next level.
 
@@ -21,7 +21,7 @@ Using HTML Forms, you will create a cookie-themed strategy game inspired by the 
 
 # Gameplay
 
-The game consists of three rounds. _For this assignment, you will only need to implement one round._
+The game consists of three rounds. _For this assignment, you will only need to implement the layout for one round._
 
 ## Starting a Round
 
@@ -51,7 +51,9 @@ assignment-2
 ├── index.html
 ├── pages
 │ ├── gameplay.html
-├── script.js
+├── scripts
+│ ├── form.js
+│ ├── gameplay.js
 ```
 
 ## index.html
@@ -87,11 +89,18 @@ Followed by a submit button that says "Take Action".
 
 # JavaScript Specifications
 
-_You do not need to implement the logic of this game for this assignment_. unless you want to AND have already prepared for the Test on October 11th.
+_You do not need to implement the logic of the game for this assignment_, unless you want to AND have already prepared for the Test on October 11th.
 
 For this task, your JavaScript should focus on the following:
 
-- Input validation on `index.html` to ensure players provide valid entries.
+## form.js
+
+Input validation on `index.html` to ensure players provide valid entries.
+
+## gameplay.js
+
+The mechanics of the game layout should include the following:
+
 - Creating 2 player objects (one for the dealer and one for the player), each with three properties: `name`, `startingCookies`, and a hardcoded array of `items`.
 - Dynamically updating the `gameplay.html` page to display all the player stats.
 - Handling the player's chosen action. Depending on their decision:
@@ -102,10 +111,10 @@ For this task, your JavaScript should focus on the following:
 # Tips
 
 - Use only strict equality `===`
-- Make sure tyo add `"use strict";` at the top of your script to save yourself from a painful night of debugging
+- Make sure to add `"use strict";` at the top of your script to save yourself from a painful night of debugging
 - Do not access global variables from inside of an object
 - Stick to `let`/`const` and avoid `var`
 
 # Submission
 
-Although this assignment seems large, by doing this you are actually studying for the test. Focus on implementing the HTML forms with the appropriate actions, validation, and event listeners. Only take this to the next level if you have the time and are having fun!!
+This assignment was designed with the intent to prepare you for your upcoming test. Focus on implementing the HTML forms with the appropriate actions, validation, and event listeners. If you’re feeling confident and having fun, feel free to take it to the next level :^)
