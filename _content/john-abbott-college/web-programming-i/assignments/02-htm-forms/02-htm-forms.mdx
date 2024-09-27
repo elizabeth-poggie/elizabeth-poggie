@@ -1,0 +1,120 @@
+---
+# General Information
+category: "Web Programming I"
+title: "HTML Forms"
+created: "2024-09-27"
+number: 2
+---
+
+# Overview
+
+- Worth: This lab will count towards the Assignment portion of your final grade at `6%`
+- Due: `October 12th, 2024 @ 2:00am` - I recommend submitting by `October 11 @ 9:00pm` to ensure good sleep, however for those who thrive under last-minute pressure, you have until the deadline later that evening 👀
+- Submission: Upload a `.zip` file containing your work folder to LEA.
+- Late Penalty: Late submissions lose 10% per day to a maximum of 3 days. Nothing is accepted after 3 days and a grade of zero will be given.
+
+# Cookie Roulette
+
+Peeking the interest of an [Angel Investor](https://en.wikipedia.org/wiki/Angel_investor), your Assignment 1 has successfully secured the funding it needs to take your project to the next level.
+
+Using HTML Forms, you will create a cookie-themed strategy game inspired by the indie tabletop horror game [Buckshot Roulette](https://en.wikipedia.org/wiki/Buckshot_Roulette). Your version is intended to reach a wider audience, so it will need to be family-friendly and align with [College Policies](https://johnabbott.qc.ca/the-college/official-documents/).
+
+# Gameplay
+
+The game consists of three rounds. _For this assignment, you will only need to implement the layout for one round._
+
+## Starting a Round
+
+At the beginning of a round, each player is given 3 cookies and a set of 4 items that provide various advantages throughout the game. The computer-controlled Dealer then fills an empty tin with 3 real cookies and 2 fake cookies in a random order
+
+## Turns
+
+During their turn, the player chooses to either give a cookie to the Dealer or attempt to eat a cookie from the tin. If the player selects a cookie and it is fake, either the player or the Dealer loses one of their starting cookies. If the cookie is real, the player can either eat it and attempt to eat more cookies or forfeit the tin to the Dealer, allowing the Dealer to take their turn.
+
+## Ending a Round
+
+The round concludes when any player runs out of their starting cookies. If the tin is emptied and neither player has lost all their cookies, the Dealer refills the tin with a new selection of real and fake cookies.
+
+## Special Items
+
+- A magnifying glass, which reveals the cookie currently at the top of the tin
+- A coupon to Maxi, which restores one starting cookie
+- A milkshake, which safely clears the tin of a fake cookie without any negative consequences and skips the player's turn
+- An iPad, which distracts the opponent causing them to skip their next turn.
+
+# Assignment Structure
+
+```md
+assignment-2
+├── index.html
+├── pages
+│ ├── gameplay.html
+├── scripts
+│ ├── form.js
+│ ├── gameplay.js
+```
+
+# HTML Specifications
+
+## index.html
+
+Before the game begins, the player must fill out the following form:
+
+- Player Name: A text input
+- Player Age: A number input
+- Start Game: A submit button
+
+Make sure the browser doesn't submit the form unless the player has provided a valid name and age. If the input is invalid, a message should pop up to guide the user.
+
+Once everything looks good, the player should be redirected to the "Game Play" screen with a form `action`.
+
+## gameplay.html
+
+At the top of the screen, display both players' stats, which should include:
+
+- Player name
+- Number of starting cookies
+- A list of available items
+- A small icon indicating whose turn it is
+
+In the center of the screen, place a tin of cookies. (style this however you like)
+
+At the bottom, list the player's available actions as a list of radio buttons inside a form. They can:
+
+- Use an item
+- Pass the cookie from the tin
+- Eat a cookie from the tin
+
+Followed by a submit button that says "Take Action".
+
+# JavaScript Specifications
+
+_You do not need to implement the logic of the game for this assignment_, unless you want to AND have already prepared for the Test on October 11th.
+
+For this task, your JavaScript should focus on the following:
+
+## form.js
+
+Input validation on `index.html` to ensure players provide valid entries.
+
+## gameplay.js
+
+The mechanics of the game layout should include the following:
+
+- Creating 2 player objects (one for the dealer and one for the player), each with three properties: `name`, `startingCookies`, and a hardcoded array of `items`.
+- Dynamically updating the `gameplay.html` page to display all the player stats.
+- Handling the player's chosen action. Depending on their decision:
+  - Using an item should redirect them to `item-selection.html` (do not implement that page)
+  - if the player passes or eats a cookie, and any player's cookies drop to 0, they should be redirected to `game-over.html` (do not implement that page)
+  - If the player passes or eats a cookie without reaching 0, they should stay on `gameplay.html` and be asked whether they want to risk another turn or pass the tin to the dealer.
+
+# Tips
+
+- Use only strict equality `===`
+- Make sure to add `"use strict";` at the top of your script to save yourself from a painful night of debugging
+- Do not access global variables from inside of an object
+- Stick to `let`/`const` and avoid `var`
+
+# Submission
+
+This assignment was designed with the intent to prepare you for your upcoming test. Focus on implementing the HTML forms with the appropriate actions, validation, and event listeners. If you’re feeling confident and having fun, feel free to take it to the next level :^)
