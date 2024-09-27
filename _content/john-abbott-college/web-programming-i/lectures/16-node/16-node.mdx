@@ -8,70 +8,76 @@ number: 16
 
 # Course updates
 
-Test 1 will take place on _October 11_ as well as your Assignment 2 will be due that evening. This assignment was designed to practice all the concepts we have covered in class up until today so by doing the assignment you will be more than ready for the programming aspect of the test. The best way to learn how to code is to build something meaningful from scratch.
+Test 1 is scheduled for _October 11_, and _Assignment 2_ is due that same evening.
 
-As for the theory, it will be similar difficulty to your quizzes.
+## Assignment 2
+
+This assignment is designed to help you practice all the concepts we've covered in class up to this point. Completing it will ensure you are well-prepared for the programming part of the test.
+
+IMO, the best way to learn how to code is to build something meaningful from scratch. Part of today's class will be dedicated to getting a head start on the project.
+
+## Test 1
+
+The test will encompass all the material from Assignments 1 and 2, as well as the theory covered in the quizzes leading up to the test.
 
 # Introduction
 
-Node.js is an open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside a web browser.
+Node.js is an open-source, cross-platform JavaScript runtime environment that enables the execution of JavaScript code outside a web browser.
 
-I used this practically every day in my three years as a professional developer.
+I have used it almost every day during my three years as a professional developer.
 
 ## Why learn it?
 
-Its one of the most valuable skills you will need to learn as a full stack web developer. That is not going to change anytime soon because of how established it is industry.
+Learning Node.js is one of the most valuable skills for any full-stack web developer. Its importance will not diminish anytime soon due to its strong role in the industry.
 
 ## What is it?
 
-It's not a programming language, but rather a runtime that allows you to write JavaScript on a server. When JavaScript first came along in the 1990s it was designed to run only in the browser as a simple scripting language.
+Node.js is not a programming language; rather, it is a runtime that allows you to write JavaScript on a server. When JavaScript first emerged in the 1990s, it was designed exclusively for the browser as a simple scripting language.
 
-In 2009, Node.js was released and it changed the landscape of web development by allowing programmers to master only 1 language to write a full stack application.
+In 2009, Node.js was released, transforming the web development landscape by enabling programmers to use just one language, JavaScript, to build full-stack applications.
 
-TLDR: It lets you write JS on the server.
+TLDR: It allows you to run JavaScript on the server side.
 
 ## How was it made?
 
-You don't really need to know the details as a beginner, however for the purposes of this class know that it runs the V8 JavaScript engine outside of the browser.
+While you don't need to know the technical details as a beginner, it's important to know that Node.js runs the V8 JavaScript engine outside the browser environment.
 
 ![demo](./assets/1.png)
 
 ## How does it work?
 
-You visit a URL on the internet that points to your server running Node.js. When the request is received we can use Node.js to handle the request and read a file from the server's file system. The server then generates an HTML file as well as carry out other operations and sends it back to the client.
+When you visit a URL that points to your server running Node.js, the server receives the request. Using Node.js, we can handle this request, read files from the server's file system, generate an HTML file, and perform various operations before sending the response back to the client.
 
 ![demo](./assets/2.png)
 
 ## What can Node.js do?
 
-Instead of listing out a bunch of use cases, I will show you how to set up a simple project using Node.js
+Instead of listing out a bunch of use cases, I will guide you through setting up a simple project using Node.js, so you can see its functionalities in action.
 
-# Getting Started
+# Getting Started with Node.js
 
-First let's navigate to VSCode and open up the terminal using `Ctrl + backtick` on Windows 🪟 and `Cmd + backtick` on Mac 🍎
+First, let's open Visual Studio Code and launch the terminal by pressing `Ctrl + backtick` on Windows 🪟 and `Cmd + backtick` on Mac 🍎
 
-## Installing Node.js
+## Installation
 
-It's probably already installed on your system. To verify this, type:
+Node.js is likely already installed on your system. To confirm this, type the following command:
 
 ```bash
 node -v
 ```
 
-This will log your node version to the console. If you get an error at this point, it means you don't have Node.js installed.
+This command will display your Node.js version in the console. If you encounter an error at this point, it indicates that Node.js is not installed.
 
 ## NVM
 
-To get started downloading node its time to set up Node Version Manager (`NVM`). Knowing this tool even if you have node installed will be useful to have in case you need to switch between different versions of node.
-
-This happens quite often in industry.
+we will set up Node Version Manager (`nvm`) to manage different Node.js versions easily. Even if you already have Node.js installed, knowing how to use NVM is helpful, especially for switching between versions, which is common in the industry.
 
 Follow the instructions for your system here:
 
 - MacOS / Linux: [nvm-sh](https://github.com/nvm-sh/nvm)
 - Windows: [nvm-windows](https://github.com/coreybutler/nvm-windows)
 
-To verify your installation, run the following:
+To verify your installation, open up a new terminal and run the following command:
 
 ```bash
 nvm -v
@@ -81,7 +87,7 @@ Once installed, we can start having fun :^)
 
 # REPL Mode
 
-This is a mode that lets you play with JavaScript directly in the terminal. Type `node` into the terminal and you should see the following pop up:
+REPL (Read-Eval-Print Loop) mode allows you to experiment with JavaScript directly in the terminal. Type `node` into the terminal, and you should see the following pop up:
 
 ```text
 Welcome to Node.js v20.10.0.
@@ -89,17 +95,17 @@ Type ".help" for more information.
 >
 ```
 
-Now type:
+Now, type the following command:
 
 ```js
 console.log("Hello World");
 ```
 
-However most of the time we want to writer JavaScript that lives in an actual file. to exit this mode hit `Ctrl+C` twice.
+Most of the time, however, we want to write JavaScript that exists in an actual file. To exit REPL mode, hit `Ctrl+C` twice.
 
 # Our First Node App
 
-Create an empty folder in VSCode called `node-app`. Inside this folder create a file `index.js`, this is the default entry point of all our node applications.
+Create an empty folder in VSCode called `node-app`. Inside this folder, create a file named `index.js`. This file serves as the default entry point for all our Node.js applications.
 
 ```md
 node-app
@@ -112,13 +118,13 @@ Add the following to your `index.js` to make sure your project has been set up r
 console.log("Hello World ✨");
 ```
 
-And to run your app head over to the terminal and in the root folder and run the following:
+To run your app, go back to the terminal, navigate to the root folder, and execute the following command:
 
 ```bash
 node .
 ```
 
-Congrats you just made your first app :^)
+Congrats, you just created your first Node.js app :^)
 
 # NPM
 
@@ -200,4 +206,21 @@ At the top of your file, where you want to use the package you just brought in, 
 
 ```js
 const packageName = require("package-name");
+```
+
+# Exercise 1
+
+As an exercise, try setting up a project with node and installing `express` and `lodash`
+
+## Solution
+
+Your package.json should look something like this:
+
+```json
+{
+  "dependencies": {
+    "express": "^4.21.0",
+    "lodash": "^4.17.21"
+  }
+}
 ```
