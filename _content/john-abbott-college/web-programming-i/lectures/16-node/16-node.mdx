@@ -38,7 +38,7 @@ You don't really need to know the details as a beginner, however for the purpose
 
 ## How does it work?
 
-You visit a URL on the internet that points to your server running Node.js. When the request is received we can use Node.js to handle the request and read a file from the server's file system. The server then generates an HTML file as well as carry out other operations and sends it back to the client
+You visit a URL on the internet that points to your server running Node.js. When the request is received we can use Node.js to handle the request and read a file from the server's file system. The server then generates an HTML file as well as carry out other operations and sends it back to the client.
 
 ![demo](./assets/2.png)
 
@@ -48,4 +48,72 @@ Instead of listing out a bunch of use cases, I will show you how to set up a sim
 
 # Getting Started
 
+First let's navigate to VSCode and open up the terminal using `Ctrl + backtick` on Windows 🪟 and `Cmd + backtick` on Mac 🍎
+
 ## Installing Node.js
+
+It's probably already installed on your system. To verify this, type:
+
+```bash
+node -v
+```
+
+This will log your node version to the console. If you get an error at this point, it means you don't have Node.js installed.
+
+## NVM
+
+To get started downloading node its time to set up Node Version Manager (`NVM`). Knowing this tool even if you have node installed will be useful to have in case you need to switch between different versions of node.
+
+This happens quite often in industry.
+
+Follow the instructions for your system here:
+
+- MacOS / Linux: [nvm-sh](https://github.com/nvm-sh/nvm)
+- Windows: [nvm-windows](https://github.com/coreybutler/nvm-windows)
+
+To verify your installation, run the following:
+
+```bash
+nvm -v
+```
+
+Once installed, we can start having fun :^)
+
+# REPL Mode
+
+This is a mode that lets you play with JavaScript directly in the terminal. Type `node` into the terminal and you should see the following pop up:
+
+```text
+Welcome to Node.js v20.10.0.
+Type ".help" for more information.
+>
+```
+
+Now type:
+
+```js
+console.log("Hello World");
+```
+
+However most of the time we want to writer JavaScript that lives in an actual file. to exit this mode hit `Ctrl+C` twice.
+
+# Our First Node App
+
+Create an empty folder in VSCode called `node-app`. Inside this folder create a file `index.js`, this is the default entry point of all our node applications.
+
+```md
+node-app
+├── index.js
+```
+
+Add the following to your `index.js` to make sure your project has been set up right:
+
+```js
+console.log("Hello World ✨");
+```
+
+And to run your app head over to the terminal and in the root folder and run the following:
+
+```bash
+node .
+```
