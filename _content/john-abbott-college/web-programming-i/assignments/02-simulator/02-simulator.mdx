@@ -87,14 +87,25 @@ Followed by a submit button that says "Take Action".
 
 # JavaScript Specifications
 
-You do not need to implement the logic of this game for this assignment unless you want to AND have already prepared for the Test on October 11th.
+_You do not need to implement the logic of this game for this assignment_. unless you want to AND have already prepared for the Test on October 11th.
 
-Instead, your Javascript will focus on:
+For this task, your JavaScript should focus on the following:
 
-- Input validation for the "Starting Screen"
-- 2 player Objects, representing the dealer and the player containing 3 properties: `name`, `startingCookies`, and a hardcoded array of `items`.
-- Dynamically adding elements to `gameplay.html` that contains all the player stats
-- Depending on what action the user takes, if they choose to select an item they should be redirected to the proper page. Options include:
-  - Use an item ==> `item-selection.html`
-  - Passing or eating a cookie, if any player is at 0 starting cookies ==> `game-over.html`
-  - Passing or eating a cookie ==> `gameplay.html` and the player is prompted to risk another turn or pass the tin to the Dealer.
+- Input validation on `index.html` to ensure players provide valid entries.
+- Creating 2 player objects (one for the dealer and one for the player), each with three properties: `name`, `startingCookies`, and a hardcoded array of `items`.
+- Dynamically updating the `gameplay.html` page to display all the player stats.
+- Handling the player's chosen action. Depending on their decision:
+  - Using an item should redirect them to `item-selection.html` (do not implement that page)
+  - if the player passes or eats a cookie, and any player's cookies drop to 0, they should be redirected to `game-over.html` (do not implement that page)
+  - If the player passes or eats a cookie without reaching 0, they should stay on `gameplay.html` and be asked whether they want to risk another turn or pass the tin to the dealer.
+
+# Tips
+
+- Use only strict equality `===`
+- Make sure tyo add `"use strict";` at the top of your script to save yourself from a painful night of debugging
+- Do not access global variables from inside of an object
+- Stick to `let`/`const` and avoid `var`
+
+# Submission
+
+Although this assignment seems large, by doing this you are actually studying for the test. Focus on implementing the HTML forms with the appropriate actions, validation, and event listeners. Only take this to the next level if you have the time and are having fun!!
