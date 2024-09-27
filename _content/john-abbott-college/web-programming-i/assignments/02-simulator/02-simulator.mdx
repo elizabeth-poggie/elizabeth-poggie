@@ -46,31 +46,55 @@ The round concludes when any player runs out of their starting cookies. If the t
 
 ## Assignment Structure
 
-## Starting Screen
+```md
+assignment-2
+├── index.html
+├── pages
+│ ├── gameplay.html
+├── script.js
+```
 
-Before starting the game, the player submit the following form:
+## index.html
 
-- Player Name:
-- Player Age:
+Before the game begins, the player must fill out the following form:
 
-Do not allow the browser to submit the form unless the user has provided a name and a valid age. If the user inputs trash, a user-friendly message should appear.
+- Player Name: A text input
+- Player Age: A number input
+- Start Game: A submit button
 
-Once the user enters a valid input, they should be redirected to the "Game Play" screen
+Make sure the browser doesn't submit the form unless the player has provided a valid name and age. If the input is invalid, a message should pop up to guide the user.
 
-## Gameplay Screen
+Once everything looks good, the player should be redirected to the "Game Play" screen with a form `action`.
 
-At the top of the screen both players stats should be listed with the following information:
+## gameplay.html
+
+At the top of the screen, display both players' stats, which should include:
 
 - Player name
-- Starting cookies
-- The list of items they have available to them
-- A small icon that identifies which player's turn it is.
+- Number of starting cookies
+- A list of available items
+- A small icon indicating whose turn it is
 
-In the middle of the screen there should be a tin of cookies
+In the center of the screen, place a tin of cookies. (style this however you like)
 
-At the bottom of the screen, there should be a list of the available options to the user. They can choose to:
+At the bottom, list the player's available actions as a list of radio buttons inside a form. They can:
 
-- Use an item, represented as a list of radio buttons. Players typically can use only one item per turn.
-- Pass or eat a cookie from the tin, represented as a list of radio buttons.
+- Use an item
+- Pass the cookie from the tin
+- Eat a cookie from the tin
 
-Once a turn ends
+Followed by a submit button that says "Take Action".
+
+# JavaScript Specifications
+
+You do not need to implement the logic of this game for this assignment unless you want to AND have already prepared for the Test on October 11th.
+
+Instead, your Javascript will focus on:
+
+- Input validation for the "Starting Screen"
+- 2 player Objects, representing the dealer and the player containing 3 properties: `name`, `startingCookies`, and a hardcoded array of `items`.
+- Dynamically adding elements to `gameplay.html` that contains all the player stats
+- Depending on what action the user takes, if they choose to select an item they should be redirected to the proper page. Options include:
+  - Use an item ==> `item-selection.html`
+  - Passing or eating a cookie, if any player is at 0 starting cookies ==> `game-over.html`
+  - Passing or eating a cookie ==> `gameplay.html` and the player is prompted to risk another turn or pass the tin to the Dealer.
