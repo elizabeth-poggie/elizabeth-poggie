@@ -92,3 +92,119 @@ npm set registry https://registry.npmjs.org/
 ```
 
 In the context of npm, a registry is a _centralized_ repository that stores and distributes JavaScript packages. This differs from CDNs which are a network of _distributed_ servers that deliver web content (e.g. jQuery).
+
+# Exercise 1
+
+As an exercise, try setting up a project with node and installing `express` and `lodash`. Try to use `lodash` in your `index.js` by referring to the [official docs](https://lodash.com/docs/4.17.15)
+
+## Solution
+
+Your `package.json` should look something like this:
+
+```json
+{
+  "dependencies": {
+    "express": "^4.21.0",
+    "lodash": "^4.17.21"
+  }
+}
+```
+
+And your `index.js` should look something like this:
+
+```js
+"use strict";
+
+const _ = require("lodash");
+
+const cats = [
+  { user: "Charlie", age: 2 },
+  { user: "Olive", age: 3 },
+  { user: "Bill", age: 2 },
+  { user: "Snuffles", age: 10 }, // only one older cat
+];
+
+const groupedCats = _.groupBy(cats, "age");
+
+console.log(groupedCats);
+```
+
+# Modules
+
+Ok so we learnt how to import other peoples modules, but what happens if we want to make our own?
+
+## Getting Started
+
+Let's say you have some JavaScript code that lives in a single file. You can turn this into a module by exporting it.
+
+This allows other files to use an `import` statement to import this file as a dependency.
+
+## What is a module?
+
+A file that exports some code.
+
+## Why is this so cool?
+
+This allows developers to organize code in their own projects or share the code with the world with package managers `npm`
+
+## How do you export your code?
+
+You can do so in a variety of ways listed below. The way you export the code will impact the way the rest of the code imports it.
+
+# Module Cheat sheet
+
+## Names
+
+Name Export Statement:
+
+```js
+export const name = "value";
+```
+
+Name Import Statement:
+
+```js
+import { name } from "...";
+```
+
+## Default
+
+Default Export Statement:
+
+```js
+export default "value";
+```
+
+Default Import Statement:
+
+```js
+import anyName from "...";
+```
+
+## Rename
+
+Rename Export Statement:
+
+```js
+export { name as newName };
+```
+
+Rename Import Statement:
+
+```js
+import { newName } from "...";
+```
+
+## Lists
+
+List + Rename Export Statement:
+
+```js
+export { name1, name2 as newName2 };
+```
+
+List + Rename Import Statement:
+
+```js
+import { name1 as newName1, newName2 } from "...";
+```
