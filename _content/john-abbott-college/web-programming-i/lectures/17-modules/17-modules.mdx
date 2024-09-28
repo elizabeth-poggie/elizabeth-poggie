@@ -1,0 +1,94 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Modules"
+created: "2024-09-28"
+number: 17
+---
+
+# Quick Recap
+
+- What is Node.js?
+- What is nvm?
+- What is npm?
+- What is the entry point of a node project?
+- What is the `package.json`?
+- What happens if i delete `node_modules` from my project? How do I get them back?
+
+# Common Node.js problems and how to fix them
+
+## Command not found
+
+You might see the following:
+
+```text
+command not found
+```
+
+To fix this:
+
+- Ensure that Node.js is installed properly: Use `node -v` and `npm -v` to verify
+- Download [nvm](https://github.com/nvm-sh/nvm) or [node](https://nodejs.org/en)
+
+## Cannot run npm
+
+You might get an error message on your machine that contains the following:
+
+```text
+cannot run scripts on this machine.
+```
+
+In this case, check to see if you are in `powershell` in your VScode. If this is the case, next to the `+` icon on the upper right hand corner of your terminal select the `V` icon and open up either a `bash` or `zsh`
+
+## Cannot Find Module
+
+When you run into this problem it's usually because you are trying to access something that isn't installed.
+
+To fix this, run the below in your project and verify that your `package.json` has been updated to reflect these problems.
+
+```bash
+npm install module_name # but use the actual package name
+```
+
+If there is still an import problem at this point, your `node_modules` might have become corrupted. delete the `node_modules` directory and run `npm install` to resolve the problem.
+
+```bash
+rm -rf node_modules # clicking delete is also valid
+npm install # fresh node modules 4 u
+```
+
+## The engine "node" is incompatible with this module
+
+This occurs when the version of Node.js you’re using does not meet the minimum version requirements specified by a package or dependency. TO fix this check your `package.json` and look for the following:
+
+```json
+"engines": {
+ "node": ">=14.0.0"
+}
+```
+
+This specifies the Node.js version you project expects. Using `nvm` (Node Version Manager) switch to this expected version:
+
+```bash
+nvm install 14
+nvm use 14
+```
+
+## Version Conflicts
+
+Some packages may unfortunately not work with newer versions of Node.js. To fix this, you need `nvm` again to switch to an older version of node:
+
+```bash
+nvm install 12
+nvm use 12
+```
+
+## npm install takes an eternity
+
+Sometimes running `npm install` takes an eternity or fails due to network or dependency issues. To fix this, you can actually specify a faster npm registry:
+
+```bash
+npm set registry https://registry.npmjs.org/
+```
+
+In the context of npm, a registry is a _centralized_ repository that stores and distributes JavaScript packages. This differs from CDNs which are a network of _distributed_ servers that deliver web content (e.g. jQuery).
