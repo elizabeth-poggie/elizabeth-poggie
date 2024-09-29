@@ -358,4 +358,60 @@ The extension is necessary for ESmodules in Node.js.
 
 # Modules in the Real world
 
+You can visit my [repo](https://github.com/elizabeth-poggie/elizabeth-poggie/tree/main/src/utils) to check out how I created my own utilities if you are curious :^)
+
 # Exercise 2
+
+In this exercise you are going to create some useful utilities.
+
+First, create the following folder structure:
+
+```md
+node-app
+├── node_modules
+├── utils
+│ ├── textFormatters.js
+├── index.js
+├── package-lock.json
+├── package.json
+```
+
+Next, make the appropriate changes in your `package.json` to use ESModules and create the following functions in `textFormatters.js`:
+
+- `formatDateShort` that takes a `dateString` as input and formats the date in short form
+- `formatDateLong` that takes a `dateString` as input and formats the date in long form
+
+Hint: you can turn the `dateString` into a `Date` object with the following code snippet:
+
+```js
+const date = new Date(dateString);
+```
+
+And you can read the docs [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) to properly format the object
+
+## Solution
+
+Your `textFormatters.js` should look close to the following:
+
+```js
+export function formatDateShort(dateString) {
+  const date = new Date(dateString);
+  const options = { month: "short", day: "numeric" };
+  return date.toLocaleDateString(undefined, options); // Formats to Month Day
+}
+
+export function formatDateLong(dateString) {
+  const date = new Date(dateString);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return date.toLocaleDateString(undefined, options); // Formats to 'Month Day, Year'
+}
+```
+
+While your `index.js` should look close to:
+
+```js
+import { formatDateShort, formatDateLong } from "./utils/textFormatters.js";
+
+console.log(formatDateShort("2024-09-29"));
+console.log(formatDateLong("2024-09-29"));
+```
