@@ -149,9 +149,14 @@ This allows developers to organize code in their own projects or share the code 
 
 ## How do you export your code?
 
-You can do so in a variety of ways listed below. The way you export the code will impact the way the rest of the code imports it.
+The way you export the code will impact the way the rest of the code imports it. There are 2 ways to create a custom module:
 
-# Module Cheat sheet
+- ESModules (modern approach) using `import`/`export`
+- CommonJS (old school approach) using `require`/`module.exports`
+
+# ESModules
+
+`import` is the newer module system that is now part of the ECMAScript standard and is supported natively by modern browsers and also in newer versions of Node.js. It requires extra setup and works like this:
 
 ## Names
 
@@ -208,3 +213,78 @@ List + Rename Import Statement:
 ```js
 import { name1 as newName1, newName2 } from "...";
 ```
+
+# CommonJS
+
+`require` is the older module system, primarily used in older versions of Node.js. By default, Node.js treats files as CommonJS modules and works like this:
+
+##
+
+# When do I use which method?
+
+- If you’re working in modern JavaScript, particularly for projects that use tools like React, Vue, etc., `import` Modules is the recommended and preferred approach. (e.g. what i do)
+- If you are working in older projects, or the projects need to be "backwards compatible", then `require` is the recommended approach
+
+## Do I need to know both?
+
+Yes. You will likely see both approaches throughout your career.
+
+# Modules in Practice
+
+Building on `Exercise 1`, let's create a new subfolder called `utils` where we are going to create our own custom module called `customModule.js`. Your folder structure should look something like this:
+
+```md
+node-app
+├── node_modules
+├── utils
+│ ├── customModule.js
+├── index.js
+├── package-lock.json
+├── package.json
+```
+
+Now we can begin to develop our own reusable code. Let's start with something simple we probably need to rewrite a lot of in our projects: Text Formatting.
+
+## CommonJS Approach
+
+Inside `customModule.js`, lets add the following changes:
+
+```js
+function caps(input) {
+  if (!input || !typeof string) {
+    return null;
+  }
+  return input.toUpperCase();
+}
+
+module.exports = { caps }; // notice me
+```
+
+Now when we head over to `index.js` and we can now import the code with the following:
+
+```js
+// notice me
+const { caps } = require("./utils/customModule");
+
+console.log(caps("ahhhhhhhhhhhh"));
+```
+
+When we run the following command in our terminal:
+
+```bash
+node .
+```
+
+We should see the following logged to the terminal:
+
+```text
+AHHHHHHHHHHHH
+```
+
+However let's say we want to use the more modern approach to modules, let's get started:
+
+##
+
+# Modules in the Real world
+
+# Exercise 2
