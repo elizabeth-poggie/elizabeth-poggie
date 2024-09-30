@@ -129,13 +129,11 @@ console.log(groupedCats);
 
 # Modules
 
-Ok so we learnt how to import other peoples modules, but what happens if we want to make our own?
+So far, we have learned how to import modules created by others, but what if we want to create our own?
 
 ## Getting Started
 
-Let's say you have some JavaScript code that lives in a single file. You can turn this into a module by exporting it.
-
-This allows other files to use an `import` statement to import this file as a dependency.
+Imagine you have some JavaScript code contained in a single file. You can turn this code into a module by exporting it. This allows other files to use an `import` statement to include your file as a dependency.
 
 ## What is a module?
 
@@ -143,14 +141,16 @@ A file that exports some code.
 
 ## Why is this so cool?
 
-This allows developers to organize code in their own projects or share the code with the world with package managers `npm`
+Creating modules helps developers organize their code within projects and share it with others through package managers like `npm`
 
 ## How do you export your code?
 
-The way you export the code will impact the way the rest of the code imports it. There are 2 ways to create a custom module:
+The method you choose to export your code will determine how other files import it. There are two main approaches to creating a custom module:
 
-- ESModules (modern approach) using `import`/`export`
-- CommonJS (old school approach) using `require`/`module.exports`
+- ESModules: This is the modern approach that uses `import`/`export`
+- CommonJS: This is the traditional method that uses `require`/`module.exports`
+
+We will cover both methods in this lecture.
 
 # ESModules
 
