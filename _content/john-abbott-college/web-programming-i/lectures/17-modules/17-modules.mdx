@@ -2,7 +2,7 @@
 # General Information
 category: "Web Programming I"
 title: "Modules"
-created: "2024-09-28"
+created: "2024-09-30"
 number: 17
 ---
 
@@ -361,9 +361,9 @@ You can visit my [repo](https://github.com/elizabeth-poggie/elizabeth-poggie/tre
 
 # Exercise 2
 
-In this exercise you are going to create some useful utilities.
+In this exercise, you will create some useful utilities.
 
-First, create the following folder structure:
+First, set up the following folder structure:
 
 ```md
 node-app
@@ -375,22 +375,23 @@ node-app
 ├── package.json
 ```
 
-Next, make the appropriate changes in your `package.json` to use ESModules and create the following functions in `textFormatters.js`:
+Next, make the necessary changes in your `package.json` to use ES modules and create the following functions in `textFormatters.js`:
 
-- `formatDateShort` that takes a `dateString` as input and formats the date in short form
-- `formatDateLong` that takes a `dateString` as input and formats the date in long form
+- `formatDateShort`: Takes a `dateString` as input and formats the date in short form.
+- `formatDateLong`: Takes a `dateString` as input and formats the date in long form.
 
-Hint: you can turn the `dateString` into a `Date` object with the following code snippet:
+_Hint: You can convert the `dateString` into a `Date` object with the following code snippet_
 
 ```js
+// dateString: 2024-09-30
 const date = new Date(dateString);
 ```
 
-And you can read the docs [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) to properly format the object
+You can read the documentation [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) to find out how to format the date correctly.
 
 ## Solution
 
-Your `textFormatters.js` should look close to the following:
+Your `textFormatters.js` should be close to the following:
 
 ```js
 export function formatDateShort(dateString) {
@@ -406,7 +407,7 @@ export function formatDateLong(dateString) {
 }
 ```
 
-While your `index.js` should look close to:
+While your `index.js` should be close to this:
 
 ```js
 import { formatDateShort, formatDateLong } from "./utils/textFormatters.js";
