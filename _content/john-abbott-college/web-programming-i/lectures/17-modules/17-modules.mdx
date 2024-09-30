@@ -154,19 +154,15 @@ We will cover both methods in this lecture.
 
 # ESModules
 
-`import` is the newer module system that is now part of the ECMAScript standard and is supported natively by modern browsers and also in newer versions of Node.js. It requires extra setup and works like this:
+The `import` syntax is part of the newer module system that follows the ECMAScript standard. It is natively supported by modern browsers and the latest versions of Node.js. While it may require some additional setup, it provides a clear and structured way to manage modules. Here’s how it works:
 
 ## Names
 
-Name Export Statement:
-
 ```js
+// Named Export Statement
 export const name = "value";
-```
 
-Name Import Statement:
-
-```js
+// Named Import Statement
 import { name } from "...";
 ```
 
@@ -175,55 +171,60 @@ import { name } from "...";
 Default Export Statement:
 
 ```js
+// Default Export Statement
 export default "value";
-```
 
-Default Import Statement:
-
-```js
+// Default Import Statement
 import anyName from "...";
 ```
 
 ## Rename
 
-Rename Export Statement:
+You can also rename exports during the export and import processes.
 
 ```js
+// Rename Export Statement
 export { name as newName };
-```
 
-Rename Import Statement:
-
-```js
+// Rename Import Statement
 import { newName } from "...";
 ```
 
 ## Lists
 
-List + Rename Export Statement:
+You can export and import multiple items, including renaming some of them.
 
 ```js
+// List + Rename Export Statement
 export { name1, name2 as newName2 };
-```
 
-List + Rename Import Statement:
-
-```js
+// List + Rename Import Statement
 import { name1 as newName1, newName2 } from "...";
 ```
 
+By using these `export` and `import` patterns, you can manage dependencies in your projects, making your code easier to maintain.
+
 # CommonJS
 
-`require` is the older module system, primarily used in older versions of Node.js. By default, Node.js treats files as CommonJS modules and works like this:
+The `require` function represents the older module system, primarily used in earlier versions of Node.js. By default, Node.js treats files as CommonJS modules. Here’s how it works:
+
+```js
+// Importing
+const { name } = require("...");
+
+// Exporting
+module.exports = { name };
+```
 
 # When do I use which method?
 
-- If you’re working in modern JavaScript, particularly for projects that use tools like React, Vue, etc., `import` Modules is the recommended and preferred approach. (e.g. what i do)
-- If you are working in older projects, or the projects need to be "backwards compatible", then `require` is the recommended approach
+If you are working with modern JavaScript frameworks or libraries, such as React or Vue, the recommended approach is to use `import` for modules. This is especially true for new projects, like those I work on.
+
+If you are maintaining older projects or working on projects that need to be backwards compatible, then using `require` is the preferred method.
 
 ## Do I need to know both?
 
-Yes. You will likely see both approaches throughout your career.
+Yes. Throughout your career, you will likely encounter both methods.
 
 # Modules in Practice
 
