@@ -209,10 +209,10 @@ By using these `export` and `import` patterns, you can manage dependencies in yo
 The `require` function represents the older module system, primarily used in earlier versions of Node.js. By default, Node.js treats files as CommonJS modules. Here’s how it works:
 
 ```js
-// Importing
+// CommonJS Import Statement
 const { name } = require("...");
 
-// Exporting
+// CommonJS Export Statement
 module.exports = { name };
 ```
 
@@ -228,7 +228,7 @@ Yes. Throughout your career, you will likely encounter both methods.
 
 # Modules in Practice
 
-Building on `Exercise 1`, let's create a new subfolder called `utils` where we are going to create our own custom module called `customModule.js`. Your folder structure should look something like this:
+Building on `Exercise 1`, let’s create a new subfolder named utils where we will develop our own custom module called `customModule.js`. Your folder structure should look like this:
 
 ```md
 node-app
@@ -240,11 +240,13 @@ node-app
 ├── package.json
 ```
 
-Now we can begin to develop our own reusable code. Let's start with something simple we probably need to rewrite a lot of in our projects: Text Formatting.
+Now we can begin developing reusable code. Let's start with something simple that we often need to rewrite in our projects: text formatting.
+
+_Fun fact: In the industry, you rarely start a Node project from scratch. Instead, you often build upon the work of many others, using existing libraries, frameworks, and modules_ :^)
 
 ## CommonJS Approach
 
-Inside `customModule.js`, lets add the following changes:
+In `customModule.js`, let’s add the following code:
 
 ```js
 function caps(input) {
@@ -257,7 +259,7 @@ function caps(input) {
 module.exports = { caps }; // notice me
 ```
 
-Now when we head over to `index.js` and we can now import the code with the following:
+Next, in `index.js`, you can import the code like this:
 
 ```js
 // notice me
@@ -266,23 +268,23 @@ const { caps } = require("./utils/customModule");
 console.log(caps("ahhhhhhhhhhhh"));
 ```
 
-When we run the following command in our terminal:
+When you run the following command in your terminal:
 
 ```bash
 node .
 ```
 
-We should see the following logged to the terminal:
+You should see the following output:
 
 ```text
 AHHHHHHHHHHHH
 ```
 
-However let's say we want to use the more modern approach to modules...
+Now, let’s take the more modern approach to modules
 
 ## ESModules
 
-First, we need to let Node.js know we plan to take the modern approach by adding the following to our `package.json`
+To inform Node.js that we want to use the modern approach, add the following line to your `package.json`
 
 ```json
 {
@@ -294,7 +296,7 @@ First, we need to let Node.js know we plan to take the modern approach by adding
 }
 ```
 
-This tells Node.js to interpret `.js` files as ES modules. Now we can head over to `customModule.js` and export it with the modern convention:
+This configuration tells Node.js to interpret `.js` files as ESmodules. Now, we can modify `customModule.js` to use the modern `export` syntax:
 
 ```js
 export function caps(input) {
@@ -305,7 +307,7 @@ export function caps(input) {
 }
 ```
 
-And import it in your `index.js` with the following convention:
+In `index.js`, import it using the following syntax:
 
 ```js
 import { caps } from "./utils/customModule.js";
@@ -313,13 +315,13 @@ import { caps } from "./utils/customModule.js";
 console.log(caps("ahhhhhhhhhhhh"));
 ```
 
-To achieve the same functionality as before.
+This achieves the same functionality as before.
 
 # Common Module problems and how to fix them
 
 ## Cannot use import statement outside a module
 
-if you see something close to the following:
+If you encounter an error message like this:
 
 ```text
 import { myModule } from "some/link/to/myModule";
@@ -328,7 +330,7 @@ import { myModule } from "some/link/to/myModule";
 SyntaxError: Cannot use import statement outside a module
 ```
 
-This means you need to configure your `package.json` with the following line:
+This indicates that you need to configure your `package.json` with the following line:
 
 ```json
 {
@@ -338,14 +340,14 @@ This means you need to configure your `package.json` with the following line:
 
 ## Cannot find module
 
-If you see something close to the following:
+If you see an error similar to this:
 
 ```text
 Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'node-app/some/link/to/myModule' imported from node-app/index.js
 Did you mean to import ../utils/myModule.js?
 ```
 
-Ensure that the file path you are using in your import statement is correct. If your paths still don't work then ensure your import statement ends with a `.js` like so:
+Make sure that the file path in your import statement is correct. If your paths still do not work, ensure that your import statement ends with `.js`, like so:
 
 ```js
 import { myModule } from "./utils/myModule.js"; // notice the extension
@@ -355,7 +357,7 @@ The extension is necessary for ESmodules in Node.js.
 
 # Modules in the Real world
 
-You can visit my [repo](https://github.com/elizabeth-poggie/elizabeth-poggie/tree/main/src/utils) to check out how I created my own utilities if you are curious :^)
+You can visit my [repo](https://github.com/elizabeth-poggie/elizabeth-poggie/tree/main/src/utils) to see how I created my own utilities if you are curious :^)
 
 # Exercise 2
 
