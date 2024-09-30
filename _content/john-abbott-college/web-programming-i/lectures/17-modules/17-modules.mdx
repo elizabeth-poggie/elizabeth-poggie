@@ -8,24 +8,24 @@ number: 17
 
 # Quick Recap
 
-- What is Node.js?
-- What is nvm?
-- What is npm?
-- What is the entry point of a node project?
-- What is the `package.json`?
-- What happens if i delete `node_modules` from my project? How do I get them back?
+- What is Node.js? Node.js is a runtime environment that allows you to run JavaScript code on the server
+- What is nvm? nvm (Node Version Manager) is a tool that allows you to install, manage, and switch between different versions of Node.js
+- What is npm? npm (Node Package Manager) is the default package manager for Node.js
+- What is the entry point of a node project? `index.js`
+- What is the `package.json`? The `package.json` file contains metadata about the project
+- What happens if i delete `node_modules` from my project? How do I get them back? Deleting the `node_modules` folder removes all installed packages. To restore them, run `npm install`
 
 # Common Node.js problems and how to fix them
 
 ## Command not found
 
-You might see the following:
+If you encounter the message:
 
 ```text
 command not found
 ```
 
-To fix this:
+Here’s how to resolve it:
 
 - Ensure that Node.js is installed properly: Use `node -v` and `npm -v` to verify
 - Download [nvm](https://github.com/nvm-sh/nvm) or [node](https://nodejs.org/en)
@@ -217,8 +217,6 @@ import { name1 as newName1, newName2 } from "...";
 # CommonJS
 
 `require` is the older module system, primarily used in older versions of Node.js. By default, Node.js treats files as CommonJS modules and works like this:
-
-##
 
 # When do I use which method?
 
