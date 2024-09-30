@@ -51,3 +51,36 @@ What is the BEST way to prevent the default behavior of a form submission using 
 ## Why?
 
 `event.preventDefault()` is the best practice and the correct method to prevent the default behavior of any event, including form submission in JavaScript. This stops the form from submitting (by default) and allows you to handle the form's data and apply custom form validation, without reloading the page.
+
+# Question 4
+
+What does the following jQuery code do?
+
+```js
+$(document).ready(function () {
+  /* code here */
+});
+```
+
+- ❌ It prevents the default action of a form submission
+- ✅ It ensures the code runs only after the DOM is fully loaded
+- ❌ It waits for the entire page to load, including images
+- ❌ It runs the code immediately when the script is ready
+
+## Why?
+
+This ensures that the JavaScript inside the function will run only once the DOM is fully loaded and is "`ready`" to be accessed. Specifically, it waits for the `DOMContentLoaded` event to trigger.
+
+# Question 5
+
+Which statement correctly describes the difference between `DOMContentLoaded` and `load` events?
+
+- ❌ `DOMContentLoaded` waits for all images to load, while load does not
+- ❌ `load` event fires first, followed by `DOMContentLoaded`
+- ✅ `DOMContentLoaded` is triggered by the `document`, while load is triggered by the `window`
+- ❌ They serve the same purpose and can be used interchangeably
+
+## Why?
+
+- `DOMContentLoaded` is triggered by the `document` when the HTML has been fully loaded and parsed, meaning the DOM is `ready()` for interaction. It doesn't wait for external resources like images or stylesheets to finish loading.
+- The `load` event is triggered by the `window` and fires only after the entire page has loaded, including all images, stylesheets, and other external resources.
