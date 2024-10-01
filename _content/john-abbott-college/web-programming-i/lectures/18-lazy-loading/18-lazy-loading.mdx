@@ -2,6 +2,107 @@
 # General Information
 category: "Web Programming I"
 title: "Lazy Loading"
-created: "2024-09-29"
+created: "2024-10-01"
 number: 18
 ---
+
+# Quick Recap
+
+# Common Module problems and how to fix them
+
+## Cannot use import statement outside a module
+
+If you encounter an error message like this:
+
+```text
+import { myModule } from "some/link/to/myModule";
+^^^^^^
+
+SyntaxError: Cannot use import statement outside a module
+```
+
+This indicates that you need to configure your `package.json` with the following line:
+
+```json
+{
+  "type": "module" // add me to your package
+}
+```
+
+## Cannot find module
+
+If you see an error similar to this:
+
+```text
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'node-app/some/link/to/myModule' imported from node-app/index.js
+Did you mean to import ../utils/myModule.js?
+```
+
+Make sure that the file path in your import statement is correct. If your paths still do not work, ensure that your import statement ends with `.js`, like so:
+
+```js
+import { myModule } from "./utils/myModule.js"; // notice the extension
+```
+
+The extension is necessary for ESmodules in Node.js.
+
+# Modules in the Real world
+
+You can visit my [repo](https://github.com/elizabeth-poggie/elizabeth-poggie/tree/main/src/utils) to see how I created my own utilities if you are curious :^)
+
+# Exercise 2
+
+In this exercise, you will create some useful utilities.
+
+First, set up the following folder structure:
+
+```md
+node-app
+├── node_modules
+├── utils
+│ ├── textFormatters.js
+├── index.js
+├── package-lock.json
+├── package.json
+```
+
+Next, make the necessary changes in your `package.json` to use ES modules and create the following functions in `textFormatters.js`:
+
+- `formatDateShort`: Takes a `dateString` as input and formats the date in short form.
+- `formatDateLong`: Takes a `dateString` as input and formats the date in long form.
+
+_Hint: You can convert the `dateString` into a `Date` object with the following code snippet_
+
+```js
+// dateString: 2024-09-30
+const date = new Date(dateString);
+```
+
+You can read the documentation [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) to find out how to format the date correctly.
+
+## Solution
+
+Your `textFormatters.js` should be close to the following:
+
+```js
+export function formatDateShort(dateString) {
+  const date = new Date(dateString);
+  const options = { month: "short", day: "numeric" };
+  return date.toLocaleDateString(undefined, options); // Formats to Month Day
+}
+
+export function formatDateLong(dateString) {
+  const date = new Date(dateString);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return date.toLocaleDateString(undefined, options); // Formats to 'Month Day, Year'
+}
+```
+
+While your `index.js` should be close to this:
+
+```js
+import { formatDateShort, formatDateLong } from "./utils/textFormatters.js";
+
+console.log(formatDateShort("2024-09-29"));
+console.log(formatDateLong("2024-09-29"));
+```
