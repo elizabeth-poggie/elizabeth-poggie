@@ -244,8 +244,10 @@ function formatDateShort(dateString) {
 function formatDateLong(dateString) {
   const date = new Date(dateString);
   const options = { year: "numeric", month: "long", day: "numeric" };
-  return date.toLocaleDateString(undefined, options); // Formats to 'Month Day, Year'
+  return date.toLocaleDateString(undefined, options);
 }
+
+module.exports = { formatDateShort, formatDateLong }; // notice me
 ```
 
 While your `index.js` should be close to this:
