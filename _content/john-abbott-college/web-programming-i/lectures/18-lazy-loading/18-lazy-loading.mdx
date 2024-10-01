@@ -197,7 +197,7 @@ We are going to force [Youtube](https://www.youtube.com/) to load lazily slower 
 
 Let's build on our example from last class
 
-## Default Approach
+## CommonJS Approach
 
 When you import a module in Node.js using CommonJS, it gets loaded immediately at the time of execution
 
@@ -205,7 +205,7 @@ When you import a module in Node.js using CommonJS, it gets loaded immediately a
 const { caps } = require("./utils/customModule"); // Loaded immediately
 ```
 
-## Lazy Loading Approach
+## Lazy Loading - CommonJS
 
 ```js
 let customModule; // Declare, but don't use
@@ -217,12 +217,61 @@ function useCaps(str) {
   // use caps finally
   return customModule.caps(str);
 }
+
+// now call the function
+console.log(useCaps("ahhhhhhh"));
 ```
 
-## How does this look like when you use it?
+## Lazy Loading - ES Modules
+
+There is a way to do it, but you might find the syntax spooky at the moment. We will explore this in greater detail in week 8
+
+# Exercise 2
+
+Now it's your turn. Using CommonJS, take your Exercise 1 and load your custom modules lazily.
+
+## Solution
+
+Your `textFormatters.js` should be close to the following:
 
 ```js
-console.log(useCaps("ahhhhhhh"));
+function formatDateShort(dateString) {
+  const date = new Date(dateString);
+  const options = { month: "short", day: "numeric" };
+  return date.toLocaleDateString(undefined, options); // Formats to Month Day
+}
+
+function formatDateLong(dateString) {
+  const date = new Date(dateString);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return date.toLocaleDateString(undefined, options); // Formats to 'Month Day, Year'
+}
+```
+
+While your `index.js` should be close to this:
+
+```js
+let textFormatters; // Declare, but don't use
+
+function loadTextFormatters() {
+  if (!textFormatters) {
+    textFormatters = require("./utils/textFormatters"); // Lazy load the module
+  }
+  return textFormatters;
+}
+
+function useFormatDateShort(date) {
+  const { formatDateShort } = loadTextFormatters();
+  return formatDateShort(date);
+}
+
+function useFormatDateLong(date) {
+  const { formatDateLong } = loadTextFormatters();
+  return formatDateLong(date);
+}
+
+console.log(useFormatDateShort("2024-09-29"));
+console.log(useFormatDateLong("2024-10-01"));
 ```
 
 # Friday Quiz
