@@ -4,9 +4,55 @@ category: "Web Programming I"
 title: "Lazy Loading"
 created: "2024-10-01"
 number: 18
+coverSrc: "./assets/skeleton.gif"
 ---
 
+# Update
+
+I'm adding some images to the assignment to guide you through the creation phase. I'll also be extending the deadline to the 14th. While I originally designed this assignment as a way to help you prepare for the upcoming test, I understand if that's not how you study best.
+
+You'll still have a few extra days after the test to complete it if needed.
+
 # Quick Recap
+
+- What is a module?
+  - It's a file that exports some code
+- How do you export/ import your modules? You have two options:
+  - ES Modules (modern syntax)
+  - CommonJS (default in Node.js)
+- What's the syntax for ESModules?
+
+```js
+// Named Module Export Statement
+export const name = "value";
+
+// Named Module Import Statement
+import { name } from "...";
+```
+
+- What's the syntax for CommonJS?
+
+```js
+// CommonJS Import Statement
+const { name } = require("...");
+
+// CommonJS Export Statement
+module.exports = { name };
+```
+
+- Which syntax should I use? It depends.
+  - If you are working with modern JavaScript frameworks or libraries, such as React or Vue, the recommended approach is to use `import` for modules.
+  - If you are maintaining older projects or working on projects that need to be backwards compatible, then using `require` is the preferred method.
+- Can I use the modern syntax right away? No lol.
+  - You need to make modifications to your `package.json`
+
+```json
+{
+  "type": "module" // add me to your package
+}
+```
+
+- Do I need to know both methods? Yes lol.
 
 # Common Module problems and how to fix them
 
@@ -45,10 +91,6 @@ import { myModule } from "./utils/myModule.js"; // notice the extension
 ```
 
 The extension is necessary for ESmodules in Node.js.
-
-# Modules in the Real world
-
-You can visit my [repo](https://github.com/elizabeth-poggie/elizabeth-poggie/tree/main/src/utils) to see how I created my own utilities if you are curious :^)
 
 # Exercise 2
 
@@ -106,3 +148,83 @@ import { formatDateShort, formatDateLong } from "./utils/textFormatters.js";
 console.log(formatDateShort("2024-09-29"));
 console.log(formatDateLong("2024-09-29"));
 ```
+
+# Lazy Loading
+
+## What is it?
+
+Lazy loading is a design pattern or technique used to defer the loading of resources (like images, scripts, or data) until they are actually needed instead of loading everything upfront.
+
+## Why does it matter?
+
+```js
+Performance++;
+Cost--;
+```
+
+- Faster Page Load Times 👉 smaller web pages load faster and this leads to a better user experience.
+- Reduced Bandwidth Usage 👉 lazy loading ensures that only the content users interact with or scroll to is downloaded. Cloud hosting services might charge based on number of bytes transferred on every request and now you are making less requests :^)
+
+## Real World Example
+
+You know when you go to access a [youtube](https://www.youtube.com/) and you sometimes get a bunch of grey boxes? This is because the content is being loaded lazily. The official name for these fun grey boxes is a _skeleton loader_ and it acts as a visual placeholder that mimics the layout of the content that is still being loaded lazily.
+
+![skeleton](./assets/skeleton.gif)
+
+## Practical example
+
+In modern HTML, you can use the `loading="lazy"` attribute for images:
+
+```html
+<img src="cat.jpg" alt="cat" loading="lazy" />
+```
+
+# Simulating Bad Wifi
+
+We are going to force [Youtube](https://www.youtube.com/) to load lazily slower so you can appreciate the concept.
+
+- Open up Chrome DevTools
+- Go to the Network tab
+- At the top of the Network tab, you’ll see a dropdown menu labeled `No throttling`.
+- Click this dropdown, and you’ll see several predefined options to simulate different network speeds:
+  - Fast 4G
+  - Slow 4G
+  - Offline
+- For this example select `Slow 4G`
+- Now refresh the page, what happens?
+
+# Lazy Loading in Node.js
+
+Let's build on our example from last class
+
+## Default Approach
+
+When you import a module in Node.js using CommonJS, it gets loaded immediately at the time of execution
+
+```js
+const { caps } = require("./utils/customModule"); // Loaded immediately
+```
+
+## Lazy Loading Approach
+
+```js
+let customModule; // Declare, but don't use
+
+function useCaps(str) {
+  if (!customModule) {
+    customModule = require("./utils/customModule"); // Load only when needed
+  }
+  // use caps finally
+  return customModule.caps(str);
+}
+```
+
+## How does this look like when you use it?
+
+```js
+console.log(useCaps("ahhhhhhh"));
+```
+
+# Friday Quiz
+
+Focus on Node.js and Event Bubbling for this friday.
