@@ -30,8 +30,8 @@ export function Home() {
         </nav>
         <div className={styles.coolText}>
           <Text variant="p" align="center">
-            I am currently a lecturer at John Abbott College and manage various
-            events across Montreal.
+            I’m currently a lecturer at John Abbott College and also manage
+            various events throughout Montreal.
           </Text>
         </div>
       </section>
