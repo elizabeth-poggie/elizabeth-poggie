@@ -10,7 +10,8 @@
 
 .collapsibleInSideBar {
   top: 0;
-  max-width: 100%;
+  width: 100%;
+  max-width: 200px;
   padding-top: 30px;
   margin-top: 7.5px;
   margin-bottom: 7.5px;
@@ -18,7 +19,8 @@
 
 .tocInSideBar {
   position: sticky;
-  max-width: 100%;
+  width: 100%;
+  max-width: 200px;
   top: 0;
   padding-top: 30px;
   margin-top: 7.5px;
@@ -31,18 +33,13 @@
   }
 
   .collapsibleInSideBar {
-    top: 0;
-    padding-top: 30px;
-    margin-top: 7.5px;
-    margin-bottom: 7.5px;
+    max-width: 120px;
+    overflow: hidden;
   }
 
   .tocInSideBar {
-    position: sticky;
-    top: 0;
-    padding-top: 30px;
-    margin-top: 7.5px;
-    margin-bottom: 7.5px;
+    max-width: 120px;
+    overflow: hidden;
   }
 }
 
