@@ -10,19 +10,40 @@
 
 .collapsibleInSideBar {
   top: 0;
+  max-width: 100%;
   padding-top: 30px;
-  padding-left: 120px;
   margin-top: 7.5px;
   margin-bottom: 7.5px;
 }
 
 .tocInSideBar {
   position: sticky;
+  max-width: 100%;
   top: 0;
   padding-top: 30px;
-  padding-left: 20px;
   margin-top: 7.5px;
   margin-bottom: 7.5px;
+}
+
+@media screen and (max-width: $bp-lg) {
+  .title {
+    padding: 0 0 calc($unit * 15) 0;
+  }
+
+  .collapsibleInSideBar {
+    top: 0;
+    padding-top: 30px;
+    margin-top: 7.5px;
+    margin-bottom: 7.5px;
+  }
+
+  .tocInSideBar {
+    position: sticky;
+    top: 0;
+    padding-top: 30px;
+    margin-top: 7.5px;
+    margin-bottom: 7.5px;
+  }
 }
 
 @media screen and (max-width: $bp-md) {

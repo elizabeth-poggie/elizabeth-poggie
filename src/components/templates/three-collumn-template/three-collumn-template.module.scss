@@ -25,26 +25,8 @@
 }
 
 .contentSection {
+  padding: 0 120px 0 120px; // buffers between sidebars
   width: 50%;
-}
-
-@media screen and (max-width: $bp-lg) {
-  .container {
-    padding: calc(20 * $unit) calc(40 * $unit) 0 calc(40 * $unit);
-    float: none;
-  }
-
-  .sideBarSection {
-    display: none;
-  }
-
-  .header {
-    max-width: 70%;
-  }
-
-  .contentSection {
-    width: 100%;
-  }
 }
 
 @media screen and (max-width: $bp-md) {
@@ -66,6 +48,7 @@
   }
 
   .contentSection {
+    padding: 0 20px 0 20px; // buffers between sidebars
     width: 100%;
   }
 }
