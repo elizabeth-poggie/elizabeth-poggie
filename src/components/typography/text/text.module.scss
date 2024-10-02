@@ -145,6 +145,26 @@
   @include body;
 }
 
+/* Font sizes for SMALLER COMPUTERS */
+@media screen and (max-width: $bp-lg) {
+  .h1 {
+    font-size: 1.3rem;
+  }
+  .h3 {
+    font-size: 1.15rem;
+  }
+}
+
+/* Font sizes for IPAD */
+@media screen and (max-width: $bp-md) {
+  .h1 {
+    font-size: 1.3rem;
+  }
+  .h3 {
+    font-size: 1.15rem;
+  }
+}
+
 /* Font sizes for MOBILE*/
 @media screen and (max-width: $bp-sm) {
   .title {
@@ -160,6 +180,6 @@
   }
 
   .h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }

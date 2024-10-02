@@ -2,9 +2,18 @@
 
 .header {
   text-align: center;
-  width: 100%;
-  max-width: 50%;
+  width: 100%; // Let the header take full width be default
+  max-width: 50%; // restrict overflow
   margin: 0 auto;
+  padding: calc($unit); // Add some padding for breathing room if needed
+  box-sizing: border-box; // prevent overflow
+}
+
+.contentSection {
+  padding: 0 120px; // large buffers between sidebars
+  width: 70%; // Content takes half the width
+  max-width: 100%;
+  box-sizing: border-box; // prevent overflow
 }
 
 .container {
@@ -20,30 +29,28 @@
   width: 100%;
 }
 
-.sideBarSection {
-  width: 25%;
+.left {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
-.contentSection {
-  width: 50%;
+.sideBarSection {
+  width: 25%;
+  min-width: 5%; // restrict shrinking
+  max-width: 25%; // restrict overflow
 }
 
 @media screen and (max-width: $bp-lg) {
   .container {
-    padding: calc(20 * $unit) calc(40 * $unit) 0 calc(40 * $unit);
-    float: none;
-  }
-
-  .sideBarSection {
-    display: none;
-  }
-
-  .header {
-    max-width: 70%;
+    padding: calc(20 * $unit) calc(10 * $unit) calc(40 * $unit) calc(10 * $unit);
   }
 
   .contentSection {
-    width: 100%;
+    padding: 0 60px; // medium buffers between sidebars
+  }
+
+  .sideBarSection {
+    max-width: 20%; // restrict overflow
   }
 }
 
@@ -59,13 +66,15 @@
 
   .main {
     flex-direction: column;
+    width: 100%;
   }
 
   .header {
-    max-width: 70%;
+    max-width: 90%;
   }
 
   .contentSection {
+    padding: 0; // no buffers to worry about here
     width: 100%;
   }
 }
@@ -85,7 +94,7 @@
   }
 
   .header {
-    max-width: 90%;
+    max-width: 95%;
   }
 
   .contentSection {
