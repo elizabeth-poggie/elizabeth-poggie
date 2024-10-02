@@ -2,9 +2,9 @@
 
 .header {
   text-align: center;
-  width: 100%;
-  max-width: 50%;
+  width: 50%;
   margin: 0 auto;
+  padding: calc(10 * $unit); // Add some padding for breathing room if needed
 }
 
 .container {
@@ -25,8 +25,15 @@
 }
 
 .contentSection {
-  padding: 0 120px 0 120px; // buffers between sidebars
+  padding: 0 120px; // large buffers between sidebars
   width: 50%;
+}
+
+@media screen and (max-width: $bp-lg) {
+  .contentSection {
+    padding: 0 60px; // medium buffers between sidebars
+    width: 50%;
+  }
 }
 
 @media screen and (max-width: $bp-md) {
@@ -41,14 +48,15 @@
 
   .main {
     flex-direction: column;
+    width: 100%;
   }
 
   .header {
-    max-width: 70%;
+    width: 90%;
   }
 
   .contentSection {
-    padding: 0 20px 0 20px; // buffers between sidebars
+    padding: 0; // no buffers to worry about here
     width: 100%;
   }
 }
@@ -68,7 +76,7 @@
   }
 
   .header {
-    max-width: 90%;
+    width: 95%;
   }
 
   .contentSection {
