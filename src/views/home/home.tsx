@@ -28,24 +28,12 @@ export function Home() {
             );
           })}
         </nav>
-        <Text variant="p" align="center">
-          I am currently a lecturer at John Abbott College and manage various
-          events across Montreal.
-        </Text>
-      </section>
-      <section className={styles.section}>
-        <Text variant="h1" align="center">
-          Contact
-        </Text>
-        <TextLink
-          variant="p"
-          align="center"
-          href="mailto:elizabethpoggie@gmail.com"
-          decoration="underline"
-          color="green"
-        >
-          elizabethpoggie@gmail.com
-        </TextLink>
+        <div className={styles.coolText}>
+          <Text variant="p" align="center">
+            I am currently a lecturer at John Abbott College and manage various
+            events across Montreal.
+          </Text>
+        </div>
       </section>
     </div>
   );

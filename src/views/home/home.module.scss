@@ -1,9 +1,14 @@
 @import "../../styles/variables.scss";
 
 .container {
-  padding: calc(20 * $unit) 0 calc(20 * $unit) calc(20 * $unit);
   margin: auto;
-  width: 50%;
+  max-width: 50%;
+  // idk lol
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
 .navigation {
@@ -12,6 +17,7 @@
   color: $color-white;
   align-items: center;
   gap: 20px;
+  padding-bottom: 30px;
 
   @media screen and (max-width: $bp-md) {
     gap: 12px;
@@ -20,6 +26,12 @@
   @media screen and (max-width: $bp-md) {
     gap: 4px;
   }
+}
+
+.coolText {
+  max-width: 500px;
+  padding-top: 10px;
+  text-align: center;
 }
 
 .navItemWrapper {
@@ -40,24 +52,23 @@
 
 @media screen and (max-width: $bp-lg) {
   .container {
-    padding: calc(20 * $unit) calc(8 * $unit) 0 calc(8 * $unit);
-    float: none;
-    width: 60%;
+    max-width: 60%;
   }
 }
 
 @media screen and (max-width: $bp-md) {
   .container {
-    padding: calc(20 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
-    float: none;
-    width: 70%;
+    max-width: 70%;
   }
 }
 
 @media screen and (max-width: $bp-sm) {
   .container {
-    padding: calc(18 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
-    float: none;
-    width: 80%;
+    padding: calc(14 * $unit) calc(4 * $unit) 0 calc(4 * $unit);
+    justify-content: flex-start;
+    max-width: 80%;
+  }
+  .coolText {
+    padding-top: 20px;
   }
 }
