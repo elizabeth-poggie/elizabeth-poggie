@@ -6,14 +6,30 @@
   width: 50%;
 }
 
-.paragraphContainer {
-  padding-bottom: 15px;
-  text-align: justify;
-}
-
-.collection {
+.navigation {
   display: flex;
   justify-content: center;
+  color: $color-white;
+  align-items: center;
+  gap: 20px;
+
+  @media screen and (max-width: $bp-md) {
+    gap: 12px;
+  }
+
+  @media screen and (max-width: $bp-md) {
+    gap: 4px;
+  }
+}
+
+.navItemWrapper {
+  margin: 0; // Make sure there's no margin
+  padding: 0 4px; // Add minimal padding to increase click area
+}
+
+.dotWrapper {
+  margin: 0 8px; // Add space between the dot and the items
+  display: inline-block; // Ensure dot stays inline
 }
 
 .section {

@@ -5,6 +5,7 @@ import { getAllNotes } from "../src/utils/api";
 import { Burger } from "../src/components/navigation/burger/Burger";
 import { sortByCreatedDescending } from "../src/utils/helpers/noteSorters";
 import { Text } from "../src/components/typography/text/text";
+import { Home } from "../src/views/home/home";
 export const navItems: ILink[] = [
   {
     href: "/",
@@ -17,10 +18,6 @@ export const navItems: ILink[] = [
   {
     href: "/portfolio",
     text: "Portfolio",
-  },
-  {
-    href: "/about",
-    text: "About",
   },
 ];
 
@@ -37,26 +34,8 @@ export default function Index({ allNotes }: Readonly<IProps>) {
         <title>Poggie</title>
       </Head>
       <Burger navItems={navItems} />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100vh",
-        }}
-      >
-        <Text variant="title">⛔️ Warning ⛔️</Text>
-        <div style={{ textAlign: "center" }}>
-          <Text>
-            This site is very much under construction in preparation for the
-            upcoming school year
-          </Text>
-        </div>
-        <br></br>
-        <Text variant="subheading" style="italics">
-          Please return in 1 - 2 business weeks ...
-        </Text>
+      <div>
+        <Home />
       </div>
     </>
   );
