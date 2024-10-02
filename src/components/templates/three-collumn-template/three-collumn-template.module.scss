@@ -2,9 +2,18 @@
 
 .header {
   text-align: center;
-  width: 50%;
+  width: 100%; // Let the header take full width be default
+  max-width: 50%; // restrict overflow
   margin: 0 auto;
-  padding: calc(10 * $unit); // Add some padding for breathing room if needed
+  padding: calc($unit); // Add some padding for breathing room if needed
+  box-sizing: border-box; // prevent overflow
+}
+
+.contentSection {
+  padding: 0 120px; // large buffers between sidebars
+  width: 70%; // Content takes half the width
+  max-width: 100%;
+  box-sizing: border-box; // prevent overflow
 }
 
 .container {
@@ -22,17 +31,21 @@
 
 .sideBarSection {
   width: 25%;
-}
-
-.contentSection {
-  padding: 0 120px; // large buffers between sidebars
-  width: 50%;
+  min-width: 5%; // restrict shrinking
+  max-width: 25%; // restrict overflow
 }
 
 @media screen and (max-width: $bp-lg) {
+  .container {
+    padding: calc(20 * $unit) calc(10 * $unit) calc(40 * $unit) calc(10 * $unit);
+  }
+
   .contentSection {
     padding: 0 60px; // medium buffers between sidebars
-    width: 50%;
+  }
+
+  .sideBarSection {
+    max-width: 20%; // restrict overflow
   }
 }
 
@@ -52,7 +65,7 @@
   }
 
   .header {
-    width: 90%;
+    max-width: 90%;
   }
 
   .contentSection {
@@ -76,7 +89,7 @@
   }
 
   .header {
-    width: 95%;
+    max-width: 95%;
   }
 
   .contentSection {
