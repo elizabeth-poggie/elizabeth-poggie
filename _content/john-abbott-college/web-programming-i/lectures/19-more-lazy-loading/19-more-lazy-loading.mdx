@@ -140,7 +140,15 @@ http
 
 Instead of using the default `http` server, let's use `http-server` instead. This is a simple, lightweight, and zero-configuration command-line tool for serving static files over HTTP.
 
+## Why use http-server?
+
 Since we can serve "static" content with this, we can simply start our project with an `index.html`. Why is this handy? Well now we can incorporate cool stuff like `jquery` into our projects :^)
+
+As well, you can now share your local server with others on the same network by providing your [public IP address](https://www.ipchicken.com/), port number, and configuring your firewall to accept incoming requests on this port. HOWEVER, maybe don't make your local IP address accessible to the world cause that would be like posting your phone number on instagram.
+
+Do you want to get harassed? Absolutely not.
+
+What people don't know cannot be exploited :^)
 
 ## Getting Started
 
@@ -199,7 +207,7 @@ Open up your `package.json` and add the following:
 }
 ```
 
-Running the file will work like this:
+To run your script, open the terminal and run the command:
 
 ```bash
 npm run start
@@ -219,3 +227,95 @@ If you installed `http-server` with the global `-g` flag, then all you need to d
 ```bash
 http-server
 ```
+
+# Static Sites && Content
+
+Now that we have our static site up and running, lets add some high res content :^)
+
+## Folder structure
+
+Create a `public` directory. In here we are going to add high res images that are `public`ly accessible
+
+```md
+myServer
+├── public
+├── node_modules
+├── index.html
+├── package-lock.json
+├── package.json
+```
+
+## Getting Content
+
+Head over to [Unsplash.com](https://unsplash.com/). This website lets you get high quality stock images for free. It's a tool I have been using to create websites, presentations, and marketing materials for my entire professional life.
+
+## Importing Content
+
+Add a high-res image to your `public` directory and import it in your `index.html` file comme ca:
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cool Cats</title>
+  </head>
+  <body>
+    <img src="./public/cat.jpg" alt="cool cat" />
+  </body>
+</html>
+```
+
+However depending on how high quality the image is, it might take a moment to load the picture. You can specify the attribute to be `loading="lazy"` to improve your page performance.
+
+## Exercise 2
+
+In the same groups as exercise 1, setup a server using `http-server` and let the entry point of your server be `index.html`. Find 3 hi-res images from the internet and add them in a `public` folder
+
+How long does it take to load your page using `loading="lazy"` on the images? What happens when this attribute is not present? What happens when you slow the network down to `Slow 4G` using Chrome DevTools?
+
+```md
+| Wifi    | Page Load time - Regular (ms) | Page Load time - Lazy (ms) |
+| ------- | ----------------------------- | -------------------------- |
+| Online  |                               |                            |
+| Slow 4G |                               |                            |
+```
+
+## Solution
+
+Your folder structure should look like:
+
+```md
+myServer
+├── public
+│ ├── image1
+│ ├── image2
+│ ├── image3
+├── node_modules
+├── index.html
+├── package-lock.json
+├── package.json
+```
+
+With your index.html containing:
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cool Cats</title>
+  </head>
+  <body>
+    <img src="./public/image1.jpg" loading="lazy" />
+    <img src="./public/image2.jpg" loading="lazy" />
+    <img src="./public/image3.jpg" loading="lazy" />
+  </body>
+</html>
+```
+
+Then by navigating to the `Network` Tab, look for your `localhost` and take note of the load time in each scenario :^)
