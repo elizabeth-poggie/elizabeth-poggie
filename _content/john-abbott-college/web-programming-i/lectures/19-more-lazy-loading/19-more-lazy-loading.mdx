@@ -148,27 +148,25 @@ http
 
 # Fancier Servers
 
-Instead of using the default `http` server, let's use `http-server` instead. This is a simple, lightweight, and zero-configuration command-line tool for serving static files over HTTP.
+Instead of using the default `http` server, let's use `http-server` instead. This is a simple, lightweight command-line tool that serves static files over HTTP without requiring extensive configuration.
 
 ## Why use http-server?
 
-Since we can serve "static" content with this, we can simply start our project with an `index.html`. Why is this handy? Well now we can incorporate cool stuff like `jquery` into our projects :^)
+By using `http-server`, you can easily serve static content starting ONLY with an `index.html` file. This is particularly useful because it allows you to incorporate cool stuff like `jQuery` into your projects :^)
 
-As well, you can now share your local server with others on the same network by providing your [public IP address](https://www.ipchicken.com/), port number, and configuring your firewall to accept incoming requests on this port. HOWEVER, maybe don't make your local IP address accessible to the world cause that would be like posting your phone number on instagram.
+Additionally, you can share your local server with others on the same network by providing your [public IP address](https://www.ipchicken.com/), port number, and configuring your firewall to accept incoming requests on this port. HOWEVER, maybe don't make your local IP address accessible to the world cause that would be like posting your phone number on instagram.
 
-Do you want to get harassed? Absolutely not.
-
-What people don't know cannot be exploited :^)
+Do you want to get harassed? Absolutely not. What people don't know cannot be exploited :^)
 
 ## Getting Started
 
-Install the dependency using `npm` if you just want to use it in your specific project:
+To get started, install the dependency using `npm` if you only want to use it within your specific project:
 
 ```bash
 npm install http-server
 ```
 
-You should see your folder structure get updated to the following if setting up just for this project:
+After installation, your folder structure should look like this:
 
 ```md
 myServer
@@ -186,14 +184,14 @@ npm install -g http-server
 
 ## Troubleshooting
 
-If you do not automatically get the `package.json`, you will have to add it manually and fill the file with an "empty" json object:
+If you do not see a `package.json` file created automatically when locally installed, you will need to create it manually and include an empty JSON object:
 
 ```json
 // package.json
 {}
 ```
 
-Try rerunning the `npm install <dependency>` command and you should see the following in your `package.json` now:
+After that, rerun the `npm install <dependency>` command and you should see the following in your `package.json` now:
 
 ```json
 {
@@ -205,7 +203,7 @@ Try rerunning the `npm install <dependency>` command and you should see the foll
 
 ## Using http-server
 
-Open up your `package.json` and add the following:
+If locally installed, open up your `package.json` and add the following:
 
 ```json
 // package.json
@@ -217,13 +215,13 @@ Open up your `package.json` and add the following:
 }
 ```
 
-To run your script, open the terminal and run the command:
+To run your server, open the terminal and execute:
 
 ```bash
 npm run start
 ```
 
-You should see the following appear if all went well:
+If everything is set up correctly, you should see output like this:
 
 ```bash
 Available on:
@@ -232,7 +230,7 @@ Available on:
 Hit CTRL-C to stop the server
 ```
 
-If you installed `http-server` with the global `-g` flag, then all you need to do to start the server is simply with this command
+If you installed `http-server` globally, then all you need to do to start the server is:
 
 ```bash
 http-server
@@ -278,13 +276,13 @@ Add a high-res image to your `public` directory and import it in your `index.htm
 </html>
 ```
 
-However depending on how high quality the image is, it might take a moment to load the picture. You can specify the attribute to be `loading="lazy"` to improve your page performance.
+Keep in mind that larger images may take a moment to load. You can improve your page's performance by adding the attribute `loading="lazy"` to the image tag, which allows the browser to load the image only when it's about to enter the viewport.
 
 ## Exercise 2
 
-In the same groups as exercise 1, setup a server using `http-server` and let the entry point of your server be `index.html`. Find 3 hi-res images from the internet and add them in a `public` folder
+In your groups from Exercise 1, set up a server using `http-server` with `index.html` as the entry point. Find 3 hi-res images from the internet and save them in your `public` folder.
 
-How long does it take to load your page using `loading="lazy"` on the images? What happens when this attribute is not present? What happens when you slow the network down to `Slow 4G` using Chrome DevTools?
+Next, measure how long it takes to load your page when using `loading="lazy"` on the images. What happens when you remove this attribute? Test the loading time when you simulate a _Slow 4G_ connection using Chrome DevTools.
 
 ```md
 | Wifi    | Page Load time - Regular (ms) | Page Load time - Lazy (ms) |
@@ -295,7 +293,7 @@ How long does it take to load your page using `loading="lazy"` on the images? Wh
 
 ## Solution
 
-Your folder structure should look like:
+Your folder structure should look like this:
 
 ```md
 myServer
@@ -309,7 +307,7 @@ myServer
 ├── package.json
 ```
 
-With your index.html containing:
+In your `index.html`, include the following code:
 
 ```html
 <!-- index.html -->
