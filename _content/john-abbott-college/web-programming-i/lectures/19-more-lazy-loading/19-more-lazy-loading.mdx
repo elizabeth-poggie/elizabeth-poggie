@@ -1,18 +1,18 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "Your first webserver"
+title: "Your first Photo Server"
 created: "2024-10-03"
 number: 19
 ---
 
 # Creating your own webserver
 
-Today we are going to take our Lazy Loading knowledge to the next level
+Today, we are taking our Lazy Loading knowledge to the next level.
 
 ## Getting started
 
-Create an empty Node.js project with an entry point `index.js`
+In your `index.js`, import the necessary modules to set up a basic server:
 
 ```md
 myServer
@@ -32,14 +32,14 @@ In Node.js, `fs` and `http` are "core modules", which means they come pre-instal
 
 ## Why these Modules?
 
-- http 👉 Provides functionality to create and manage HTTP servers
-- fs 👉 Provides functions for interacting with the file system
+- http 👉 This module provides functionality to create and manage HTTP servers
+- fs 👉 This module offers functions for interacting with the file system
 
-Fun fact: I use `fs` to fetch [this very note](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/src/utils/helpers/noteFetchers.ts#L1) :^)
+Fun fact: I actually use `fs` to fetch [this very note](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/src/utils/helpers/noteFetchers.ts#L1) :^)
 
 ## Creating a Server
 
-Shockingly, all you need to do to create a server using `http` is as follows:
+Shockingly, Creating a server using the `http` module is as follows:
 
 ```js
 http.createServer(function (req, res) {
@@ -47,14 +47,14 @@ http.createServer(function (req, res) {
 });
 ```
 
-This function runs every time the server receives a request, with `req` representing the request and `res` representing the response. Some examples include:
+This function is executed each time the server receives a request. The `req` parameter represents the incoming request (e.g. someone accessing your server), while `res` represents the response (e.g. what the server gives). Here are some examples of what you might handle:
 
 - `req` options: "GET", "POST"
 - `res` options: "200 OK", "404 Not Found"
 
 ## Reading Files
 
-Now that the skeleton of the server is set up, try to read a file:
+Now that we have set up the basic structure of our server, let’s read a file:
 
 ```js
 fs.readFile("demo.html", "utf8", function (err, data) {
@@ -67,7 +67,7 @@ fs.readFile("demo.html", "utf8", function (err, data) {
 
 ## Sending a Response
 
-If the file is successfully read, the server responds with a status code of `200` and it successfully fetched the contents from the server. If all is well, we now write the data (HTML content) to the response
+If the file is read successfully, we want the server to respond with a status code of 200, indicating that everything went well. We can then write the data (the HTML content) to the response like this:
 
 ```js
 res.writeHead(200, { "Content-Type": "text/html" });
@@ -75,9 +75,11 @@ res.write(data);
 return res.end();
 ```
 
+Food for thought: What happens when we change `200` to something else?
+
 ## Listening on a project
 
-Finally, the server is set to `listen` on port `5555`. This means you can access the server by navigating to http://localhost:5555 in your browser.
+Finally, we set the server to `listen` on port `5555`. This means you can access the server by navigating to http://localhost:5555 in your browser.
 
 ```js
 http
@@ -89,13 +91,13 @@ http
 
 ## Running our server
 
-To start our server, simply type the following:
+To start your server, simply type the following command in your terminal:
 
 ```bash
 node .
 ```
 
-Now when we navigate to our server on port `5555`, we will be able to see the contents of `demo.html` as it's being "served" up.
+Now when we navigate to our server on port `5555`, we will be able to see the contents of `demo.html` being "served" up.
 
 ## All Together
 
@@ -114,9 +116,17 @@ http
   .listen(5555);
 ```
 
+## Terminating your Server
+
+Hit `Ctrl + C` to kill your server. You'll notice that `http://localhost:5555` will no longer be accessible.
+
+If you're thinking about setting up your own server at home, consider repurposing an old computer that can run 24/7 and keep it in a closet. This setup allows you to host and serve your local content without interruptions, and you can access it remotely at any time.
+
+Fun fact: Everyone I know who do this often store illegally pirated movies to share with friends. Alternatively, photography nerds use these servers to create their own photo libraries instead of relying on cloud storage services like _Google Drive_ or Microsoft's _OneDrive_.
+
 # Exercise 1
 
-As an exercise, try to set up a server in groups that serves a webpage on port `4242`
+As an exercise, work in groups to set up a server that serves a webpage on port `4242` that serves up a static webpage.
 
 ## Solution
 
