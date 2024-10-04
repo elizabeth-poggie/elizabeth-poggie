@@ -6,10 +6,124 @@ created: "2024-10-03"
 number: 19
 ---
 
+# Creating your own webserver
+
+Today we are going to take our Lazy Loading knowledge to the next level
+
+## Getting started
+
+Create an empty Node.js project with an entry point `index.js`
+
+```md
+myServer
+├── index.js
+```
+
+## Importing the Modules
+
+In your `index.js` import the required modules to create a basic server:
+
+```js
+const http = require("http");
+const fs = require("fs");
+```
+
+In Node.js, `fs` and `http` are "core modules", which means they come pre-installed with Node.js and do not need to be included in your `package.json` as dependencies. What does this mean for you? You don't need to `npm install` these guys.
+
+## Why these Modules?
+
+- http 👉 Provides functionality to create and manage HTTP servers
+- fs 👉 Provides functions for interacting with the file system
+
+Fun fact: I use `fs` to fetch [this very note](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/src/utils/helpers/noteFetchers.ts#L1) :^)
+
+## Creating a Server
+
+Shockingly, all you need to do to create a server using `http` is as follows:
+
+```js
+http.createServer(function (req, res) {
+  // other stuff
+});
+```
+
+This function runs every time the server receives a request, with `req` representing the request and `res` representing the response. Some examples include:
+
+- `req` options: "GET", "POST"
+- `res` options: "200 OK", "404 Not Found"
+
+## Reading Files
+
+Now that the skeleton of the server is set up, try to read a file:
+
+```js
+fs.readFile("demo.html", "utf8", function (err, data) {
+  // other stuff
+});
+```
+
+- `err` is an error object.
+- `data` is the content of the file.
+
+## Sending a Response
+
+If the file is successfully read, the server responds with a status code of `200` and it successfully fetched the contents from the server. If all is well, we now write the data (HTML content) to the response
+
+```js
+res.writeHead(200, { "Content-Type": "text/html" });
+res.write(data);
+return res.end();
+```
+
+## Listening on a project
+
+Finally, the server is set to `listen` on port `5555`. This means you can access the server by navigating to http://localhost:5555 in your browser.
+
+```js
+http
+  .createServer(function (req, res) {
+    // other stuff
+  })
+  .listen(5555);
+```
+
+## Running our server
+
+To start our server, simply type the following:
+
+```bash
+node .
+```
+
+Now when we navigate to our server on port `5555`, we will be able to see the contents of `demo.html` as it's being "served" up.
+
+## All Together
+
+```js
+const http = require("http");
+const fs = require("fs");
+
+http
+  .createServer(function (req, res) {
+    fs.readFile("demo.html", function (err, data) {
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write(data);
+      return res.end();
+    });
+  })
+  .listen(5555);
+```
+
 # Exercise 1
+
+# Exercise 2
 
 Your job is to:
 
 - Find 3 hi-res images from the internet and optimize them for a webpage.
 - Create a webpage that contains your images
 - How does the page load time compare when using lazy loading vs not?
+
+```
+
+```
