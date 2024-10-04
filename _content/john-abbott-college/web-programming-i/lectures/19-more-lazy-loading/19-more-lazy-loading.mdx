@@ -116,14 +116,106 @@ http
 
 # Exercise 1
 
-# Exercise 2
+As an exercise, try to set up a server in groups that serves a webpage on port `4242`
 
-Your job is to:
+## Solution
 
-- Find 3 hi-res images from the internet and optimize them for a webpage.
-- Create a webpage that contains your images
-- How does the page load time compare when using lazy loading vs not?
+```js
+// index.js
+const http = require("http");
+const fs = require("fs");
 
+http
+  .createServer(function (req, res) {
+    fs.readFile("my-cool-server.html", function (err, data) {
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write(data);
+      return res.end();
+    });
+  })
+  .listen(4242);
 ```
 
+# Fancier Servers
+
+Instead of using the default `http` server, let's use `http-server` instead. This is a simple, lightweight, and zero-configuration command-line tool for serving static files over HTTP.
+
+Since we can serve "static" content with this, we can simply start our project with an `index.html`. Why is this handy? Well now we can incorporate cool stuff like `jquery` into our projects :^)
+
+## Getting Started
+
+Install the dependency using `npm` if you just want to use it in your specific project:
+
+```bash
+npm install http-server
+```
+
+You should see your folder structure get updated to the following if setting up just for this project:
+
+```md
+myServer
+├── node_modules
+├── index.html
+├── package-lock.json
+├── package.json
+```
+
+Alternatively, you can install the dependency _globally_ using the `-g` flag:
+
+```bash
+npm install -g http-server
+```
+
+## Troubleshooting
+
+If you do not automatically get the `package.json`, you will have to add it manually and fill the file with an "empty" json object:
+
+```json
+// package.json
+{}
+```
+
+Try rerunning the `npm install <dependency>` command and you should see the following in your `package.json` now:
+
+```json
+{
+  "dependencies": {
+    "http-server": "^14.1.1" // could be another version tho
+  }
+}
+```
+
+## Using http-server
+
+Open up your `package.json` and add the following:
+
+```json
+// package.json
+{
+  "scripts": {
+    "start": "http-server"
+  }
+  // other stuff
+}
+```
+
+Running the file will work like this:
+
+```bash
+npm run start
+```
+
+You should see the following appear if all went well:
+
+```bash
+Available on:
+  http://127.0.0.1:8080
+  http://192.168.0.10:8080
+Hit CTRL-C to stop the server
+```
+
+If you installed `http-server` with the global `-g` flag, then all you need to do to start the server is simply with this command
+
+```bash
+http-server
 ```
