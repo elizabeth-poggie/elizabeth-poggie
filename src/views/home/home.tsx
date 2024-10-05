@@ -35,8 +35,8 @@ export function Home() {
             I’m currently a lecturer at John Abbott College and also manage
             various events throughout Montreal.
           </Text>
-          <Link href="https://johnabbott-my.sharepoint.com/:f:/g/personal/elizabeth_poggie_johnabbott_qc_ca/EmJG4r5e94RGjUIPNISK0bYBjbBUlnZy6kfKsjvHeByVIg?e=9sS4Uv">
-            <PillButton onClick={() => null} title="Download Test 1 here" />
+          <Link href="mailto:elizabethpoggie@gmail.com">
+            <PillButton onClick={() => null} title="Contact me" />
           </Link>
         </div>
       </section>
