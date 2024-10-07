@@ -203,9 +203,7 @@ If any of your tests fails, you will notice that it let's you know the exact lin
 
 # Jest Autocompletion
 
-To enable auto-completion (autofill) for Jest in your code editor, you can configure your editor to recognize Jest's globals and test methods.
-
-First, install types for Jest:
+To enable auto-completion for Jest in your code editor, you can configure your editor to recognize Jest's methods. To get started, first install types for Jest:
 
 ```bash
 npm install @types/jest --save-dev
@@ -237,8 +235,38 @@ And add the following JSON:
 }
 ```
 
-Now when you go to write a test case, you will get the lovely autocompletion after you add a `.` after `expect`
+Now when you go to write a test case, you will get the lovely autocompletion after you add a `.` after `expect` :^)
 
 ```js
 expect("stuff").
 ```
+
+# Downloading VSCode Extensions
+
+## Jest Essentials
+
+There is a [Jest extension for VS Code](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) that adds additional features, including inline test results and better integration with the editor.
+
+## JavaScript Essentials
+
+[Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode) adds real-time feedback and displays JavaScript code's output inline within your editor. It has a bunch of neat features such as:
+
+- Inline Execution Output
+- Live Code Coverage
+- Error Highlighting
+
+## Restart
+
+Once you have added the above Extensions, restart your editor to activate them.
+
+# Using VsCode Extensions
+
+## Jest
+
+Above all your test cases (those written with `it`) and test suits (those written with `describe`) you will notice the following above each:
+
+```md
+Run | Debug
+```
+
+Select either one, what happens?
