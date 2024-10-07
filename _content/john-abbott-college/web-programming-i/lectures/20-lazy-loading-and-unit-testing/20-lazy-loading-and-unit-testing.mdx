@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "Lazy Loading and Unit Testing"
+title: "Unit Testing"
 created: "2024-10-07"
 number: 20
 ---
@@ -64,7 +64,7 @@ In your `index.html`, include the following code:
 </html>
 ```
 
-Then by navigating to the `Network` Tab, look for your `localhost` and take note of the load time in each scenario. You will have to _Disable Cache_
+Then by navigating to the `Network` Tab, look for your `localhost` and take note of the load time in each scenario. You will have to _Disable Cache_ to see the different load times.
 
 # Unit Testing
 
@@ -72,12 +72,30 @@ Then by navigating to the `Network` Tab, look for your `localhost` and take note
 
 In industry, for every feature you develop, you will also be required to make your own unit tests to guarantee your feature's
 
-## Getting Started
+## Which Framework?
 
-Install Jest as a development dependency to our Exercise2. Notice the `--save-dev` flag below:
+For this class we are going to use [Jest](https://jestjs.io/), a powerful and widely used testing library.
+
+Jest is actually made by Facebook and many people confuse it as a React Testing Library. It in fact can test ANY JavaScript including code in a React, Angular, and Vue application.
+
+## What makes Jest neat?
+
+Ity runs your tests but it also lets you do a whole bunch of other neat things like:
+
+- Snapshot testing - Takes snapshots of your HTML
+- Coverage - has built in code coverage reports. It will let you know which edge cases you missed.
+- Mocking - has a built in mocking library that lets you mock any objects outside your test's scope
+- Documentation - They have amazing docs
+- Speed - it runs VERY quickly
+
+TLDR: It tests your code and it does it well.
+
+# Getting Started
+
+Let's create a new project and install Jest as a development dependency:
 
 ```bash
-npm install --save-dev jest
+npm install --save-dev jest # notice the flag
 ```
 
 Now configure your `package.json` with a new `test` script:
@@ -90,4 +108,137 @@ Now configure your `package.json` with a new `test` script:
   }
   // other stuff
 }
+```
+
+# Creating Tests
+
+Create a folder called `tests` in the root of your project.
+
+```md
+myServer
+├── tests
+├── ...
+```
+
+Now inside this folder, create a test file `demo.test.js`.
+
+```js
+// demo.test.js
+
+describe("Math operations", () => {
+  it("should add 1 + 1", () => {
+    expect(1 + 1).toBe(2);
+  });
+});
+```
+
+Notice the `describe` and `it` syntax above, what do these keywords mean?
+
+- `describe` 👉 defines a test suite (e.g. Math operations, Assignment1, Assignment2, etc.)
+- `it` 👉 defines a test case (e.g. add, subtract, checkWinner, validateForm, etc. )
+
+# Running Tests
+
+Simply run
+
+```bash
+npm test
+```
+
+Jest will automatically find your test files (like `demo.test.js`) and run ALL the tests defined in them. You should see something like this printed to console if all is well:
+
+```bash
+myDemoServer % npm test
+
+> test
+> jest
+
+ PASS  tests/demo.test.js
+  Math operations
+    ✓ should add 1 + 1 (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.304 s
+Ran all test suites.
+```
+
+## Troubleshooting
+
+If for whatever reason your stuff fails at this point, you are probably currently using a version of node lower than 14. If that's the case, switch your node version:
+
+```bash
+nvm use 20
+```
+
+# Expanding our Example
+
+Let's say we wanted to expand our Test suit to cover more math operations. What could be some examples?
+
+```js
+// demo.test.js
+
+describe("Math operations", () => {
+  describe("Math operations", () => {
+    // equals
+    it("should add 1 + 1", () => {
+      expect(1 + 1).toBe(2);
+    });
+
+    // not equals
+    it("should multiply 2 * 3", () => {
+      expect(2 * 3).not.toBe(7);
+    });
+
+    // this should fail
+    it("should subtract 2 - 1", () => {
+      expect(2 - 1).toBe(42);
+    });
+  });
+});
+```
+
+If any of your tests fails, you will notice that it let's you know the exact line that is causing failure.
+
+# Jest Autocompletion
+
+To enable auto-completion (autofill) for Jest in your code editor, you can configure your editor to recognize Jest's globals and test methods.
+
+First, install types for Jest:
+
+```bash
+npm install @types/jest --save-dev
+```
+
+Add `jsconfig.json` in your root directory:
+
+```md
+myServer
+├── ...
+├── jsconfig.json
+├── ...
+```
+
+And add the following JSON:
+
+```js
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "checkJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "jest": ["node_modules/jest"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
+```
+
+Now when you go to write a test case, you will get the lovely autocompletion after you add a `.` after `expect`
+
+```js
+expect("stuff").
 ```
