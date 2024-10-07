@@ -202,6 +202,12 @@ If you do not see a `package.json` file created automatically when locally insta
 {}
 ```
 
+Or even more simply, run:
+
+```bash
+npm init
+```
+
 After that, rerun the `npm install <dependency>` command and you should see the following in your `package.json` now:
 
 ```json
@@ -289,7 +295,7 @@ Add a high-res image to your `public` directory and import it in your `index.htm
 
 Keep in mind that larger images may take a moment to load. You can improve your page's performance by adding the attribute `loading="lazy"` to the image tag, which allows the browser to load the image only when it's about to enter the viewport.
 
-## Exercise 2
+# Exercise 2
 
 In your groups from Exercise 1, set up a server using `http-server` with `index.html` as the entry point. Find 3 hi-res images from the internet and save them in your `public` folder.
 
@@ -301,40 +307,3 @@ Next, measure how long it takes to load your page when using `loading="lazy"` on
 | Online  |                               |                            |
 | Slow 4G |                               |                            |
 ```
-
-## Solution
-
-Your folder structure should look like this:
-
-```md
-myServer
-├── public
-│ ├── image1
-│ ├── image2
-│ ├── image3
-├── node_modules
-├── index.html
-├── package-lock.json
-├── package.json
-```
-
-In your `index.html`, include the following code:
-
-```html
-<!-- index.html -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cool Cats</title>
-  </head>
-  <body>
-    <img src="./public/image1.jpg" loading="lazy" />
-    <img src="./public/image2.jpg" loading="lazy" />
-    <img src="./public/image3.jpg" loading="lazy" />
-  </body>
-</html>
-```
-
-Then by navigating to the `Network` Tab, look for your `localhost` and take note of the load time in each scenario :^)

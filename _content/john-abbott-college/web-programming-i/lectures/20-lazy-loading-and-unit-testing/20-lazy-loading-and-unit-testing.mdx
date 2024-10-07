@@ -1,0 +1,93 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Lazy Loading and Unit Testing"
+created: "2024-10-07"
+number: 20
+---
+
+# Quick Recap
+
+Let's go over step by step on how to create our own static photo server
+
+## Exercise 2 - Last Class
+
+Set up a server using `http-server` with `index.html` as the entry point. Find 3 hi-res images from the internet and save them in your `public` folder.
+
+Next, measure how long it takes to load your page when using `loading="lazy"` on the images. What happens when you remove this attribute? Test the loading time when you simulate a _Slow 4G_ connection using Chrome DevTools.
+
+## Solution
+
+Your folder structure should look like this:
+
+```md
+myServer
+├── public
+│ ├── image1
+│ ├── image2
+│ ├── image3
+├── node_modules
+├── index.html
+├── package-lock.json
+├── package.json
+```
+
+Your package.json should look like this:
+
+```JSON
+{
+  "scripts": {
+    "start": "http-server"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
+```
+
+In your `index.html`, include the following code:
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cool Cats</title>
+  </head>
+  <body>
+    <img src="./public/image1.jpg" loading="lazy" />
+    <img src="./public/image2.jpg" loading="lazy" />
+    <img src="./public/image3.jpg" loading="lazy" />
+  </body>
+</html>
+```
+
+Then by navigating to the `Network` Tab, look for your `localhost` and take note of the load time in each scenario. You will have to _Disable Cache_
+
+# Unit Testing
+
+## Why Care?
+
+In industry, for every feature you develop, you will also be required to make your own unit tests to guarantee your feature's
+
+## Getting Started
+
+Install Jest as a development dependency to our Exercise2. Notice the `--save-dev` flag below:
+
+```bash
+npm install --save-dev jest
+```
+
+Now configure your `package.json` with a new `test` script:
+
+```JSON
+// package.json
+{
+  "scripts": {
+    "test": "jest"
+  }
+  // other stuff
+}
+```
