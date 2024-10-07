@@ -8,13 +8,13 @@ number: 20
 
 # Quick Recap
 
-Let's go over step by step on how to create our own static photo server
+Let’s review the steps to create your own static photo server.
 
 ## Exercise 2 - Last Class
 
-Set up a server using `http-server` with `index.html` as the entry point. Find 3 hi-res images from the internet and save them in your `public` folder.
+Set up a server using `http-server` with `index.html` as the entry point. Find 3 high-res images and save them in your `public` folder.
 
-Next, measure how long it takes to load your page when using `loading="lazy"` on the images. What happens when you remove this attribute? Test the loading time when you simulate a _Slow 4G_ connection using Chrome DevTools.
+Next, measure how long it takes to load your page when using `loading="lazy"` on the images. Remove this attribute and observe the changes.
 
 ## Solution
 
@@ -32,7 +32,7 @@ myServer
 ├── package.json
 ```
 
-Your package.json should look like this:
+Your `package.json` should look like this:
 
 ```JSON
 {
@@ -45,7 +45,7 @@ Your package.json should look like this:
 }
 ```
 
-In your `index.html`, include the following code:
+In your `index.html`, use this code:
 
 ```html
 <!-- index.html -->
@@ -57,38 +57,38 @@ In your `index.html`, include the following code:
     <title>Cool Cats</title>
   </head>
   <body>
-    <img src="./public/image1.jpg" loading="lazy" />
-    <img src="./public/image2.jpg" loading="lazy" />
-    <img src="./public/image3.jpg" loading="lazy" />
+    <img src="./public/1.jpg" loading="lazy" />
+    <img src="./public/2.jpg" loading="lazy" />
+    <img src="./public/3.jpg" loading="lazy" />
   </body>
 </html>
 ```
 
-Then by navigating to the `Network` Tab, look for your `localhost` and take note of the load time in each scenario. You will have to _Disable Cache_ to see the different load times.
+After setting this up, navigate to the `Network` tab in your browser’s developer tools. Look for your `localhost` and note the loading times in each scenario. Remember to _Disable Cache_ to observe the different loading times.
 
 # Unit Testing
 
 ## Why Care?
 
-In industry, for every feature you develop, you will also be required to make your own unit tests to guarantee your feature's
+In the industry, for every feature you develop, you are also required to write corresponding unit tests. This basically ensures that your work isn't trash.
 
-## Which Framework?
+## Which Library should you use?
 
-For this class we are going to use [Jest](https://jestjs.io/), a powerful and widely used testing library.
+For this class, we will use [Jest](https://jestjs.io/), a powerful and popular testing library.
 
-Jest is actually made by Facebook and many people confuse it as a React Testing Library. It in fact can test ANY JavaScript including code in a React, Angular, and Vue application.
+Although Jest was developed by Facebook and is often associated with React, it can test ANY JavaScript code, including applications built with Angular and Vue.
 
 ## What makes Jest neat?
 
-Ity runs your tests but it also lets you do a whole bunch of other neat things like:
+Jest does more than just run your tests; it offers a variety of valuable features, including:
 
-- Snapshot testing - Takes snapshots of your HTML
-- Coverage - has built in code coverage reports. It will let you know which edge cases you missed.
-- Mocking - has a built in mocking library that lets you mock any objects outside your test's scope
-- Documentation - They have amazing docs
-- Speed - it runs VERY quickly
+- Snapshot Testing 👉 Automatically captures snapshots of your HTML to track changes.
+- Coverage Reports 👉 Provides built-in code coverage reports to highlight any edge cases you may have missed.
+- Mocking Capabilities 👉 Includes a built-in mocking library that allows you to simulate objects outside your test's scope.
+- Docs 👉 Jest has comprehensive and user-friendly documentation.
+- Speed 👉 Jest runs tests incredibly quickly and the process is even faster when you add the VSCode extensions :^)
 
-TLDR: It tests your code and it does it well.
+TLDR: Jest tests your code and it does it well.
 
 # Getting Started
 
