@@ -245,7 +245,10 @@ expect("stuff").
 
 ## Jest Essentials
 
-There is a [Jest extension for VS Code](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) that adds additional features, including inline test results and better integration with the editor.
+There is a [Jest extension for VS Code](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) that adds additional features, including inline test results and better integration with the editor. Why is this so handy?
+
+- User Friendly 👉 Testing is now as easy as clicking a button
+- Speed 👉 In industry your `.test.js` will become long and beefy so normally you don't want to waste time running the entire test suite with `npm test` and want to target specific tests.
 
 ## JavaScript Essentials
 
@@ -269,4 +272,77 @@ Above all your test cases (those written with `it`) and test suits (those writte
 Run | Debug
 ```
 
-Select either one, what happens?
+Select one, what happens?
+
+## Quokka.js
+
+To get started, create a blank JavaScript file. Now to activate `Quokka.js` press `Ctrl+Shift+P` for windows 🖥️, or `Cmd+Shift+P` on Mac 🍎 to open the command palette.
+
+Search for and select `Quokka.js: Start on Current File`
+
+What happens when i write?
+
+```js
+const demo = "demo";
+console.log(demo);
+```
+
+Happy coding :^)
+
+## Exercise 1
+
+Take your `Assignment1` code and move the `checkWinner()` function to a solitary `cookieCompetition.js` file. Now create a test suite for your `cookieCompetition.js` and create a test case that tests your `checkWinner` function using Jest.
+
+Add the above extensions, how does this make your life easier?
+
+## Solution
+
+Your `cookieCompetition.js` should look something close to this:
+
+```js
+function checkWinner(player1, player2) {
+  let player1Total = player1.startingCookies;
+  player1.cookiesPerRound.forEach(function (cookies) {
+    player1Total += cookies;
+  });
+
+  let player2Total = player2.startingCookies;
+  player2.cookiesPerRound.forEach(function (cookies) {
+    player2Total += cookies;
+  });
+
+  if (player1Total > player2Total) {
+    return `${player1.name} Wins!`;
+  } else if (player1Total < player2Total) {
+    return `${player2.name} Wins!`;
+  } else {
+    return "it's a tie!";
+  }
+}
+
+module.exports = { checkWinner }; // notice me
+```
+
+Your `cookieCompetition.test.js` should look close to this:
+
+```js
+// cookieCompetition.test.js
+const { checkWinner } = require("../scripts/cookieCompetition");
+
+describe("Assignment 1", () => {
+  it("check winner - returns player1 as the winner", () => {
+    const player1 = {
+      name: "Jim",
+      startingCookies: 10,
+      cookiesPerRound: [5, 8, 7],
+    };
+    const player2 = {
+      name: "Pam",
+      startingCookies: 15,
+      cookiesPerRound: [4, 4, 4],
+    };
+
+    expect(checkWinner(player1, player2)).toBe("Jim Wins!");
+  });
+});
+```
