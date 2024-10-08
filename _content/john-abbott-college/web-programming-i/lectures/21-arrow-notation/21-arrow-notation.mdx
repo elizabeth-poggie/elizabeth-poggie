@@ -91,9 +91,11 @@ const myFunction = () => {
 
 ## Why is this so popular?
 
-Arrow functions are considered more modern and are part of ES6 (ECMAScript 2015). Many newer frameworks and libraries (like React) encourage using arrow functions because they are the current best practice and align with modern coding style guides. Why? Arrow functions have a few key benefits:
+Arrow functions are considered more modern and are part of ES6 (ECMAScript 2015). Many newer frameworks and libraries (like React) encourage using arrow functions because they are the current best practice and align with modern coding style guides. Why? Arrow functions have a few key benefits ...
 
-Concise 👉 You are writing less code and the code you do write is cleaner
+## Concise Syntax
+
+You are writing less code and the code you do write is cleaner
 
 ```js
 // Trad JS
@@ -105,7 +107,9 @@ const add = function (a, b) {
 const add = (a, b) => a + b;
 ```
 
-`this` binding 👉 Arrow functions do not have their own `this` context, instead they inherit this from the surrounding code (lexical scope)
+## this binding
+
+Arrow functions do not have their own `this` context, instead they inherit this from the surrounding code (lexical scope)
 
 ```js
 // Trad JS
@@ -125,6 +129,110 @@ function Student() {
 }
 ```
 
-Eventually we will see common use cases later in the class when we start using the _very_ fancy array methods such as `.map()`, `.reduce()`, `.sort()`.
+## Simplifies Callbacks
+
+Building on example from before, let's simplify the logic using the modern syntax:
+
+```js
+function greet(name, callback) {
+  console.log("Hello, " + name);
+  callback();
+}
+// Pass a cleaner `callback` to `greet`
+greet("Poggie", () => console.log("Ok, bye bye"));
+```
+
+## Encourages Functional Programming
+
+Since arrow functions encourage concise, single-expression functions, they fit well with functional programming styles of coding, which are increasingly popular in modern JavaScript development. When working with popular libraries like React, you almost never see the traditional approach to JavaScript `function`s.
+
+Eventually we will see common use cases later in the class when we start using the _very_ fancy array methods such as `.map()`, `.reduce()`, and `.sort()`.
+
+## Limitations
+
+Arrow functions are often not suitable for object methods because object methods typically need to reference the object’s properties using `this`. Since arrow functions don’t have their own `this`, they will not behave as expected in many cases.
+
+```js
+// `this` breaks
+const student = {
+  name: "Poggie",
+  greet: () => {
+    console.log(`Hello, my name is ${this.name}`); // `this` will be undefined
+  },
+};
+
+student.greet(); // "Hello, my name is undefined"
+```
+
+In this case, you need to use the traditional `function` syntax in this case, or alternatively, when you want to reference the object itself, you should use a _regular function_:
+
+```js
+const student = {
+  name: "Poggie",
+  // this is known as a `method` function
+  greet() {
+    console.log(`Hello, my name is ${this.name}`);
+  },
+};
+
+student.greet();
+```
+
+However arrow functions do have some place in JavaScript objects. Where? Properties that don’t need to reference `this` or for handling things like callbacks.
+
+```js
+const calculator = {
+  add: (a, b) => a + b,
+  multiply: (a, b) => a * b,
+};
+
+console.log(calculator.add(5, 3)); // 8
+console.log(calculator.multiply(4, 2)); // 8
+```
+
+It depends on the use case, however you will likely see all the above styles if you choose to pursue web as a career
 
 # Exercise 2
+
+In the exercise on Lea, recode the traditional recode the following using the modern syntax where appropriate:
+
+```js
+var student = {
+  name: "Your name",
+  id: 12345,
+  rScore: 90000,
+  greet: function (name) {
+    console.log("Hey there, " + name + "!");
+  },
+  reminder: function () {
+    console.log(`Did you know that you have a Test Friday?`);
+  },
+  calculateRScore: function (bonus) {
+    // at this fictitious school, the r score only goes up
+    this.rScore += bonus;
+  },
+};
+
+student.greet();
+student.reminder();
+student.calculateRScore(42);
+console.log(student.rScore);
+```
+
+## Solution
+
+```js
+const student = {
+  name: "Your name",
+  id: 12345,
+  rScore: 90000,
+  greet() {
+    console.log(`Hey there, ${this.name}!`);
+  },
+  reminder: () => console.log("Did you know that you have a Test Friday?"),
+  calculateRScore(bonus) {
+    // At this fictitious school, the rScore only goes up
+    this.rScore += bonus;
+  },
+};
+```
