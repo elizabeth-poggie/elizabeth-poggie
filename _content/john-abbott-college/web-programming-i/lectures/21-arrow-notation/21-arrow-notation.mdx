@@ -8,12 +8,123 @@ number: 21
 
 # Quick Recap
 
+- Extensions `Jest` and `Quokka.js` and how to use them
+- Where to store your tests, how to create them using `Jest`, and how to run them
+
 # Test 1 Format
+
+This test will feature a mix of short answer, multiple choice, coding questions, and a debugging task. The structure is similar to your first test in User Interfaces, but this time everything will take place in VSCode. This means you can stay focused without needing to switch between Moodle and paper, and you'll have the advantage of syntax highlighting to help with the coding tasks.
+
+The setup is intended to provide a practical experience that closely mirrors what you might encounter in a coding interview, preparing you for the kinds of questions that typically come up :^)
+
+## Questions
+
+Questions have been curated from previous teachers at JAC and developers in hiring committees at various companies across montreal.
+
+## File type
+
+If you have ever created a `README.md` for a github repo before this will look familiar.
 
 # Exercise 1
 
 Open up the `sample-test-1.md` and try to fill in the blanks
 
+# Definitions
+
+The rest of today's lecture is designed to be a bit more relaxed given your heavy workload this week.
+
+# Callbacks
+
+A _callback_ is a function passed as an argument to another function, and it's executed after the completion of that function or event.
+
+## Formal Definition
+
+Remember the lecture I gave on functional programming in JavaScript on pure functions? This is the formal definition that expands to all languages that have a functional component. In the context of JavaScript, these pure functions are often referred to as a Callback.
+
+TLDR: It's a function that is passed to another function
+
+## Example
+
+```js
+// notice the parameters
+function greet(name, callback) {
+  console.log("Hello, " + name);
+  callback();
+}
+
+// this is a `pure` function
+function sayGoodbye() {
+  console.log("Ok, bye bye");
+}
+
+// Pass `sayGoodbye` as a `callback` to `greet`
+greet("Poggie", sayGoodbye);
+```
+
 # Arrow notation
+
+You have seen both notations for writing functions. Today we will get into the details of what exactly this means.
+
+## Syntax
+
+Let's say I have written this in the traditional `function` syntax in JavaScript.
+
+```js
+function myFunction() {
+  return "I am a function";
+}
+```
+
+I can express a `function` using an arrow instead using this general syntax:
+
+```js
+(parameters) => body;
+```
+
+So I can rewrite `myFunction` using this cleaner syntax:
+
+```js
+const myFunction = () => {
+  return "I am a function";
+};
+```
+
+## Why is this so popular?
+
+Arrow functions are considered more modern and are part of ES6 (ECMAScript 2015). Many newer frameworks and libraries (like React) encourage using arrow functions because they are the current best practice and align with modern coding style guides. Why? Arrow functions have a few key benefits:
+
+Concise 👉 You are writing less code and the code you do write is cleaner
+
+```js
+// Trad JS
+const add = function (a, b) {
+  return a + b;
+};
+
+// ES6 JS
+const add = (a, b) => a + b;
+```
+
+`this` binding 👉 Arrow functions do not have their own `this` context, instead they inherit this from the surrounding code (lexical scope)
+
+```js
+// Trad JS
+function Student() {
+  this.age = 0;
+  setInterval(function () {
+    this.age++; // `this` doesn't refer to the Student
+  }, 1000);
+}
+
+// ES6 JS
+function Student() {
+  this.age = 0;
+  setInterval(() => {
+    this.age++; // `this` refers to the Student
+  }, 1000);
+}
+```
+
+Eventually we will see common use cases later in the class when we start using the _very_ fancy array methods such as `.map()`, `.reduce()`, `.sort()`.
 
 # Exercise 2

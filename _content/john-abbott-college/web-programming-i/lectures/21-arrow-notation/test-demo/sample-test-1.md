@@ -1,9 +1,5 @@
 # Sample Test 1
 
-This test will feature a mix of short answer, multiple choice, coding questions, and a debugging task. The structure is similar to your first test in User Interfaces, but this time everything will take place in VSCode. This means you can stay focused without needing to switch between Moodle and paper, and you'll have the advantage of syntax highlighting to help with the coding tasks.
-
-The setup is intended to provide a practical experience that closely mirrors what you might encounter in a coding interview, preparing you for the kinds of questions that typically come up :^)
-
 ## Getting started
 
 If you're not a fan of raw markdown, you can use the Live Preview extension to get a cleaner view of the test.
