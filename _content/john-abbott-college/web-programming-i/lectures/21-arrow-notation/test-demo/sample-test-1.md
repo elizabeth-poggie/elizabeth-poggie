@@ -1,24 +1,25 @@
 # Sample Test 1
 
-The test is a mix of short answer, multiple choice, short coding questions, and a debugging question. Similar structure to your first test in User Interfaces, this time it will take place in purely in VSCode so you don't need to context switch between Moodle and pieces of paper, so your focus is on just one framilliar output that simulates a practical coding interview.
+This test will feature a mix of short answer, multiple choice, coding questions, and a debugging task. The structure is similar to your first test in User Interfaces, but this time everything will take place in VSCode. This means you can stay focused without needing to switch between Moodle and paper, and you'll have the advantage of syntax highlighting to help with the coding tasks.
 
-Questions have been sourced from previous teachers here at JAC and developers on the hiring committees of multiple companies across montreal.
+The setup is intended to provide a practical experience that closely mirrors what you might encounter in a coding interview, preparing you for the kinds of questions that typically come up :^)
 
 ## Getting started
 
-If you don't like the look of raw markdown, you can use the extension Live Preview to see the cleaner look of the theory part of this test.
+If you're not a fan of raw markdown, you can use the Live Preview extension to get a cleaner view of the test.
 
 ## Sample Question 1
 
-For all multiple choice questions, put an `x` in the checkbox. Please select only 1 answer.
+For multiple choice questions, place an `x` in the checkbox of your chosen answer. Please select only one answer.
 
 - [ ] I am a good answer
 - [ ] I am a trash answer
 - [ ] I am a partially trash answer
+- [x] Poggie selected this answer
 
 ## Sample Question 2
 
-I am a sample short answer question. Fill in the plaintext box below.
+This is an example of a short answer question. Type your answer in the plaintext box below.
 
 ```plaintext
 
@@ -26,10 +27,16 @@ I am a sample short answer question. Fill in the plaintext box below.
 
 ## Sample Question 3
 
-I am a sample JavaScript question
+Here's a sample JavaScript question. Find the issues in the following code using `sandbox.html`.
 
 ```js
 const = "I am broken";
 [what].push("is this trash?");
 help = 30;
+```
+
+Once you've made your changes in the sandbox, add your corrections in the box below:
+
+```js
+
 ```
