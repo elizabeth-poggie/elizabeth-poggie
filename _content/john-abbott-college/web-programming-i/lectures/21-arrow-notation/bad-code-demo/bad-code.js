@@ -1,3 +1,4 @@
+// @Fix-me
 var student = {
   name: "Your name",
   id: 12345,
@@ -9,7 +10,7 @@ var student = {
     console.log(`Did you know that you have a Test Friday?`);
   },
   calculateRScore: function (bonus) {
-    // at this fictitious school, the r score only goes up
+    // at this fictitious school, the rScore only goes up
     this.rScore += bonus;
   },
 };
