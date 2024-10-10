@@ -1,0 +1,240 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Arrow Notation"
+created: "2024-10-08"
+number: 21
+---
+
+# Quick Recap
+
+- Installing extensions `Jest` and `Quokka.js`, including how to use them effectively.
+- Guidance on where to store your tests, how to create them using `Jest`, and how to run them.
+
+# Test 1 Format
+
+The structure is similar to your first test in User Interfaces, but this time, everything will be conducted in VSCode. This setup allows you to maintain focus without the distraction of switching between Moodle and paper. Additionally, you will benefit from syntax highlighting to assist with your coding tasks.
+
+The format is designed to provide a practical experience that closely resembles a coding interview, preparing you for the types of questions you may encounter.
+
+## Questions
+
+Questions have been curated from previous teachers at JAC and developers in hiring committees at various companies across montreal.
+
+## Formatting
+
+If you have ever created a `README.md` for a github repo before this will look _very_ familiar.
+
+If you don't like the format of the test, please let me know so I can adjust it for Test 2 in collaboration with my developer connections in the industry.
+
+# Exercise 1
+
+Open up the `sample-test-1.md` and try to fill in the blanks
+
+# Definitions
+
+The remainder of today's lecture is designed to be a bit more relaxed, considering your heavy workload this week. We will be focusing on different syntax types, where to use them, and the modern applications.
+
+# Callbacks
+
+A _callback_ is a function that is passed as an argument to another function and is executed after the completion of that function or event.
+
+## Formal Definition
+
+Remember the lecture I gave on functional programming in JavaScript, focusing on pure functions? This formal definition applies to all languages with a functional component. In the context of JavaScript, these pure functions are often referred to as callbacks.
+
+TLDR: A callback is a function passed to another function.
+
+## Example
+
+```js
+// Notice the parameters
+function greet(name, callback) {
+  console.log("Hello, " + name);
+  callback();
+}
+
+// this is a `pure` function
+function sayGoodbye() {
+  console.log("Ok, bye bye");
+}
+
+// Pass `sayGoodbye` as a `callback` to `greet`
+greet("Poggie", sayGoodbye);
+```
+
+# Arrow notation
+
+You have encountered both notations for writing functions. Today, we will cover the details of what each one means.
+
+## Syntax
+
+Let's say I have written the below function in the traditional `function` syntax in JavaScript:
+
+```js
+function myFunction() {
+  return "I am a function";
+}
+```
+
+I can express a `function` using arrow notation with this general syntax:
+
+```js
+(parameters) => body;
+```
+
+So I can rewrite `myFunction` using this cleaner syntax:
+
+```js
+const myFunction = () => {
+  return "I am a function";
+};
+```
+
+## Why is this so popular?
+
+Arrow functions are considered more modern and are part of ES6 (ECMAScript 2015). Many newer frameworks and libraries, like React, encourage using arrow functions because they represent current best practices and align with modern coding style guides. Why? Arrow functions offer several key benefits ...
+
+## Concise Syntax
+
+You write less code, and the code you do write is often cleaner:
+
+```js
+// Trad JS
+const add = function (a, b) {
+  return a + b;
+};
+
+// ES6 JS
+const add = (a, b) => a + b;
+```
+
+## this binding
+
+Arrow functions do not have their own `this` context; instead, they inherit this from the surrounding code (lexical scope):
+
+```js
+// Trad JS
+function Student() {
+  this.age = 0;
+  setInterval(function () {
+    this.age++; // `this` doesn't refer to the Student
+  }, 1000);
+}
+
+// ES6 JS
+function Student() {
+  this.age = 0;
+  setInterval(() => {
+    this.age++; // `this` refers to the Student
+  }, 1000);
+}
+```
+
+## Simplifies Callbacks
+
+Building on the previous example, let's simplify the logic using modern syntax:
+
+```js
+function greet(name, callback) {
+  console.log("Hello, " + name);
+  callback();
+}
+// Pass a cleaner `callback` to `greet`
+greet("Poggie", () => console.log("Ok, bye bye"));
+```
+
+## Encourages Functional Programming
+
+Arrow functions promote concise, single-expression functions, making them a natural fit for functional programming styles, which are increasingly popular in modern JavaScript development. When working with popular libraries like React, you will rarely see the traditional approach to JavaScript `function`s.
+
+Eventually, we will explore common use cases later in the class when we start using advanced array methods such as `.map()`, `.reduce()`, and `.sort()`.
+
+## Limitations
+
+Arrow functions are often not suitable for object methods because object methods typically need to reference the object’s properties using `this`. Since arrow functions don’t have their own `this`, they may not behave as expected in many cases:
+
+```js
+// `this` breaks
+const student = {
+  name: "Poggie",
+  greet: () => {
+    console.log(`Hello, my name is ${this.name}`); // `this` will be undefined
+  },
+};
+
+student.greet(); // "Hello, my name is undefined"
+```
+
+In this case, you should use traditional `function` syntax or a _regular function_ when you need to reference the object itself:
+
+```js
+const student = {
+  name: "Poggie",
+  // this is known as a `method` function
+  greet() {
+    console.log(`Hello, my name is ${this.name}`);
+  },
+};
+
+student.greet();
+```
+
+However, arrow functions can still have a place in JavaScript objects, particularly for properties that don’t need to reference `this` or for handling callbacks:
+
+```js
+const calculator = {
+  add: (a, b) => a + b,
+  multiply: (a, b) => a * b,
+};
+
+console.log(calculator.add(5, 3)); // 8
+console.log(calculator.multiply(4, 2)); // 8
+```
+
+Ultimately, it depends on the use case and context, but you are likely to encounter _all_ the above styles if you choose to pursue a career in web development.
+
+# Exercise 2
+
+In the exercise on Lea, recode the traditional recode the following using the modern syntax where appropriate:
+
+```js
+var student = {
+  name: "Your name",
+  id: 12345,
+  rScore: 90000,
+  greet: function (name) {
+    console.log("Hey there, " + name + "!");
+  },
+  reminder: function () {
+    console.log(`Did you know that you have a Test Friday?`);
+  },
+  calculateRScore: function (bonus) {
+    // at this fictitious school, the r score only goes up
+    this.rScore += bonus;
+  },
+};
+
+student.greet();
+student.reminder();
+student.calculateRScore(42);
+console.log(student.rScore);
+```
+
+## Solution
+
+```js
+const student = {
+  name: "Your name",
+  id: 12345,
+  rScore: 90000,
+  greet() {
+    console.log(`Hey there, ${this.name}!`);
+  },
+  reminder: () => console.log("Did you know that you have a Test Friday?"),
+  calculateRScore(bonus) {
+    // At this fictitious school, the rScore only goes up
+    this.rScore += bonus;
+  },
+};
+```

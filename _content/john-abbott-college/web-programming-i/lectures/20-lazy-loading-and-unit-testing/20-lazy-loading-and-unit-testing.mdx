@@ -1,0 +1,357 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Unit Testing"
+created: "2024-10-07"
+number: 20
+coverSrc: "./assets/jest.png"
+---
+
+# Quick Recap
+
+Let’s review the steps to create your own static photo server.
+
+## Exercise 2 - Last Class
+
+Set up a server using `http-server` with `index.html` as the entry point. Find 3 high-res images and save them in your `public` folder.
+
+Next, measure how long it takes to load your page when using `loading="lazy"` on the images. Remove this attribute and observe the changes.
+
+## Solution
+
+Your folder structure should look like this:
+
+```md
+myServer
+├── public
+│ ├── image1
+│ ├── image2
+│ ├── image3
+├── node_modules
+├── index.html
+├── package-lock.json
+├── package.json
+```
+
+Your `package.json` should look like this:
+
+```JSON
+{
+  "scripts": {
+    "start": "http-server"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
+```
+
+In your `index.html`, use this code:
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cool Cats</title>
+  </head>
+  <body>
+    <img src="./public/1.jpg" loading="lazy" />
+    <img src="./public/2.jpg" loading="lazy" />
+    <img src="./public/3.jpg" loading="lazy" />
+  </body>
+</html>
+```
+
+After setting this up, navigate to the `Network` tab in your browser’s developer tools. Look for your `localhost` and note the loading times in each scenario. Remember to _Disable Cache_ to observe the different loading times.
+
+# Unit Testing
+
+## Why Care?
+
+In the industry, for every feature you develop, you are also required to write corresponding unit tests. This basically ensures that your work isn't trash.
+
+## Which Library should you use?
+
+For this class, we will use [Jest](https://jestjs.io/), a powerful and popular testing library.
+
+![Jest](./assets/jest.png)
+
+Although Jest was developed by Facebook and is often associated with React, it can test ANY JavaScript code, including applications built with Angular and Vue.
+
+## What makes Jest neat?
+
+Jest does more than just run your tests; it offers a variety of valuable features, including:
+
+- Snapshot Testing 👉 Automatically captures snapshots of your HTML to track changes.
+- Coverage Reports 👉 Provides built-in code coverage reports to highlight any edge cases you may have missed.
+- Mocking Capabilities 👉 Includes a built-in mocking library that allows you to simulate objects outside your test's scope.
+- Docs 👉 Jest has comprehensive and user-friendly documentation.
+- Speed 👉 Jest runs tests incredibly quickly and the process is even faster when you add the VSCode extensions :^)
+
+TLDR: Jest tests your code and it does it well.
+
+# Getting Started
+
+Let’s set up a new project and install Jest as a development dependency:
+
+```bash
+npm install --save-dev jest # notice the flag
+```
+
+Next, update your `package.json` to include a new `test` script:
+
+```JSON
+// package.json
+{
+  "scripts": {
+    "test": "jest"
+  }
+  // other stuff
+}
+```
+
+# Creating Tests
+
+Create a folder called `tests` in the root of your project:
+
+```md
+myServer
+├── tests
+├── ...
+```
+
+Inside the `tests` folder, create a test file called `demo.test.js`:
+
+```js
+// demo.test.js
+
+describe("Math operations", () => {
+  it("should add 1 + 1", () => {
+    expect(1 + 1).toBe(2);
+  });
+});
+```
+
+In the code above, notice the `describe` and `it` syntax. what do these keywords mean?
+
+- `describe` 👉 This function is used to define a test suite. You can group related tests together under meaningful titles, such as `Math operations`, `Assignment1`, `Assignment2`, etc.
+- `it` 👉 This function is used to define an individual test case. Each case should specify a particular functionality you want to test, such as `add`, `subtract`, `checkWinner`, `validateForm`, etc.
+
+# Running Tests
+
+To run your tests, simply run:
+
+```bash
+npm test
+```
+
+Jest will automatically locate your test files, such as `demo.test.js`, and execute all the defined tests within them. If everything is fine, you should see output similar to this in your console:
+
+```bash
+myDemoServer % npm test
+
+> test
+> jest
+
+ PASS  tests/demo.test.js
+  Math operations
+    ✓ should add 1 + 1 (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.304 s
+Ran all test suites.
+```
+
+## Troubleshooting
+
+If your tests fail for any reason, it's likely that you are using a version of Node lower than 14. In that case, switch to the required Node version with the following command:
+
+```bash
+nvm use 20
+```
+
+or ensure the default node version is always reasonable:
+
+```bash
+nvm alias default 20
+```
+
+# Expanding our Example
+
+Let’s expand our test suite to cover additional math operations. Here are some examples to consider that demonstrate `Jest`'s options
+
+```js
+// demo.test.js
+
+describe("Math operations", () => {
+  describe("Math operations", () => {
+    // equals
+    it("should add 1 + 1", () => {
+      expect(1 + 1).toBe(2);
+    });
+
+    // not equals
+    it("should multiply 2 * 3", () => {
+      expect(2 * 3).not.toBe(7);
+    });
+
+    // this should fail
+    it("should subtract 2 - 1", () => {
+      expect(2 - 1).toBe(42);
+    });
+  });
+});
+```
+
+If any of your tests fail, `Jest` will inform you of the exact line causing the issue, making it easier to identify and fix the problem (either in the test or in your code lol)
+
+# Jest Autocompletion
+
+To enable auto-completion for Jest in your code editor, configure it to recognize Jest's methods. Start by installing the type definitions for Jest:
+
+```bash
+npm install @types/jest --save-dev
+```
+
+Next, create a `jsconfig.json` file in your root directory:
+
+```md
+myServer
+├── ...
+├── jsconfig.json
+├── ...
+```
+
+Then, add the following JSON configuration:
+
+```js
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "checkJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "jest": ["node_modules/jest"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
+```
+
+Now, when you write a test case and type `expect`, you will enjoy the benefits of auto-completion :^)
+
+```js
+expect("stuff").
+```
+
+Happy coding ❤️
+
+# Handy VSCode Extensions
+
+## Jest Essentials
+
+There's a useful [Jest extension for VS Code](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) that makes your life easier with features like inline test results and improved integration with the editor. Why is this so neat?
+
+- User Friendly 👉 Testing becomes as simple as clicking a button.
+- Speed 👉 In industry, your `.test.js` will become long and beefy, so normally you don't want to waste time running the entire test suite with `npm test` rather target a specific tests.
+
+## JavaScript Essentials
+
+[Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode) provides real-time feedback and displays the output of your JavaScript code directly within the editor. It has a bunch of neat features such as:
+
+- Inline Execution Output 👉 See the results of your code ASAP
+- Live Code Coverage 👉 Monitor your code coverage ASAP
+- Error Highlighting 👉 Identify errors in your code ASAP
+
+## Restart
+
+After adding these extensions, remember to restart your editor to activate them.
+
+# Using VsCode Extensions
+
+## Jest
+
+Above each of your test cases (written with `it`) and test suites (written with `describe`), you will see options like this:
+
+```md
+Run | Debug
+```
+
+Select one of these options, what happens?
+
+## Quokka.js
+
+To get started with Quokka.js, create a blank JavaScript file. To activate `Quokka.js`, press `Ctrl+Shift+P` for windows 🖥️, or `Cmd+Shift+P` on Mac 🍎 to open the command palette and search for and select `Quokka.js: Start on Current File`
+
+Now, if I write the following code:
+
+```js
+const demo = "demo";
+console.log(demo);
+```
+
+What happens?
+
+# Exercise 1
+
+Take your code from `Assignment1` and move the `checkWinner()` function to a separate file named `cookieCompetition.js`. Next, create a test suite for your `cookieCompetition.js` and write a test case for the `checkWinner` function using Jest.
+
+After adding the extensions, how does this make your life easier?
+
+## Solution
+
+Your `cookieCompetition.js` should look something close to this:
+
+```js
+function checkWinner(player1, player2) {
+  let player1Total = player1.startingCookies;
+  player1.cookiesPerRound.forEach(function (cookies) {
+    player1Total += cookies;
+  });
+
+  let player2Total = player2.startingCookies;
+  player2.cookiesPerRound.forEach(function (cookies) {
+    player2Total += cookies;
+  });
+
+  if (player1Total > player2Total) {
+    return `${player1.name} Wins!`;
+  } else if (player1Total < player2Total) {
+    return `${player2.name} Wins!`;
+  } else {
+    return "it's a tie!";
+  }
+}
+
+module.exports = { checkWinner }; // notice me
+```
+
+Your `cookieCompetition.test.js` should look close to this:
+
+```js
+// cookieCompetition.test.js
+const { checkWinner } = require("../scripts/cookieCompetition");
+
+describe("Assignment 1", () => {
+  it("check winner - returns player1 as the winner", () => {
+    const player1 = {
+      name: "Jim",
+      startingCookies: 10,
+      cookiesPerRound: [5, 8, 7],
+    };
+    const player2 = {
+      name: "Pam",
+      startingCookies: 15,
+      cookiesPerRound: [4, 4, 4],
+    };
+
+    expect(checkWinner(player1, player2)).toBe("Jim Wins!");
+  });
+});
+```
