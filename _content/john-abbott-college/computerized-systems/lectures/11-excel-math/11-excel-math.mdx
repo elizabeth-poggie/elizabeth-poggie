@@ -40,7 +40,7 @@ In a previous lecture, we covered trendlines. Let's take it a step further. Once
 
 If the _slope_ and the _y-intercept_ are known, we can determine the corresponding Y value for any given X, and vice versa. By plugging in the values, we can easily predict points along the line, making it a common tool for data analysis.
 
-## How do we create an equation with Excel?
+# Equations in Excel
 
 There are two ways of extracting the equations of a line from plotted data in Excel:
 
@@ -57,3 +57,58 @@ You can refer to [here](https://www.ablebits.com/office-addins-blog/2019/01/16/e
   - 0.17
   - 0.11
   - 0.32
+
+# Area Under a Curve
+
+There are many situations were the Area Under a Curve (AUC) can provide additional information about the data.
+
+## Why calculate it?
+
+This happens because **the area under a curve has a mathematical relationship with the curve**. [See Introduction to Integration for more info.](https://www.mathsisfun.com/calculus/integration-introduction.html)
+
+## What does this mean for you?
+
+In the field of [pharmacokinetics](https://en.wikipedia.org/wiki/Pharmacokinetics), the **area under the curve** (**AUC**) describes the variation of a drug [concentration](https://en.wikipedia.org/wiki/Concentration) in [blood plasma](https://en.wikipedia.org/wiki/Blood_plasma) as a function of time.
+
+## What does this mean in the real world?
+
+In practice, the drug concentration is measured at certain points and the [trapezoidal rule](https://en.wikipedia.org/wiki/Trapezoidal_rule)(rectangular approximation) is used to estimate AUC.
+
+## What does this mean for professionals in your industry?
+
+This area under the curve is dependant on the rate of elimination of the drug from the body and the dose administered.
+
+## What's the math
+
+You can refer to [Area under the curve (pharmacokinetics)](https://en.wikipedia.org/wiki/Area_under_the_curve_%28pharmacokinetics%29) for the detailed mathematical explanation
+
+# AUC in Excel
+
+We can use Excel to calculate the area under a curve. To do this we use the following approximation:
+
+- Breakdown the area under a curve into small rectangles using the trapezoidal rule since the area of a rectangle is easier to calculate.
+- Sum the area of all the rectangles to get the total area.
+
+## The rule
+
+The trapezoidal rule works by approximating the region under the graph of the function as a trapezoid and calculating its area.
+
+## The rule in simple terms
+
+- Instead of trying to calculate the area under the entire curve at once, we break it into smaller pieces between two points. Each piece is shaped like a trapezoid
+- To find the area of each trapezoid, we take the average of the two heights (the values at two consecutive points) and multiply by the width.
+- After calculating the area for each trapezoid, you simply add them up.
+
+## Exercise 2
+
+In Excel we will calculate 𝚫x and 𝚫y and then multiply them together to get the area of each rectangle. By the end of it, your equation should look something like this:
+
+```md
+| Time (hours) | Concentration (mg/L) | AUC Calculation     |
+| ------------ | -------------------- | ------------------- |
+| 0            | 0                    | 0                   |
+| 1            | 5.2                  | =(B2+B3)/2\*(A3-A2) |
+| 2            | 8.0                  | =(B3+B4)/2\*(A4-A3) |
+| ...          | ...                  | ...                 |
+|              |                      | =sum(C2:C??)        |
+```
