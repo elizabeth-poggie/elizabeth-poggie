@@ -58,50 +58,46 @@ You can refer to [here](https://www.ablebits.com/office-addins-blog/2019/01/16/e
   - 0.11
   - 0.32
 
-# Area Under a Curve
+# Area Under a Curve (AUC)
 
-There are many situations were the Area Under a Curve (AUC) can provide additional information about the data.
+There are many cases where calculating the Area Under the Curve (AUC) provides valuable insights into the data.
 
 ## Why calculate it?
 
-This happens because **the area under a curve has a mathematical relationship with the curve**. [See Introduction to Integration for more info.](https://www.mathsisfun.com/calculus/integration-introduction.html)
+The reason for calculating AUC is that it helps reveal the total effect or impact of the values represented by the curve over time. This is because _the area under a curve has a direct mathematical relationship with the curve itself_. You can read more about the basics of this in the [Introduction to Integration](https://www.mathsisfun.com/calculus/integration-introduction.html).
 
-## What does this mean for you?
+## What does this matter for you?
 
-In the field of [pharmacokinetics](https://en.wikipedia.org/wiki/Pharmacokinetics), the **area under the curve** (**AUC**) describes the variation of a drug [concentration](https://en.wikipedia.org/wiki/Concentration) in [blood plasma](https://en.wikipedia.org/wiki/Blood_plasma) as a function of time.
+In the field of [pharmacokinetics](https://en.wikipedia.org/wiki/Pharmacokinetics), the AUC describes how the concentration [concentration](https://en.wikipedia.org/wiki/Concentration) of a drug in [blood plasma](https://en.wikipedia.org/wiki/Blood_plasma) changes over time, which helps understand how much of the drug has been absorbed by the body.
 
-## What does this mean in the real world?
+## What Does This Mean in Real-World Applications?
 
-In practice, the drug concentration is measured at certain points and the [trapezoidal rule](https://en.wikipedia.org/wiki/Trapezoidal_rule)(rectangular approximation) is used to estimate AUC.
+In practice, scientists and medical professionals measure drug concentrations at different times. To estimate the AUC from these measurements, they often use the [trapezoidal rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) (rectangular approximation). This method simplifies the calculation by approximating the area using trapezoids.
 
 ## What does this mean for professionals in your industry?
 
-This area under the curve is dependant on the rate of elimination of the drug from the body and the dose administered.
+For professionals in pharmacokinetics, the AUC is especially important because it helps determine how long a drug stays in the body and at what concentration. This depends on the rate at which the body eliminates the drug and the dosage given. The higher the AUC, the greater the exposure to the drug.
 
-## What's the math
+## How Do You Calculate It?
 
-You can refer to [Area under the curve (pharmacokinetics)](https://en.wikipedia.org/wiki/Area_under_the_curve_%28pharmacokinetics%29) for the detailed mathematical explanation
+You can check out this more detailed explanation: [Area under the curve (pharmacokinetics)](https://en.wikipedia.org/wiki/Area_under_the_curve_%28pharmacokinetics%29) for the detailed mathematical explanation. However, here’s a simpler breakdown:
+
+- Instead of calculating the area under the entire curve at once, we split it into smaller trapezoids between two points.
+- To calculate the area of each trapezoid, take the average of the heights at two points (representing the concentration values) and multiply that by the width (representing the time difference between the points).
+- Once you have the areas of each trapezoid, just add them together to get the total area.
 
 # AUC in Excel
 
-We can use Excel to calculate the area under a curve. To do this we use the following approximation:
+You can easily calculate the AUC in Excel using an approximation method. Here’s how:
 
-- Breakdown the area under a curve into small rectangles using the trapezoidal rule since the area of a rectangle is easier to calculate.
-- Sum the area of all the rectangles to get the total area.
-
-## The rule
-
-The trapezoidal rule works by approximating the region under the graph of the function as a trapezoid and calculating its area.
-
-## The rule in simple terms
-
-- Instead of trying to calculate the area under the entire curve at once, we break it into smaller pieces between two points. Each piece is shaped like a trapezoid
-- To find the area of each trapezoid, we take the average of the two heights (the values at two consecutive points) and multiply by the width.
-- After calculating the area for each trapezoid, you simply add them up.
+- Break the area under the curve into smaller sections using the trapezoidal rule. The area of each trapezoid is much easier to calculate than that of a curve.
+- Add up the areas of all the trapezoids to get the total AUC.
 
 ## Exercise 2
 
-In Excel we will calculate 𝚫x and 𝚫y and then multiply them together to get the area of each rectangle. By the end of it, your equation should look something like this:
+In Excel, you can calculate the AUC by finding the differences in time (∆x) and the average concentration (∆y) between two points. Then, multiply these values to estimate the area of each trapezoid.
+
+Your formula should look something like this:
 
 ```md
 | Time (hours) | Concentration (mg/L) | AUC Calculation     |
