@@ -1,19 +1,19 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "in class hackathon (node edition)"
+title: "In-class Hackathon (IntersectionObserver)"
 created: "2024-10-15"
 number: 22
 ---
 
 # Quick Recap
 
-- Modules
-- Lazy Loading
-- Servers
-- Unit Testing
-- VScode Extensions such as Quokka.js and Jest Test Runner
-- Arrow notation
+- Modules (`require` vs `import`)
+- Lazy Loading (html attributes)
+- Servers (`http-server`)
+- Unit Testing (`jest`)
+- VScode Extensions such as _Quokka.js_ and _Jest Test Runner_
+- Arrow notation (`(params) => doStuff;`)
 
 ## Arrow notation example
 
@@ -74,3 +74,130 @@ const student = {
   },
 };
 ```
+
+# Downloading content without a download button
+
+To download an audio clip using Chrome DevTools, you can follow these steps:
+
+- Navigate to the webpage that contains the audio clip you want to download
+- Open Chrome DevTools
+- In the DevTools panel, click on the "Network" tab. This will show you all the network requests made by the page. click the 🚫 icon to clear the section of the most recent requests.
+- Play the audio clip on the website. As it plays, you should see new requests appearing in the Network tab.
+- Once you find the audio file, right-click on it and select "Open in new tab" or "Copy link address". If you open it in a new tab, the audio will start playing.
+- If you opened it in a new tab, you can right-click on the audio player and select "Save audio as..." to download the file to your computer. If you copied the link address, paste it into your browser's address bar and hit Enter. Then use the right-click option to save the file.
+
+## Warning
+
+What some websites ep is the site might not give you the entire media file but in small chunks. Why? They want to prevent people like us from downloading all their content. How do you get around this?
+
+## Why am I showing you this?
+
+Using the content in the lectures up until now, today is an in-class hackathon dedicated to creating your first web server using <del> completely legally downloaded </del> audio content.
+
+# Intersection Observer API
+
+To lazy load audio, video and visual content, you need to know about the [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+
+## What is it?
+
+The Intersection Observer API is a browser feature that allows you to detect when an element enters or leaves the visible part of the screen (the viewport). It helps you efficiently manage tasks related to visibility, such as lazy loading images or triggering animations when elements come into view.
+
+## Why use it?
+
+Taken directly from the official docs, it is used for these main reasons:
+
+- To implement "infinite scrolling"
+- To reporting of visibility of advertisements in order to calculate ad revenues.
+- To decide whether or not to perform tasks or animation processes based on whether or not the user will even see it.
+
+## The General Formula
+
+Step 1) Create an Intersection Observer by specifying a callback function that runs whenever the target elements enter or leave the viewport.
+
+```js
+const observer = new IntersectionObserver(handleIntersect);
+```
+
+Step 2) You tell the observer which elements you want to monitor
+
+```js
+observer.observe(someElement);
+```
+
+Step 3) The observer keeps track of the visibility of these elements. When observer `observe`s a chance in the element's intersection status, the function you define in `handleIntersect` will be called
+
+```js
+// An array will be passed into the function when the observer calls it
+const handleIntersect = (entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      // do some cool stuff
+    }
+  });
+};
+```
+
+The function will be called by the observer when any of the observed element’s intersection status changes.
+
+## What about in our use case with audio?
+
+We only want to load the content when the user scrolls to it. Let's use the `IntersectionObserver`.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lazy Load Audio</title>
+  </head>
+  <body>
+    <div style="height: 100vh">Scroll down to load the audio.</div>
+
+    <audio id="myAudio" controls>
+      <source data-src="../public/sonali.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script>
+      // Step 1: Wait for the DOM
+      document.addEventListener("DOMContentLoaded", function () {
+        // Step 2: Get the audio element by its ID
+        const audio = document.getElementById("myAudio");
+
+        // Step 3: Get the <source>
+        const source = audio.querySelector("source");
+
+        // Step 4: Define the callback
+        const handleIntersect = (entries) => {
+          entries.forEach((entry) => {
+            // Step 5: Check if the audio element is intersecting (visible in the viewport)
+            if (entry.isIntersecting) {
+              // Step 6: Set the source of the audio from the data attribute
+              source.src = source.getAttribute("data-src");
+
+              // Step 7: Load the audio source
+              audio.load();
+
+              // Step 8: Stop observing the audio element to avoid loading multiple calls
+              observer.unobserve(audio);
+            }
+          });
+        };
+
+        // Step 9: Create an Intersection Observer with the defined callback
+        const observer = new IntersectionObserver(handleIntersect);
+
+        // Step 10: Start observing the audio element
+        observer.observe(audio);
+      });
+    </script>
+  </body>
+</html>
+```
+
+# The Activity
+
+- Form groups of up to four people and aim to download a complete audio `.mp3` file from the internet.
+- Create a content hosting service using `http-server` in a basic Node.js application.
+- In the right location, implement lazy loading for the audio file using an event listener with the `IntersectionObserver`.
+- The first team to successfully send me a working server will receive a prize during the Friday lecture. The second team with a valid submission will earn runner-up.
