@@ -1,16 +1,14 @@
-var student = {
+const student = {
   name: "Your name",
   id: 12345,
   rScore: 90000,
-  greet: function (name) {
-    console.log("Hey there, " + name + "!");
+  greet() {
+    console.log("Hey there, " + this.name + "!");
   },
-  reminder: function () {
-    console.log(`Did you know that you have a Test Friday?`);
-  },
-  calculateRScore: function (bonus) {
+  reminder: () => console.log(`Did you know that you have a Test last Friday?`),
+  calculateRScore(wow) {
     // at this fictitious school, the r score only goes up
-    this.rScore += bonus;
+    this.rScore += wow;
   },
 };
 
