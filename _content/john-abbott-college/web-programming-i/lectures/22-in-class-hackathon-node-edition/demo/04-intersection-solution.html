@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lazy Load Audio</title>
+  </head>
+  <body>
+    <div style="height: 100vh">Scroll down to load the audio.</div>
+
+    <audio id="myAudio" controls>
+      <source data-src="../public/sonali.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const audio = document.getElementById("myAudio");
+        const source = audio.querySelector("source");
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              source.src = source.getAttribute("data-src");
+              audio.load(); // Load the audio source
+              observer.unobserve(audio); // Stop observing once loaded
+            }
+          });
+        });
+
+        observer.observe(audio);
+      });
+    </script>
+  </body>
+</html>
