@@ -10,13 +10,35 @@ number: 12
 
 ## Displaying Equations
 
+Using trendlines, you can display the equation on the graph:
+
+![demo](./assets/equation.gif)
+
 ## Creating Equations
+
+You can also use the built-in `SLOPE` and `INTERCEPT` functions in excel:
+
+![demo](./assets/slope.gif)
+
+This is the preferred method because now we can easily plug in values to predict other points along the line:
+
+![demo](./assets/domath.gif)
 
 ## AUC Applications
 
+The Area Under a Curve (AUC) helps determine how long a drug stays in the body and at what concentration. The higher the AUC, the greater the exposure to the drug.
+
 ## AUC in Math
 
+To estimate the AUC from these measurements, they often use the [trapezoidal rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) (rectangular approximation). To break this down into simple steps:
+
+- Split the curve into smaller triangles between two points.
+- To calculate the area of each triangle.
+- Once you have the areas of ALL triangles, just add them together to get the total area under the curve.
+
 ## AUC in Excel
+
+Implementing the above approach in excel is relatively chill:
 
 # Freezing
 
