@@ -59,11 +59,13 @@ In short, we use this API for a few key reasons:
 
 We'll explore asynchronous programming in future lectures, but for now, understand that this observer allows you to monitor elements only when needed, rather than continuously tracking them.
 
-# Multi-element Observation
+# Multi-Element Observation
 
-Let's say instead of using the observer to track 1 element, use many elements. What would that look like
+Let's say instead of using the observer to track 1 element, use many elements. What would that look like?
 
 ## The HTML
+
+In your HTML, you need to ensure you're not loading the images initially by setting a placeholder or using a low-resolution image or even an empty `src`. Instead, use the `data-src` attribute to store the actual image source that gets applied when the image comes into view.
 
 ```html
 <!-- Images with data-src attributes for lazy loading -->
@@ -72,7 +74,11 @@ Let's say instead of using the observer to track 1 element, use many elements. W
 <img data-src="./public/moreCute.jpg" />
 ```
 
+If you are curious, you can refer to the official documentation [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*) on the `data-*` attributes.
+
 ## The JavaScript
+
+Note the `setTimeout` method and arrow notation below. There is a reason for this decision :^)
 
 ```js
 // Step 0 - Select all images with the data-src attribute
