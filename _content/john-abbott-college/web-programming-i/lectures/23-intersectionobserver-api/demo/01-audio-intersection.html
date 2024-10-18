@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IntersectionObserver - Audio Content</title>
+  </head>
+  <body>
+    <div style="height: 100vh">Scroll down to load the audio.</div>
+
+    <audio id="myAudio" controls>
+      <source data-src="./public/sonali.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const audio = document.getElementById("myAudio");
+        const source = audio.querySelector("source");
+        const handleIntersect = (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              source.src = source.getAttribute("data-src");
+              audio.load();
+              observer.unobserve(audio);
+            }
+          });
+        };
+        const observer = new IntersectionObserver(handleIntersect);
+        observer.observe(audio);
+      });
+    </script>
+  </body>
+</html>

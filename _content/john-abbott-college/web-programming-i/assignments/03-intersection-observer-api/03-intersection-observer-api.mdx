@@ -1,0 +1,99 @@
+---
+# General Information
+category: "Web Programming I"
+title: "IntersectionObserver API"
+created: "2024-10-18"
+number: 3
+---
+
+# Overview
+
+- Worth: This lab will count towards the Assignment portion of your final grade at `6%`
+- Due: `October 30th, 2024 @ 2:00am` - I recommend submitting by `October 29 @ 9:00pm` to ensure good sleep, however for those who thrive under last-minute pressure, you have until the deadline later that evening 👀
+- Submission: Upload a `.zip` file containing your work folder to LEA.
+- Late Penalty: Late submissions lose 10% per day to a maximum of 3 days. Nothing is accepted after 3 days and a grade of zero will be given.
+
+# Cheating and Plagiarism
+
+The goal of this assignment is to help you develop your own logical thinking and work through the syntax on your own. Sharing or giving your code to others is considered cheating. Using logic or code from other sources without citing them is plagiarism. You are free to google things in this assignment (in fact that's encouraged), however the logic should be your own work.
+
+If a friend is struggling, you can help them by guiding their thinking rather than giving them the answers. If you get stuck, feel free to reach out to me during office hours, in class, or via MIO or Teams.
+
+# The Goal
+
+For this assignment, you'll be using the `IntersectionObserver API` to detect intersections with various elements and explore different use cases. You'll also be practicing with array functions and arrow notation.
+
+Don’t worry if you're unsure about everything just yet. This assignment is meant to reinforce what we’ve covered in class, and we’ll be going over the remaining concepts soon :)
+
+# Getting Started
+
+Download the starter folder from LEA. Create a separate external JavaScript file to contain all of your JavaScript code for this assignment.
+
+# HTML Instructions
+
+## Audio/Visual Content
+
+Add three lazy-loaded images or audio files. If you're using images, they should be at least 500KB but no more than 1MB. If you're using audio, ensure the file size is under 1MB, you might have trouble submitting on Lea if it's larger.
+
+Image tips: assign a width and height to your images.
+
+Audio tips: If your audio file exceeds 1MB, feel free to trim it down.
+
+## Checkboxes
+
+Keep the three checkboxes that are already in the provided HTML. You cannot modify these elements (no adding IDs, for example). You can assume that these elements will always appear as they are, so you can _access them based on their order_.
+
+## Description
+
+Below the checkboxes, add a multiline description explaining why you like the content featured in the video (see the instructions below). The description should be at least three sentences and written in your own words.
+
+Note: Make sure it's _authentically_ you, no ChatGPT this time. I want to hear your unique voice, not another robot.
+
+## Video
+
+Below your description, embed a `video` of at least 10 seconds using the video HTML element. You have two options for this part:
+
+- Option 1) Record a screen capture of your desktop where you reveal your favorite movie, TV show, video game, or anything else of your choice. Simply Googling it or typing its name on-screen is enough.
+- Option 2) Use online resources to find non-copyrighted material for your video 👀
+
+Note: Audio is optional, so don’t worry if your video is silent.
+
+# JavaScript Instructions
+
+## Lazy Loading Audio/Visual Content
+
+Use the `IntersectionObserver API` to create an observer that will lazy load your images. You should apply an array method and arrow function to identify the images to be observed, all within a single statement.
+
+Note: Methods like `getElementsBy…` return an `HTMLCollection`. While you can access these elements using indices similar to arrays, they are not "true arrays". To work with them as arrays, you'll need to convert them:
+
+```js
+let myArray = Array.from(myHTMLCollection);
+```
+
+## Lazy Loading Videos
+
+Use the `IntersectionObserver API` to create an observer that controls video playback _only when all three checkboxes are checked_. Here's the behavior you'll implement:
+
+- When the viewport intersects with the first third of the video element, the video should start playing. If it no longer intersects, the video should pause.
+- Once the video reaches the end, it should reset to the beginning, and the observer should stop tracking it.
+
+Note 1: The `IntersectionObserver` object has a method called unobserve that allows you to stop observing an element. You will pass the specific element to this function when you no longer need to track it.
+
+Note 2: the `IntersectionObserver` constructor accepts an options object as its second argument, allowing you to customize the point of intersection. You’ll need to research the correct property to adjust this behavior.
+
+## Checkbox Logic
+
+To handle the checkbox logic, create a function that uses array methods:
+
+- Use `map` to generate an array of checkbox elements from their parent `div`.
+- Use `map` again to create an array of booleans, indicating whether each checkbox is checked.
+- Finally, use `reduce` on the boolean array to determine if all checkboxes are selected.
+
+## Description Animations
+
+Use the `IntersectionObserver API` to create an observer that triggers the following behavior for the description section:
+
+- When the user has fully viewed the description, its text color should change, visually indicating that it has been read.
+- Once the description has been viewed, stop tracking it for further intersection updates.
+
+Note: If you want to have more fun than this with the animations, go fot it. The instructions listed above are just the requirements.

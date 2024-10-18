@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IntersectionObserver - Visual Content</title>
+  </head>
+  <style>
+    img {
+      height: 60vh;
+      width: 100%;
+      object-fit: cover;
+      background-color: lightgray;
+    }
+  </style>
+  <body>
+    <img data-src="./public/cutecat.jpg" />
+    <img data-src="./public/cuter.jpg" />
+    <img data-src="./public/moreCute.jpg" />
+    <script>
+      const lazyImages = document.querySelectorAll("img[data-src]");
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            setTimeout(() => {
+              img.src = img.dataset.src;
+              observer.unobserve(img);
+            }, 1500);
+          }
+        });
+      });
+
+      lazyImages.forEach((image) => observer.observe(image));
+    </script>
+  </body>
+</html>
