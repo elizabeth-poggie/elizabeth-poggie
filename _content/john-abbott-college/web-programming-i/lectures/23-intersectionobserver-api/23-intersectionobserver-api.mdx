@@ -66,7 +66,42 @@ Let's say instead of using the observer to track 1 element, use many elements. W
 ## The HTML
 
 ```html
-
+<!-- Images with data-src attributes for lazy loading -->
+<img data-src="./public/cutecat.jpg" />
+<img data-src="./public/cuter.jpg" />
+<img data-src="./public/moreCute.jpg" />
 ```
 
 ## The JavaScript
+
+```js
+// Step 0 - Select all images with the data-src attribute
+const lazyImages = document.querySelectorAll("img[data-src]");
+
+// Step 1 - Create an IntersectionObserver to handle image loading when they enter the viewport
+const observer = new IntersectionObserver((entries, observer) => {
+  // Step 2 - Loop through each entry that the observer observes
+  entries.forEach((entry) => {
+    // Step 3 - Check if the image is currently in the viewport
+    if (entry.isIntersecting) {
+      // Step 4 - Get the current image element that is intersecting
+      const img = entry.target;
+
+      // Step 3 - Simulate bad wifi
+      setTimeout(() => {
+        // Step 4 - Set the src attribute to the value of the data-src attribute
+        // NOTE: 'dataset.src' accesses the 'data-src' attribute value
+        img.src = img.dataset.src;
+        // Step 5 - Stop observing this image once it has been loaded
+        observer.unobserve(img);
+        // Delay of 1.5 seconds
+      }, 1500);
+    }
+  });
+});
+
+// FINAL STEP: Observe each image for when it enters the viewport
+lazyImages.forEach((image) => observer.observe(image));
+```
+
+# Lab Time
