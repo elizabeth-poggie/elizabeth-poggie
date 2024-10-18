@@ -1,0 +1,64 @@
+---
+# General Information
+category: "Web Programming I"
+title: "IntersectionObserver API"
+created: "2024-10-18"
+number: 23
+---
+
+# Recap
+
+## IntersectionObserver API - What is it?
+
+The `IntersectionObserver` API helps you detect when elements enter or leave the viewport, making it essential for building modern, efficient web features like lazy loading, infinite scrolling, and scroll-triggered animations.
+
+## Step by Step Explanation
+
+Let's say we only have 1 audio element to worry about. We can handle it using the IntersectionObserver API following the below steps"
+
+```js
+// Step 1: Wait for the DOM
+document.addEventListener("DOMContentLoaded", function () {
+  // Step 2: Get the audio element by its ID
+  const audio = document.getElementById("myAudio");
+
+  // Step 3: Get the <source>
+  const source = audio.querySelector("source");
+
+  // Step 4: Define the callback
+  const handleIntersect = (entries) => {
+    entries.forEach((entry) => {
+      // Step 5: Check if the audio element is intersecting (visible in the viewport)
+      if (entry.isIntersecting) {
+        // Step 6: Set the source of the audio from the data attribute
+        source.src = source.getAttribute("data-src");
+
+        // Step 7: Load the audio source
+        audio.load();
+
+        // Step 8: Stop observing the audio element to avoid loading multiple calls
+        observer.unobserve(audio);
+      }
+    });
+  };
+
+  // Step 9: Create an Intersection Observer with the defined callback
+  const observer = new IntersectionObserver(handleIntersect);
+
+  // Step 10: Start observing the audio element
+  observer.observe(audio);
+});
+```
+
+# Observer Advantages
+
+In short, we use this API for a few key reasons:
+
+- Performance 👉 It offers a more efficient method for tracking element visibility compared to traditional techniques.
+- Asynchronous 👉 It allows browsers to handle intersection checks on a separate thread, improving performance.
+
+We'll explore asynchronous programming in future lectures, but for now, understand that this observer allows you to monitor elements only when needed, rather than continuously tracking them.
+
+# Multi-element Observation
+
+Let's say instead of using the observer to track 1 element, use many elements. What would
