@@ -6,6 +6,97 @@ created: "2024-10-20"
 number: 24
 ---
 
+# Quick Recap
+
+Last week, we took time to familiarize ourselves with the syntax associated with the Intersection Observer API. Today we are going to get more into the theory
+
+# Asynchronous Programming
+
+Async programming allows code to execute without blocking the main thread, enabling other operations to continue while waiting for other tasks to complete.
+
+## How does this relate to Web Development?
+
+This is especially important in web development to avoid freezing or slowing down a page while waiting for resources from a server.
+
+## In the context of Web Development, what is the main thread?
+
+In the context of web development, the main thread refers to the single thread where most of the execution of JavaScript, rendering of HTML/CSS, event handling, and general browser operations occur.
+
+## What blocks the main thread?
+
+JavaScript is traditionally single-threaded, meaning it runs one task at a time on the main thread. This includes tasks like executing scripts, rendering the user interface, handling user input (clicks, typing, etc.), and layout updates.
+
+Because of this, if a task takes too long (like heavy computations or network requests), it can block the thread, causing the browser to freeze or become unresponsive.
+
+## What are common blocking operations?
+
+Synchronous tasks (like loops or long computations) can block the main thread, preventing it from doing other work. Some examples include:
+
+- Long loops and complex calculations
+- Modifying the DOM and heavy DOM traversal (e.g. animations)
+- Any synchronous file operations (e.g. reading large files using local file access)
+- Parsing Large JSON
+
+## How does Async Programming help?
+
+To prevent blocking the main thread, web developers use asynchronous programming (e.g., `Promises`, `async`/`await`, `setTimeout`) to offload tasks that can take time, such as `fetch`ing data from a server or performing complex calculations.
+
+## Why is this so useful?
+
+The browser can continue to render and respond to user interactions while the task completes in the background.
+
+# Async Programming and the IntersectionObserver API
+
+## Why does async programming relate to the IntersectionObserver API?
+
+The Intersection Observer API allows you to "asynchronously" observe changes in the intersection of a `target` element within a viewport. The main benefits include and are not limited to:
+
+- Non blocking behavior
+- Efficient Resource Loading
+
+## Non-blocking Behavior
+
+The Intersection Observer API performs asynchronous observation of elements. You specify what to `observe()`
+
+```js
+observer.observe(someElement);
+```
+
+When the conditions are met (like an element entering the viewport), a "callback" is triggered.
+
+```js
+const observer = new IntersectionObserver(callback);
+```
+
+This happens asynchronously, without blocking the main thread which improves performance.
+
+## Efficient Resource Loading
+
+The Intersection Observer can delay the loading of certain resources, such as images, until they are actually needed:
+
+```js
+function callback(entries, observer) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      // Get the image
+      let img = entry.target;
+      // Set the URL to be a local file
+      img.src = img.dataset.src;
+      // Stop observing once image is loaded
+      observer.unobserve(img);
+    }
+  });
+}
+```
+
+# Handling Async Operations
+
+Async operations in JavaScript are often handled using:
+
+- Callbacks 👉 Functions passed as arguments that are executed once a task is completed.
+- `Promise`s 👉 Objects representing a future result of an async operation, which can be resolved or rejected.
+- `async`/`await` 👉 A more readable syntax for working with Promises, making async code look synchronous.
+
 # Ajax
 
 Asynchronous JavaScript and XML
