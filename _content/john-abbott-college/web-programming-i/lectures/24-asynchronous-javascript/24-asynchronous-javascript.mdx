@@ -24,9 +24,7 @@ In the context of web development, the main thread refers to the single thread w
 
 ## What blocks the main thread?
 
-JavaScript is traditionally single-threaded, meaning it runs one task at a time on the main thread. This includes tasks like executing scripts, rendering the user interface, handling user input (clicks, typing, etc.), and layout updates.
-
-Because of this, if a task takes too long (like heavy computations or network requests), it can block the thread, causing the browser to freeze or become unresponsive.
+JavaScript is traditionally single-threaded, meaning it runs one task at a time on the main thread. However many things we do in the web tend to be time consuming or "blocking" causing the browser to freeze or become unresponsive.
 
 ## What are common blocking operations?
 
@@ -39,7 +37,7 @@ Synchronous tasks (like loops or long computations) can block the main thread, p
 
 ## How does Async Programming help?
 
-To prevent blocking the main thread, web developers use asynchronous programming (e.g., `Promises`, `async`/`await`, `setTimeout`) to offload tasks that can take time, such as `fetch`ing data from a server or performing complex calculations.
+To prevent blocking the main thread, web developers use asynchronous programming to offload tasks that can take time, such as `fetch`ing data from a server or performing complex calculations.
 
 ## Why is this so useful?
 
@@ -88,6 +86,37 @@ function callback(entries, observer) {
   });
 }
 ```
+
+However there is much more to this. Today we are going to explore stuff beyond lazy loading of images and see how async programming is implemented in the rest of JavaScript.
+
+To understand anything async, we need to take a moment to appreciate the event loop.
+
+# The Event loop
+
+Both the browser and Node.js are always running a single threaded event loop to run your code.
+
+On the first go around it will run all your synchronous code, but it also might queue up asynchronous events to be called back later
+
+For example, let's say I have this function i need to run called `getStuff`, but first I need to get this data from the server.
+
+The event loop then goes "ok sounds good function, I'll keep doing my thing while you go do your thing"
+
+The function goes and does that in a separate thread pool
+
+Then at some point in the future `getStuff()` will finish and let the event loop know that it's ready to be "called back"
+
+This is where things start to get a bit more complicated.
+
+- if its a big task, it will be executed on the next event loop
+- if its a small task, it will be called back before the start of the next event loop
+
+What does this mean? This will make more sense in the code.
+
+# The Code behind the Loop
+
+# Promises
+
+# Async / Await
 
 # Handling Async Operations
 
