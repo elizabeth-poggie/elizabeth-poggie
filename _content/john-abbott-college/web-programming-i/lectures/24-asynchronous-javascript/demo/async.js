@@ -1,9 +1,7 @@
-getStuff(callback);
+console.log("I am a synchronous task");
 
-// kk getting stuff
+setTimeout(() => console.log("short timeout"), 0);
 
-// stuff has been gotten
+Promise.resolve().then(() => console.log("what is a promise?"));
 
-// plz call me back lol
-
-callback;
+console.log("I am also synchronous");

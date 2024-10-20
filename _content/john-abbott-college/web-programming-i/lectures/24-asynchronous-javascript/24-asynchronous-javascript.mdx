@@ -114,6 +114,83 @@ What does this mean? This will make more sense in the code.
 
 # The Code behind the Loop
 
+Lets run the following code in "Run and Debug" mode and add breakpoints to each of these lines of code:
+
+```js
+console.log("I am a synchronous task"); // 1
+
+setTimeout(() => console.log("short timeout"), 0); // 2
+
+Promise.resolve().then(() => console.log("what is a promise?")); // 3
+
+console.log("I am also synchronous"); // 4
+```
+
+On first glance you might think that this will run each of these tasks in order, however that is not the case. Instead the order will be 1,4,3,2 with the below printing to console:
+
+```text
+I am a synchronous task
+I am also synchronous
+what is a promise?
+short timeout
+```
+
+What is happening? For this you need to understand the difference in priority between synchronous tasks, micro tasks, and macro tasks
+
+## Synchronous Tasks
+
+Only when last task is done then go on to the next task
+
+## Asynchronous Macro Tasks
+
+This does not block execution, however because it is a "Larger" task, the `callback` is only executed on the next iteration of the event loop.
+
+Other examples of "Macro" Tasks include:
+
+- `setTimeout`
+- `setInterval`
+
+## Asynchronous Micro Tasks
+
+This does not block execution, however because it is a "Smaller" task, the `callback` is executed before the start of the next event loop.
+
+## Conclusion
+
+Going back to our example, let's organize each of these statements into different categories of tasks:
+
+```js
+// Sync task
+console.log("I am a synchronous task");
+//  Macro task
+setTimeout(() => console.log("short timeout"), 0);
+// Micro task
+Promise.resolve().then(() => console.log("what is a promise?"));
+// Sync task
+console.log("I am also synchronous");
+```
+
+So when we organize this by the order of tasks starting from sync, micro, followed by macro, the flow of execution is as follows:
+
+```js
+// Step 1 - Sync tasks are blocking
+console.log("I am a synchronous task");
+// Step 4 - Macro task does it's own thing on another thread
+setTimeout(() => console.log("short timeout"), 0);
+// Step 3 - Micro task does its own thing on another thread
+Promise.resolve().then(() => console.log("what is a promise?"));
+// Step 2 - Sync tasks are blocking and happen in order
+console.log("I am also synchronous");
+```
+
+Which gives us the following output:
+
+```text
+I am a synchronous task
+I am also synchronous
+what is a promise?
+short timeout
+```
+
 # Promises
 
 # Async / Await
@@ -135,28 +212,3 @@ Allows parts of web pages to be asynchronously updated without reloading the who
 It is not a programming language, it is a technique.
 
 Uses the browser XMLHttpRequest object.
-
-# Asynchronous execution
-
-Asynchronous request: does not block execution
-
-Asynchronous execution of tasks example:
-start download of movie working…
-don’t wait for movie download to finish, start popcorn right away while movie is still downloading
-start microwave popcorn working..
-don’t wait for popcorn and movie download to finish, start setting up the couch right away while
-the other tasks are still in progress
-set up couch
-
-# Synchronous execution
-
-Asynchronous request: does not block execution
-
-Opposite: Synchronous execution of tasks example:
-start download of movie // wait for it to finish
-only when last task is done (when the movie is done downloading) go on to the next task,
-microwaving the popcorn
-start popcorn // wait for it finish
-only when last task is done (when the popcorn is done) go on to the next task, setting up the
-couch
-set up the couch
