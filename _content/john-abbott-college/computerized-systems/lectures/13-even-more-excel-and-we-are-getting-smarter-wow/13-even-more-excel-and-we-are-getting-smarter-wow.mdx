@@ -14,6 +14,50 @@ We don't need to create a control chart to determine which tablets are in good c
 
 Let's go back to this diagram.
 
+![demo](./assets/1.png)
+
 A tablet that is "under control" will have a value between between `average - 1 sigma` AND `average + 1 sigma`
 
+![demo](./assets/2.png)
+
 A tablet that is "out of control" will have a value between `average - 3 sigma` OR `average + 3 sigma`
+
+![demo](./assets/3.png)
+
+## What does this look like in Excel?
+
+Let's take the following statement that describes whether a tables is "in control":
+
+```text
+thickness >= average - 1 sigma
+
+AND
+
+thickness <= average + 1 sigma
+```
+
+And transfer this to the simpler Excel function:
+
+```excel
+=AND($B2>=$D2, $B2<=$C2)
+```
+
+The same logic applies to the defect statement:
+
+```text
+thickness < average - 3 sigma
+
+OR
+
+thickness > average + 3 sigma
+```
+
+Which just as easily can be described in Excel with this:
+
+```excel
+=OR($B2>$G2, $B2<$H2)
+```
+
+## Where does conditional formatting come in?
+
+For the
