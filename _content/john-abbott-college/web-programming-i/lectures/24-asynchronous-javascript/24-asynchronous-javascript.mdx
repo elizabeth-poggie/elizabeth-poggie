@@ -97,32 +97,36 @@ Both the browser and Node.js are always running a single threaded event loop to 
 
 ![loop](./assets/loop.png)
 
-On the first go around it will run all your synchronous code, but it also might queue up asynchronous events to be called back later. For example, let's say I have this function i need to run called `getStuff`, but first I need to get this data from the server.
+On its first pass, the event loop runs all your "synchronous" code. However, it also manages "asynchronous" events by placing them in a queue to be handled later, without blocking the main thread. Let’s break this down with an example.
+
+## Example Scenario
+
+Imagine you need to run a function called `getStuff`, but first, you need to "fetch" some data from the server. (e.g. the stuff to be gotten)
 
 ![demo](./assets/1.png)
 
-The event loop then goes "ok sounds good function, I'll keep doing my thing while you go do your thing"
+Here, the event loop says: "ok sounds good function, I'll keep doing my thing while you go do your thing"
 
 ![demo](./assets/2.png)
 
-The function goes and does that in a separate thread pool
+Your function, `getStuff()`, goes off to fetch the data. This happens in the background (often in a separate thread pool).
 
 ![demo](./assets/3.png)
 
-Then at some point in the future `getStuff()` will finish and let the event loop know that it's ready to be "called back"
+At some point in the future, when the server responds, `getStuff()` completes and notifies the event loop that it’s ready to be "called back"
 
 ![demo](./assets/4.png)
 
-It is at this point where things start to get a bit more complicated (I'm sorry). Depending on the type of task, the callback is triggered differently
+It is at this point where things start to get a bit more complicated (I'm sorry). Depending on the type of task, the event loop handles the callback in different ways:
 
-- if its a big task, it will be executed on the next event loop
-- if its a small task, it will be called back before the start of the next event loop
+- If it's a _macro task_ (e.g., a big task), it will run in the next iteration of the event loop.
+- If it's a _micro task_ (e.g., a small task), it will run before the next iteration of the event loop.
 
-What does this mean? This will make (hopefully) more sense in the code.
+What does this all mean? This will make (hopefully) more sense in the code.
 
 # The Code behind the Loop
 
-Lets run the following code in "Run and Debug" mode and add breakpoints to each of these lines of code:
+Lets run the following code in "Run and Debug" mode and add breakpoints to each line:
 
 ```js
 console.log("I am a synchronous task"); // 1
@@ -134,7 +138,7 @@ Promise.resolve().then(() => console.log("what is a promise?")); // 3
 console.log("I am also synchronous"); // 4
 ```
 
-At first glance, you might think this will run each task in order, but that's not actually the case. Instead, the tasks will run in the order 1, 4, 3, 2, and the following will be printed to the console:
+At first glance, you might expect these tasks to execute in the order they're written (1, 2, 3, 4), but that’s not actually the case. The order in which they run is actually 1, 4, 3, 2, as demonstrated below:
 
 ```text
 I am a synchronous task
@@ -143,32 +147,57 @@ what is a promise?
 short timeout
 ```
 
-What is happening? For this you need to understand the difference in priority between synchronous tasks, micro tasks, and macro tasks
+## What is happening?
+
+To understand the order of execution, you need to know the difference between synchronous tasks, micro tasks, and macro tasks.
 
 ## Synchronous Tasks
 
-Only when last task is done then go on to the next task.
+These tasks block the event loop, meaning the next task cannot be executed until the current one is completed. For example:
+
+```js
+console.log("I am a synchronous task");
+console.log("I am also synchronous");
+```
 
 ## Asynchronous Macro Tasks
 
-This does not block execution, however because it is a "Larger" task, the `callback` is only executed on the next iteration of the event loop.
+These tasks have their callbacks executed in the next iteration of the event loop, after all synchronous code and micro tasks are completed.
 
-Other examples of "Macro" Tasks include:
+Examples of macro tasks:
 
 - `setTimeout`
 - `setInterval`
+- `observe`
+- event listeners
+
+In our example:
+
+```js
+setTimeout(() => console.log("short timeout"), 0);
+```
+
+Even though the timeout is set to 0, this is a macro task and is deferred until the next loop cycle.
 
 ## Asynchronous Micro Tasks
 
-This does not block execution, however because it is a "Smaller" task, the `callback` is executed before the start of the next event loop.
+These are smaller tasks that run before the next iteration of the event loop. They don’t block the execution, but take priority over macro tasks.
 
 Some "Micro" Tasks include:
 
-- a returned `Promise` from the server
+- `Promise` resolutions
+
+In our example:
+
+```js
+Promise.resolve().then(() => console.log("what is a promise?"));
+```
+
+This micro task runs after the synchronous code but before any macro tasks.
 
 ## Conclusion
 
-Going back to our example, let's organize each of these statements into different categories of tasks:
+Let’s organize the statements into categories to understand the flow of execution:
 
 ```js
 // Sync task
@@ -196,7 +225,7 @@ console.log("I am also synchronous");
 // Step 4 - the Marco task's callback finally gets executed
 ```
 
-Which gives us the following output:
+Which results in the following output:
 
 ```text
 I am a synchronous task
@@ -209,7 +238,7 @@ Now that we know how event loops work, we can start looking at promises.
 
 ## Visual Aid
 
-If that's all still very confusing, this `gif` illustrates the concept quite well:
+If you're still confused, here’s a lovely `gif` to help illustrate how tasks are processed:
 
 ![tasks](./assets/tasks.gif)
 
