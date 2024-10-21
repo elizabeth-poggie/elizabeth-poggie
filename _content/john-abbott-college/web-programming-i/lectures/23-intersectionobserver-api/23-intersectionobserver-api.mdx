@@ -82,7 +82,7 @@ Note the `setTimeout` method and arrow notation below. There is a reason for thi
 
 ```js
 // Step 0 - Select all images with the data-src attribute
-const lazyImages = document.querySelectorAll("img[data-src]");
+const lazyImages = document.querySelectorAll("img");
 
 // Step 1 - Create an IntersectionObserver to handle image loading when they enter the viewport
 const observer = new IntersectionObserver((entries, observer) => {
