@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "Asynchronous JavaScript"
+title: "The Event Loop && Promises"
 created: "2024-10-20"
 number: 24
 ---
@@ -210,7 +210,7 @@ Promise.resolve().then(() => console.log("what is a promise?"));
 console.log("I am also synchronous");
 ```
 
-So when we organize this by the order of tasks starting from sync, micro, followed by macro, the flow of execution is as follows:
+Now the flow of execution is as follows:
 
 ```js
 // Step 1 - Sync tasks are blocking
@@ -244,7 +244,7 @@ If you're still confused, here’s a lovely `gif` to help illustrate how tasks a
 
 # Promises && AJAX
 
-## How is a promise based API consumed?
+## How can we make server requests?
 
 For the purposes of this class, we will be learning how to use AJAX to make requests to a server.
 
@@ -289,9 +289,46 @@ You can read more about it [here](https://www.w3schools.com/xml/ajax_intro.asp)
 
 # XMLHttpRequest
 
-All modern browsers have a built in XMLHttpRequest object
+All modern browsers have a built in XMLHttpRequest object:
 
-# fetch
+```js
+let xhttp = new XMLHttpRequest();
+```
+
+## GET requests
+
+If I want to make a GET request to a server using this object, it would be as follows:
+
+```js
+xhttp.open("GET", "<url>", true); // true ~ asynchronous
+xhttp.send(); // send request
+```
+
+## Example
+
+Let's explore the following using Quokka.js
+
+```js
+let requestURL =
+  "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+let request = new XMLHttpRequest(); // Install using the command
+
+request.open("GET", requestURL, true);
+request.responseType = "text";
+request.onload = function () {
+  var superHeroes = request.response;
+  console.log(superHeroes);
+};
+request.send();
+```
+
+You made need some extra configs to ensure it's working in your system, check the output for next steps :)
+
+# Exercise 1
+
+Head over to [W3 Schools](https://www.w3schools.com/xml/ajax_examples.asp) and complete the "Simple Examples". If the syntax is spooky, be sure to read over the "Examples Explained"
+
+Next, try creating a `XMLHttpRequest()` object in a clean `.js` file. If you have trouble running Quokka.js I will walk around and help with the configs.
 
 # Async Operations Summary
 
