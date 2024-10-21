@@ -7,3 +7,13 @@ number: 13
 ---
 
 # Conditional Formatting
+
+We don't need to create a control chart to determine which tablets are in good condition and which ones are defective. Instead, we can use conditional formatting to highlight this information.
+
+## How?
+
+Let's go back to this diagram.
+
+A tablet that is "under control" will have a value between between `average - 1 sigma` AND `average + 1 sigma`
+
+A tablet that is "out of control" will have a value between `average - 3 sigma` OR `average + 3 sigma`
