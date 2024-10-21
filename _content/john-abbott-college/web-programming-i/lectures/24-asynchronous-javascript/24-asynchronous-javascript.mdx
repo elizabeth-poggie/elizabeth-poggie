@@ -191,24 +191,50 @@ what is a promise?
 short timeout
 ```
 
-# Promises
+Now that we know how event loops work, we can start looking at promises.
 
-# Async / Await
+# Promises && AJAX
 
-# Handling Async Operations
+## How is a promise based API consumed?
 
-Async operations in JavaScript are often handled using:
+For the purposes of this class, we will be learning how to use AJAX to make requests to a server.
+
+## What is AJAX?
+
+AJAX (Asynchronous JavaScript and XML) allows web applications to send and retrieve data from a server asynchronously.
+
+Why is this so neat? It allows parts of web pages to be asynchronously updated without reloading the whole page.
+
+## How do you make a server request with AJAX?
+
+The browser sends a request to the server via JavaScript, typically using the `XMLHttpRequest` object or using the more modern `fetch` API.
+
+When you make a request to the server, you are being "promised" by that server that it will get the data you desire.
+
+## How is that response consumed?
+
+Once you get that response, it is consumed as a "Promise" with the contents of that message containing the data that was "requested".
+
+## What happens to the Webpage?
+
+Once JavaScript has finished processing the response, it updates specific parts of the webpage dynamically.
+
+## Can you create Promises from scratch?
+
+Yes, but you will likely make a lot of mistakes and we will slowly work our way up to such topics.
+
+## Why even use AJAX?
+
+- Server Side Form validation
+- Lazy loading images from a server
+- Search suggestions and autocomplete
+- Notifications
+
+# Async Operations Summary
+
+Today we discussed the following async operations:
 
 - Callbacks 👉 Functions passed as arguments that are executed once a task is completed.
 - `Promise`s 👉 Objects representing a future result of an async operation, which can be resolved or rejected.
-- `async`/`await` 👉 A more readable syntax for working with Promises, making async code look synchronous.
 
-# Ajax
-
-Asynchronous JavaScript and XML
-
-Allows parts of web pages to be asynchronously updated without reloading the whole page.
-
-It is not a programming language, it is a technique.
-
-Uses the browser XMLHttpRequest object.
+We will later cover `async` and `await` which is just a more readable syntax for working with Promises
