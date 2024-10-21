@@ -95,22 +95,30 @@ To understand anything async, we need to take a moment to appreciate the event l
 
 Both the browser and Node.js are always running a single threaded event loop to run your code.
 
-On the first go around it will run all your synchronous code, but it also might queue up asynchronous events to be called back later
+![loop](./assets/loop.png)
 
-For example, let's say I have this function i need to run called `getStuff`, but first I need to get this data from the server.
+On the first go around it will run all your synchronous code, but it also might queue up asynchronous events to be called back later. For example, let's say I have this function i need to run called `getStuff`, but first I need to get this data from the server.
+
+![demo](./assets/1.png)
 
 The event loop then goes "ok sounds good function, I'll keep doing my thing while you go do your thing"
 
+![demo](./assets/2.png)
+
 The function goes and does that in a separate thread pool
+
+![demo](./assets/3.png)
 
 Then at some point in the future `getStuff()` will finish and let the event loop know that it's ready to be "called back"
 
-This is where things start to get a bit more complicated.
+![demo](./assets/4.png)
+
+It is at this point where things start to get a bit more complicated (I'm sorry). Depending on the type of task, the callback is triggered differently
 
 - if its a big task, it will be executed on the next event loop
 - if its a small task, it will be called back before the start of the next event loop
 
-What does this mean? This will make more sense in the code.
+What does this mean? This will make (hopefully) more sense in the code.
 
 # The Code behind the Loop
 
@@ -126,7 +134,7 @@ Promise.resolve().then(() => console.log("what is a promise?")); // 3
 console.log("I am also synchronous"); // 4
 ```
 
-On first glance you might think that this will run each of these tasks in order, however that is not the case. Instead the order will be 1,4,3,2 with the below printing to console:
+At first glance, you might think this will run each task in order, but that's not actually the case. Instead, the tasks will run in the order 1, 4, 3, 2, and the following will be printed to the console:
 
 ```text
 I am a synchronous task
@@ -139,7 +147,7 @@ What is happening? For this you need to understand the difference in priority be
 
 ## Synchronous Tasks
 
-Only when last task is done then go on to the next task
+Only when last task is done then go on to the next task.
 
 ## Asynchronous Macro Tasks
 
@@ -153,6 +161,10 @@ Other examples of "Macro" Tasks include:
 ## Asynchronous Micro Tasks
 
 This does not block execution, however because it is a "Smaller" task, the `callback` is executed before the start of the next event loop.
+
+Some "Micro" Tasks include:
+
+- a returned `Promise` from the server
 
 ## Conclusion
 
@@ -174,12 +186,14 @@ So when we organize this by the order of tasks starting from sync, micro, follow
 ```js
 // Step 1 - Sync tasks are blocking
 console.log("I am a synchronous task");
-// Step 4 - Macro task does it's own thing on another thread
+// Step TBD - Macro task does it's own thing on another thread
 setTimeout(() => console.log("short timeout"), 0);
-// Step 3 - Micro task does its own thing on another thread
+// Step TBD - Micro task does its own thing on another thread
 Promise.resolve().then(() => console.log("what is a promise?"));
 // Step 2 - Sync tasks are blocking and happen in order
 console.log("I am also synchronous");
+// Step 3 - the Micro task's callback finally gets executed
+// Step 4 - the Marco task's callback finally gets executed
 ```
 
 Which gives us the following output:
@@ -193,6 +207,12 @@ short timeout
 
 Now that we know how event loops work, we can start looking at promises.
 
+## Visual Aid
+
+If that's all still very confusing, this `gif` illustrates the concept quite well:
+
+![tasks](./assets/tasks.gif)
+
 # Promises && AJAX
 
 ## How is a promise based API consumed?
@@ -202,6 +222,10 @@ For the purposes of this class, we will be learning how to use AJAX to make requ
 ## What is AJAX?
 
 AJAX (Asynchronous JavaScript and XML) allows web applications to send and retrieve data from a server asynchronously.
+
+## How does it work?
+
+![ajax](ajax.gif)
 
 Why is this so neat? It allows parts of web pages to be asynchronously updated without reloading the whole page.
 
@@ -229,6 +253,16 @@ Yes, but you will likely make a lot of mistakes and we will slowly work our way 
 - Lazy loading images from a server
 - Search suggestions and autocomplete
 - Notifications
+
+## Docs
+
+You can read more about it [here](https://www.w3schools.com/xml/ajax_intro.asp)
+
+# XMLHttpRequest
+
+All modern browsers have a built in XMLHttpRequest object
+
+# fetch
 
 # Async Operations Summary
 
