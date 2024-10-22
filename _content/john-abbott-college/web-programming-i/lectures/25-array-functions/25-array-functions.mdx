@@ -145,21 +145,57 @@ What function should I pass to `map`?
 
 # Reducing Arrays
 
+When working with arrays, you might want to boil down a list of values into a single output, whether it's a sum, a product, or even a complex object. This is why the `reduce` function is so neat
+
+## What is reduce?
+
+The `reduce()` method executes a provided function for each element in the array (from left to right) and accumulates the result into a single value.
+
+It follows this below general syntax:
+
+```js
+let result = myArray.reduce((accumulator, currentElement) => {
+  // do stuff
+}, initialAccumulatorValue);
+```
+
 ## Accumulators
+
+to understand reducers you first need to understand the idea of an _accumulator_. The _accumulator_ stores the result of the previous iterations, so each time the function is applied, it updates based on the next element in the array.
 
 ## To a single number
 
-Reduces the array to a single number using a function that is applied to every number in the array, left to right
+Let's reduce an array to a single number by summing all the elements:
 
 ```js
 let myArray = [14, 8, 10];
 
 let result = myArray.reduce((total, num) => {
   return total + num;
-});
+}, 0);
+
+console.log(result);
+```
+
+What do each of these variables signify?
+
+- `total` is the _accumulator_, which keeps track of the sum as the array is processed.
+- `num` is the _current element_ from the array.
+- `0` is the _initial value_ for total
+
+How does it work?
+
+```text
+Iteration 1: total is 0, num is 14, so total + num = 14.
+Iteration 2: total is 14, num is 8, so total + num = 22.
+Iteration 3: total is 22, num is 10, so total + num = 32.
 ```
 
 ## To Multiple Categories
+
+You can also use `reduce()` to categorize or group items into different buckets. In this case, instead of reducing to a single number like before, we might want to categorize items instead.
+
+Let's take a list of animals and categorize them by their type:
 
 ```js
 let animals = [
@@ -169,7 +205,28 @@ let animals = [
   { type: "cat", name: "Arthur Dent", age: 11 },
   { type: "bird", name: "Beak", age: 12 },
 ];
+
+let categorizedAnimals = animals.reduce((acc, animal) => {
+  // If the type does not exist in the accumulator, create it
+  if (!acc[animal.type]) {
+    acc[animal.type] = []; // init empty array
+  }
+  // Push the animal to the correct category
+  acc[animal.type].push(animal);
+
+  return acc;
+}, {});
+
+console.log(categorizedAnimals);
 ```
+
+What do each of these variables signify?
+
+- `acc` is the accumulator (initially an empty object {}) where we'll store our categorized animals.
+- `animal` represents each object in the array
+- The `reduce()` function checks if the current animal type exists as a property in the accumulator object. If it doesn’t, it creates an empty array for that type and then pushes the animal to the accumulator.
+
+Fun fact: This is how messages are sorted at MaintainX :^)
 
 # Exercise 2
 
