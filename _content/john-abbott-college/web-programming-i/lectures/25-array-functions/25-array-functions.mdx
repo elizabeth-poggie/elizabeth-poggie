@@ -111,7 +111,7 @@ It applies the provided function to every element and returns a new array withou
 
 ## When do you use map?
 
-- When you want to apply a function to every element in an array and return a transformed array.
+- When you want to apply a function to every element in an array and return a transformed array. For example, I do this for my [home page](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/src/views/home/home.tsx#L18) for the website
 - When you need to modify values, but want to preserve the original array for future reference.
 
 # Exercise 1
@@ -270,6 +270,8 @@ Filtering allows you to create a new array containing only the elements that mee
 let numbers = [45, 4, 9, 16, 25];
 let over18 = numbers.filter((val) => value > 18);
 ```
+
+Fun fact: Every time you select a category in the portfolio page, it runs this [filter function](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/src/views/gallery/gallery.tsx#L28)
 
 # Friday Quiz
 
