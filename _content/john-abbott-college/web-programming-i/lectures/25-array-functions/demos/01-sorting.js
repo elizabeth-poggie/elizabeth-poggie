@@ -1,8 +1,7 @@
-let numbers = [12, 5, 20, 1];
-// Ascending order
-numbers.sort((a, b) => a - b);
-console.log(numbers);
+// Example 1 - Reverse
 
-// Descending order
-numbers.sort((a, b) => b - a);
-console.log(numbers);
+// Example 2 - sorting
+let vegetables = ["carrots", "brocoli", "asparagus"];
+
+// Example 3 - number sorting
+let numbers = [12, 5, 20, 1];

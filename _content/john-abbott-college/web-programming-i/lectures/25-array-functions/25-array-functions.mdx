@@ -90,6 +90,8 @@ Why do the methods look like this?
 - In the function `(a, b) => a - b`, if the result is _negative_, `a` comes before `b`; if positive, `b` comes before `a`. This gives the result of by sorting by Ascending order.
 - Similarly, in the function `(a, b) => b - a`, if the result is _negative_, `b` comes before `a`; if positive, `a` comes before `b`. This gives the result of sorting by Descending order.
 
+Fun fact: I do this with your [notes](https://github.com/elizabeth-poggie/elizabeth-poggie/blob/main/src/utils/helpers/noteSorters.ts#L23)
+
 # Mapping an Array
 
 The `map()` method is used to transform or modify each element in an array.
@@ -116,7 +118,7 @@ It applies the provided function to every element and returns a new array withou
 
 In your assignment 3, try to generate an array of checkbox elements from their parent div using `map`
 
-## Solution (ish)
+## Solution-ish
 
 ```js
 // Step 1: Select the parent div that contains the checkboxes
@@ -228,7 +230,21 @@ What do each of these variables signify?
 
 Fun fact: This is how messages are sorted at MaintainX :^)
 
-# Exercise 2
+## Common use cases
+
+You can count how many times a specific value appears in an array:
+
+```js
+let animalCount = animals.reduce((acc, animal) => {
+  acc[animal.type] = (acc[animal.type] || 0) + 1;
+  // Push the animal to the correct category
+  return acc;
+}, {});
+
+console.log(animalCount);
+```
+
+# Exercise 3
 
 n Assignment 3, apply the `reduce` method to the boolean array to check if all checkboxes are selected.
 
@@ -240,7 +256,7 @@ const result = checkboxStates.reduce((acc, cur) => acc && cur, true);
 
 # Even more Methods
 
-Concatenation:
+Concatenation allows you to combine two or more arrays into a single array:
 
 ```js
 let myArray1 = ["apples", "pears"];
@@ -248,7 +264,7 @@ let myArray2 = ["cucumbers", "olives", "cheese"];
 let myMergedArray = myArray1.concat(myArray2);
 ```
 
-Filtering:
+Filtering allows you to create a new array containing only the elements that meet "specific" criteria:
 
 ```js
 let numbers = [45, 4, 9, 16, 25];
