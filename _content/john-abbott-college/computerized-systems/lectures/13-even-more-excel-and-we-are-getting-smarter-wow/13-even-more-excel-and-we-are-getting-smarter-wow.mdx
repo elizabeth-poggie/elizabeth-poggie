@@ -8,25 +8,25 @@ number: 13
 
 # Conditional Formatting
 
-We don't need to create a control chart to determine which tablets are in good condition and which ones are defective. Instead, we can use conditional formatting to highlight this information.
+You don’t need to create a full control chart to determine whether tablets are in good condition or defective. Instead, we can use conditional formatting to make this information stand out clearly.
 
 ## How?
 
-Let's go back to this diagram.
+Let's go back to this diagram:
 
 ![demo](./assets/1.png)
 
-A tablet that is "under control" will have a value between between `average - 1 sigma` AND `average + 1 sigma`
+A tablet is considered "under control" when its value falls between `average - 1 sigma` AND `average + 1 sigma`:
 
 ![demo](./assets/2.png)
 
-A tablet that is "out of control" will have a value between `average - 3 sigma` OR `average + 3 sigma`
+A tablet is considered "out of control" when its value falls outside the range of `average - 3 sigma` OR `average + 3 sigma`
 
 ![demo](./assets/3.png)
 
 ## What does this look like in Excel?
 
-Let's take the following statement that describes whether a tables is "in control":
+Let’s start with the condition that a tablet is "under control". The logic can be described like this:
 
 ```text
 thickness >= average - 1 sigma
@@ -36,13 +36,13 @@ AND
 thickness <= average + 1 sigma
 ```
 
-And transfer this to the simpler Excel function:
+We can translate this logic into a simple Excel function:
 
 ```excel
 =AND($B2>=$D2, $B2<=$C2)
 ```
 
-The same logic applies to the defect statement:
+Similarly, for defective tablets ("out of control"), the logic is:
 
 ```text
 thickness < average - 3 sigma
@@ -52,12 +52,38 @@ OR
 thickness > average + 3 sigma
 ```
 
-Which just as easily can be described in Excel with this:
+In Excel, it looks like this:
 
 ```excel
 =OR($B2>$G2, $B2<$H2)
 ```
 
-## Where does conditional formatting come in?
+## How do you apply conditional formatting?
 
-For the
+To format your table based on these control limits in Excel, follow these steps:
+
+- Select the entire table
+- Click on the "Home" tab and click "Conditional Formatting"
+- From the dropdown, choose "New Rule"
+- Set up two rules: one for "under control" and one for "out of control"
+
+Let’s start with the "under control" tablets...
+
+## Under Control
+
+Select "Use a formula to determine which cells to format" and follow this example:
+
+![demo](./assets/green.gif)
+
+## Out of Control
+
+For tablets that are "out of control", follow the same steps and apply this rule:
+
+![demo](./assets/red.gif)
+
+# Exercise 1
+
+In the workbook attached on Lea, in the exercise 1 tab, complete the following:
+
+- Highlight all tablets that are "under control" in green
+- Highlight all tablets that are "out of control" in red
