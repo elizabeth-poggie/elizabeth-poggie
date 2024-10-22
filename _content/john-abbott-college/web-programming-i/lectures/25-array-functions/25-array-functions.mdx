@@ -8,7 +8,7 @@ number: 25
 
 # Array Functions you know
 
-List like Array methods
+Arrays in JavaScript come with several built-in methods that make life easier. So far we have seen there guys:
 
 ```js
 // Add a single item to the end of an array
@@ -23,33 +23,94 @@ myArray.length;
 myArray.indexOf(findItem);
 ```
 
-And looping array methods
+If you need to run a function on every item in the array, `forEach()` is your go-to method:
 
 ```js
 // Apply some function to each item in the array
 myArray.forEach(someFunction);
 ```
 
-Today we will cover other fancy methods
+Today we will cover other fancy array methods
 
-# Sorting Arrays
+# Sorting Methods
+
+JavaScript provides built-in methods like `.sort()` and `.reverse()` to handle sorting and reversing the order of array elements.
+
+## Reversing an Array
+
+The `reverse()` method modifies the original array by inverting the order of its items:
 
 ```js
+let myArray = [5, 3, 8, 1, 4];
 myArray.reverse();
-myArray.sort();
+
+console.log(myArray);
 ```
 
-# Mapping Arrays
+## Sorting an Array
 
-`map`ping an array applies the function on every element in the array and it "returns" a new array.
+The `sort()` method modifies the original by sorting it's oder by its converted string value or by a defined function:
 
 ```js
+let vegetables = ["carrots", "brocoli", "asparagus"];
+vegetables.sort();
+
+console.log(vegetables);
+```
+
+By default, `sort()` converts elements into strings and compares their characters, which means that `sort`ing numbers may not behave as expected unless you provide a comparison function:
+
+```js
+let numbers = [12, 5, 20, 1];
+numbers.sort();
+
+console.log(numbers);
+```
+
+In the above code snippet, 12 and 20 will unfortunately come before 5. Why? By default, `sort()` compares sequences of `UTF-16` code units.
+
+1 and 2 come before 5 after all. So how do we fix this to work properly?
+
+## Sorting numbers correctly
+
+To sort numbers correctly, you should pass a comparison function to `sort()`:
+
+```js
+// Ascending order
+numbers.sort((a, b) => a - b);
+console.log(numbers);
+
+// Descending order
+numbers.sort((a, b) => b - a);
+console.log(numbers);
+```
+
+Why do the methods look like this?
+
+- In the function `(a, b) => a - b`, if the result is _negative_, `a` comes before `b`; if positive, `b` comes before `a`. This gives the result of by sorting by Ascending order.
+- Similarly, in the function `(a, b) => b - a`, if the result is _negative_, `b` comes before `a`; if positive, `a` comes before `b`. This gives the result of sorting by Descending order.
+
+# Mapping an Array
+
+The `map()` method is used to transform or modify each element in an array.
+
+```js
+let myArray = [1, 2, 3, 4, 5];
+
 let newArray = myArray.map((x) => {
   return x + 2;
 });
+
+console.log(newArray); // 3, 4, 5, 6, 7
+console.log(myArray); // 1, 2, 3, 4, 5
 ```
 
-NOTE: `.map` does not modify the elements in the original array.
+It applies the provided function to every element and returns a new array without changing the original array.
+
+## When do you use map?
+
+- When you want to apply a function to every element in an array and return a transformed array.
+- When you need to modify values, but want to preserve the original array for future reference.
 
 # Exercise 1
 
@@ -76,11 +137,15 @@ In your assignment 3, using `map` again to create an array of booleans, indicati
 
 ## Solution-ish
 
+What function should I pass to `map`?
+
 ```js
-const checkboxStates = checkboxes.map((checkbox) => checkbox.checked);
+(checkbox) => checkbox.checked;
 ```
 
 # Reducing Arrays
+
+## Accumulators
 
 ## To a single number
 
@@ -113,7 +178,7 @@ n Assignment 3, apply the `reduce` method to the boolean array to check if all c
 ## Solution(ish)
 
 ```js
-
+const result = checkboxStates.reduce((acc, cur) => acc && cur, true);
 ```
 
 # Even more Methods
