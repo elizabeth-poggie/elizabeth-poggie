@@ -5,3 +5,130 @@ title: "Array Functions"
 created: "2024-10-22"
 number: 25
 ---
+
+# Array Functions you know
+
+List like Array methods
+
+```js
+// Add a single item to the end of an array
+myArray.push(item);
+// Add multiple items to the end of an array
+myArray.push(item1, item2);
+// Remove the last item from an array
+myArray.pop();
+// Get the length of an array
+myArray.length;
+// Find the index of a specific item in the array
+myArray.indexOf(findItem);
+```
+
+And looping array methods
+
+```js
+// Apply some function to each item in the array
+myArray.forEach(someFunction);
+```
+
+Today we will cover other fancy methods
+
+# Sorting Arrays
+
+```js
+myArray.reverse();
+myArray.sort();
+```
+
+# Mapping Arrays
+
+`map`ping an array applies the function on every element in the array and it "returns" a new array.
+
+```js
+let newArray = myArray.map((x) => {
+  return x + 2;
+});
+```
+
+NOTE: `.map` does not modify the elements in the original array.
+
+# Exercise 1
+
+In your assignment 3, try to generate an array of checkbox elements from their parent div using `map`
+
+## Solution (ish)
+
+```js
+// Step 1: Select the parent div that contains the checkboxes
+const checkboxContainer = document.querySelector(".a-cool-container");
+
+// Step 2: Use map to generate an array of checkbox elements from the children
+const checkboxes = Array.from(checkboxContainer.children).map((child) => {
+  // Step 3: Check if the child is an input of type checkbox
+  if (child.type === "checkbox") {
+    return child;
+  }
+});
+```
+
+# Exercise 2
+
+In your assignment 3, using `map` again to create an array of booleans, indicating whether each `checkbox` is checked.
+
+## Solution-ish
+
+```js
+const checkboxStates = checkboxes.map((checkbox) => checkbox.checked);
+```
+
+# Reducing Arrays
+
+## To a single number
+
+Reduces the array to a single number using a function that is applied to every number in the array, left to right
+
+```js
+let myArray = [14, 8, 10];
+
+let result = myArray.reduce((total, num) => {
+  return total + num;
+});
+```
+
+## To Multiple Categories
+
+```js
+let animals = [
+  { type: "cat", name: "Bill", age: 3 },
+  { type: "cat", name: "Spaghetti", age: 1 },
+  { type: "bird", name: "Olive", age: 15 },
+  { type: "cat", name: "Arthur Dent", age: 11 },
+  { type: "bird", name: "Beak", age: 12 },
+];
+```
+
+# Exercise 2
+
+n Assignment 3, apply the `reduce` method to the boolean array to check if all checkboxes are selected.
+
+## Solution(ish)
+
+```js
+
+```
+
+# Even more Methods
+
+Concatenation:
+
+```js
+let myArray1 = ["apples", "pears"];
+let myArray2 = ["cucumbers", "olives", "cheese"];
+let myMergedArray = myArray1.concat(myArray2);
+```
+
+Filtering:
+
+```js
+let numbers = [45, 4, 9, 16, 25];
+let over18 = numbers.filter((val) => value > 18);
+```
