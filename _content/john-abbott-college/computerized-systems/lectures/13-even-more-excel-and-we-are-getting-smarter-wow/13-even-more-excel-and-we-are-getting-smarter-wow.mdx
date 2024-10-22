@@ -42,6 +42,8 @@ We can translate this logic into a simple Excel function:
 =AND($B2>=$D2, $B2<=$C2)
 ```
 
+The `$` before the column letters (like `$B`, `$D`, `$C`) locks the column reference, ensuring that when you apply the formula across multiple rows, Excel will only adjust the row numbers (e.g., `B2` becomes `B3`, etc.), but the columns remain _fixed_.
+
 Similarly, for defective tablets ("out of control"), the logic is:
 
 ```text
