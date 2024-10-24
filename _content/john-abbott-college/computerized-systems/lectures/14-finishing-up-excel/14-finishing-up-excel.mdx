@@ -1,0 +1,109 @@
+---
+# General Information
+category: "Computerized Systems"
+title: "Finishing up Excel"
+created: "2024-10-24"
+number: 14
+---
+
+# Quick Recap
+
+- Conditional Formatting
+- Sorting
+- Filtering
+
+# If & Count
+
+Sometimes, we need to work with data only if it meets certain conditions. This is where Excel's `=IF` function comes in handy.
+
+## Real world example
+
+Let’s say you have a list of student grades. You might want to highlight failing grades in red and passing grades in green so you know which students need to be reached out to. To determine if a student is passing or failing, we can use the `=IF` function.
+
+## How does this function work?
+
+The `=IF` function evaluates a condition. It returns one value if the condition is `true` and a different value if it is `false`.
+
+## Syntax
+
+```excel
+=IF(condition, value_if_true, value_if_false)
+```
+
+- **Condition** 👉 This is the logical test, which should evaluate to either `true` or `false`.
+- **Value if true** 👉 What to return if the condition is `true`. If this value is text, it must be enclosed in double quotes (`""`)
+- **Value if false** 👉 What to return if the condition is `false`. Similarly, if this value is text, it should be wrapped in double quotes (`""`)
+
+## Example Continued
+
+Before jumping into Conditional Formatting, let’s create a new column called "Status" to track whether each student has "PASSED" or "FAILED." Here's how you could write the formula:
+
+```excel
+=IF(B2>=60, "PASS", "FAIL")
+```
+
+In this example, the condition checks whether the value in cell B2 is greater than or equal to 60.
+
+# Comparison Operations
+
+Comparison operators are used to define the conditions for the `IF` function and other Excel formulas. Some are listed below:
+
+```md
+| Operator | Description              |
+| -------- | ------------------------ |
+| <        | Less than                |
+| <=       | Less than or equal to    |
+| >        | Greater than             |
+| >        | Greater than or equal to |
+| =        | Equal to                 |
+| <>       | Not equal to             |
+```
+
+## What can these guys compare?
+
+With these operators, you can compare:
+
+- Text (wrapped in double quotes)
+- Numbers
+- Dates in other cells
+
+# Exercise 1
+
+# COUNTIF & SUMIF
+
+The `=COUNTIF` and `=SUMIF` functions are similar to `=IF`. They help you count or sum values based on a condition.
+
+## Syntax
+
+```excel
+=COUNTIF(range, condition)
+=SUMIF(range, condition, sum range)
+```
+
+- **range** 👉 The range of cells to apply the condition to
+- **Condition** 👉 The criteria to evaluate (it must return either `true` or `false`)
+- **sum range** 👉 In the `=SUMIF` formula, this specifies which range of cells to sum. It can be different from the range where you apply the condition.
+
+💡 NOTE: In `=COUNTIF` and `=SUMIF`, if you're using comparison operators, they must be wrapped in double quotes along with the value (e.g. `">=60"`)
+
+# Exercise 2
+
+# Wildcards
+
+Wildcards are useful when your condition needs to check for partial matches. The `*` symbol (asterisk) is a wildcard that can represent any sequence of characters.
+
+## Example
+
+To count cells that contain the text "Oak" (e.g., "Oak Tree" or "Red Oak"), you can use:
+
+```excel
+=COUNTIF(A1:A10, "*Oak*")
+```
+
+This will count any cell that contains the word "Oak."
+
+# More on Boolean Algebra
+
+Understanding Boolean logic is crucial for more advanced Excel functions. Boolean operators (such as `AND`, `OR`, `NOT`) allow you to combine multiple conditions and create complex formulas.
+
+# Exercise 3
