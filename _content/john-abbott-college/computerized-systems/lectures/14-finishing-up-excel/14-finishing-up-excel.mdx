@@ -44,7 +44,7 @@ Before jumping into Conditional Formatting, let’s create a new column called "
 
 In this example, the condition checks whether the value in cell B2 is greater than or equal to 60.
 
-# Comparison Operations
+## Comparison Operations
 
 Comparison operators are used to define the conditions for the `IF` function and other Excel formulas. Some are listed below:
 
@@ -90,6 +90,18 @@ This can be abstracted like so:
 
 There is a lot more you can do with this sort of logic, however this is to get you started.
 
+## Another example
+
+Consider an example where an employee is classified as senior if they have been employed before January 1, 2018, and currently hold the position of manager.
+
+I could filter this data directly, or I could create a new status column to make it clearer:
+
+```excel
+=IF(AND(C2<=DATE(2018,1,1), B2="Manager"), "senior", "baby")
+```
+
+This approach is useful because it allows us to easily count all the senior occurrences using the following formulas...
+
 # COUNTIF && SUMIF
 
 The `=COUNTIF` and `=SUMIF` functions are similar to `=IF`. They help you count or sum values based on a condition.
@@ -107,11 +119,21 @@ The `=COUNTIF` and `=SUMIF` functions are similar to `=IF`. They help you count 
 
 💡 NOTE: In `=COUNTIF` and `=SUMIF`, if you're using comparison operators, they must be wrapped in double quotes along with the value (e.g. `">=60"`)
 
+# Example 2
+
+Going back to our employment example, now we can easily compute how many seniors are present in a company:
+
+```excel
+=COUNTIF(E2:E21, "senior")
+```
+
+ez.
+
 # Exercise 2
 
 In the workbook attached on Lea, under the Exercise 1 & 2 tab, complete the following tasks:
 
-- Determine the "Is defect?" status in the final column based on the upper and lower limit checks
+- Determine the "Is defect?" status in the final column based on the upper and lower limits.
 - Using the `=COUNTIF` function, calculate the total number of defects and total OK entries by referencing the values in the "Is defect?" column
 
 Place the results next to "Total Defects" and "Total OK".
