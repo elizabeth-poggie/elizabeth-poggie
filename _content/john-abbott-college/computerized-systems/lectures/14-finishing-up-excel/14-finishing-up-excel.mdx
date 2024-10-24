@@ -14,58 +14,56 @@ number: 14
 
 # If & Count
 
-In some cases, it is desirable to manipulate data only if the data meets certain criteria.
+Sometimes, we need to work with data only if it meets certain conditions. This is where Excel's `=IF` function comes in handy.
 
-## Real World Example
+## Real world example
 
-For example, for a list of student's grades, you might want to format the content in red if they are failing and green if they are passing.
+Let’s say you have a list of student grades. You might want to highlight failing grades in red and passing grades in green so you know which students need to be reached out to. To determine if a student is passing or failing, we can use the `=IF` function.
 
-## How do you do this?
+## How does this function work?
 
-To do this, we can use the `=IF` function in excel
+The `=IF` function evaluates a condition. It returns one value if the condition is `true` and a different value if it is `false`.
 
-The `=IF` function checks whether a condition is met. It returns one value if the condition is met (`TRUE`) and another value if the condition is not met (`FALSE`).
-
-## What's the syntax?
+## Syntax
 
 ```excel
-=IF(condition, value if true, value if false)
+=IF(condition, value_if_true, value_if_false)
 ```
 
-- **Condition** 👉 the criteria that we are checking. It must result in `true` or `false`.
-- **Value if true** 👉 the new value of the cell if the **condition** is `true`. NOTE: If this value is a text, it must be wrapped in double quotes `""`
-- **Value if false** 👉 the new value of the cell if the **condition** is `false`. NOTE: If this value is a text, it must be wrapped in double quotes `""`
+- **Condition** 👉 This is the logical test, which should evaluate to either `true` or `false`.
+- **Value if true** 👉 What to return if the condition is `true`. If this value is text, it must be enclosed in double quotes (`""`)
+- **Value if false** 👉 What to return if the condition is `false`. Similarly, if this value is text, it should be wrapped in double quotes (`""`)
 
 ## Example Continued
 
-Instead of jumping straight to Conditional Formatting, let's create a new column called "status" and evaluate if the student has "PASSED" or "FAILED" using the below equation:
+Before jumping into Conditional Formatting, let’s create a new column called "Status" to track whether each student has "PASSED" or "FAILED." Here's how you could write the formula:
 
 ```excel
 =IF(B2>=60, "PASS", "FAIL")
 ```
 
-The condition is that the value inside cell B2 is greater than or equal to 60.
+In this example, the condition checks whether the value in cell B2 is greater than or equal to 60.
 
 # Comparison Operations
 
-There are a few comparison operators:
+Comparison operators are used to define the conditions for the `IF` function and other Excel formulas. Some are listed below:
 
 ```md
-| Operator | Description           |
-| -------- | --------------------- |
-| <        | less than             |
-| <=       | less than or equal to |
-| >        | more than             |
-| >        | more than or equal to |
-| =        | equals to             |
-| <>       | not equals to         |
+| Operator | Description              |
+| -------- | ------------------------ |
+| <        | Less than                |
+| <=       | Less than or equal to    |
+| >        | Greater than             |
+| >        | Greater than or equal to |
+| =        | Equal to                 |
+| <>       | Not equal to             |
 ```
 
 ## What can these guys compare?
 
-When using the operators above, it's possible to compare:
+With these operators, you can compare:
 
-- Text that wrapped in double quotes.
+- Text (wrapped in double quotes)
 - Numbers
 - Dates in other cells
 
@@ -73,9 +71,9 @@ When using the operators above, it's possible to compare:
 
 # COUNTIF & SUMIF
 
-The `=COUNTIF` and `=SUMIF` functions are similar to `=IF`. They will count and sum if a specific condition is met.
+The `=COUNTIF` and `=SUMIF` functions are similar to `=IF`. They help you count or sum values based on a condition.
 
-## What's the syntax?
+## Syntax
 
 ```excel
 =COUNTIF(range, condition)
