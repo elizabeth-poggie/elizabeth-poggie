@@ -131,15 +131,15 @@ Now it's your turn. Setup postman, and use the Pokemon API to fetch information 
 
 # Account Required APIs
 
-The Pokemon API is a good example of an API that does not require you to create an account or pay for accessing the API. However for most API's, that's not actually the case.
+The Pokémon API is a great example of an API that doesn’t require you to create an account or pay for access. However, for most APIs, that’s not usually the case.
 
 ## Api Keys
 
-API keys are unique identifiers used to authenticate requests to an application programming interface (API). They act as a kind of "password" that allows the server to know who is making a request and whether they have permission to access certain data or features.
+API keys are unique identifiers used to authenticate requests to an application programming interface (API). They function like a "password," allowing the server to identify who is making a request and whether they have permission to access specific data or features.
 
 ## ChatGPT
 
-Because I pay for ChatGPT, I am able to make a request with its API to it's fancier models:
+Since I pay for ChatGPT, I can make requests with its API to access its advanced models with Postman:
 
 ```text
 https://api.openai.com/v1/chat/completions
@@ -147,10 +147,10 @@ https://api.openai.com/v1/chat/completions
 
 My request also needs to include:
 
-- Authorization => The API key associated with my paid account
-- And a body object => this is the JSON request I am sending to the API using Postman
+- Authorization 👉 The API key associated with my paid account
+- Body object 👉 This is the JSON request I send to the API using Postman
 
-A sample request would be something like:
+A sample request might look like this:
 
 ```JSON
 {
@@ -185,19 +185,19 @@ A sample request would be something like:
 }
 ```
 
-What do all these key, values mean, I invite you to look deeper into the [docs](https://platform.openai.com/docs/overview)
+For a detailed explanation of the keys and values, feel free to check out the [docs](https://platform.openai.com/docs/overview)
 
-# Intro to AJAX
+# AJAX && APIs
 
-Now that we've learned how to interact with APIs using Postman, let’s move on to handling API requests directly in JavaScript.
+Now that we've learned how to interact with APIs using Postman, let’s move on to handling API requests directly in JavaScript. While Postman make debugging your requests easier, we want our requests to be handled async using JavaScript :^)
 
 ## AJAX requests
 
-AJAX requests allow us to interact with APIs to `fetch` or `send` data without requiring a full page refresh. This is commonly used in web applications and you will inevitably see it in your career.
+AJAX requests allow us to interact with APIs to `fetch` or `send` data without requiring a full page refresh. This technique is commonly used in web applications and will likely be part of your future careers.
 
 ## Using XMLHttpRequest
 
-`XMLHttpRequest` was the original way to send asynchronous requests from JavaScript. Though it’s a bit more complex, it provides a good understanding of the underlying mechanisms of AJAX.
+`XMLHttpRequest` was the original way to send asynchronous requests from JavaScript. While it’s a bit more complex, it provides a solid understanding of how AJAX actually works:
 
 ```js
 // Step 1 👉 create the object
@@ -231,19 +231,19 @@ xhr.onerror = function () {
 xhr.send();
 ```
 
-What's happening with the syntax:
+What's happening with the syntax?
 
-- `open()` prepares a request to an API endpoint.
-- `onload` processes the response if successful, and `onerror` handles failures.
-- `send()` sends the request.
+- `open()` prepares a request to an API endpoint
+- `onload` processes the response if successful, and `onerror` handles failures
+- `send()` sends the request
 
 Why am I logging the data inside the `onload`?
 
-- If you add a `console.log(data);` statement at the end of everything, it will run before the AJAX request completes, which is why it will print `undefined`. Console.log() is prioritized by the event loop whereas server / api requests are "micro" async tasks.
+- If you add a `console.log(data);` statement at the end of everything, it will run before the AJAX request completes, which is why it will print `undefined`. The console log is prioritized by the event loop, while API requests are treated as "micro" asynchronous tasks.
 
 ## Using fetch
 
-The fetch API is a modern alternative to XMLHttpRequest that simplifies the syntax for handling AJAX requests. It is promise-based, making it more intuitive to work with asynchronous data.
+The fetch API is a modern alternative to `XMLHttpRequest` that simplifies the syntax for handling AJAX requests. It is "promise-based", making it more intuitive to work with asynchronous data:
 
 ```js
 // Step 1 👉 Init a fetch request
@@ -269,64 +269,10 @@ With `fetch`, data handling is a bit more straight forward:
 - The `.then()` blocks handle success and parse the JSON response.
 - `.catch()` manages errors, making the code easier to follow and debug.
 
+We will cover the idea of `promises` more next week, for now I want y'all to get comfy making API requests.
+
 # Exercise 2
 
 Get into groups of up to 4 people, if you prefer to work independently that's ok too. For this exercise, use the Pokémon API to `fetch` information about your favorite Pokémon.
 
 Using your knowledge of dynamically adding elements to a webpage, ensure that the Pokémon's stats are displayed as soon as the page loads. (use the code from your assignment 2)
-
-## Solution-ish
-
-There are many right answers to this problem. Here is one solution:
-
-```js
-// script.js
-
-// Add an event listener to the button
-document.getElementById("fetch-button").addEventListener("click", () => {
-  // get the pokemon name
-  const pokemonName = document
-    .getElementById("pokemon-input")
-    .value.toLowerCase();
-  // pass it to the API fetcher
-  fetchPokemonData(pokemonName);
-});
-
-// create a fetcher
-function fetchPokemonData(name) {
-  const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
-
-  fetch(url)
-    // handle the response appropriately
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Pokémon not found: ${name}`);
-      }
-      return response.json();
-    })
-    // display data if all is well
-    .then((data) => {
-      displayPokemonStats(data);
-    })
-    // catch errors if things are trash
-    .catch((error) => {
-      document.getElementById(
-        "pokemon-stats"
-      ).innerHTML = `<p>${error.message}</p>`;
-    });
-}
-
-function displayPokemonStats(pokemon) {
-  const statsDiv = document.getElementById("pokemon-stats");
-  statsDiv.innerHTML = `
-        <h2>${pokemon.name.toUpperCase()}</h2>
-        <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
-        <h3>Stats:</h3>
-        <ul>
-            ${pokemon.stats
-              .map((stat) => `<li>${stat.stat.name}: ${stat.base_stat}</li>`)
-              .join("")}
-        </ul>
-    `;
-}
-```
