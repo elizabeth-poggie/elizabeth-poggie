@@ -84,7 +84,7 @@ What is this response type anyways? Why is the default response `JSON`?
 
 ## What is it?
 
-JSON (JavaScript Object Notation) is a lightweight data format used to represent structured information. It's made up of key-value pairs and arrays, which makes it easier to work with.
+JSON (JavaScript Object Notation) is a lightweight format for representing structured data.
 
 ## Why is the default response JSON?
 
@@ -92,7 +92,7 @@ APIs return JSON data because it works really well with JavaScript, making it id
 
 ## Syntax
 
-JSON is language-independent but it looks REALLY similar to JavaScript object syntax:
+It’s organized using key-value pairs and arrays much like the JavaScript object. However, JSON is language-independent despite looking REALLY similar to JavaScript object syntax:
 
 ```JSON
 {
@@ -117,7 +117,7 @@ JSON is language-independent but it looks REALLY similar to JavaScript object sy
 }
 ```
 
-Conveniently, in JavaScript if i store this JSON data in the `ditto` variable, I can access it's properties like this:
+Conveniently, if I store this JSON data in a JavaScript variable called `ditto`, I can access its properties like this:
 
 ```js
 ditto.abilities.forEach((ability) => console.log(ability));
