@@ -82,9 +82,50 @@ What is this response type anyways? Why is the default response `JSON`? Let's ge
 
 # JSON Data
 
+## What is it?
+
+JSON (JavaScript Object Notation) is a lightweight data format used to represent structured information. It's made up of key-value pairs and arrays, which makes it easier to work with.
+
+## Why is the default response JSON?
+
+APIs return JSON data because it works really well with JavaScript, making it ideal for web applications.
+
+## Syntax
+
+JSON is language-independent but it looks REALLY similar to JavaScript object syntax:
+
+```JSON
+{
+    "abilities": [
+        {
+            "ability": {
+                "name": "limber",
+                "url": "https://pokeapi.co/api/v2/ability/7/"
+            },
+            "is_hidden": false,
+            "slot": 1
+        },
+        {
+            "ability": {
+                "name": "imposter",
+                "url": "https://pokeapi.co/api/v2/ability/150/"
+            },
+            "is_hidden": true,
+            "slot": 3
+        }
+    ]
+}
+```
+
+Conveniently, in JavaScript if i store this JSON data in the `ditto` variable, I can access it's properties like this:
+
+```js
+ditto.abilities.forEach((ability) => console.log(ability));
+```
+
 # Exercise 1
 
-Now it's your turn. Setup postman, and use the Pokemon API to fetch information on your favorite Pokemon
+Now it's your turn. Setup postman, and use the Pokemon API to fetch information on your favorite Pokemon :^)
 
 # Intro to AJAX
 
