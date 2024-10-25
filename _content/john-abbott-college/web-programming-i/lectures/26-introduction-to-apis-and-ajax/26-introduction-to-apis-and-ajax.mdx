@@ -56,17 +56,27 @@ The waiter is the messenger that will take your request (e.g. order) and tells t
 
 ## Real World Example
 
-Just like at a restaurant, you have a menu of options to choose from. Select what you want from the service and use the API to send your request.
+Let's explore the [Pokemon API](https://pokeapi.co/)
 
-The API is
+Just like at a restaurant, you have a menu of options to choose from, you can select what you want from the service using the [docs](https://pokeapi.co/docs/v2)
 
-In order to get your data you can interact with it via postman or just a plain website to send your request to a system.
+Any useful API in the modern age uses detailed documentation that explains each of the endpoints.
+
+Open up [Postman](https://www.postman.com/) and [Download it](https://www.postman.com/downloads/). If you don't already have an account, create one. If you can't download the Desktop App on the schools computer, use the [web interface](https://web.postman.co/) instead :)
+
+Postman is going to act like our waiter that talks to the API. Here we can formulate our API request using the docs. To get started, let's create a "Pokemon Collection" and create a "New Request". Using postman, I will create the below "GET" request to call the API to retrieve me my favorite pokemon:
+
+```text
+https://pokeapi.co/api/v2/pokemon/ditto
+```
+
+What is this response type anyways? Why is the default response `JSON`? Let's get into it
 
 # JSON Data
 
 # Exercise 1
 
-Get Postman Installed and ping shit
+Now it's your turn. Setup postman, and use the Pokemon API to fetch information on your favorite Pokemon
 
 # Intro to AJAX
 
