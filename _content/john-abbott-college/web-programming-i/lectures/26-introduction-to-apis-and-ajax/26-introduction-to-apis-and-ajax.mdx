@@ -120,29 +120,213 @@ It’s organized using key-value pairs and arrays much like the JavaScript objec
 Conveniently, if I store this JSON data in a JavaScript variable called `ditto`, I can access its properties like this:
 
 ```js
-ditto.abilities.forEach((ability) => console.log(ability));
+ditto.abilities.forEach((ability) => console.log(ability.ability.name));
 ```
+
+Notice when i hover over any of the properties, VScode will tell you what exactly you are working with to make your life easier
 
 # Exercise 1
 
 Now it's your turn. Setup postman, and use the Pokemon API to fetch information on your favorite Pokemon :^)
 
-# Intro to AJAX
+# Account Required APIs
 
-Now lets ping shit with JavaScript
-
-## AJAX requests
-
-## Using XMLHttpRequest
-
-## Using fetch
-
-## HTTP Methods:
-
-# Docs
-
-## API Documentation Overview:
+The Pokemon API is a good example of an API that does not require you to create an account or pay for accessing the API. However for most API's, that's not actually the case.
 
 ## Api Keys
 
-## Base URL and Query Parameters
+API keys are unique identifiers used to authenticate requests to an application programming interface (API). They act as a kind of "password" that allows the server to know who is making a request and whether they have permission to access certain data or features.
+
+## ChatGPT
+
+Because I pay for ChatGPT, I am able to make a request with its API to it's fancier models:
+
+```text
+https://api.openai.com/v1/chat/completions
+```
+
+My request also needs to include:
+
+- Authorization => The API key associated with my paid account
+- And a body object => this is the JSON request I am sending to the API using Postman
+
+A sample request would be something like:
+
+```JSON
+{
+    "id": "chatcmpl-AMEx2bmOQTgeUDHCQ6wLXYz1gNpg0",
+    "object": "chat.completion",
+    "created": 1729864052,
+    "model": "gpt-4-0613",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "Hello! How can I assist you today?",
+                "refusal": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 13,
+        "completion_tokens": 9,
+        "total_tokens": 22,
+        "prompt_tokens_details": {
+            "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+            "reasoning_tokens": 0
+        }
+    },
+    "system_fingerprint": null
+}
+```
+
+What do all these key, values mean, I invite you to look deeper into the [docs](https://platform.openai.com/docs/overview)
+
+# Intro to AJAX
+
+Now that we've learned how to interact with APIs using Postman, let’s move on to handling API requests directly in JavaScript.
+
+## AJAX requests
+
+AJAX requests allow us to interact with APIs to `fetch` or `send` data without requiring a full page refresh. This is commonly used in web applications and you will inevitably see it in your career.
+
+## Using XMLHttpRequest
+
+`XMLHttpRequest` was the original way to send asynchronous requests from JavaScript. Though it’s a bit more complex, it provides a good understanding of the underlying mechanisms of AJAX.
+
+```js
+// Step 1 👉 create the object
+const xhr = new XMLHttpRequest();
+
+// Step 2 👉 Init the request
+xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/ditto", true);
+
+let data;
+
+// Step 3 👉 Define the function that will run when the request is completed
+xhr.onload = function () {
+  // Step 4 👉 check if response is not trash
+  if (xhr.status === 200) {
+    // Step 5 👉 Read JSON
+    data = JSON.parse(xhr.responseText);
+    // Step 6 👉 print data
+    console.log(data);
+  } else {
+    // handle if request is trash
+    console.error("Request is trash with status:", xhr.status);
+  }
+};
+
+// more error handling
+xhr.onerror = function () {
+  console.error("WHAT IS THIS TRASH?????");
+};
+
+// Step 7 👉 Send to the API
+xhr.send();
+```
+
+What's happening with the syntax:
+
+- `open()` prepares a request to an API endpoint.
+- `onload` processes the response if successful, and `onerror` handles failures.
+- `send()` sends the request.
+
+Why am I logging the data inside the `onload`?
+
+- If you add a `console.log(data);` statement at the end of everything, it will run before the AJAX request completes, which is why it will print `undefined`. Console.log() is prioritized by the event loop whereas server / api requests are "micro" async tasks.
+
+## Using fetch
+
+The fetch API is a modern alternative to XMLHttpRequest that simplifies the syntax for handling AJAX requests. It is promise-based, making it more intuitive to work with asynchronous data.
+
+```js
+// Step 1 👉 Init a fetch request
+fetch("https://pokeapi.co/api/v2/pokemon/ditto")
+  // Step 2 👉 Handle the response once retrieved
+  .then((response) => {
+    // Step 3 👉 is the response NOT trash?
+    if (!response.ok) {
+      // Step 4 👉 yeet error if trash
+      throw new Error("TRASHHHHHHHHH: " + response.statusText);
+    }
+    // Step 5 👉 parse JSON if not trash
+    return response.json();
+  })
+  // Step 6 👉 now handle JSON
+  .then((data) => console.log(data))
+  // Always good to add error handling
+  .catch((error) => console.error("Please observe the trash:", error));
+```
+
+With `fetch`, data handling is a bit more straight forward:
+
+- The `.then()` blocks handle success and parse the JSON response.
+- `.catch()` manages errors, making the code easier to follow and debug.
+
+# Exercise 2
+
+Get into groups of up to 4 people, if you prefer to work independently that's ok too. For this exercise, use the Pokémon API to `fetch` information about your favorite Pokémon.
+
+Using your knowledge of dynamically adding elements to a webpage, ensure that the Pokémon's stats are displayed as soon as the page loads. (use the code from your assignment 2)
+
+## Solution-ish
+
+There are many right answers to this problem. Here is one solution:
+
+```js
+// script.js
+
+// Add an event listener to the button
+document.getElementById("fetch-button").addEventListener("click", () => {
+  // get the pokemon name
+  const pokemonName = document
+    .getElementById("pokemon-input")
+    .value.toLowerCase();
+  // pass it to the API fetcher
+  fetchPokemonData(pokemonName);
+});
+
+// create a fetcher
+function fetchPokemonData(name) {
+  const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
+
+  fetch(url)
+    // handle the response appropriately
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Pokémon not found: ${name}`);
+      }
+      return response.json();
+    })
+    // display data if all is well
+    .then((data) => {
+      displayPokemonStats(data);
+    })
+    // catch errors if things are trash
+    .catch((error) => {
+      document.getElementById(
+        "pokemon-stats"
+      ).innerHTML = `<p>${error.message}</p>`;
+    });
+}
+
+function displayPokemonStats(pokemon) {
+  const statsDiv = document.getElementById("pokemon-stats");
+  statsDiv.innerHTML = `
+        <h2>${pokemon.name.toUpperCase()}</h2>
+        <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
+        <h3>Stats:</h3>
+        <ul>
+            ${pokemon.stats
+              .map((stat) => `<li>${stat.stat.name}: ${stat.base_stat}</li>`)
+              .join("")}
+        </ul>
+    `;
+}
+```
