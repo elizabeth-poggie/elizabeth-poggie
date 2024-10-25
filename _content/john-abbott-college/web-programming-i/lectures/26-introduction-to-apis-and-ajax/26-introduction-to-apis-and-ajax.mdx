@@ -10,75 +10,75 @@ number: 26
 
 ## How can the UI stay responsive while handling server requests, lazy loading images, and more?
 
-It’s thanks to the browser's event loop and asynchronous processing, which let background tasks run without blocking user interactions. It's also why JavaScript when executed does not necessarily happen in order :^)
+Thanks to the browser's event loop and asynchronous processing, background tasks run without blocking user interactions. This is also why JavaScript doesn’t always run in a predictable order :^)
 
 ## What is AJAX?
 
-AJAX (Asynchronous JavaScript and XML) allows web pages to fetch data from a server and update content without reloading the page
+AJAX (Asynchronous JavaScript and XML) allows web pages to fetch server data and update content without reloading the page
 
 ## How do reducers work in JavaScript?
 
-Refer to the previous lecture for a detailed explanation however please see attached a really cool `gif` that covers the concept well:
+Refer to the previous lecture for a detailed explanation, however please see attached a really cool `gif` that covers the concept well:
 
 ![cool reducer](./assets/reduce.gif)
 
 # Intro to APIs
 
-Connectivity is an amazing thing that we likely have come to take for granted in recent years. If i want any product it will appear at my doorstep within 24 hours and if I want to learn anything it's at my finger tips.
+In today’s connected world, we rely on instant access to just about everything, whether it’s products, knowledge, or services. If I want any product, I can have it delivered to my doorstep within 24 hours thanks to Amazon. If I want to learn something about web development, chances are that some dude on Youtube has already posted a tutorial about it.
 
 In a lot of ways, everything I want, I can get almost instantaneously.
 
 ## How does this happen?
 
-How does data get from here to there? How does data get from here to there? From me to you?
+How does data get from here to there? How does it move across systems, from me to you, or from one device to another?
 
 ![demo](./assets/1.png)
 
-How do different devices stay in sync with each other? I can send a message on instagram on my phone and have that reflected in the Desktop application immediately. Why is that?
+The unseen force behind this seamless exchange is the Application Programming Interface, or API for short:
 
 ![demo](./assets/2.png)
 
-The unsung hero of our connected world is the Application Programming Interface (or API) for short.
-
 ## What is an API?
 
-An API is the messenger that takes requests and tells a system what you want to do and then returns the response to you.
+An API is like a messenger: it takes a request, tells a system what you want, and returns a response.
 
 ## Conceptual Example
 
-Another way to think of this concept is to think of an API as a waiter in a restaurant.
+Think of an API like a waiter at a restaurant.
 
 ![demo](./assets/3.png)
 
-Imagine you are setting at a restaurant with a menu of choices to order from and the kitchen that is the part of the system that will fulfill your order.
+Picture yourself at a restaurant with a menu of choices and a kitchen where orders are prepared.
 
 ![demo](./assets/4.png)
 
-What's missing is the link that will communicate your order to the kitchen and deliver your food back to your table. That's where the waiter comes in.
+What’s missing? A link that communicates your order to the kitchen and brings the food back to your table. That’s where the waiter comes in.
 
 ![demo](./assets/5.png)
 
-The waiter is the messenger that will take your request (e.g. order) and tells the system, in this case the kitchen, what to do. It then delivers the response back to you, e.g. food.
+The waiter is the messenger that takes your order (request), tells the kitchen (system) what to prepare, and then brings the completed dish (response) back to you.
 
 ![demo](./assets/6.png)
 
 ## Real World Example
 
-Let's explore the [Pokemon API](https://pokeapi.co/)
+Let’s take a look at the [Pokemon API](https://pokeapi.co/)
 
-Just like at a restaurant, you have a menu of options to choose from, you can select what you want from the service using the [docs](https://pokeapi.co/docs/v2)
+Similar to ordering from a menu, you can choose what information you want from the API by referencing the available options in the [docs](https://pokeapi.co/docs/v2)
 
 Any useful API in the modern age uses detailed documentation that explains each of the endpoints.
 
-Open up [Postman](https://www.postman.com/) and [Download it](https://www.postman.com/downloads/). If you don't already have an account, create one. If you can't download the Desktop App on the schools computer, use the [web interface](https://web.postman.co/) instead :)
+Now, open [Postman](https://www.postman.com/) (or [Download it here](https://www.postman.com/downloads/)). If you don't already have an account, create one. If you can't download the Desktop App on the schools computer, use the [web interface](https://web.postman.co/) instead :)
 
-Postman is going to act like our waiter that talks to the API. Here we can formulate our API request using the docs. To get started, let's create a "Pokemon Collection" and create a "New Request". Using postman, I will create the below "GET" request to call the API to retrieve me my favorite pokemon:
+In this example, Postman works like the tablet waiters give you at those unlimited sushi restaurants. It’s a tool that lets you communicate what you want, just like telling the waiter—or in this case, the API—your order.
+
+To get started, let’s create a "Pokemon Collection" and add a "New Request." Using Postman, we’ll send a simple "GET" request to call the API and retrieve my favorite Pokemon:
 
 ```text
 https://pokeapi.co/api/v2/pokemon/ditto
 ```
 
-What is this response type anyways? Why is the default response `JSON`? Let's get into it
+What is this response type anyways? Why is the default response `JSON`?
 
 # JSON Data
 
