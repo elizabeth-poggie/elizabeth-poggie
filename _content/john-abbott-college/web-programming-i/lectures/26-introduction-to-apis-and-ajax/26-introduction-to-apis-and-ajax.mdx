@@ -1,0 +1,278 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Intro to APIs and AJAX"
+created: "2024-10-25"
+number: 26
+---
+
+# Quick Recap
+
+## How can the UI stay responsive while handling server requests, lazy loading images, and more?
+
+Thanks to the browser's event loop and asynchronous processing, background tasks run without blocking user interactions. This is also why JavaScript doesn’t always run in a predictable order :^)
+
+## What is AJAX?
+
+AJAX (Asynchronous JavaScript and XML) allows web pages to fetch server data and update content without reloading the page
+
+## How do reducers work in JavaScript?
+
+Refer to the previous lecture for a detailed explanation, however please see attached a really cool `gif` that covers the concept well:
+
+![cool reducer](./assets/reduce.gif)
+
+# Intro to APIs
+
+In today’s connected world, we rely on instant access to just about everything, whether it’s products, knowledge, or services. If I want any product, I can have it delivered to my doorstep within 24 hours thanks to Amazon. If I want to learn something about web development, chances are that some dude on Youtube has already posted a tutorial about it.
+
+In a lot of ways, everything I want, I can get almost instantaneously.
+
+## How does this happen?
+
+How does data get from here to there? How does it move across systems, from me to you, or from one device to another?
+
+![demo](./assets/1.png)
+
+The unseen force behind this seamless exchange is the Application Programming Interface, or API for short:
+
+![demo](./assets/2.png)
+
+# What is an API?
+
+An API is like a messenger: it takes a request, tells a system what you want, and returns a response.
+
+## Conceptual Example
+
+Think of an API like a waiter at a restaurant.
+
+![demo](./assets/3.png)
+
+Picture yourself at a restaurant with a menu of choices and a kitchen where orders are prepared.
+
+![demo](./assets/4.png)
+
+What’s missing? A link that communicates your order to the kitchen and brings the food back to your table. That’s where the waiter comes in.
+
+![demo](./assets/5.png)
+
+The waiter is the messenger that takes your order (request), tells the kitchen (system) what to prepare, and then brings the completed dish (response) back to you.
+
+![demo](./assets/6.png)
+
+## Real World Example
+
+Let’s take a look at the [Pokemon API](https://pokeapi.co/)
+
+Similar to ordering from a menu, you can choose what information you want from the API by referencing the available options in the [docs](https://pokeapi.co/docs/v2)
+
+Any useful API in the modern age uses detailed documentation that explains each of the endpoints.
+
+Now, open [Postman](https://www.postman.com/) (or [Download it here](https://www.postman.com/downloads/)). If you don't already have an account, create one. If you can't download the Desktop App on the schools computer, use the [web interface](https://web.postman.co/) instead :)
+
+In this example, Postman works like the tablet waiters give you at those unlimited sushi restaurants. It’s a tool that lets you communicate what you want, just like telling the waiter—or in this case, the API—your order.
+
+To get started, let’s create a "Pokemon Collection" and add a "New Request." Using Postman, we’ll send a simple "GET" request to call the API and retrieve my favorite Pokemon:
+
+```text
+https://pokeapi.co/api/v2/pokemon/ditto
+```
+
+What is this response type anyways? Why is the default response `JSON`?
+
+# JSON Data
+
+## What is it?
+
+JSON (JavaScript Object Notation) is a lightweight format for representing structured data.
+
+## Why is the default response JSON?
+
+APIs return JSON data because it works really well with JavaScript, making it ideal for web applications.
+
+## Syntax
+
+It’s organized using key-value pairs and arrays much like the JavaScript object. However, JSON is language-independent despite looking REALLY similar to JavaScript object syntax:
+
+```JSON
+{
+    "abilities": [
+        {
+            "ability": {
+                "name": "limber",
+                "url": "https://pokeapi.co/api/v2/ability/7/"
+            },
+            "is_hidden": false,
+            "slot": 1
+        },
+        {
+            "ability": {
+                "name": "imposter",
+                "url": "https://pokeapi.co/api/v2/ability/150/"
+            },
+            "is_hidden": true,
+            "slot": 3
+        }
+    ]
+}
+```
+
+Conveniently, if I store this JSON data in a JavaScript variable called `ditto`, I can access its properties like this:
+
+```js
+ditto.abilities.forEach((ability) => console.log(ability.ability.name));
+```
+
+Notice when i hover over any of the properties, VScode will tell you what exactly you are working with to make your life easier
+
+# Exercise 1
+
+Now it's your turn. Setup postman, and use the Pokemon API to fetch information on your favorite Pokemon :^)
+
+# Account Required APIs
+
+The Pokémon API is a great example of an API that doesn’t require you to create an account or pay for access. However, for most APIs, that’s not usually the case.
+
+## Api Keys
+
+API keys are unique identifiers used to authenticate requests to an application programming interface (API). They function like a "password," allowing the server to identify who is making a request and whether they have permission to access specific data or features.
+
+## ChatGPT
+
+Since I pay for ChatGPT, I can make requests with its API to access its advanced models with Postman:
+
+```text
+https://api.openai.com/v1/chat/completions
+```
+
+My request also needs to include:
+
+- Authorization 👉 The API key associated with my paid account
+- Body object 👉 This is the JSON request I send to the API using Postman
+
+A sample request might look like this:
+
+```JSON
+{
+    "id": "chatcmpl-AMEx2bmOQTgeUDHCQ6wLXYz1gNpg0",
+    "object": "chat.completion",
+    "created": 1729864052,
+    "model": "gpt-4-0613",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "Hello! How can I assist you today?",
+                "refusal": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 13,
+        "completion_tokens": 9,
+        "total_tokens": 22,
+        "prompt_tokens_details": {
+            "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+            "reasoning_tokens": 0
+        }
+    },
+    "system_fingerprint": null
+}
+```
+
+For a detailed explanation of the keys and values, feel free to check out the [docs](https://platform.openai.com/docs/overview)
+
+# AJAX && APIs
+
+Now that we've learned how to interact with APIs using Postman, let’s move on to handling API requests directly in JavaScript. While Postman make debugging your requests easier, we want our requests to be handled async using JavaScript :^)
+
+## AJAX requests
+
+AJAX requests allow us to interact with APIs to `fetch` or `send` data without requiring a full page refresh. This technique is commonly used in web applications and will likely be part of your future careers.
+
+## Using XMLHttpRequest
+
+`XMLHttpRequest` was the original way to send asynchronous requests from JavaScript. While it’s a bit more complex, it provides a solid understanding of how AJAX actually works:
+
+```js
+// Step 1 👉 create the object
+const xhr = new XMLHttpRequest();
+
+// Step 2 👉 Init the request
+xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/ditto", true);
+
+let data;
+
+// Step 3 👉 Define the function that will run when the request is completed
+xhr.onload = function () {
+  // Step 4 👉 check if response is not trash
+  if (xhr.status === 200) {
+    // Step 5 👉 Read JSON
+    data = JSON.parse(xhr.responseText);
+    // Step 6 👉 print data
+    console.log(data);
+  } else {
+    // handle if request is trash
+    console.error("Request is trash with status:", xhr.status);
+  }
+};
+
+// more error handling
+xhr.onerror = function () {
+  console.error("WHAT IS THIS TRASH?????");
+};
+
+// Step 7 👉 Send to the API
+xhr.send();
+```
+
+What's happening with the syntax?
+
+- `open()` prepares a request to an API endpoint
+- `onload` processes the response if successful, and `onerror` handles failures
+- `send()` sends the request
+
+Why am I logging the data inside the `onload`?
+
+- If you add a `console.log(data);` statement at the end of everything, it will run before the AJAX request completes, which is why it will print `undefined`. The console log is prioritized by the event loop, while API requests are treated as "micro" asynchronous tasks.
+
+## Using fetch
+
+The fetch API is a modern alternative to `XMLHttpRequest` that simplifies the syntax for handling AJAX requests. It is "promise-based", making it more intuitive to work with asynchronous data:
+
+```js
+// Step 1 👉 Init a fetch request
+fetch("https://pokeapi.co/api/v2/pokemon/ditto")
+  // Step 2 👉 Handle the response once retrieved
+  .then((response) => {
+    // Step 3 👉 is the response NOT trash?
+    if (!response.ok) {
+      // Step 4 👉 yeet error if trash
+      throw new Error("TRASHHHHHHHHH: " + response.statusText);
+    }
+    // Step 5 👉 parse JSON if not trash
+    return response.json();
+  })
+  // Step 6 👉 now handle JSON
+  .then((data) => console.log(data))
+  // Always good to add error handling
+  .catch((error) => console.error("Please observe the trash:", error));
+```
+
+With `fetch`, data handling is a bit more straight forward:
+
+- The `.then()` blocks handle success and parse the JSON response.
+- `.catch()` manages errors, making the code easier to follow and debug.
+
+We will cover the idea of `promises` more next week, for now I want y'all to get comfy making API requests.
+
+# Exercise 2
+
+Get into groups of up to 4 people, if you prefer to work independently that's ok too. For this exercise, use the Pokémon API to `fetch` information about your favorite Pokémon.
+
+Using your knowledge of dynamically adding elements to a webpage, ensure that the Pokémon's stats are displayed as soon as the page loads. (use the code from your assignment 2)
