@@ -1,0 +1,27 @@
+<!-- pokemans.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stats</title>
+    <style>
+      /* Simple styling for the stats display */
+      #pokemon-stats {
+        font-family: Arial, sans-serif;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Get Pokémon Stats</h1>
+    <!-- this will be part of the url when making the url to request -->
+    <input type="text" id="pokemon-input" placeholder="Enter Pokémon name" />
+    <!-- What triggers the API Call -->
+    <button id="fetch-button">Fetch Stats</button>
+    <!-- Stats will dynamically be injected below after the API delivers A response -->
+    <div id="pokemon-stats"></div>
+    <!-- Link the script -->
+    <script src="./pokemans.js"></script>
+  </body>
+</html>
