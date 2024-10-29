@@ -8,9 +8,9 @@ number: 28
 
 # Intro to Promises
 
-# What is a Promise?
+In JavaScript, promises are a way to handle asynchronous operations more effectively.
 
-It is the result of an asynchronous operation , a result that we don’t have yet.
+# What in human words is a Promise?
 
 It is a "promise" that you will get a result (eventually)
 
@@ -22,7 +22,10 @@ It allows you to write out what should happen with the result before you have th
 
 We have event listener callbacks tho?
 
-Well promises are a great way to "chain" things. For example: - when async operation A finishes pass on info in a call to B, - when B finishes, pass info and call operation C.
+Well promises are a great way to "chain" things. For example:
+
+- when async operation A finishes pass on info in a call to B
+- when B finishes, pass info and call operation C
 
 It let's you avoid "callback hell"
 
@@ -50,6 +53,8 @@ call1(function (result, error) {
 });
 ```
 
+Alternatively, this is what the same logic would look like with promises:
+
 ```js
 // Promises
 call1()
@@ -69,6 +74,14 @@ call1()
 - can group error handling in chained async operations, or specify error handling for subsets
 - can wait for multiple async operations to all finish (Promise.all)
 
+## How do Promises work?
+
+A promise is created using the Promise constructor and can be in one of three states:
+
+- _Pending_ 👉 The initial state. The promise is still in progress and hasn't yet completed.
+- _Fulfilled_ 👉 The operation completed successfully, and the promise has a result.
+- _Rejected_ 👉 The operation failed, and the promise has an error.
+
 # Promise Syntax
 
 ```js
@@ -84,7 +97,7 @@ What's happening with the syntax?
 
 ## When do promises run?
 
-A promise runs ON CREATION. We usually return one in a function (`fetch(url)` returns one):
+A promise runs ON CREATION and we usually return one in a function:
 
 ```js
 function myFunction() {
@@ -117,8 +130,8 @@ myFunction()
 
 What's happening with the syntax?
 
-- `then` 👉
-- `catch` 👉
+- `then` 👉 handles the successful result
+- `catch` 👉 handles any error.
 
 # Exercise 1
 
