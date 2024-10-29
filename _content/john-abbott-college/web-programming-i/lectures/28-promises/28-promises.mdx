@@ -27,3 +27,107 @@ Well promises are a great way to "chain" things. For example: - when async opera
 It let's you avoid "callback hell"
 
 ## Callback Hell
+
+Which one do you prefer?
+
+```js
+// callback hell
+call1(function (result, error) {
+  if (error) {
+    //handle error
+  }
+  call2(result, function (result2, error2) {
+    if (error2) {
+      //handle error
+    }
+    call3(result2, function (result3, error2) {
+      if (error3) {
+        //handle error
+      }
+      // do something with result3
+    });
+  });
+});
+```
+
+```js
+// Promises
+call1()
+  .then(function (result) {
+    return call2();
+  })
+  .then(function (result2) {
+    return call3();
+  })
+  .then(function (result3) {
+    // do something with result3
+  });
+```
+
+## Chaining benefits
+
+- can group error handling in chained async operations, or specify error handling for subsets
+- can wait for multiple async operations to all finish (Promise.all)
+
+# Promise Syntax
+
+```js
+let myPromise = new Promise(function (resolve, reject) {
+  // Promise content the async code I want to run
+});
+```
+
+What's happening with the syntax?
+
+- `resolve` 👉 the function to call in the body when successful (go on with any dependent code). You could pass in a value.
+- `reject` 👉 the function to call in the body when unsuccessful (do not go on with any dependent code). You could pass in an error.
+
+## When do promises run?
+
+A promise runs ON CREATION. We usually return one in a function (`fetch(url)` returns one):
+
+```js
+function myFunction() {
+  return new Promise(function (resolve, reject) {
+    // Promise content the async code I want to run
+    resolve(myResult);
+  });
+}
+```
+
+And this function can be called like:
+
+```js
+myFunction();
+```
+
+## What about then()?
+
+Alternatively we can call `myFunction` like this:
+
+```js
+myFunction()
+  .then(function (result) {
+    /*do something with the result */
+  })
+  .catch(function (error) {
+    /*do something with the error info */
+  });
+```
+
+What's happening with the syntax?
+
+- `then` 👉
+- `catch` 👉
+
+# Exercise 1
+
+Create a function that takes in a parameter. Your function should return a promise: `new Promise( function( resolve, reject ){ })`
+
+- the promise should resolve with “yes” if the number is even.
+- if the number is odd, the promise should reject with nothing
+
+In a `then` block you should console log the result.
+In a `catch` block you should console log “the number is odd”.
+
+Call your function with different numbers to test.
