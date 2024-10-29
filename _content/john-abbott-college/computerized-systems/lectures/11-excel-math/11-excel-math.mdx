@@ -101,15 +101,3 @@ You can easily calculate the AUC in Excel using an approximation method. Here’
 ## Exercise 2
 
 In Excel, you can calculate the AUC by finding the differences in time (∆x) and the average concentration (∆y) between two points. Then, multiply these values to estimate the area of each trapezoid.
-
-Your formula should look something like this:
-
-```md
-| Time (hours) | Concentration (mg/L) | AUC Calculation       |
-| ------------ | -------------------- | --------------------- |
-| 0            | 0                    | 0                     |
-| 1            | 5.2                  | =(B2+B3)/2 \* (A3-A2) |
-| 2            | 8.0                  | =(B3+B4)/2 \* (A4-A3) |
-| ...          | ...                  | ...                   |
-|              |                      | =sum(C2:C??)          |
-```
