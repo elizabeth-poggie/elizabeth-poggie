@@ -10,28 +10,28 @@ number: 28
 
 In JavaScript, promises are a way to handle asynchronous operations more effectively.
 
-# What in human words is a Promise?
+# What is a Promise in human words?
 
-It is a "promise" that you will get a result (eventually)
+In simple terms, it is a "promise" that you will get a result (eventually)
 
 ## Why is this cool?
 
-It allows you to write out what should happen with the result before you have the result and move on
+Promises let you decide what should happen when the result arrives before the result is even available. So, instead of pausing everything while waiting for an operation to finish, your code can keep running other tasks. This approach allows for more efficient, non-blocking code.
 
 ## Why Promises?
 
-We have event listener callbacks tho?
+If we already have event listener callbacks, why promises tho?
 
-Well promises are a great way to "chain" things. For example:
+The key advantage is that promises allow for chaining operations in a more readable way. For example:
 
-- when async operation A finishes pass on info in a call to B
-- when B finishes, pass info and call operation C
+- When operation A finishes, its result is automatically passed to operation B
+- When B finishes, its result goes to C
 
-It let's you avoid "callback hell"
+This lets you avoid “callback hell,” where multiple callbacks get deeply nested and stinky.
 
 ## Callback Hell
 
-Which one do you prefer?
+Consider this example with nested callbacks:
 
 ```js
 // callback hell
@@ -53,7 +53,7 @@ call1(function (result, error) {
 });
 ```
 
-Alternatively, this is what the same logic would look like with promises:
+The above structure is hard on our retinas. Alternatively, this is what the same logic would look like with promises:
 
 ```js
 // Promises
@@ -69,35 +69,27 @@ call1()
   });
 ```
 
-## Chaining benefits
+## Benefits of Chaining with Promises
 
-- can group error handling in chained async operations, or specify error handling for subsets
-- can wait for multiple async operations to all finish (Promise.all)
+- Easily handle errors across multiple chained operations
+- You can actually run multiple asynchronous tasks in parallel, and wait until they’re all done (using `Promise.all`).
 
-## How do Promises work?
-
-A promise is created using the Promise constructor and can be in one of three states:
-
-- _Pending_ 👉 The initial state. The promise is still in progress and hasn't yet completed.
-- _Fulfilled_ 👉 The operation completed successfully, and the promise has a result.
-- _Rejected_ 👉 The operation failed, and the promise has an error.
-
-# Promise Syntax
+# Creating a Promise
 
 ```js
 let myPromise = new Promise(function (resolve, reject) {
-  // Promise content the async code I want to run
+  // Asynchronous operation
 });
 ```
 
-What's happening with the syntax?
+What's happening here?
 
-- `resolve` 👉 the function to call in the body when successful (go on with any dependent code). You could pass in a value.
-- `reject` 👉 the function to call in the body when unsuccessful (do not go on with any dependent code). You could pass in an error.
+- `resolve` 👉 A function to call when the operation is successful. It can pass along a value
+- `reject` 👉 A function to call if the operation fails. It can pass along an error
 
-## When do promises run?
+## When do Promises run?
 
-A promise runs ON CREATION and we usually return one in a function:
+A promise starts running _immediately_ upon creation, and it’s common to return a promise from a function like this:
 
 ```js
 function myFunction() {
@@ -108,39 +100,88 @@ function myFunction() {
 }
 ```
 
-And this function can be called like:
+Now, you can call `myFunction`:
 
 ```js
 myFunction();
 ```
 
-## What about then()?
+## Chaining Syntax
 
-Alternatively we can call `myFunction` like this:
+Pomises allow you to handle results using `.then()` and `.catch()`:
 
 ```js
 myFunction()
   .then(function (result) {
-    /*do something with the result */
+    // Do something with the result
   })
   .catch(function (error) {
-    /*do something with the error info */
+    // Handle the error
   });
 ```
 
-What's happening with the syntax?
+What's happening here?
 
 - `then` 👉 handles the successful result
 - `catch` 👉 handles any error.
 
-# Exercise 1
+# Exercise 1 - Getting used to the syntax
 
-Create a function that takes in a parameter. Your function should return a promise: `new Promise( function( resolve, reject ){ })`
+Write a function that takes a single parameter (a number) and returns a promise:
 
-- the promise should resolve with “yes” if the number is even.
-- if the number is odd, the promise should reject with nothing
+```js
+new Promise(function (resolve, reject) {
+  /* code here */
+});
+```
 
-In a `then` block you should console log the result.
-In a `catch` block you should console log “the number is odd”.
+Here's what the promise should do:
 
-Call your function with different numbers to test.
+- If the number is even, the promise should resolve with the message “yes.”
+- If the number is odd, the promise should reject without any message.
+
+When using this function, add a `.then` block to log the result to the console, and a `.catch` block to log “the number is odd” if the promise is rejected.
+
+Finally, test your function by calling it with a few different numbers to see how it handles each case.
+
+## Solution
+
+```js
+function checkEvenOdd(number) {
+  return new Promise(function (resolve, reject) {
+    if (number % 2 === 0) {
+      resolve("yes");
+    } else {
+      reject();
+    }
+  });
+}
+
+// Test with even
+checkEvenOdd(4)
+  .then(function (result) {
+    console.log(result);
+  })
+  .catch(function () {
+    console.log("The number is odd");
+  });
+
+// Test with odd
+checkEvenOdd(3)
+  .then(function (result) {
+    console.log(result);
+  })
+  .catch(function () {
+    console.log("The number is odd");
+  });
+```
+
+# Overall, how do Promises work?
+
+A promise is created using the Promise constructor and can be in one of three states:
+
+- _Pending_ 👉 The initial state. The promise is still in progress and hasn't yet completed.
+- _Fulfilled_ 👉 The operation completed successfully, and the promise has a result.
+- _Rejected_ 👉 The operation failed, and the promise has an error.
+
+![emojis](./assets/emojis.png)
