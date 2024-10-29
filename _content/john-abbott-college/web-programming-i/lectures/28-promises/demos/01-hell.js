@@ -1,3 +1,5 @@
+const call1 = (param) => {}; // init function
+
 // callback hell
 call1(function (result, error) {
   if (error) {
