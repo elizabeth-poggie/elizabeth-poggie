@@ -8,7 +8,7 @@ number: 29
 
 # Promises
 
-Let's continue what we talked about on tuesday with a more concrete example.
+Let's continue what we talked about on tuesday with a more concrete example. What is a promise? It is something that is unknown now and may become sometime in the future.
 
 ## From Concept to JavaScript
 
@@ -46,7 +46,7 @@ function poggieMustGrade(assignment) {
 }
 ```
 
-Calling this function would look like this:
+At the start, the `promise` is pending and then after "3 days", the promise will either be `resolve`d and you will get your feedback, or `reject`ed with no feedback. Consuming these promises would look like this:
 
 ```js
 poggieMustGrade({
@@ -55,7 +55,7 @@ poggieMustGrade({
 });
 ```
 
-Calling, `then` handling this function would look like this:
+Calling, `then` handling the `promise` once it's been fulfilled would look like this:
 
 ```js
 poggieMustGrade({
@@ -101,6 +101,7 @@ function checkGrade(feedback) {
   feedback.comments.forEach((comment) => {
     console.log(`${comment}`);
   });
+  return true;
 }
 ```
 
@@ -126,3 +127,29 @@ poggieMustGrade({
 ```
 
 Why is this so neat? We only trigger the check grade method AFTER the assignment has been properly reviewed. What's cooler? We can keep chaining methods as needed :)
+
+```js
+// another method
+function sendPoggieDM(res) {
+  if (res) {
+    console.log("wow the student left me on read");
+  }
+}
+
+// updated chaining
+poggieMustGrade({
+  name: "Assignment 2",
+  content: "some really cool code",
+})
+  .then((feedback) => {
+    return checkGrade(feedback); // notice the return
+  })
+  .then((response) => {
+    sendPoggieDM(response);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+# Asynchronous values

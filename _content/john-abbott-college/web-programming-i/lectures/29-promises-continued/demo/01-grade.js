@@ -23,6 +23,13 @@ function checkGrade(feedback) {
   feedback.comments.forEach((comment) => {
     console.log(`${comment}`);
   });
+  return true;
+}
+
+function sendPoggieDM(res) {
+  if (res) {
+    console.log("wow the student left me on read");
+  }
 }
 
 poggieMustGrade({
@@ -30,7 +37,10 @@ poggieMustGrade({
   content: "some really cool code",
 })
   .then((feedback) => {
-    checkGrade(feedback);
+    return checkGrade(feedback);
+  })
+  .then((response) => {
+    sendPoggieDM(response);
   })
   .catch((error) => {
     console.log(error);
