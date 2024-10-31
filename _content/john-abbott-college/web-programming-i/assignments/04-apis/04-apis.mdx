@@ -17,18 +17,53 @@ number: 4
 # Goal
 
 Your job is to make an AJAX request using fetch to this event API:
-https://www.eventbrite.com/platform/api/#/introduction/authentication
+https://www.tvmaze.com/api
 
-Please use the following API key to make requests to the server:
+# Part 1 - Page setup
+
+Your job is to make an AJAX request shows using:
 
 ```text
-YR526KHYCIBEXMRFQOQJ
+https://api.tvmaze.com/search/shows?q=shown-name
 ```
 
-💡Note: YOU DO NOT NEED TO SIGN UP to use the API. I did already, you could just use the key above wherever you need to specify it (`key=<YOUR_API_KEY>`) However, if my account get's banned cause too many of you are making requests with my "private" key, you can create your own account to get your own key [here](https://www.eventbrite.com/platform/api-keys)
+For example, I can call it like this `https://api.tvmaze.com/search/shows?q=community`
 
-# Part 1 - Webpage
+# Part 1 - Search
 
-# Part 2 - Search
+In a web page, allow users to search for shows and display up to 3 options.
 
-# Part 3 - Details
+## Requirements
+
+The show search should include:
+
+- Provide an input where users can enter a show name to find options.
+- Require at least 3 characters in the show name input before making a search request.
+- Show up to 3 show listings. If fewer shows are available, display those found.
+- Notify the user if no shows were found.
+
+Each show result should display:
+
+- Show Name
+- The Average Rating (if available)
+- A medium sized image
+
+# Part 2 - Details
+
+Provide a detailed view for each show when selected.
+
+## Requirements
+
+When a show is selected, display a detailed view that includes:
+
+- A larger sized Image
+- Show Name
+- Detailed Summary (if available)
+- Genres
+- Language
+- A list of all the episodes. If any episode is clicked, it should redirect you
+
+## Tips
+
+- Use the TVMaze API endpoint for job searches.
+- Handle errors by notifying the user if something goes wrong with the API call
