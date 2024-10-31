@@ -59,11 +59,11 @@ The above structure is hard on our retinas. Alternatively, this is what the same
 ```js
 // Promises
 call1()
-  .then(function (result) {
-    return call2();
+  .then(function (result1) {
+    return call2(result1);
   })
   .then(function (result2) {
-    return call3();
+    return call3(result2);
   })
   .then(function (result3) {
     // do something with result3
