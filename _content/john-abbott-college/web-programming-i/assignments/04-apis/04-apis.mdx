@@ -12,58 +12,59 @@ number: 4
 - Due: `November 17th, 2024 @ 11:59am`
 - Submission: Upload a `.zip` file containing your work folder to LEA.
 - Late Penalty: Late submissions lose 10% per day to a maximum of 3 days. Nothing is accepted after 3 days and a grade of zero will be given.
-- Cheating & Plagiarism: The goal of this assignment is to help you develop your own logical thinking and work through the syntax on your own.
+- Academic Integrity: The purpose of this assignment is to strengthen your logical thinking and syntax skills. Work independently to benefit fully from the exercise!!
 
 # Goal
 
-Your job is to make an AJAX request using fetch to this event API:
-https://www.tvmaze.com/api
+Create an AJAX request using the fetch method to interact with the [TVMaze API](https://www.tvmaze.com/api).
 
-# Part 1 - Page setup
+![maze](./assets/maze.png)
 
-Your job is to make an AJAX request shows using this root url:
+# Part 0 - Page setup
+
+Set up a web page that allows users to search for TV shows using this base URL:
 
 ```text
 https://api.tvmaze.com/
 ```
 
-The available endpoints are in the [docs](https://www.tvmaze.com/api)
+You can check out all the available endpoints in the [docs](https://www.tvmaze.com/api)
 
-# Part 1 - Search
+# Part 1 - Search Functionality
 
 In a web page, allow users to search for shows and display up to 3 options.
 
 ## Requirements
 
-The show search should include:
+Your search feature should:
 
-- Provide an input where users can enter a show name to find options.
-- Require at least 3 characters in the show name input before making a search request.
-- Show up to 3 show listings. If fewer shows are available, display those found.
-- Notify the user if no shows were found.
+- Include an input field where users can enter a show's name
+- Require users to enter at least 3 characters before triggering a search
+- Display up to 3 show results. If fewer than 3 are available, show the options that match
+- Notify the user if no results are found
 
 Each show result should display:
 
-- Show Name
-- The Average Rating (if available)
-- A medium sized image
+- The show name
+- The average rating (if available)
+- A medium-sized image
 
 # Part 2 - Details
 
-Provide a detailed view for each show when selected.
+Create a detailed view when a show is selected.
 
 ## Requirements
 
-When a show is selected, display a detailed view that includes:
+When a user selects a show, the detailed view should display:
 
-- A larger sized image
-- Show Name
-- Detailed Summary (if available)
+- A larger image
+- The show name
+- A detailed summary (if available)
 - Genres
 - Language
-- A list of all the episodes. If any episode is clicked, it should redirect you
+- A list of all episodes. When any episode is clicked, the user should be redirected to its page
 
-## Tips
+# Tips
 
-- Use the TVMaze API endpoint for job searches.
-- Handle errors by notifying the user if something goes wrong with the API call
+- Use the TVMaze API endpoint to retrieve show details
+- Handle errors by providing a user-friendly message if there’s an issue with the API call
