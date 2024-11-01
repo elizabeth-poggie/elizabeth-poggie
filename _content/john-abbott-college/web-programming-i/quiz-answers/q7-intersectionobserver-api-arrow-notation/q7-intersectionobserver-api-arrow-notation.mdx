@@ -1,0 +1,97 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Intersection Observer API && Arrow Notation"
+created: "2024-10-29"
+number: 7
+---
+
+# Question 1
+
+Which of the following is the correct way to write an arrow function that takes two parameters, a and b, and returns their sum? Select one or more:
+
+```js
+// ❌
+(a, b) {
+    return a + b;
+}
+```
+
+```js
+// ❌
+function(a, b) {
+    return a + b;
+}
+```
+
+```js
+// ✅
+(a, b) => a + b;
+```
+
+```js
+// ✅
+(a, b) => {
+  return a + b;
+};
+```
+
+# Question 2
+
+Given the following code:
+
+```js
+let cat = {
+  name: "Professor X",
+  iq: 9000,
+  greet: () =>
+    console.log(
+      "I may be a cat, however with an IQ of " +
+        this.iq +
+        ", please respect my authority."
+    ),
+};
+```
+
+What will happen and why? Select one or more:
+
+- ❌ It will log the below because arrow functions have their own `this` context
+
+```text
+I may be a cat, however with an IQ of 9000, please respect my authority.
+```
+
+- ❌ It will throw a reference error because `this.iq` is not defined
+- ❌ It will log the below because the function needs to be rewritten to include a parameter in greet to access this:
+
+```text
+I may be a cat, however with an IQ of undefined, please respect my authority.
+```
+
+- ✅ It will log the below because arrow functions don't have their own `this` context:
+
+```text
+I may be a cat, however with an IQ of undefined, please respect my authority.
+```
+
+## Why?
+
+In JavaScript, arrow functions inherit the `this` context of the surrounding scope rather than creating their own. As a result, `this.iq` will not refer to `cat.iq` as intended, but instead to an `undefined` this in the outer context
+
+# Question 3
+
+Which of these statements are true about lazy loading images? Select one or more:
+
+- ❌ If I am paying for every byte transferred from my web server, it will cost me more to provide a page with image lazy loading
+- ✅ I am making my initial page load faster in the browser.
+- ❌ I am reducing the number of images that a user can ever see in my entire page
+- ✅ I am controlling when the browser loads the images
+
+# Question 4
+
+Which of these statements about the `IntersectionObserver` API is true? Select one or more:
+
+- ✅ When I am created, I specify the function that the `IntersectionObserver` will run on intersection.
+- ❌ In a page where I want to lazy load images, I set the `src` attribute on all the image elements when one of them intersects with the viewport
+- ✅ I can define the conditions that trigger the intersection when creating the `IntersectionObserver`.
+- ❌ The `IntersectionObserverAPI` is used exclusively for the lazy loading of images.
