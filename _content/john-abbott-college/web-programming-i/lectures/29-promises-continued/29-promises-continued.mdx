@@ -243,6 +243,11 @@ Alright so know that `Promises` are a huge improvement from "callback hell", but
 
 All it boils down to is a cuter way to handle your asynchronous code.
 
+- `async` 👉 A keyword used to declare a function that will handle asynchronous actions
+- `await` 👉 A keyword used to pause the function until a promise is `resolve`d or `reject`ed
+
+Let’s rewrite our example with `async` and `await` to see how it changes.
+
 ## Rewriting our example
 
 The synchronous functions will stay the same, however now the `poggieMustGrade` function will look like this:
@@ -265,7 +270,7 @@ async function poggieMustGrade(assignment) {
 }
 ```
 
-Our async code now looks a lot like sync code!! Handling it would look like this:
+The `poggieMustGrade` function is declared as async, which means that we will eventually need to `await` it's resolution comme ca:
 
 ```js
 try {
@@ -274,7 +279,7 @@ try {
     name: "Assignment 2",
     content: "some really cool code",
   });
-  // synchronous code
+  // synchronous code can now be executed
   const response = checkGrade(feedback);
   sendPoggieDM(response);
 } catch (error) {
@@ -284,27 +289,75 @@ try {
 
 Error handling is so much cleaner now since all we need to do is wrap it in a `try catch`
 
-## Why is this neat?
+## Can we have awaits inside of async functions?
 
-With traditional promises, it's difficult to share resolved values between multiple steps in the promise chain
+Yeee, we can put the following in our `poggieMustGrade` function:
+
+```js
+// Simulate a wait period of 3 seconds instead of 3 days
+await new Promise((resolve) => setTimeout(resolve, 3000));
+```
+
+💡 Note: Once you have an `await` in a function, it means you need to make the _overall_ function `async`
+
+# Promise.all()
+
+With traditional promises, it's difficult to share resolved values between multiple steps in the promise chain. `async` and `await` fixes this
 
 ## Common failures
 
-You only need to await one thing after another if the second value is dependent on the first value.
+You only need to await one thing after another _if the second value is dependent on the first value_.
 
-For example take the below code:
-
-```js
-
-```
-
-Now we can run it "concurrently" like so:
+For example, let's say I have the following method:
 
 ```js
-return Promise.all();
+// simple function
+const getIngredient = async (name) => {
+  // walk to kitchen delay
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+  // return ingredient
+  return Promise.resolve(name);
+};
 ```
 
-Our code is better now since it's non-blocking and we are using our event loop effectively :^) So instead of awaiting for a bunch of individual promises, its better to resolve them all at once.
+To make a sandwich I could do the following
+
+```js
+const badSandwich = async () => {
+  const ing1 = await getIngredient("bread");
+  const ing2 = await getIngredient("peanut butter");
+  const ing3 = await getIngredient("jelly");
+  return [ing1, ing2, ing3, ing1]; // 🥪
+};
+```
+
+And call it like this:
+
+```js
+try {
+  const food = await badSandwich();
+  console.log(food);
+} catch (error) {
+  console.log(error.message);
+}
+```
+
+However this is a `badSandwich`, what happens if we want to make a `betterSandwich`? We can run instead call `getIngredient` "concurrently" like so:
+
+```js
+const betterSandwich = async () => {
+  const [ing1, ing2, ing3] = await Promise.all([
+    getIngredient("bread"),
+    getIngredient("peanut butter"),
+    getIngredient("jelly"),
+  ]);
+  return [ing1, ing2, ing3, ing1]; // 🥪
+};
+```
+
+Using `Promise.all` is better since we are creating non-blocking code!! We are using our event loop effectively :^)
+
+# Exercise 2
 
 # Fancy server calls
 
@@ -330,3 +383,9 @@ if await
 ```
 
 super concise way to work with promises
+
+## (not so) Fun Fact
+
+async/await is the industry standard :^)
+
+# Exercise 2
