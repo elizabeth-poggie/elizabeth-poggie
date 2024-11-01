@@ -237,23 +237,23 @@ writeEssay({ title: "Humanities Essay", content: "Wow this is an essay" })
 
 # Async / Await
 
-Alright so know that `Promises` are a huge improvement from "callback hell", but promises can start getting hard to read when you have a lot of stuff chained together.
+Alright, so we know that `Promises` made handling asynchronous code a lot easier than the old "callback hell" approach. But when you start chaining too many promises, the code can still get messy and hard on our retinas
 
 ## Where does Async Await come in?
 
-All it boils down to is a cuter way to handle your asynchronous code.
+`async` and `await` make your code look cuter and easier to follow by letting you write asynchronous code in a more natural way, almost like regular synchronous code (but not quite)
 
 - `async` 👉 A keyword used to declare a function that will handle asynchronous actions
 - `await` 👉 A keyword used to pause the function until a promise is `resolve`d or `reject`ed
 
-Let’s rewrite our example with `async` and `await` to see how it changes.
+Let’s rewrite our earlier example with `async` and `await` so you can see the difference.
 
 ## Rewriting our example
 
-The synchronous functions will stay the same, however now the `poggieMustGrade` function will look like this:
+The synchronous helper functions stay the same, but the `poggieMustGrade` function now becomes an `async` function:
 
 ```js
-// declare the function with "async"
+// Declare the function with "async"
 async function poggieMustGrade(assignment) {
   const deadline = new Date("2024-11-03");
 
@@ -270,7 +270,7 @@ async function poggieMustGrade(assignment) {
 }
 ```
 
-The `poggieMustGrade` function is declared as async, which means that we will eventually need to `await` it's resolution comme ca:
+The `poggieMustGrade` function is marked as `async`, meaning we’ll need to `await` its result when we call it, like this:
 
 ```js
 try {
@@ -287,28 +287,28 @@ try {
 }
 ```
 
-Error handling is so much cleaner now since all we need to do is wrap it in a `try catch`
+With `try` and `catch`, error handling is now much more sleek since you can wrap everything in one simple block.
 
 ## Can we have awaits inside of async functions?
 
-Yeee, we can put the following in our `poggieMustGrade` function:
+Yeee 👉 If we need to simulate a delay inside `poggieMustGrade`, we can use `await` as follows:
 
 ```js
 // Simulate a wait period of 3 seconds instead of 3 days
 await new Promise((resolve) => setTimeout(resolve, 3000));
 ```
 
-💡 Note: Once you have an `await` in a function, it means you need to make the _overall_ function `async`
+💡 Note: Once you have an `await` in a function, the function itself must be marked `async`.
 
 # Promise.all()
 
-With traditional promises, it's difficult to share resolved values between multiple steps in the promise chain. `async` and `await` fixes this
+With traditional promises, sharing resolved values across multiple steps in the chain could be tricky. `async` and `await` simplify that. HOWEVER, we still want to run multiple asynchronous tasks at the same time, _especially if they're not dependent on each other_. This is why we love `Promise.all`
 
 ## Common failures
 
-You only need to await one thing after another _if the second value is dependent on the first value_.
+Only await tasks sequentially if they depend on each other’s results. If they’re _independent_, you can use Promise.all to run them "concurrently" (e.g. at the same time)
 
-For example, let's say I have the following method:
+For example, let's say I have the following `async` function:
 
 ```js
 // simple function
@@ -320,7 +320,7 @@ const getIngredient = async (name) => {
 };
 ```
 
-To make a sandwich I could do the following
+Now, here’s a function that uses this to make a sandwich:
 
 ```js
 const badSandwich = async () => {
@@ -331,7 +331,7 @@ const badSandwich = async () => {
 };
 ```
 
-And call it like this:
+To make a sandwich:
 
 ```js
 try {
@@ -342,7 +342,7 @@ try {
 }
 ```
 
-However this is a `badSandwich`, what happens if we want to make a `betterSandwich`? We can run instead call `getIngredient` "concurrently" like so:
+However, this is a `badSandwich` because each ingredient waits for the previous one. Let’s make a `betterSandwich` using `Promise.all`:
 
 ```js
 const betterSandwich = async () => {
@@ -355,37 +355,115 @@ const betterSandwich = async () => {
 };
 ```
 
-Using `Promise.all` is better since we are creating non-blocking code!! We are using our event loop effectively :^)
+Using `Promise.all` allows us to get each ingredient "concurrently", which makes the code faster and more efficient. In `betterSandwich` we’re taking full advantage of _non-blocking code_ and using the event loop effectively :^)
 
 # Exercise 2
 
-# Fancy server calls
-
-Here is a bad way with map where we call the server one at a time
+Take your Exercise 1 and transform it to work with `async` and `await`:
 
 ```js
-const urls = ["1", "2", "3"];
-urls.map((v) => getData(v));
+// Step 1: Create an Essay
+async function writeEssay(essay) {
+  console.log("Creating essay...");
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  if (essay.content) {
+    return { ...essay, id: 1, status: "created" };
+  } else {
+    throw new Error("Failed to write essay lol");
+  }
+}
 
-function async getData(url) {
+// Step 2: Review the Essay
+async function reviewEssay(essay) {
+  console.log("Reviewing essay...");
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  if (essay.status === "created") {
+    return { ...essay, status: "reviewed" };
+  } else {
+    throw new Error("Didn't Review lol");
+  }
+}
 
+// Step 3: Submit the Essay
+async function submitEssay(essay) {
+  console.log("Submitting Essay on Lea...");
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  if (essay.status === "reviewed") {
+    return { ...essay, status: "submitted" };
+  } else {
+    throw new Error("Cannot submit essay: Omnivox is down again lol");
+  }
+}
+
+try {
+  // notice that each call relies on the previous call so we can't use "Promise.all"
+  let essay = await writeEssay({
+    title: "Humanities Essay",
+    content: "Wow this is an essay",
+  });
+  essay = await reviewEssay(essay);
+  essay = await submitEssay(essay);
+  console.log("Essay status:", essay.status);
+} catch (error) {
+  console.error(error.message);
 }
 ```
 
-Here is better
+# Real world application
+
+Let's take what we know about `fetch`ing data from an API and do this elegantly with `async` and await
+
+Fo example, let's get a bunch of pokemons the bad way with the following syntax:
 
 ```js
-for await
+const urls = [
+  "https://pokeapi.co/api/v2/pokemon/ditto",
+  "https://pokeapi.co/api/v2/pokemon/pikachu",
+  "https://pokeapi.co/api/v2/pokemon/squirtle",
+];
+
+const getData = async (url) => {
+  const data = await fetch(url);
+  return data.json();
+};
+
+// Step 1 - get a bunch of pokemon promises using map
+const pokemonPromises = urls.map(async (v) => getData(v));
+
+// Step 2 - resolve them all at once
+console.log(await Promise.all(pokemonPromises));
 ```
+
+That looks great but you need to be careful when you use `async` and `await` when working with `map` and `forEach`. It wont actually pause the function in this context:
 
 ```js
-if await
+const pokemonPromises = urls.map(async (url) => {
+  // not being paused like you may think
+  const data = await fetch(url);
+  return data.json();
+});
+
+// everything concurrently
+console.log(await Promise.all(pokemonPromises));
 ```
 
-super concise way to work with promises
+Alternatively, if you want stuff to happen one at a time instead of concurrently, you can use the following (sleek) syntax:
+
+```js
+const pokemons = [];
+
+const pokemonLoop = async () => {
+  for await (const url of urls) {
+    const pokemon = await fetch(url);
+    pokemons.push(pokemon);
+  }
+};
+
+await pokemonLoop();
+
+console.log(pokemons);
+```
 
 ## (not so) Fun Fact
 
 async/await is the industry standard :^)
-
-# Exercise 2
