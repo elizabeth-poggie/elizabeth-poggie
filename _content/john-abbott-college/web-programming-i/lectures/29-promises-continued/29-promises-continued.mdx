@@ -46,7 +46,9 @@ function poggieMustGrade(assignment) {
 }
 ```
 
-At the start, the `promise` is pending and then after "3 days", the promise will either be `resolve`d and you will get your feedback, or `reject`ed with no feedback. Consuming these promises would look like this:
+At the start, the `promise` is pending and then after "3 days", the promise will either be `resolve`d and you will get your feedback, or `reject`ed with no feedback.
+
+Consuming the promise would look like this:
 
 ```js
 poggieMustGrade({
@@ -55,7 +57,7 @@ poggieMustGrade({
 });
 ```
 
-Calling, `then` handling the `promise` once it's been fulfilled would look like this:
+Calling, `then` handling the `promise` once the `promise` has been fulfilled would look like this:
 
 ```js
 poggieMustGrade({
@@ -111,7 +113,9 @@ Let's set the deadline to sunday instead, and modify the resolve statement to re
 resolve({ grade: 0.8, comments: ["blah", "blah"] });
 ```
 
-Now let's call the object comme ca:
+You only want to check Lea once you know there is a response, otherwise what's the point? Do you want to check Lea before the operation is complete? Absolutely not.
+
+So let's handle the promise response ONLY once we know there is some sort of notification:
 
 ```js
 poggieMustGrade({
@@ -128,6 +132,8 @@ poggieMustGrade({
 
 Why is this so neat? We only trigger the check grade method AFTER the assignment has been properly reviewed. What's cooler? We can keep chaining methods as needed :)
 
+Let's say that I get a notification now that let's me know once you checked out your grade, what would that look like in code?
+
 ```js
 // another method
 function sendPoggieDM(res) {
@@ -135,7 +141,11 @@ function sendPoggieDM(res) {
     console.log("wow the student left me on read");
   }
 }
+```
 
+Now we can consume these responses quite elegantly like so:
+
+```js
 // updated chaining
 poggieMustGrade({
   name: "Assignment 2",
@@ -152,4 +162,103 @@ poggieMustGrade({
   });
 ```
 
-# Asynchronous values
+## Helpful tip
+
+When you start creating promises for the first time, this is where you are more likely to mess up so effective error handling with your `catch` block will be crucial.
+
+# Exercise 1
+
+# Async / Await
+
+Alright so know that `Promises` are a huge improvement from "callback hell", but promises can start getting hard to read when you have a lot of stuff chained together.
+
+## Where does Async Await come in?
+
+All it boils down to is a cuter way to handle your asynchronous code.
+
+## Rewriting our example
+
+The synchronous functions will stay the same, however now the `poggieMustGrade` function will look like this:
+
+```js
+// declare the function with "async"
+async function poggieMustGrade(assignment) {
+  const deadline = new Date("2024-11-03");
+
+  // TODO - Simulate a wait period of 3 seconds instead of 3 days
+
+  const today = new Date();
+  if (today <= deadline) {
+    return { grade: 0.8, comments: ["blah", "blah"] };
+  } else {
+    throw new Error(
+      `Poggie slept thru her deadline and failed to grade your ${assignment.name}`
+    );
+  }
+}
+```
+
+Our async code now looks a lot like sync code!! Handling it would look like this:
+
+```js
+try {
+  // "await" the response
+  const feedback = await poggieMustGrade({
+    name: "Assignment 2",
+    content: "some really cool code",
+  });
+  const response = checkGrade(feedback);
+  sendPoggieDM(response);
+} catch (error) {
+  console.log(error.message);
+}
+```
+
+Error handling is so much cleaner now since all we need to do is wrap it in a `try catch`
+
+## Why is this neat?
+
+With traditional promises, it's difficult to share resolved values between multiple steps in the promise chain
+
+## Common failures
+
+You only need to await one thing after another if the second value is dependent on the first value.
+
+For example take the below code:
+
+```js
+
+```
+
+Now we can run it "concurrently" like so:
+
+```js
+return Promise.all();
+```
+
+Our code is better now since it's non-blocking and we are using our event loop effectively :^) So instead of awaiting for a bunch of individual promises, its better to resolve them all at once.
+
+# Fancy server calls
+
+Here is a bad way with map where we call the server one at a time
+
+```js
+const urls = ["1", "2", "3"];
+urls.map((v) => getData(v));
+
+function async getData(url) {
+
+}
+```
+
+Here is better
+
+```js
+for await
+```
+
+```js
+if await
+```
+
+super concise way to work with promises

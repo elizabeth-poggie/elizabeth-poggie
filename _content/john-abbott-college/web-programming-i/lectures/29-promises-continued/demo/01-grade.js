@@ -1,21 +1,19 @@
-function poggieMustGrade(assignment) {
-  return new Promise(function (resolve, reject) {
-    // Set a deadline (Wednesday)
-    const deadline = new Date("2024-11-03");
+async function poggieMustGrade(assignment) {
+  // Set a deadline (Wednesday)
+  const deadline = new Date("2024-11-03");
 
-    // simulate a wait period of 3 seconds instead of 3 days
-    setTimeout(() => {
-      // Get today's date
-      const today = new Date();
-      if (today <= deadline) {
-        resolve({ grade: 0.8, comments: ["blah", "blah"] });
-      } else {
-        reject(
-          `Poggie slept thru her deadline and failed to grade your ${assignment.name}`
-        );
-      }
-    }, 3000);
-  });
+  // Simulate a wait period of 3 seconds instead of 3 days
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+
+  // Get today's date
+  const today = new Date();
+  if (today <= deadline) {
+    return { grade: 0.8, comments: ["blah", "blah"] };
+  } else {
+    throw new Error(
+      `Poggie slept thru her deadline and failed to grade your ${assignment.name}`
+    );
+  }
 }
 
 function checkGrade(feedback) {
@@ -32,16 +30,13 @@ function sendPoggieDM(res) {
   }
 }
 
-poggieMustGrade({
-  name: "Assignment 2",
-  content: "some really cool code",
-})
-  .then((feedback) => {
-    return checkGrade(feedback);
-  })
-  .then((response) => {
-    sendPoggieDM(response);
-  })
-  .catch((error) => {
-    console.log(error);
+try {
+  const feedback = await poggieMustGrade({
+    name: "Assignment 2",
+    content: "some really cool code",
   });
+  const response = checkGrade(feedback);
+  sendPoggieDM(response);
+} catch (error) {
+  console.log(error.message);
+}
