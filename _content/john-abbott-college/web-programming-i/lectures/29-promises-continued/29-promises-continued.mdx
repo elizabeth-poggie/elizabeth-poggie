@@ -8,11 +8,15 @@ number: 29
 
 # Promises
 
-Let's continue what we talked about on tuesday with a more concrete example. What is a promise? It is something that is unknown now and may become sometime in the future.
+Let's continue what we talked about on tuesday with a more concrete example.
+
+## What is a promise?
+
+It is something that is unknown now and may become known sometime in the future.
 
 ## From Concept to JavaScript
 
-Poggie "promises" that she will grade your Assignment 2. In JavaScript this would look like:
+Poggie "promises" to grade your Assignment 2. Here’s how this would look in JavaScript:
 
 ```js
 function poggieMustGrade(assignment) {
@@ -22,7 +26,7 @@ function poggieMustGrade(assignment) {
 }
 ```
 
-Poggie has set a deadline for herself of Wednesday and she made this promise on Tuesday to the class. In JavaScript, this would look like:
+Poggie has set her grading deadline for Wednesday, and she made this promise to the class on Tuesday. In JavaScript, this setup would look like this:
 
 ```js
 function poggieMustGrade(assignment) {
@@ -46,9 +50,9 @@ function poggieMustGrade(assignment) {
 }
 ```
 
-At the start, the `promise` is pending and then after "3 days", the promise will either be `resolve`d and you will get your feedback, or `reject`ed with no feedback.
+Initially, the promise is _pending_. After "3 days," the promise either gets `resolve`d (you receive feedback) or `reject`ed (you don’t get feedback)
 
-Consuming the promise would look like this:
+Here’s how you’d call this promise:
 
 ```js
 poggieMustGrade({
@@ -57,7 +61,7 @@ poggieMustGrade({
 });
 ```
 
-Calling, `then` handling the `promise` once the `promise` has been fulfilled would look like this:
+Using `then` to handle the result of the promise once fulfilled would look like this:
 
 ```js
 poggieMustGrade({
@@ -72,23 +76,25 @@ poggieMustGrade({
   });
 ```
 
-Because it's friday, you should expect to see the following output message:
+Since today is Friday, you should expect this output:
 
 ```text
 Poggie slept thru her deadline and failed to grade your Assignment 2
 ```
 
-However, had poggie `resolve`d grading your assignment on time, you would see the following output message:
+But if Poggie had `resolve`d grading your assignment on time, you’d see:
 
 ```text
 Poggie graded your Assignment 2 on time (wow)
 ```
 
-What happens tho if i want to "chain" multiple calls together? For example, once i had finished grading your assignment, you check Lea to see your grade?
+## What if I want to “chain” multiple actions together?
+
+For example, after Poggie has graded your assignment, you want to check Lea for your grade.
 
 ## Chaining
 
-Let's create a new method called `checkGrade` that takes a `feedback` object as input and returns a boolean that indicates whether you have read it or not
+Let’s add a new function called `checkGrade` that takes a `feedback` object and returns a boolean indicating whether you’ve read it:
 
 ```js
 // example feedback object
@@ -107,15 +113,15 @@ function checkGrade(feedback) {
 }
 ```
 
-Let's set the deadline to sunday instead, and modify the resolve statement to return a `feedback` object:
+Now, we’ll set the deadline for _Sunday_ and modify the resolve statement to return a `feedback` object:
 
 ```js
 resolve({ grade: 0.8, comments: ["blah", "blah"] });
 ```
 
-You only want to check Lea once you know there is a response, otherwise what's the point? Do you want to check Lea before the operation is complete? Absolutely not.
+You only want to check Lea once you’re sure there’s feedback; otherwise what's the point? Do you want to check Lea before the operation is complete? Absolutely not.
 
-So let's handle the promise response ONLY once we know there is some sort of notification:
+So, let’s handle the promise response only once there’s some sort of notification:
 
 ```js
 poggieMustGrade({
@@ -130,9 +136,11 @@ poggieMustGrade({
   });
 ```
 
-Why is this so neat? We only trigger the check grade method AFTER the assignment has been properly reviewed. What's cooler? We can keep chaining methods as needed :)
+## Why is this so neat?
 
-Let's say that I get a notification now that let's me know once you checked out your grade, what would that look like in code?
+We only trigger the `checkGrade` method AFTER the assignment is graded. What's cooler? We can keep chaining methods as needed :)
+
+Let’s say you get a notification once you’ve checked your grade. Here’s what that would look like:
 
 ```js
 // another method
@@ -143,7 +151,7 @@ function sendPoggieDM(res) {
 }
 ```
 
-Now we can consume these responses quite elegantly like so:
+Now, we can consume these responses quite elegantly like so:
 
 ```js
 // updated chaining
@@ -164,9 +172,68 @@ poggieMustGrade({
 
 ## Helpful tip
 
-When you start creating promises for the first time, this is where you are more likely to mess up so effective error handling with your `catch` block will be crucial.
+When you start creating promises, it’s easy to mess it up. This is where effective error handling in your catch block is important 👀
 
 # Exercise 1
+
+You are a student that needs to submit an essay. Once this essay is created, it should be reviewed, and then finally submitted on Lea once finished. How could you do this in JavaScript?
+
+## Requirements
+
+Each task is asynchronous and takes `3000` milliseconds to complete.
+
+## Solution
+
+```js
+// Step 1: Create an Essay
+function writeEssay(essay) {
+  return new Promise((resolve, reject) => {
+    console.log("Creating essay...");
+    setTimeout(() => {
+      if (essay.content) {
+        resolve({ ...essay, id: 1, status: "created" });
+      } else {
+        reject("Failed to write essay lol");
+      }
+    }, 3000);
+  });
+}
+
+// Step 2: Review the Essay
+function reviewEssay(essay) {
+  return new Promise((resolve, reject) => {
+    console.log("Reviewing essay...");
+    setTimeout(() => {
+      if (essay.status === "created") {
+        resolve({ ...essay, status: "reviewed" });
+      } else {
+        reject("Didn't Review lol");
+      }
+    }, 3000);
+  });
+}
+
+// Step 3: Submit the essay
+function submitEssay(essay) {
+  return new Promise((resolve, reject) => {
+    console.log("Submitting Essay on Lea...");
+    setTimeout(() => {
+      if (essay.status === "reviewed") {
+        resolve({ ...essay, status: "submitted" });
+      } else {
+        reject("Cannot submit essay: Omnivox is down again lol");
+      }
+    }, 3000);
+  });
+}
+
+// Chaining the functions
+writeEssay({ title: "Humanities Essay", content: "Wow this is an essay" })
+  .then((essay) => reviewEssay(essay))
+  .then((essay) => submitEssay(essay))
+  .then((essay) => console.log("Essay status:", essay.status)) // Should print "submitted"
+  .catch((error) => console.error(error));
+```
 
 # Async / Await
 
@@ -207,6 +274,7 @@ try {
     name: "Assignment 2",
     content: "some really cool code",
   });
+  // synchronous code
   const response = checkGrade(feedback);
   sendPoggieDM(response);
 } catch (error) {
