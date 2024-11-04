@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "Computerized Systems"
-title: "Excel but better"
+title: "What is the cost?"
 created: "2024-11-05"
 number: 4
 ---
@@ -9,52 +9,79 @@ number: 4
 # Overview
 
 - Worth: This assignment contributes `8%` to the Assignment portion of your final grade.
-- Due: `November 15 by 23:59`
-- Submission: Upload a `.zip` file containing your work folder to LEA. The file should be named `Assignment-4-ID.zip` where `ID` is your student ID.
+- Due: `November 12 by 23:59`
 - Late Penalty: Late submissions lose `10%` per day to a maximum of 3 days. Nothing is accepted after 3 days and a grade of zero will be given.
 
 # The Goal
 
-Using the provided data on the `assign4_data.xlsx` spreadsheet complete the sections below.
+Using the provided `assign4_data.xlsx` spreadsheet, complete the tasks outlined below.
 
 # Part 1
 
-The Chernobyl disaster began on 26 April 1986 with the explosion of the No. 4 reactor of the Chernobyl Nuclear Power Plant and to this day we continue to pay the consequences of mistakes that resulted in this global catastrophe. You are an intern working in a prestigious lab and now you need to perform a short analysis on a few Half Lives of Radioactive Isotopes.
+[The Chernobyl disaster](https://www.imdb.com/title/tt7366338/) serves as a stark reminder of the long-term consequences of human error. Decades later, the repercussions of this catastrophe continue to affect the world and now it's your job the analyze the numbers. You are currently interning at a renowned research lab and have been tasked with conducting a brief analysis on the half-lives of various radioactive isotopes.
 
-Refer to sheet `Isotopes` and follow the below instructions.
+![cost](./assets/cost.jpeg)
 
-## Styling 💅✨
+Refer to the `Isotopes` sheet and follow the instructions provided below.
 
-- Format the data part of the sheet as a table and apply any predefined table style to it so it looks more sleek.
-- Freeze the table headers as well as column A so that they remain visible when scrolling.
+## Styling ☢️✨
+
+- Organize the data in the sheet as a formatted table and apply any predefined table style so it looks more sleek
+- Ensure the table headers and column A are frozen to remain visible while scrolling
 
 ## Conditional formatting 🤨
 
-- All Isotope cells containing a value greater than or equal to 200 should have a light red fill with red text (the cell only, not the whole row)
-- The rows with “beta” as the type of radiation produced should have a yellow fill color (yellow background). The whole rows should have a yellow background, not just the cells in the radiation produced column. (This is a challenge and might require some additional research)
+- Apply conditional formatting so that any isotope cell containing a value of 200 or higher has a light red fill with red text. Make sure the formatting applies only to the cell, not the entire row!
+- Highlight entire rows in yellow if the type of radiation produced is “beta.” This requires the whole row to have a yellow background, not just the cell containing the radiation type. (This may be challenging and you may need to google beyond these notes)
 
-## Sorting and Filtering 🕵️‍♂️
+## Sorting 🕵️‍♂️
 
-- Sort by the radiation produced first (reverse alphabetical order), then by the symbol (alphabetical order)
-- Filter the table to keep only the medical and research uses.
+Sort the data by the type of radiation produced in reverse alphabetical order, followed by sorting by the symbol in alphabetical order
+
+## Filtering 🧼
+
+Apply a filter to display only rows where the use is categorized as medical or research
 
 # Part 2
 
-Refer to sheet SupportCalls and follow the below instructions
+No fun pitch this time. Refer to sheet `SupportCalls` and follow the below instructions:
 
-## Styling 💅✨
+## Formatting and Layout 💅✨
 
-- Freeze panes so that the column headers (Row 3) remain visible when scrolling.
-- Replace all occurrences of Virus by Malware.
+- Freeze the panes so that the column headers (Row 3) stay visible while scrolling through the data
+- Replace every occurrence of the word "Virus" with "Malware" throughout the sheet
 
 ## Mathe(magic) 🧮 🧙‍♀️
 
-- Add a new column to the table named Duration.
-- Create a formula to calculate the days required to resolve the incident (Date Resolved minus Date created). Include the units in the column header. Tickets that are still open do not have a Date Resolved, in which case the duration should indicate "N/A".
-- Write a formula in all cells of column H to display ticket Status as "Open" or "Closed", according to the column Date Resolved.
-- Write the proper formula in the light blue cells to return the required values.
+Add a new column named Duration to the table using column J. In this column, create a formula that calculates the number of days taken to resolve each incident by subtracting the Date Created from the _Date Resolved_. Make sure the column header specifies the unit (e.g., "Duration (days)").
 
-## Sorting and Filtering 🕵️‍♂️
+```text
+Duration = Date Resolved - Date Created
+```
 
-- Sort the table by Agent Name in alphabetic order. Add a second level to sort by Description as follows: Won't power on, Virus, Printing Issues, Software Update, Forgotten Password. Add a third level to sort by Duration from smallest to largest.
-- Filter the table to only display closed incidents as indicated in the Status column.
+For incidents that are still open and lack a _Date Resolved_, display "N/A" in the Duration column.
+
+## Conditional formatting 🤨
+
+- In column H, write a formula for each cell that displays the ticket Status as either "Open" or "Closed" based on whether the Date Resolved field is filled or empty.
+- Ensure the correct formulas are applied to the light blue cells to yield the needed values.
+
+## Sorting 🕵️‍♂️
+
+Sort the table by Agent Name in alphabetical order. Add _a second sorting level_ based on Description in the order:
+
+- Won't power on
+- Malware
+- Printing Issues
+- Software Update
+- Forgotten Password
+
+Lastly, add a third sorting level to organize by Duration, from the shortest to longest time.
+
+## Filtering 🧼
+
+Filter the table to only display closed incidents as indicated in the Status column.
+
+# Submission
+
+Please rename the Excel sheet to `assign4-ID.xlsx`, replacing ID with your student ID. Save this file in a folder named `Assignment-4-ID`. Once you have zipped the folder, upload the `.zip` file to LEA.
