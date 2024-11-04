@@ -63,13 +63,13 @@ const betterSandwich = async () => {
 
 Using `Promise.all` allows us to get each ingredient "concurrently", which makes the code faster and more efficient. In `betterSandwich` we’re taking full advantage of _non-blocking code_ and using the event loop effectively :^)
 
-# Exercise 1
+Why is this technique so handy? Let's take a look at the real world application
 
 # Real World Application
 
 Let's take what we know about `fetch`ing data from an API and do this elegantly with `async` and await
 
-Fo example, let's get a bunch of pokemons the bad way with the following syntax:
+For example, let's `fetch` a bunch of pokemons concurrently with the following syntax:
 
 ```js
 const urls = [
@@ -78,43 +78,47 @@ const urls = [
   "https://pokeapi.co/api/v2/pokemon/squirtle",
 ];
 
-const getData = async (url) => {
-  const data = await fetch(url);
-  return data.json();
-};
+// Step 1 - create a bunch of pokemon promises
+const pokemonPromises = urls.map(async (url) => {
+  const response = await fetch(url);
+  // I am returning a PROMISE of JSON not actually JSON
+  return response.json();
+});
 
-// Step 1 - get a bunch of pokemon promises using map
-const pokemonPromises = urls.map(async (v) => getData(v));
-
-// Step 2 - resolve them all at once
+// Step 2 - resolve promises all at once
 console.log(await Promise.all(pokemonPromises));
 ```
 
-That looks great but you need to be careful when you use `async` and `await` when working with `map` and `forEach`. It wont actually pause the function in this context:
+## Alternative strategy
+
+However let's say we wanted to fetch the data one at a time for various reasons. In this case, you need to be careful when you use `async` and `await` when working with `map` and `forEach`. It wont actually pause the function in this context:
 
 ```js
 const pokemonPromises = urls.map(async (url) => {
   // not being paused like you may think
-  const data = await fetch(url);
-  return data.json();
+  const response = await fetch(url);
+  return response.json();
 });
 
 // everything concurrently
 console.log(await Promise.all(pokemonPromises));
 ```
 
-Alternatively, if you want stuff to happen one at a time instead of concurrently, you can use the following (sleek) syntax:
+Alternatively, if you want stuff to happen one at a time instead of concurrently, you can use the following syntax:
 
 ```js
 const pokemons = [];
 
 const pokemonLoop = async () => {
+  // fetching one thing at a time
   for await (const url of urls) {
-    const pokemon = await fetch(url);
+    const response = await fetch(url);
+    const pokemon = await response.json();
     pokemons.push(pokemon);
   }
 };
 
+// resolve the loop
 await pokemonLoop();
 
 console.log(pokemons);
@@ -124,6 +128,16 @@ console.log(pokemons);
 
 async/await is the industry standard :^)
 
-# Exercise 2
+# Exercise 1
 
-Using what you know about `fetch`, try to call the Pokemon API using the `async` / `await` way of doing things
+Using what you know about `fetch`, try to call the Pokemon API to `fetch` 5 pokemon's `id` using the `async` / `await`, `Promise.all`, and this endpoint:
+
+```text
+https://pokeapi.co/api/v2/pokemon/{name}
+```
+
+Then once you get the `id`, use the following endpoint to `fetch` their Pokeathlon stats:
+
+```text
+https://pokeapi.co/api/v2/pokeathlon-stat/{id}/
+```
