@@ -174,7 +174,7 @@ main();
 
 # Common Mistakes
 
-## Not handling Errors
+## 1 - Not handling Errors
 
 Wrap your stuff in a `try/catch` otherwise you will be at the mercy of code that "seems" to run and doesn't
 
@@ -197,7 +197,7 @@ async function goodGetData(url) {
 }
 ```
 
-## Not returning Promises in Promise.all
+## 2 - Not returning Promises in Promise.all
 
 Its important to resolve or reject all our promises as there is nothing worse then having untracked promises both IRL and in our code:
 
@@ -220,7 +220,7 @@ const data = await Promise.all(
 );
 ```
 
-## Using await Inside Loops like trash
+## 3 - Using await Inside Loops like trash
 
 Using `await` inside for or `forEach` doesn't leverage concurrent resolution, which makes our code slower than it needs to be:
 
@@ -238,7 +238,7 @@ const data = await Promise.all(
 console.log(data);
 ```
 
-## Top-level scope
+## 4 - Top-level scope
 
 You cannot use `await` directly at the _top level_ in apps that do not support it. So if you find yourself working in older version of Node.js or your apps require backwards compatibility then you will be in a world of pain should you choose to not have a `main` function
 
