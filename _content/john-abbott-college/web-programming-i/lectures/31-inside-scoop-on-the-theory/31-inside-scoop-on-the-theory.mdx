@@ -1,0 +1,119 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Inside Scoop on the Theory"
+created: "2024-11-04"
+number: 31
+---
+
+# JSON continued
+
+We covered JSON at a high level in previous classes, today we cover it in greater detail
+
+## What is it?
+
+- A standard text-based format for representing structured data that's _very_ popular
+- It's based on JavaScript object syntax, but it is independent of JavaScript (could be used anywhere)
+
+## When do we use it?
+
+- It's often used to transfer data from web server to browser (client).
+- When we transfer it, it is represented as a string because that's great for transfer.
+
+## How do we make sure JavaScript is happy when dealing with JSON?
+
+JavaScript provides a JSON object with methods to convert it to a JavaScript object.
+
+# JSON vs JavaScript
+
+## JSON data types
+
+In JSON, values must be one of the following data types:
+
+- a string (e.g. `"Don't Panic"`)
+- a number (e.g. `42`)
+- an object (e.g. JSON object)
+- an array (e.g. `[stuff]`)
+- a boolean (e.g. `true`/ `false`)
+- `null` (angry user defined error)
+
+## JavaScript data types
+
+In JavaScript values can be all of the above, plus any other valid JavaScript expression, including:
+
+- a function (e.g. `() => stuff`)
+- a date (e.g. `2024-11-04`)
+- `undefined` (angry JavaScript defined error)
+
+## Key differences
+
+JSON requires _double_ quotes to be used around _property names_ and _values_ that are strings. Single quotes are not valid.
+
+Even a single misplaced comma or colon can cause a JSON file to go wrong. (which is always lovely when it happens)
+
+JSON => JavaScript object
+
+```js
+let superHeroes = JSON.parse(superHeroesText);
+```
+
+JavaScript object => JSON
+
+```js
+let myJavaScriptObject = { name: "Chris", age: 38 };
+let myJSONString = JSON.stringify(myJavaScriptObject);
+```
+
+A text-based format in which you could represent structured data
+Inspired by JavaScript object syntax, but not tied to JavaScript
+Double quotes only (no single quotes)
+Double quotes around property names too (unlike in JavaScript)
+Often used by web servers to send data
+Many languages, including JavaScript have easy ways to take in the JSON string and use it. In JavaScript JSON.parse( JSONString ) takes a JSON string and returns the equivalent JavaScript object.
+
+# setTimeout function
+
+takes in two parameters:
+The function to run after the specified time. The function takes no parameters.
+The specified time in ms.
+
+# defer / async
+
+More info: https://javascript.info/script-async-defer
+
+```html
+<script src="myFile.js"></script>
+
+<script defer src="myFile.js"></script>
+
+<script async src="myFile.js"></script>
+```
+
+What's going on here?
+
+```html
+<script defer src="myFile.js"></script>
+load file in background (get it from server) run js code only when DOM is ready
+(can retrieve HTML Element object in script)
+
+<script async src="myFile.js"></script>
+load file in background (get it from server) run js code as soon as file loaded.
+(DOM might not be ready)
+
+<script src="myFile.js"></script>
+load file right away (block rest of page) run js code as soon as file loaded.
+(DOM might not be ready)
+```
+
+## Whats the steps?
+
+https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html#script
+
+The async attribute is useful when the script is not used for DOM manipulation. Sometimes you need a script only for server-side operations or for handling cache or cookies, but not for DOM manipulations.
+
+The defer attribute is important when the script is used for DOM manipulations.
+defer scripts are guaranteed to execute in order.
+
+# Friday Quiz
+
+Focus on Ajax and the differences between traditional promises vs modern promises

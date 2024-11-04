@@ -8,7 +8,9 @@ number: 30
 
 # Promise.all()
 
-With traditional promises, sharing resolved values across multiple steps in the chain could be tricky. `async` and `await` simplifies that. HOWEVER, we still want to run multiple asynchronous tasks at the same time, _especially if they're not dependent on each other_. This is why we love `Promise.all`
+With traditional promises, sharing resolved values across multiple steps in the chain could be tricky. `async` and `await` simplifies that. HOWEVER, we still want to run multiple asynchronous tasks at the same time, _especially if they're not dependent on each other_.
+
+This is why we love `Promise.all`
 
 ## Common failures
 
@@ -25,6 +27,8 @@ const getIngredient = async (name) => {
   return Promise.resolve(name);
 };
 ```
+
+💡 Note: `await`ing for the promise blocks the execution of that function until _the awaited promise is resolved_
 
 Now, here’s a function that uses this to make a sandwich:
 
@@ -67,7 +71,7 @@ Why is this technique so handy? Let's take a look at the real world application
 
 # Real World Application
 
-Let's take what we know about `fetch`ing data from an API and do this elegantly with `async` and await
+Let's take what we know about `fetch`ing data from an API and do this elegantly with `async` and `await`
 
 For example, let's `fetch` a bunch of pokemons concurrently with the following syntax:
 
@@ -89,9 +93,13 @@ const pokemonPromises = urls.map(async (url) => {
 console.log(await Promise.all(pokemonPromises));
 ```
 
+💡Note: `return response.json();` gives a `Promise` that resolves with the JavaScript object that represents the _JSON_ in the _HttpResponse_
+
+💡Another Note: the promise will be `resolve`d _ONLY_ when _all the promises_ in the array are `resolve`d.
+
 ## Alternative strategy
 
-However let's say we wanted to fetch the data one at a time for various reasons. In this case, you need to be careful when you use `async` and `await` when working with `map` and `forEach`. It wont actually pause the function in this context:
+However let's say we wanted to `fetch` the data one at a time for various reasons. In this case, you need to be careful when you use `async` and `await` when working with `map` and `forEach`. It wont actually pause the function in this context:
 
 ```js
 const pokemonPromises = urls.map(async (url) => {
@@ -104,7 +112,7 @@ const pokemonPromises = urls.map(async (url) => {
 console.log(await Promise.all(pokemonPromises));
 ```
 
-Alternatively, if you want stuff to happen one at a time instead of concurrently, you can use the following syntax:
+Alternatively, if you want stuff to happen _one at a time_ instead of _concurrently_, you can use the following syntax:
 
 ```js
 const pokemons = [];
@@ -260,6 +268,8 @@ const main = async () => {
 };
 main();
 ```
+
+In our exercises we can get away with it, however it's best practice to not use this keyword in the global scope.
 
 ## Stinky urls
 
