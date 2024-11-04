@@ -47,9 +47,11 @@ In JavaScript values can be all of the above, plus any other valid JavaScript ex
 
 ## Key differences
 
-JSON requires _double_ quotes to be used around _property names_ and _values_ that are strings. Single quotes are not valid.
+JSON requires _double_ quotes to be used around _property names_ and _values_ that are strings (unlike in JavaScript). Single quotes are not valid.
 
 Even a single misplaced comma or colon can cause a JSON file to go wrong. (which is always lovely when it happens)
+
+# Converting between types
 
 JSON => JavaScript object
 
@@ -64,18 +66,7 @@ let myJavaScriptObject = { name: "Chris", age: 38 };
 let myJSONString = JSON.stringify(myJavaScriptObject);
 ```
 
-A text-based format in which you could represent structured data
-Inspired by JavaScript object syntax, but not tied to JavaScript
-Double quotes only (no single quotes)
-Double quotes around property names too (unlike in JavaScript)
-Often used by web servers to send data
-Many languages, including JavaScript have easy ways to take in the JSON string and use it. In JavaScript JSON.parse( JSONString ) takes a JSON string and returns the equivalent JavaScript object.
-
-# setTimeout function
-
-takes in two parameters:
-The function to run after the specified time. The function takes no parameters.
-The specified time in ms.
+# Exercise 1
 
 # defer / async
 
@@ -117,3 +108,9 @@ defer scripts are guaranteed to execute in order.
 # Friday Quiz
 
 Focus on Ajax and the differences between traditional promises vs modern promises
+
+# setTimeout function
+
+takes in two parameters:
+The function to run after the specified time. The function takes no parameters.
+The specified time in ms.
