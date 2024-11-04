@@ -16,24 +16,15 @@ const main = async () => {
     const pokemons = await fetchData(
       pokemonNames.map((name) => `https://pokeapi.co/api/v2/pokemon/${name}`)
     );
-    // step 2 - extract ids to formulate URLs
-    const speciesUrls = pokemons.map((pokemon) => ({
-      name: pokemon.name,
-      url: `https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}/`,
-    }));
-
-    // step 3 - fetch species information
-    const speciesData = await fetchData(speciesUrls.map((item) => item.url));
-
-    // step 4 - extract happiness levels
-    const results = speciesUrls.map((item, index) => ({
-      name: item.name,
-      happiness: speciesData[index].base_happiness,
-    }));
-
-    // Log the results
-    results.forEach((pokemon) => {
-      console.log(`${pokemon.name}: Happiness Level - ${pokemon.happiness}`);
+    // step 2 - fetch species information
+    const speciesData = await fetchData(
+      pokemons.map(
+        (pokemon) => `https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}/`
+      )
+    );
+    // step 3 - Log the results
+    speciesData.forEach((data) => {
+      console.log(data);
     });
   } catch (error) {
     console.log("TRASHHHHHHHH: ", error);
