@@ -136,8 +136,183 @@ Using what you know about `fetch`, try to call the Pokemon API to `fetch` 5 poke
 https://pokeapi.co/api/v2/pokemon/{name}
 ```
 
-Then once you get the `id`, use the following endpoint to `fetch` their Pokeathlon stats:
+## Solution
 
-```text
-https://pokeapi.co/api/v2/pokeathlon-stat/{id}/
+```js
+const pokemonNames = ["ditto", "pikachu", "squirtle", "charizard", "bulbasaur"];
+
+// Create a generic fetch function for reusability
+const fetchData = async (urls) => {
+  return await Promise.all(
+    urls.map(async (url) => {
+      const response = await fetch(url);
+      return response.json();
+    })
+  );
+};
+
+// create a function that wraps all our async code
+const main = async () => {
+  try {
+    // step 1 - get the ids
+    const pokemons = await fetchData(
+      pokemonNames.map((name) => `https://pokeapi.co/api/v2/pokemon/${name}`)
+    );
+    // step 2 - extract ids
+    const ids = pokemons.map((pokemon) => pokemon.id);
+
+    console.log(ids);
+
+    // log all the mapped information
+  } catch (error) {
+    console.log("TRASHHHHHHHH: ", error);
+  }
+};
+
+main();
+```
+
+# Common Mistakes
+
+## Not handling Errors
+
+Wrap your stuff in a `try/catch` otherwise you will be at the mercy of code that "seems" to run and doesn't
+
+```js
+// Trash 🗑️
+async function badGetData(url) {
+  const response = await fetch(url);
+  return response.json();
+}
+
+// Not Trash 💐
+async function goodGetData(url) {
+  try {
+    const response = await fetch(url);
+    return response.json();
+  } catch (error) {
+    // if you are feeling spicy, you can use the error method:
+    console.error("Error fetching data:", error);
+  }
+}
+```
+
+## Not returning Promises in Promise.all
+
+Its important to resolve or reject all our promises as there is nothing worse then having untracked promises both IRL and in our code:
+
+```js
+// Trash 🗑️
+const data = await Promise.all(
+  urls.map(async (url) => {
+    // This does not return the JSON tho
+    await fetch(url);
+  })
+);
+
+// Not Trash 💐
+const data = await Promise.all(
+  urls.map(async (url) => {
+    const response = await fetch(url);
+    // Return the JSON
+    return response.json();
+  })
+);
+```
+
+## Using await Inside Loops like trash
+
+Using `await` inside for or `forEach` doesn't leverage concurrent resolution, which makes our code slower than it needs to be:
+
+```js
+// Trash 🗑️
+for (const url of urls) {
+  const data = await fetch(url);
+  console.log(data);
+}
+
+// Not Trash 💐
+const data = await Promise.all(
+  urls.map((url) => fetch(url).then((res) => res.json()))
+);
+console.log(data);
+```
+
+## Top-level scope
+
+You cannot use `await` directly at the _top level_ in apps that do not support it. So if you find yourself working in older version of Node.js or your apps require backwards compatibility then you will be in a world of pain should you choose to not have a `main` function
+
+```js
+// Trash 🗑️
+try {
+  // await async operation
+} catch (error) {
+  console.log(error.message);
+}
+
+// Not Trash 💐
+const main = async () => {
+  try {
+    // await async operation
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+main();
+```
+
+## Stinky urls
+
+Although you may think you know how to call the URL directly in JavaScript, this may not necessarily be the case. A good reflex to have is to check PostMan first to formulate yor request then translate that to JavaScript.
+
+# Exercise 2
+
+Building on our exercise 1, using the `id`s of each pokemon, `fetch` the species details of each pokemon to determine their `base_happiness`. Once you discover all the happiness levels sort them from happiest pokemon to least happy pokemon:
+
+## Solution
+
+```js
+const pokemonNames = ["ditto", "pikachu", "squirtle", "charizard", "bulbasaur"];
+
+// Create a generic fetch function for reusability
+const fetchData = async (urls) => {
+  return await Promise.all(
+    urls.map(async (url) => {
+      const response = await fetch(url);
+      return response.json();
+    })
+  );
+};
+
+const main = async () => {
+  try {
+    // step 1 - get the ids
+    const pokemons = await fetchData(
+      pokemonNames.map((name) => `https://pokeapi.co/api/v2/pokemon/${name}`)
+    );
+    // step 2 - extract ids to formulate URLs
+    const speciesUrls = pokemons.map((pokemon) => ({
+      name: pokemon.name,
+      url: `https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}/`,
+    }));
+
+    // step 3 - fetch species information
+    const speciesData = await fetchData(speciesUrls.map((item) => item.url));
+
+    // step 4 - extract happiness levels
+    const results = speciesUrls.map((item, index) => ({
+      name: item.name,
+      happiness: speciesData[index].base_happiness,
+    }));
+
+    // Log the results
+    results.forEach((pokemon) => {
+      console.log(`${pokemon.name}: Happiness Level - ${pokemon.happiness}`);
+    });
+  } catch (error) {
+    console.log("TRASHHHHHHHH: ", error);
+  }
+};
+
+main();
 ```
