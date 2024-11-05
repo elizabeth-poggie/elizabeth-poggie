@@ -84,7 +84,7 @@ JSON requires _double_ quotes to be used around _property names_ and _values_ th
 
 Even a single misplaced comma or colon can cause a JSON file to go wrong. (which is always lovely when it happens)
 
-# Usage and Parsing JSON
+# Converting and Parsing JSON
 
 Sometimes we want to receive JSON from a server and sometimes we are the server that wants to send JSON.
 
@@ -104,7 +104,7 @@ const processedArthur = JSON.parse(jsonString);
 console.log(processedArthur);
 ```
 
-# Common use cases and best practices
+# Usage and Best Practices
 
 ## Response.json()
 
@@ -130,6 +130,33 @@ const storedArthur = localStorage.getItem("storedArthur");
 const parsedArthur = JSON.parse(storedArthur);
 console.log(parsedArthur); // notice which attributes are missing
 ```
+
+## XMLHttpRequests
+
+If you’re getting data using `XMLHttpRequest`, you’ll need to use `JSON.parse()` to handle the response:
+
+```js
+// init request
+const xhr = new XMLHttpRequest();
+// GET ditto
+xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/ditto");
+// create handler
+xhr.onload = function () {
+  // ensure status is ok
+  if (xhr.status === 200) {
+    // Manually parse the JSON
+    const data = JSON.parse(xhr.responseText);
+    // log data
+    console.log(data);
+  }
+};
+// yeet request
+xhr.send();
+```
+
+## Obscure APIs
+
+Most modern APIs handle JSON parsing with `response.json()`, HOWEVER if you encounter APIs or libraries that unfortunately return a raw JSON string, so you gotta use `JSON.parse()`
 
 # Exercise 1
 
