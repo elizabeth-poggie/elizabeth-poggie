@@ -185,111 +185,110 @@ console.log(storedUser);
 
 💡 Note: I won't test you on this storage stuff, however adding this section for the curious
 
-`localStorage` and `sessionStorage` are both types of web storage provided by the browser that allow you to store data in a mini-database within your browser. The stuff we save here usually doesn't get saved to the server!!
+`localStorage` and `sessionStorage` re types of web storage provided by the browser that allow you to store data in a mini-database within your browser. The data saved in these storage types typically does not get sent to the server!!
 
 ## Local Storage
 
-Data saved in `localStorage` is persistent and remains there even after the user closes the browser or restarts their device. There is a limit to this btw, the capacity is limited to around 5-10 MB
+ata saved in `localStorage` is "persistent", meaning it remains _even after the user closes the browser or restarts their device_. HOWEVER, there is a limit; the capacity is around `5-10 MB`.
 
 ## Session Storage
 
-Data stored in `sessionStorage` is temporary and only lasts for the duration of the browser session. Has a similar capacity to `localStorage`
+Data stored in `sessionStorage` is temporary and lasts only for the duration of the browser session. How much space does it have? Similar to `localStorage`.
 
 ## How does this differ from cookies?
 
-Cookies can be set to expire at a specific date and time, or they can deleted when the session ends. Their capacity is at 4 KB per cookie which is much smaller than the above storage options.
+Cookies can be set to expire at a specific date and time, or they can be deleted when the session ends. The capacity of cookies is limited to `4 KB` per cookie, which is _much smaller than the above storage options_.
 
 ## How come so many companies want you to accept their cookie policy?
 
-Cookies are accessible to both the client AND the server. `localStorage` and `sessionStorage` however are both only accessible _on the client side_, meaning that it's a secret to the server. How else will companies be able to steal your data?
+Cookies are accessible to _both the client and the server_. In contrast, `localStorage` and `sessionStorage` are only accessible on the client side, meaning the _server does not have direct access to that data_. Why you you think you always need to accept the companies cookie policies? How else will companies be able to steal your data?
 
 When you don't have to pay for a product, you are the product :^) stay safe out there kids
 
 # defer / async
 
-The `defer` and `async` attributes in `<script>` tags impact how JavaScript files load and execute, affecting page load time and user experience.
+The `defer` and `async` attributes in `<script>` tags affect how JavaScript files load and execute which impacts page load times and the overall user experience.
 
-More info: https://javascript.info/script-async-defer
+For more information, check out: https://javascript.info/script-async-defer
 
 ## The OG
 
-When you include a script without `async` or `defer`, yhe browser pauses HTML parsing to download and execute the script immediately once it reaches the `<script>` tag.
+When you include a script without `async` or `defer`, the browser pauses HTML parsing to download and execute the script immediately upon reaching the `<script>` tag.
 
 ```html
 <script src="./scripts/cool-script.js"></script>
 ```
 
-Remember how I said to add your script tag at the end of your body? This is how we ensure the page loads before the script loads.
+Remember how I said to add your script tag at the end of your body? This is how we ensure the page loads before the script executes.
 
 ## Defer
 
-A cleaner way to get around the immediacy of the OG script tag is the `defer`. With this added to your script tag, the script starts downloading in the background while the HTML continues parsing.
+A cleaner way to get around the immediacy of the OG script tag is the `defer`. The `defer` attribute allows your script to download in the background while the HTML continues to parse:
 
 ```html
 <script defer src="./scripts/cool-script.js"></script>
 ```
 
-Why is this so neat? The script waits until the entire HTML document is parsed, then executes in the order it appears in the DOM.
+Why is this so neat? This is beneficial because the script waits until the entire HTML document is parsed before executing, and it runs in the order it appears in the DOM.
 
 ## Async
 
-Alternatively, when you add `async` to a script, the script downloads in the background without blocking HTML parsing.
+Alternatively, when you add `async` to a script, the script downloads in the background _without blocking HTML parsing_.
 
 ```html
 <script async src="./scripts/cool-script.js"></script>
 ```
 
-HOWEVER, the script executes as soon as it’s ready, _potentially before the HTML document finishes parsing_.
+HOWEVER, the script executes as soon as it’s ready, _which may occur before the HTML document finishes parsing_.
 
 ## When do I use what?
 
 Generally speaking:
 
-- OG `script` tag 👉 Critical scripts that must run immediately, but rarely recommended unless you are in an intro to JS class and we are slowly learning different concepts
-- `defer` attribute 👉 Scripts that need the "DOM ready" (e.g. anything that access the DOM)
-- `async` attribute 👉 Independent scripts (e.g., analytics, ads)
+- OG `script` tag 👉 Critical scripts that must run immediately, but rarely recommended unless you are in an intro to JS class and we are gradually learning different concepts
+- `defer` attribute 👉 Scripts that need the "DOM to be ready" (e.g. anything that accesses the DOM)
+- `async` attribute 👉 Independent scripts (e.g., analytics, ads, etc)
 
 # Page Load Impact
 
-Let's take a closer look at the impact on the page load when choosing to go with a particular attribute:
-
+Here’s a closer look at how different attributes impact page load using the below legend :)
 ![demo](./assets/1.png)
 
 ## Defer
 
 ![demo](./assets/4.png)
 
-load file in background (get it from server) run js code only when DOM is ready (can retrieve HTML Element object in script)
+Loads the file in the background and runs JavaScript only when the DOM is ready, allowing you to retrieve HTML element objects in your script.
 
 ## Async
 
 ![demo](./assets/3.png)
 
-load file in background (get it from server) run js code as soon as file loaded. (DOM might not be ready)
+Loads the file in the background and runs JavaScript as soon as the file is loaded, potentially before the DOM is ready.
 
 ## The OG
 
 ![demo](./assets/2.png)
 
-load file right away (block rest of page) run js code as soon as file loaded. (DOM might not be ready)
+Loads the file immediately, blocking the rest of the page until the script is executed, which may result in the DOM not being ready.
 
-## Docs
+## Additional Resources
 
-You can refer to [here](https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html#script) for a really solid reference
+For a solid reference, you can visit [here](https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html#script)
 
 # DOMContentLoaded Checks and Usage
 
 ## With Defer
 
-When working with `defer`, the browser loads the script in the background and executes it after the HTML parsing is complete. This means you typically don’t need a `DOMContentLoaded` check. HOWEVER, for those that used this in assignment 2 without understanding what it means, you need to take time to understand the fundamentals before applying it 👀
+When working with `defer`, the browser loads the script in the background and executes it after the HTML parsing is complete. This means you typically don’t need a `DOMContentLoaded` check. HOWEVER, if you have previously used this in assignments without understanding its purpose, it's important to grasp the fundamentals before applying it 👀
 
-When is it best to use `defer`? Use it for scripts that interact with the DOM. You can skip readiness checks unless you want to ensure other resources (like images) have also loaded, in which case you might use `window.onload`. TLDR: `defer` scripts are _guaranteed to execute in order_.
+When should you use `defer`? For scripts that interact with the DOM, you can skip readiness checks unless you want to ensure other resources, like images, are also loaded. In that case, you might use `window.onload`. TLDR: `defer` scripts are _guaranteed to execute in order_.
 
 ## With Async
 
-When working with `async`, scripts load independently and execute as soon as they’re downloaded, which could happen before the DOM is fully loaded. THEREFORE, if your script needs to manipulate the DOM, you’ll need a `DOMContentLoaded` check.
+When using `async`, scripts load _independently_ and execute* as soon as they are downloaded*, which might happen before the DOM is fully loaded. THEREFORE, if your script needs to manipulate the DOM, a `DOMContentLoaded` check is necessary.
 
-When is it best to use `async`? When you don’t need to depend on the DOM or other scripts at all. Sometimes you need a script only for _server-side operations_ or for handling cache or cookies, but not for DOM manipulations.
+When is it best to use `async`? For scripts that do not depend on the DOM or other scripts, such as those intended for server-side operations or for managing cache or cookies.
 
 # Friday Quiz
 
