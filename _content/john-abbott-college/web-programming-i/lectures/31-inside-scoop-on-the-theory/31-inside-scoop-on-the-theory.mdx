@@ -1,0 +1,295 @@
+---
+# General Information
+category: "Web Programming I"
+title: "JSON, Defer, and Async"
+created: "2024-11-04"
+number: 31
+---
+
+# JSON continued
+
+We covered JSON at a high level in previous classes, today we cover it in greater detail
+
+## What is it?
+
+- A standard text-based format for representing structured data that's _very_ popular
+- It's based on JavaScript object syntax, but it is independent of JavaScript (could be used anywhere)
+
+## When do we use it?
+
+- It's often used to transfer data from web server to browser (client).
+- When we transfer it, it is represented as a string because that's great for transfer.
+
+## How do we make sure JavaScript is happy when dealing with JSON?
+
+JavaScript provides a JSON object with methods to convert it to a JavaScript object.
+
+# JSON vs JavaScript
+
+## JSON data types
+
+In JSON, values must be one of the following data types:
+
+- a string (e.g. `"Don't Panic"`)
+- a number (e.g. `42`)
+- an object (e.g. JSON object)
+- an array (e.g. `[stuff]`)
+- a boolean (e.g. `true`/ `false`)
+- `null` (angry user defined error)
+
+## JavaScript data types
+
+In JavaScript values can be all of the above, plus any other valid JavaScript expression, including:
+
+- a function (e.g. `() => stuff`)
+- a date
+- `undefined` (angry JavaScript defined error)
+
+## Examples
+
+JSON Syntax:
+
+```json
+{
+  "name": "Arthur Dent",
+  "age": 42,
+  "isPanicking": false,
+  "items": ["blanket", "towel", "coffee"],
+  "spaceship": null
+}
+```
+
+Fun fact with the [autoformatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) when you assign this object to a constant will immediately turn it into a JavaScript object :^)
+
+JavaScript Object Syntax:
+
+```js
+// you cant put comments in a json file
+const arthur = {
+  name: "Arthur Dent",
+  age: 42,
+  isPanicking: false,
+  items: ["blanket", "towel", "coffee"],
+  spaceship: undefined, // JSON doesn't support undefined lol
+  panic() {
+    this.isPanicking = true;
+    console.log("AHHHHHHH");
+  },
+};
+```
+
+## Key differences
+
+JSON requires _double_ quotes to be used around _property names_ and _values_ that are strings (unlike in JavaScript). Single quotes are not valid.
+
+Even a single misplaced comma or colon can cause a JSON file to go wrong. (which is always lovely when it happens)
+
+# Converting and Parsing JSON
+
+Sometimes we want to receive JSON from a server and sometimes we are the server that wants to send JSON.
+
+## Examples
+
+JavaScript object => JSON
+
+```js
+const jsonString = JSON.stringify(arthur);
+console.log(jsonString); // notice how some previously defined properties disappear
+```
+
+JSON => JavaScript object
+
+```js
+const processedArthur = JSON.parse(jsonString);
+console.log(processedArthur);
+```
+
+# Usage and Best Practices
+
+## Response.json()
+
+Remember this example from yesterday?
+
+```js
+const response = await fetch(url);
+const json = await response.json();
+```
+
+`response.json()` in JavaScript automatically parses the JSON for you, so you don't need to use `JSON.parse()` on the result.
+
+## localStorage / sessionStorage
+
+Data stored in localStorage or sessionStorage is stored as a string, so when we retrieve it, we need to parse it into an object to work with it.
+
+```js
+// Saving Arthur to localStorage
+localStorage.setItem("storedArthur", JSON.stringify(arthur));
+
+// Retrieving Arthur and parsing him
+const storedArthur = localStorage.getItem("storedArthur");
+const parsedArthur = JSON.parse(storedArthur);
+console.log(parsedArthur); // notice which attributes are missing
+```
+
+## XMLHttpRequests
+
+If you’re getting data using `XMLHttpRequest`, you’ll need to use `JSON.parse()` to handle the response:
+
+```js
+// init request
+const xhr = new XMLHttpRequest();
+// GET ditto
+xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/ditto");
+// create handler
+xhr.onload = function () {
+  // ensure status is ok
+  if (xhr.status === 200) {
+    // Manually parse the JSON
+    const data = JSON.parse(xhr.responseText);
+    // log data
+    console.log(data);
+  }
+};
+// yeet request
+xhr.send();
+```
+
+## Obscure APIs
+
+Most modern APIs handle JSON parsing with `response.json()`, HOWEVER if you encounter APIs or libraries that unfortunately return a raw JSON string, so you gotta use `JSON.parse()`
+
+# Exercise 1
+
+Create a user object that holds your player's stats, then save this object to `localStorage`. After that, retrieve the stats from `localStorage` and log them to the console.
+
+Food for thought: How would you check what's currently stored in `localStorage`?
+
+## Solution
+
+```js
+const player = {
+  name: "ReadyPlayerOne",
+  level: 5,
+  experience: 1200,
+  health: 100,
+  inventory: ["big stick", "towel", "will power"],
+};
+
+localStorage.setItem("playerStats", JSON.stringify(player));
+const storedUser = JSON.parse(localStorage.getItem("playerStats"));
+
+console.log(storedUser);
+```
+
+# Local Storage / Session Storage side tangent
+
+💡 Note: I won't test you on this storage stuff, however adding this section for the curious
+
+`localStorage` and `sessionStorage` re types of web storage provided by the browser that allow you to store data in a mini-database within your browser. The data saved in these storage types typically does not get sent to the server!!
+
+## Local Storage
+
+ata saved in `localStorage` is "persistent", meaning it remains _even after the user closes the browser or restarts their device_. HOWEVER, there is a limit; the capacity is around `5-10 MB`.
+
+## Session Storage
+
+Data stored in `sessionStorage` is temporary and lasts only for the duration of the browser session. How much space does it have? Similar to `localStorage`.
+
+## How does this differ from cookies?
+
+Cookies can be set to expire at a specific date and time, or they can be deleted when the session ends. The capacity of cookies is limited to `4 KB` per cookie, which is _much smaller than the above storage options_.
+
+## How come so many companies want you to accept their cookie policy?
+
+Cookies are accessible to _both the client and the server_. In contrast, `localStorage` and `sessionStorage` are only accessible on the client side, meaning the _server does not have direct access to that data_. Why you you think you always need to accept the companies cookie policies? How else will companies be able to steal your data?
+
+When you don't have to pay for a product, you are the product :^) stay safe out there kids
+
+# defer / async
+
+The `defer` and `async` attributes in `<script>` tags affect how JavaScript files load and execute which impacts page load times and the overall user experience.
+
+For more information, check out: https://javascript.info/script-async-defer
+
+## The OG
+
+When you include a script without `async` or `defer`, the browser pauses HTML parsing to download and execute the script immediately upon reaching the `<script>` tag.
+
+```html
+<script src="./scripts/cool-script.js"></script>
+```
+
+Remember how I said to add your script tag at the end of your body? This is how we ensure the page loads before the script executes.
+
+## Defer
+
+A cleaner way to get around the immediacy of the OG script tag is the `defer`. The `defer` attribute allows your script to download in the background while the HTML continues to parse:
+
+```html
+<script defer src="./scripts/cool-script.js"></script>
+```
+
+Why is this so neat? This is beneficial because the script waits until the entire HTML document is parsed before executing, and it runs in the order it appears in the DOM.
+
+## Async
+
+Alternatively, when you add `async` to a script, the script downloads in the background _without blocking HTML parsing_.
+
+```html
+<script async src="./scripts/cool-script.js"></script>
+```
+
+HOWEVER, the script executes as soon as it’s ready, _which may occur before the HTML document finishes parsing_.
+
+## When do I use what?
+
+Generally speaking:
+
+- OG `script` tag 👉 Critical scripts that must run immediately, but rarely recommended unless you are in an intro to JS class and we are gradually learning different concepts
+- `defer` attribute 👉 Scripts that need the "DOM to be ready" (e.g. anything that accesses the DOM)
+- `async` attribute 👉 Independent scripts (e.g., analytics, ads, etc)
+
+# Page Load Impact
+
+Here’s a closer look at how different attributes impact page load using the below legend :)
+![demo](./assets/1.png)
+
+## Defer
+
+![demo](./assets/4.png)
+
+Loads the file in the background and runs JavaScript only when the DOM is ready, allowing you to retrieve HTML element objects in your script.
+
+## Async
+
+![demo](./assets/3.png)
+
+Loads the file in the background and runs JavaScript as soon as the file is loaded, potentially before the DOM is ready.
+
+## The OG
+
+![demo](./assets/2.png)
+
+Loads the file immediately, blocking the rest of the page until the script is executed, which may result in the DOM not being ready.
+
+## Additional Resources
+
+For a solid reference, you can visit [here](https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html#script)
+
+# DOMContentLoaded Checks and Usage
+
+## With Defer
+
+When working with `defer`, the browser loads the script in the background and executes it after the HTML parsing is complete. This means you typically don’t need a `DOMContentLoaded` check. HOWEVER, if you have previously used this in assignments without understanding its purpose, it's important to grasp the fundamentals before applying it 👀
+
+When should you use `defer`? For scripts that interact with the DOM, you can skip readiness checks unless you want to ensure other resources, like images, are also loaded. In that case, you might use `window.onload`. TLDR: `defer` scripts are _guaranteed to execute in order_.
+
+## With Async
+
+When using `async`, scripts load _independently_ and execute* as soon as they are downloaded*, which might happen before the DOM is fully loaded. THEREFORE, if your script needs to manipulate the DOM, a `DOMContentLoaded` check is necessary.
+
+When is it best to use `async`? For scripts that do not depend on the DOM or other scripts, such as those intended for server-side operations or for managing cache or cookies.
+
+# Friday Quiz
+
+Focus on Ajax and the differences between traditional promises vs modern promises

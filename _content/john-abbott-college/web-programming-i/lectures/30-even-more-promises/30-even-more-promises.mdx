@@ -1,0 +1,319 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Even More Promises"
+created: "2024-11-04"
+number: 30
+---
+
+# Promise.all()
+
+With traditional promises, sharing resolved values across multiple steps in the chain could be tricky. `async` and `await` simplifies that. HOWEVER, we still want to run multiple asynchronous tasks at the same time, _especially if they're not dependent on each other_.
+
+This is why we love `Promise.all`
+
+## Common failures
+
+Only await tasks sequentially if they depend on each other’s results. If they’re _independent_, you can use `Promise.all` to run them "concurrently" (e.g. at the same time)
+
+For example, let's say I have the following `async` function:
+
+```js
+// simple function
+const getIngredient = async (name) => {
+  // walk to kitchen delay
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+  // return ingredient
+  return Promise.resolve(name);
+};
+```
+
+💡 Note: `await`ing for the promise blocks the execution of that function until _the awaited promise is resolved_
+
+Now, here’s a function that uses this to make a sandwich:
+
+```js
+const badSandwich = async () => {
+  const ing1 = await getIngredient("bread");
+  const ing2 = await getIngredient("peanut butter");
+  const ing3 = await getIngredient("jelly");
+  return [ing1, ing2, ing3, ing1]; // 🥪
+};
+```
+
+To make a sandwich:
+
+```js
+try {
+  const food = await badSandwich();
+  console.log(food);
+} catch (error) {
+  console.log(error.message);
+}
+```
+
+However, this is a `badSandwich` because each ingredient waits for the previous one. Let’s make a `betterSandwich` using `Promise.all`:
+
+```js
+const betterSandwich = async () => {
+  const [ing1, ing2, ing3] = await Promise.all([
+    getIngredient("bread"),
+    getIngredient("peanut butter"),
+    getIngredient("jelly"),
+  ]);
+  return [ing1, ing2, ing3, ing1]; // 🥪
+};
+```
+
+Using `Promise.all` allows us to get each ingredient "concurrently", which makes the code faster and more efficient. In `betterSandwich` we’re taking full advantage of _non-blocking code_ and using the event loop effectively :^)
+
+Why is this technique so handy? Let's take a look at the real world application
+
+# Real World Application
+
+Let's take what we know about `fetch`ing data from an API and do this elegantly with `async` and `await`
+
+For example, let's `fetch` a bunch of pokemons concurrently with the following syntax:
+
+```js
+const urls = [
+  "https://pokeapi.co/api/v2/pokemon/ditto",
+  "https://pokeapi.co/api/v2/pokemon/pikachu",
+  "https://pokeapi.co/api/v2/pokemon/squirtle",
+];
+
+// Step 1 - create a bunch of pokemon promises
+const pokemonPromises = urls.map(async (url) => {
+  const response = await fetch(url);
+  // I am returning a PROMISE of JSON not actually JSON
+  return response.json();
+});
+
+// Step 2 - resolve promises all at once
+console.log(await Promise.all(pokemonPromises));
+```
+
+💡Note: `return response.json();` gives a `Promise` that resolves with the JavaScript object that represents the _JSON_ in the _HttpResponse_
+
+💡Another Note: the promise will be `resolve`d _ONLY_ when _all the promises_ in the array are `resolve`d.
+
+## Alternative strategy
+
+However let's say we wanted to `fetch` the data one at a time for various reasons. In this case, you need to be careful when you use `async` and `await` when working with `map` and `forEach`. It wont actually pause the function in this context:
+
+```js
+const pokemonPromises = urls.map(async (url) => {
+  // not being paused like you may think
+  const response = await fetch(url);
+  return response.json();
+});
+
+// everything concurrently
+console.log(await Promise.all(pokemonPromises));
+```
+
+Alternatively, if you want stuff to happen _one at a time_ instead of _concurrently_, you can use the following syntax:
+
+```js
+const pokemons = [];
+
+const pokemonLoop = async () => {
+  // fetching one thing at a time
+  for await (const url of urls) {
+    const response = await fetch(url);
+    const pokemon = await response.json();
+    pokemons.push(pokemon);
+  }
+};
+
+// resolve the loop
+await pokemonLoop();
+
+console.log(pokemons);
+```
+
+## (not so) Fun Fact
+
+async/await is the industry standard :^)
+
+# Exercise 1
+
+Using what you know about `fetch`, try to call the Pokemon API to `fetch` 5 pokemon's `id` using the `async` / `await`, `Promise.all`, and this endpoint:
+
+```text
+https://pokeapi.co/api/v2/pokemon/{name}
+```
+
+## Solution
+
+```js
+const pokemonNames = ["ditto", "pikachu", "squirtle", "charizard", "bulbasaur"];
+
+// Create a generic fetch function for reusability
+const fetchData = async (urls) => {
+  return await Promise.all(
+    urls.map(async (url) => {
+      const response = await fetch(url);
+      return response.json();
+    })
+  );
+};
+
+// create a function that wraps all our async code
+const main = async () => {
+  try {
+    // step 1 - get the ids
+    const pokemons = await fetchData(
+      pokemonNames.map((name) => `https://pokeapi.co/api/v2/pokemon/${name}`)
+    );
+    // step 2 - extract ids
+    const ids = pokemons.map((pokemon) => pokemon.id);
+
+    console.log(ids);
+
+    // log all the mapped information
+  } catch (error) {
+    console.log("TRASHHHHHHHH: ", error);
+  }
+};
+
+main();
+```
+
+# Common Mistakes
+
+## 1 - Not handling Errors
+
+Wrap your stuff in a `try/catch` otherwise you will be at the mercy of code that "seems" to run and doesn't
+
+```js
+// Trash 🗑️
+async function badGetData(url) {
+  const response = await fetch(url);
+  return response.json();
+}
+
+// Not Trash 💐
+async function goodGetData(url) {
+  try {
+    const response = await fetch(url);
+    return response.json();
+  } catch (error) {
+    // if you are feeling spicy, you can use the error method:
+    console.error("Error fetching data:", error);
+  }
+}
+```
+
+## 2 - Not returning Promises in Promise.all
+
+Its important to resolve or reject all our promises as there is nothing worse then having untracked promises both IRL and in our code:
+
+```js
+// Trash 🗑️
+const data = await Promise.all(
+  urls.map(async (url) => {
+    // This does not return the JSON tho
+    await fetch(url);
+  })
+);
+
+// Not Trash 💐
+const data = await Promise.all(
+  urls.map(async (url) => {
+    const response = await fetch(url);
+    // Return the JSON
+    return response.json();
+  })
+);
+```
+
+## 3 - Using await Inside Loops like trash
+
+Using `await` inside for or `forEach` doesn't leverage concurrent resolution, which makes our code slower than it needs to be:
+
+```js
+// Trash 🗑️
+for (const url of urls) {
+  const data = await fetch(url);
+  console.log(data);
+}
+
+// Not Trash 💐
+const data = await Promise.all(
+  urls.map((url) => fetch(url).then((res) => res.json()))
+);
+console.log(data);
+```
+
+## 4 - Top-level scope
+
+You cannot use `await` directly at the _top level_ in apps that do not support it. So if you find yourself working in older version of Node.js or your apps require backwards compatibility then you will be in a world of pain should you choose to not have a `main` function
+
+```js
+// Trash 🗑️
+try {
+  // await async operation
+} catch (error) {
+  console.log(error.message);
+}
+
+// Not Trash 💐
+const main = async () => {
+  try {
+    // await async operation
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+main();
+```
+
+In our exercises we can get away with it, however it's best practice to not use this keyword in the global scope.
+
+## Stinky urls
+
+Although you may think you know how to call the URL directly in JavaScript, this may not necessarily be the case. A good reflex to have is to check PostMan first to formulate yor request then translate that to JavaScript.
+
+# Exercise 2
+
+Building on our exercise 1, using the `id`s of each pokemon, `fetch` the species details of each pokemon to determine their `base_happiness`. Once you discover all the happiness levels sort them from happiest pokemon to least happy pokemon:
+
+## Solution
+
+```js
+const pokemonNames = ["ditto", "pikachu", "squirtle", "charizard", "bulbasaur"];
+
+// Create a generic fetch function for reusability
+const fetchData = async (urls) => {
+  return await Promise.all(
+    urls.map(async (url) => {
+      const response = await fetch(url);
+      return response.json();
+    })
+  );
+};
+
+const main = async () => {
+  try {
+    // step 1 - get the ids
+    const pokemons = await fetchData(
+      pokemonNames.map((name) => `https://pokeapi.co/api/v2/pokemon/${name}`)
+    );
+    // step 2 - fetch species information
+    const speciesData = await fetchData(
+      pokemons.map(
+        (pokemon) => `https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}/`
+      )
+    );
+    // step 3 - Log the results
+    speciesData.forEach((data) => {
+      console.log(data);
+    });
+  } catch (error) {
+    console.log("TRASHHHHHHHH: ", error);
+  }
+};
+
+main();
+```
