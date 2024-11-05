@@ -160,6 +160,51 @@ Most modern APIs handle JSON parsing with `response.json()`, HOWEVER if you enco
 
 # Exercise 1
 
+Create a user object that holds your player's stats, then save this object to `localStorage`. After that, retrieve the stats from `localStorage` and log them to the console.
+
+Food for thought: How would you check what's currently stored in `localStorage`?
+
+## Solution
+
+```js
+const player = {
+  name: "ReadyPlayerOne",
+  level: 5,
+  experience: 1200,
+  health: 100,
+  inventory: ["big stick", "towel", "will power"],
+};
+
+localStorage.setItem("playerStats", JSON.stringify(player));
+const storedUser = JSON.parse(localStorage.getItem("playerStats"));
+
+console.log(storedUser);
+```
+
+# Local Storage / Session Storage side tangent
+
+💡 Note: I won't test you on this storage stuff, however adding this section for the curious
+
+`localStorage` and `sessionStorage` are both types of web storage provided by the browser that allow you to store data in a mini-database within your browser. The stuff we save here usually doesn't get saved to the server!!
+
+## Local Storage
+
+Data saved in `localStorage` is persistent and remains there even after the user closes the browser or restarts their device. There is a limit to this btw, the capacity is limited to around 5-10 MB
+
+## Session Storage
+
+Data stored in `sessionStorage` is temporary and only lasts for the duration of the browser session. Has a similar capacity to `localStorage`
+
+## How does this differ from cookies?
+
+Cookies can be set to expire at a specific date and time, or they can deleted when the session ends. Their capacity is at 4 KB per cookie which is much smaller than the above storage options.
+
+## How come so many companies want you to accept their cookie policy?
+
+Cookies are accessible to both the client AND the server. `localStorage` and `sessionStorage` however are both only accessible _on the client side_, meaning that it's a secret to the server. How else will companies be able to steal your data?
+
+When you don't have to pay for a product, you are the product :^) stay safe out there kids
+
 # defer / async
 
 More info: https://javascript.info/script-async-defer
