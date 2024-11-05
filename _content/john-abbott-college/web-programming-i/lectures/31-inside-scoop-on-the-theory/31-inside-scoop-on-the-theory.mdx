@@ -207,40 +207,99 @@ When you don't have to pay for a product, you are the product :^) stay safe out 
 
 # defer / async
 
+The `defer` and `async` attributes in `<script>` tags impact how JavaScript files load and execute, affecting page load time and user experience.
+
 More info: https://javascript.info/script-async-defer
 
+## Standard - The OG
+
+When you include a script without `async` or `defer`, yhe browser pauses HTML parsing to download and execute the script immediately once it reaches the `<script>` tag. Remember how I said to add your script tag at the end of your body? This is how we ensure the page loads before the script loads.
+
 ```html
-<script src="myFile.js"></script>
-
-<script defer src="myFile.js"></script>
-
-<script async src="myFile.js"></script>
+<script src="./scripts/cool-script.js"></script>
 ```
 
-What's going on here?
+## Defer
+
+A cleaner way to get around the immediacy of the OG script tag is the `defer`. With this added to your script tag, the script starts downloading in the background while the HTML continues parsing.
+
+Why is this so neat? The script waits until the entire HTML document is parsed, then executes in the order it appears in the DOM.
+
+```html
+<script defer src="./scripts/cool-script.js"></script>
+```
+
+## Async
+
+Alternatively, when you add `async` to a script, the script downloads in the background without blocking HTML parsing. HOWEVER, the script executes as soon as it’s ready, _potentially before the HTML document finishes parsing_.
+
+```html
+<script async src="./scripts/cool-script.js"></script>
+```
+
+When do I use what?
+
+## Generally Speaking
+
+- OG `script` tag 👉 Critical scripts that must run immediately, but rarely recommended unless you are in an intro to JS class and we are slowly learning different concepts
+- `defer` attribute 👉 Scripts that need the "DOM ready" (e.g. anything that access the DOM)
+- `async` attribute 👉 Independent scripts (e.g., analytics, ads)
+
+# Page Load Impact
+
+Let's take a closer look at the impact on the page load when choosing to go with a particular attribute:
+
+![demo](./assets/1.png)
+
+## Defer
+
+![demo](./assets/4.png)
+
+load file in background (get it from server) run js code only when DOM is ready (can retrieve HTML Element object in script)
 
 ```html
 <script defer src="myFile.js"></script>
-load file in background (get it from server) run js code only when DOM is ready
-(can retrieve HTML Element object in script)
+```
 
-<script async src="myFile.js"></script>
+## Async
+
+![demo](./assets/3.png)
+
 load file in background (get it from server) run js code as soon as file loaded.
 (DOM might not be ready)
 
-<script src="myFile.js"></script>
-load file right away (block rest of page) run js code as soon as file loaded.
-(DOM might not be ready)
+```html
+<script async src="myFile.js"></script>
 ```
 
-## Whats the steps?
+## The OG
 
-https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html#script
+![demo](./assets/2.png)
 
-The async attribute is useful when the script is not used for DOM manipulation. Sometimes you need a script only for server-side operations or for handling cache or cookies, but not for DOM manipulations.
+load file right away (block rest of page) run js code as soon as file loaded.
+(DOM might not be ready)
 
-The defer attribute is important when the script is used for DOM manipulations.
-defer scripts are guaranteed to execute in order.
+```html
+<script src="myFile.js"></script>
+```
+
+## Docs
+
+You can refer to [here](https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html#script) for a really solid
+
+# DOMContentLoaded Checks and Usage
+
+## With Defer
+
+When working with `defer`, the browser loads the script in the background and executes it after the HTML parsing is complete. This means you typically don’t need a `DOMContentLoaded` check. HOWEVER, for those that used this in assignment 2 without understanding it means that you need to take time to understand the fundamentals 👀
+
+When is it best to use it? Use `defer` for scripts that interact with the DOM. You can skip readiness checks unless you want to ensure other resources (like images) have also loaded, in which case you might use `window.onload`. TLDR: `defer` scripts are _guaranteed to execute in order_.
+
+## With Async
+
+When working with `async`, scripts load independently and execute as soon as they’re downloaded, which could happen before the DOM is fully loaded. THEREFORE, if your script needs to manipulate the DOM, you’ll need a `DOMContentLoaded` check.
+
+When is it best to use it? When you don’t need to depend on the DOM or other scripts at all. Sometimes you need a script only for _server-side operations_ or for handling cache or cookies, but not for DOM manipulations.
 
 # Friday Quiz
 
