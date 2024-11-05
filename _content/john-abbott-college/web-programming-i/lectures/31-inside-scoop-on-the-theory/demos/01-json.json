@@ -1,0 +1,7 @@
+{
+  "name": "Arthur Dent",
+  "age": 42,
+  "isPanicking": false,
+  "items": ["blanket", "towel", "coffee"],
+  "spaceship": null
+}

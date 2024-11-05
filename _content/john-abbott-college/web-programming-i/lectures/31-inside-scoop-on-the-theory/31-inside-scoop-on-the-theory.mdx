@@ -42,8 +42,41 @@ In JSON, values must be one of the following data types:
 In JavaScript values can be all of the above, plus any other valid JavaScript expression, including:
 
 - a function (e.g. `() => stuff`)
-- a date (e.g. `2024-11-04`)
+- a date
 - `undefined` (angry JavaScript defined error)
+
+## Examples
+
+JSON Syntax:
+
+```json
+{
+  "name": "Arthur Dent",
+  "age": 42,
+  "isPanicking": false,
+  "items": ["blanket", "towel", "coffee"],
+  "spaceship": null
+}
+```
+
+Fun fact with the [autoformatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) when you assign this object to a constant will immediately turn it into a JavaScript object :^)
+
+JavaScript Object Syntax:
+
+```js
+// you cant put comments in a json file
+const arthur = {
+  name: "Arthur Dent",
+  age: 42,
+  isPanicking: false,
+  items: ["blanket", "towel", "coffee"],
+  spaceship: undefined, // JSON doesn't support undefined lol
+  panic() {
+    this.isPanicking = true;
+    console.log("AHHHHHHH");
+  },
+};
+```
 
 ## Key differences
 
@@ -51,19 +84,51 @@ JSON requires _double_ quotes to be used around _property names_ and _values_ th
 
 Even a single misplaced comma or colon can cause a JSON file to go wrong. (which is always lovely when it happens)
 
-# Converting between types
+# Usage and Parsing JSON
 
-JSON => JavaScript object
+Sometimes we want to receive JSON from a server and sometimes we are the server that wants to send JSON.
 
-```js
-let superHeroes = JSON.parse(superHeroesText);
-```
+## Examples
 
 JavaScript object => JSON
 
 ```js
-let myJavaScriptObject = { name: "Chris", age: 38 };
-let myJSONString = JSON.stringify(myJavaScriptObject);
+const jsonString = JSON.stringify(arthur);
+console.log(jsonString); // notice how some previously defined properties disappear
+```
+
+JSON => JavaScript object
+
+```js
+const processedArthur = JSON.parse(jsonString);
+console.log(processedArthur);
+```
+
+# Common use cases and best practices
+
+## Response.json()
+
+Remember this example from yesterday?
+
+```js
+const response = await fetch(url);
+const json = await response.json();
+```
+
+`response.json()` in JavaScript automatically parses the JSON for you, so you don't need to use `JSON.parse()` on the result.
+
+## localStorage / sessionStorage
+
+Data stored in localStorage or sessionStorage is stored as a string, so when we retrieve it, we need to parse it into an object to work with it.
+
+```js
+// Saving Arthur to localStorage
+localStorage.setItem("storedArthur", JSON.stringify(arthur));
+
+// Retrieving Arthur and parsing him
+const storedArthur = localStorage.getItem("storedArthur");
+const parsedArthur = JSON.parse(storedArthur);
+console.log(parsedArthur); // notice which attributes are missing
 ```
 
 # Exercise 1
