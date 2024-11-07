@@ -53,7 +53,11 @@ Using the original way of doing things, solving that question WILL BE difficult 
 - What are we trying to measure: **How much as sold.**
 - How do we want this organized: **per salesperson and per month**.
 
-In this case, we will add "Order Amount" to _Values_, and "Salesperson" and "Month" to the _Columns_ and _Rows_. The correct order of row and columns depends on what is easier to visualize.
+In this case, we will add "Order Amount" to _Values_, "Salesperson" to the _Rows_, and "Month" to the _Columns_.
+
+![demo](./assets/vals.png)
+
+How do you decide what is a row and column? The correct order of row and columns depends on what is easier to visualize.
 
 # Creating a Pivot table
 
@@ -79,20 +83,44 @@ Let's group the lads according to region
 
 ## Documentation
 
-📖 For this section of the notes please refer to the following resources for step by step instructions
+📖 Refer to the following resources for step by step instructions:
 
 - [Intro to PivotTables](https://edu.gcfglobal.org/en/excel/intro-to-pivottables/1/) from GCF Global
 - [Create a PivotTable](https://support.microsoft.com/en-us/office/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576?ui=en-us&rs=en-us&ad=us) by Microsoft
-- [Create a PivotChart](https://support.microsoft.com/en-us/office/create-a-pivotchart-c1b1e057-6990-4c38-b52b-8255538e7b1c) by Microsoft
 
 # Exercise 2 - Sales
 
 Download the Excel file `Sales.xlsx`
 
 - Quickly transform the data into an Excel Table.
-  - Click on any cell in the dataset and select _Insert_ > _Table_.
-  - Make sure the correct range is selected and check _My table has headers_.
+  - Click on any cell in the dataset and select _Insert_ > _PivotTable_.
+  - Make sure the correct range is selected and check _New Worksheet_.
 - Create a Pivot Table to visualize the following information:
-  - For each state, how much revenue was made per tea on a monthly basis.
-  - Sort the table by best selling month in descending order (big to small).
-- Insert a PivotChart to illustrate the data.
+  - For each salesperson, how much revenue was made per region on a monthly basis.
+
+# Creating a Pivot Chart
+
+## Step 1) Inserting a PivotTable
+
+![demo](./assets/chart.gif)
+
+## Step 2) Fields and Pivoting
+
+![demo](./assets/fieldsandshit.gif)
+
+## Step 3) Make it Cuter
+
+![demo](./assets/cuteify.gif)
+
+## Documentation
+
+📖 Refer to the following resource for step by step instructions:
+
+- [Create a PivotChart](https://support.microsoft.com/en-us/office/create-a-pivotchart-c1b1e057-6990-4c38-b52b-8255538e7b1c) by Microsoft
+
+# Exercise 3
+
+- Insert a Pivot Chart. In your chart include:
+  - A chart title
+  - Axis titles
+  - Change the default themes
