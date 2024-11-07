@@ -16,14 +16,6 @@ number: 16
 
 When you have a lot of data, it can sometimes be difficult to analyze all of the information in your worksheet. PivotTables can help make your worksheets more manageable.
 
-## Resources
-
-📖 For this section of the notes please refer to the following resources:
-
-- [Intro to PivotTables](https://edu.gcfglobal.org/en/excel/intro-to-pivottables/1/) from GCF Global
-- [Create a PivotTable](https://support.microsoft.com/en-us/office/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576?ui=en-us&rs=en-us&ad=us) by Microsoft
-- [Create a PivotChart](https://support.microsoft.com/en-us/office/create-a-pivotchart-c1b1e057-6990-4c38-b52b-8255538e7b1c) by Microsoft
-
 ## What are you looking for?
 
 PivotTables are very flexible and can be organized in many different ways, HOWEVER, It is not always clear how to organize the rows, columns and values of a PivotTable.
@@ -33,18 +25,22 @@ PivotTables are very flexible and can be organized in many different ways, HOWEV
 To help you organize the table, you need first to understand what kind of information you are trying to extract from the data. From the question being asked, try to identify:
 
 ```cs
-"What am I **trying to measure**?"
+"What am I trying to measure?"
 ```
 
-Why? This is the **Value** that you are looking for.
+This helps you determine the **Value** that you are looking for.
 
 ```cs
-"How do I want this **data organized**?"
+"How do I want this data organized?"
 ```
 
-Why? This will determine what are the **columns and rows** of your table.
+This helps you determine what are the **columns and rows** of your table.
 
 ## Concrete Example
+
+Consider the table below:
+
+![demo](./assets/data.png)
 
 If we wanted to answer the following question:
 
@@ -52,14 +48,36 @@ If we wanted to answer the following question:
 "How much was sold by each salesperson on a monthly basis?"
 ```
 
-Then we can answer these questions like so:
+Using the original way of doing things, solving that question WILL BE difficult since each salesperson appears on multiple rows, and we would need to total all of their different orders individually. Instead let's take a new approach with PivotTables. For this we need to answer these questions:
 
 - What are we trying to measure: **How much as sold.**
 - How do we want this organized: **per salesperson and per month**.
 
 In this case, we will add "Order Amount" to _Values_, and "Salesperson" and "Month" to the _Columns_ and _Rows_. The correct order of row and columns depends on what is easier to visualize.
 
-# Exercise 2 - Tea Sales
+# Creating a Pivot table
+
+## Inserting a PivotTable
+
+## Formatting a PivotTable
+
+A blank PivotTable and Field List will appear in a new worksheet.
+
+## Pivoting a PivotTable
+
+## We love granularity
+
+Let's group the lads according to region
+
+## Documentation
+
+📖 For this section of the notes please refer to the following resources for step by step instructions
+
+- [Intro to PivotTables](https://edu.gcfglobal.org/en/excel/intro-to-pivottables/1/) from GCF Global
+- [Create a PivotTable](https://support.microsoft.com/en-us/office/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576?ui=en-us&rs=en-us&ad=us) by Microsoft
+- [Create a PivotChart](https://support.microsoft.com/en-us/office/create-a-pivotchart-c1b1e057-6990-4c38-b52b-8255538e7b1c) by Microsoft
+
+# Exercise 2 - Sales
 
 Download the Excel file `Sales.xlsx`
 
@@ -67,6 +85,6 @@ Download the Excel file `Sales.xlsx`
   - Click on any cell in the dataset and select _Insert_ > _Table_.
   - Make sure the correct range is selected and check _My table has headers_.
 - Create a Pivot Table to visualize the following information:
-  - For each state, how much revenue was made per tea on a monthly basis.\*\*
+  - For each state, how much revenue was made per tea on a monthly basis.
   - Sort the table by best selling month in descending order (big to small).
 - Insert a PivotChart to illustrate the data.
