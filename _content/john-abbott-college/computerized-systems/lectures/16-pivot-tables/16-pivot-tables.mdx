@@ -61,91 +61,103 @@ Practice freezing rows and columns by completing the assignment sections that re
 
 # PivotTables
 
-## What are they?
+## What are PivotTables?
 
-When you have a lot of data, it can sometimes be difficult to analyze all of the information in your worksheet. PivotTables can help make your worksheets more manageable.
+When you’re dealing with a large dataset, analyzing all that information at once can be whelming. PivotTables make your data easier to manage and can make your life easier.
 
-## What are you looking for?
+## How Should You Use Them?
 
-PivotTables are very flexible and can be organized in many different ways, HOWEVER, It is not always clear how to organize the rows, columns and values of a PivotTable.
+PivotTables are incredibly flexible, allowing you to organize data in many different ways. HOWEVER, knowing the best way to structure the rows, columns, and values is not always straightforward.
 
-## How do you get started?
+## Getting Started
 
-To help you organize the table, you need first to understand what kind of information you are trying to extract from the data. From the question being asked, try to identify:
+To set up a PivotTable that’s useful, start by asking yourself what kind of information you want to investigate. Identify the following:
 
 ```cs
 "What am I trying to measure?"
 ```
 
-This helps you determine the **Value** that you are looking for.
+The above question helps you define the _Value_ you’re looking for.
 
 ```cs
 "How do I want this data organized?"
 ```
 
-This helps you determine what are the **columns and rows** of your table.
+This helps you determine the _rows and columns_ that will structure your table.
 
 ## Concrete Example
 
-Consider the table below:
+Suppose we have a data table like this:
 
 ![demo](./assets/data.png)
 
-If we wanted to answer the following question:
+... and suppose we want to answer the question:
 
 ```cs
 "How much was sold by each salesperson on a monthly basis?"
 ```
 
-Using the original way of doing things, solving that question WILL BE difficult since each salesperson appears on multiple rows, and we would need to total all of their different orders individually. Instead let's take a new approach with PivotTables. For this we need to answer these questions:
+Calculating this manually would be challenging, as each salesperson’s orders appear on multiple rows. But with a PivotTable, we can simplify the process. To build it, start by answering these questions:
 
-- What are we trying to measure: **How much as sold.**
-- How do we want this organized: **per salesperson and per month**.
+- What are we trying to measure? 👉 The total amount sold.
+- How should we organize it? 👉 By salesperson and by month.
 
-In this case, we will add "Order Amount" to _Values_, "Salesperson" to the _Rows_, and "Month" to the _Columns_.
+In the PivotTable, we’ll add "Order Amount" to Values, "Salesperson" to Rows, and "Month" to Columns:
 
 ![demo](./assets/vals.png)
 
-How do you decide what is a row and column? The correct order of row and columns depends on what is easier to visualize.
+## How Do You Decide Between Rows and Columns?
+
+Choosing rows and columns depends on what makes the data easiest to understand. Try different arrangements to see what provides the clearest view.
+
+💡 Note: When analyzing larger datasets, it's ok to be vibe driven lol. At this point in class, things get a bit less straightforward, as problem-solving is inherently a creative process.
+
+There can be multiple _correct_ ways to approach a single problem :^) There is no "right" way, only "your" way. (and that's ok)
 
 # Creating a Pivot table
 
 ## Step 1) Inserting a PivotTable
 
+- Click on any cell within your dataset.
+- Select the Insert tab > Choose PivotTable
+
 ![demo](./assets/create.gif)
 
 ## Step 2) Formatting a PivotTable
 
-A blank PivotTable and Field List will appear in a new worksheet.
+A blank PivotTable and a Field List will appear in a new worksheet:
 
 ![demo](./assets/format.gif)
 
 ## Step 3) Pivoting a PivotTable
 
+Once you have your data in place, you can easily pivot between different views by rearranging fields:
+
 ![demo](./assets/pivot.gif)
 
 ## Step 4) We love granularity
 
-Let's group the lads according to region
+For extra detail, try grouping data. For example, you might group sales by region:
 
 ![demo](./assets/rows.gif)
 
 ## Documentation
 
-📖 Refer to the following resources for step by step instructions:
+📖 Check out these resources for detailed guidance:
 
 - [Intro to PivotTables](https://edu.gcfglobal.org/en/excel/intro-to-pivottables/1/) from GCF Global
 - [Create a PivotTable](https://support.microsoft.com/en-us/office/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576?ui=en-us&rs=en-us&ad=us) by Microsoft
 
 # Exercise 2 - Sales
 
-Download the Excel file `Sales.xlsx`
+Download the Excel file
 
-- Quickly transform the data into an Excel Table.
-  - Click on any cell in the dataset and select _Insert_ > _PivotTable_.
-  - Make sure the correct range is selected and check _New Worksheet_.
-- Create a Pivot Table to visualize the following information:
-  - For each salesperson, how much revenue was made per region on a monthly basis.
+- Download the `Sales.xlsx` from Lea
+- Convert the dataset into a PivotTable:
+  - Click within the dataset and select Insert > PivotTable
+  - Confirm the range and choose New Worksheet
+- Create a PivotTable to analyze:
+  - Each salesperson’s revenue by region, organized on a monthly basis
 
 # Creating a Pivot Chart
 
