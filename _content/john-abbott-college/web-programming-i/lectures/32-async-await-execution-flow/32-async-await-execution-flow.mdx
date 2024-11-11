@@ -12,11 +12,11 @@ number: 32
 
 ```js
 // callback hell
-call1(function (result, error) {
-  if (error) {
+call1(function (result1, error1) {
+  if (error1) {
     //handle error
   }
-  call2(result, function (result2, error2) {
+  call2(result1, function (result2, error2) {
     if (error2) {
       //handle error
     }
@@ -36,7 +36,7 @@ We can fix this with `Promise`s comme ca:
 
 ```js
 call1()
-  .then((result) => call2(result))
+  .then((result1) => call2(result1))
   .then((result2) => call3(result2))
   .then((result3) => {
     // Do something with result3
@@ -58,7 +58,7 @@ To further simplify, you could use `async`/`await`:
 ```js
 async function main() {
   try {
-    const result = await call1();
+    const result1 = await call1();
     const result2 = await call2(result);
     const result3 = await call3(result2);
     // Do something with result3
@@ -75,21 +75,27 @@ Why do we love modern promises?
 
 ## Promise.all
 
-In the above examples, you need to `await` for one step to resolve before resolving the next step. However let's say their `result`s are not dependent on eachother. Then we can use `Promise.all()` to resolve things all at once:
+In the above examples, you need to `await` for one step to resolve before resolving the next step. However let's say their `result`s are _independent_ from each other. Then we can use `Promise.all()` to resolve things all at once:
 
 ```js
 async function main() {
   try {
-    const singleResult = await Promise.all([call1(), call2(), call3()]);
-    // Do something with singleResult
+    const [result1, result2, result3] = await Promise.all([
+      call1(),
+      call2(),
+      call3(),
+    ]);
+    // Do something with results
   } catch (error) {
     // Handle errors
   }
 }
 ```
 
+This allows their execution to run _concurrently_.
+
 ## Common Mistakes
 
 - Putting an `await` statement at the "top level" instead of wrapping it in a `main` function
 - `Promise.all` requires an array of promises
-- not `await`ing for ALL your promises to resolve (untracked promises are stinky)
+- Not `await`ing for ALL your promises to resolve (untracked promises are stinky)
