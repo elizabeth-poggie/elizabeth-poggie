@@ -35,6 +35,7 @@ In the above code, each function (`call1`, `call2`, and `call3`) depends on the 
 We can fix this with `Promise`s comme ca:
 
 ```js
+// Traditional Promises
 call1()
   .then((result1) => call2(result1))
   .then((result2) => call3(result2))
@@ -56,6 +57,7 @@ Promises are preferred to callback hell because:
 To further simplify, you could use `async`/`await`:
 
 ```js
+// modern syntax
 async function main() {
   try {
     const result1 = await call1();
@@ -78,6 +80,7 @@ Why do we love modern promises?
 In the above examples, you need to `await` for one step to resolve before resolving the next step. However let's say their `result`s are _independent_ from each other. Then we can use `Promise.all()` to resolve things all at once:
 
 ```js
+// Promise Everything
 async function main() {
   try {
     const [result1, result2, result3] = await Promise.all([
@@ -278,3 +281,24 @@ console.log("hi");
 Will it block? NOPE
 
 Why? Since `test()` is declared as an `async` function, it ALWAYS returns a `promise` allowing JavaScript to skip over the internal `sleep(10000)`
+
+# Exercise 1
+
+Get into groups of up to 4 people. You will be completing a Leetcode style exercise together typically seen in coding interviews. To get started, visit the following [website](https://www.100jsfunctions.com/categories/promises) and complete the [fetchGitHubName](https://www.100jsfunctions.com/exercises/fetchGitHubName) exercise.
+
+## Solution
+
+```js
+async function fetchGitHubName(username) {
+  const response = await fetch(`https://api.github.com/users/${username}`);
+  if (!response.ok) {
+    return null; // can't find user
+  }
+  const data = await response.json();
+  return data.name; // The user's name
+}
+
+export { fetchGitHubName };
+```
+
+# Classes
