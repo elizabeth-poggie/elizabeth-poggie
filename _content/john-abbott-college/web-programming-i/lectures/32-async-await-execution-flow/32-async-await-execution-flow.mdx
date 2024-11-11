@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "async await execution flow"
+title: "async/await execution flow && API params"
 created: "2024-11-11"
 number: 32
 ---
@@ -301,4 +301,70 @@ async function fetchGitHubName(username) {
 export { fetchGitHubName };
 ```
 
-# Classes
+# API Params
+
+Sometimes our URL is relatively straightforward to `fetch` data:
+
+```js
+`https://pokeapi.co/api/v2/${endpoint}`;
+```
+
+## Path params
+
+The `endpoint` parameter in this example is a path parameter. Path parameters are used to _uniquely identify a specific resource_. They are part of the URL path and are critical in defining which resource you want to retrieve. What you need to know about path parameters is:
+
+- They are placed DIRECTLY within the path itself
+- These types of parameters are REQUIRED
+
+## Query params
+
+Sometimes the data returned by an API might be too much or not exactly what we need, so we use query parameters to filter or sort the data returned by the server. For example:
+
+```js
+`https://pokeapi.co/api/v2/${endpoint}?limit=${someLimit}&offset=${someOffset}`;
+```
+
+What you need to know about query parameters is:
+
+- They are part of the URL's query string and come AFTER the `?`
+- If there are MANY query parameters, they are separated by `&`
+- Used to filter && sort response data
+- They are OPTIONAL
+
+## Combining Path and Query Params
+
+Let's call the following in postman:
+
+```text
+https://pokeapi.co/api/v2/pokemon?limit=10&offset=20
+```
+
+What is going on?
+
+- `/pokemon` is the path parameter
+- `limit=10` and `offset=20` are query parameters that limit the results to 10 items, starting from the 20th
+
+## Exercise 2
+
+Now it's time for the [fetchNamesOfAllPublicRepos](https://www.100jsfunctions.com/exercises/fetchNamesOfAllPublicRepos) exercise.
+
+## Solution
+
+```js
+async function fetchNamesOfAllPublicRepos(username) {
+  const response = await fetch(
+    `https://api.github.com/users/${username}/repos?page=1&per_page=100`
+  );
+  if (!response.ok) {
+    return [];
+  }
+  const repos = await response.json();
+  const publicRepoNames = repos
+    .filter((repo) => !repo.private) // Ensure only public repos
+    .map((repo) => repo.name); // Extract the name of each repo
+
+  return publicRepoNames;
+}
+
+export { fetchNamesOfAllPublicRepos };
+```
