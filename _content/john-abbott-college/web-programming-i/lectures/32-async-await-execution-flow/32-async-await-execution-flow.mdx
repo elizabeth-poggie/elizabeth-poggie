@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "execution flow && API params"
+title: "Flow of Execution && API params"
 created: "2024-11-11"
 number: 32
 ---
@@ -234,21 +234,27 @@ Why? `fetch` immediately returns a `promise`
 
 # Page blocking
 
-To block or not to block, that is the question.
+To block or not to block, that is the question. Given the below sleep function:
+
+```js
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+```
 
 ## Q1
 
 ```js
-function test() {
-  sleep(10000);
+async function test() {
+  await sleep(10000);
+  console.log("hi");
 }
 test();
-console.log("hi");
 ```
 
 Will it block? YES
 
-Why? `sleep(10000)` is a _synchronous_ function that pauses for 10 seconds.
+Why? `sleep(10000)` pauses for 10 seconds.
 
 ## Q2
 
@@ -271,7 +277,7 @@ Why? Even though `sleep(10000)` pauses within the `Promise`, it doesn’t stop `
 
 ```js
 async function test() {
-  sleep(10000);
+  await sleep(10000);
   return 6;
 }
 test();
