@@ -99,3 +99,52 @@ This allows their execution to run _concurrently_.
 - Putting an `await` statement at the "top level" instead of wrapping it in a `main` function
 - `Promise.all` requires an array of promises
 - Not `await`ing for ALL your promises to resolve (untracked promises are stinky)
+
+# Flow of Execution
+
+Using `async`/ `await` creates asynchronous code that looks "synchronous"
+
+## Concrete examples
+
+When does what print?
+
+```js
+let myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("hi");
+    console.log("C");
+  }, 5000);
+});
+async function test() {
+  // return new Promise( (resolve, reject) => {
+  let result = await myPromise;
+  console.log(result);
+  //}
+}
+
+console.log("A");
+let testReturn = test();
+console.log("B");
+```
+
+You should see the following printed to the terminal:
+
+```text
+A
+B
+C
+hi
+```
+
+Why?
+
+- Step 1) Console logs are "synchronous" so `console.log("A")` runs first
+- Step ??) `let testReturn = test()` is `async` because it has an `await` so that returns a "pending promise"
+- Step 2) `console.log("B")` the previous step returned a pending Promise that didn’t block the "main" thread, so we print `"B"` right after `"A"`
+- Step ??) `myPromise`'s `setTimeout` begins counting down 5 seconds
+- Step 3) `"C"` prints after 5 seconds.
+- Step 4) Finally, `"hi"` prints after `C`, when `await myPromise` resolves.
+
+# Mini Quiz
+
+What is `Jimmy` assigned to?
