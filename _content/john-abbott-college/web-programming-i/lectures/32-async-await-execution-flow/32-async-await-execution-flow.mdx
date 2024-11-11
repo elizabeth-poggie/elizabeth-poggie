@@ -56,7 +56,7 @@ Promises are preferred to callback hell because:
 To further simplify, you could use `async`/`await`:
 
 ```js
-async function executeCalls() {
+async function main() {
   try {
     const result = await call1();
     const result2 = await call2(result);
@@ -70,5 +70,26 @@ async function executeCalls() {
 
 Why do we love modern promises?
 
-- the code reads like synchronous code
+- The code reads like synchronous code
 - You can share `result`s across multiple steps
+
+## Promise.all
+
+In the above examples, you need to `await` for one step to resolve before resolving the next step. However let's say their `result`s are not dependent on eachother. Then we can use `Promise.all()` to resolve things all at once:
+
+```js
+async function main() {
+  try {
+    const singleResult = await Promise.all([call1(), call2(), call3()]);
+    // Do something with singleResult
+  } catch (error) {
+    // Handle errors
+  }
+}
+```
+
+## Common Mistakes
+
+- Putting an `await` statement at the "top level" instead of wrapping it in a `main` function
+- `Promise.all` requires an array of promises
+- not `await`ing for ALL your promises to resolve (untracked promises are stinky)
