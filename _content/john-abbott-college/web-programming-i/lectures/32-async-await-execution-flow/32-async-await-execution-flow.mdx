@@ -218,3 +218,47 @@ Jimmy will result in a:
 ```text
 promise
 ```
+
+# Page blocking
+
+To block or not to block, that is the question.
+
+## Q1
+
+```js
+function test() {
+  sleep(10000);
+}
+test();
+console.log("hi");
+```
+
+Will it block? YES
+
+## Q2
+
+```js
+function test() {
+  return new Promise((resolve, reject) => {
+    sleep(10000);
+    resolve(6);
+  });
+}
+test();
+console.log("hi");
+```
+
+Will it block? NOPE
+
+## Q3
+
+```js
+async function test() {
+  sleep(10000);
+  return 6;
+}
+test();
+console.log("hi");
+```
+
+Will it block? NOPE
