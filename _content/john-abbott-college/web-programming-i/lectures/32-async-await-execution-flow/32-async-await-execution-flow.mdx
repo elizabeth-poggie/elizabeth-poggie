@@ -1,0 +1,74 @@
+---
+# General Information
+category: "Web Programming I"
+title: "async await execution flow"
+created: "2024-11-11"
+number: 32
+---
+
+# Quick Recap
+
+## .then() vs Callbacks
+
+```js
+// callback hell
+call1(function (result, error) {
+  if (error) {
+    //handle error
+  }
+  call2(result, function (result2, error2) {
+    if (error2) {
+      //handle error
+    }
+    call3(result2, function (result3, error2) {
+      if (error3) {
+        //handle error
+      }
+      // do something with result3
+    });
+  });
+});
+```
+
+In the above code, each function (`call1`, `call2`, and `call3`) depends on the result of the _previous function_, leading to deeply nested callbacks. In callback hell, Error handling becomes repetitive and scattered.
+
+We can fix this with `Promise`s comme ca:
+
+```js
+call1()
+  .then((result) => call2(result))
+  .then((result2) => call3(result2))
+  .then((result3) => {
+    // Do something with result3
+  })
+  .catch((error) => {
+    // Handle errors in one place ❤️
+  });
+```
+
+Promises are preferred to callback hell because:
+
+- Clarity in execution
+- Simplicity in error handling
+
+## Modern Promises
+
+To further simplify, you could use `async`/`await`:
+
+```js
+async function executeCalls() {
+  try {
+    const result = await call1();
+    const result2 = await call2(result);
+    const result3 = await call3(result2);
+    // Do something with result3
+  } catch (error) {
+    // Handle errors
+  }
+}
+```
+
+Why do we love modern promises?
+
+- the code reads like synchronous code
+- You can share `result`s across multiple steps
