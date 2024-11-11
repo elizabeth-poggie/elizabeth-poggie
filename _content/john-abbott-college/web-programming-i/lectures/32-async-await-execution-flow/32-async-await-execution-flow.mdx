@@ -163,6 +163,8 @@ Jimmy will result in a:
 promise
 ```
 
+Why? `jimmy` is created with the `Promise` constructor
+
 ## Q2
 
 ```js
@@ -177,13 +179,15 @@ Jimmy will result in a:
 promise
 ```
 
+Why? `fetch` returns a `promise`, and r`esponse.json()` ALSO returns a `promise`
+
 ## Q3
 
 ```js
 async function test() {
   return "cheese";
 }
-let bob = test();
+let jimmy = test();
 ```
 
 Jimmy will ALSO result in a:
@@ -191,6 +195,8 @@ Jimmy will ALSO result in a:
 ```text
 promise
 ```
+
+Why? `test()` is an `async` function, so it ALWAYS returns a `promise`
 
 ## Q4
 
@@ -207,6 +213,8 @@ Jimmy will result in a:
 function
 ```
 
+Why? `jimmy` here is just a `function`, not a `promise`, because `foo` hasn’t been called yet
+
 ## Q5
 
 ```js
@@ -218,6 +226,8 @@ Jimmy will result in a:
 ```text
 promise
 ```
+
+Why? `fetch` immediately returns a `promise`
 
 # Page blocking
 
@@ -235,6 +245,8 @@ console.log("hi");
 
 Will it block? YES
 
+Why? `sleep(10000)` is a _synchronous_ function that pauses for 10 seconds.
+
 ## Q2
 
 ```js
@@ -250,6 +262,8 @@ console.log("hi");
 
 Will it block? NOPE
 
+Why? Even though `sleep(10000)` pauses within the `Promise`, it doesn’t stop `console.log("hi")` from running _immediately_ afterward
+
 ## Q3
 
 ```js
@@ -262,3 +276,5 @@ console.log("hi");
 ```
 
 Will it block? NOPE
+
+Why? Since `test()` is declared as an `async` function, it ALWAYS returns a `promise` allowing JavaScript to skip over the internal `sleep(10000)`
