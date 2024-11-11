@@ -8,12 +8,20 @@ jimmy = new Promise((resolve, reject) => {
 });
 console.log("Jimmy 1 👉 ", jimmy);
 
+//
+//
+//
+//
 // Q2
 fetch("http://cheese.com/brie").then((response) => {
   jimmy = response.json();
 });
 console.log("Jimmy 2 👉 ", jimmy);
 
+//
+//
+//
+//
 // Q3
 async function test() {
   return "cheese";
@@ -21,6 +29,10 @@ async function test() {
 jimmy = test();
 console.log("Jimmy 3 👉 ", jimmy);
 
+//
+//
+//
+//
 // Q4
 function foo() {
   return new Promise((resolve, reject) => resolve(2));
@@ -28,6 +40,10 @@ function foo() {
 jimmy = foo;
 console.log("Jimmy 4 👉 ", jimmy);
 
+//
+//
+//
+//
 // Q5
 jimmy = fetch("http://cheese.com/brie");
 console.log("Jimmy 5 👉 ", jimmy);
