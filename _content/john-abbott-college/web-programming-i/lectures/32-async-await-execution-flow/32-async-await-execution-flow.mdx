@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "async/await execution flow && API params"
+title: "execution flow && API params"
 created: "2024-11-11"
 number: 32
 ---
@@ -316,6 +316,8 @@ The `endpoint` parameter in this example is a path parameter. Path parameters ar
 - They are placed DIRECTLY within the path itself
 - These types of parameters are REQUIRED
 
+However when we take a closer look at the [pokemon api docs](https://pokeapi.co/docs/v2#pokemon), we will notice we have other options 👀
+
 ## Query params
 
 Sometimes the data returned by an API might be too much or not exactly what we need, so we use query parameters to filter or sort the data returned by the server. For example:
@@ -336,13 +338,13 @@ What you need to know about query parameters is:
 Let's call the following in postman:
 
 ```text
-https://pokeapi.co/api/v2/pokemon?limit=10&offset=20
+https://pokeapi.co/api/v2/pokemon?limit=20&offset=20
 ```
 
 What is going on?
 
 - `/pokemon` is the path parameter
-- `limit=10` and `offset=20` are query parameters that limit the results to 10 items, starting from the 20th
+- `limit=20` and `offset=20` are query parameters that limit the results to 10 items, starting from the 20th
 
 ## Exercise 2
 
