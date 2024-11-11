@@ -104,7 +104,7 @@ This allows their execution to run _concurrently_.
 
 Using `async`/ `await` creates asynchronous code that looks "synchronous"
 
-## Concrete examples
+## Concrete Example
 
 When does what print?
 
@@ -136,7 +136,7 @@ C
 hi
 ```
 
-Why?
+## Why?
 
 - Step 1) Console logs are "synchronous" so `console.log("A")` runs first
 - Step ??) `let testReturn = test()` is `async` because it has an `await` so that returns a "pending promise"
@@ -148,3 +148,73 @@ Why?
 # Mini Quiz
 
 What is `Jimmy` assigned to?
+
+## Q1
+
+```js
+let jimmy = new Promise((resolve, reject) => {
+  resolve(2);
+});
+```
+
+Jimmy will result in a:
+
+```text
+promise
+```
+
+## Q2
+
+```js
+fetch("http://cheese.com/brie").then((response) => {
+  let jimmy = response.json();
+});
+```
+
+Jimmy will result in a:
+
+```text
+promise
+```
+
+## Q3
+
+```js
+async function test() {
+  return "cheese";
+}
+let bob = test();
+```
+
+Jimmy will ALSO result in a:
+
+```text
+promise
+```
+
+## Q4
+
+```js
+function foo() {
+  return new Promise((resolve, reject) => resolve(2));
+}
+let jimmy = foo;
+```
+
+Jimmy will result in a:
+
+```text
+function
+```
+
+## Q5
+
+```js
+let jimmy = fetch("http://cheese.com/brie");
+```
+
+Jimmy will result in a:
+
+```text
+promise
+```
