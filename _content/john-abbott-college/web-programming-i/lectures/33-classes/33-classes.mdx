@@ -1,0 +1,73 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Classes"
+created: "2024-11-12"
+number: 33
+---
+
+# Intro to Classes
+
+have a prototype object associated to them
+automatically in strict mode (use strict)
+need to use new ClassName to call constructor
+
+```js
+class MyClass {
+  constructor(param1, param2) {
+    this.field1 = param1;
+    this.field2 = param2;
+  }
+}
+```
+
+## Accessing classes
+
+You can access the prototype of an instance, using the property:
+
+```js
+// notice the double underscores on each side
+__proto__;
+```
+
+## Inheritance
+
+A class can inherit from another class using extends. How?
+
+```js
+super();
+```
+
+Where do we put `super`?
+
+```js
+class MyClass extends OtherClass {
+  constructor(param1, param2, param3, param4) {
+    super(param3); // inherit parent constructor
+    super.fieldx = param4; //changes a field on the super
+    this.field1 = param1; // add another field
+    this.field2 = param2;
+  }
+}
+```
+
+## Getters and setters
+
+```js
+class MyClass {
+  constructor(param1) {
+    this.field1 = param1;
+    this.fieldA = 3;
+  }
+  get fieldA() {
+    return this.fieldA;
+  }
+  set fieldA(value) {
+    this.fieldA = value;
+  }
+}
+let theInstance = new MyClass(3);
+theInstance.fieldA = 34; //can access get/set field like a property
+```
+
+# Exercise 1 - Pokemans
