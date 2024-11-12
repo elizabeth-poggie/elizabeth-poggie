@@ -57,17 +57,70 @@ class MyClass extends OtherClass {
 class MyClass {
   constructor(param1) {
     this.field1 = param1;
-    this.fieldA = 3;
+    this.secretField = 3;
   }
-  get fieldA() {
-    return this.fieldA;
+  get field() {
+    return this.secretField;
   }
-  set fieldA(value) {
-    this.fieldA = value;
+  set field(value) {
+    this.secretField = value;
   }
 }
-let theInstance = new MyClass(3);
-theInstance.fieldA = 34; //can access get/set field like a property
 ```
+
+Example usage:
+
+```js
+// init class
+let theInstance = new MyClass(3);
+// set field
+theInstance.field = 34;
+// get field
+console.log(theInstance.field);
+```
+
+# Common class mistakes
+
+## Setters Naming
+
+Your code will yell at you if you try to make the below setter:
+
+```js
+set secretField(value) {
+    this.secretField = value;
+}
+```
+
+You will probably see this lovely thing logged to terminal:
+
+```text
+Maximum call stack size exceeded
+```
+
+Why is this happening? You are creating an infinite loop :^(
+
+How do you fix this? Create a different field name OR name the internal field `_secretField` that you can reference.
+
+## Getter naming
+
+Likewise with getters:
+
+```js
+get secretField() {
+    return this.secretField;
+}
+```
+
+In this case you will get the following:
+
+```text
+Cannot set property secretField of # which has only a getter
+```
+
+How do you fix this? Again different field naming or if you must keep the same semantics, start the field name with `_`
+
+## Setters without params
+
+Naming the setters with the same name as internal fields:
 
 # Exercise 1 - Pokemans
