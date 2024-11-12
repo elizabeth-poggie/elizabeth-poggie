@@ -1,16 +1,24 @@
+/**
+ * Create a Pokémon class that includes both a getter and setter for the `name` field.
+ * Include a regular method to fetch its abilities.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 class Pokemon {
-  constructor() {
-    this.name = null;
-    this.abilities = null;
-  }
-
-  set pokemonName(name) {
-    this.name = name;
-  }
-
-  get pokemonName() {
-    return this.name;
-  }
+  // TODO - Poggie to demo 2 class
 
   // public Method to fetch stats asynchronously
   async fetchStats() {
@@ -24,17 +32,3 @@ class Pokemon {
     }
   }
 }
-
-// Example usage
-const main = async () => {
-  try {
-    const myPokemon = new Pokemon();
-    myPokemon.pokemonName = "pikachu";
-    await myPokemon.fetchStats();
-    console.log(myPokemon.abilities);
-  } catch (e) {
-    console.log(e);
-  }
-};
-
-main();
