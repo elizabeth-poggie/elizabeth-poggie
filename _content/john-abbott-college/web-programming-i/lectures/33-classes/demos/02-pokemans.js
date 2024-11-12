@@ -1,7 +1,15 @@
 class Pokemon {
-  constructor(name) {
+  constructor() {
     this.name = null;
     this.abilities = null;
+  }
+
+  set pokemonName(name) {
+    this.name = name;
+  }
+
+  get pokemonName() {
+    return this.name;
   }
 
   // public Method to fetch stats asynchronously
@@ -11,8 +19,6 @@ class Pokemon {
       const response = await fetch(url);
       const pokemon = await response.json();
       this.abilities = pokemon.abilities.map((ability) => ability.ability.name);
-
-      console.log("Abilities fetched successfully -  ", this.abilities);
     } catch (error) {
       console.error("This messed up lol: ", error);
     }
@@ -20,4 +26,15 @@ class Pokemon {
 }
 
 // Example usage
-const myPokemon = new Pokemon("pikachu");
+const main = async () => {
+  try {
+    const myPokemon = new Pokemon();
+    myPokemon.pokemonName = "pikachu";
+    await myPokemon.fetchStats();
+    console.log(myPokemon.abilities);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+main();

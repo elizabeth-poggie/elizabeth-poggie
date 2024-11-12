@@ -13,7 +13,7 @@ automatically in strict mode (use strict)
 need to use new ClassName to call constructor
 
 ```js
-class MyClass {
+class SomeClass {
   constructor(param1, param2) {
     this.field1 = param1;
     this.field2 = param2;
@@ -41,28 +41,64 @@ super();
 Where do we put `super`?
 
 ```js
-class MyClass extends OtherClass {
+class MyClass extends SomeClass {
   constructor(param1, param2, param3, param4) {
-    super(param3); // inherit parent constructor
-    super.fieldx = param4; //changes a field on the super
-    this.field1 = param1; // add another field
-    this.field2 = param2;
+    // Call the parent constructor
+    super(param3, param4);
+
+    // Using different field names to prevent conflicts
+    this.fieldA = param1;
+    this.fieldB = param2;
   }
 }
 ```
 
-## Getters and setters
+Example Usage:
 
 ```js
-class MyClass {
+const instance = new MyClass("extra1", "extra2", "base1", "base2");
+
+console.log(instance.field1); // "base1" (inherited from SomeClass)
+console.log(instance.field2); // "base2" (inherited from SomeClass)
+console.log(instance.fieldA); // "extra1" (specific to MyClass)
+console.log(instance.fieldB); // "extra2" (specific to MyClass)
+```
+
+# Class Methods
+
+## Regular Methods
+
+These are simply functions defined inside a class:
+
+```js
+class someClass {
   constructor(param1) {
     this.field1 = param1;
     this.secretField = 3;
   }
-  get field() {
+  async doStuff() {}
+  doOtherStuff() {}
+}
+```
+
+These guys can be either synchronous or asynchronous.
+
+## Getters and Setters
+
+These guys have a bit more restrictive syntax
+
+```js
+class SomeClass {
+  constructor(param1) {
+    this.field1 = param1;
+    this.secretField = 3;
+  }
+  // getter
+  get getField() {
     return this.secretField;
   }
-  set field(value) {
+  // setter
+  set setField(value) {
     this.secretField = value;
   }
 }
@@ -72,18 +108,18 @@ Example usage:
 
 ```js
 // init class
-let theInstance = new MyClass(3);
+let theInstance = new SomeClass(3);
 // set field
-theInstance.field = 34;
+theInstance.setField = 34;
 // get field
-console.log(theInstance.field);
+console.log(theInstance.getField);
 ```
 
-# Common class mistakes
+# Common Class mistakes
 
-## Setters Naming
+## Setter Naming
 
-Your code will yell at you if you try to make the below setter:
+If you try to create the setter below, JavaScript will yell at you:
 
 ```js
 set secretField(value) {
@@ -91,19 +127,19 @@ set secretField(value) {
 }
 ```
 
-You will probably see this lovely thing logged to terminal:
+You’ll probably see this logged in your terminal:
 
 ```text
 Maximum call stack size exceeded
 ```
 
-Why is this happening? You are creating an infinite loop :^(
+What’s causing this? You’ve created an infinite loop because the setter keeps calling itself.
 
-How do you fix this? Create a different field name OR name the internal field `_secretField` that you can reference.
+Solution? Use a different name for the internal field, such as `_secretField`, or something else completely different from the setter name. (so that the setter won’t trigger itself eternally)
 
-## Getter naming
+## Getter Naming
 
-Likewise with getters:
+Similar issues can happen with getters:
 
 ```js
 get secretField() {
@@ -111,16 +147,66 @@ get secretField() {
 }
 ```
 
-In this case you will get the following:
+In this case, you might see:
 
 ```text
 Cannot set property secretField of # which has only a getter
 ```
 
-How do you fix this? Again different field naming or if you must keep the same semantics, start the field name with `_`
+How do you fix this? Similar strat the the setter error solution.
 
-## Setters without params
+## async Getting and Setting
 
-Naming the setters with the same name as internal fields:
+In JavaScript, getters and setters CANNOT be `async`. This is because getters and setters are expected to be synchronous by the JavaScript. SO, if you absolutely need an `async` method, make it just a regular method.
 
 # Exercise 1 - Pokemans
+
+Create a pokemon class with a getter and setter for it's `name` field as well as a regular method that fetches it's abilities.
+
+## Solution
+
+```js
+class Pokemon {
+  constructor() {
+    this.name = null;
+    this.abilities = null;
+  }
+
+  set pokemonName(name) {
+    this.name = name;
+  }
+
+  get pokemonName() {
+    return this.name;
+  }
+
+  // public Method to fetch stats asynchronously
+  async fetchStats() {
+    try {
+      const url = `https://pokeapi.co/api/v2/pokemon/${this.name}`;
+      const response = await fetch(url);
+      const pokemon = await response.json();
+      this.abilities = pokemon.abilities.map((ability) => ability.ability.name);
+    } catch (error) {
+      console.error("This messed up lol: ", error);
+    }
+  }
+}
+```
+
+## Example usage
+
+```js
+const main = async () => {
+  try {
+    const myPokemon = new Pokemon();
+    myPokemon.pokemonName = "pikachu";
+    await myPokemon.fetchStats();
+    console.log(myPokemon.abilities);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+main();
+```
