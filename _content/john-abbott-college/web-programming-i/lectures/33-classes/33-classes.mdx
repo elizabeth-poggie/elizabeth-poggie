@@ -8,9 +8,7 @@ number: 33
 
 # Intro to Classes
 
-have a prototype object associated to them
-automatically in strict mode (use strict)
-need to use new ClassName to call constructor
+In JavaScript, classes are associated with a prototype object by default. They are also automatically created in strict mode (`use strict`), ensuring that variables must be declared before they are used:
 
 ```js
 class SomeClass {
@@ -21,18 +19,26 @@ class SomeClass {
 }
 ```
 
-## Accessing classes
-
-You can access the prototype of an instance, using the property:
+To call the constructor of a class, you need to use the new keyword:
 
 ```js
-// notice the double underscores on each side
-__proto__;
+const instance = new SomeClass("param1", "param2");
+```
+
+## Accessing classes
+
+You can access an instance's prototype using the `__proto__` property, which links the object to its prototype chain:
+
+```js
+// Notice the double underscores on each side
+instance.__proto__;
 ```
 
 ## Inheritance
 
-A class can inherit from another class using extends. How?
+JavaScript classes can inherit from other classes using the `extends` keyword. This allows a subclass to inherit properties and methods from a parent class.
+
+To call the constructor of a parent class, use the `super()` method:
 
 ```js
 super();
@@ -46,7 +52,7 @@ class MyClass extends SomeClass {
     // Call the parent constructor
     super(param3, param4);
 
-    // Using different field names to prevent conflicts
+    // Add new fields to prevent conflicts
     this.fieldA = param1;
     this.fieldB = param2;
   }
