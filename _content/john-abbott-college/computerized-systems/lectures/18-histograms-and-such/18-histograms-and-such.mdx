@@ -59,13 +59,30 @@ Databases in Microsoft Access consist of four main objects: tables, queries, for
 
 # Tables
 
-Tables store the data in a way that is similar to Excel.
+In Microsoft Access, tables are used to store data in a format similar to Excel, with rows and columns. However, Access uses specific terms for different parts of a table:
 
-There are some minor differences in terminology:
+- **Records (rows)** 👉 Each record represents an individual item or entry, like a specific employee or product. For example, a record in an employee table might store all details about "Arthur Dent," including his position, department, and start date.
+- **Fields (columns)** 👉 Each field represents one characteristic of the table’s subject, such as “First Name,” “Email Address,” or “Product Price.” Fields define the type of information that is stored across records. For instance, in a product table, fields might include “Product Name,” “SKU,” and “Price.”
+- **Field value (cell)** 👉 Each cell in a table holds a specific data value for a record. For example, in the "Email Address" field for an employee, you might see the value someone@example.com, or in the "Company Name" field, you might have Contoso, Ltd. These field values represent actual data for each unique record.
 
-- **Records (rows)**: contains specific data, like information about a particular employee or a product.
-- **Fields (columns):** contains data about one aspect of the table subject, such as first name or e-mail address.
-- **Field value (cell)**: Each record has a field value. For example, Contoso, Ltd. or someone@example.com.
+## Example Table
+
+Let's say we have the following
+
+```md
+| Employee ID | First Name | Last Name | Email Address        | Department |
+| ----------- | ---------- | --------- | -------------------- | ---------- |
+| 042         | Arthur     | Dent      | dont.panic@gmail.com | unknown    |
+| 043         | Ford       | Prefect   | panic@gmail.com      | unknown    |
+```
+
+In this example:
+
+- Each row represents a record (an individual employee. e.g. our boy Arthur).
+- Each column represents a field (a specific detail about the employee, e.g. Email, Department, etc).
+- Each cell contains a field value specific to that employee, such as "Arthur" in the "First Name" field.
+
+This structure allows for easy data organization and retrieval.
 
 # Queries
 
