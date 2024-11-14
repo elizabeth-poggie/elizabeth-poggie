@@ -61,13 +61,13 @@ Databases in Microsoft Access consist of four main objects: tables, queries, for
 
 In Microsoft Access, tables are used to store data in a format similar to Excel, with rows and columns. However, Access uses specific terms for different parts of a table:
 
-- **Records (rows)** 👉 Each record represents an individual item or entry, like a specific employee or product. For example, a record in an employee table might store all details about "Arthur Dent," including his position, department, and start date.
-- **Fields (columns)** 👉 Each field represents one characteristic of the table’s subject, such as “First Name,” “Email Address,” or “Product Price.” Fields define the type of information that is stored across records. For instance, in a product table, fields might include “Product Name,” “SKU,” and “Price.”
-- **Field value (cell)** 👉 Each cell in a table holds a specific data value for a record. For example, in the "Email Address" field for an employee, you might see the value someone@example.com, or in the "Company Name" field, you might have Contoso, Ltd. These field values represent actual data for each unique record.
+- **Records (rows)** 👉 Each record represents an individual item or entry, like a specific employee or product.
+- **Fields (columns)** 👉 Each field represents one characteristic of the table’s subject, such as “First Name,” “Email Address,” or “Product Price.” Fields define the type of information that is stored across records.
+- **Field value (cell)** 👉 Each cell in a table holds a specific data value for a record.
 
 ## Example Table
 
-Let's say we have the following
+Let's say we have the following table:
 
 ```md
 | Employee ID | First Name | Last Name | Email Address        | Department |
@@ -82,31 +82,57 @@ In this example:
 - Each column represents a field (a specific detail about the employee, e.g. Email, Department, etc).
 - Each cell contains a field value specific to that employee, such as "Arthur" in the "First Name" field.
 
-This structure allows for easy data organization and retrieval.
+This structure allows for easy data organization.
 
 # Queries
 
-Since most tables are linked via different relationships, **queries** allows us to retrieve **specific data** from one of more tables.
+In Microsoft Access, queries are tools that allow you to retrieve specific data from one or more tables, especially when the tables are linked through relationships.
 
-- Queries need to be structured in order to ask specific questions.
+Since queries are structured requests, they allow you to ask "questions", fetching only the information you need from the database.
 
-For example:
+## Example Queries
 
-_“What is the name, email and address of all customers who ordered product X in the last 3 months ?”_
+Imagine you have a database with customer and order information. Using queries, you can retrieve specific details based on defined criteria. Let say we are trying to ask:
+
+```js
+"What are the names, email addresses, and mailing addresses of all customers who ordered Product X in the last 3 months?";
+```
+
+In this example, the query is structured to:
+
+- Retrieve data from both the "Customers" and "Orders" tables
+- Filter for only those orders related to Product X
+- Limit results to orders placed within the last three months
+
+## Query Types
+
+- Select Queries 👉 Retrieve specific data without changing it. For instance, a select query might show all customers who have purchased a product above a certain price.
+- Update Queries 👉 Modify data based on criteria. An update query could, for example, increase prices by 10% for all products from a particular supplier.
+- Delete Queries 👉 Remove records that match specific conditions. A delete query could be used to remove customers who haven't placed an order in over a year.
 
 # Forms
 
-Forms offers us a more user-friendly way of manipulating the data in the tables.
+Forms in Microsoft Access provide a more user-friendly way to interact with the data in tables.
 
-It’s the same **data from the tables** but in a **different visual format**.
+It’s the same **data from the tables** but in a **different visual format** that makes modifying data more user friendly.
 
-It makes entering and modifying data easier and it allows users to enter data into multiple tables at once.
+## How they are used?
+
+- Data Entry 👉 Forms allow users to enter new records or update existing ones without directly interacting with the table structure.
+- Data Display 👉 Forms can display data in a customized, organized way.
+- Multi-Table Data Entry 👉 Some forms are set up to interact with more than one table
 
 # Reports
 
-Reports present data from any table or query. in an **easy-to-read** (or print) format.
+Reports in Microsoft Access are used to present data from tables or queries in a clear, easy-to-read format.
 
 It is possible to customize reports in order to make it visually appealing.
+
+## How are they used?
+
+- Summarizing Data
+- Data Presentation
+- Custom Formatting
 
 # Exercise 1
 
