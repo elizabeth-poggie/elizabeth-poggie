@@ -1,7 +1,7 @@
 ---
 # General Information
 category: "Computerized Systems"
-title: "histograms and such"
+title: "Histograms and Intro to MS Access"
 created: "2024-11-14"
 number: 18
 ---
@@ -36,3 +36,63 @@ These options let you control the _layout_ and _level_ of detail in your histogr
 ## Documentation
 
 📖 Check out [this resource](https://trumpexcel.com/histogram-in-excel/) for detailed guidance.
+
+# Exercise 1
+
+# Intro to MS Access
+
+Spreadsheets are a great tool for analyzing data. However, they have the following limitations:
+
+- Data in tables are not directly linked or associated to other tables
+- Entering and retrieving data is not user friendly
+- It is difficult to enforce that data is entered correctly (everything is possible: numbers vs words vs dates)
+
+## Why learn about databases?
+
+In practice, the information we are looking for is often distributed in amongst multiple tables and doing this in Excel is non-trivial. Databases makes this easier
+
+## What are Databases?
+
+Databases in Access are composed of four objects: tables, queries, forms, and reports. Together, these objects allow you to enter, store, analyze, and compile data however you want.
+
+## Documentation
+
+📖 For this section of the notes please refer to [Introduction to Objects](https://edu.gcfglobal.org/en/access2016/introduction-to-objects/1/) by GCF Global
+
+# Tables
+
+Tables store the data in a way that is similar to Excel.
+
+There are some minor differences in terminology:
+
+- **Records (rows)**: contains specific data, like information about a particular employee or a product.
+- **Fields (columns):** contains data about one aspect of the table subject, such as first name or e-mail address.
+- **Field value (cell)**: Each record has a field value. For example, Contoso, Ltd. or someone@example.com.
+
+# Queries
+
+Since most tables are linked via different relationships, **queries** allows us to retrieve **specific data** from one of more tables.
+
+- Queries need to be structured in order to ask specific questions.
+
+For example:
+
+_“What is the name, email and address of all customers who ordered product X in the last 3 months ?”_
+
+# Forms
+
+Forms offers us a more user-friendly way of manipulating the data in the tables.
+
+It’s the same **data from the tables** but in a **different visual format**.
+
+It makes entering and modifying data easier and it allows users to enter data into multiple tables at once.
+
+# Reports
+
+Reports present data from any table or query. in an **easy-to-read** (or print) format.
+
+It is possible to customize reports in order to make it visually appealing.
+
+# Exercise 2
+
+Follow the steps in [Managing Databases and Objects](https://edu.gcfglobal.org/en/access2016/managing-databases-and-objects/1/) and complete the [practice database](https://media.gcflearnfree.org/content/56f1a8e2c87fa620e88dccb8_03_22_2016/access2016_sampledatabase.accdb)
