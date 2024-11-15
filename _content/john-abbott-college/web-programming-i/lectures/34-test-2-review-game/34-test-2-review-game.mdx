@@ -5,3 +5,65 @@ title: "Test 2 Review Game"
 created: "2024-11-15"
 number: 34
 ---
+
+# Question 1
+
+What is the following in it’s non arrow syntax?
+
+```js
+let test = (x) => x + 2;
+```
+
+## Solution
+
+```js
+let test = function (x) {
+  return x + 2;
+};
+```
+
+# Question 2
+
+What will `myArray` hold after the code is run?
+
+```js
+let myArray = [4, 12, 6, 35, 39];
+myArray.filter((x) => x % 3 === 0);
+```
+
+## Solution
+
+```js
+[12, 6, 39];
+```
+
+# Question 3
+
+Given the following code:
+
+```js
+let myArray = [
+  { year: 2018, model: "X" },
+  { year: 2016, model: "S" },
+];
+
+let test = myArray.map((car) => car.model + "-turbo");
+```
+
+Which statements are `true`?
+
+- `myArray` will remain unchanged
+- `myArray` will hold an array of strings: `["X-turbo", "S-turbo"]`
+- `myArray` will hold an array with the same objects but with modified model names
+- `test` will hold the value `undefined`
+- `test` will hold an array with two values: `[undefined, undefined]`
+- `test` will hold an array of strings: `["X-turbo", "S-turbo"]`
+
+## Solution
+
+- ✅ `myArray` will remain unchanged
+- ❌ `myArray` will hold an array of strings: `["X-turbo", "S-turbo"]`
+- ❌ `myArray` will hold an array with the same objects but with modified model names
+- ❌ `test` will hold the value `undefined`
+- ❌ `test` will hold an array with two values: `[undefined, undefined]`
+- ✅ `test` will hold an array of strings: `["X-turbo", "S-turbo"]`
