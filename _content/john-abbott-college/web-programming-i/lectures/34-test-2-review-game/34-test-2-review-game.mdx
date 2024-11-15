@@ -87,3 +87,59 @@ function thing2(thing5) {
 - `thing3` 👉 `Object` or `undefined`. This represents the `options`
 - `thing4` 👉 `Element`
 - `thing5` 👉 `IntersectionObserverEntry`. It describes a single threshold change event for an "observed" element.
+
+# Question 5
+
+Fill in the for loop 👉
+
+```js
+function myFunction(entries) {
+  entries.forEach((entry) => {
+    // add code here
+  });
+}
+
+let myObserver = new IntersectionObserver(myFunction);
+myObserver.observe(myElement1);
+myObserver.observe(myElement2);
+```
+
+When the function is called, set the class of any element that is intersecting to "seen"
+
+## Solution
+
+```js
+if (entry.isIntersecting) {
+  entry.target.classList.add("seen");
+}
+```
+
+What's going on in this code?
+
+- `entry.target` 👉 Refers to the actual DOM element being observed
+- `classList.add("seen")` 👉 Adds the "seen" class to any element that is intersecting
+
+# Question 6
+
+What is the datatype of each thing?
+
+```js
+fetch(theURL)
+  .then((result1) => {
+    return result.json();
+  })
+  .then((result2) => {
+    // do stuff lol
+  })
+  .catch((error) => {
+    console.error("AHHHHH: ", error);
+  });
+```
+
+## Solution
+
+- `fetch(theURL)` 👉 `Promise<Response>`
+- `result1` 👉 `Response`
+- `result.json()` 👉 `Promise<Object>`
+- `result2` 👉 `Object` (or `Array`, depending on the JSON)
+- `(error) => console.error("AHHHHH: ", error)` 👉 `Function`
