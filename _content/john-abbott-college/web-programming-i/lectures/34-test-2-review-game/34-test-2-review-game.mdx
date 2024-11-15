@@ -178,3 +178,22 @@ let secondAbility = pokeman.abilities[1].ability.name;
 ```
 
 # Question 8
+
+What will become of Jimmy and Bob?
+
+```js
+function transition() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(42);
+    }, 5000);
+  });
+}
+let jimmy = transition();
+jimmy.then((bob) => console.log(bob));
+```
+
+## Solution
+
+- `jimmy` 👉 `Promise`
+- `bob` 👉 `42`
