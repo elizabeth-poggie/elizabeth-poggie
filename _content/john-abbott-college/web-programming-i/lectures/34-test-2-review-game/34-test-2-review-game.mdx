@@ -268,3 +268,15 @@ let test = async (x) => {
   // do cool async thing
 };
 ```
+
+# Question 12
+
+Given the following [joke API](https://sv443.net/jokeapi/v2/)
+
+Generate a URL for obtaining 3 single punchline jokes of any type that is _safe for looking at in school_
+
+## Solution
+
+```text
+https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&amount=3
+```
