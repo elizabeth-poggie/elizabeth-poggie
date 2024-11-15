@@ -229,3 +229,24 @@ hey
 hi
 42
 ```
+
+# Question 10
+
+Jimmy is reading about await and has learned that it makes async code act synchronously. This has him a bit stressed. He’s spotted a trusted piece of code where the developer uses await to call a lengthy server cleanup operation, but Jimmy is concerned because he doesn’t want this to block his page from loading.
+
+```js
+async function cleanup() {
+  await fetch("https://code-sparkle.com/cleanup");
+  console.log("Cleanup complete!");
+}
+
+console.log("Page is loading...");
+cleanup();
+console.log("Page loading finished!");
+```
+
+Should Jimmy be stressed?
+
+## Solution
+
+Jimmy can relax because the `await` does not block the entire page from loading. The page load continues without waiting for the cleanup operation to finish.
