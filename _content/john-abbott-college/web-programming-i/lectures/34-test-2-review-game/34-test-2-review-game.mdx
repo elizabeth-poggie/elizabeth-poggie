@@ -197,3 +197,35 @@ jimmy.then((bob) => console.log(bob));
 
 - `jimmy` 👉 `Promise`
 - `bob` 👉 `42`
+
+# Question 9
+
+What will be logged to the console?
+
+```js
+function test() {
+  return new Promise((resolve, reject) => {
+    console.log("heya");
+    setTimeout(() => {
+      console.log("hi");
+      resolve(42);
+    });
+  });
+}
+console.log("Hola");
+let jimmy = test();
+console.log("yo");
+jimmy.then((bob) => console.log(bob));
+console.log("hey");
+```
+
+## Solution
+
+```text
+Hola
+heya
+yo
+hey
+hi
+42
+```
