@@ -1,0 +1,139 @@
+---
+# General Information
+category: "Computerized Systems"
+title: "Histograms && Intro to MS Access"
+created: "2024-11-14"
+number: 18
+---
+
+# Creating a Histogram
+
+## Why?
+
+They help with visualizing data and help you see patterns
+
+## Step 1) Inserting a Histogram
+
+In the cute bar chart group, click on the Histogram chart icon:
+
+![demo](./assets/create-histo.gif)
+
+## Step 2) Bin Modification
+
+You have several options when it comes to organizing your histogram, all of which you can see by right clicking and selecting "Format Data Series". For example:
+
+![demo](./assets/bins-histo.gif)
+
+All available options include:
+
+- Automatic
+- By Category
+- Bin Width (as shown in the `gif`)
+- Number of Bins
+
+These options let you control the _layout_ and _level_ of detail in your histogram.
+
+## Documentation
+
+📖 Check out [this resource](https://trumpexcel.com/histogram-in-excel/) for detailed guidance.
+
+# Intro to MS Access
+
+Spreadsheets are useful for analyzing data, but they come with some significant limitations:
+
+- Data within tables isn’t directly linked or associated with data in other tables
+- Entering and retrieving data can be challenging and not particularly user-friendly
+- It’s hard to enforce "data accuracy", meaning that Excel allows for inconsistencies like numbers being entered as words or dates.
+
+## Why learn about databases?
+
+In many real-world scenarios, the information we need is spread across multiple tables, and managing this in Excel can be painful. That's why we love Databases. They make it easier to organize, connect, and retrieve data.
+
+## What are Databases?
+
+Databases in Microsoft Access consist of four main objects: tables, queries, forms, and reports. Each of these objects serves a unique purpose, and together they allow you to enter, store, analyze, and compile data in a relatively painless way when compared to fancier Databases like SQL, GraphQL, and other neat Database tools.
+
+## Documentation
+
+📖 For more details on database objects in Access, please see the [Introduction to Objects](https://edu.gcfglobal.org/en/access2016/introduction-to-objects/1/) by GCF Global.
+
+# Tables
+
+In Microsoft Access, tables are used to store data in a format similar to Excel, with rows and columns. However, Access uses specific terms for different parts of a table:
+
+- **Records (rows)** 👉 Each record represents an individual item or entry, like a specific employee or product.
+- **Fields (columns)** 👉 Each field represents one characteristic of the table’s subject, such as “First Name,” “Email Address,” or “Product Price.” Fields define the type of information that is stored across records.
+- **Field value (cell)** 👉 Each cell in a table holds a specific data value for a record.
+
+## Example Table
+
+Let's say we have the following table:
+
+```md
+| Employee ID | First Name | Last Name | Email Address        | Department |
+| ----------- | ---------- | --------- | -------------------- | ---------- |
+| 042         | Arthur     | Dent      | dont.panic@gmail.com | unknown    |
+| 043         | Ford       | Prefect   | panic@gmail.com      | unknown    |
+```
+
+In this example:
+
+- Each row represents a record (an individual employee. e.g. our boy Arthur).
+- Each column represents a field (a specific detail about the employee, e.g. Email, Department, etc).
+- Each cell contains a field value specific to that employee, such as "Arthur" in the "First Name" field.
+
+# Queries
+
+In Microsoft Access, queries are tools that allow you to retrieve specific data from one or more tables, especially when the tables are linked through relationships.
+
+Since queries are structured requests, they allow you to ask "questions", fetching only the information you need from the database.
+
+## Example Queries
+
+Imagine you have a database with customer and order information. Using queries, you can retrieve specific details based on defined criteria. Let say we are trying to ask:
+
+_"What are the names, email addresses, and mailing addresses of all customers who ordered Product X in the last 3 months?"_
+
+In this example, the query is structured to:
+
+- Retrieve data from both the "Customers" and "Orders" tables
+- Filter for only those orders related to Product X
+- Limit results to orders placed within the last three months
+
+## Query Types
+
+- Select Queries 👉 Retrieve specific data without changing it. For instance, a select query might show all customers who have purchased a product above a certain price.
+- Update Queries 👉 Modify data based on criteria. An update query could, for example, increase prices by 10% for all products from a particular supplier.
+- Delete Queries 👉 Remove records that match specific conditions. A delete query could be used to remove customers who haven't placed an order in over a year.
+
+# Forms
+
+Forms in Microsoft Access provide a more user-friendly way to interact with the data in tables.
+
+It’s the same **data from the tables** but in a **different visual format** that makes modifying data more user friendly.
+
+## How they are used?
+
+- Data Entry 👉 Forms allow users to enter new records or update existing ones without directly interacting with the table structure.
+- Data Display 👉 Forms can display data in a customized, organized way.
+- Multi-Table Data Entry 👉 Some forms are set up to interact with more than one table
+
+# Reports
+
+Reports in Microsoft Access are used to present data from tables or queries in a clear, easy-to-read format.
+
+It is possible to customize reports in order to make it visually appealing.
+
+## How are they used?
+
+- Summarizing Data
+- Data Presentation
+- Custom Formatting
+
+# All Together
+
+_Forms_ allow you to both add data to _tables_ and view data that already exists. _Reports_ present data from tables and also from _queries_, which then search for and analyze data within these same tables.
+
+# Exercise 1
+
+Follow the steps in [Managing Databases and Objects](https://edu.gcfglobal.org/en/access2016/managing-databases-and-objects/1/) and complete the [practice database](https://media.gcflearnfree.org/content/56f1a8e2c87fa620e88dccb8_03_22_2016/access2016_sampledatabase.accdb)

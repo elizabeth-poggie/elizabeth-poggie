@@ -1,0 +1,378 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Flow of Execution && API params"
+created: "2024-11-11"
+number: 32
+---
+
+# Quick Recap
+
+## .then() vs Callbacks
+
+```js
+// callback hell
+call1(function (result1, error1) {
+  if (error1) {
+    //handle error
+  }
+  call2(result1, function (result2, error2) {
+    if (error2) {
+      //handle error
+    }
+    call3(result2, function (result3, error2) {
+      if (error3) {
+        //handle error
+      }
+      // do something with result3
+    });
+  });
+});
+```
+
+In the above code, each function (`call1`, `call2`, and `call3`) depends on the result of the _previous function_, leading to deeply nested callbacks. In callback hell, Error handling becomes repetitive and scattered.
+
+We can fix this with `Promise`s comme ca:
+
+```js
+// Traditional Promises
+call1()
+  .then((result1) => call2(result1))
+  .then((result2) => call3(result2))
+  .then((result3) => {
+    // Do something with result3
+  })
+  .catch((error) => {
+    // Handle errors in one place ❤️
+  });
+```
+
+Promises are preferred to callback hell because:
+
+- Clarity in execution
+- Simplicity in error handling
+
+## Modern Promises
+
+To further simplify, you could use `async`/`await`:
+
+```js
+// modern syntax
+async function main() {
+  try {
+    const result1 = await call1();
+    const result2 = await call2(result);
+    const result3 = await call3(result2);
+    // Do something with result3
+  } catch (error) {
+    // Handle errors
+  }
+}
+```
+
+Why do we love modern promises?
+
+- The code reads like synchronous code
+- You can share `result`s across multiple steps
+
+## Promise.all
+
+In the above examples, you need to `await` for one step to resolve before resolving the next step. However let's say their `result`s are _independent_ from each other. Then we can use `Promise.all()` to resolve things all at once:
+
+```js
+// Promise Everything
+async function main() {
+  try {
+    const [result1, result2, result3] = await Promise.all([
+      call1(),
+      call2(),
+      call3(),
+    ]);
+    // Do something with results
+  } catch (error) {
+    // Handle errors
+  }
+}
+```
+
+This allows their execution to run _concurrently_.
+
+## Common Mistakes
+
+- Putting an `await` statement at the "top level" instead of wrapping it in a `main` function
+- `Promise.all` requires an array of promises
+- Not `await`ing for ALL your promises to resolve (untracked promises are stinky)
+
+# Flow of Execution
+
+Using `async`/ `await` creates asynchronous code that looks "synchronous"
+
+## Concrete Example
+
+When does what print?
+
+```js
+let myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("hi");
+    console.log("C");
+  }, 5000);
+});
+async function test() {
+  // return new Promise( (resolve, reject) => {
+  let result = await myPromise;
+  console.log(result);
+  //}
+}
+
+console.log("A");
+let testReturn = test();
+console.log("B");
+```
+
+You should see the following printed to the terminal:
+
+```text
+A
+B
+C
+hi
+```
+
+## Why?
+
+- Step 1) Console logs are "synchronous" so `console.log("A")` runs first
+- Step ??) `let testReturn = test()` is `async` because it has an `await` so that returns a "pending promise"
+- Step 2) `console.log("B")` the previous step returned a pending Promise that didn’t block the "main" thread, so we print `"B"` right after `"A"`
+- Step ??) `myPromise`'s `setTimeout` begins counting down 5 seconds
+- Step 3) `"C"` prints after 5 seconds.
+- Step 4) Finally, `"hi"` prints after `C`, when `await myPromise` resolves.
+
+# Mini Quiz
+
+What is `Jimmy` assigned to?
+
+## Q1
+
+```js
+let jimmy = new Promise((resolve, reject) => {
+  resolve(2);
+});
+```
+
+Jimmy will result in a:
+
+```text
+promise
+```
+
+Why? `jimmy` is created with the `Promise` constructor
+
+## Q2
+
+```js
+fetch("http://cheese.com/brie").then((response) => {
+  let jimmy = response.json();
+});
+```
+
+Jimmy will result in a:
+
+```text
+promise
+```
+
+Why? `fetch` returns a `promise`, and `response.json()` ALSO returns a `promise`
+
+## Q3
+
+```js
+async function test() {
+  return "cheese";
+}
+let jimmy = test();
+```
+
+Jimmy will ALSO result in a:
+
+```text
+promise
+```
+
+Why? `test()` is an `async` function, so it ALWAYS returns a `promise`
+
+## Q4
+
+```js
+function foo() {
+  return new Promise((resolve, reject) => resolve(2));
+}
+let jimmy = foo;
+```
+
+Jimmy will result in a:
+
+```text
+function
+```
+
+Why? `jimmy` here is just a `function`, not a `promise`, because `foo` hasn’t been called yet
+
+## Q5
+
+```js
+let jimmy = fetch("http://cheese.com/brie");
+```
+
+Jimmy will result in a:
+
+```text
+promise
+```
+
+Why? `fetch` immediately returns a `promise`
+
+# Page blocking
+
+To block or not to block, that is the question. Given the below sleep function:
+
+```js
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+```
+
+## Q1
+
+```js
+async function test() {
+  await sleep(10000);
+  console.log("hi");
+}
+test();
+```
+
+Will it block? YES
+
+Why? `sleep(10000)` pauses for 10 seconds.
+
+## Q2
+
+```js
+function test() {
+  return new Promise((resolve, reject) => {
+    sleep(10000);
+    resolve(6);
+  });
+}
+test();
+console.log("hi");
+```
+
+Will it block? NOPE
+
+Why? Even though `sleep(10000)` pauses within the `Promise`, it doesn’t stop `console.log("hi")` from running _immediately_ afterward
+
+## Q3
+
+```js
+async function test() {
+  await sleep(10000);
+  return 6;
+}
+test();
+console.log("hi");
+```
+
+Will it block? NOPE
+
+Why? Since `test()` is declared as an `async` function, it ALWAYS returns a `promise` allowing JavaScript to skip over the internal `sleep(10000)`
+
+# Exercise 1
+
+Get into groups of up to 4 people. You will be completing a Leetcode style exercise together typically seen in coding interviews. To get started, visit the following [website](https://www.100jsfunctions.com/categories/promises) and complete the [fetchGitHubName](https://www.100jsfunctions.com/exercises/fetchGitHubName) exercise.
+
+## Solution
+
+```js
+async function fetchGitHubName(username) {
+  const response = await fetch(`https://api.github.com/users/${username}`);
+  if (!response.ok) {
+    return null; // can't find user
+  }
+  const data = await response.json();
+  return data.name; // The user's name
+}
+
+export { fetchGitHubName };
+```
+
+# API Params
+
+Sometimes our URL is relatively straightforward to `fetch` data:
+
+```js
+`https://pokeapi.co/api/v2/${endpoint}`;
+```
+
+## Path params
+
+The `endpoint` parameter in this example is a path parameter. Path parameters are used to _uniquely identify a specific resource_. They are part of the URL path and are critical in defining which resource you want to retrieve. What you need to know about path parameters is:
+
+- They are placed DIRECTLY within the path itself
+- These types of parameters are REQUIRED
+
+However when we take a closer look at the [pokemon api docs](https://pokeapi.co/docs/v2#pokemon), we will notice we have other options 👀
+
+## Query params
+
+Sometimes the data returned by an API might be too much or not exactly what we need, so we use query parameters to filter or sort the data returned by the server. For example:
+
+```js
+`https://pokeapi.co/api/v2/${endpoint}?limit=${someLimit}&offset=${someOffset}`;
+```
+
+What you need to know about query parameters is:
+
+- They are part of the URL's query string and come AFTER the `?`
+- If there are MANY query parameters, they are separated by `&`
+- Used to filter && sort response data
+- They are OPTIONAL
+
+## Combining Path and Query Params
+
+Let's call the following in postman:
+
+```text
+https://pokeapi.co/api/v2/pokemon?limit=20&offset=20
+```
+
+What is going on?
+
+- `/pokemon` is the path parameter
+- `limit=20` and `offset=20` are query parameters that limit the results to 10 items, starting from the 20th
+
+## Exercise 2
+
+Now it's time for the [fetchNamesOfAllPublicRepos](https://www.100jsfunctions.com/exercises/fetchNamesOfAllPublicRepos) exercise.
+
+## Solution
+
+```js
+async function fetchNamesOfAllPublicRepos(username) {
+  const response = await fetch(
+    `https://api.github.com/users/${username}/repos?page=1&per_page=100`
+  );
+  if (!response.ok) {
+    return [];
+  }
+  const repos = await response.json();
+  const publicRepoNames = repos
+    .filter((repo) => !repo.private) // Ensure only public repos
+    .map((repo) => repo.name); // Extract the name of each repo
+
+  return publicRepoNames;
+}
+
+export { fetchNamesOfAllPublicRepos };
+```

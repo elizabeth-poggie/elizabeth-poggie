@@ -1,0 +1,133 @@
+---
+# General Information
+category: "Computerized Systems"
+title: "Pivot Tables"
+created: "2024-11-11"
+number: 17
+---
+
+# Pivot Tables
+
+## What are Pivot Tables?
+
+When you’re dealing with a large dataset, analyzing all that information at once can be whelming. Pivot Tables make your data easier to manage and can make your life easier.
+
+## How Should You Use Them?
+
+Pivot Tables are incredibly flexible, allowing you to organize data in many different ways. HOWEVER, knowing the best way to structure the rows, columns, and values is not always straightforward.
+
+## Getting Started
+
+To set up a Pivot Table that’s useful, start by asking yourself what kind of information you want to investigate. Identify the following:
+
+```cs
+"What am I trying to measure?"
+```
+
+The above question helps you define the _Value_ you’re looking for.
+
+```cs
+"How do I want this data organized?"
+```
+
+This helps you determine the _rows and columns_ that will structure your table.
+
+## Concrete Example
+
+Suppose we have a data table like this:
+
+![demo](./assets/data.png)
+
+... and suppose we want to answer the question:
+
+```cs
+"How much was sold by each salesperson on a monthly basis?"
+```
+
+Calculating this manually would be challenging, as each salesperson’s orders appear on multiple rows. But with a Pivot Table, we can simplify the process. To build it, start by answering these questions:
+
+- What are we trying to measure? 👉 The total amount sold.
+- How should we organize it? 👉 By salesperson and by month.
+
+In the PivotTable, we’ll add "Order Amount" to Values, "Salesperson" to Rows, and "Month" to Columns:
+
+![demo](./assets/vals.png)
+
+## How Do You Decide Between Rows and Columns?
+
+Choosing rows and columns depends on what makes the data easiest to understand. Try different arrangements to see what provides the clearest view.
+
+# Creating a Pivot table
+
+## Step 1) Inserting a Pivot Table
+
+- Click on any cell within your dataset.
+- Select the Insert tab > Choose PivotTable
+
+![demo](./assets/create.gif)
+
+## Step 2) Formatting a Pivot Table
+
+A blank PivotTable and a Field List will appear in a new worksheet:
+
+![demo](./assets/format.gif)
+
+## Step 3) Pivoting a Pivot Table
+
+Once you have your data in place, you can easily pivot between different views by rearranging fields:
+
+![demo](./assets/pivot.gif)
+
+## Step 4) We love granularity
+
+For extra detail, try grouping data. For example, you might group sales by region:
+
+![demo](./assets/rows.gif)
+
+## Documentation
+
+📖 Check out these resources for detailed guidance:
+
+- [Intro to Pivot Tables](https://edu.gcfglobal.org/en/excel/intro-to-pivottables/1/) from GCF Global
+- [Create a Pivot Table](https://support.microsoft.com/en-us/office/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576?ui=en-us&rs=en-us&ad=us) by Microsoft
+
+# Exercise 1 - Sales
+
+- Download the `Sales.xlsx` from Lea
+- Convert the dataset into a PivotTable:
+  - Click within the dataset and select Insert > PivotTable
+  - Confirm the range and choose New Worksheet
+- Create a PivotTable to analyze:
+  - Each salesperson’s revenue by region, organized on a monthly basis
+
+# Creating a Pivot Chart
+
+## Step 1) Inserting a PivotTable
+
+Start by creating a PivotTable as the base for your chart:
+
+![demo](./assets/chart.gif)
+
+## Step 2) Fields and Pivoting
+
+Add and adjust fields within the PivotTable to shape the data for your chart to be clear (and cute):
+
+![demo](./assets/fieldsandshit.gif)
+
+## Step 3) Make it Cuter
+
+You have lots of options to make a cute chart:
+
+![demo](./assets/cuteify.gif)
+
+## Documentation
+
+📖 If you don't like `gif`s, for a detailed walkthrough on creating PivotCharts, refer to [Create a PivotChart](https://support.microsoft.com/en-us/office/create-a-pivotchart-c1b1e057-6990-4c38-b52b-8255538e7b1c) by Microsoft
+
+# Exercise 2
+
+Create a Pivot Chart with the following elements:
+
+- A chart title
+- Axis titles
+- Custom themes to replace the default (boomer) look

@@ -1,0 +1,282 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Test 2 Review Game"
+created: "2024-11-15"
+number: 34
+---
+
+# Question 1
+
+What is the following in it’s non arrow syntax?
+
+```js
+let test = (x) => x + 2;
+```
+
+## Solution
+
+```js
+let test = function (x) {
+  return x + 2;
+};
+```
+
+# Question 2
+
+What will `myArray` hold after the code is run?
+
+```js
+let myArray = [4, 12, 6, 35, 39];
+myArray.filter((x) => x % 3 === 0);
+```
+
+## Solution
+
+```js
+[12, 6, 39];
+```
+
+# Question 3
+
+Given the following code:
+
+```js
+let myArray = [
+  { year: 2018, model: "X" },
+  { year: 2016, model: "S" },
+];
+
+let test = myArray.map((car) => car.model + "-turbo");
+```
+
+Which statements are `true`?
+
+- `myArray` will remain unchanged
+- `myArray` will hold an array of strings: `["X-turbo", "S-turbo"]`
+- `myArray` will hold an array with the same objects but with modified model names
+- `test` will hold the value `undefined`
+- `test` will hold an array with two values: `[undefined, undefined]`
+- `test` will hold an array of strings: `["X-turbo", "S-turbo"]`
+
+## Solution
+
+- ✅ `myArray` will remain unchanged
+- ❌ `myArray` will hold an array of strings: `["X-turbo", "S-turbo"]`
+- ❌ `myArray` will hold an array with the same objects but with modified model names
+- ❌ `test` will hold the value `undefined`
+- ❌ `test` will hold an array with two values: `[undefined, undefined]`
+- ✅ `test` will hold an array of strings: `["X-turbo", "S-turbo"]`
+
+# Question 4
+
+What is the datatype of each thing?
+
+```js
+let thing1 = new IntersectionObserver(thing2, thing3);
+thing1.observe(thing4);
+function thing2(thing5) {
+  // console log the data-thingy
+}
+```
+
+## Solution
+
+- `thing1` 👉 `IntersectionObserver`. This used to observe changes in the intersection of a target element.
+- `thing2` 👉 `Function`. This is the callback function.
+- `thing3` 👉 `Object` or `undefined`. This represents the `options`
+- `thing4` 👉 `Element`
+- `thing5` 👉 `IntersectionObserverEntry`. It describes a single threshold change event for an "observed" element.
+
+# Question 5
+
+Fill in the for loop 👉
+
+```js
+function myFunction(entries) {
+  entries.forEach((entry) => {
+    // add code here
+  });
+}
+
+let myObserver = new IntersectionObserver(myFunction);
+myObserver.observe(myElement1);
+myObserver.observe(myElement2);
+```
+
+When the function is called, set the class of any element that is intersecting to "seen"
+
+## Solution
+
+```js
+if (entry.isIntersecting) {
+  entry.target.classList.add("seen");
+}
+```
+
+What's going on in this code?
+
+- `entry.target` 👉 Refers to the actual DOM element being observed
+- `classList.add("seen")` 👉 Adds the "seen" class to any element that is intersecting
+
+# Question 6
+
+What is the datatype of each thing?
+
+```js
+fetch(theURL)
+  .then((result1) => {
+    return result.json();
+  })
+  .then((result2) => {
+    // do stuff lol
+  })
+  .catch((error) => {
+    console.error("AHHHHH: ", error);
+  });
+```
+
+## Solution
+
+- `fetch(theURL)` 👉 `Promise<Response>`
+- `result1` 👉 `Response`
+- `result.json()` 👉 `Promise<Object>`
+- `result2` 👉 `Object` (or `Array`, depending on the JSON)
+- `(error) => console.error("AHHHHH: ", error)` 👉 `Function`
+
+# Question 7
+
+If you had a variable `pokeman` containing the JS object for this JSON string, how would you access the property for the second ability?
+
+```json
+{
+  "abilities": [
+    {
+      "ability": {
+        "name": "limber",
+        "url": "https://pokeapi.co/api/v2/ability/7/"
+      },
+      "is_hidden": false,
+      "slot": 1
+    },
+    {
+      "ability": {
+        "name": "imposter",
+        "url": "https://pokeapi.co/api/v2/ability/150/"
+      },
+      "is_hidden": true,
+      "slot": 3
+    }
+  ]
+}
+```
+
+## Solution
+
+```js
+let secondAbility = pokeman.abilities[1].ability.name;
+```
+
+# Question 8
+
+What will become of Jimmy and Bob?
+
+```js
+function transition() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(42);
+    }, 5000);
+  });
+}
+let jimmy = transition();
+jimmy.then((bob) => console.log(bob));
+```
+
+## Solution
+
+- `jimmy` 👉 `Promise`
+- `bob` 👉 `42`
+
+# Question 9
+
+What will be logged to the console?
+
+```js
+function test() {
+  return new Promise((resolve, reject) => {
+    console.log("heya");
+    setTimeout(() => {
+      console.log("hi");
+      resolve(42);
+    });
+  });
+}
+console.log("Hola");
+let jimmy = test();
+console.log("yo");
+jimmy.then((bob) => console.log(bob));
+console.log("hey");
+```
+
+## Solution
+
+```text
+Hola
+heya
+yo
+hey
+hi
+42
+```
+
+# Question 10
+
+Jimmy is reading about await and has learned that it makes async code act synchronously. This has him a bit stressed. He’s spotted a trusted piece of code where the developer uses await to call a lengthy server cleanup operation, but Jimmy is concerned because he doesn’t want this to block his page from loading.
+
+```js
+async function cleanup() {
+  await fetch("https://code-sparkle.com/cleanup");
+  console.log("Cleanup complete!");
+}
+
+console.log("Page is loading...");
+cleanup();
+console.log("Page loading finished!");
+```
+
+Should Jimmy be stressed?
+
+## Solution
+
+Jimmy can relax because the `await` does not block the entire page from loading. The page load continues without waiting for the cleanup operation to finish.
+
+# Question 11
+
+What is the following in arrow notation?
+
+```js
+let test = async function (x) {
+  // do cool async thing
+};
+```
+
+## Solution
+
+```js
+let test = async (x) => {
+  // do cool async thing
+};
+```
+
+# Question 12
+
+Given the following [joke API](https://sv443.net/jokeapi/v2/)
+
+Generate a URL for obtaining 3 single punchline jokes of any type that is _safe for looking at in school_
+
+## Solution
+
+```text
+https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&amount=3
+```

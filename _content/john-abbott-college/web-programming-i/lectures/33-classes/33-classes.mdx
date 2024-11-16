@@ -1,0 +1,222 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Classes"
+created: "2024-11-12"
+number: 33
+---
+
+# Intro to Classes
+
+In JavaScript, classes are associated with a prototype object by default. They are also automatically created in strict mode (`use strict`), ensuring that variables must be declared before they are used:
+
+```js
+class SomeClass {
+  constructor(param1, param2) {
+    this.field1 = param1;
+    this.field2 = param2;
+  }
+}
+```
+
+To call the constructor of a class, you need to use the new keyword:
+
+```js
+const instance = new SomeClass("param1", "param2");
+```
+
+## Accessing classes
+
+You can access an instance's prototype using the `__proto__` property, which links the object to its prototype chain:
+
+```js
+// Notice the double underscores on each side
+instance.__proto__;
+```
+
+## Inheritance
+
+JavaScript classes can inherit from other classes using the `extends` keyword. This allows a subclass to inherit properties and methods from a parent class.
+
+To call the constructor of a parent class, use the `super()` method:
+
+```js
+super();
+```
+
+Where do we put `super`?
+
+```js
+class MyClass extends SomeClass {
+  constructor(param1, param2, param3, param4) {
+    // Call the parent constructor
+    super(param3, param4);
+
+    // Add new fields to prevent conflicts
+    this.fieldA = param1;
+    this.fieldB = param2;
+  }
+}
+```
+
+Example Usage:
+
+```js
+const instance = new MyClass("extra1", "extra2", "base1", "base2");
+
+console.log(instance.field1); // "base1" (inherited from SomeClass)
+console.log(instance.field2); // "base2" (inherited from SomeClass)
+console.log(instance.fieldA); // "extra1" (specific to MyClass)
+console.log(instance.fieldB); // "extra2" (specific to MyClass)
+```
+
+# Class Methods
+
+## Regular Methods
+
+These are simply functions defined inside a class:
+
+```js
+class someClass {
+  constructor(param1) {
+    this.field1 = param1;
+    this.secretField = 3;
+  }
+  async doStuff() {}
+  doOtherStuff() {}
+}
+```
+
+These guys can be either synchronous or asynchronous.
+
+## Getters and Setters
+
+These guys have a bit more restrictive syntax
+
+```js
+class SomeClass {
+  constructor(param1) {
+    this.field1 = param1;
+    this.secretField = 3;
+  }
+  // getter
+  get getField() {
+    return this.secretField;
+  }
+  // setter
+  set setField(value) {
+    this.secretField = value;
+  }
+}
+```
+
+Example usage:
+
+```js
+// init class
+let theInstance = new SomeClass(3);
+// set field
+theInstance.setField = 34;
+// get field
+console.log(theInstance.getField);
+```
+
+# Common Class Mistakes
+
+## Setter Naming
+
+If you try to create the setter below, JavaScript will yell at you:
+
+```js
+set secretField(value) {
+    this.secretField = value;
+}
+```
+
+You’ll probably see this logged in your terminal:
+
+```text
+Maximum call stack size exceeded
+```
+
+What’s causing this? You’ve created an infinite loop because the setter keeps calling itself.
+
+Solution? Use a different name for the internal field, such as `_secretField`, or something else completely different from the setter name. (so that the setter won’t trigger itself eternally)
+
+## Getter Naming
+
+Similar issues can happen with getters:
+
+```js
+get secretField() {
+    return this.secretField;
+}
+```
+
+In this case, you might see:
+
+```text
+Cannot set property secretField of # which has only a getter
+```
+
+How do you fix this? Similar strat the the setter error solution.
+
+## async Getting and Setting
+
+In JavaScript, getters and setters CANNOT be `async`. This is because getters and setters are expected to be synchronous by the JavaScript. SO, if you absolutely need an `async` method, make it just a regular method.
+
+# Exercise 1 - Pokemans
+
+Create a Pokémon class that includes both a getter and setter for the `name` field, as well as a regular method to fetch its abilities.
+
+## Solution
+
+```js
+class Pokemon {
+  constructor() {
+    this.name = null;
+    this.abilities = null;
+  }
+
+  set pokemonName(name) {
+    this.name = name;
+  }
+
+  get pokemonName() {
+    return this.name;
+  }
+
+  // public Method to fetch stats asynchronously
+  async fetchStats() {
+    try {
+      const url = `https://pokeapi.co/api/v2/pokemon/${this.name}`;
+      const response = await fetch(url);
+      const pokemon = await response.json();
+      this.abilities = pokemon.abilities.map((ability) => ability.ability.name);
+    } catch (error) {
+      console.error("This messed up lol: ", error);
+    }
+  }
+}
+```
+
+## Example usage
+
+```js
+const main = async () => {
+  try {
+    const myPokemon = new Pokemon();
+    myPokemon.pokemonName = "pikachu";
+    await myPokemon.fetchStats();
+    console.log(myPokemon.abilities);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+main();
+```
+
+# Work Period
+
+Given your assignment is due this Thursday, take the time to work on the assignment and ask any questions.
