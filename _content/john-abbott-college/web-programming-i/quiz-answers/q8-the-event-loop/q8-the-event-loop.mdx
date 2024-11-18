@@ -1,0 +1,121 @@
+---
+# General Information
+category: "Web Programming I"
+title: "The Event Loop && Array Functions"
+created: "2024-10-30"
+number: 8
+---
+
+# Question 1
+
+In JavaScript, what is the purpose of the Event Loop?
+
+- To improve execution speed by running all code in many parallel threads
+- To continuously check for tasks, executing synchronous code immediately in the call stack, while asynchronous callbacks are queued and triggered according to priority
+- To control the flow of asynchronous events by executing synchronous code first and then adding asynchronous code later
+- To control memory allocation by clearing unused variables and functions from the call stack
+
+## Why?
+
+# Question 2
+
+Why is asynchronous programming useful in web development?
+
+_There are 2 correct answers._
+
+- It allows the webpage to continue responding to user interactions while tasks are completed in the background
+- It allows JavaScript to handle tasks like data fetching from the server and fancy calculations without freezing the webpage
+- It immediately loads all resources needed for the page
+- It enables code to block the main thread until all tasks are completed, preventing user interactions during processing.
+
+## Why?
+
+Given the following code:
+
+```js
+console.log("A");
+setTimeout(() => console.log("B"), 0);
+Promise.resolve().then(() => console.log("C"));
+console.log("D");
+```
+
+What is the order of execution?
+
+- A B C D
+- C B A D
+- A D B C
+- A D C B
+
+## Why?
+
+# Question 4
+
+In JavaScript, which of the following are purposes of a reducer function when used with the reduce method?
+
+_There are 2 correct answers:_
+
+- To transform an array into a new array by applying a function to each element individually
+- To convert an array into other data structures, such as an object or a different array format
+- To accumulate a single output value by applying a function to each element in an array, carrying over the result as it iterates
+- To remove all duplicate values from an array
+
+## Why?
+
+# Question 5
+
+What will `arrayTwo` contain?
+
+```js
+let arrayOne = [
+  { age: 18, id: 1234, program: 420 },
+  { age: 19, id: 1456, program: 412 },
+  { age: 26, id: 2121, program: 436 },
+  { error: true },
+];
+let arrayTwo = arrayOne.map((x) => {
+  return { currentAge: x.age, approximateBirthYear: 2024 - x.age };
+});
+```
+
+Option A:
+
+```js
+{
+  error: true;
+}
+```
+
+Option B:
+
+```js
+[
+  { currentAge: 18, approximateBirthYear: 2006 },
+  { currentAge: 19, approximateBirthYear: 2005 },
+  { currentAge: 26, approximateBirthYear: 1998 },
+  { currentAge: undefined, approximateBirthYear: NaN },
+];
+```
+
+Option C:
+
+```js
+[
+  { currentAge: 18 },
+  { approximateBirthYear: 2006 },
+  { currentAge: 19 },
+  { approximateBirthYear: 2005 },
+  { currentAge: 26 },
+  { approximateBirthYear: 1998 },
+  { currentAge: undefined },
+];
+```
+
+Option D
+
+```js
+[
+  { currentAge: 18, approximateBirthYear: 2006 },
+  { currentAge: 19, approximateBirthYear: 2005 },
+  { currentAge: 26, approximateBirthYear: 1998 },
+];
+```
