@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #myCanvas {
+        border: 2px solid lightcoral;
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="200" height="100"></canvas>
+    <script>
+      // Step 1 - Create a canvas
+      const c = document.getElementById("myCanvas");
+      let ctx = c.getContext("2d");
+      // Step 2 - create a pleasant color for the rectangle
+      ctx.fillStyle = "lightblue";
+      // Step 3 - Create a rectangle at (50,50) with width 100 and height 25
+      ctx.fillRect(50, 50, 100, 25);
+    </script>
+  </body>
+</html>

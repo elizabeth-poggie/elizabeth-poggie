@@ -1,0 +1,73 @@
+---
+# General Information
+category: "Web Programming I"
+title: "HTML Canvas"
+created: "2024-11-18"
+number: 35
+---
+
+# HTML5 Canvas
+
+## What is it?
+
+The HTML5 Canvas is a fun graphics container that allows you to use JavaScript to draw and create _dynamic graphics_ directly in your web page. :^)
+
+```html
+<canvas></canvas>
+```
+
+For example, this is a fun rectangle:
+
+```html
+<canvas id="myCanvas" width="200" height="100"></canvas>
+```
+
+## Important things to know
+
+- The `id` attribute is used to reference the canvas element in your JavaScript
+- The `style` property will actually make your canvas visible.
+
+For example:
+
+```CSS
+#myCanvas {
+    border: 2px solid lightcoral;
+    border-radius: 20px;
+}
+```
+
+# Arts and Crafts
+
+To start doing arts and crafts with code on the `<canvas>`, you need to access its context:
+
+```js
+let ctx = c.getContext("2d");
+```
+
+## What does this do?
+
+- The `HTMLCanvasElement.getContext()` method gives you a drawing context that you can use to render graphics on the canvas
+- `"2d"` indicates a "two-dimensional" rendering context, allowing you to work with _flat, 2D graphics_ like lines, shapes, and text. You can explore more about it [here](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D)
+
+## Why 2 dimensions tho?
+
+The `CanvasRenderingContext2D` interface is the tool that lets you draw 2D objects, like rectangles, text, images, and more, on the canvas element. Think of it like a blank sheet of paper except you code the fun parts.
+
+## Rectangles within Rectangles
+
+Before getting started, make sure your JavaScript contains the following:
+
+```js
+// Step 0 - Create a canvas
+const c = document.getElementById("myCanvas");
+let ctx = c.getContext("2d");
+```
+
+And now you can start having fun:
+
+```js
+// Step 1 - create a pleasant color for the rectangle
+ctx.fillStyle = "lightblue";
+// Step 2 - Create a rectangle at (50,50) with width 100 and height 25
+ctx.fillRect(50, 50, 100, 25);
+```
