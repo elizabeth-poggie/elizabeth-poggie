@@ -1,0 +1,199 @@
+---
+# General Information
+category: "Web Programming I"
+title: "HTML Canvas"
+created: "2024-11-18"
+number: 35
+---
+
+# HTML5 Canvas
+
+## What is it?
+
+The HTML5 Canvas is a fun graphics container that allows you to use JavaScript to draw and create _dynamic graphics_ directly in your web page. :^)
+
+```html
+<canvas></canvas>
+```
+
+For example, this is a fun rectangle:
+
+```html
+<canvas id="myCanvas" width="300" height="200"></canvas>
+```
+
+## Important things to know
+
+- The `id` attribute is used to reference the canvas element in your JavaScript
+- The `style` property will actually make your canvas visible.
+
+For example:
+
+```CSS
+#myCanvas {
+    border: 2px solid lightcoral;
+    border-radius: 20px;
+}
+```
+
+# Arts and Crafts
+
+To start doing arts and crafts with code on the `<canvas>`, you need to access its context:
+
+```js
+let ctx = c.getContext("2d");
+```
+
+## What does this do?
+
+- The `HTMLCanvasElement.getContext()` method gives you a drawing context that you can use to render graphics on the canvas
+- `"2d"` indicates a "two-dimensional" rendering context, allowing you to work with _flat, 2D graphics_ like lines, shapes, and text. You can explore more about it [here](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D)
+
+## Why 2 dimensions tho?
+
+The `CanvasRenderingContext2D` interface is the tool that lets you draw 2D objects, like rectangles, text, images, and more, on the canvas element.
+
+Think of it like a blank sheet of paper except you code the fun parts.
+
+## Rectangles within Rectangles
+
+Before getting started, make sure your JavaScript contains the following:
+
+```js
+// Step 0 - Create a canvas
+const c = document.getElementById("myCanvas");
+let ctx = c.getContext("2d");
+```
+
+And now you can start having fun:
+
+```js
+// Step 1 - create a pleasant color for the rectangle
+ctx.fillStyle = "lightblue";
+// Step 2 - Create a rectangle at (50,50) with width 100 and height 25
+ctx.fillRect(50, 50, 100, 25);
+```
+
+## Images
+
+```js
+// Step 1 - Create an image
+let img = new Image();
+img.src = "./images/cat.png";
+// Step 2 - Draw the image at position (10, 10) with dimensions 150
+img.onload = function () {
+  ctx.drawImage(img, 10, 10, 150, 150);
+};
+```
+
+# Exercise 1
+
+Create a cowboy in a desert. The desert background should be set up initially in the `<style>`, while the cowboy should be dynamically added to the scene using the canvas context.
+
+At the end of the lecture I will show you how to move him step by step :^)
+
+## Partial Solution
+
+Your CSS should be close to the following:
+
+```CSS
+#myCanvas {
+    background-image: url("./images/desert.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+}
+```
+
+# Interactive Art
+
+Let's bind our lad to keyboard controls so he can explore the mighty plains.
+
+```js
+// Step 0 - Create a canvas
+const c = document.getElementById("myCanvas");
+let ctx = c.getContext("2d");
+
+// Step 1 - Create an image
+let img = new Image();
+img.src = "./images/cat.png";
+
+// Step 2 - Init position for our brave soul
+let x = 10;
+let y = 10;
+const width = 150;
+const height = 150;
+
+// Step 3 - Draw the image at position (10, 10) with dimensions 150
+img.onload = function () {
+  ctx.drawImage(img, x, y, width, height);
+};
+
+// Step 4 - let's create a reusable function :^)
+function moveOurSon(e) {
+  // Step 5 - Clear the canvas before moving the image
+  ctx.clearRect(0, 0, c.width, c.height);
+
+  // Step 6 - Adjust position based on key
+  if (e.key === "ArrowUp") {
+    y -= 10;
+  } else if (e.key === "ArrowDown") {
+    y += 10;
+  } else if (e.key === "ArrowLeft") {
+    x -= 10;
+  } else if (e.key === "ArrowRight") {
+    x += 10;
+  }
+  // (you can also do the above with a switch case for cleaner code)
+
+  // Step 7 - draw our son again
+  ctx.drawImage(img, x, y, width, height);
+}
+// Step 8 - Event listener for keyboard inputs
+window.addEventListener("keydown", moveOurSon);
+```
+
+# Exercise 2
+
+Add another cowboy to the mix. They key binds for each player is as follows:
+
+- Player 1 👉 `WASD` to move
+- Player 2 👉 `IJKL` to move
+
+## Partial solution
+
+Move function:
+
+```js
+function moveCowboys(e) {
+  // Step 5 - Clear the canvas before moving the images
+  ctx.clearRect(0, 0, c.width, c.height);
+
+  // Player 1 controls (WASD)
+  if (e.key === "w") {
+    player1.y -= 10;
+  } else if (e.key === "s") {
+    player1.y += 10;
+  } else if (e.key === "a") {
+    player1.x -= 10;
+  } else if (e.key === "d") {
+    player1.x += 10;
+  }
+
+  // Player 2 controls (IKJL)
+  if (e.key === "i") {
+    player2.y -= 10;
+  } else if (e.key === "k") {
+    player2.y += 10;
+  } else if (e.key === "j") {
+    player2.x -= 10;
+  } else if (e.key === "l") {
+    player2.x += 10;
+  }
+
+  // Step 6 - Draw both players again
+  ctx.drawImage(img, player1.x, player1.y, player1.width, player1.height);
+  ctx.drawImage(img, player2.x, player2.y, player2.width, player2.height);
+}
+```

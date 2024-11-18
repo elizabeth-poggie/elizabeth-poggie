@@ -1,0 +1,87 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Promises && AJAX"
+created: "2024-11-18"
+number: 9
+---
+
+# Question 1
+
+I'm working on an AJAX request to dynamically add information to my page. Which of the following statements are true for an AJAX request?
+
+Select 2 answers:
+
+- ✅ I am causing the triggering of an HTTP request
+- ✅ I am writing code in JavaScript
+- ❌ All parts of the operation will occur synchronously
+- ❌ I am telling the browser to submit a form to a web server
+
+## Why?
+
+AJAX requests are used to communicate with servers through HTTP _using JavaScript_. These requests can fetch data (e.g., `GET` requests), send data (e.g., `POST` requests), or perform other operations without requiring a page reload.
+
+# Question 2
+
+Match up the concept with its description
+
+- Completing an instruction before moving on to the next instruction 👉 Synchronous Execution
+- A way to dynamically change loaded web pages with information that is obtained asynchronously 👉 AJAX
+- A function that performs an asynchronous HTTP request 👉 `fetch`
+- An object that represents the future result of an asynchronous operation 👉 Promise
+
+# Question 3
+
+Given the following JavaScript code:
+
+```js
+let test = (inValue) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(inValue > 100));
+  });
+};
+let theThing = test(5);
+```
+
+What will the variable `theThing` hold as soon as the last line is run?
+
+_For this question you may not use Chrome DevTools_
+
+- ❌ `5`
+- ❌ `undefined`
+- ❌ `5000`
+- ✅ `Promise { <pending> }`
+- ❌ `false`
+- ❌ `Promise`
+
+## Why?
+
+The function `test(5)` creates _and immediately returns a Promise_. However, this promise has not yet been resolved because the `setTimeout` callback hasn't been executed yet. So, the promise is still in the _pending_ state.
+
+# Question 4
+
+Which of the following is `true` about chaining promises?
+
+- ✅ Each `.then()` method runs only after the previous promise is resolved
+- ❌ `.catch()` must always be at the start of a promise chain
+- ❌ Only one `.then()` method can be chained to a promise
+- ❌ Using `.then()` makes the code synchronous
+
+## Why?
+
+it do be that way when chaining promises
+
+# Question 5
+
+What does the `fetch` function return in JavaScript?
+
+_For this question you may not use Chrome DevTools_
+
+- ❌ An HTML document
+- ❌ JSON data directly
+- ✅ A Promise representing the response of the request
+- ❌ The status of the HTTP request
+
+## Why?
+
+The `fetch` function in JavaScript returns a `Promise` that resolves to the response object of the HTTP request!!
