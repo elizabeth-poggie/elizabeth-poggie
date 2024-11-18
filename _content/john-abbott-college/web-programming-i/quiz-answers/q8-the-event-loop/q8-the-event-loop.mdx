@@ -10,12 +10,14 @@ number: 8
 
 In JavaScript, what is the purpose of the Event Loop?
 
-- To improve execution speed by running all code in many parallel threads
-- To continuously check for tasks, executing synchronous code immediately in the call stack, while asynchronous callbacks are queued and triggered according to priority
-- To control the flow of asynchronous events by executing synchronous code first and then adding asynchronous code later
-- To control memory allocation by clearing unused variables and functions from the call stack
+- ❌ To improve execution speed by running all code in many parallel threads
+- ❌ To continuously check for tasks, executing synchronous code immediately in the call stack, while asynchronous callbacks are queued and triggered according to priority
+- ✅ To control the flow of asynchronous events by executing synchronous code first and then adding asynchronous code later
+- ❌ To control memory allocation by clearing unused variables and functions from the call stack
 
 ## Why?
+
+This ensures that synchronous code _always_ takes priority, and asynchronous tasks are processed _only when the synchronous code has completed_. This is what makes our code non-blocking so we can continue to accept user interaction.
 
 # Question 2
 
@@ -23,12 +25,16 @@ Why is asynchronous programming useful in web development?
 
 _There are 2 correct answers._
 
-- It allows the webpage to continue responding to user interactions while tasks are completed in the background
-- It allows JavaScript to handle tasks like data fetching from the server and fancy calculations without freezing the webpage
-- It immediately loads all resources needed for the page
-- It enables code to block the main thread until all tasks are completed, preventing user interactions during processing.
+- ✅ It allows the webpage to continue responding to user interactions while tasks are completed in the background
+- ✅ It allows JavaScript to handle tasks like data fetching from the server and fancy calculations without freezing the webpage
+- ❌ It immediately loads all resources needed for the page
+- ❌ It enables code to block the main thread until all tasks are completed, preventing user interactions during processing.
 
 ## Why?
+
+Asynchronous programming ensures that long-running tasks do not block the main thread!!
+
+# Question 3
 
 Given the following code:
 
@@ -41,12 +47,16 @@ console.log("D");
 
 What is the order of execution?
 
-- A B C D
-- C B A D
-- A D B C
-- A D C B
+- ❌ A B C D
+- ❌ C B A D
+- ❌ A D B C
+- ✅ A D C B
 
 ## Why?
+
+- `console.log()` is a synchronous task and gets executed immediately
+- `Promise.resolve().then()` is a microtask and gets executed next
+- `setTimeout()` is a macrotask despite only taking 0 seconds at run time
 
 # Question 4
 
@@ -54,12 +64,14 @@ In JavaScript, which of the following are purposes of a reducer function when us
 
 _There are 2 correct answers:_
 
-- To transform an array into a new array by applying a function to each element individually
-- To convert an array into other data structures, such as an object or a different array format
-- To accumulate a single output value by applying a function to each element in an array, carrying over the result as it iterates
-- To remove all duplicate values from an array
+- ❌ To transform an array into a new array by applying a function to each element individually
+- ✅ To convert an array into other data structures, such as an object or a different array format
+- ✅ To accumulate a single output value by applying a function to each element in an array, carrying over the result as it iterates
+- ❌ To remove all duplicate values from an array
 
 ## Why?
+
+The `reduce` method is very powerful and can transform an array into any data structure, including other objects, arrays, dictionaries, etc. HOWEVER, it's primary purpose is to "reduce" the array to a single value using an accumulator.
 
 # Question 5
 
