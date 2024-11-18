@@ -71,3 +71,83 @@ ctx.fillStyle = "lightblue";
 // Step 2 - Create a rectangle at (50,50) with width 100 and height 25
 ctx.fillRect(50, 50, 100, 25);
 ```
+
+## Images
+
+```js
+// Step 1 - Create an image
+let img = new Image();
+img.src = "./images/cat.png";
+// Step 2 - Draw the image at position (10, 10) with dimensions 150
+img.onload = function () {
+  ctx.drawImage(img, 10, 10, 150, 150);
+};
+```
+
+# Exercise 1
+
+Create a cowboy in a desert. The desert background should be set up initially in the style, while the cowboy should be dynamically added to the scene using the canvas context.
+
+At the end of the lecture I will show you how to move him step by step :^)
+
+## Partial Solution
+
+Your CSS should be close to the following:
+
+```CSS
+#myCanvas {
+    background-image: url("./images/desert.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+}
+```
+
+# Interactive Art
+
+Let's bind our lad to keyboard controls so he can explore the mighty plains.
+
+```js
+// Step 0 - Create a canvas
+const c = document.getElementById("myCanvas");
+let ctx = c.getContext("2d");
+
+// Step 1 - Create an image
+let img = new Image();
+img.src = "./images/cat.png";
+
+// Step 2 - Init position for our brave soul
+let x = 10;
+let y = 10;
+const width = 150;
+const height = 150;
+
+// Step 3 - Draw the image at position (10, 10) with dimensions 150
+img.onload = function () {
+  ctx.drawImage(img, x, y, width, height);
+};
+
+// Step 4 - let's create a reusable function :^)
+function moveOurSon(e) {
+  // Step 5 - Clear the canvas before moving the image
+  ctx.clearRect(0, 0, c.width, c.height);
+
+  // Step 6 - Adjust position based on key
+  if (e.key === "ArrowUp") {
+    y -= 10;
+  } else if (e.key === "ArrowDown") {
+    y += 10;
+  } else if (e.key === "ArrowLeft") {
+    x -= 10;
+  } else if (e.key === "ArrowRight") {
+    x += 10;
+  }
+  // (you can also do the above with a switch case for cleaner code)
+
+  // Step 7 - draw our son again
+  ctx.drawImage(img, x, y, width, height);
+}
+// Step 8 - Event listener for keyboard inputs
+window.addEventListener("keydown", moveOurSon);
+```
