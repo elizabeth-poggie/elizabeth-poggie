@@ -51,7 +51,9 @@ let ctx = c.getContext("2d");
 
 ## Why 2 dimensions tho?
 
-The `CanvasRenderingContext2D` interface is the tool that lets you draw 2D objects, like rectangles, text, images, and more, on the canvas element. Think of it like a blank sheet of paper except you code the fun parts.
+The `CanvasRenderingContext2D` interface is the tool that lets you draw 2D objects, like rectangles, text, images, and more, on the canvas element.
+
+Think of it like a blank sheet of paper except you code the fun parts.
 
 ## Rectangles within Rectangles
 
@@ -86,7 +88,7 @@ img.onload = function () {
 
 # Exercise 1
 
-Create a cowboy in a desert. The desert background should be set up initially in the style, while the cowboy should be dynamically added to the scene using the canvas context.
+Create a cowboy in a desert. The desert background should be set up initially in the `<style>`, while the cowboy should be dynamically added to the scene using the canvas context.
 
 At the end of the lecture I will show you how to move him step by step :^)
 
@@ -195,10 +197,3 @@ function moveCowboys(e) {
   ctx.drawImage(img, player2.x, player2.y, player2.width, player2.height);
 }
 ```
-
-# Exercise 3
-
-Add a "smack feature" for each player:
-
-- Player 1 👉 `E` to smack
-- Player 2 👉 `O` to smack
