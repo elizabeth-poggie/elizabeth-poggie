@@ -19,7 +19,7 @@ The HTML5 Canvas is a fun graphics container that allows you to use JavaScript t
 For example, this is a fun rectangle:
 
 ```html
-<canvas id="myCanvas" width="200" height="100"></canvas>
+<canvas id="myCanvas" width="300" height="200"></canvas>
 ```
 
 ## Important things to know
@@ -151,3 +151,54 @@ function moveOurSon(e) {
 // Step 8 - Event listener for keyboard inputs
 window.addEventListener("keydown", moveOurSon);
 ```
+
+# Exercise 2
+
+Add another cowboy to the mix. They key binds for each player is as follows:
+
+- Player 1 👉 `WASD` to move
+- Player 2 👉 `IJKL` to move
+
+## Partial solution
+
+Move function:
+
+```js
+function moveCowboys(e) {
+  // Step 5 - Clear the canvas before moving the images
+  ctx.clearRect(0, 0, c.width, c.height);
+
+  // Player 1 controls (WASD)
+  if (e.key === "w") {
+    player1.y -= 10;
+  } else if (e.key === "s") {
+    player1.y += 10;
+  } else if (e.key === "a") {
+    player1.x -= 10;
+  } else if (e.key === "d") {
+    player1.x += 10;
+  }
+
+  // Player 2 controls (IKJL)
+  if (e.key === "i") {
+    player2.y -= 10;
+  } else if (e.key === "k") {
+    player2.y += 10;
+  } else if (e.key === "j") {
+    player2.x -= 10;
+  } else if (e.key === "l") {
+    player2.x += 10;
+  }
+
+  // Step 6 - Draw both players again
+  ctx.drawImage(img, player1.x, player1.y, player1.width, player1.height);
+  ctx.drawImage(img, player2.x, player2.y, player2.width, player2.height);
+}
+```
+
+# Exercise 3
+
+Add a "smack feature" for each player:
+
+- Player 1 👉 `E` to smack
+- Player 2 👉 `O` to smack
