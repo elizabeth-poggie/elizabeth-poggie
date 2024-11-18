@@ -1,7 +1,55 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "q9 promises"
+title: "Promises && AJAX"
 created: "2024-11-18"
 number: 9
 ---
+
+# Question 1
+
+I'm working on an AJAX request to dynamically add information to my page. Which of the following statements are true for an AJAX request?
+
+Select 2 answers:
+
+- I am causing the triggering of an HTTP request
+- I am writing code in JavaScript
+- All parts of the operation will occur synchronously
+- I am telling the browser to submit a form to a web server
+
+## Why?
+
+# Question 2
+
+Match up the concept with its description
+
+- Completing an instruction before moving on to the next instruction 👉
+- A way to dynamically change loaded web pages with information that is obtained asynchronously 👉
+- A function that performs an asynchronous HTTP request 👉
+- An object that represents the future result of an asynchronous operation 👉
+
+# Question 3
+
+Given the following JavaScript code:
+
+```js
+let test = (inValue) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(inValue > 100));
+  });
+};
+let theThing = test(5);
+```
+
+What will the variable `theThing` hold as soon as the last line is run?
+
+For this question you may not use Chrome DevTools
+
+- `5`
+- `undefined`
+- `5000`
+- `Promise { <pending> }`
+- `false`
+- `Promise`
+
+## Why?
