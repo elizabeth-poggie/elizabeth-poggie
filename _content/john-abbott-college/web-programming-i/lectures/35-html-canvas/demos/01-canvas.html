@@ -5,59 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kat Kowboy</title>
     <style>
-      #myCanvas {
-        background-image: url("./images/desert.png");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        border-radius: 20px;
-      }
+      /* todo */
     </style>
   </head>
   <body>
-    <canvas id="myCanvas" width="300" height="200"></canvas>
     <script>
-      // Step 0 - Create a canvas
-      const c = document.getElementById("myCanvas");
-      let ctx = c.getContext("2d");
-
-      // Step 1 - Create an image
-      let img = new Image();
-      img.src = "./images/cat.png";
-
-      // Step 2 - Init position for our brave soul
-      let x = 10;
-      let y = 10;
-      const width = 150;
-      const height = 150;
-
-      // Step 3 - Draw the image at position (10, 10) with dimensions 150
-      img.onload = function () {
-        ctx.drawImage(img, x, y, width, height);
-      };
-
-      // Step 4 - let's create a reusable function :^)
-      function moveOurSon(e) {
-        // Step 5 - Clear the canvas before moving the image
-        ctx.clearRect(0, 0, c.width, c.height);
-
-        // Step 6 - Adjust position based on key
-        if (e.key === "ArrowUp") {
-          y -= 10;
-        } else if (e.key === "ArrowDown") {
-          y += 10;
-        } else if (e.key === "ArrowLeft") {
-          x -= 10;
-        } else if (e.key === "ArrowRight") {
-          x += 10;
-        }
-        // (you can also do the above with a switch case for cleaner code)
-
-        // Step 7 - draw our son again
-        ctx.drawImage(img, x, y, width, height);
-      }
-      // Step 8 - Event listener for keyboard inputs
-      window.addEventListener("keydown", moveOurSon);
+      // todo
     </script>
   </body>
 </html>
