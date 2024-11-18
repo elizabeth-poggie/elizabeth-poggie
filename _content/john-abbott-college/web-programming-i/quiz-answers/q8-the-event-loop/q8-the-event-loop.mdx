@@ -89,7 +89,7 @@ let arrayTwo = arrayOne.map((x) => {
 });
 ```
 
-Option A:
+Option A ❌
 
 ```js
 {
@@ -97,7 +97,7 @@ Option A:
 }
 ```
 
-Option B:
+Option B ✅
 
 ```js
 [
@@ -108,7 +108,7 @@ Option B:
 ];
 ```
 
-Option C:
+Option C ❌
 
 ```js
 [
@@ -122,7 +122,7 @@ Option C:
 ];
 ```
 
-Option D
+Option D ❌
 
 ```js
 [
@@ -131,3 +131,7 @@ Option D
   { currentAge: 26, approximateBirthYear: 1998 },
 ];
 ```
+
+## Why?
+
+The `map` method creates a _new array_ by applying a callback function to each element of the original array. If no relevant properties are available, it fills them with the default non values.
