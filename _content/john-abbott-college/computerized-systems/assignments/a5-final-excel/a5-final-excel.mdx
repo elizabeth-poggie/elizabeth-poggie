@@ -20,21 +20,37 @@ Figure 1: you rolling in the fruits of your labour
 
 # Part 1
 
-Using the Product Sales sheet
+Refer to the `Product Sales` sheet and follow the instructions provided below.
 
 ## Styling
 
 - Freeze the top row
 - Apply custom styling
+- Ensure all column headers are readable and centered
 - Ensure all the columns are formatted with the proper data type (Currency, Percentage, etc.)
 
-## Pivot Table
+## Weekly Prescription Revenue by City
 
-Calculate Total Weekly Prescription Revenue by City.
+- In Column G, calculate the Total Weekly Prescription Revenue by City using the below formula:
 
-- Generate an analysis of price per week, population of city, monthly income of riders, and average parking rates per month on number of weekly riders. In other words, how is number of weekly riders affected by the other variables?
-- Based on the values for R Square, Observations, Significance F, Coefficients, and P-Value, is there a strong regression between the variables? Why? Clearly write your answers in the Excel sheet.
-- If a P-Value for a variable is higher than 0.05 remove it and repeat the regression analysis.
+```text
+"Weekly Prescription Count" x "Price per Prescription"
+```
+
+- Give the column a header with a meaningful name.
+- Create a Pivot Table on _a new worksheet_ where each city is a row and the values are the weekly revenue
+- Finally, give this new worksheet a meaningful name
+
+## Population Coverage by Price Bracket
+
+- Create another Pivot table on the same worksheet you created before
+- Group the "Price per Prescription" field into ranges (e.g., $15–$30, $31–$60, etc.) by right clicking on the pivot table and selecting the "Group" option
+- Determine which price bracket covers the largest population.
+
+## Patients Income by Price Bracket
+
+- Using the same pivot table worksheet as before, create another Pivot Table to determine which price bracket corresponds to higher average patient income.
+- Be sure to use the same "Price per Prescription" ranges as before
 
 ## Part 2
 
