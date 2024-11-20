@@ -68,7 +68,7 @@ export const getAllNotesForCategories = async (
           slug,
           created: frontmatter.created,
           coverSrc: frontmatter.coverSrc ?? null,
-          category,
+          category: frontmatter.category,
           baseFolder: fullBaseFolderPath,
         });
       }
