@@ -34,51 +34,80 @@ export const getAllNotesForCategories = async (
 ): Promise<{ notes: INote[]; total: number }> => {
   const allNotes: INote[] = [];
 
-  // Function to recursively get notes from a folder
-  const getNotesFromFolder = async (categoryPath: string, category: string) => {
-    if (!fileExists(categoryPath)) return;
+  // Function to recursively get notes from a folder with pagination logic
+  const getNotesFromFolder = async (
+    categoryPath: string,
+    category: string
+  ): Promise<INote[]> => {
+    if (!fileExists(categoryPath)) return [];
 
     const filesAndFolders = readDirectory(categoryPath);
+    const notesInCategory: INote[] = [];
 
     for (const item of filesAndFolders) {
       const fullPath = path.join(categoryPath, item);
 
       if (isDirectory(fullPath)) {
         // Recurse into subfolders
-        await getNotesFromFolder(fullPath, `${category}_${item}`);
+        const subCategoryNotes = await getNotesFromFolder(
+          fullPath,
+          `${category}_${item}`
+        );
+        notesInCategory.push(...subCategoryNotes);
       } else if (item.endsWith(".mdx")) {
         // Handle MDX files
         const { mdxSource, frontmatter } = await parseNoteContent(fullPath);
         const slug = `${baseFolder}/${category}`;
-        allNotes.push({
+        // Construct the image path while removing _
+        const fullBaseFolderPath = path
+          .join(baseFolder, category)
+          .replace(/_/g, "/");
+
+        notesInCategory.push({
           title: frontmatter.title,
           slug,
           created: frontmatter.created,
           coverSrc: frontmatter.coverSrc ?? null,
           category,
+          baseFolder: fullBaseFolderPath,
         });
       }
+
+      // Stop if we've already collected enough notes for the current page
+      if (notesInCategory.length >= page * pageSize) {
+        break;
+      }
     }
+
+    return notesInCategory;
   };
 
-  // Fetch notes for all categories
-  await Promise.all(
-    categories.map((category) => {
-      const categoryPath = path.join(
-        process.cwd(),
-        `_content/${baseFolder}/${category}`
-      );
-      return getNotesFromFolder(categoryPath, category);
-    })
+  // Fetch notes for all categories and keep track of the total notes
+  let totalNotes = 0;
+  for (const category of categories) {
+    const categoryPath = path.join(
+      process.cwd(),
+      `_content/${baseFolder}/${category}`
+    );
+    const categoryNotes = await getNotesFromFolder(categoryPath, category);
+
+    // Increment the total notes count for pagination
+    totalNotes += categoryNotes.length;
+
+    // Add the sorted, paginated notes to the allNotes array
+    allNotes.push(...categoryNotes);
+  }
+
+  // Sort by created date in descending order and apply pagination here
+  allNotes.sort(
+    (a, b) => new Date(b.created).getTime() - new Date(a.created).getTime()
   );
 
-  // Calculate total and apply pagination
-  const total = allNotes.length;
+  // Apply pagination
   const startIndex = (page - 1) * pageSize;
-  const endIndex = page * pageSize;
-  const paginatedNotes = allNotes.slice(startIndex, endIndex);
+  const paginatedNotes = allNotes.slice(startIndex, startIndex + pageSize);
 
-  return { notes: paginatedNotes, total };
+  return { notes: paginatedNotes, total: totalNotes };
 };
 
 export const getRelatedNotesByType = async (
