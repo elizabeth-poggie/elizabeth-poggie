@@ -24,14 +24,14 @@
 
 .left {
   width: 25%; // Fixed size for left sidebar
-  max-width: 25%;
+  max-width: 15%;
   height: calc(100vh - 20px); // Full viewport height with a small margin
   overflow-y: auto;
 }
 
 .right {
   width: 25%; // Fixed size for right sidebar
-  max-width: 25%;
+  max-width: 15%;
   height: calc(100vh - 20px);
   overflow-y: auto;
   display: flex;
@@ -40,7 +40,7 @@
 
 .content {
   padding: 0 120px;
-  width: 50%; // content takes remaining space
+  width: 70%; // content takes remaining space
   max-width: 100%;
   box-sizing: border-box; // prevent overflow
 }
