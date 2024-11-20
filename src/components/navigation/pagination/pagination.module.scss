@@ -1,7 +1,7 @@
 @import "../../../styles/variables.scss";
 
 .container {
-  padding: 0 2rem;
+  padding: 2vh vw;
 }
 
 .pagination {
@@ -17,25 +17,13 @@
 
 /* pagination pageItem */
 .pageItem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  height: 2rem;
-  border: 1px solid #eaeaea;
-  border-radius: 0.5rem;
+  color: $color-grey;
   cursor: pointer;
 }
 
 /* pagination page item when active */
 .pageItemActive {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  height: 2rem;
-  border: 1px solid #eaeaea;
-  border-radius: 0.5rem;
   cursor: pointer;
-  background-color: red;
+  color: $color-white;
+  font-weight: bold;
 }
