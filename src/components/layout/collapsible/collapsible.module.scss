@@ -12,12 +12,15 @@
 }
 
 .arrow {
-  padding-left: calc(2 * $unit);
+  padding-left: calc(3 * $unit); // space
+  flex-shrink: 0; // Prevent the arrow from resizing or moving
+  transform-origin: center;
 }
 
 .active .arrow,
 .collapsible:hover .arrow {
   transform: rotate(180deg);
+  padding-right: calc(3 * $unit); // space
   transition: transform 0.3s ease;
 }
 
