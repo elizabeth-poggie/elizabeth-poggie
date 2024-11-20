@@ -1,84 +1,66 @@
 #!/bin/bash
 
-# Source the helper functions
+# Source the helper functions and configs
+CONFIG_FILE="scripts/configs/notes.json"
 source "scripts/helpers/menu.sh"
+source "scripts/helpers/formatting.sh"
 
-# Prompt the user to select a directory
+## dep check
+if ! command -v jq &> /dev/null; then
+    echo "Plz install jq lol"
+    exit 1
+fi
+
+# Read directories from the JSON file
+directories=($(jq -r 'keys_unsorted[]' "$CONFIG_FILE"))
+
 echo "Enter a directory: "
-directories=("john-abbott-college" "portfolio" "recipes")
 capture_selection "${directories[@]}"
 directory="${directories[$?]}"
 
-# Define categories based on the selected directory
-case $directory in
-    "john-abbott-college")
-        categories=("Web Programming I" "Computerized Systems" "Admin" "User Interfaces" "Intro to Programming")
-        ;;
-    "portfolio")
-        categories=("Art" "Branding" "Management" "Hackathon")
-        ;;
-    "recipes")
-        categories=("Bread" "Dessert" "Snack")
-        ;;
-    *)
-        echo "Invalid directory selected."
-        exit 1
-        ;;
-esac
+# Read categories for the selected directory
+categories=($(jq -r --arg dir "$directory" '.[$dir].categories | keys_unsorted[]' "$CONFIG_FILE"))
 
-# Prompt the user to select a category
 echo "Enter category: "
 capture_selection "${categories[@]}"
 category="${categories[$?]}"
 
-# Define subcategories based on category selection
-subcategories=()
-if [ "$directory" = "john-abbott-college" ]; then
-    case $category in
-        "Web Programming I")
-            subcategories=("lectures" "assignments" "quiz-answers")
-            ;;
-        "Computerized Systems")
-            subcategories=("lectures" "assignments")
-            ;;
-        "Admin")
-            subcategories=("instructor-info" "schedules")
-            ;;
-        "User Interfaces")
-            subcategories=("lectures" "assignments")
-            ;;
-        *)
-            echo "No subcategories available for this category."
-            exit 1
-            ;;
-    esac
+# Read subcategories for the selected category (if any)
+subcategories=($(jq -r --arg dir "$directory" --arg cat "$category" '.[$dir].categories[$cat][]' "$CONFIG_FILE"))
 
-    # Prompt the user to select a subcategory
+if [ "${#subcategories[@]}" -gt 0 ]; then
     echo "Select a sub category: "
     capture_selection "${subcategories[@]}"
     subcategory="${subcategories[$?]}"
 fi
 
+
 # Prompt the user to enter a title
 echo "Enter title: "
 read title
 
+# Sanitize inputs
+sanitized_title=$(sanitize "$title")
+sanitized_category=$(sanitize "$category")
+sanitized_subcategory=$(sanitize "$subcategory")
+
 # Generate the current date in YYYY-MM-DD format
 created=$(date +'%Y-%m-%d')
 
-# Define the file name based on the title (replace spaces with hyphens and make lowercase)
-file_name=$(echo "$title" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
-kebabed_category=$(echo "$category" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
+# Define the file name
+file_name="$sanitized_title"
+kebabed_category="$sanitized_category"
+
 # Create target directories based on the directory, category, and subfolder (if applicable)
 if [ "$directory" = "john-abbott-college" ]; then
-    kebabed_sub_category=$(echo "$subcategory" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
+    kebabed_sub_category="$sanitized_subcategory"
     target_dir="_content/$directory/$kebabed_category/$kebabed_sub_category"
 else
     target_dir="_content/$directory/$kebabed_category"
 fi
 
 # Count existing files in the directory to assign the next number
-file_count=$(ls "$target_dir" | grep -E '^[0-9]+-' | wc -l)
+file_count=$(find "$target_dir" -maxdepth 1 -type f -name '[0-9]*-*' 2>/dev/null | wc -l)
 next_number_unformatted=$((file_count + 1))
 next_number=$(printf "%02d" $next_number_unformatted)
 
@@ -95,7 +77,6 @@ number: $next_number_unformatted
 ---"
 
 # Create the target directories
-mkdir -p "$target_dir/$file_name"
 mkdir -p "$target_dir/$file_name/assets"
 
 # Write the content to the MDX file
