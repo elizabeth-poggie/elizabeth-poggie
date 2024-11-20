@@ -11,5 +11,5 @@ to_camel_case() {
 }
 
 to_capital_camel_case() {
-    echo "$1" | sed -r 's/(^|-)([a-z])/\U\2/g' | sed 's/-//g'
+    echo "$1" | sed -r 's/(^|-)([a-z])/\U\2/g; s/-//g'
 }
