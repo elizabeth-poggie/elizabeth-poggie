@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Source the helper functions and configs
 CONFIG_FILE="scripts/configs/notes.json"
 source "scripts/helpers/menu.sh"
 source "scripts/helpers/formatting.sh"
@@ -33,7 +32,6 @@ echo "Enter category: "
 capture_selection "${categories[@]}"
 category="${categories[$?]}"
 
-# Verify that the category exists in the JSON
 if [ -z "$category" ]; then
     echo "Please select a non trash category lol"
     exit 1
