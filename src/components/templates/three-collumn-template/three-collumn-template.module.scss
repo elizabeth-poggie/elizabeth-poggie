@@ -9,13 +9,6 @@
   box-sizing: border-box; // prevent overflow
 }
 
-.contentSection {
-  padding: 0 120px; // large buffers between sidebars
-  width: 70%; // Content takes half the width
-  max-width: 100%;
-  box-sizing: border-box; // prevent overflow
-}
-
 .container {
   padding: calc(20 * $unit) calc(20 * $unit) calc(40 * $unit) calc(20 * $unit);
   display: flex;
@@ -30,50 +23,63 @@
 }
 
 .left {
-  display: flex;
-  flex-direction: row-reverse;
+  width: 25%; // Fixed size for left sidebar
+  max-width: 25%;
+  height: calc(100vh - 20px); // Full viewport height with a small margin
+  overflow-y: auto;
 }
 
-.sideBarSection {
-  width: 25%;
-  min-width: 5%; // restrict shrinking
-  max-width: 25%; // restrict overflow
+.right {
+  width: 25%; // Fixed size for right sidebar
+  max-width: 25%;
+  height: calc(100vh - 20px);
+  overflow-y: auto;
+  display: flex;
+  justify-content: flex-end; // stick to the right
+}
+
+.content {
+  padding: 0 120px;
+  width: 50%; // content takes remaining space
+  max-width: 100%;
+  box-sizing: border-box; // prevent overflow
 }
 
 @media screen and (max-width: $bp-lg) {
   .container {
-    padding: calc(20 * $unit) calc(10 * $unit) calc(40 * $unit) calc(10 * $unit);
+    padding: calc(20 * $unit) calc(4 * $unit) calc(40 * $unit) calc(4 * $unit);
   }
 
-  .contentSection {
-    padding: 0 60px; // medium buffers between sidebars
+  .content {
+    padding: 0 calc(8 * $unit);
+    width: 60%; // Adjust content width for smaller screens
   }
 
-  .sideBarSection {
-    max-width: 20%; // restrict overflow
+  .left,
+  .right {
+    width: 20%;
   }
 }
 
 @media screen and (max-width: $bp-md) {
   .container {
     padding: calc(20 * $unit) calc(20 * $unit) 0 calc(20 * $unit);
-    float: none;
   }
 
-  .sideBarSection {
-    display: none;
+  .left,
+  .right {
+    display: none; // Hide on smaller screens
   }
 
   .main {
     flex-direction: column;
-    width: 100%;
   }
 
   .header {
     max-width: 90%;
   }
 
-  .contentSection {
+  .content {
     padding: 0; // no buffers to worry about here
     width: 100%;
   }
@@ -81,7 +87,6 @@
 
 @media screen and (max-width: $bp-sm) {
   .container {
-    float: none;
     padding: calc(10 * $unit) calc(4 * $unit) calc(4 * $unit) calc(4 * $unit);
   }
 
@@ -89,15 +94,12 @@
     flex-direction: column;
   }
 
-  .sideBarSection {
-    display: none;
-  }
-
   .header {
     max-width: 95%;
   }
 
-  .contentSection {
+  .content {
     width: 100%;
+    padding: 0;
   }
 }

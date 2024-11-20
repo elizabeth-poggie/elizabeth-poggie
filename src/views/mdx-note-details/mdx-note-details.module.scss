@@ -25,6 +25,7 @@
   padding-top: 30px;
   margin-top: 7.5px;
   margin-bottom: 7.5px;
+  max-height: 80vh; /* required else it breaks sticky */
 }
 
 @media screen and (max-width: $bp-lg) {
@@ -34,12 +35,10 @@
 
   .collapsibleInSideBar {
     max-width: 135px;
-    overflow: hidden;
   }
 
   .tocInSideBar {
     max-width: 130px;
-    overflow: hidden;
   }
 }
 
