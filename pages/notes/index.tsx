@@ -4,8 +4,11 @@ import Meta from "../../src/views/meta/meta";
 import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
 import { Notes } from "../../src/views/notes/notes";
-import { getAllNotesForCategories } from "../../src/utils/noteFetchers";
 import { GetStaticPropsContext } from "next";
+import { Pagination } from "../../src/components/navigation/pagination/pagination";
+import React from "react";
+import router from "next/router";
+import { getAllNotesForCategories } from "../../src/services/noteService";
 
 export const NOTES_CATEGORIES = [
   "user-interfaces",
@@ -18,9 +21,17 @@ export const NOTES_BASE_FOLDER = "john-abbott-college";
 interface IProps {
   allNotes: INote[];
   pageSize: number;
+  currentPage: number;
+  total: number;
 }
 
-export default function Index({ allNotes, pageSize }: Readonly<IProps>) {
+export default function Index({
+  allNotes,
+  pageSize,
+  currentPage,
+  total,
+}: Readonly<IProps>) {
+  const [curr, setCurrentPage] = React.useState(currentPage);
   return (
     <>
       <Meta />
@@ -29,6 +40,15 @@ export default function Index({ allNotes, pageSize }: Readonly<IProps>) {
       </Head>
       <Burger navItems={navItems} />
       <Notes allNotes={allNotes} pageSize={pageSize} />
+      <Pagination
+        items={allNotes.length}
+        currentPage={curr}
+        pageSize={pageSize}
+        onPageChange={(page) => {
+          setCurrentPage(page);
+          router.push(`/notes?page=${page}`);
+        }}
+      />
     </>
   );
 }

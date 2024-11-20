@@ -9,9 +9,12 @@ import {
   isDirectory,
   findFileInDirectory,
 } from "../utils/fileHelpers";
-import { CategoryToLinkMap, INote } from "../interfaces/note";
+import { CategoryToLinkMap, Frontmatter, INote } from "../interfaces/note";
 import path from "path";
 import fs from "fs";
+import { replaceHyphensWithSpaces } from "../utils/textFormatters";
+import { serialize } from "next-mdx-remote/serialize";
+import { GetStaticPropsContext } from "next";
 
 /**
  * TODO - Optimize further by limiting file reads
@@ -46,7 +49,7 @@ export const getAllNotesForCategories = async (
       } else if (item.endsWith(".mdx")) {
         // Handle MDX files
         const { mdxSource, frontmatter } = await parseNoteContent(fullPath);
-        const slug = `${baseFolder}/${category}_${item.replace(".mdx", "")}`;
+        const slug = `${baseFolder}/${category}`;
         allNotes.push({
           title: frontmatter.title,
           slug,
@@ -114,6 +117,7 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
         getPathsFromFolder(fullPath, `${currentSlug}_${fileOrFolder}`);
       } else if (fileOrFolder.endsWith(".mdx")) {
         const fileNameWithoutExtension = fileOrFolder.replace(".mdx", "");
+
         paths.push({
           params: {
             slug: constructNoteSlug(currentSlug, fileNameWithoutExtension),
@@ -131,4 +135,66 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
   });
 
   return { paths, fallback: false };
+};
+
+export const getNoteProps = async (
+  ctx: GetStaticPropsContext,
+  baseFolder: string,
+  categories: string[]
+) => {
+  const { slug } = ctx.params as { slug: string };
+
+  // Split slug to handle nested structure
+  const parts = slug.split("_");
+  const fileName = parts.slice(-1)[0];
+  const subCategoryPath = parts;
+  const type = filterTypeCandidates(
+    subCategoryPath,
+    baseFolder,
+    categories,
+    fileName
+  );
+
+  // Iterate through all categories to find the matching file
+  for (const category of categories) {
+    const categoryPath = path.join(
+      process.cwd(),
+      `_content/${baseFolder}/${category}`
+    );
+
+    // Find the file path within the category
+    const filePath = findFileInDirectory(categoryPath, fileName);
+
+    if (filePath) {
+      console.log(`Found file at: ${filePath}`);
+
+      // Extract note content
+      const source = fs.readFileSync(filePath, "utf8");
+      const mdxSource = await serialize(source, { parseFrontmatter: true });
+
+      // Extract all related notes
+      const relatedNotes = await getRelatedNotesByType(baseFolder, category);
+
+      // Construct the image path
+      const fullBaseFolderPath = `/${baseFolder}/${subCategoryPath.join("/")}`;
+
+      return {
+        props: {
+          source: {
+            compiledSource: mdxSource.compiledSource,
+            scope: mdxSource.scope,
+            frontmatter: {
+              ...(mdxSource.frontmatter as Frontmatter),
+              type: replaceHyphensWithSpaces(type) || null,
+            },
+          },
+          baseFolder: fullBaseFolderPath,
+          relatedNotes,
+        },
+      };
+    }
+  }
+
+  // If no matching file is found, throw an error
+  throw new Error(`No matching file found for slug: ${slug}`);
 };

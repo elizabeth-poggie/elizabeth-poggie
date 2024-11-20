@@ -3,10 +3,10 @@ import Meta from "../../../src/views/meta/meta";
 import { Burger } from "../../../src/components/navigation/burger/Burger";
 import { navItems } from "../..";
 import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from "..";
-import { getNotePaths, getNoteProps } from "../../../src/utils/noteFetchers";
 import { GetStaticPropsContext } from "next";
 import { MdxNoteDetails } from "../../../src/views/mdx-note-details/mdx-note-details";
 import { MDXProps } from "../../recipes/[slug]";
+import { getNotePaths, getNoteProps } from "../../../src/services/noteService";
 
 export default function NoteDetailsPage(props: MDXProps) {
   return (

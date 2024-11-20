@@ -41,6 +41,7 @@ export const parseNoteContent = async (
   return { mdxSource, frontmatter: mdxSource.frontmatter as Frontmatter };
 };
 
+// Avoid adding the file name twice if it's the same as the last folder name
 export const constructNoteSlug = (
   currentSlug: string,
   fileNameWithoutExtension: string
