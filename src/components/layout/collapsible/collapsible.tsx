@@ -24,7 +24,7 @@ export function Collapsible({
         onClick={onClick}
       >
         <Text variant="h3" gutterBottom={1} style="capitalize">
-          {title}
+          {title}&nbsp;
         </Text>
         <div className={styles.arrow}>
           <ArrowIcon />

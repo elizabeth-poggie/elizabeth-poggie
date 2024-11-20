@@ -18,27 +18,21 @@
 }
 
 .tocInSideBar {
-  position: sticky;
   width: 100%;
   max-width: 200px;
-  top: 0;
   padding-top: 30px;
   margin-top: 7.5px;
   margin-bottom: 7.5px;
-  max-height: 80vh; /* required else it breaks sticky */
+  position: sticky;
+  top: 0;
+  overflow: visible;
+  height: 80vh;
+  overflow-y: auto;
 }
 
 @media screen and (max-width: $bp-lg) {
   .title {
     padding: 0 0 calc($unit * 15) 0;
-  }
-
-  .collapsibleInSideBar {
-    max-width: 135px;
-  }
-
-  .tocInSideBar {
-    max-width: 130px;
   }
 }
 
