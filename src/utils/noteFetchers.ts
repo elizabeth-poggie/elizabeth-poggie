@@ -1,5 +1,5 @@
 import fs from "fs";
-import { ILink, INote } from "../../interfaces/note";
+import { ILink, INote } from "../interfaces/note";
 import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";

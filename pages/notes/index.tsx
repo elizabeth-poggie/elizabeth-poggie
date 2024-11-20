@@ -4,7 +4,7 @@ import Meta from "../../src/views/meta/meta";
 import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
 import { Notes } from "../../src/views/notes/notes";
-import { getAllNotesForCategories } from "../../src/utils/helpers/noteFetchers";
+import { getAllNotesForCategories } from "../../src/utils/noteFetchers";
 import { GetStaticPropsContext } from "next";
 
 export const NOTES_CATEGORIES = [

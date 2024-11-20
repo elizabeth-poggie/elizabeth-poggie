@@ -9,7 +9,7 @@ import {
   Frontmatter,
   getNotePaths,
   getNoteProps,
-} from "../../src/utils/helpers/noteFetchers";
+} from "../../src/utils/noteFetchers";
 import { PORTFOLIO_BASE_FOLDER, PORTFOLIO_CATEGORIES } from ".";
 import { MDXProps } from "../recipes/[slug]";
 

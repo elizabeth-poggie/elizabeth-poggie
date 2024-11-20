@@ -5,7 +5,7 @@ import { navItems } from "..";
 import { INote } from "../../src/interfaces/note";
 import { GetStaticPropsContext } from "next";
 import { Gallery } from "../../src/views/gallery/gallery";
-import { getAllNotesForCategories } from "../../src/utils/helpers/noteFetchers";
+import { getAllNotesForCategories } from "../../src/utils/noteFetchers";
 
 export const RECIPES_CATEGORIES = ["bread", "snack", "dessert"];
 export const RECIPES_BASE_FOLDER = "recipes";

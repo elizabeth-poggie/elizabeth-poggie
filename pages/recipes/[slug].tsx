@@ -10,7 +10,7 @@ import {
   Frontmatter,
   getNotePaths,
   getNoteProps,
-} from "../../src/utils/helpers/noteFetchers";
+} from "../../src/utils/noteFetchers";
 import { RECIPES_BASE_FOLDER, RECIPES_CATEGORIES } from ".";
 
 export interface MDXProps {

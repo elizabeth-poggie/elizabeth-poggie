@@ -6,13 +6,10 @@ import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
 import { TextButton } from "../../components/inputs/text-button/text-button";
-import { sortByCreatedDescending } from "../../utils/helpers/noteSorters";
+import { sortByCreatedDescending } from "../../utils/noteSorters";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 import { Link } from "../../components/navigation/link/link";
-import {
-  formatDate,
-  pluralToSingular,
-} from "../../utils/helpers/textFormatters";
+import { formatDate, pluralToSingular } from "../../utils/textFormatters";
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
 import { Pagination } from "../../components/navigation/pagination/pagination";
 import router from "next/router";
