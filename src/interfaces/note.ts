@@ -3,6 +3,10 @@ export interface ILink {
   href: string;
 }
 
+export type CategoryToLinkMap = {
+  [key in string]: ILink[];
+};
+
 /**
  * Note
  * @interface INote
@@ -90,3 +94,5 @@ export interface INote {
    */
   content?: string;
 }
+
+export type Frontmatter = Omit<INote, "content">;

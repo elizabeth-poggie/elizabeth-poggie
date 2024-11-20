@@ -6,7 +6,7 @@ import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
 import { TextButton } from "../../components/inputs/text-button/text-button";
-import { sortByCreatedDescending } from "../../utils/noteSorters";
+import { sortByCreatedDescending } from "../../utils/noteHelpers";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 import { Link } from "../../components/navigation/link/link";
 import { formatDate, pluralToSingular } from "../../utils/textFormatters";

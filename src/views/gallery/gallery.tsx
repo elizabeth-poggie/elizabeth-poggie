@@ -4,7 +4,7 @@ import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { Link } from "../../components/navigation/link/link";
 import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
-import { sortByCreatedDescending } from "../../utils/noteSorters";
+import { sortByCreatedDescending } from "../../utils/noteHelpers";
 import styles from "./gallery.module.scss";
 import { getUniqueCategories } from "../../utils/noteAttributeFetchers";
 
