@@ -21,8 +21,10 @@ export type CategoryToLinkMap = {
  */
 export const getAllNotesForCategories = async (
   baseFolder: string,
-  categories: string[]
-): Promise<INote[]> => {
+  categories: string[],
+  page?: number,
+  pageSize?: number
+): Promise<{ notes: INote[]; total: number }> => {
   const allNotes: INote[] = [];
   const baseDirectory = path.join(process.cwd(), `_content/${baseFolder}`);
 
@@ -93,7 +95,10 @@ export const getAllNotesForCategories = async (
     })
   );
 
-  return allNotes;
+  // TODO - implement
+  const total = 0;
+  const notes = allNotes;
+  return { notes, total };
 };
 
 /**
@@ -218,12 +223,12 @@ export const getRelatedNotesByType = async (
   baseFolder: string,
   category: string
 ): Promise<CategoryToLinkMap> => {
-  const allNotes: INote[] = await getAllNotesForCategories(baseFolder, [
+  const { notes, total } = await getAllNotesForCategories(baseFolder, [
     category,
   ]);
 
   // Group notes by their type
-  const categoryMap: CategoryToLinkMap = allNotes.reduce((acc, note) => {
+  const categoryMap: CategoryToLinkMap = notes.reduce((acc, note) => {
     const { type } = note;
 
     if (type == null) {

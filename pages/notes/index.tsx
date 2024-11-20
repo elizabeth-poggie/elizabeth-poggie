@@ -17,9 +17,10 @@ export const NOTES_BASE_FOLDER = "john-abbott-college";
 
 interface IProps {
   allNotes: INote[];
+  pageSize: number;
 }
 
-export default function Index({ allNotes }: Readonly<IProps>) {
+export default function Index({ allNotes, pageSize }: Readonly<IProps>) {
   return (
     <>
       <Meta />
@@ -27,19 +28,28 @@ export default function Index({ allNotes }: Readonly<IProps>) {
         <title>Poggie • Notes</title>
       </Head>
       <Burger navItems={navItems} />
-      <Notes allNotes={allNotes} />
+      <Notes allNotes={allNotes} pageSize={pageSize} />
     </>
   );
 }
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  const allNotes: INote[] = await getAllNotesForCategories(
+  const page = ctx.params?.page ? parseInt(ctx.params.page as string, 10) : 1;
+  const pageSize = 10;
+
+  const { notes, total } = await getAllNotesForCategories(
     NOTES_BASE_FOLDER,
-    NOTES_CATEGORIES
+    NOTES_CATEGORIES,
+    page,
+    pageSize
   );
+
   return {
     props: {
-      allNotes,
+      allNotes: notes,
+      total,
+      currentPage: page,
+      pageSize,
     },
   };
 }
