@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './{{componentName}}.module.scss';
 
-interface {{componentNameCapitalized}}Props {
+interface {{ComponentNameCapitalized}}Props {
     // Define props here
 }
 
-export function {{componentNameCapitalized}}(props: {{componentNameCapitalized}}Props) {
+export function {{ComponentNameCapitalized}}(props: {{ComponentNameCapitalized}}Props) {
     return (
-        <div className={styles.{{componentName}}}>
+        <div>
             {/* Component content */}
         </div>
     );
