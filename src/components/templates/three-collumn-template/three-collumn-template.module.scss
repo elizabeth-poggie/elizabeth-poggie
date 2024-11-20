@@ -53,7 +53,9 @@
 
   .content {
     padding: 0 calc(8 * $unit);
-    width: 60%; // Adjust content width for smaller screens
+    width: 50%; // content takes remaining space
+    max-width: 50%; // prevent variance upon page load
+    min-width: 50%; // prevent variance upon page load
   }
 
   .left,
@@ -82,7 +84,9 @@
 
   .content {
     padding: 0; // no buffers to worry about here
-    width: 100%;
+    width: 100%; // content takes remaining space
+    max-width: 100%; // prevent variance upon page load
+    min-width: 100%; // prevent variance upon page load
   }
 }
 

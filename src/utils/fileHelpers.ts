@@ -4,26 +4,27 @@ if (typeof window === "undefined") {
 }
 import path from "path";
 
-// Helper function to check if a path exists
+// Check if a path exists
 export const fileExists = (filePath: string): boolean => {
   return fs.existsSync(filePath);
 };
 
-// Helper function to read a directory and get its contents
+// Read a directory and get its contents
 export const readDirectory = (dirPath: string): string[] => {
   return fs.readdirSync(dirPath);
 };
 
-// Helper function to check if a path is a directory
+// Check if a path is a directory
 export const isDirectory = (dirPath: string): boolean => {
   return fs.lstatSync(dirPath).isDirectory();
 };
 
-// Helper function to read file content
+// Read file content
 export const readFileContent = (filePath: string): string => {
   return fs.readFileSync(filePath, "utf8");
 };
 
+// Recursive helper to go down the folder tree
 export const findFileInDirectory = (
   dirPath: string,
   targetFile: string
@@ -41,5 +42,5 @@ export const findFileInDirectory = (
     }
   }
 
-  return null;
+  return null; // default failure
 };
