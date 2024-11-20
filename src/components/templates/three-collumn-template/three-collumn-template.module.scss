@@ -40,6 +40,8 @@
 .content {
   padding: 0 120px;
   width: 70%; // content takes remaining space
+  max-width: 70%; // prevent variance upon page load
+  min-width: 70%; // prevent variance upon page load
   max-width: 100%;
   box-sizing: border-box; // prevent overflow
 }
