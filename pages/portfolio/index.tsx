@@ -5,7 +5,7 @@ import { navItems } from "..";
 import { INote } from "../../src/interfaces/note";
 import { GetStaticPropsContext } from "next";
 import { Gallery } from "../../src/views/gallery/gallery";
-import { getAllNotesForCategories } from "../../src/utils/noteFetchers";
+import { getAllNotesForCategories } from "../../src/services/noteService";
 
 export const PORTFOLIO_CATEGORIES = ["management", "hackathon"];
 export const PORTFOLIO_BASE_FOLDER = "portfolio";
@@ -28,13 +28,13 @@ export default function PortfolioPage({ allNotes }: IProps) {
 }
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  const allNotes: INote[] = await getAllNotesForCategories(
+  const { notes, total } = await getAllNotesForCategories(
     PORTFOLIO_BASE_FOLDER,
     PORTFOLIO_CATEGORIES
   );
   return {
     props: {
-      allNotes,
+      allNotes: notes,
     },
   };
 }

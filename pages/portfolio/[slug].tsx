@@ -5,13 +5,9 @@ import { GetStaticPropsContext } from "next";
 import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
 import { GalleryDetails } from "../../src/views/gallery-details/gallery-details";
-import {
-  Frontmatter,
-  getNotePaths,
-  getNoteProps,
-} from "../../src/utils/noteFetchers";
 import { PORTFOLIO_BASE_FOLDER, PORTFOLIO_CATEGORIES } from ".";
 import { MDXProps } from "../recipes/[slug]";
+import { getNotePaths, getNoteProps } from "../../src/services/noteService";
 
 export default function RecipeDetailsPage(props: MDXProps) {
   return (

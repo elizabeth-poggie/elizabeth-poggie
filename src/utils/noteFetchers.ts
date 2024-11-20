@@ -15,9 +15,11 @@ export type CategoryToLinkMap = {
 /**
  * Because I love relative linking, organizing things in a component-driven style, and categorizing my notes, I'm making my life harder than it needs to be :^)
  *
+ * @deprecated
  * @param baseFolder e.g. recipes
  * @param categories e.g. bread
  * @returns INote[]
+ * @deprecated
  */
 export const getAllNotesForCategories = async (
   baseFolder: string,
@@ -104,6 +106,7 @@ export const getAllNotesForCategories = async (
 /**
  * Because i like to sort my different recipes by category, I'm making my life harder for myself
  *
+ * @deprecated
  * @param ctx
  * @param baseFolder
  * @param categories
@@ -169,6 +172,7 @@ export const getNoteProps = async (
 /**
  * C A T E G O R I E S
  *
+ * @deprecated
  * @param baseFolder
  * @param categories
  * @returns paths
@@ -219,6 +223,7 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
   };
 };
 
+// @deprecated
 export const getRelatedNotesByType = async (
   baseFolder: string,
   category: string
@@ -250,6 +255,7 @@ export const getRelatedNotesByType = async (
   return categoryMap;
 };
 
+// @deprecated
 const findFileInDirectory = (
   dirPath: string,
   targetFile: string
@@ -275,6 +281,7 @@ const findFileInDirectory = (
   return null;
 };
 
+// @deprecated
 const getType = (
   subCategoryPath: string[],
   baseFolder: string,
