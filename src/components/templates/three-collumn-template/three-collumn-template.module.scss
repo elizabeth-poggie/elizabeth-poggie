@@ -25,15 +25,13 @@
 
 .left {
   width: 25%; // Fixed size for left sidebar
-  max-width: 15%;
-  overflow: visible; /* Required to allow sticky */
-  position: relative; /* Ensure it doesn't default to static */
-  height: auto; /* Ensure the container isn't restricting height */
+  overflow: visible; // for sticky children
+  position: relative; // for sticky children
+  height: auto; // for sticky children
 }
 
 .right {
   width: 25%; // Fixed size for right sidebar
-  max-width: 15%;
   overflow-y: auto;
   display: flex;
   justify-content: flex-end; // stick to the right
