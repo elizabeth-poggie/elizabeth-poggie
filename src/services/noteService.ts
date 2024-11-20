@@ -13,6 +13,16 @@ import { CategoryToLinkMap, INote } from "../interfaces/note";
 import path from "path";
 import fs from "fs";
 
+/**
+ * TODO - Optimize further by limiting file reads
+ * TODO - optimize the getNotesFromFolder function with pagination instead of doing it at the end
+ *
+ * @param baseFolder
+ * @param categories
+ * @param page
+ * @param pageSize
+ * @returns
+ */
 export const getAllNotesForCategories = async (
   baseFolder: string,
   categories: string[],
@@ -59,9 +69,11 @@ export const getAllNotesForCategories = async (
     })
   );
 
-  // Handle pagination
+  // Calculate total and apply pagination
   const total = allNotes.length;
-  const paginatedNotes = allNotes.slice((page - 1) * pageSize, page * pageSize);
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = page * pageSize;
+  const paginatedNotes = allNotes.slice(startIndex, endIndex);
 
   return { notes: paginatedNotes, total };
 };
