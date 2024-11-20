@@ -19,11 +19,25 @@ capture_selection "${directories[@]}"
 directory="${directories[$?]}"
 
 # Read categories for the selected directory
-categories=($(jq -r --arg dir "$directory" '.[$dir].categories | keys_unsorted[]' "$CONFIG_FILE"))
+categories=()
+while IFS= read -r category; do
+    categories+=("$category")
+done < <(jq -r --arg dir "$directory" '.[$dir].categories | keys_unsorted[]' "$CONFIG_FILE")
+
+if [ "${#categories[@]}" -eq 0 ]; then
+    echo "No categories found for $directory. Exiting."
+    exit 1
+fi
 
 echo "Enter category: "
 capture_selection "${categories[@]}"
 category="${categories[$?]}"
+
+# Verify that the category exists in the JSON
+if [ -z "$category" ]; then
+    echo "Please select a non trash category lol"
+    exit 1
+fi
 
 # Read subcategories for the selected category (if any)
 subcategories=($(jq -r --arg dir "$directory" --arg cat "$category" '.[$dir].categories[$cat][]' "$CONFIG_FILE"))
