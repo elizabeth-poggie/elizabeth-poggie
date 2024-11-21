@@ -1,4 +1,8 @@
-import { parseNoteContent, constructNoteSlug } from "../utils/noteHelpers";
+import {
+  parseNoteContent,
+  constructNoteSlug,
+  sortByCreatedDescending,
+} from "../utils/noteHelpers";
 import {
   buildCategoryPath,
   filterTypeCandidates,
@@ -33,8 +37,8 @@ export const getAllNotesForCategories = async (
   pageSize = 10
 ): Promise<{ notes: INote[]; total: number }> => {
   const allNotes: INote[] = [];
+  const uniqueNotes = new Map<string, INote>(); // To track unique notes by slug
 
-  // Function to recursively get notes from a folder with pagination logic
   const getNotesFromFolder = async (
     categoryPath: string,
     category: string
@@ -58,7 +62,6 @@ export const getAllNotesForCategories = async (
         // Handle MDX files
         const { mdxSource, frontmatter } = await parseNoteContent(fullPath);
         const slug = `${baseFolder}/${category}`;
-        // Construct the image path while removing _
         const fullBaseFolderPath = path
           .join(baseFolder, category)
           .replace(/_/g, "/");
@@ -72,18 +75,13 @@ export const getAllNotesForCategories = async (
           baseFolder: fullBaseFolderPath,
         });
       }
-
-      // Stop if we've already collected enough notes for the current page
-      if (notesInCategory.length >= page * pageSize) {
-        break;
-      }
     }
 
     return notesInCategory;
   };
 
-  // Fetch notes for all categories and keep track of the total notes
   let totalNotes = 0;
+
   for (const category of categories) {
     const categoryPath = path.join(
       process.cwd(),
@@ -91,21 +89,20 @@ export const getAllNotesForCategories = async (
     );
     const categoryNotes = await getNotesFromFolder(categoryPath, category);
 
-    // Increment the total notes count for pagination
-    totalNotes += categoryNotes.length;
-
-    // Add the sorted, paginated notes to the allNotes array
-    allNotes.push(...categoryNotes);
+    for (const note of categoryNotes) {
+      if (!uniqueNotes.has(note.slug)) {
+        uniqueNotes.set(note.slug, note);
+        totalNotes++;
+      }
+    }
   }
 
-  // Sort by created date in descending order and apply pagination here
-  allNotes.sort(
-    (a, b) => new Date(b.created).getTime() - new Date(a.created).getTime()
-  );
+  // Convert Map to Array and sort by creation date
+  const sortedNotes = sortByCreatedDescending(Array.from(uniqueNotes.values()));
 
   // Apply pagination
   const startIndex = (page - 1) * pageSize;
-  const paginatedNotes = allNotes.slice(startIndex, startIndex + pageSize);
+  const paginatedNotes = sortedNotes.slice(startIndex, startIndex + pageSize);
 
   return { notes: paginatedNotes, total: totalNotes };
 };
