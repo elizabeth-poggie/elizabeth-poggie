@@ -61,7 +61,7 @@ export default function Index({
       },
       {
         threshold: 0.5, // Trigger when 50% of the loader is visible
-        rootMargin: "100px", // Preload when the loader is 100px from the viewport
+        rootMargin: "300px", // Preload when the loader is 100px from the viewport
       }
     );
 
