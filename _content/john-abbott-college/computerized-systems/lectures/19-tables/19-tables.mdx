@@ -6,6 +6,15 @@ created: "2024-11-21"
 number: 19
 ---
 
+# Course Updates
+
+- Assignment 5 👉due November 28 @ midnight
+- Practice Test 3 👉December 3rd
+- Test 3 👉December 5th
+- Test 3 will cover Assignment 4 and 5 material
+
+December 10th is a makeup day, and since we’ve already finished the course, we can do anything you want. Want to learn how to make a video game? Download stuff from the internet that doesn't require a download button? We can do that, just send me a MIO.
+
 # Access Tables
 
 We will look into the following aspects of working with tables:
@@ -50,72 +59,59 @@ When you create a table from scratch, the _first column will always be selected 
 
 Databases should be designed to reduce user error and guarantee data integrity.
 
-Access offers several ways enforcing data integrity. The two most common are:
+Access offers several ways enforcing data integrity.
 
-1. Defining fields with **data types**.
-2. **Data validation** for each field.
+## Data Type Categories
 
-### Data types
+The two most common:
+
+- Defining fields with data types
+- Data validation for each field
+
+## Data types
 
 Every field in the table must be assigned a data type. There are several data types to choose from.
 
-<br>
-
-![data types available in Access](assets/image-20201119124819312.png)
-
-<br>
-
 Data types are helpful in the following ways:
 
-2. To guide the type of data permitted in each field.
-3. To control the size of data entered in each field.
+- To guide the type of data permitted in each field.
+- To control the size of data entered in each field.
 
-> For a description of all the available data types, see the following page from Microsoft:
->
-> [Data types for Access desktop databases](https://support.microsoft.com/en-us/office/data-types-for-access-desktop-databases-df2b83ba-cef6-436d-b679-3418f622e482)
+## Documentation
+
+For a description of all the available data types, see [Data types for Access desktop databases](https://support.microsoft.com/en-us/office/data-types-for-access-desktop-databases-df2b83ba-cef6-436d-b679-3418f622e482) by Microsoft
+
+## Type Restriction
 
 To control the number of characters permitted in each field:
 
-1. Select the desired field to be controlled
-2. Change the value of **_Field Size_**
+- Select the desired field to be controlled
+- Change the value of **_Field Size_**
 
-<br>
-
-![Controlling field size](assets/image-20201119132355822.png)
-
-<br>
-
-### Data Validation Rules
+# Data Validation
 
 It is possible to validate the data being entered into a field in order to reduce mistakes.
 
-<br>
+## Rule Example
 
-Consider the field **_Registration Date_**.
+Consider the field `Registration Date`. Let's apply a validation rule where all entered dates need to be:
 
-Let's apply a validation rule where all entered dates need to be:
-
-- Either the current date
-
-  OR
-
+- Either the current date, ORRRRRR ....
 - Be in the future
 
-> It's possible to combine multiple validation rules with the keywords: OR , AND
+It's possible to combine multiple validation rules with the keywords: OR , AND
 
-1. Select the _Registration Date_ field and from the **_Fields_ menu** select _Field Validation Rule_.
+## Step by Step
 
-![Adding validation rule](assets/image-20201119135146482.png)
+- Step 1) Select the `Registration Date` field
+- Step 2) Select `Field Validation Rule` from the `Fields menu`
+- Step 3) Use the _Expression Builder_ to create a validation rule.
 
-<br>
-
-2. Use the _Expression Builder_ to create a validation rule.
-
-   - Similarly to Excel, you can use the build-in functions or enter your own values
+  - Similarly to Excel, you can use the build-in functions or enter your own values
 
    <br>
 
-   ![entering validation rule](assets/entering%20validation%20rule.gif)
+  ![entering validation rule](assets/entering%20validation%20rule.gif)
 
 <br>
 
