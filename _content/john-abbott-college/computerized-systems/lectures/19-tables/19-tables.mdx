@@ -105,63 +105,33 @@ It's possible to combine multiple validation rules with the keywords: OR , AND
 
 - Step 1) Select the `Registration Date` field
 - Step 2) Select `Field Validation Rule` from the `Fields menu`
-- Step 3) Use the _Expression Builder_ to create a validation rule.
+- Step 3) Use the `_`Expression Builder` to create a validation rule
+- Step 4) Add a `Field Validation Message` that users will see when they enter data that does not follows your validation rule
 
-  - Similarly to Excel, you can use the build-in functions or enter your own values
-
-   <br>
-
-  ![entering validation rule](assets/entering%20validation%20rule.gif)
-
-<br>
-
-3. Add a _Field Validation Message_ that users will see when they enter data that does not follows your validation rule
-
-   <br>
-
-   ![image-20201119140058942](assets/image-20201119140058942.png)
-
-   <br>
-
-   ![image-20201119140122358](assets/image-20201119140122358.png)
-
-<br>
-
-## Importing Data from Excel
+# Importing Data from Excel
 
 To import data from an existing Excel sheet do the following:
 
-1. Select the _External Data_ menu
-2. Select _New Data Source_
-3. Select _From File_ and choose _Excel_
+- Select the _External Data_ menu
+- Select _New Data Source_
+- Select _From File_ and choose _Excel_
 
-![image-20201119143546572](assets/image-20201119143546572.png)
+## Wizard Conversion
 
-<br>
+Follow the wizard to choose how to convert your data and pay close attention to the following:
 
-Follow the wizard to choose how to convert your data.
+- Select if you will create a new table or append it to an existing table
+- Carefully check the data type for each field
+- Decide on a primary key
+  - You can either use a column from the spreadsheet or
+  - Let Access create a new field as the primary key.
 
-**Pay close attention to the following:**
+# Exercise
 
-1. Select if you will create a new table or append it to an existing table
-2. Carefully check the data type for each field
-3. Decide on a primary key
-   1. You can either use a column from the spreadsheet or
-   2. Let Access create a new field as the primary key.
+Download the file _Departments.xlsx_
 
-## Exercises
-
-Download the file _Departments.xlsx_ available in Teams under Week 13.
-
-### Exercise 1
-
-1. Start a new database and create a table to hold the data contained in the Excel sheet.
-2. Populate the first 3 records of the table manually
-3. Add the following data validation:
-   1. The department ID is only 2 characters long.
-   2. The phone numbers are no longer than 15 characters.
-   3. The suite Number must be bigger than 500.
-
-### Exercise 2
-
-1. Import that entire Excel spread sheet as a new table in Access.
+- Start a new database and create a table to hold the data contained in the Excel - Populate the first 3 records of the table manually
+- Add the following data validation:
+  - The department ID is only 2 characters long.
+  - The phone numbers are no longer than 15 characters.
+  - The suite Number must be bigger than 500.
