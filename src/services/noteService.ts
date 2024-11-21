@@ -11,7 +11,7 @@ import {
 } from "../utils/fileHelpers";
 import { CategoryToLinkMap, Frontmatter, INote } from "../interfaces/note";
 import path from "path";
-import fs from "fs";
+import fs from "fs"; // Cannot be used directly in Next.js code that runs in the browser
 import { replaceHyphensWithSpaces } from "../utils/textFormatters";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";

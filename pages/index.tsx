@@ -12,7 +12,7 @@ export const navItems: ILink[] = [
     text: "Home",
   },
   {
-    href: "/notes",
+    href: "/notes?page=1",
     text: "Notes",
   },
   {
