@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./three-collumn-template.module.scss";
-import { cs } from "../../../utils/classHelpers";
 
 interface IProps {
   header: React.ReactNode;
