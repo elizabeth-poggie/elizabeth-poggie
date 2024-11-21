@@ -66,25 +66,27 @@ If you need a different field to act as the primary key, you can change this set
 
 # Data Integrity
 
-Databases should be designed to reduce user error and guarantee data integrity.
+Databases are designed to minimize user errors and ensure data integrity.
 
-Access offers several ways enforcing data integrity.
+Microsoft Access provides several tools to help enforce data integrity, keeping your database accurate and consistent.
 
 ## Data Type Categories
 
-The two most common:
+Two key methods for maintaining data integrity are:
 
-- Defining fields with data types
-- Data validation for each field
+- Defining fields with specific data types.
+- Validating the data entered into each field.
 
 ## Data types
 
-Every field in the table must be assigned a data type. There are several data types to choose from.
+Every field in a table must be assigned a data type. Access offers a variety of data types to suit different needs.
 
-Data types are helpful in the following ways:
+Data types are essential for:
 
-- To guide the type of data permitted in each field.
-- To control the size of data entered in each field.
+- Guiding what kind of data is allowed in each field.
+- Controlling the size of the data entered, which can improve storage efficiency and reduce errors.
+
+Examples include text, numbers, dates, and more.
 
 ## Documentation
 
@@ -92,55 +94,58 @@ For a description of all the available data types, see [Data types for Access de
 
 ## Type Restriction
 
-To control the number of characters permitted in each field:
+To limit the number of characters allowed in a field:
 
-- Select the desired field to be controlled
-- Change the value of **_Field Size_**
+- Select the field you want to modify.
+- Adjust the Field Size property to specify the maximum character limit.
 
 # Data Validation
 
-It is possible to validate the data being entered into a field in order to reduce mistakes.
+Validating the data entered into fields helps reduce errors and maintain the integrity of your database.
 
 ## Rule Example
 
-Consider the field `Registration Date`. Let's apply a validation rule where all entered dates need to be:
+Let’s say we have a field called Registration Date. We can create a validation rule to ensure that:
 
-- Either the current date, ORRRRRR ....
-- Be in the future
+- The date entered is either today ORRRRRRR
+- a future date
 
-It's possible to combine multiple validation rules with the keywords: OR , AND
+To create more complex rules, you can use the keywords OR and AND to combine multiple conditions.
 
-## Step by Step
+## Step-by-Step Instructions
 
-- Step 1) Select the `Registration Date` field
-- Step 2) Select `Field Validation Rule` from the `Fields menu`
-- Step 3) Use the `_`Expression Builder` to create a validation rule
-- Step 4) Add a `Field Validation Message` that users will see when they enter data that does not follows your validation rule
+- Step 1) Select the Registration Date field in your table
+- Step 2) Go to the Fields menu and choose Field Validation Rule.
+- Step 3) Use the Expression Builder to set up your validation rule. Example: >= Date() to ensure dates are today or later.
+- Step 4) Add a Field Validation Message to inform users when their input does not meet the rule. Example: "Please enter a date that is today or in the future."
 
 # Importing Data from Excel
 
-To import data from an existing Excel sheet do the following:
+To import data from an existing Excel sheet, follow these steps:
 
-- Select the _External Data_ menu
-- Select _New Data Source_
-- Select _From File_ and choose _Excel_
+- Open the External Data menu.
+- Choose New Data Source.
+- Select From File and then Excel.
 
 ## Wizard Conversion
 
-Follow the wizard to choose how to convert your data and pay close attention to the following:
+The import wizard will guide you through the process. Pay close attention to:
 
-- Select if you will create a new table or append it to an existing table
-- Carefully check the data type for each field
-- Decide on a primary key
-  - You can either use a column from the spreadsheet or
-  - Let Access create a new field as the primary key.
+- Choosing whether to create a new table or append the data to an existing one.
+- Verifying the data type for each field to ensure accuracy.
+- Deciding on a primary key:
+  - You can select an existing column in the spreadsheet.
+  - Alternatively, let Access generate a new primary key field.
 
 # Exercise
 
-Download the file _Departments.xlsx_
+Download the file `Departments.xlsx` and complete the following steps:
 
-- Start a new database and create a table to hold the data contained in the Excel - Populate the first 3 records of the table manually
-- Add the following data validation:
-  - The department ID is only 2 characters long.
-  - The phone numbers are no longer than 15 characters.
-  - The suite Number must be bigger than 500.
+- Create a new database and a table to store the data from the Excel file.
+- Manually input the first three records into the table.
+- Add the following data validation rules:
+  - Department ID must be exactly 2 characters long
+  - Phone numbers cannot exceed 15 characters
+  - Suite Number must be greater than 500
+
+This exercise will help you practice importing, creating tables, and applying validation rules in Access.
