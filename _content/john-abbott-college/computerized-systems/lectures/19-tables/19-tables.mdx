@@ -32,7 +32,7 @@ In this section, we will cover the following aspects of working with tables:
 - [Modifying Tables](https://edu.gcfglobal.org/en/access2016/modifying-tables/1/) from GCF Global
 - [Build tables and set data types](https://support.microsoft.com/en-us/office/video-build-tables-and-set-data-types-997c250d-aec6-4430-8de5-a08671e13921?wt.mc_id=otc_access) from Microsoft
 
-## Read the Warnings ⚠ 👀
+## Read the Warnings 👀
 
 Access databases are built to reduce user errors, which means the system has strict rules about how it should be used.
 
@@ -45,18 +45,16 @@ These warning messages are not just alerts—they often contain helpful informat
 Every table needs a field that serves as its primary key.
 
 - The primary key acts as a unique identifier for each record in the table.
-- A table can have only one primary key.
+- An entry can have only one primary key.
 
 ## Everyday Examples
 
-For example, your student ID at John Abbott functions as a primary key in a student account table 🏫.
+Can you think of examples of primary keys?
 
-Can you think of other examples of primary keys?
-
+- student ID
 - SIN numbers
 - Order numbers
 - Product barcodes
-- others
 
 ## Keys && Table Creation
 
@@ -70,14 +68,15 @@ Databases are designed to minimize user errors and ensure data integrity.
 
 Microsoft Access provides several tools to help enforce data integrity, keeping your database accurate and consistent.
 
-## Data Type Categories
+## Data types IRL
 
-Two key methods for maintaining data integrity are:
+Can you think of examples of data types?
 
-- Defining fields with specific data types.
-- Validating the data entered into each field.
+- Phone numbers
+- Postal codes
+- Metric/imperial units
 
-## Data types
+## Data types in MS Access
 
 Every field in a table must be assigned a data type. Access offers a variety of data types to suit different needs.
 
@@ -87,6 +86,13 @@ Data types are essential for:
 - Controlling the size of the data entered, which can improve storage efficiency and reduce errors.
 
 Examples include text, numbers, dates, and more.
+
+## Data Type Categories
+
+Two key methods for maintaining data integrity are:
+
+- Defining fields with specific data types.
+- Validating the data entered into each field.
 
 ## Documentation
 
@@ -114,6 +120,8 @@ To create more complex rules, you can use the keywords OR and AND to combine mul
 
 ## Step-by-Step Instructions
 
+![demo](./assets/demo.gif)
+
 - Step 1) Select the Registration Date field in your table
 - Step 2) Go to the Fields menu and choose Field Validation Rule.
 - Step 3) Use the Expression Builder to set up your validation rule. Example: `>= Date()` to ensure dates are today or later.
@@ -137,7 +145,7 @@ The import wizard will guide you through the process. Pay close attention to:
   - You can select an existing column in the spreadsheet.
   - Alternatively, let Access generate a new primary key field.
 
-# Exercise
+# Exercise 1
 
 Download the file `Departments.xlsx` and complete the following steps:
 
