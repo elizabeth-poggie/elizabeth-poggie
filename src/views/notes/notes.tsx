@@ -1,7 +1,5 @@
 import React from "react";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
-import { ListItem } from "../../components/display/list-item/list-item";
-import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
@@ -11,19 +9,10 @@ import { ThreeColumnTemplate } from "../../components/templates/three-collumn-te
 import { Link } from "../../components/navigation/link/link";
 import { formatDate, pluralToSingular } from "../../utils/textFormatters";
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
-import { Pagination } from "../../components/navigation/pagination/pagination";
-import router from "next/router";
 
 interface IProps {
   allNotes: INote[];
 }
-
-// List of supported filters lol
-export const filterToColorMap = {
-  // Categories
-  "User Interfaces": "green",
-  "Web Programming I": "yellow",
-};
 
 export function Notes({ allNotes }: IProps) {
   const sortedNotes = sortByCreatedDescending(allNotes); // Sort latest notes

@@ -21,8 +21,6 @@ import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";
 
 /**
- * TODO - Optimize further by limiting file reads
- * TODO - optimize the getNotesFromFolder function with pagination instead of doing it at the end
  *
  * @param baseFolder
  * @param categories
