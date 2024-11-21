@@ -41,7 +41,7 @@ export default function Index({
       <Burger navItems={navItems} />
       <Notes allNotes={allNotes} pageSize={pageSize} />
       <Pagination
-        items={allNotes.length}
+        items={total}
         currentPage={curr}
         pageSize={pageSize}
         onPageChange={(page) => {
