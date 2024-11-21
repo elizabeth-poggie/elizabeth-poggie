@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { INote } from "../../src/interfaces/note";
 import Meta from "../../src/views/meta/meta";
 import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
 import { Notes } from "../../src/views/notes/notes";
-import { Pagination } from "../../src/components/navigation/pagination/pagination";
 import { getAllNotesForCategories } from "../../src/services/noteService";
+import { Text } from "../../src/components/typography/text/text";
 
 export const NOTES_CATEGORIES = [
   "user-interfaces",
@@ -20,32 +19,29 @@ export const NOTES_BASE_FOLDER = "john-abbott-college";
 interface IProps {
   initialNotes: INote[];
   initialPageSize: number;
-  initialCurrentPage: number;
   total: number;
 }
 
 export default function Index({
   initialNotes,
   initialPageSize,
-  initialCurrentPage,
   total,
 }: Readonly<IProps>) {
   const [notes, setNotes] = useState(initialNotes);
-  const [currentPage, setCurrentPage] = useState(initialCurrentPage);
+  const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
+  const loaderRef = useRef<HTMLDivElement | null>(null);
 
   const pageSize = initialPageSize;
 
-  const fetchNotesForPage = async (page: number) => {
+  const fetchNotes = async (page: number) => {
     try {
       setLoading(true);
       const response = await fetch(
         `/api/notes?page=${page}&pageSize=${pageSize}`
       );
       const data = await response.json();
-      console.log(data.notes);
-      setNotes(data.notes);
+      setNotes((prevNotes) => [...prevNotes, ...data.notes]);
     } catch (error) {
       console.error("Error fetching notes:", error);
     } finally {
@@ -53,21 +49,28 @@ export default function Index({
     }
   };
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    // shallow === Updates the URL without a full page reload
-    router.push(`/notes?page=${page}`, undefined, { shallow: true });
-    fetchNotesForPage(page);
-  };
-
   useEffect(() => {
-    console.log("Router query:", router.query.page); // Debugging log
-    if (router.query.page) {
-      const page = parseInt(router.query.page as string, 10) || 1;
-      setCurrentPage(page);
-      fetchNotesForPage(page);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !loading && notes.length < total) {
+          const nextPage = currentPage + 1;
+          setCurrentPage(nextPage);
+          fetchNotes(nextPage);
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
     }
-  }, [router.query.page]);
+
+    return () => {
+      if (loaderRef.current) {
+        observer.unobserve(loaderRef.current);
+      }
+    };
+  }, [loading, currentPage, notes.length, total]);
 
   return (
     <>
@@ -76,25 +79,25 @@ export default function Index({
         <title>Poggie • Notes</title>
       </Head>
       <Burger navItems={navItems} />
-      <Notes allNotes={notes} pageSize={pageSize} />
-      <Pagination
-        items={total}
-        currentPage={currentPage}
-        pageSize={pageSize}
-        onPageChange={handlePageChange}
-      />
+      <Notes allNotes={notes} />
+      <div ref={loaderRef} style={{ height: "50px", textAlign: "center" }}>
+        {loading && (
+          <Text variant="subheading" style="italics">
+            Loading more notes...
+          </Text>
+        )}
+      </div>
     </>
   );
 }
 
 export async function getServerSideProps(context) {
-  const page = parseInt(context.query.page as string, 10) || 1;
   const pageSize = 10;
 
   const { notes, total } = await getAllNotesForCategories(
     NOTES_BASE_FOLDER,
     NOTES_CATEGORIES,
-    page,
+    1,
     pageSize
   );
 
@@ -102,7 +105,6 @@ export async function getServerSideProps(context) {
     props: {
       initialNotes: notes,
       total,
-      initialCurrentPage: page,
       initialPageSize: pageSize,
     },
   };

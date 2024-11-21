@@ -16,7 +16,6 @@ import router from "next/router";
 
 interface IProps {
   allNotes: INote[];
-  pageSize: number;
 }
 
 // List of supported filters lol
@@ -26,13 +25,12 @@ export const filterToColorMap = {
   "Web Programming I": "yellow",
 };
 
-export function Notes({ allNotes, pageSize }: IProps) {
+export function Notes({ allNotes }: IProps) {
   const sortedNotes = sortByCreatedDescending(allNotes);
   const [filteredNotes, setFilteredNotes] = React.useState(sortedNotes);
   const [activeFilter, setActiveFilter] = React.useState<
     string | "John Abbott College"
   >("John Abbott College");
-  // const [currentPage, setCurrentPage] = React.useState(1);
 
   const setNotes = (filter: string) => {
     setActiveFilter(filter);
@@ -40,7 +38,6 @@ export function Notes({ allNotes, pageSize }: IProps) {
       (note) => note.type === filter || note.category === filter
     );
     setFilteredNotes(newFilterNotes);
-    // setCurrentPage(1); // Reset to the first page when filter changes
   };
 
   const renderFilterRow = (filterType: string) => {
@@ -149,15 +146,6 @@ export function Notes({ allNotes, pageSize }: IProps) {
         mainContent={renderMainContent()}
         leftSidebar={renderFilterRow("category")}
       />
-      {/* <Pagination
-        items={filteredNotes.length} // Total number of items
-        currentPage={currentPage} // Current active page
-        pageSize={pageSize} // Number of items per page
-        onPageChange={(page) => {
-          setCurrentPage(page);
-          router.push(`/notes?page=${page}`);
-        }}
-      /> */}
     </>
   );
 }
