@@ -26,18 +26,14 @@ export const filterToColorMap = {
 };
 
 export function Notes({ allNotes }: IProps) {
-  const sortedNotes = sortByCreatedDescending(allNotes);
-  const [filteredNotes, setFilteredNotes] = React.useState(sortedNotes);
+  const sortedNotes = sortByCreatedDescending(allNotes); // Sort latest notes
+
   const [activeFilter, setActiveFilter] = React.useState<
     string | "John Abbott College"
   >("John Abbott College");
 
   const setNotes = (filter: string) => {
     setActiveFilter(filter);
-    const newFilterNotes = allNotes.filter(
-      (note) => note.type === filter || note.category === filter
-    );
-    setFilteredNotes(newFilterNotes);
   };
 
   const renderFilterRow = (filterType: string) => {
@@ -46,9 +42,7 @@ export function Notes({ allNotes }: IProps) {
     };
 
     const filters: string[] = [
-      ...allNotes.map((note: INote) => {
-        return note[filterType];
-      }),
+      ...allNotes.map((note: INote) => note[filterType]),
     ].filter(onlyUnique);
 
     return (
@@ -57,26 +51,23 @@ export function Notes({ allNotes }: IProps) {
           <TextButton
             onClick={() => {
               setActiveFilter("John Abbott College");
-              setFilteredNotes(allNotes);
             }}
             color={activeFilter === "John Abbott College" ? "white" : "grey"}
           >
             John Abbott College
           </TextButton>
         </header>
-        {filters.map((filter: string) => {
-          return (
-            <div key={filter}>
-              <TextButton
-                variant="subheading"
-                onClick={() => setNotes(filter)}
-                color={activeFilter === filter ? "white" : "grey"}
-              >
-                {filter}
-              </TextButton>
-            </div>
-          );
-        })}
+        {filters.map((filter: string) => (
+          <div key={filter}>
+            <TextButton
+              variant="subheading"
+              onClick={() => setNotes(filter)}
+              color={activeFilter === filter ? "white" : "grey"}
+            >
+              {filter}
+            </TextButton>
+          </div>
+        ))}
       </nav>
     );
   };
@@ -132,7 +123,7 @@ export function Notes({ allNotes }: IProps) {
       <div className={styles.mainContent}>
         <HorizontalLine />
         <section className={styles.content}>
-          <>{filteredNotes.map((note: INote) => renderListItem(note))}</>
+          <>{sortedNotes.map((note: INote) => renderListItem(note))}</>
         </section>
       </div>
     );

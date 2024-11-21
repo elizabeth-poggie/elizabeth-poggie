@@ -31,17 +31,18 @@ export default function Index({
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const loaderRef = useRef<HTMLDivElement | null>(null);
-
   const pageSize = initialPageSize;
 
   const fetchNotes = async (page: number) => {
     try {
       setLoading(true);
+      console.log("page: ", page, " pageSize: ", pageSize);
       const response = await fetch(
         `/api/notes?page=${page}&pageSize=${pageSize}`
       );
       const data = await response.json();
       setNotes((prevNotes) => [...prevNotes, ...data.notes]);
+      console.log([data.notes]);
     } catch (error) {
       console.error("Error fetching notes:", error);
     } finally {
@@ -58,7 +59,10 @@ export default function Index({
           fetchNotes(nextPage);
         }
       },
-      { threshold: 1.0 }
+      {
+        threshold: 0.5, // Trigger when 50% of the loader is visible
+        rootMargin: "100px", // Preload when the loader is 100px from the viewport
+      }
     );
 
     if (loaderRef.current) {
