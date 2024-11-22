@@ -20,22 +20,11 @@ import { replaceHyphensWithSpaces } from "../utils/textFormatters";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";
 
-/**
- *
- * @param baseFolder
- * @param categories
- * @param page
- * @param pageSize
- * @returns
- */
-export const getAllNotesForCategories = async (
+const fetchNotesForCategories = async (
   baseFolder: string,
-  categories: string[],
-  page = 1,
-  pageSize = 10
-): Promise<{ notes: INote[]; total: number }> => {
-  const allNotes: INote[] = [];
-  const uniqueNotes = new Map<string, INote>(); // To track unique notes by slug
+  categories: string[]
+): Promise<INote[]> => {
+  const uniqueNotes = new Map<string, INote>();
 
   const getNotesFromFolder = async (
     categoryPath: string,
@@ -50,14 +39,12 @@ export const getAllNotesForCategories = async (
       const fullPath = path.join(categoryPath, item);
 
       if (isDirectory(fullPath)) {
-        // Recurse into subfolders
         const subCategoryNotes = await getNotesFromFolder(
           fullPath,
           `${category}_${item}`
         );
         notesInCategory.push(...subCategoryNotes);
       } else if (item.endsWith(".mdx")) {
-        // Handle MDX files
         const { mdxSource, frontmatter } = await parseNoteContent(fullPath);
         const slug = `${baseFolder}/${category}`;
         const fullBaseFolderPath = path
@@ -78,8 +65,6 @@ export const getAllNotesForCategories = async (
     return notesInCategory;
   };
 
-  let totalNotes = 0;
-
   for (const category of categories) {
     const categoryPath = path.join(
       process.cwd(),
@@ -90,40 +75,51 @@ export const getAllNotesForCategories = async (
     for (const note of categoryNotes) {
       if (!uniqueNotes.has(note.slug)) {
         uniqueNotes.set(note.slug, note);
-        totalNotes++;
       }
     }
   }
 
-  // Convert Map to Array and sort by creation date
-  const sortedNotes = sortByCreatedDescending(Array.from(uniqueNotes.values()));
-
-  // Apply pagination
-  const startIndex = (page - 1) * pageSize;
-  const paginatedNotes = sortedNotes.slice(startIndex, startIndex + pageSize);
-
-  return { notes: paginatedNotes, total: totalNotes };
+  return Array.from(uniqueNotes.values());
 };
 
-export const getRelatedNotesByType = async (
+const paginateNotes = <T>(
+  notes: INote[],
+  page: number,
+  pageSize: number
+): { notes: INote[]; total: number } => {
+  const total = notes.length;
+  const startIndex = (page - 1) * pageSize;
+  const paginated = notes.slice(startIndex, startIndex + pageSize);
+  return { notes: paginated, total };
+};
+
+export const getPaginatedNotesForCategories = async (
+  baseFolder: string,
+  categories: string[],
+  page = 1,
+  pageSize = 10
+): Promise<{ notes: INote[]; total: number }> => {
+  const notes = await fetchNotesForCategories(baseFolder, categories);
+  const sortedNotes = sortByCreatedDescending(notes);
+  return paginateNotes(sortedNotes, page, pageSize);
+};
+
+export const getNotesForCategory = async (
   baseFolder: string,
   category: string
-): Promise<CategoryToLinkMap> => {
-  const { notes } = await getAllNotesForCategories(baseFolder, [category]);
+): Promise<{ text: string; href: string }[]> => {
+  const notes = await fetchNotesForCategories(baseFolder, [category]);
 
-  return notes.reduce((acc, note) => {
-    const { type } = note;
-
-    if (type) {
-      if (!acc[type]) acc[type] = [];
-      acc[type].push({
-        text: `${acc[type].length + 1}. ${note.title}`,
-        href: `/notes/${note.slug}`,
-      });
-    }
-
-    return acc;
-  }, {} as CategoryToLinkMap);
+  return notes
+    .map((note, index) => ({
+      text: `${index + 1}. ${note.title}`,
+      href: `/notes/${note.slug}`,
+    }))
+    .sort((a, b) => {
+      const numA = parseInt(a.text.match(/\d+/)?.[0] || "0", 10);
+      const numB = parseInt(b.text.match(/\d+/)?.[0] || "0", 10);
+      return numA - numB;
+    });
 };
 
 export const getNotePaths = (baseFolder: string, categories: string[]) => {
@@ -197,7 +193,7 @@ export const getNoteProps = async (
       const mdxSource = await serialize(source, { parseFrontmatter: true });
 
       // Extract all related notes
-      const relatedNotes = await getRelatedNotesByType(baseFolder, category);
+      const relatedNotes = await getNotesForCategory(baseFolder, category);
 
       // Construct the image path
       const fullBaseFolderPath = `/${baseFolder}/${subCategoryPath.join("/")}`;

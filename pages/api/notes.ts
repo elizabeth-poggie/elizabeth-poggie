@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getAllNotesForCategories } from "../../src/services/noteService";
 import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from "../notes";
+import { getPaginatedNotesForCategories } from "../../src/services/noteService";
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,7 +10,7 @@ export default async function handler(
   const pageNumber = parseInt(page as string, 10);
   const pageSizeNumber = parseInt(pageSize as string, 10);
 
-  const { notes, total } = await getAllNotesForCategories(
+  const { notes, total } = await getPaginatedNotesForCategories(
     NOTES_BASE_FOLDER,
     NOTES_CATEGORIES,
     pageNumber,

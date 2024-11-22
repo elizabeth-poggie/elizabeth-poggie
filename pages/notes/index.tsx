@@ -5,7 +5,7 @@ import Meta from "../../src/views/meta/meta";
 import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
 import { Notes } from "../../src/views/notes/notes";
-import { getAllNotesForCategories } from "../../src/services/noteService";
+import { getPaginatedNotesForCategories } from "../../src/services/noteService";
 import { Text } from "../../src/components/typography/text/text";
 
 export const NOTES_CATEGORIES = [
@@ -98,7 +98,7 @@ export default function Index({
 export async function getServerSideProps(context) {
   const pageSize = 10;
 
-  const { notes, total } = await getAllNotesForCategories(
+  const { notes, total } = await getPaginatedNotesForCategories(
     NOTES_BASE_FOLDER,
     NOTES_CATEGORIES,
     1,
