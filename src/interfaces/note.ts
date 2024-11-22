@@ -93,6 +93,10 @@ export interface INote {
    * @deprecated using MDX now
    */
   content?: string;
+  /**
+   * Where does it belong in the order
+   */
+  number?: number;
 }
 
 export type Frontmatter = Omit<INote, "content">;

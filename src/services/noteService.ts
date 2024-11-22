@@ -82,7 +82,7 @@ const fetchNotesForCategories = async (
   return Array.from(uniqueNotes.values());
 };
 
-const paginateNotes = <T>(
+const paginateNotes = (
   notes: INote[],
   page: number,
   pageSize: number
@@ -107,19 +107,22 @@ export const getPaginatedNotesForCategories = async (
 export const getNotesForCategory = async (
   baseFolder: string,
   category: string
-): Promise<{ text: string; href: string }[]> => {
+): Promise<CategoryToLinkMap> => {
   const notes = await fetchNotesForCategories(baseFolder, [category]);
 
-  return notes
-    .map((note, index) => ({
-      text: `${index + 1}. ${note.title}`,
-      href: `/notes/${note.slug}`,
-    }))
-    .sort((a, b) => {
-      const numA = parseInt(a.text.match(/\d+/)?.[0] || "0", 10);
-      const numB = parseInt(b.text.match(/\d+/)?.[0] || "0", 10);
-      return numA - numB;
-    });
+  return notes.reduce((acc, note) => {
+    const { type } = note;
+
+    if (type) {
+      if (!acc[type]) acc[type] = [];
+      acc[type].push({
+        text: note.number ? `${note.number}. ${note.title}` : note.title,
+        href: `/notes/${note.slug}`,
+      });
+    }
+
+    return acc;
+  }, {} as CategoryToLinkMap);
 };
 
 export const getNotePaths = (baseFolder: string, categories: string[]) => {
