@@ -18,8 +18,15 @@ import { ThreeColumnTemplate } from "../../components/templates/three-collumn-te
 import { CategoryToLinkMap } from "../../interfaces/note";
 
 export function MdxNoteDetails(props: MDXProps) {
-  const { title, type } = props.source.frontmatter;
-  const relatedNotes: CategoryToLinkMap = props.relatedNotes;
+  const { title, type, category } = props.source.frontmatter;
+  const [activeCategory, setActiveCategory] = React.useState<string | null>(
+    category
+  );
+
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category);
+  };
+
   const noteType = type ? type : null;
   const router = useRouter();
 
@@ -50,6 +57,8 @@ export function MdxNoteDetails(props: MDXProps) {
   };
 
   const renderRelatedNotes = () => {
+    const relatedNotes = []; // todo
+
     if (!relatedNotes) {
       return null;
     }

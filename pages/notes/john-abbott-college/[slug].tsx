@@ -6,7 +6,11 @@ import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from "..";
 import { GetStaticPropsContext } from "next";
 import { MdxNoteDetails } from "../../../src/views/mdx-note-details/mdx-note-details";
 import { MDXProps } from "../../recipes/[slug]";
-import { getNotePaths, getNoteProps } from "../../../src/services/noteService";
+import {
+  getNotePaths,
+  getNoteProps,
+  getNotesForCategory,
+} from "../../../src/services/noteService";
 
 export default function NoteDetailsPage(props: MDXProps) {
   return (
@@ -22,7 +26,27 @@ export default function NoteDetailsPage(props: MDXProps) {
 }
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  return getNoteProps(ctx, NOTES_BASE_FOLDER, NOTES_CATEGORIES);
+  const category = Array.isArray(ctx.params?.category)
+    ? ctx.params?.category[0]
+    : ctx.params?.category || "";
+
+  // Fetch notes for the given category
+  const relatedNotes = await getNotesForCategory(NOTES_BASE_FOLDER, category);
+
+  const noteProps = await getNoteProps(
+    ctx,
+    NOTES_BASE_FOLDER,
+    NOTES_CATEGORIES
+  );
+  // Log the fetched props to verify structure
+  console.log("noteProps:", noteProps); // Check the structure of the noteProps object
+
+  return {
+    props: {
+      ...noteProps,
+      relatedNotes,
+    },
+  };
 }
 
 export async function getStaticPaths() {

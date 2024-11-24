@@ -110,14 +110,19 @@ export const getNotesForCategory = async (
 ): Promise<CategoryToLinkMap> => {
   const notes = await fetchNotesForCategories(baseFolder, [category]);
 
+  if (!notes.length) {
+    console.warn(`No notes found for category: ${category}`);
+    return {};
+  }
+
   return notes.reduce((acc, note) => {
-    const { type } = note;
+    const { type, title, number, slug } = note;
 
     if (type) {
       if (!acc[type]) acc[type] = [];
       acc[type].push({
-        text: note.number ? `${note.number}. ${note.title}` : note.title,
-        href: `/notes/${note.slug}`,
+        text: note.number ? `${number}. ${title}` : title,
+        href: `/notes/${slug}`,
       });
     }
 
@@ -178,46 +183,50 @@ export const getNoteProps = async (
     fileName
   );
 
-  // Iterate through all categories to find the matching file
-  for (const category of categories) {
-    const categoryPath = path.join(
-      process.cwd(),
-      `_content/${baseFolder}/${category}`
-    );
+  // Check only for one category (you can remove or modify categories array to filter for just one category)
+  const category = categories[0]; // For example, hardcode the first category
+  const categoryPath = path.join(
+    process.cwd(),
+    `_content/${baseFolder}/${category}`
+  );
 
-    // Find the file path within the category
-    const filePath = findFileInDirectory(categoryPath, fileName);
+  // Find the file path within the category
+  const filePath = findFileInDirectory(categoryPath, fileName);
 
-    if (filePath) {
-      console.log(`Found file at: ${filePath}`);
+  if (filePath) {
+    console.log(`Found file at: ${filePath}`);
 
-      // Extract note content
-      const source = fs.readFileSync(filePath, "utf8");
-      const mdxSource = await serialize(source, { parseFrontmatter: true });
+    // Extract note content
+    const source = fs.readFileSync(filePath, "utf8");
+    const mdxSource = await serialize(source, { parseFrontmatter: true });
 
-      // Extract all related notes
-      const relatedNotes = await getNotesForCategory(baseFolder, category);
+    // Construct the image path
+    const fullBaseFolderPath = `/${baseFolder}/${subCategoryPath.join("/")}`;
 
-      // Construct the image path
-      const fullBaseFolderPath = `/${baseFolder}/${subCategoryPath.join("/")}`;
-
-      return {
-        props: {
-          source: {
-            compiledSource: mdxSource.compiledSource,
-            scope: mdxSource.scope,
-            frontmatter: {
-              ...(mdxSource.frontmatter as Frontmatter),
-              type: replaceHyphensWithSpaces(type) || null,
-            },
+    return {
+      props: {
+        source: {
+          compiledSource: mdxSource.compiledSource,
+          scope: mdxSource.scope,
+          frontmatter: {
+            ...(mdxSource.frontmatter as Frontmatter),
+            type: replaceHyphensWithSpaces(type) || null,
           },
-          baseFolder: fullBaseFolderPath,
-          relatedNotes,
         },
-      };
-    }
+        baseFolder: fullBaseFolderPath,
+      },
+    };
   }
 
-  // If no matching file is found, throw an error
-  throw new Error(`No matching file found for slug: ${slug}`);
+  // If no matching file is found, handle it gracefully (optional fallback)
+  return {
+    props: {
+      source: {
+        compiledSource: "",
+        scope: {},
+        frontmatter: {}, // Ensure an empty object to prevent undefined errors
+      },
+      baseFolder: "",
+    },
+  };
 };
