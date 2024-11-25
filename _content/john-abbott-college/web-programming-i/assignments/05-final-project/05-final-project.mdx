@@ -96,6 +96,9 @@ name-of-your-game
 │ ├── ...
 ├── styles
 │ ├── ...
+├── classes
+│ ├── Player.js
+│ ├── Character.js
 ```
 
 # Part 3 - Homepage
@@ -104,10 +107,12 @@ This will serve as the entry point for your project.
 
 ## Player Requirements
 
-Create a `Player` class that includes the following properties:
+In `PLayer.js`, create a `Player` class that includes the following properties:
 
 - Player name
 - Player age
+
+`export` this class using `ES Modules`.
 
 ## Input Validation
 
@@ -119,7 +124,7 @@ Create a `Player` class that includes the following properties:
 
 ## Character Requirements
 
-Create a `Character` class that extends the `Player` class. Each character should have unique attributes to determine their performance in combat. Include the following properties:
+In `Character.js`, create a `Character` class that extends the `Player` class. Each character should have unique attributes to determine their performance in combat. Include the following properties:
 
 - Character name
 - Character skin
@@ -128,6 +133,8 @@ Create a `Character` class that extends the `Player` class. Each character shoul
 - Speed: Determines which character attacks first.
 - Mana/Energy (optional): For casting _magical_ abilities.
 - Other properties you may find fun for the gameplay. Have fun :^)
+
+`export` this class using `ES Modules`.
 
 ## Abilities Requirements
 
