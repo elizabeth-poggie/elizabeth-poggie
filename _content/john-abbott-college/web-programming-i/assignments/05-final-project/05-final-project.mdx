@@ -24,7 +24,7 @@ You are the founder of a fast-paced battle royale game and you need to create a 
 
 For this project, you are free to call _any_ API of your choice, but your work must meet the following criteria:
 
-- Use at least two different APIs to generate stats and skins for playable characters
+- Use at least two different API docs to generate stats and skins for playable characters
 - Include at least _three HTML_ files as described in the design requirements below
 
 If this freedom is spooky for you, feel free to use the [PokeAPI](https://pokeapi.co/) or the [tvmaze API](https://www.tvmaze.com/api) that we have seen in class. For example, you could turn TV information into playable characters using the following "People" endpoint:
@@ -56,7 +56,7 @@ Your designs should cover the following four screens:
   - Option 1: A Pokémon-style battle interface using radio buttons for selection.
   - Option 2: A Super Smash Bros-style interface using HTML Canvas.
 
-# Submission One (5%)
+# Submission 1 (5%)
 
 By `December 1rst, 2024 @ 11:59pm`, submit the following via Lea as a `.zip` folder:
 
@@ -150,7 +150,7 @@ Character abilities should be specific to each character and can be dynamically 
 - URL: `/people/{id}`
 - Example: `https://api.tvmaze.com/people/45327`
 
-Abilities can be designed based on the returned data. For instance, if the JSON data shows no "deathday" for Shia LaBeouf, one of his abilities could be "immortality"
+Abilities can be designed based on the returned data. For instance, the above `JSON` data shows no "deathday" for Shia LaBeouf, one of his abilities could be "immortality"
 
 ## Skin Requirements
 
@@ -167,7 +167,7 @@ Implement a slider for gameplay duration using the [range slider documentation](
 
 ## Input Validation
 
-- Ensure that two characters are selected before proceeding to the battle stage
+- Ensure that two characters are selected before proceeding to the battle stage (one for player 1, another for player 2)
 - Redirect the user to `gameplay.html` after successful form submission.
 - Use `localStorage` or `sessionStorage` to retain input data across pages, as described in Lecture 31.
 
