@@ -136,7 +136,7 @@ Because the abilities are specific to each character. You will have to make sure
 - URL: `/people/{id}`
 - Example: `https://api.tvmaze.com/people/45327`
 
-Abilities can be determined dynamically based on what is returned in the above API. For example since Shia LaBeouf has now "deathday", one of his abilities can be "immortality"
+Abilities can be determined dynamically based on what is returned in the above API. For example, since Shia LaBeouf has no "deathday" in the `JSON`, one of his abilities can be "immortality".
 
 ## Skin Requirements
 
@@ -145,7 +145,7 @@ Because the skin is specific to each character. You will have to make sure that 
 - URL: `/people/{id}/castcredits`
 - Example: `https://api.tvmaze.com/people/45327/castcredits`
 
-Custom skins are optional so your characters should always be created with a default option.
+Custom skins are optional so your characters should always be created with a default option. For example, Shia LeBeouf has an "Even Stevens" skin option.
 
 ## Duration Requirements
 
@@ -159,9 +159,13 @@ Implement a slider following the documentation attached [here](https://www.w3sch
 
 # Part 5 - Gameplay
 
-## Mechanics requirements
+## Mechanics Requirements
 
 Anything. Have run.
+
+## Game Over Requirements
+
+- Redirection to `character-selection.html` upon battle termination.
 
 # Rubric
 
