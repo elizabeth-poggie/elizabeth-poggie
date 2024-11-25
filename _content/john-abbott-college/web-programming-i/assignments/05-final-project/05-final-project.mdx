@@ -45,12 +45,13 @@ Your designs should cover the following four screens:
 
 - _index_
   - Input fields for Player 1 and Player 2 names and ages.
+  - Include a "Begin" button
 - _Character Selection_
   - Display at least _8 characters_ to choose from
   - Include a [slider](https://www.w3schools.com/howto/howto_js_rangeslider.asp) to select the game duration (in minutes)
   - Provide skin options, with at least 2 unique skins per character
   - Create slots for Player 1 and Player 2 that populate when characters are chosen
-  - Include a "Start Game" button
+  - Include a "Start Battle" button
 - _Gameplay_
   - Option 1: A Pokémon-style battle interface using radio buttons for selection.
   - Option 2: A Super Smash Bros-style interface using HTML Canvas.
@@ -101,16 +102,18 @@ name-of-your-game
 
 ## Player Requirements
 
-Create a player class that has the below properties:
+Create a Player class that has the below properties:
 
 - Player name
 - Player age
 
 ## Input Validation
 
-# Part 4 - Character selection
+- Input validation to ensure players provide valid entries prior to creating a Player object.
+- Redirection to `gameplay.html` upon successful form submission
+- Usage of `localStorage` or `sessionStorage` as described in _Lecture 31_ to use these inputs across many pages.
 
-## Skin Requirements
+# Part 4 - Character selection
 
 ## Character Requirements
 
@@ -123,6 +126,13 @@ Now create a character class that extends the player class. Every character has 
 - Speed - Determines which character attacks first
 - Mana/Energy (optional) - used to cast _magical_ abilities
 - Other attributes you may find useful. Have fun :^)
+
+## Skin Requirements
+
+Because the skin is specific to each character. You will have to make sure that the skin selection is specific to each characters "realm". For example, if my playable character was Shia Labouf, I can get the person id (`45327`) to fetch shows where he was a cast member using the below endpoint:
+
+- URL: `/people/{id}/castcredits`
+- Example: `https://api.tvmaze.com/people/45327/castcredits`
 
 # Part 5 - Gameplay
 
