@@ -9,16 +9,16 @@ number: 5
 # Overview
 
 - Worth: This project will count towards `25%` of your final grade.
-- Designs Due: `November 29th, 2024 @ 11:59pm`
-- Final Project Due: `December 15th, 2024 @ 11:59pm` with an understanding that if you happen to submit at 2:00 am you will not have any points deducted.
+- Designs Due: `December 1rst, 2024 @ 11:59pm` at `5%` of your final grade.
+- Final Project Due: `December 15th, 2024 @ 11:59pm` at `20%` of your total grade. If you happen to submit at 2:00 am that evening you will not have any points deducted.
 - Late Penalty: Late submissions lose 5% per day to a maximum of 3 days. Nothing is accepted after 3 days and a grade of zero will be given. No extensions, no exceptions.
-- Academic Integrity: The purpose of this assignment is to strengthen your creative thinking and logic 🤓🎨. Consequently, _only you_ can make your vision come to life 👀
+- Academic Integrity: The purpose of this assignment is to strengthen your creative and logical thinking skills 🤓🎨. Consequently, _only you_ can make your vision come to life 💅✨
 
 # Goal
 
-You are the founder of a fast-paced battle royale game and today you are in charge of making your vision come to life.
+You are the founder of a fast-paced battle royale game and you need to create a proof of concept to secure funding for your project.
 
-# Part 1 - Crafting your vision
+# Part 1 - Crafting your Vision
 
 ## Requirements
 
@@ -26,6 +26,11 @@ For this project you can call _any_ API you desire with the below general requir
 
 - At least 2 different APIs to generate stats and skins for playable characters
 - At least 4 HTML files described below
+
+If this freedom is spooky for you, feel free to use the [PokeAPI](https://pokeapi.co/) or [tvmaze API](https://www.tvmaze.com/api) that we have seen in class. What do you mean you can turn movie information into playable characters? You can. Use the below People endpoint:
+
+- URL: /search/people?q=:query
+- Example: https://api.tvmaze.com/search/people?q=shia
 
 ## Figma
 
@@ -57,16 +62,16 @@ Gameplay
 
 Game Over
 
-# Submission 1
+- Winner announcement
 
-By `December 1rst, 2024 @ 11:59pm` on Lea Submit the following `.zip` folder containing:
+# Submission 1 (5%)
+
+By `December 1rst, 2024 @ 11:59pm` latest on Lea Submit the following `.zip` folder containing:
 
 - All your designs exported from Figma as images.
 - Your APIS choices
 
 There is a lot more freedom in this project however because you can quite literally do anything, I want to make sure that you aren't about to have a miserable time trying to achieve the impossible.
-
-💡 Note: This is worth `5%` and acting as your "Assignment 5". Feel free to submit earlier tho.
 
 # Part 2 - Getting started
 
@@ -74,7 +79,7 @@ This project was designed to build on everything you have done on previous assig
 
 ## Repository
 
-- Create a private GitHub repository with the name of your game.
+- Create a _private_ GitHub repository with the name of your game.
 - Invite @elizabeth-poggie as a collaborator.
 - Add a `README.md` that contains the below sections:
   - Project name: Your inspiration written in your own words (not ChatGPTs)
@@ -94,11 +99,15 @@ assignment-2
 ├── scripts
 │ ├── ...
 ├── public
-│ ├── image.jpeg
+│ ├── sprite.jpeg
+│ ├── ...
+├── styles
 │ ├── ...
 ```
 
-# Part 3 - Character selection
+# Part 3 - Index
+
+# Part 4 - Character selection
 
 ## Character Requirements
 
@@ -107,7 +116,7 @@ Create a player class that has the below properties:
 - Player name
 - Player age
 
-Now create a champion class that extends the player class. Every champion (character) has unique stats that define how they perform in combat. The champion class has the below attributes:
+Now create a character class that extends the player class. Every character has unique stats that define how they perform in combat and should contain the below properties:
 
 - Character name
 - Character skin
@@ -117,19 +126,19 @@ Now create a champion class that extends the player class. Every champion (chara
 - Mana/Energy (optional) - used to cast _magical_ abilities
 - Other attributes you may find useful. Have fun :^)
 
-# Part 4
+# Part 5 - Gameplay
 
 # Rubric
 
 For my general grading approach check out the rubric [here](https://www.elizabethpoggie.com/notes/john-abbott-college/admin_rubric) However, for this project I am specifically looking at:
 
-- JavaScript functionality requirements
+- JavaScript functionality && HTML
 - Page quality and user experience
 - All code follows best practices, quality, tight logic, and does not show glaring duplication
-- Naming conventions make sense
-- You use the modern `async`/`await`/ You should NEVER use `.then()` in the project
+- Clear naming conventions
+- Usage of the modern `async`/`await` to perform ALL asynchronous operations. You should NEVER use `.then()` in this project.
 - Creativity: BONUS up to 10%
 
-# Submission
+# Submission 2 (20%)
 
 In a `.txt` file add a link to your _private_ GitHub repository on which you have added _only me_ @elizabeth-poggie as a collaborator and the Git commit Id code of _your final commit_ for the project. Submit this on to Lea.
