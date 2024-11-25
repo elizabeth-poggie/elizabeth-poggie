@@ -1,0 +1,207 @@
+---
+# General Information
+category: "Web Programming I"
+title: "Final Project"
+created: "2024-11-24"
+number: 5
+---
+
+# Overview
+
+- Weight: This project contributes `25%` to your final grade.
+- Design Submission Deadline: `December 1st, 2024 @ 11:59 PM` (worth `5%` of your final grade).
+- Final Project Deadline: `December 15th, 2024 @ 11:59 PM` (worth `20%` of your final grade). Submissions made up until _2:00 AM_ on the due date will not have any late penalties.
+- Late Penalty: Submissions are penalized 5% per day for a maximum of 3 days. After 3 days, no submissions will be accepted, and the project will receive a grade of zero. No extensions, no exceptions.
+- Academic Integrity: This project is designed to strengthen your creative and logical thinking skills 🤓🎨. Consequently, _only you_ can make your vision come to life 💅✨
+
+# Goal
+
+You are the founder of a fast-paced battle royale game and you need to create a proof of concept to secure funding for your project.
+
+💡 Note: While this project may seem large, we will work through each step together during class time to make the process easier.
+
+# Part 1 - Crafting your Vision
+
+## Requirements
+
+You are free to call _any_ API of your choice, but your work must meet the following criteria:
+
+- Use at least two different API docs to generate stats and skins for playable characters
+- Include at least _three HTML_ files as described in the design requirements below
+
+If this freedom is spooky for you, feel free to use the [PokeAPI](https://pokeapi.co/) or the [TVmaze API](https://www.tvmaze.com/api) that we have seen in class. For example, you could turn TV information into playable characters using the following "People" endpoint:
+
+- URL: `/search/people?q=:query`
+- Example: `https://api.tvmaze.com/search/people?q=shia`
+
+## Figma
+
+To kick off your project, start by using Figma, a professional design tool commonly used in the industry:
+
+- Open [Figma](https://www.figma.com/) and create an account.
+- Play around with their [templates](https://www.figma.com/templates/web-design-inspiration/) to help you structure your ideas.
+
+## Design Requirements
+
+Your designs should cover the following pages:
+
+- _index_
+  - Input fields for Player 1 and Player 2 names and ages.
+  - Include a "Begin" button
+- _Character Selection_
+  - Display at least _8 characters_ to choose from, each with an accompanying image
+  - Include a [slider](https://www.w3schools.com/howto/howto_js_rangeslider.asp) to select the game duration (in minutes)
+  - Provide skin options, with at least 2 unique skins per character
+  - Create slots for Player 1 and Player 2 that populate when characters are chosen
+  - Include a "Start Battle" button
+- _Gameplay_
+  - Option 1: A Pokémon-style battle interface using radio buttons for action selection
+  - Option 2: A Super Smash Bros-style interface using HTML Canvas, using particular key binds for action selection
+
+# Submission 1 (5%)
+
+By `December 1rst, 2024 @ 11:59pm`, submit the following via Lea as a `.zip` folder:
+
+- Exported images of all your designs from Figma
+- A `.txt` file listing the APIs you have chosen
+
+💡 Note: This project gives you A LOT of creative freedom, but with freedom comes responsibility. You have the flexibility to quite literally do anything, but make sure you choose a _scope_ that is achievable within the given timeline. Consequently, for this first submission I will be making sure that you aren't about to have a miserable time trying to achieve the impossible.
+
+# Part 2 - Building your Vision
+
+This project builds on everything you have learned in previous assignments, so be sure to read over your constructive feedback prior to getting started. Feel free to reuse any logic or ideas that make sense for this project :^)
+
+## Repository
+
+- Create a _private_ GitHub repository with the name of your game
+- Invite `@elizabeth-poggie` as a collaborator to the repo
+- Add a `README.md` that includes the following sections:
+  - Project Name: Write about your inspiration for the game in your own words (not ChatGPTs)
+  - Designs: Include your Figma designs
+  - APIs: List the APIs you selected along with links to their documentation
+  - Resources: Provide a list of resources you used for the project, complete with links.
+
+## Project Structure
+
+Organize your project files as shown below:
+
+```md
+name-of-your-game
+├── index.html
+├── pages
+│ ├── character-selection.html
+│ ├── gameplay.html
+├── scripts
+│ ├── ...
+├── public
+│ ├── sprite.jpeg
+│ ├── ...
+├── styles
+│ ├── ...
+├── classes
+│ ├── player.js
+│ ├── character.js
+├── package.json
+```
+
+# Part 3 - Homepage
+
+## HTML Requirements
+
+`index.html` will serve as the entry point for your project. Here you will implement the design logic for your Homepage spec.
+
+## Player Requirements
+
+In `player.js`, create a `Player` class that includes the following attributes:
+
+- Player name
+- Player age
+
+`export` this class using `ES Modules`.
+
+## Input Validation
+
+- Validate the player's inputs to ensure they are complete and valid before creating a Player object.
+- Redirect the user to `character-selection.html` once the form is successfully submitted.
+- Use `localStorage` or `sessionStorage` (as discussed in Lecture 31) to save the input data for use across different pages.
+
+# Part 4 - Character Selection
+
+## HTML Requirements
+
+Here you will implement `character-selection.html` as outlined in your design spec.
+
+## Character Option Requirements
+
+Character options should have their images lazy loaded dynamically using the `Intersection Observer API`.
+
+## Character Requirements
+
+In `character.js`, create a `Character` class that extends the `Player` class. Each character should have unique attributes to determine their performance in combat. Include the following:
+
+- Character name
+- Character skin
+- Abilities: An array of abilities specific to the character.
+- Health (HP)
+- Speed: Determines which character attacks first.
+- Mana/Energy (optional): For casting _magical_ abilities.
+- Other attributes you may find fun for the gameplay. Have fun :^)
+
+`export` this class using `ES Modules`.
+
+## Abilities Requirements
+
+Character abilities should be specific to each character and can be dynamically determined using API data. For example, if your playable character is Shia LaBeouf, you can use his person ID (`45327`) to fetch details from the following endpoint:
+
+- URL: `/people/{id}`
+- Example: `https://api.tvmaze.com/people/45327`
+
+Abilities can be designed based on the returned data. For instance, the above `JSON` data shows no "deathday" for Shia LaBeouf, one of his abilities could be "immortality"
+
+## Skin Requirements
+
+Each character’s skin should reflect their "realm" or background, which can also be determined dynamically. For instance, if Shia LaBeouf is the character, you can use his person ID (`45327`) to fetch a list of shows where he has been a cast member:
+
+- URL: `/people/{id}/castcredits`
+- Example: `https://api.tvmaze.com/people/45327/castcredits`
+
+While custom skins are optional, each character must have a default skin. For example, Shia LaBeouf might have an "Even Stevens" skin as the default.
+
+## Duration Requirements
+
+Implement a slider for gameplay duration using the [range slider documentation](https://www.w3schools.com/howto/howto_js_rangeslider.asp)
+
+## Input Validation
+
+- Ensure that two characters are selected before proceeding to the battle stage (one for player 1, another for player 2)
+- Redirect the user to `gameplay.html` after successful form submission.
+- Use `localStorage` or `sessionStorage` to retain input data across pages, as described in Lecture 31.
+
+# Part 5 - Gameplay
+
+## Mechanics Requirements
+
+Anything. Have fun.
+
+## Game Over Requirements
+
+Once the battle ends, redirect players back to `character-selection.html` to allow them to pick new characters and try again
+
+# Rubric
+
+For a general understanding of my grading style, refer to the [rubric](https://www.elizabethpoggie.com/notes/john-abbott-college/admin_rubric) here. However, for this specific project, I will be evaluating the following:
+
+- JavaScript and HTML Functionality 👉 Ensure all features work as intended and are implemented correctly.
+- Page Quality and User Experience 👉 The interface should be polished, intuitive, and enjoyable to interact with.
+- Code Quality 👉 All code must follow best practices. It should be well-structured, avoid duplication, and demonstrate logical and efficient solutions.
+- Naming Conventions 👉 Use clear and meaningful names for all variables, functions, and classes.
+- Modern Asynchronous Code 👉 Use `async`/`await` for all asynchronous operations. Avoid using `.then()` in this project.
+- Creativity 👉 BONUS up to 10%
+
+# Submission 2 (20%)
+
+- Create a `.txt` file that contains:
+  - A link to your private GitHub repository.
+  - The Git commit ID of your _final commit_ for the project.
+- Make sure that only I, `@elizabeth-poggie`, am added as a collaborator to your repository.
+- Submit this `.txt` file on Lea for evaluation.
