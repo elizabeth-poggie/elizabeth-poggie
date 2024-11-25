@@ -16,9 +16,32 @@ number: 5
 
 # Goal
 
-You are the founder of a gaming company and today you are in charge of making your vision come to life.
+You are the founder of a fast-paced battle royale game and today you are in charge of making your vision come to life.
 
 # Part 1 - Crafting your vision
+
+## Requirements
+
+For this project you can call _any_ API you desire with the below general requirements:
+
+- At least 2 different APIs to generate stats and skins for playable characters
+- At least 3 HTML files described below
+
+This project was designed to build on everything you have done on previous assignments so be sure to read over the constructive feedback prior to submitting
+
+## Figma
+
+Before getting started, take time to develop your idea using tools that professional designers use in industry. Create designs for the following screens:
+
+- Character Selection:
+  - User input (player name)
+  - Character options (ATLEAST 8)
+  - Game duration using a slider (measured in minutes)
+  - Skin selection (ATLEAST 2 unique to each character)
+  - Player 1 and Player 2 slots that get populated upon character pick
+  - a start game button
+- Gameplay
+- Game Over
 
 # Part 2 - Getting started
 
@@ -26,20 +49,45 @@ You are the founder of a gaming company and today you are in charge of making yo
 
 - Create a private GitHub repository with the name of your game.
 - Invite @elizabeth-poggie as a collaborator.
+- Add a `README.md` that contains the below sections:
+  - Project name: Your inspiration written in your own words (not ChatGPTs)
+  - Designs: All three figma designs
+  - APIs: The selected APIs and their associated docs
+  - Resources: The resources you used for the project with links
 
 ## Project Structure
 
-Create the basic structure for your project
-HTML Structure:
+```md
+assignment-2
+├── index.html
+├── pages
+│ ├── gameplay.html
+│ ├── game-over.html
+├── scripts
+│ ├── ...
+├── public
+│ ├── image.jpeg
+│ ├── ...
+```
 
-Include sections for:
-User input (email, first name, station ID).
-Membership details.
-Trip slider for duration.
-Neighboring station results.
-Path to destination.
+# Part 3 - Character selection
 
-# Part 3
+## Character Requirements
+
+Create a player class that has the below properties:
+
+- Player name
+- Player age
+
+Now create a champion class that extends the player class. Every champion (character) has unique stats that define how they perform in combat. The champion class has the below attributes:
+
+- Character name
+- Character skin
+- An array of abilities
+- Health (HP)
+- Mana/Energy (optional) - used to cast _magical_ abilities
+- Speed (optional) - Determines which character attacks first
+- Other attributes you may find useful. Have fun :^)
 
 # Part 4
 
@@ -49,9 +97,10 @@ For my general grading approach check out the rubric [here](https://www.elizabet
 
 - JavaScript functionality requirements
 - Page quality and user experience
-- Creativity: BONUS up to 10%
 - All code follows best practices, quality, tight logic, and does not show glaring duplication
 - Naming conventions make sense
+- You use the modern `async`/`await`/ You should NEVER use `.then()` in the project
+- Creativity: BONUS up to 10%
 
 # Submission
 
