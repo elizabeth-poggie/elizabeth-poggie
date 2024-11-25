@@ -47,7 +47,7 @@ Your designs should cover the following four screens:
   - Input fields for Player 1 and Player 2 names and ages.
   - Include a "Begin" button
 - _Character Selection_
-  - Display at least _8 characters_ to choose from
+  - Display at least _8 characters_ to choose from with images.
   - Include a [slider](https://www.w3schools.com/howto/howto_js_rangeslider.asp) to select the game duration (in minutes)
   - Provide skin options, with at least 2 unique skins per character
   - Create slots for Player 1 and Player 2 that populate when characters are chosen
@@ -129,6 +129,10 @@ In `pLayer.js`, create a `Player` class that includes the following attributes:
 
 Here you will implement `character-selection.html` as outlined in your design spec.
 
+## Character Option Requirements
+
+Character options should have their images lazy loaded dynamically using the `Intersection Observer API`. Why? You have great ambitions and may want to add more characters in the future.
+
 ## Character Requirements
 
 In `character.js`, create a `Character` class that extends the `Player` class. Each character should have unique attributes to determine their performance in combat. Include the following:
@@ -175,7 +179,7 @@ Implement a slider for gameplay duration using the [range slider documentation](
 
 ## Mechanics Requirements
 
-Anything. Have run.
+Anything. Have fun.
 
 ## Game Over Requirements
 
