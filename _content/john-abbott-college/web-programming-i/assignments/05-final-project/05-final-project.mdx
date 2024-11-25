@@ -97,17 +97,20 @@ name-of-your-game
 ├── styles
 │ ├── ...
 ├── classes
-│ ├── Player.js
-│ ├── Character.js
+│ ├── player.js
+│ ├── character.js
+├── package.json
 ```
 
 # Part 3 - Homepage
 
-This will serve as the entry point for your project.
+## HTML Requirements
+
+`index.html` will serve as the entry point for your project. Here you will implement the design logic for your first spec.
 
 ## Player Requirements
 
-In `PLayer.js`, create a `Player` class that includes the following properties:
+In `pLayer.js`, create a `Player` class that includes the following attributes:
 
 - Player name
 - Player age
@@ -122,9 +125,13 @@ In `PLayer.js`, create a `Player` class that includes the following properties:
 
 # Part 4 - Character Selection
 
+## HTML Requirements
+
+Here you will implement `character-selection.html` as outlined in your design spec.
+
 ## Character Requirements
 
-In `Character.js`, create a `Character` class that extends the `Player` class. Each character should have unique attributes to determine their performance in combat. Include the following properties:
+In `character.js`, create a `Character` class that extends the `Player` class. Each character should have unique attributes to determine their performance in combat. Include the following:
 
 - Character name
 - Character skin
@@ -132,7 +139,7 @@ In `Character.js`, create a `Character` class that extends the `Player` class. E
 - Health (HP)
 - Speed: Determines which character attacks first.
 - Mana/Energy (optional): For casting _magical_ abilities.
-- Other properties you may find fun for the gameplay. Have fun :^)
+- Other attributes you may find fun for the gameplay. Have fun :^)
 
 `export` this class using `ES Modules`.
 
