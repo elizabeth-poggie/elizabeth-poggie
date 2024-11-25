@@ -65,7 +65,7 @@ By `December 1rst, 2024 @ 11:59pm`, submit the following via Lea as a `.zip` fol
 
 💡 Note: This project gives you A LOT of creative freedom, but with freedom comes responsibility. You have the flexibility to quite literally do anything, but make sure you choose a _scope_ that is achievable within the given timeline. Consequently, for this first submission I will be making sure that you aren't about to have a miserable time trying to achieve the impossible.
 
-# Part 2 - Getting started
+# Part 2 - Building your Vision
 
 This project builds on everything you have learned in previous assignments, so be sure to read over your constructive feedback prior to getting started and feel free to reuse logic.
 
@@ -98,7 +98,9 @@ name-of-your-game
 │ ├── ...
 ```
 
-# Part 3 - Index
+# Part 3 - index
+
+This is the entry point of your project.
 
 ## Player Requirements
 
@@ -110,8 +112,8 @@ Create a Player class that has the below properties:
 ## Input Validation
 
 - Input validation to ensure players provide valid entries prior to creating a Player object.
-- Redirection to `gameplay.html` upon successful form submission
-- Usage of `localStorage` or `sessionStorage` as described in _Lecture 31_ to use these inputs across many pages.
+- Redirection to `character-selection.html` upon successful form submission
+- Usage of `localStorage` or `sessionStorage` as described in _Lecture 31_ to use inputs across many pages.
 
 # Part 4 - Character selection
 
@@ -127,18 +129,39 @@ Now create a character class that extends the player class. Every character has 
 - Mana/Energy (optional) - used to cast _magical_ abilities
 - Other attributes you may find useful. Have fun :^)
 
+## Abilities Requirements
+
+Because the abilities are specific to each character. You will have to make sure they are fetched. For example, if my playable character was Shia Labouf, I can get the person id (`45327`) to fetch detailed person information using the below endpoint:
+
+- URL: `/people/{id}`
+- Example: `https://api.tvmaze.com/people/45327`
+
+Abilities can be determined dynamically based on what is returned in the above API. For example since Shia LaBeouf has now "deathday", one of his abilities can be "immortality"
+
 ## Skin Requirements
 
-Because the skin is specific to each character. You will have to make sure that the skin selection is specific to each characters "realm". For example, if my playable character was Shia Labouf, I can get the person id (`45327`) to fetch shows where he was a cast member using the below endpoint:
+Because the skin is specific to each character. You will have to make sure that the skin selection is specific to each characters "realm". For example, if my playable character was Shia LaBeouf, I can get the person id (`45327`) to fetch shows where he was a cast member using the below endpoint:
 
 - URL: `/people/{id}/castcredits`
 - Example: `https://api.tvmaze.com/people/45327/castcredits`
 
+Custom skins are optional so your characters should always be created with a default option.
+
+## Duration Requirements
+
+Implement a slider following the documentation attached [here](https://www.w3schools.com/howto/howto_js_rangeslider.asp)
+
 ## Input Validation
 
--
+- Input validation to ensure 2 characters have been selected prior to starting a battle
+- Redirection to `gameplay.html` upon successful form submission
+- Usage of `localStorage` or `sessionStorage` as described in _Lecture 31_ to use inputs across many pages.
 
 # Part 5 - Gameplay
+
+## Mechanics requirements
+
+Anything. Have run.
 
 # Rubric
 
