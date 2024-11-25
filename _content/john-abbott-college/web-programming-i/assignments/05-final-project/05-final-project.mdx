@@ -67,7 +67,7 @@ By `December 1rst, 2024 @ 11:59pm`, submit the following via Lea as a `.zip` fol
 
 # Part 2 - Building your Vision
 
-This project builds on everything you have learned in previous assignments, so be sure to read over your constructive feedback prior to getting started and feel free to reuse logic.
+This project builds on everything you have learned in previous assignments, so be sure to read over your constructive feedback prior to getting started. Feel free to reuse any logic or ideas that make sense for this project :^)
 
 ## Repository
 
@@ -98,64 +98,64 @@ name-of-your-game
 │ ├── ...
 ```
 
-# Part 3 - index
+# Part 3 - Homepage
 
-This is the entry point of your project.
+This will serve as the entry point for your project.
 
 ## Player Requirements
 
-Create a Player class that has the below properties:
+Create a `Player` class that includes the following properties:
 
 - Player name
 - Player age
 
 ## Input Validation
 
-- Input validation to ensure players provide valid entries prior to creating a Player object.
-- Redirection to `character-selection.html` upon successful form submission
-- Usage of `localStorage` or `sessionStorage` as described in _Lecture 31_ to use inputs across many pages.
+- Validate the player's inputs to ensure they are complete and valid before creating a Player object.
+- Redirect the user to `character-selection.html` once the form is successfully submitted.
+- Use `localStorage` or `sessionStorage` (as discussed in Lecture 31) to save the input data for use across different pages.
 
-# Part 4 - Character selection
+# Part 4 - Character Selection
 
 ## Character Requirements
 
-Now create a character class that extends the player class. Every character has unique stats that define how they perform in combat and should contain the below properties:
+Create a `Character` class that extends the `Player` class. Each character should have unique attributes to determine their performance in combat. Include the following properties:
 
 - Character name
 - Character skin
-- An array of abilities
+- Abilities: An array of abilities specific to the character.
 - Health (HP)
-- Speed - Determines which character attacks first
-- Mana/Energy (optional) - used to cast _magical_ abilities
-- Other attributes you may find useful. Have fun :^)
+- Speed: Determines which character attacks first.
+- Mana/Energy (optional): For casting _magical_ abilities.
+- Other properties you may find fun for the gameplay. Have fun :^)
 
 ## Abilities Requirements
 
-Because the abilities are specific to each character. You will have to make sure they are fetched. For example, if my playable character was Shia Labouf, I can get the person id (`45327`) to fetch detailed person information using the below endpoint:
+Character abilities should be specific to each character and can be dynamically determined using API data. For example, if your playable character is Shia LaBeouf, you can use his person ID (`45327`) to fetch details from the following endpoint:
 
 - URL: `/people/{id}`
 - Example: `https://api.tvmaze.com/people/45327`
 
-Abilities can be determined dynamically based on what is returned in the above API. For example, since Shia LaBeouf has no "deathday" in the `JSON`, one of his abilities can be "immortality".
+Abilities can be designed based on the returned data. For instance, if the JSON data shows no "deathday" for Shia LaBeouf, one of his abilities could be "immortality"
 
 ## Skin Requirements
 
-Because the skin is specific to each character. You will have to make sure that the skin selection is specific to each characters "realm". For example, if my playable character was Shia LaBeouf, I can get the person id (`45327`) to fetch shows where he was a cast member using the below endpoint:
+Each character’s skin should reflect their "realm" or background, which can also be determined dynamically. For instance, if Shia LaBeouf is the character, you can use his person ID (`45327`) to fetch a list of shows where he has been a cast member:
 
 - URL: `/people/{id}/castcredits`
 - Example: `https://api.tvmaze.com/people/45327/castcredits`
 
-Custom skins are optional so your characters should always be created with a default option. For example, Shia LeBeouf has an "Even Stevens" skin option.
+While custom skins are optional, each character must have a default skin. For example, Shia LaBeouf might have an "Even Stevens" skin as the default.
 
 ## Duration Requirements
 
-Implement a slider following the documentation attached [here](https://www.w3schools.com/howto/howto_js_rangeslider.asp)
+Implement a slider for gameplay duration using the [range slider documentation](https://www.w3schools.com/howto/howto_js_rangeslider.asp)
 
 ## Input Validation
 
-- Input validation to ensure 2 characters have been selected prior to starting a battle
-- Redirection to `gameplay.html` upon successful form submission
-- Usage of `localStorage` or `sessionStorage` as described in _Lecture 31_ to use inputs across many pages.
+- Ensure that two characters are selected before proceeding to the battle stage
+- Redirect the user to `gameplay.html` after successful form submission.
+- Use `localStorage` or `sessionStorage` to retain input data across pages, as described in Lecture 31.
 
 # Part 5 - Gameplay
 
@@ -165,19 +165,23 @@ Anything. Have run.
 
 ## Game Over Requirements
 
-- Redirection to `character-selection.html` upon battle termination.
+Once the battle ends, redirect players back to `character-selection.html` to allow them to pick new characters and try again
 
 # Rubric
 
-For my general grading approach check out the rubric [here](https://www.elizabethpoggie.com/notes/john-abbott-college/admin_rubric) However, for this project I am specifically looking at:
+For a general understanding of my grading style, refer to the [rubric](https://www.elizabethpoggie.com/notes/john-abbott-college/admin_rubric) here. However, for this specific project, I will be evaluating the following:
 
-- JavaScript functionality && HTML
-- Page quality and user experience
-- All code follows best practices, quality, tight logic, and does not show glaring duplication
-- Clear naming conventions
-- Usage of the modern `async`/`await` to perform ALL asynchronous operations. You should NEVER use `.then()` in this project.
-- Creativity: BONUS up to 10%
+- JavaScript and HTML Functionality 👉 Ensure all features work as intended and are implemented correctly.
+- Page Quality and User Experience 👉 The interface should be polished, intuitive, and enjoyable to interact with.
+- Code Quality 👉 All code must follow best practices. It should be well-structured, avoid duplication, and demonstrate logical and efficient solutions.
+- Naming Conventions 👉 Use clear and meaningful names for all variables, functions, and classes.
+- Modern Asynchronous Code 👉 Use `async`/`await` for all asynchronous operations. Avoid using `.then()` in this project.
+- Creativity 👉 BONUS up to 10%
 
 # Submission 2 (20%)
 
-In a `.txt` file add a link to your _private_ GitHub repository on which you have added _only me_ @elizabeth-poggie as a collaborator and the Git commit Id code of _your final commit_ for the project. Submit this on to Lea.
+- Create a `.txt` file that contains:
+  - A link to your private GitHub repository.
+  - The Git commit ID of your _final commit_ for the project.
+- Make sure that only I, `@elizabeth-poggie`, am added as a collaborator to your repository.
+- Submit this `.txt` file on Lea for evaluation.
