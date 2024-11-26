@@ -8,10 +8,6 @@ created: "2024-04-29"
 updated: "2024-05-03"
 ---
 
-# 🚨 PLEASE NOTE 🚨
-
-If you want your midterm grades back faster, you will have to wait for me to implement the new layout to be less annoying
-
 # VSCode Commands
 
 The less you rely on the mouse the better. Although VSCode allows you to use the mouse for everything making the tool approachable to newbies, although for virtually everything you can do with a mouse, you can do FASTER with a keyboard shortcut.
@@ -142,7 +138,7 @@ Can't spell? You're not alone.
 - Select `Peacock: Change to a favorite color`
 - Select and enjoy 💅✨
 
-# Stick Scrolling
+# Sticky Scrolling
 
 Tired of having hundreds of lines of code and not knowing what class or function you are in? Look no further.
 
