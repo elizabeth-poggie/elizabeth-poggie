@@ -1,0 +1,237 @@
+---
+# General Information
+category: "Web Programming I"
+title: "VSCode Hacks"
+created: "2024-11-26"
+number: 36
+---
+
+# VSCode Commands
+
+The less you rely on the mouse the better. Although VSCode allows you to use the mouse for everything making the tool approachable to newbies, although for virtually everything you can do with a mouse, you can do FASTER with a keyboard shortcut.
+
+```text
+Mouse
+❌ Slow
+❌ Repetitive
+❌ You don't look as cool
+
+Keyboard
+✅ FAST
+✅ Optimal
+✅ Your nerd friends will think your cool
+✅ Your normie friends will think you are a nerd
+✅ Your grandparents will be further confused at what you do for a living
+```
+
+Want to increase your productivity significantly? Want to spend less time working on your assignments? There is a lot to learn, however just knowing a few will literally change your life.
+
+Like learning an instrument, it will feel awkward at first and require some practice. Over time, you will soon master the art of the keyboard and let go of your long term friend, the mouse, in favor of greener pastures.
+
+# Multi-Window
+
+It is rare when any one developer has only one VSCode window open. How do we open multiple VSCode windows as fast as possible?
+
+The normies would select navigate to the top navigation, select `File` and click `New Window`. However we can do soooooo much better
+
+```md
+| PC 🖥️        | Mac 🍎      |
+| :----------- | :---------- |
+| Shift+Ctrl+N | Shift+Cmd+N |
+```
+
+Your welcome.
+
+# Sticky Scrolling
+
+Tired of having hundreds of lines of code and not knowing what class or function you are in? Look no further.
+
+- Go to the Settings
+- Under `Editor` › `Sticky Scroll: Scroll With Editor`, active the option "Enable Scrolling of Sticky Scroll with the editors horizontal scrollbar"
+- Enjoy :^)
+
+# Local Finder
+
+You can use `Ctrl-F` or `Cmd-F` to look for symbols / pieces of text in your file, however this is what the normies do. Instead, let`s open up the Command Pallet and type the below:
+
+```text
+@
+```
+
+This lists all the symbols, variables, and functions in the current file. Alternatively, if you want to be EVEN faster, run:
+
+```md
+| PC 🖥️        | Mac 🍎      |
+| :----------- | :---------- |
+| Ctrl+shift+. | Cmd+shift+. |
+```
+
+Now you have a dropdown menu.
+
+# Global Finder
+
+Ok cool we have a faster way to find things in the current file, but what about for our entire project? Open up the Command Pallet and type the below:
+
+```text
+#
+```
+
+Now type the symbol you are looking for :^)
+
+# Renaming HTML Tags
+
+You can use the above strat when it comes to editing repetitive code, however if you are dealing specifically with `HTML`, then add the extension [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag) to be even faster
+
+This will 🌀 auto-magically 🌀 rename the closing tag when you edit the opening tag.
+
+# Renaming variables/functions across projects
+
+```text
+"There are only 2 hard things in Computer Science:
+Cache invalidation and naming things"
+
+Phil Karlton
+```
+
+Naming your code is hard so you will often be renaming things:
+
+- Right click on the variable/function you want to rename
+- select `Find All References`
+- Now use the `rename symbol` option to safely rename your stuff across multiple files
+- Have fun 💅 ✨
+
+# Cutting
+
+If you want to move a line of code, the traditional way to do it is
+
+- select the line
+- copy it
+- delete it
+- ... and past it on the new line you want it to be at
+
+However this approach is lame.
+
+If your cursor is already on the line you want to cut, all you need to do is:
+
+```md
+| PC 🖥️  | Mac 🍎 |
+| :----- | :----- |
+| Ctrl+x | Cmd+x  |
+```
+
+no highlighting necessary 💅✨
+
+## Can we go faster?
+
+Yes.
+
+This lets you "move" a line of code
+
+```md
+| PC 🖥️            | Mac 🍎                 |
+| :--------------- | :--------------------- |
+| Alt+⬆️ or Alt+⬇️ | Option+⬆️ or Option+⬇️ |
+```
+
+and this let's you duplicate lines of code
+
+```md
+| PC 🖥️                        | Mac 🍎                             |
+| :--------------------------- | :--------------------------------- |
+| Alt+shift+⬆️ or Alt+shift+⬇️ | Option+shift+⬆️ or Option+shift+⬇️ |
+```
+
+# Comments
+
+If you are commenting out lines of code line by line, this is for you.
+
+Select a block of code that you want to comment and run...
+
+```md
+| PC 🖥️  | Mac 🍎 |
+| :----- | :----- |
+| Ctrl+/ | Cmd+/  |
+```
+
+now you can comment out entire blocks of code at once (instead of line by line)
+
+## Even Better comments
+
+Add the extension [better comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments). Now your comments are color coordinated depending on the category of comment.
+
+- `TODO` - orange
+- `!` - red
+- `?` - blue
+- `*` - bright green
+
+And yes you configure the colors to be custom.
+
+# Terminal
+
+There are many sneaky ways of opening up the terminal in VSCode. This is one of the fastest:
+
+## Fastest way
+
+```md
+| PC 🖥️ & Mac 🍎 |
+| :------------- |
+| Ctrl+`         |
+```
+
+## Multi - Terminals
+
+Usually you always need more than one terminal. Select the `+` icon to add a new terminal
+
+To keep things organized, right click on one of your terminals.
+Now you can change the `icon`, `color` and `name`. Enjoy.
+
+# Format on Save
+
+Never think about formatting your code again.
+
+- Add [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to your extensions
+- Open up the `Settings` using the command pallet:
+  - Keyboard shortcut: `Ctrl-P`
+  - Activate the VSCode command options: `>`
+  - Type "Preferences: Open Settings (UI)"
+- Under `Editor: Format On Save`, select the option to "Format a file on save..." to activate the feature
+- Now, under `Code Actions on Save` "blah blah blah", select the option `Edit in settings.json`. This should open up something more or less like this:
+
+```json
+{
+  // ... other stuff ...
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {}
+}
+```
+
+- These are the activated settings for your VSCode. For me, I have a lot of customization given i have been adding things here over the years, however yours might be a bit more sparse in comparison.
+- Now from the `Prettier - Code formatter` Extension page, paste in the below:
+
+```json
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+```
+
+- to get something along the lines of ...
+
+```json
+{
+  // ... other stuff ...
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+```
+
+- Finally, restart your VSCode, and Voila, things format on save 🪄
+
+# Friday
+
+On Friday I will walk you through all the VSCode github integrations so you can avoid `git` commands.
