@@ -78,60 +78,59 @@ Whenever you are creating files or changing files, it's good to periodically sav
 - Once clicked, that same button should change to say "Sync Changes #"
 - ... and just like that you committed and pushed code exclusively with clicking buttons
 
-# Exercise ❤️
+# Exercise 1
 
 As an exercise:
 
-- create a branch with your student number
-- under `src` create the file `<your student number>.html` and add whatever content you desire
-- commit and push those changes
+- Create a branch called `init-final-web-project`
+- Create the different sections on your `README.md`:
+  - Project Name
+  - Designs
+  - APIs
+  - Resources
+- Organize your project files as shown below
+- Commit and push all your changes
 
-# Merging changes
+```md
+name-of-your-game
+├── index.html
+├── pages
+│ ├── character-selection.html
+│ ├── gameplay.html
+├── scripts
+│ ├── ...
+├── public
+│ ├── sprite.jpeg
+│ ├── ...
+├── styles
+│ ├── ...
+├── classes
+│ ├── player.js
+│ ├── character.js
+├── package.json
+```
 
-Let's say that the `main` branch changed since the last time you `pull`ed your changes. To update your branch:
+# Creating Pull Requests
 
-- Navigate to the "Source Control" option on the left hand side of your VSCode.
-- Select the `...` option
-- Navigate to `Branch` and select `Merge`
-- It will prompt you to select which branch to merge from, in our case select `main`
-- Now your "Local Repository" has reflected those changes, to have the "Remote Repository" reflect those changes, click the "Sync Changes #" button
+Once you have those changes down, follow the steps below to create a Pull Request (PR):
 
-# Resolving Merge Conflicts
+- Select `New pull request`
+- Select the branch you just made (`init-final-web-project`)
+- Create a short description describing what you just did
+- Select `Create pull request`
+- Now merge it to the `main` branch
 
-Let's say the main branch edited a particular code snippet that you also edited in your branch and you want to consolidate all the changes together. This is what is known as a "Merge Conflict". There are conflicting changes made to the same part of the code and `git` isn't sure which one is the change is needs to keep.
+# Fetching merged changes
 
-Despite being very frustrating at times, conflict is inevitable whenever there is collaboration. VSCode allows you to handle those conflicts with ease and in a timely manner.
+Click the bottom left corner that contains your new branch (`init-final-web-project`), now let's head back over to the `main` branch:
 
-## Merging
+![repo](./assets/main.png)
 
-- Navigate to the "Source Control" option on the left hand side of your VSCode.
-- Select the `...` option
-- Navigate to `Branch` and select `Merge` and choose to merge with the main
+Once there select the ♺ icon to fetch your merged changes.
 
-## Resolving Conflicts
+# Exercise 2
 
-When there are conflicting changes, a "Merge Changes" panel will pop up showing you the conflicting lines of code. Once visible you can go line by line and either:
-
-- Accept current changes (What you did in your branch)
-- Accept incoming changes (What is being merged from main)
-- Accept both changes
-
-Once resolved you can click the `+` button to stage the changes, leave the default commit message, and then "Sync" those changes with the "Remote Repository" :^)
-
-# Pulling changes
-
-Next to the branch name in the bottom left corner there is a cute circular arrow button ♺
-
-Clicking that button is all you need to do to pull the latest changes.
-
-# Exercise ❤️
-
-As an exercise:
-
-- Try to edit the `README.md` file in your own branch.
-- Commit and push those changes
-- On my side, i will modify the `README.md` to be different
-- Now try to resolve the merge conflicts with main
+As an exercise, take time to replicate all those steps
 
 # GitLens
 
