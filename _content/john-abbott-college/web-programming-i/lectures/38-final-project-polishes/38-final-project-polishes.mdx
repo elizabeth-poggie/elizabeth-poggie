@@ -61,11 +61,11 @@ Have fun and let your creativity THRIVE 💅✨
 
 # Health Bar
 
-Creating a "Health Bar" has mutliple applications, from tracking points in a loyalty program, progress of your shipped package and the expected delivery day, all the way to your web game project :^)
+A "Health Bar" has a lot of potential! Whether you are tracking points in a loyalty program, visualizing your package’s delivery progress, or building a web game, this concept adds a fun interactive visual touch to any web project :^)
 
 ## HTML Structure
 
-To get started, let's create a skeleton for our bar:
+Let’s start by creating the basic structure for our health bar:
 
 ```html
 <div id="health-bar-container">
@@ -75,7 +75,7 @@ To get started, let's create a skeleton for our bar:
 
 ## CSS for Styling
 
-Now that we have the base, we can make it cuter:
+Now we’ll give the health bar some personality:
 
 ```css
 #health-bar-container {
@@ -100,18 +100,16 @@ Now that we have the base, we can make it cuter:
 
 ## JavaScript Functionality
 
-Now let's add some magic 🤹
+Now let's add some magic 🤹💫
 
-For now I will manually add these buttons to increase and decrease the health bar using inline event handlers:
+We’ll create buttons for testing the functionality, but these can be replaced or enhanced depending on your use case:
 
 ```html
 <button onclick="decreaseHealth(10)">Take Damage</button>
 <button onclick="increaseHealth(10)">Heal</button>
 ```
 
-However, keep in mind this can be handled differently using listeners in certain circumstances depending on the use case.
-
-Now lets add some JS:
+Here’s the JavaScript to make the health bar interactive:
 
 ```js
 // Init health value
@@ -153,3 +151,8 @@ function increaseHealth(amount) {
 // Pro Tip 👉 no need for a DOM ready check when using defer
 updateHealthBar();
 ```
+
+## Tips
+
+- For prod, consider replacing inline event handlers with event listeners to improve scalability.
+- This code is fully customizable. Feel free to add some animations :)
