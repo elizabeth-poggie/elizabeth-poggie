@@ -1,0 +1,15 @@
+#health-bar-container {
+  width: 300px;
+  height: 30px;
+  border: 2px solid #2a2a2a;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+#health-bar {
+  height: 100%;
+  width: 100%; /* Default full health */
+  background-color: darkgrey;
+  transition: width 0.3s ease; /* Smooth transition when health changes */
+}

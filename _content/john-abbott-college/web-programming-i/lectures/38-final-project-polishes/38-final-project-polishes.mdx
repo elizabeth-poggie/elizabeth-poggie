@@ -51,3 +51,45 @@ And don't forget to import your sheet to the HTML doc:
 ```html
 <link rel="stylesheet" href="./styles/styles.css" />
 ```
+
+# Health Bar
+
+Creating a "Health Bar" has mutliple applications, from tracking points in a loyalty program, progress of your shipped package and the expected delivery day, all the way to your web game project :^)
+
+## HTML Structure
+
+To get started, let's create a skeleton for our bar:
+
+```html
+<div id="health-bar-container">
+  <div id="health-bar"></div>
+</div>
+```
+
+## CSS for Styling
+
+Now that we have the base, we can make it cuter:
+
+```css
+#health-bar-container {
+  width: 300px;
+  height: 30px;
+  border: 2px solid #2a2a2a;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+#health-bar {
+  height: 100%;
+  /* Default full health */
+  width: 100%;
+  background-color: darkgrey;
+  /* Smooth transition when health changes */
+  transition: width 0.3s ease;
+}
+```
+
+## JavaScript Functionality
+
+Now let'
