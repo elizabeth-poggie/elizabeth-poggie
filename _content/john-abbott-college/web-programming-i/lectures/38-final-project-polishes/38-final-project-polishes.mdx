@@ -22,14 +22,16 @@ You have several free options:
 
 Fonts typically come these formats:
 
-- .woff / .woff2: Modern, lightweight formats recommended for web use.
-  .ttf / .otf: Traditional formats but less optimized for the web.
-  .eot: Mostly for older versions of Internet Explorer.
-  .svg: Rarely used, primarily for older mobile browsers.
+- `.woff` / `.woff2` 👉 The modern choice
+- `.ttf` / `.otf` 👉 Traditional and less optimized for the web
+- `.eot`👉 If you are using this format you have failed as a developer as this is only really used for Internet Explorer.
+- `.svg` 👉 What are you doing? This was maybe rarely used on like the first version of a blackberry
 
-Once downloaded, make sure to put your font files in a dedicated folder (e.g., `/fonts`)
+Once downloaded, make sure to put your `font` files in a dedicated folder (e.g., `./fonts/`)
 
 ## Using fonts with CSS
+
+In `./styles/styles.css` add the following custom styles:
 
 ```css
 /* Add your custom font to your CSS using @font-face */
@@ -42,4 +44,10 @@ Once downloaded, make sure to put your font files in a dedicated folder (e.g., `
 body {
   font-family: "My Cool Font", sans-serif;
 }
+```
+
+And don't forget to import your sheet to the HTML doc:
+
+```html
+<link rel="stylesheet" href="./styles/styles.css" />
 ```
