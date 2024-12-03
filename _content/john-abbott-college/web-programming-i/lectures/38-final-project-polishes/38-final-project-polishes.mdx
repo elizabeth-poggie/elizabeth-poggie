@@ -1,18 +1,23 @@
 ---
 # General Information
 category: "Web Programming I"
-title: "Final Project Polishes"
+title: "Final Project Polishes - Custom Fonts && Health"
 created: "2024-12-03"
 number: 38
+coverSrc: "./assets/branding.jpg"
 ---
 
 # Fonts
 
-Creating a strong brand identity is the beginnings of a marketing strategy to later monetize your project :^) Every strong Brand has a sleek style.
+Establishing a strong brand identity is the foundation of a successful marketing strategy—and it’s also the first step toward monetizing your project :^)
+
+![demo](./assets/branding.jpg)
+
+Every strong brand is built on a sleek and consistent visual style, and fonts play a big role in creating that impression. (which is why I know some very smart people that argue about font choices)
 
 ## Selecting a Font
 
-You have several free options:
+You have several _free_ options:
 
 - [Google Fonts](https://fonts.google.com/) 👉 Free and easy to implement
 - [Fontshare](https://www.fontshare.com/) 👉 If you like a modern vibe
@@ -20,18 +25,18 @@ You have several free options:
 
 ## Download the font
 
-Fonts typically come these formats:
+When you download fonts, you’ll come across a variety of file formats. Here’s what you need to know:
 
 - `.woff` / `.woff2` 👉 The modern choice
 - `.ttf` / `.otf` 👉 Traditional and less optimized for the web
-- `.eot`👉 If you are using this format you have failed as a developer as this is only really used for Internet Explorer.
+- `.eot`👉 If you are using this format you have failed as a developer since this is only really used for Internet Explorer
 - `.svg` 👉 What are you doing? This was maybe rarely used on like the first version of a blackberry
 
-Once downloaded, make sure to put your `font` files in a dedicated folder (e.g., `./fonts/`)
+After downloading, place the font files in a dedicated folder (e.g., `./fonts/`) to keep your project organized.
 
 ## Using fonts with CSS
 
-In `./styles/styles.css` add the following custom styles:
+To integrate your custom font, add the following to your `./styles/styles.css` file:
 
 ```css
 /* Add your custom font to your CSS using @font-face */
@@ -46,11 +51,13 @@ body {
 }
 ```
 
-And don't forget to import your sheet to the HTML doc:
+Then, don't forget to link your CSS file to your HTML document like this:
 
 ```html
 <link rel="stylesheet" href="./styles/styles.css" />
 ```
+
+Have fun and let your creativity THRIVE 💅✨
 
 # Health Bar
 
