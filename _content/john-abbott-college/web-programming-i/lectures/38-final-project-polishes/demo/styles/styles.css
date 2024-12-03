@@ -1,3 +1,13 @@
+/* some default button styling */
+button {
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 10px 15px;
+  border: 2px solid #2a2a2a;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
 #health-bar-container {
   width: 300px;
   height: 30px;
@@ -10,6 +20,6 @@
 #health-bar {
   height: 100%;
   width: 100%; /* Default full health */
-  background-color: darkgrey;
+  background-color: #4caf50; /* Default full health */
   transition: width 0.3s ease; /* Smooth transition when health changes */
 }

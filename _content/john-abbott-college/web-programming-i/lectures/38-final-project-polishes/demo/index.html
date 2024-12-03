@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cool Project</title>
     <link rel="stylesheet" href="./styles/styles.css" />
+    <script defer src="./scripts/health.js"></script>
   </head>
   <body>
     <div id="health-bar-container">
       <div id="health-bar"></div>
     </div>
+    <button onclick="decreaseHealth(10)">Take Damage</button>
+    <button onclick="increaseHealth(10)">Heal</button>
   </body>
 </html>
