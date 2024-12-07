@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./three-collumn-template.module.scss";
-import { cs } from "../../../utils/helpers/classHelpers";
 
 interface IProps {
   header: React.ReactNode;
@@ -20,11 +19,9 @@ export function ThreeColumnTemplate({
       <div className={styles.container}>
         <header className={styles.header}>{header}</header>
         <main className={styles.main}>
-          <section className={cs(styles.sideBarSection, styles.left)}>
-            {leftSidebar}
-          </section>
-          <section className={styles.contentSection}>{mainContent}</section>
-          <section className={styles.sideBarSection}>{rightSidebar}</section>
+          <section className={styles.left}>{leftSidebar}</section>
+          <section className={styles.content}>{mainContent}</section>
+          <section className={styles.right}>{rightSidebar}</section>
         </main>
       </div>
     </>

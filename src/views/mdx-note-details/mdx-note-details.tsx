@@ -11,15 +11,15 @@ import {
   CollapsibleLinkList,
   CollapsibleList,
 } from "../../components/layout/collapsible/collapsible";
-import { CategoryToLinkMap } from "../../utils/helpers/noteFetchers";
-import { pluralToSingular } from "../../utils/helpers/textFormatters";
+import { pluralToSingular } from "../../utils/textFormatters";
 import tocbot from "tocbot";
 import { useRouter } from "next/router";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 
 export function MdxNoteDetails(props: MDXProps) {
   const { title, type } = props.source.frontmatter;
-  const relatedNotes: CategoryToLinkMap = props.relatedNotes;
+  const relatedNotes = props.relatedNotes;
+
   const noteType = type ? type : null;
   const router = useRouter();
 

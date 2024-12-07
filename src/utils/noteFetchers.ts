@@ -1,5 +1,5 @@
 import fs from "fs";
-import { ILink, INote } from "../../interfaces/note";
+import { ILink, INote } from "../interfaces/note";
 import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";
@@ -15,14 +15,18 @@ export type CategoryToLinkMap = {
 /**
  * Because I love relative linking, organizing things in a component-driven style, and categorizing my notes, I'm making my life harder than it needs to be :^)
  *
+ * @deprecated
  * @param baseFolder e.g. recipes
  * @param categories e.g. bread
  * @returns INote[]
+ * @deprecated
  */
 export const getAllNotesForCategories = async (
   baseFolder: string,
-  categories: string[]
-): Promise<INote[]> => {
+  categories: string[],
+  page?: number,
+  pageSize?: number
+): Promise<{ notes: INote[]; total: number }> => {
   const allNotes: INote[] = [];
   const baseDirectory = path.join(process.cwd(), `_content/${baseFolder}`);
 
@@ -93,12 +97,16 @@ export const getAllNotesForCategories = async (
     })
   );
 
-  return allNotes;
+  // TODO - implement
+  const total = 0;
+  const notes = allNotes;
+  return { notes, total };
 };
 
 /**
  * Because i like to sort my different recipes by category, I'm making my life harder for myself
  *
+ * @deprecated
  * @param ctx
  * @param baseFolder
  * @param categories
@@ -164,6 +172,7 @@ export const getNoteProps = async (
 /**
  * C A T E G O R I E S
  *
+ * @deprecated
  * @param baseFolder
  * @param categories
  * @returns paths
@@ -214,16 +223,17 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
   };
 };
 
+// @deprecated
 export const getRelatedNotesByType = async (
   baseFolder: string,
   category: string
 ): Promise<CategoryToLinkMap> => {
-  const allNotes: INote[] = await getAllNotesForCategories(baseFolder, [
+  const { notes, total } = await getAllNotesForCategories(baseFolder, [
     category,
   ]);
 
   // Group notes by their type
-  const categoryMap: CategoryToLinkMap = allNotes.reduce((acc, note) => {
+  const categoryMap: CategoryToLinkMap = notes.reduce((acc, note) => {
     const { type } = note;
 
     if (type == null) {
@@ -245,6 +255,7 @@ export const getRelatedNotesByType = async (
   return categoryMap;
 };
 
+// @deprecated
 const findFileInDirectory = (
   dirPath: string,
   targetFile: string
@@ -270,6 +281,7 @@ const findFileInDirectory = (
   return null;
 };
 
+// @deprecated
 const getType = (
   subCategoryPath: string[],
   baseFolder: string,

@@ -6,6 +6,7 @@
     "start": "next start",
     "typecheck": "tsc",
     "note": "./scripts/generate-mdx.sh",
+    "make": "./scripts/generate-component.sh",
     "snoopy": "./scripts/duplicate-assets.sh"
   },
   "dependencies": {

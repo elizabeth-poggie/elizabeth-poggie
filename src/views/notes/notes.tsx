@@ -1,45 +1,28 @@
 import React from "react";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
-import { ListItem } from "../../components/display/list-item/list-item";
-import { PillButton } from "../../components/inputs/pill-button/pill-button";
 import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
 import { TextButton } from "../../components/inputs/text-button/text-button";
-import { ScrollableContainer } from "../../components/layout/scrollable-container/scrollable-container";
-import { sortByCreatedDescending } from "../../utils/helpers/noteSorters";
+import { sortByCreatedDescending } from "../../utils/noteHelpers";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 import { Link } from "../../components/navigation/link/link";
-import {
-  formatDate,
-  pluralToSingular,
-} from "../../utils/helpers/textFormatters";
+import { formatDate, pluralToSingular } from "../../utils/textFormatters";
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
 
 interface IProps {
   allNotes: INote[];
 }
 
-// List of supported filters lol
-export const filterToColorMap = {
-  // Categories
-  "User Interfaces": "green",
-  "Web Programming I": "yellow",
-};
-
 export function Notes({ allNotes }: IProps) {
-  const sortedNotes = sortByCreatedDescending(allNotes);
-  const [filteredNotes, setFilteredNotes] = React.useState(sortedNotes);
+  const sortedNotes = sortByCreatedDescending(allNotes); // Sort latest notes
+
   const [activeFilter, setActiveFilter] = React.useState<
     string | "John Abbott College"
   >("John Abbott College");
 
   const setNotes = (filter: string) => {
     setActiveFilter(filter);
-    const newFilterNotes = allNotes.filter(
-      (note) => note.type === filter || note.category === filter
-    );
-    setFilteredNotes(newFilterNotes);
   };
 
   const renderFilterRow = (filterType: string) => {
@@ -48,9 +31,7 @@ export function Notes({ allNotes }: IProps) {
     };
 
     const filters: string[] = [
-      ...allNotes.map((note: INote) => {
-        return note[filterType];
-      }),
+      ...allNotes.map((note: INote) => note[filterType]),
     ].filter(onlyUnique);
 
     return (
@@ -59,26 +40,23 @@ export function Notes({ allNotes }: IProps) {
           <TextButton
             onClick={() => {
               setActiveFilter("John Abbott College");
-              setFilteredNotes(allNotes);
             }}
             color={activeFilter === "John Abbott College" ? "white" : "grey"}
           >
             John Abbott College
           </TextButton>
         </header>
-        {filters.map((filter: string) => {
-          return (
-            <div key={filter}>
-              <TextButton
-                variant="subheading"
-                onClick={() => setNotes(filter)}
-                color={activeFilter === filter ? "white" : "grey"}
-              >
-                {filter}
-              </TextButton>
-            </div>
-          );
-        })}
+        {filters.map((filter: string) => (
+          <div key={filter}>
+            <TextButton
+              variant="subheading"
+              onClick={() => setNotes(filter)}
+              color={activeFilter === filter ? "white" : "grey"}
+            >
+              {filter}
+            </TextButton>
+          </div>
+        ))}
       </nav>
     );
   };
@@ -134,18 +112,20 @@ export function Notes({ allNotes }: IProps) {
       <div className={styles.mainContent}>
         <HorizontalLine />
         <section className={styles.content}>
-          <>{filteredNotes.map((note: INote) => renderListItem(note))}</>
+          <>{sortedNotes.map((note: INote) => renderListItem(note))}</>
         </section>
       </div>
     );
   };
 
   return (
-    <ThreeColumnTemplate
-      header={renderTitle()}
-      rightSidebar={""}
-      mainContent={renderMainContent()}
-      leftSidebar={renderFilterRow("category")}
-    />
+    <>
+      <ThreeColumnTemplate
+        header={renderTitle()}
+        rightSidebar={""}
+        mainContent={renderMainContent()}
+        leftSidebar={renderFilterRow("category")}
+      />
+    </>
   );
 }

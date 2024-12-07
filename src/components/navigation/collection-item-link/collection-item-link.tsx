@@ -1,4 +1,4 @@
-import { cs } from "../../../utils/helpers/classHelpers";
+import { cs } from "../../../utils/classHelpers";
 import { Link } from "../link/link";
 import styles from "./collection-item-link.module.scss";
 
