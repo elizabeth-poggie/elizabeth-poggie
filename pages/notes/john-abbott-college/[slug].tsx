@@ -38,12 +38,10 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
     NOTES_BASE_FOLDER,
     NOTES_CATEGORIES
   );
-  // Log the fetched props to verify structure
-  console.log("noteProps:", noteProps); // Check the structure of the noteProps object
 
   return {
     props: {
-      ...noteProps,
+      ...noteProps.props,
       relatedNotes,
     },
   };

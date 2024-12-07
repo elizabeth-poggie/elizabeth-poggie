@@ -183,48 +183,53 @@ export const getNoteProps = async (
     fileName
   );
 
-  // Check only for one category (you can remove or modify categories array to filter for just one category)
-  const category = categories[0]; // For example, hardcode the first category
-  const categoryPath = path.join(
-    process.cwd(),
-    `_content/${baseFolder}/${category}`
-  );
+  // Iterate through all categories to find the matching file
+  for (const category of categories) {
+    const categoryPath = path.join(
+      process.cwd(),
+      `_content/${baseFolder}/${category}`
+    );
 
-  // Find the file path within the category
-  const filePath = findFileInDirectory(categoryPath, fileName);
+    // Find the file path within the category
+    const filePath = findFileInDirectory(categoryPath, fileName);
 
-  if (filePath) {
-    console.log(`Found file at: ${filePath}`);
+    if (filePath) {
+      console.log(`Found file at: ${filePath}`);
 
-    // Extract note content
-    const source = fs.readFileSync(filePath, "utf8");
-    const mdxSource = await serialize(source, { parseFrontmatter: true });
+      // Extract note content
+      const source = fs.readFileSync(filePath, "utf8");
+      const mdxSource = await serialize(source, { parseFrontmatter: true });
 
-    // Construct the image path
-    const fullBaseFolderPath = `/${baseFolder}/${subCategoryPath.join("/")}`;
+      // Construct the image path
+      const fullBaseFolderPath = `/${baseFolder}/${subCategoryPath.join("/")}`;
 
-    return {
-      props: {
-        source: {
-          compiledSource: mdxSource.compiledSource,
-          scope: mdxSource.scope,
-          frontmatter: {
-            ...(mdxSource.frontmatter as Frontmatter),
-            type: replaceHyphensWithSpaces(type) || null,
+      return {
+        props: {
+          source: {
+            compiledSource: mdxSource.compiledSource,
+            scope: mdxSource.scope,
+            frontmatter: {
+              ...(mdxSource.frontmatter as Frontmatter),
+              type: replaceHyphensWithSpaces(type) || null,
+            },
           },
+          baseFolder: fullBaseFolderPath,
         },
-        baseFolder: fullBaseFolderPath,
-      },
-    };
+      };
+    }
   }
 
-  // If no matching file is found, handle it gracefully (optional fallback)
+  // If no matching file is found, handle it gracefully
   return {
     props: {
       source: {
         compiledSource: "",
         scope: {},
-        frontmatter: {}, // Ensure an empty object to prevent undefined errors
+        frontmatter: {
+          title: "404 Note not found",
+          type: null,
+          category: null,
+        },
       },
       baseFolder: "",
     },
