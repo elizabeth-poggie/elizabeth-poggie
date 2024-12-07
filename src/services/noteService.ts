@@ -109,7 +109,7 @@ export const getNotesForCategory = async (
   category: string
 ): Promise<CategoryToLinkMap> => {
   const notes = await fetchNotesForCategories(baseFolder, [category]);
-
+  console.log("ahhh", notes);
   if (!notes.length) {
     console.warn(`No notes found for category: ${category}`);
     return {};

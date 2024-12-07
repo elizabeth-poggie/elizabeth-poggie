@@ -15,17 +15,10 @@ import { pluralToSingular } from "../../utils/textFormatters";
 import tocbot from "tocbot";
 import { useRouter } from "next/router";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
-import { CategoryToLinkMap } from "../../interfaces/note";
 
 export function MdxNoteDetails(props: MDXProps) {
-  const { title, type, category } = props.source.frontmatter;
-  const [activeCategory, setActiveCategory] = React.useState<string | null>(
-    category
-  );
-
-  const handleCategoryChange = (category: string) => {
-    setActiveCategory(category);
-  };
+  const { title, type } = props.source.frontmatter;
+  const relatedNotes = props.relatedNotes;
 
   const noteType = type ? type : null;
   const router = useRouter();
@@ -57,8 +50,6 @@ export function MdxNoteDetails(props: MDXProps) {
   };
 
   const renderRelatedNotes = () => {
-    const relatedNotes = []; // todo
-
     if (!relatedNotes) {
       return null;
     }

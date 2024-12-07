@@ -30,8 +30,12 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
     ? ctx.params?.category[0]
     : ctx.params?.category || "";
 
+  // TODO - find a way to pass the category instead of hardcoding it
   // Fetch notes for the given category
-  const relatedNotes = await getNotesForCategory(NOTES_BASE_FOLDER, category);
+  const relatedNotes = await getNotesForCategory(
+    NOTES_BASE_FOLDER,
+    "Assignment"
+  );
 
   const noteProps = await getNoteProps(
     ctx,
