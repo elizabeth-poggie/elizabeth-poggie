@@ -26,16 +26,15 @@ export default function NoteDetailsPage(props: MDXProps) {
 }
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  const category = Array.isArray(ctx.params?.category)
-    ? ctx.params?.category[0]
-    : ctx.params?.category || "";
+  // Extract the note category (the first segment after "notes/")
+  const category = ctx.params?.slug
+    ? Array.isArray(ctx.params.slug)
+      ? ctx.params.slug[0]
+      : ctx.params.slug.split("_")[0]
+    : "";
 
-  // TODO - find a way to pass the note category instead of hardcoding it
   // Fetch notes for the given category
-  const relatedNotes = await getNotesForCategory(
-    NOTES_BASE_FOLDER,
-    "computerized-systems"
-  );
+  const relatedNotes = await getNotesForCategory(NOTES_BASE_FOLDER, category);
 
   const noteProps = await getNoteProps(
     ctx,
