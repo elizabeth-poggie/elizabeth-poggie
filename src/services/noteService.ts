@@ -30,7 +30,12 @@ const fetchNotesForCategories = async (
     categoryPath: string,
     category: string
   ): Promise<INote[]> => {
-    if (!fileExists(categoryPath)) return [];
+    if (!fileExists(categoryPath)) {
+      console.error(
+        `Can't find this category path "${categoryPath}" for this category "${category}"`
+      );
+      return [];
+    }
 
     const filesAndFolders = readDirectory(categoryPath);
     const notesInCategory: INote[] = [];
