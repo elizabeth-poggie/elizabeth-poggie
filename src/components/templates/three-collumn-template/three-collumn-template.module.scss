@@ -10,7 +10,7 @@
 }
 
 .container {
-  padding: calc(20 * $unit) calc(20 * $unit) calc(40 * $unit) calc(20 * $unit);
+  padding: calc(20 * $unit) calc(20 * $unit) calc(20 * $unit) calc(20 * $unit);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,7 +48,7 @@
 
 @media screen and (max-width: $bp-lg) {
   .container {
-    padding: calc(20 * $unit) calc(4 * $unit) calc(40 * $unit) calc(4 * $unit);
+    padding: calc(20 * $unit) calc(4 * $unit) calc(20 * $unit) calc(4 * $unit);
   }
 
   .content {
