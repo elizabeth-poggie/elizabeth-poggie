@@ -13,11 +13,12 @@ import {
 } from "../../../src/services/noteService";
 
 export default function NoteDetailsPage(props: MDXProps) {
+  const title = props.source.frontmatter.title;
   return (
     <>
       <Meta />
       <Head>
-        <title>Poggie • JAC </title>
+        <title>{title}</title>
       </Head>
       <Burger navItems={navItems} />
       <MdxNoteDetails {...props} />
