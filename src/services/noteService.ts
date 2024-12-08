@@ -20,62 +20,80 @@ import { replaceHyphensWithSpaces } from "../utils/textFormatters";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";
 
+const getNotesFromFolder = async (
+  baseFolder: string,
+  categoryPath: string,
+  category: string
+): Promise<INote[]> => {
+  if (!fileExists(categoryPath)) {
+    console.error(
+      `❌ Can't find this category path "${categoryPath}" for this category "${category}"`
+    );
+    return [];
+  }
+
+  const filesAndFolders = readDirectory(categoryPath);
+  const notesInCategory: INote[] = [];
+
+  for (const item of filesAndFolders) {
+    const fullPath = path.join(categoryPath, item);
+
+    if (isDirectory(fullPath)) {
+      const subCategoryNotes = await getNotesFromFolder(
+        baseFolder,
+        fullPath,
+        `${category}_${item}`
+      );
+      notesInCategory.push(...subCategoryNotes);
+    } else if (item.endsWith(".mdx")) {
+      const { mdxSource, frontmatter } = await parseNoteContent(fullPath);
+      const slug = `${baseFolder}/${category}`;
+      const fullBaseFolderPath = path
+        .join(baseFolder, category)
+        .replace(/_/g, "/");
+
+      // Split slug to handle nested structure
+      const parts = slug.split("_");
+      const fileName = parts.slice(-1)[0];
+      const subCategoryPath = parts;
+      const type = filterTypeCandidates(
+        subCategoryPath,
+        baseFolder,
+        [category],
+        fileName
+      );
+
+      notesInCategory.push({
+        title: frontmatter.title,
+        slug,
+        created: frontmatter.created,
+        coverSrc: frontmatter.coverSrc ?? null,
+        category: frontmatter.category,
+        baseFolder: fullBaseFolderPath,
+        type: type,
+      });
+    }
+  }
+
+  return notesInCategory;
+};
+
 const fetchNotesForCategories = async (
   baseFolder: string,
   categories: string[]
 ): Promise<INote[]> => {
   const uniqueNotes = new Map<string, INote>();
 
-  const getNotesFromFolder = async (
-    categoryPath: string,
-    category: string
-  ): Promise<INote[]> => {
-    if (!fileExists(categoryPath)) {
-      console.error(
-        `Can't find this category path "${categoryPath}" for this category "${category}"`
-      );
-      return [];
-    }
-
-    const filesAndFolders = readDirectory(categoryPath);
-    const notesInCategory: INote[] = [];
-
-    for (const item of filesAndFolders) {
-      const fullPath = path.join(categoryPath, item);
-
-      if (isDirectory(fullPath)) {
-        const subCategoryNotes = await getNotesFromFolder(
-          fullPath,
-          `${category}_${item}`
-        );
-        notesInCategory.push(...subCategoryNotes);
-      } else if (item.endsWith(".mdx")) {
-        const { mdxSource, frontmatter } = await parseNoteContent(fullPath);
-        const slug = `${baseFolder}/${category}`;
-        const fullBaseFolderPath = path
-          .join(baseFolder, category)
-          .replace(/_/g, "/");
-
-        notesInCategory.push({
-          title: frontmatter.title,
-          slug,
-          created: frontmatter.created,
-          coverSrc: frontmatter.coverSrc ?? null,
-          category: frontmatter.category,
-          baseFolder: fullBaseFolderPath,
-        });
-      }
-    }
-
-    return notesInCategory;
-  };
-
   for (const category of categories) {
     const categoryPath = path.join(
       process.cwd(),
       `_content/${baseFolder}/${category}`
     );
-    const categoryNotes = await getNotesFromFolder(categoryPath, category);
+    const categoryNotes = await getNotesFromFolder(
+      baseFolder,
+      categoryPath,
+      category
+    );
 
     for (const note of categoryNotes) {
       if (!uniqueNotes.has(note.slug)) {
@@ -114,25 +132,32 @@ export const getNotesForCategory = async (
   category: string
 ): Promise<CategoryToLinkMap> => {
   const notes = await fetchNotesForCategories(baseFolder, [category]);
-  console.log("ahhh", notes);
+
   if (!notes.length) {
-    console.warn(`No notes found for category: ${category}`);
+    console.warn(`👀 No notes found for category: ${category}`);
     return {};
   }
 
-  return notes.reduce((acc, note) => {
-    const { type, title, number, slug } = note;
+  // Group notes by their type
+  const categoryMap: CategoryToLinkMap = notes.reduce((acc, note) => {
+    const { type } = note;
 
-    if (type) {
-      if (!acc[type]) acc[type] = [];
-      acc[type].push({
-        text: note.number ? `${number}. ${title}` : title,
-        href: `/notes/${slug}`,
-      });
+    if (!type) {
+      return acc;
     }
+
+    if (!acc[type]) {
+      acc[type] = [];
+    }
+
+    acc[type].push({
+      text: `${acc[type].length + 1}. ${note.title}`,
+      href: `/notes/${note.slug}`,
+    });
 
     return acc;
   }, {} as CategoryToLinkMap);
+  return categoryMap;
 };
 
 export const getNotePaths = (baseFolder: string, categories: string[]) => {
@@ -225,6 +250,7 @@ export const getNoteProps = async (
   }
 
   // If no matching file is found, handle it gracefully
+  console.error(`❌ Can't find the notes you are looking for`);
   return {
     props: {
       source: {

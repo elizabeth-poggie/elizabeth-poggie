@@ -51,9 +51,8 @@ export const CollapsibleLinkList = ({
       {links.map((link: ILink) => {
         const isSelected = link.text.includes(selectedText);
         return (
-          <div className={styles.listItem}>
+          <div key={link.href} className={styles.listItem}>
             <TextLink
-              key={link.href}
               variant="subheading"
               color={isSelected ? "white" : "grey"}
               href={link.href}
