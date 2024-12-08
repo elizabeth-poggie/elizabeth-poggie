@@ -70,7 +70,7 @@ const getNotesFromFolder = async (
         coverSrc: frontmatter.coverSrc ?? null,
         category: frontmatter.category,
         baseFolder: fullBaseFolderPath,
-        type: type,
+        type: replaceHyphensWithSpaces(type) || null,
       });
     }
   }
