@@ -17,7 +17,7 @@ import { useRouter } from "next/router";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 
 export function MdxNoteDetails(props: MDXProps) {
-  const { title, type } = props.source.frontmatter;
+  const { title, type, number } = props.source.frontmatter;
   const relatedNotes = props.relatedNotes;
 
   const noteType = type ? type : null;
@@ -65,7 +65,7 @@ export function MdxNoteDetails(props: MDXProps) {
         content: (
           <CollapsibleLinkList
             links={links}
-            selectedText={title}
+            selectedText={`${number}. ${title}`}
             handleOnClick={refreshToc}
           />
         ),
