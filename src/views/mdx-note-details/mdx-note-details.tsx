@@ -1,5 +1,5 @@
 import { Text } from "../../components/typography/text/text";
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Toc,
   TOC_NOTE_DETAILS_OPTIONS,
