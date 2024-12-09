@@ -1,4 +1,4 @@
-import { INote } from "../../interfaces/note";
+import { INote } from "../interfaces/note";
 
 export const getUniqueTypes = (notes: INote[]): string[] => {
   const types = notes.map((note) => note.type);

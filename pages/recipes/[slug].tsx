@@ -5,13 +5,9 @@ import { GetStaticPropsContext } from "next";
 import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
 import { GalleryDetails } from "../../src/views/gallery-details/gallery-details";
-import {
-  CategoryToLinkMap,
-  Frontmatter,
-  getNotePaths,
-  getNoteProps,
-} from "../../src/utils/helpers/noteFetchers";
 import { RECIPES_BASE_FOLDER, RECIPES_CATEGORIES } from ".";
+import { CategoryToLinkMap, Frontmatter } from "../../src/interfaces/note";
+import { getNotePaths, getNoteProps } from "../../src/services/noteService";
 
 export interface MDXProps {
   /**

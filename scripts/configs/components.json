@@ -1,0 +1,10 @@
+{
+  "components": [
+    "display",
+    "inputs",
+    "layout",
+    "navigation",
+    "template",
+    "typography"
+  ]
+}

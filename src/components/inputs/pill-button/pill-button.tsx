@@ -1,4 +1,4 @@
-import { cs } from "../../../utils/helpers/classHelpers";
+import { cs } from "../../../utils/classHelpers";
 import { Text } from "../../typography/text/text";
 import styles from "./pill-button.module.scss";
 

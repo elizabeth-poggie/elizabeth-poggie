@@ -1,4 +1,4 @@
-import { cs } from "../../../utils/helpers/classHelpers";
+import { cs } from "../../../utils/classHelpers";
 import { default as NextImage } from "next/image";
 import styles from "./image.module.scss";
 import path from "path";
