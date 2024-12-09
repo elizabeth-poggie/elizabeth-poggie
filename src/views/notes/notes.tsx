@@ -13,21 +13,22 @@ import {
   replaceHyphensWithSpaces,
 } from "../../utils/textFormatters";
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
-import { NOTES_CATEGORIES } from "../../../pages/notes";
+import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from "../../../pages/notes";
 
 interface IProps {
   allNotes: INote[];
 }
 
 export function Notes({ allNotes }: IProps) {
-  const sortedNotes = allNotes; // init default state
-
-  const [activeFilter, setActiveFilter] = React.useState<
-    string | "John Abbott College"
-  >("John Abbott College");
+  const [filteredNotes, setFilteredNotes] = React.useState(allNotes);
+  const [activeFilter, setActiveFilter] = React.useState("John Abbott College");
 
   const setNotes = (filter: string) => {
     setActiveFilter(filter);
+    const newFilterNotes = allNotes.filter(
+      (note) => note.type === filter || note.category === filter
+    );
+    setFilteredNotes(newFilterNotes);
   };
 
   const renderFilterRow = () => {
@@ -114,7 +115,7 @@ export function Notes({ allNotes }: IProps) {
       <div className={styles.mainContent}>
         <HorizontalLine />
         <section className={styles.content}>
-          <>{sortedNotes.map((note: INote) => renderListItem(note))}</>
+          <>{filteredNotes.map((note: INote) => renderListItem(note))}</>
         </section>
       </div>
     );
