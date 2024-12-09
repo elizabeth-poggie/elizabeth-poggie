@@ -47,7 +47,7 @@ fi
 
 # Replace placeholders in templates
 tsx_content=$(sed "s/{{componentName}}/$component_name/g" "$tsx_template_file")
-tsx_content=$(echo "$tsx_content" | sed "s/{{ComponentNameCapitalized}}/$capital_camel_case_name/g")
+tsx_content=$(echo "$tsx_content" | sed "s|PLACEHOLDER_|$capital_camel_case_name|g")
 scss_content=$(sed "s/{{componentName}}/$component_name/g" "$scss_template_file")
 
 # Write to files
