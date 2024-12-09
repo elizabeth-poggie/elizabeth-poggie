@@ -19,17 +19,6 @@ interface IProps {
 }
 
 export function Notes({ allNotes }: IProps) {
-  const [filteredNotes, setFilteredNotes] = React.useState(allNotes);
-  const [activeFilter, setActiveFilter] = React.useState("John Abbott College");
-
-  const setNotes = (filter: string) => {
-    setActiveFilter(filter);
-    const newFilterNotes = allNotes.filter(
-      (note) => note.type === filter || note.category === filter
-    );
-    setFilteredNotes(newFilterNotes);
-  };
-
   const renderFilterRow = () => {
     const filters: string[] = NOTES_CATEGORIES.map((category) =>
       replaceHyphensWithSpaces(category)
@@ -38,25 +27,13 @@ export function Notes({ allNotes }: IProps) {
     return (
       <nav className={styles.nav}>
         <header>
-          <TextButton
-            onClick={() => {
-              setActiveFilter("John Abbott College");
-            }}
-            color={activeFilter === "John Abbott College" ? "white" : "grey"}
-          >
-            John Abbott College
-          </TextButton>
+          <Text color="white">John Abbott College</Text>
         </header>
         {filters.map((filter: string) => (
           <div key={filter}>
-            <TextButton
-              variant="subheading"
-              onClick={() => setNotes(filter)}
-              style="capitalize"
-              color={activeFilter === filter ? "white" : "grey"}
-            >
+            <Text variant="subheading" style="capitalize" color="grey">
               {filter}
-            </TextButton>
+            </Text>
           </div>
         ))}
       </nav>
@@ -114,7 +91,7 @@ export function Notes({ allNotes }: IProps) {
       <div className={styles.mainContent}>
         <HorizontalLine />
         <section className={styles.content}>
-          <>{filteredNotes.map((note: INote) => renderListItem(note))}</>
+          <>{allNotes.map((note: INote) => renderListItem(note))}</>
         </section>
       </div>
     );
