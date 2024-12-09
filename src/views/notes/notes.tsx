@@ -4,7 +4,6 @@ import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
 import { TextButton } from "../../components/inputs/text-button/text-button";
-import { sortByCreatedDescending } from "../../utils/noteHelpers";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 import { Link } from "../../components/navigation/link/link";
 import {
@@ -13,7 +12,7 @@ import {
   replaceHyphensWithSpaces,
 } from "../../utils/textFormatters";
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
-import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from "../../../pages/notes";
+import { NOTES_CATEGORIES } from "../../../pages/notes";
 
 interface IProps {
   allNotes: INote[];
