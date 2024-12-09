@@ -5,16 +5,68 @@ import { navItems } from "..";
 import { INote } from "../../src/interfaces/note";
 import { GetStaticPropsContext } from "next";
 import { Gallery } from "../../src/views/gallery/gallery";
-import { getAllNotesForCategories } from "../../src/services/noteService";
+import { ILazyLoadProps } from "../notes";
+import { useEffect, useRef, useState } from "react";
+import { Text } from "../../src/components/typography/text/text";
+import { getPaginatedNotesForCategories } from "../../src/services/noteService";
 
 export const PORTFOLIO_CATEGORIES = ["management", "hackathon"];
 export const PORTFOLIO_BASE_FOLDER = "portfolio";
 
-interface IProps {
-  allNotes: INote[];
-}
+export default function PortfolioPage({
+  initialNotes,
+  initialPageSize,
+  total,
+}: Readonly<ILazyLoadProps>) {
+  const [notes, setNotes] = useState(initialNotes);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const loaderRef = useRef<HTMLDivElement | null>(null);
+  const pageSize = initialPageSize;
 
-export default function PortfolioPage({ allNotes }: IProps) {
+  const fetchNotes = async (page: number) => {
+    try {
+      setLoading(true);
+      console.log("page: ", page, " pageSize: ", pageSize);
+      const response = await fetch(
+        `/api/notes?page=${page}&pageSize=${pageSize}`
+      );
+      const data = await response.json();
+      setNotes((prevNotes) => [...prevNotes, ...data.notes]);
+      console.log([data.notes]);
+    } catch (error) {
+      console.error("Error fetching notes:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !loading && notes.length < total) {
+          const nextPage = currentPage + 1;
+          setCurrentPage(nextPage);
+          fetchNotes(nextPage);
+        }
+      },
+      {
+        threshold: 0.5,
+        rootMargin: "300px",
+      }
+    );
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+
+    return () => {
+      if (loaderRef.current) {
+        observer.unobserve(loaderRef.current);
+      }
+    };
+  }, [loading, currentPage, notes.length, total]);
+
   return (
     <>
       <Meta />
@@ -22,19 +74,32 @@ export default function PortfolioPage({ allNotes }: IProps) {
         <title>Poggie • Portfolio</title>
       </Head>
       <Burger navItems={navItems} />
-      <Gallery allNotes={allNotes} />
+      <Gallery allNotes={notes} />
+      <div ref={loaderRef} style={{ height: "50px", textAlign: "center" }}>
+        {loading && (
+          <Text variant="subheading" style="italics">
+            Loading more notes...
+          </Text>
+        )}
+      </div>
     </>
   );
 }
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  const { notes, total } = await getAllNotesForCategories(
+  const pageSize = 10;
+
+  const { notes, total } = await getPaginatedNotesForCategories(
     PORTFOLIO_BASE_FOLDER,
-    PORTFOLIO_CATEGORIES
+    PORTFOLIO_CATEGORIES,
+    1,
+    pageSize
   );
   return {
     props: {
-      allNotes: notes,
+      initialNotes: notes,
+      total,
+      initialPageSize: pageSize,
     },
   };
 }

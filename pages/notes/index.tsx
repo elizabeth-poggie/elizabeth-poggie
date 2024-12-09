@@ -16,7 +16,7 @@ export const NOTES_CATEGORIES = [
 ];
 export const NOTES_BASE_FOLDER = "john-abbott-college";
 
-interface IProps {
+export interface ILazyLoadProps {
   initialNotes: INote[];
   initialPageSize: number;
   total: number;
@@ -26,7 +26,7 @@ export default function Index({
   initialNotes,
   initialPageSize,
   total,
-}: Readonly<IProps>) {
+}: Readonly<ILazyLoadProps>) {
   const [notes, setNotes] = useState(initialNotes);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
