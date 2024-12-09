@@ -7,15 +7,20 @@ import { TextButton } from "../../components/inputs/text-button/text-button";
 import { sortByCreatedDescending } from "../../utils/noteHelpers";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 import { Link } from "../../components/navigation/link/link";
-import { formatDate, pluralToSingular } from "../../utils/textFormatters";
+import {
+  formatDate,
+  pluralToSingular,
+  replaceHyphensWithSpaces,
+} from "../../utils/textFormatters";
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
+import { NOTES_CATEGORIES } from "../../../pages/notes";
 
 interface IProps {
   allNotes: INote[];
 }
 
 export function Notes({ allNotes }: IProps) {
-  const sortedNotes = sortByCreatedDescending(allNotes); // Sort latest notes
+  const sortedNotes = allNotes; // init default state
 
   const [activeFilter, setActiveFilter] = React.useState<
     string | "John Abbott College"
@@ -25,14 +30,10 @@ export function Notes({ allNotes }: IProps) {
     setActiveFilter(filter);
   };
 
-  const renderFilterRow = (filterType: string) => {
-    const onlyUnique = (value, index, array) => {
-      return array.indexOf(value) === index;
-    };
-
-    const filters: string[] = [
-      ...allNotes.map((note: INote) => note[filterType]),
-    ].filter(onlyUnique);
+  const renderFilterRow = () => {
+    const filters: string[] = NOTES_CATEGORIES.map((category) =>
+      replaceHyphensWithSpaces(category)
+    );
 
     return (
       <nav className={styles.nav}>
@@ -51,6 +52,7 @@ export function Notes({ allNotes }: IProps) {
             <TextButton
               variant="subheading"
               onClick={() => setNotes(filter)}
+              style="capitalize"
               color={activeFilter === filter ? "white" : "grey"}
             >
               {filter}
@@ -124,7 +126,7 @@ export function Notes({ allNotes }: IProps) {
         header={renderTitle()}
         rightSidebar={""}
         mainContent={renderMainContent()}
-        leftSidebar={renderFilterRow("category")}
+        leftSidebar={renderFilterRow()}
       />
     </>
   );
