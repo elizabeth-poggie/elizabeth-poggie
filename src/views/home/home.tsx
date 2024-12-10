@@ -7,7 +7,7 @@ import { INote } from "../../interfaces/note";
 import styles from "./home.module.scss";
 
 export function Home() {
-  const handler = () => {};
+  const filteredItems = navItems.filter((note) => note.text !== "Home");
   return (
     <div className={styles.container}>
       <section className={styles.section}>
@@ -15,7 +15,7 @@ export function Home() {
           Elizabeth Poggie
         </Text>
         <nav className={styles.navigation}>
-          {navItems.map((item, index) => {
+          {filteredItems.map((item, index) => {
             return (
               <>
                 <div className={styles.navItemWrapper}>
@@ -23,7 +23,7 @@ export function Home() {
                     {item.text}
                   </TextLink>
                 </div>
-                {index < navItems.length - 1 && (
+                {index < filteredItems.length - 1 && (
                   <span className={styles.dotWrapper}> • </span>
                 )}
               </>
@@ -32,11 +32,11 @@ export function Home() {
         </nav>
         <div className={styles.coolText}>
           <Text variant="p" align="center" gutterBottom={8}>
-            I’m currently a lecturer at John Abbott College and also manage
-            various events throughout Montreal.
+            ⚠️ This site is undergoing major transitions and will be functional
+            in 1 - 2 business weeks 👩‍🔧🔥🖥️
           </Text>
           <Link href="mailto:elizabethpoggie@gmail.com">
-            <PillButton onClick={() => null} title="Contact me" />
+            <PillButton onClick={() => null} title="Complain here" />
           </Link>
         </div>
       </section>
