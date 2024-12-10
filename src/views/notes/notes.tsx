@@ -15,10 +15,59 @@ import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-con
 import { NOTES_CATEGORIES } from "../../../pages/notes";
 
 interface IProps {
-  allNotes: INote[];
+  initialNotes: INote[];
+  total: number;
+  initialPageSize: number;
 }
 
-export default function Notes({ allNotes }: IProps) {
+export function Notes({ initialNotes, total, initialPageSize }: IProps) {
+  const [notes, setNotes] = React.useState(initialNotes);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [loading, setLoading] = React.useState(false);
+  const loaderRef = React.useRef<HTMLDivElement | null>(null);
+
+  const fetchNotes = async (page: number) => {
+    try {
+      setLoading(true);
+      const response = await fetch(
+        `/api/notes?page=${page}&pageSize=${initialPageSize}`
+      );
+      const data = await response.json();
+      setNotes((prevNotes) => [...prevNotes, ...data.notes]);
+    } catch (error) {
+      console.error("Error fetching notes:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !loading && notes.length < total) {
+          const nextPage = currentPage + 1;
+          setCurrentPage(nextPage);
+          fetchNotes(nextPage);
+        }
+      },
+      { threshold: 0.5, rootMargin: "100px" }
+    );
+
+    if (loaderRef.current) observer.observe(loaderRef.current);
+
+    return () => {
+      if (loaderRef.current) observer.unobserve(loaderRef.current);
+    };
+  }, [loading, currentPage, notes.length, total]);
+
+  const renderLoading = () => {
+    return (
+      <Text variant="subheading" style="italics">
+        Loading more notes...
+      </Text>
+    );
+  };
+
   const renderFilterRow = () => {
     const filters: string[] = NOTES_CATEGORIES.map((category) =>
       replaceHyphensWithSpaces(category)
@@ -91,8 +140,11 @@ export default function Notes({ allNotes }: IProps) {
       <div className={styles.mainContent}>
         <HorizontalLine />
         <section className={styles.content}>
-          <>{allNotes.map((note: INote) => renderListItem(note))}</>
+          <>{notes.map((note: INote) => renderListItem(note))}</>
         </section>
+        <div ref={loaderRef} style={{ height: "50px", textAlign: "center" }}>
+          {loading && renderLoading()}
+        </div>
       </div>
     );
   };
