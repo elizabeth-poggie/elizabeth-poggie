@@ -21,7 +21,7 @@ interface IProps {
 }
 
 export function Notes({ initialNotes, total, initialPageSize }: IProps) {
-  const [notes, setNotes] = React.useState(initialNotes);
+  const [notes, setNotes] = React.useState<INote[]>(initialNotes);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [loading, setLoading] = React.useState(false);
   const loaderRef = React.useRef<HTMLDivElement | null>(null);

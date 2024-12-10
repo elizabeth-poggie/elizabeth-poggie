@@ -49,7 +49,7 @@ export default function Index({
 }
 
 export async function getServerSideProps() {
-  const pageSize = 10;
+  const pageSize = 5;
 
   const { notes, total } = await getPaginatedNotesForCategories(
     NOTES_BASE_FOLDER,
