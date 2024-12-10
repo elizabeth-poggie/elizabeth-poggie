@@ -2,7 +2,7 @@ import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { GetStaticPropsContext } from "next";
-import { Burger } from "../../src/components/navigation/burger/Burger";
+import Burger from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
 import { GalleryDetails } from "../../src/views/gallery-details/gallery-details";
 import { PORTFOLIO_BASE_FOLDER, PORTFOLIO_CATEGORIES } from ".";
