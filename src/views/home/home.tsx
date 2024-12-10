@@ -7,36 +7,40 @@ import { INote } from "../../interfaces/note";
 import styles from "./home.module.scss";
 
 export function Home() {
-  const handler = () => {};
+  const filteredItems = navItems.filter((note) => note.text !== "Home");
+  const renderNavBar = () => {
+    return (
+      <nav className={styles.navigation}>
+        {filteredItems.map((item, index) => {
+          return (
+            <>
+              <div className={styles.navItemWrapper}>
+                <TextLink href={item.href} variant="h2">
+                  {item.text}
+                </TextLink>
+              </div>
+              {index < filteredItems.length - 1 && (
+                <span className={styles.dotWrapper}> • </span>
+              )}
+            </>
+          );
+        })}
+      </nav>
+    );
+  };
   return (
     <div className={styles.container}>
       <section className={styles.section}>
         <Text variant="title" align="center" gutterBottom={4}>
           Elizabeth Poggie
         </Text>
-        <nav className={styles.navigation}>
-          {navItems.map((item, index) => {
-            return (
-              <>
-                <div className={styles.navItemWrapper}>
-                  <TextLink href={item.href} variant="h2">
-                    {item.text}
-                  </TextLink>
-                </div>
-                {index < navItems.length - 1 && (
-                  <span className={styles.dotWrapper}> • </span>
-                )}
-              </>
-            );
-          })}
-        </nav>
         <div className={styles.coolText}>
           <Text variant="p" align="center" gutterBottom={8}>
-            I’m currently a lecturer at John Abbott College and also manage
-            various events throughout Montreal.
+            ⚠️ This site is undergoing major transitions and will be functional
+            in 1 - 2 business weeks 👩‍🔧🔥🖥️
           </Text>
           <Link href="mailto:elizabethpoggie@gmail.com">
-            <PillButton onClick={() => null} title="Contact me" />
+            <PillButton onClick={() => null} title="Complain here" />
           </Link>
         </div>
       </section>

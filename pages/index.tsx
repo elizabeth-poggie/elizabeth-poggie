@@ -3,18 +3,16 @@ import Meta from "../src/views/meta/meta";
 import { ILink, INote } from "../src/interfaces/note";
 import { getAllNotes } from "../src/utils/api";
 import { Burger } from "../src/components/navigation/burger/Burger";
-import { sortByCreatedDescending } from "../src/utils/noteHelpers";
-import { Text } from "../src/components/typography/text/text";
 import { Home } from "../src/views/home/home";
 export const navItems: ILink[] = [
   {
     href: "/",
     text: "Home",
   },
-  {
-    href: "/notes",
-    text: "Notes",
-  },
+  // {
+  //   href: "/notes",
+  //   text: "Notes",
+  // },
   {
     href: "/portfolio",
     text: "Portfolio",
@@ -26,7 +24,6 @@ interface IProps {
 }
 
 export default function Index({ allNotes }: Readonly<IProps>) {
-  const sortedNotes = sortByCreatedDescending(allNotes);
   return (
     <>
       <Meta />

@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, lazy } from "react";
 import Head from "next/head";
-import { INote } from "../../src/interfaces/note";
 import Meta from "../../src/views/meta/meta";
-import { Burger } from "../../src/components/navigation/burger/Burger";
 import { navItems } from "..";
-import { Notes } from "../../src/views/notes/notes";
 import { getPaginatedNotesForCategories } from "../../src/services/noteService";
 import { Text } from "../../src/components/typography/text/text";
+import { INote } from "../../src/interfaces/note";
+import { Burger } from "../../src/components/navigation/burger/Burger";
+import { Notes } from "../../src/views/notes/notes";
 
 export const NOTES_CATEGORIES = [
   "user-interfaces",
@@ -26,23 +26,20 @@ export default function Index({
   initialNotes,
   initialPageSize,
   total,
-}: Readonly<ILazyLoadProps>) {
+}: ILazyLoadProps) {
   const [notes, setNotes] = useState(initialNotes);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const loaderRef = useRef<HTMLDivElement | null>(null);
-  const pageSize = initialPageSize;
 
   const fetchNotes = async (page: number) => {
     try {
       setLoading(true);
-      console.log("page: ", page, " pageSize: ", pageSize);
       const response = await fetch(
-        `/api/notes?page=${page}&pageSize=${pageSize}`
+        `/api/notes?page=${page}&pageSize=${initialPageSize}`
       );
       const data = await response.json();
       setNotes((prevNotes) => [...prevNotes, ...data.notes]);
-      console.log([data.notes]);
     } catch (error) {
       console.error("Error fetching notes:", error);
     } finally {
@@ -59,22 +56,23 @@ export default function Index({
           fetchNotes(nextPage);
         }
       },
-      {
-        threshold: 0.5,
-        rootMargin: "300px",
-      }
+      { threshold: 0.5, rootMargin: "100px" }
     );
 
-    if (loaderRef.current) {
-      observer.observe(loaderRef.current);
-    }
+    if (loaderRef.current) observer.observe(loaderRef.current);
 
     return () => {
-      if (loaderRef.current) {
-        observer.unobserve(loaderRef.current);
-      }
+      if (loaderRef.current) observer.unobserve(loaderRef.current);
     };
   }, [loading, currentPage, notes.length, total]);
+
+  const renderLoading = () => {
+    return (
+      <Text variant="subheading" style="italics">
+        Loading more notes...
+      </Text>
+    );
+  };
 
   return (
     <>
@@ -82,20 +80,18 @@ export default function Index({
       <Head>
         <title>Poggie • Notes</title>
       </Head>
-      <Burger navItems={navItems} />
-      <Notes allNotes={notes} />
+      <React.Suspense fallback={renderLoading()}>
+        <Burger navItems={navItems} />
+        <Notes allNotes={notes} />
+      </React.Suspense>
       <div ref={loaderRef} style={{ height: "50px", textAlign: "center" }}>
-        {loading && (
-          <Text variant="subheading" style="italics">
-            Loading more notes...
-          </Text>
-        )}
+        {loading && renderLoading()}
       </div>
     </>
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const pageSize = 10;
 
   const { notes, total } = await getPaginatedNotesForCategories(
@@ -106,10 +102,6 @@ export async function getServerSideProps(context) {
   );
 
   return {
-    props: {
-      initialNotes: notes,
-      total,
-      initialPageSize: pageSize,
-    },
+    props: { initialNotes: notes, total, initialPageSize: pageSize },
   };
 }
