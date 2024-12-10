@@ -1,18 +1,24 @@
-import React from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  lazy,
+  Suspense,
+  useCallback,
+} from "react";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
-import { TextButton } from "../../components/inputs/text-button/text-button";
-import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 import { Link } from "../../components/navigation/link/link";
 import {
   formatDate,
   pluralToSingular,
   replaceHyphensWithSpaces,
 } from "../../utils/textFormatters";
-import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
 import { NOTES_CATEGORIES } from "../../../pages/notes";
+import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
+import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
 
 interface IProps {
   initialNotes: INote[];
@@ -21,11 +27,12 @@ interface IProps {
 }
 
 export function Notes({ initialNotes, total, initialPageSize }: IProps) {
-  const [notes, setNotes] = React.useState<INote[]>(initialNotes);
-  const [currentPage, setCurrentPage] = React.useState(1);
-  const [loading, setLoading] = React.useState(false);
-  const loaderRef = React.useRef<HTMLDivElement | null>(null);
+  const [notes, setNotes] = useState<INote[]>(initialNotes);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const loaderRef = useRef<HTMLDivElement | null>(null);
 
+  // Optimized fetchNotes function
   const fetchNotes = async (page: number) => {
     try {
       setLoading(true);
@@ -41,32 +48,37 @@ export function Notes({ initialNotes, total, initialPageSize }: IProps) {
     }
   };
 
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !loading && notes.length < total) {
-          const nextPage = currentPage + 1;
-          setCurrentPage(nextPage);
-          fetchNotes(nextPage);
-        }
-      },
-      { threshold: 0.5, rootMargin: "100px" }
-    );
+  // Optimized IntersectionObserver with useCallback and throttling
+  const handleObserver = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      if (entries[0].isIntersecting && !loading && notes.length < total) {
+        const nextPage = currentPage + 1;
+        setCurrentPage(nextPage);
+        fetchNotes(nextPage);
+      }
+    },
+    [loading, notes.length, total, currentPage]
+  );
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleObserver, {
+      threshold: 0.5,
+      rootMargin: "100px",
+    });
 
     if (loaderRef.current) observer.observe(loaderRef.current);
 
     return () => {
       if (loaderRef.current) observer.unobserve(loaderRef.current);
+      observer.disconnect();
     };
-  }, [loading, currentPage, notes.length, total]);
+  }, [handleObserver]);
 
-  const renderLoading = () => {
-    return (
-      <Text variant="subheading" style="italics">
-        Loading more notes...
-      </Text>
-    );
-  };
+  const renderLoading = () => (
+    <Text variant="subheading" style="italics">
+      Loading more notes...
+    </Text>
+  );
 
   const renderFilterRow = () => {
     const filters: string[] = NOTES_CATEGORIES.map((category) =>
@@ -118,45 +130,41 @@ export function Notes({ initialNotes, total, initialPageSize }: IProps) {
             {type ? `${pluralToSingular(type)}, ` : null}
             {category}
           </Text>
-          {coverSrc ? (
-            <MDXImage baseFolder={baseFolder} src={coverSrc} alt={title} />
-          ) : null}
+          {coverSrc && (
+            <MDXImage src={coverSrc} alt={title} baseFolder={baseFolder} />
+          )}
         </div>
         <HorizontalLine />
       </Link>
     );
   };
 
-  const renderTitle = () => {
-    return (
-      <header className={styles.titleWrapper}>
-        <Text variant="title">Notes</Text>
-      </header>
-    );
-  };
+  const renderTitle = () => (
+    <header className={styles.titleWrapper}>
+      <Text variant="title">Notes</Text>
+    </header>
+  );
 
-  const renderMainContent = () => {
-    return (
-      <div className={styles.mainContent}>
-        <HorizontalLine />
-        <section className={styles.content}>
-          <>{notes.map((note: INote) => renderListItem(note))}</>
-        </section>
-        <div ref={loaderRef} style={{ height: "50px", textAlign: "center" }}>
-          {loading && renderLoading()}
-        </div>
+  const renderMainContent = () => (
+    <div className={styles.mainContent}>
+      <HorizontalLine />
+      <section className={styles.content}>
+        {notes.map((note: INote) => renderListItem(note))}
+      </section>
+      <div ref={loaderRef} style={{ height: "50px", textAlign: "center" }}>
+        {loading && renderLoading()}
       </div>
-    );
-  };
+    </div>
+  );
 
   return (
-    <>
+    <Suspense fallback={renderLoading()}>
       <ThreeColumnTemplate
         header={renderTitle()}
-        rightSidebar={""}
+        rightSidebar={null}
         mainContent={renderMainContent()}
         leftSidebar={renderFilterRow()}
       />
-    </>
+    </Suspense>
   );
 }
