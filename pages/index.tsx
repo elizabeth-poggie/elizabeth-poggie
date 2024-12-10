@@ -9,10 +9,10 @@ export const navItems: ILink[] = [
     href: "/",
     text: "Home",
   },
-  {
-    href: "/notes",
-    text: "Notes",
-  },
+  // {
+  //   href: "/notes",
+  //   text: "Notes",
+  // },
   {
     href: "/portfolio",
     text: "Portfolio",
