@@ -12,7 +12,7 @@ interface IProps {
  * See more cool burgers here
  * @link https://hamburger-react.netlify.app/
  */
-export function Burger({ navItems }: IProps) {
+export default function Burger({ navItems }: IProps) {
   const [isOpen, setOpen] = React.useState(false);
 
   const handleIsOpen = () => {

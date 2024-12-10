@@ -18,7 +18,7 @@ interface IProps {
   allNotes: INote[];
 }
 
-export function Notes({ allNotes }: IProps) {
+export default function Notes({ allNotes }: IProps) {
   const renderFilterRow = () => {
     const filters: string[] = NOTES_CATEGORIES.map((category) =>
       replaceHyphensWithSpaces(category)

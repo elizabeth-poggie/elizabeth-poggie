@@ -5,8 +5,12 @@ import { navItems } from "..";
 import { getPaginatedNotesForCategories } from "../../src/services/noteService";
 import { Text } from "../../src/components/typography/text/text";
 import { INote } from "../../src/interfaces/note";
-import { Burger } from "../../src/components/navigation/burger/Burger";
-import { Notes } from "../../src/views/notes/notes";
+
+// Lazy Load bulky components
+const LazyNotes = lazy(() => import("../../src/views/notes/notes"));
+const LazyBurger = lazy(
+  () => import("../../src/components/navigation/burger/Burger")
+);
 
 export const NOTES_CATEGORIES = [
   "user-interfaces",
@@ -81,8 +85,8 @@ export default function Index({
         <title>Poggie • Notes</title>
       </Head>
       <React.Suspense fallback={renderLoading()}>
-        <Burger navItems={navItems} />
-        <Notes allNotes={notes} />
+        <LazyBurger navItems={navItems} />
+        <LazyNotes allNotes={notes} />
       </React.Suspense>
       <div ref={loaderRef} style={{ height: "50px", textAlign: "center" }}>
         {loading && renderLoading()}
