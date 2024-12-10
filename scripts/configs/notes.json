@@ -1,0 +1,26 @@
+{
+  "john-abbott-college": {
+    "categories": {
+      "Web Programming I": ["lectures", "assignments", "quiz-answers"],
+      "Computerized Systems": ["lectures", "assignments"],
+      "Admin": ["instructor-info", "schedules"],
+      "User Interfaces": ["lectures", "assignments"],
+      "Intro to Programming": []
+    }
+  },
+  "portfolio": {
+    "categories": {
+      "Art": [],
+      "Branding": [],
+      "Management": [],
+      "Hackathon": []
+    }
+  },
+  "recipes": {
+    "categories": {
+      "Bread": [],
+      "Dessert": [],
+      "Snack": []
+    }
+  }
+}

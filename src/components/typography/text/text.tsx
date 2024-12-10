@@ -1,4 +1,4 @@
-import { cs } from "../../../utils/helpers/classHelpers";
+import { cs } from "../../../utils/classHelpers";
 import styles from "./text.module.scss";
 
 const textVariantToStyleMap = {

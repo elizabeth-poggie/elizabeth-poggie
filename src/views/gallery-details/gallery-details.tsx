@@ -4,7 +4,7 @@ import {
   MDXNoteContent,
 } from "../../components/display/mdx-note-content/mdx-note-content";
 import { Text } from "../../components/typography/text/text";
-import { cs } from "../../utils/helpers/classHelpers";
+import { cs } from "../../utils/classHelpers";
 import styles from "./gallery-details.module.scss";
 
 export function GalleryDetails(props: MDXProps) {

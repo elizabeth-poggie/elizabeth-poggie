@@ -3,6 +3,10 @@ export interface ILink {
   href: string;
 }
 
+export type CategoryToLinkMap = {
+  [key in string]: ILink[];
+};
+
 /**
  * Note
  * @interface INote
@@ -89,4 +93,10 @@ export interface INote {
    * @deprecated using MDX now
    */
   content?: string;
+  /**
+   * Where does it belong in the order
+   */
+  number?: number;
 }
+
+export type Frontmatter = Omit<INote, "content">;

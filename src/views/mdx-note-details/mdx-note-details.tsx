@@ -1,5 +1,5 @@
 import { Text } from "../../components/typography/text/text";
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Toc,
   TOC_NOTE_DETAILS_OPTIONS,
@@ -11,15 +11,15 @@ import {
   CollapsibleLinkList,
   CollapsibleList,
 } from "../../components/layout/collapsible/collapsible";
-import { CategoryToLinkMap } from "../../utils/helpers/noteFetchers";
-import { pluralToSingular } from "../../utils/helpers/textFormatters";
+import { pluralToSingular } from "../../utils/textFormatters";
 import tocbot from "tocbot";
 import { useRouter } from "next/router";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 
 export function MdxNoteDetails(props: MDXProps) {
-  const { title, type } = props.source.frontmatter;
-  const relatedNotes: CategoryToLinkMap = props.relatedNotes;
+  const { title, type, number } = props.source.frontmatter;
+  const relatedNotes = props.relatedNotes;
+
   const noteType = type ? type : null;
   const router = useRouter();
 
@@ -65,7 +65,7 @@ export function MdxNoteDetails(props: MDXProps) {
         content: (
           <CollapsibleLinkList
             links={links}
-            selectedText={title}
+            selectedText={`${number}. ${title}`}
             handleOnClick={refreshToc}
           />
         ),
