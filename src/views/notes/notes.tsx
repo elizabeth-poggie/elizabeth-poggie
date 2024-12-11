@@ -2,7 +2,6 @@ import React, {
   useState,
   useRef,
   useEffect,
-  lazy,
   Suspense,
   useCallback,
 } from "react";
@@ -32,13 +31,11 @@ export function Notes({ initialNotes, total, initialPageSize }: IProps) {
   const [loading, setLoading] = useState(false);
   const loaderRef = useRef<HTMLDivElement | null>(null);
 
-  // Optimized fetchNotes function
+  // Fetch notes with error handling
   const fetchNotes = async (page: number) => {
     try {
       setLoading(true);
-      const response = await fetch(
-        `/api/notes?page=${page}&pageSize=${initialPageSize}`
-      );
+      const response = await fetch(`/api/notes?page=${page}&pageSize=${10}`);
       const data = await response.json();
       setNotes((prevNotes) => [...prevNotes, ...data.notes]);
     } catch (error) {
@@ -48,7 +45,7 @@ export function Notes({ initialNotes, total, initialPageSize }: IProps) {
     }
   };
 
-  // Optimized IntersectionObserver with useCallback and throttling
+  // Optimized IntersectionObserver with useCallback
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
       if (entries[0].isIntersecting && !loading && notes.length < total) {
@@ -63,16 +60,17 @@ export function Notes({ initialNotes, total, initialPageSize }: IProps) {
   useEffect(() => {
     const observer = new IntersectionObserver(handleObserver, {
       threshold: 0.5,
-      rootMargin: "100px",
+      rootMargin: "60% 0px", // Trigger when the element is BEFORE the viewport
     });
 
-    if (loaderRef.current) observer.observe(loaderRef.current);
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
 
     return () => {
       if (loaderRef.current) observer.unobserve(loaderRef.current);
-      observer.disconnect();
     };
-  }, [handleObserver]);
+  }, [loading, currentPage, notes.length, total]);
 
   const renderLoading = () => (
     <Text variant="subheading" style="italics">
