@@ -4,6 +4,7 @@ import React, {
   useEffect,
   Suspense,
   useCallback,
+  useLayoutEffect,
 } from "react";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import { Text } from "../../components/typography/text/text";
@@ -58,19 +59,27 @@ export function Notes({ initialNotes, total, initialPageSize }: IProps) {
   );
 
   useEffect(() => {
-    const observer = new IntersectionObserver(handleObserver, {
-      threshold: 0.5,
-      rootMargin: "60% 0px", // Trigger when the element is BEFORE the viewport
-    });
+    let observer: IntersectionObserver;
 
-    if (loaderRef.current) {
-      observer.observe(loaderRef.current);
-    }
+    const setupObserver = () => {
+      if (loaderRef.current) {
+        observer = new IntersectionObserver(handleObserver, {
+          threshold: 0.5,
+          rootMargin: "60% 0px", // Trigger BEFORE the element enters the viewport
+        });
 
-    return () => {
-      if (loaderRef.current) observer.unobserve(loaderRef.current);
+        observer.observe(loaderRef.current);
+      } else {
+        console.warn("LoaderRef isn't ready yet. Retrying...");
+        // Retry AFTER a small delay
+        setTimeout(setupObserver, 100);
+      }
     };
-  }, [loading, currentPage, notes.length, total]);
+
+    setupObserver();
+
+    return () => observer && observer.disconnect();
+  }, [handleObserver]); // Depends ONLY on the handler
 
   const renderLoading = () => (
     <Text variant="subheading" style="italics">
