@@ -36,6 +36,7 @@ export function Notes({}: IProps) {
       const response = await fetch(`/api/notes?page=${page}&pageSize=${10}`);
       const data = await response.json();
       setNotes((prevNotes) => [...prevNotes, ...data.notes]);
+      setCap(data.total);
     } catch (error) {
       console.error("Error fetching notes:", error);
     } finally {
