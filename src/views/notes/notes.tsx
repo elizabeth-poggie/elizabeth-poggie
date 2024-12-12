@@ -20,17 +20,14 @@ import { NOTES_CATEGORIES } from "../../../pages/notes";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
 
-interface IProps {
-  initialNotes: INote[];
-  total: number;
-  initialPageSize: number;
-}
+interface IProps {}
 
-export function Notes({ initialNotes, total, initialPageSize }: IProps) {
-  const [notes, setNotes] = useState<INote[]>(initialNotes);
-  const [currentPage, setCurrentPage] = useState(1);
+export function Notes({}: IProps) {
+  const [notes, setNotes] = useState<INote[]>([]);
+  const [currentPage, setCurrentPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const loaderRef = useRef<HTMLDivElement | null>(null);
+  const [cap, setCap] = useState<number>(100); // TODO - not sure if a hard cap is a good idea lol
 
   // Fetch notes with error handling
   const fetchNotes = async (page: number) => {
@@ -49,13 +46,13 @@ export function Notes({ initialNotes, total, initialPageSize }: IProps) {
   // Optimized IntersectionObserver with useCallback
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
-      if (entries[0].isIntersecting && !loading && notes.length < total) {
+      if (entries[0].isIntersecting && !loading && notes.length < cap) {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
         fetchNotes(nextPage);
       }
     },
-    [loading, notes.length, total, currentPage]
+    [loading, notes.length, cap, currentPage]
   );
 
   useEffect(() => {

@@ -27,11 +27,9 @@ export interface ILazyLoadProps {
   total: number;
 }
 
-export default function Index({
-  initialNotes,
-  initialPageSize,
-  total,
-}: ILazyLoadProps) {
+export interface IProps {}
+
+export default function Index({}: IProps) {
   return (
     <>
       <Meta />
@@ -39,27 +37,7 @@ export default function Index({
         <title>Poggie • Notes</title>
       </Head>
       <LazyBurger navItems={navItems} />
-      <Notes
-        initialNotes={initialNotes}
-        total={total}
-        initialPageSize={initialPageSize}
-      />
+      <Notes />
     </>
   );
-}
-
-export async function getServerSideProps() {
-  // only a few notes to start
-  const pageSize = 3;
-
-  const { notes, total } = await getPaginatedNotesForCategories(
-    NOTES_BASE_FOLDER,
-    NOTES_CATEGORIES,
-    1,
-    pageSize
-  );
-
-  return {
-    props: { initialNotes: notes, total, initialPageSize: pageSize },
-  };
 }
