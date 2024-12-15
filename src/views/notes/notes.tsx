@@ -4,7 +4,6 @@ import React, {
   useEffect,
   Suspense,
   useCallback,
-  useLayoutEffect,
 } from "react";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import { Text } from "../../components/typography/text/text";
@@ -19,6 +18,7 @@ import {
 import { NOTES_CATEGORIES } from "../../../pages/notes";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
+import { sortByCreatedDescending } from "../../utils/noteHelpers";
 
 interface IProps {}
 
@@ -27,15 +27,26 @@ export function Notes({}: IProps) {
   const [currentPage, setCurrentPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const loaderRef = useRef<HTMLDivElement | null>(null);
-  const [cap, setCap] = useState<number>(100); // TODO - not sure if a hard cap is a good idea lol
+  const [cap, setCap] = useState<number>(100);
 
-  // Fetch notes with error handling
   const fetchNotes = async (page: number) => {
     try {
       setLoading(true);
       const response = await fetch(`/api/notes?page=${page}&pageSize=${10}`);
       const data = await response.json();
-      setNotes((prevNotes) => [...prevNotes, ...data.notes]);
+
+      // Filter out duplicates
+      const newNotes = data.notes.filter(
+        (newNote) =>
+          !notes.some((existingNote) => existingNote.slug === newNote.slug)
+      );
+
+      // Combine and sort notes by date (newest first)
+      const combinedNotes = sortByCreatedDescending([...notes, ...newNotes]);
+
+      // Updates
+      setNotes(combinedNotes);
+      localStorage.setItem("cachedNotes", JSON.stringify(combinedNotes));
       setCap(data.total);
     } catch (error) {
       console.error("Error fetching notes:", error);
@@ -44,7 +55,6 @@ export function Notes({}: IProps) {
     }
   };
 
-  // Optimized IntersectionObserver with useCallback
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
       if (entries[0].isIntersecting && !loading && notes.length < cap) {
@@ -57,27 +67,26 @@ export function Notes({}: IProps) {
   );
 
   useEffect(() => {
-    let observer: IntersectionObserver;
+    const cachedNotes = localStorage.getItem("cachedNotes");
+    if (cachedNotes) {
+      setNotes(JSON.parse(cachedNotes));
+    } else {
+      fetchNotes(0);
+    }
+  }, []);
 
-    const setupObserver = () => {
-      if (loaderRef.current) {
-        observer = new IntersectionObserver(handleObserver, {
-          threshold: 0.5,
-          rootMargin: "60% 0px", // Trigger BEFORE the element enters the viewport
-        });
+  useEffect(() => {
+    if (!loaderRef.current) return;
 
-        observer.observe(loaderRef.current);
-      } else {
-        console.warn("LoaderRef isn't ready yet. Retrying...");
-        // Retry AFTER a small delay
-        setTimeout(setupObserver, 100);
-      }
-    };
+    const observer = new IntersectionObserver(handleObserver, {
+      threshold: 0.5,
+      rootMargin: "60% 0px",
+    });
 
-    setupObserver();
+    observer.observe(loaderRef.current);
 
-    return () => observer && observer.disconnect();
-  }, [handleObserver]); // Depends ONLY on the handler
+    return () => observer.disconnect();
+  }, [handleObserver]);
 
   const renderLoading = () => (
     <Text variant="subheading" style="italics">
