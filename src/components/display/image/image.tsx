@@ -95,6 +95,7 @@ export function Image({
         src={src}
         alt={alt}
         fill={fill}
+        loading="lazy"
       />
     </div>
   );

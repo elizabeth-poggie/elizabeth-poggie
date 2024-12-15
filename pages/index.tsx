@@ -2,17 +2,17 @@ import Head from "next/head";
 import Meta from "../src/views/meta/meta";
 import { ILink, INote } from "../src/interfaces/note";
 import { getAllNotes } from "../src/utils/api";
-import { Burger } from "../src/components/navigation/burger/Burger";
+import Burger from "../src/components/navigation/burger/Burger";
 import { Home } from "../src/views/home/home";
 export const navItems: ILink[] = [
   {
     href: "/",
     text: "Home",
   },
-  // {
-  //   href: "/notes",
-  //   text: "Notes",
-  // },
+  {
+    href: "/notes",
+    text: "Notes",
+  },
   {
     href: "/portfolio",
     text: "Portfolio",

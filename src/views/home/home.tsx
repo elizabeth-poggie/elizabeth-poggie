@@ -34,6 +34,7 @@ export function Home() {
         <Text variant="title" align="center" gutterBottom={4}>
           Elizabeth Poggie
         </Text>
+        {renderNavBar()}
         <div className={styles.coolText}>
           <Text variant="p" align="center" gutterBottom={8}>
             ⚠️ This site is undergoing major transitions and will be functional
