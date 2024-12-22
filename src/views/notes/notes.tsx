@@ -19,6 +19,7 @@ import { NOTES_CATEGORIES } from "../../../pages/notes";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
 import { sortByCreatedDescending } from "../../utils/noteHelpers";
+import { FOLDER_STRUCTURE } from "../../constants/folderStructure";
 
 interface IProps {}
 
@@ -32,7 +33,11 @@ export function Notes({}: IProps) {
   const fetchNotes = async (page: number) => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/notes?page=${page}&pageSize=${10}`);
+      const response = await fetch(
+        `/api/notes?page=${page}&pageSize=${10}&category=${
+          FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES.WEB_PROGRAMMING
+        }`
+      );
       const data = await response.json();
 
       if (data.notes.length === 0) {
@@ -54,7 +59,7 @@ export function Notes({}: IProps) {
           !notes.some((existingNote) => existingNote.slug === newNote.slug)
       );
 
-      // Combine and sort notes by date (newest first)
+      // ! sort again is _important_ for new notes !
       const combinedNotes = sortByCreatedDescending([...notes, ...newNotes]);
 
       // Updates
