@@ -3,15 +3,13 @@ import {
   constructNoteSlug,
   sortByCreatedDescending,
 } from "../utils/noteHelpers";
-import {
-  buildCategoryPath,
-  filterTypeCandidates,
-} from "../utils/categoryHelpers";
+import { filterTypeCandidates } from "../utils/categoryHelpers";
 import {
   fileExists,
   readDirectory,
   isDirectory,
   findFileInDirectory,
+  fetchNotesForPath,
 } from "../utils/fileHelpers";
 import { CategoryToLinkMap, Frontmatter, INote } from "../interfaces/note";
 import path from "path";
@@ -19,6 +17,54 @@ import fs from "fs"; // Cannot be used directly in Next.js code that runs in the
 import { replaceHyphensWithSpaces } from "../utils/textFormatters";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";
+import { FOLDER_STRUCTURE } from "../constants/folderStructure";
+
+export const getSubcategories = (
+  baseFolder: string,
+  category: string
+): string[] => {
+  const categoryPath = path.join(
+    process.cwd(),
+    FOLDER_STRUCTURE.BASE_CONTENT,
+    baseFolder,
+    category
+  );
+
+  // Check if directory exists
+  if (!fs.existsSync(categoryPath)) return [];
+
+  // Fetch subdirectories dynamically
+  return fs
+    .readdirSync(categoryPath)
+    .filter((item) =>
+      fs.lstatSync(path.join(categoryPath, item)).isDirectory()
+    );
+};
+
+export const getPaginatedNotesForCategory = async (
+  baseFolder: string,
+  category: string,
+  page = 1,
+  pageSize = 10
+): Promise<{ notes: INote[]; total: number }> => {
+  let notes: INote[] = [];
+  const subcategories = getSubcategories(baseFolder, category);
+
+  // Debugging
+  console.log(`🤖 Subcategories for ${category}:`, subcategories);
+
+  // Fetch notes for subcategories
+  for (const subcategory of subcategories) {
+    const subcategoryPath = path.join(baseFolder, category, subcategory);
+    notes = notes.concat(
+      await fetchNotesForPath(subcategoryPath, baseFolder, category)
+    );
+  }
+
+  // Sort and paginate
+  const sortedNotes = sortByCreatedDescending(notes);
+  return { notes: sortedNotes, total: 10000 };
+};
 
 const getNotesFromFolder = async (
   baseFolder: string,
@@ -46,32 +92,8 @@ const getNotesFromFolder = async (
       );
       notesInCategory.push(...subCategoryNotes);
     } else if (item.endsWith(".mdx")) {
-      const { mdxSource, frontmatter } = await parseNoteContent(fullPath);
-      const slug = `${baseFolder}/${category}`;
-      const fullBaseFolderPath = path
-        .join(baseFolder, category)
-        .replace(/_/g, "/");
-
-      // Split slug to handle nested structure
-      const parts = slug.split("_");
-      const fileName = parts.slice(-1)[0];
-      const subCategoryPath = parts;
-      const type = filterTypeCandidates(
-        subCategoryPath,
-        baseFolder,
-        [category],
-        fileName
-      );
-
-      notesInCategory.push({
-        title: frontmatter.title,
-        slug,
-        created: frontmatter.created,
-        coverSrc: frontmatter.coverSrc ?? null,
-        category: frontmatter.category,
-        baseFolder: fullBaseFolderPath,
-        type: replaceHyphensWithSpaces(type) || null,
-      });
+      const aNote = await parseNoteContent(fullPath, baseFolder, category);
+      notesInCategory.push(aNote);
     }
   }
 
@@ -118,7 +140,7 @@ const paginateNotes = (
 
 export const getPaginatedNotesForCategories = async (
   baseFolder: string,
-  categories: string[],
+  categories: string[] = [],
   page = 1,
   pageSize = 10
 ): Promise<{ notes: INote[]; total: number }> => {

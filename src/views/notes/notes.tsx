@@ -68,7 +68,7 @@ export function Notes({}: IProps) {
 
   useEffect(() => {
     const cachedNotes = localStorage.getItem("cachedNotes");
-    if (cachedNotes) {
+    if (cachedNotes && cachedNotes.length > 0) {
       setNotes(JSON.parse(cachedNotes));
     } else {
       fetchNotes(0);
