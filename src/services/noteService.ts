@@ -9,7 +9,7 @@ import {
   readDirectory,
   isDirectory,
   findFileInDirectory,
-  fetchNotesForPath,
+  findMdxFiles,
 } from "../utils/fileHelpers";
 import { CategoryToLinkMap, Frontmatter, INote } from "../interfaces/note";
 import path from "path";
@@ -47,23 +47,46 @@ export const getPaginatedNotesForCategory = async (
   page = 1,
   pageSize = 10
 ): Promise<{ notes: INote[]; total: number }> => {
-  let notes: INote[] = [];
   const subcategories = getSubcategories(baseFolder, category);
 
   // Debugging
   console.log(`🤖 Subcategories for ${category}:`, subcategories);
 
+  let allNotes: INote[] = [];
+
   // Fetch notes for subcategories
   for (const subcategory of subcategories) {
     const subcategoryPath = path.join(baseFolder, category, subcategory);
-    notes = notes.concat(
-      await fetchNotesForPath(subcategoryPath, baseFolder, category)
+    const fullPath = path.join(
+      process.cwd(),
+      FOLDER_STRUCTURE.BASE_CONTENT,
+      subcategoryPath
     );
+
+    // Check if the folder exists
+    if (!fs.existsSync(fullPath)) {
+      console.warn(`❌ Folder does not exist: ${fullPath}`);
+      continue; // to the next subcategory
+    }
+
+    // Read files in the subcategory folder
+    const filePaths: string[] = await findMdxFiles(fullPath);
+
+    // Debugging
+    console.log(`🤖 Files for ${subcategory}:`, filePaths);
+
+    // Fetch notes for each file
+    const notePromises: Promise<INote>[] = filePaths.map((filePath) =>
+      parseNoteContent(filePath, baseFolder, category)
+    );
+
+    const notes = await Promise.all(notePromises);
+    allNotes = allNotes.concat(notes); // Accumulate notes
   }
 
-  // Sort and paginate
-  const sortedNotes = sortByCreatedDescending(notes);
-  return { notes: sortedNotes, total: 10000 };
+  // Sort notes by creation date (descending)
+  const sortedNotes = sortByCreatedDescending(allNotes);
+  return paginateNotes(sortedNotes, page, pageSize);
 };
 
 const getNotesFromFolder = async (

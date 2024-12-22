@@ -60,7 +60,7 @@ export const findFileInDirectory = (
  * @param {string} dirPath - The starting directory path.
  * @returns {Promise<string[]>} - A promise that resolves to an array of `.mdx` file paths.
  */
-async function findMdxFiles(dirPath: string): Promise<string[]> {
+export async function findMdxFiles(dirPath: string): Promise<string[]> {
   let mdxFiles = [];
 
   // Read the contents of the directory
@@ -81,37 +81,3 @@ async function findMdxFiles(dirPath: string): Promise<string[]> {
 
   return mdxFiles;
 }
-
-// Function to fetch notes from a given path
-export const fetchNotesForPath = async (
-  folderPath: string,
-  baseFolder: string,
-  category: string
-): Promise<INote[]> => {
-  const fullPath = path.join(
-    process.cwd(),
-    FOLDER_STRUCTURE.BASE_CONTENT,
-    folderPath
-  );
-
-  // Check if the folder exists
-  if (!fs.existsSync(fullPath)) {
-    console.warn(`❌ Folder does not exist: ${fullPath}`);
-    return [];
-  }
-
-  // Read all files in the folder
-  const filePaths: string[] = await findMdxFiles(fullPath);
-
-  // Debugging
-  console.log(`🤖 Files for ${category}:`, filePaths);
-
-  // Map through files to create note objects
-  const notePromises: Promise<INote>[] = filePaths.map(async (filePath) => {
-    const aNote = await parseNoteContent(filePath, baseFolder, category);
-    return aNote;
-  });
-
-  const notes: INote[] = await Promise.all(notePromises); // resolve all concurrently
-  return notes;
-};
