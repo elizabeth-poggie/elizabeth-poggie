@@ -35,6 +35,19 @@ export function Notes({}: IProps) {
       const response = await fetch(`/api/notes?page=${page}&pageSize=${10}`);
       const data = await response.json();
 
+      if (data.notes.length === 0) {
+        console.warn("❌ No more notes to fetch");
+        return; // Stop fetching if no new notes are returned
+      }
+
+      console.log({
+        currentPage,
+        currentlyFetchedNotes: data.notes,
+        cap,
+        isLoading: loading,
+        combinedNotes: notes,
+      });
+
       // Filter out duplicates
       const newNotes = data.notes.filter(
         (newNote) =>
@@ -57,7 +70,12 @@ export function Notes({}: IProps) {
 
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
-      if (entries[0].isIntersecting && !loading && notes.length < cap) {
+      if (
+        entries[0].isIntersecting &&
+        !loading &&
+        notes.length < cap && // Don't get more notes than within capacity
+        currentPage * 10 < cap // Ensure current page is within bounds
+      ) {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
         fetchNotes(nextPage);

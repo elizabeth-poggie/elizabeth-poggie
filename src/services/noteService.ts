@@ -2,6 +2,7 @@ import {
   parseNoteContent,
   constructNoteSlug,
   sortByCreatedDescending,
+  paginateNotes,
 } from "../utils/noteHelpers";
 import { filterTypeCandidates } from "../utils/categoryHelpers";
 import {
@@ -10,6 +11,7 @@ import {
   isDirectory,
   findFileInDirectory,
   findMdxFiles,
+  getSubcategories,
 } from "../utils/fileHelpers";
 import { CategoryToLinkMap, Frontmatter, INote } from "../interfaces/note";
 import path from "path";
@@ -19,39 +21,15 @@ import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";
 import { FOLDER_STRUCTURE } from "../constants/folderStructure";
 
-export const getSubcategories = (
-  baseFolder: string,
-  category: string
-): string[] => {
-  const categoryPath = path.join(
-    process.cwd(),
-    FOLDER_STRUCTURE.BASE_CONTENT,
-    baseFolder,
-    category
-  );
-
-  // Check if directory exists
-  if (!fs.existsSync(categoryPath)) return [];
-
-  // Fetch subdirectories dynamically
-  return fs
-    .readdirSync(categoryPath)
-    .filter((item) =>
-      fs.lstatSync(path.join(categoryPath, item)).isDirectory()
-    );
-};
-
 export const getPaginatedNotesForCategory = async (
   baseFolder: string,
   category: string,
-  page = 1,
-  pageSize = 10
+  page: number,
+  pageSize: number
 ): Promise<{ notes: INote[]; total: number }> => {
   const subcategories = getSubcategories(baseFolder, category);
 
-  // Debugging
-  console.log(`🤖 Subcategories for ${category}:`, subcategories);
-
+  // aggregate notes
   let allNotes: INote[] = [];
 
   // Fetch notes for subcategories
@@ -72,12 +50,9 @@ export const getPaginatedNotesForCategory = async (
     // Read files in the subcategory folder
     const filePaths: string[] = await findMdxFiles(fullPath);
 
-    // Debugging
-    console.log(`🤖 Files for ${subcategory}:`, filePaths);
-
     // Fetch notes for each file
     const notePromises: Promise<INote>[] = filePaths.map((filePath) =>
-      parseNoteContent(filePath, baseFolder, category)
+      parseNoteContent(filePath, baseFolder)
     );
 
     const notes = await Promise.all(notePromises);
@@ -115,7 +90,7 @@ const getNotesFromFolder = async (
       );
       notesInCategory.push(...subCategoryNotes);
     } else if (item.endsWith(".mdx")) {
-      const aNote = await parseNoteContent(fullPath, baseFolder, category);
+      const aNote = await parseNoteContent(fullPath, baseFolder);
       notesInCategory.push(aNote);
     }
   }
@@ -148,17 +123,6 @@ const fetchNotesForCategories = async (
   }
 
   return Array.from(uniqueNotes.values());
-};
-
-const paginateNotes = (
-  notes: INote[],
-  page: number,
-  pageSize: number
-): { notes: INote[]; total: number } => {
-  const total = notes.length;
-  const startIndex = (page - 1) * pageSize;
-  const paginated = notes.slice(startIndex, startIndex + pageSize);
-  return { notes: paginated, total };
 };
 
 export const getPaginatedNotesForCategories = async (

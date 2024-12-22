@@ -31,8 +31,8 @@ export const readFileContent = (filePath: string): string => {
 
 /**
  * Recursive helper to go down the folder tree
- * @param dirPath - The starting directory path.
- * @param targetFile
+ * @param {string} dirPath - The starting directory path.
+ * @param {string} targetFile
  * @returns
  */
 export const findFileInDirectory = (
@@ -81,3 +81,31 @@ export async function findMdxFiles(dirPath: string): Promise<string[]> {
 
   return mdxFiles;
 }
+
+/**
+ *
+ * @param {string} baseFolder - where to start looking
+ * @param {string} category - where to derive the subcategories
+ * @returns {string[]}
+ */
+export const getSubcategories = (
+  baseFolder: string,
+  category: string
+): string[] => {
+  const categoryPath = path.join(
+    process.cwd(),
+    FOLDER_STRUCTURE.BASE_CONTENT,
+    baseFolder,
+    category
+  );
+
+  // Check if directory exists
+  if (!fs.existsSync(categoryPath)) return [];
+
+  // Fetch subdirectories dynamically
+  return fs
+    .readdirSync(categoryPath)
+    .filter((item) =>
+      fs.lstatSync(path.join(categoryPath, item)).isDirectory()
+    );
+};

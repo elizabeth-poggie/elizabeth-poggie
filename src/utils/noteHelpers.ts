@@ -38,25 +38,28 @@ export const sortByCreatedDescending = (notes: INote[]): INote[] => {
  */
 export const parseNoteContent = async (
   filePath: string,
-  baseFolder: string,
-  category: string
+  baseFolder: string
 ): Promise<INote> => {
+  // Extract meta data from the note
   const source = readFileContent(filePath);
   const mdxSource = await serialize(source, { parseFrontmatter: true });
   const frontmatter = mdxSource.frontmatter as Frontmatter;
-  const slug = `${baseFolder}/${category}`;
-  const fullBaseFolderPath = path.join(baseFolder, category).replace(/_/g, "/");
 
-  // Split slug to handle nested structure
-  const parts = slug.split("_");
-  const fileName = parts.slice(-1)[0];
-  const subCategoryPath = parts;
-  const type = filterTypeCandidates(
-    subCategoryPath,
-    baseFolder,
-    [category],
-    fileName
-  );
+  // Extract the file name without the extension
+  const fileName = filePath.split("/").pop().replace(".mdx", "");
+
+  // Extract the category (e.g. web-programming-i)
+  const pathParts = filePath.split("/");
+  const category = pathParts[pathParts.length - 4];
+
+  // Extract the subcategory (e.g. quiz-answers)
+  const subcategory = pathParts[pathParts.length - 3];
+
+  // Dynamically construct slug for deeply nested hierarchy
+  const slug = `${baseFolder}/${category}_${subcategory}_${fileName}`;
+  const fullBaseFolderPath = path
+    .join(baseFolder, category, subcategory, fileName)
+    .replace(/_/g, "/");
 
   return {
     title: frontmatter.title,
@@ -65,7 +68,7 @@ export const parseNoteContent = async (
     coverSrc: frontmatter.coverSrc ?? null,
     category: frontmatter.category,
     baseFolder: fullBaseFolderPath,
-    type: replaceHyphensWithSpaces(type) || null,
+    type: replaceHyphensWithSpaces(subcategory) || null,
   };
 };
 
@@ -77,3 +80,21 @@ export const constructNoteSlug = (
   currentSlug.endsWith(fileNameWithoutExtension)
     ? `${currentSlug}`
     : `${currentSlug}_${fileNameWithoutExtension}`;
+
+/**
+ *
+ * @param notes
+ * @param page
+ * @param pageSize
+ * @returns
+ */
+export const paginateNotes = (
+  notes: INote[],
+  page: number,
+  pageSize: number
+): { notes: INote[]; total: number } => {
+  const total = notes.length;
+  const startIndex = (page - 1) * pageSize;
+  const paginated = notes.slice(startIndex, startIndex + pageSize);
+  return { notes: paginated, total };
+};
