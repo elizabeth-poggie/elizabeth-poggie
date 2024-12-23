@@ -20,6 +20,10 @@ import { ThreeColumnTemplate } from "../../components/templates/three-collumn-te
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
 import { sortByCreatedDescending } from "../../utils/noteHelpers";
 import { FOLDER_STRUCTURE } from "../../constants/folderStructure";
+import {
+  CollapsibleLinkList,
+  CollapsibleList,
+} from "../../components/layout/collapsible/collapsible";
 
 interface IProps {}
 
@@ -28,15 +32,19 @@ export function Notes({}: IProps) {
   const [currentPage, setCurrentPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const loaderRef = useRef<HTMLDivElement | null>(null);
-  const [cap, setCap] = useState<number>(100);
+  const [cap, setCap] = useState<number>(100); // TODO - idk if this is fine lol
+  const [currentCategory, setCurrentCategory] = useState<string>(
+    FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES.WEB_PROGRAMMING
+  ); // TODO - default web?
+  const [currentBase, setCurrentBase] = useState<string>(
+    FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE
+  ); // TODO - default JAC?
 
   const fetchNotes = async (page: number) => {
     try {
       setLoading(true);
       const response = await fetch(
-        `/api/notes?page=${page}&pageSize=${10}&category=${
-          FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES.WEB_PROGRAMMING
-        }`
+        `/api/notes?page=${page}&pageSize=${10}&category=${currentCategory}&base=${currentBase}`
       );
       const data = await response.json();
 
@@ -117,23 +125,35 @@ export function Notes({}: IProps) {
     </Text>
   );
 
-  const renderFilterRow = () => {
-    const filters: string[] = NOTES_CATEGORIES.map((category) =>
-      replaceHyphensWithSpaces(category)
-    );
+  const renderCategoryCollabibles = () => {
+    // titles of the collapsibles is dependent on the available folders
+    const collapsibles = Object.values([
+      FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE,
+    ]).map((folder) => {
+      // Extract categories
+      const items = Object.values(folder.CATEGORIES).map((category) => ({
+        text: category,
+        href: "",
+      }));
+
+      return {
+        title: folder.BASE,
+        content: (
+          <CollapsibleLinkList
+            links={items}
+            selectedText={currentCategory}
+            handleOnClick={() => {}}
+          />
+        ),
+      };
+    });
 
     return (
       <nav className={styles.nav}>
-        <header>
-          <Text color="white">John Abbott College</Text>
-        </header>
-        {filters.map((filter: string) => (
-          <div key={filter}>
-            <Text variant="subheading" style="capitalize" color="grey">
-              {filter}
-            </Text>
-          </div>
-        ))}
+        <CollapsibleList
+          collapsibles={collapsibles}
+          currentType={currentBase}
+        />
       </nav>
     );
   };
@@ -200,7 +220,7 @@ export function Notes({}: IProps) {
         header={renderTitle()}
         rightSidebar={null}
         mainContent={renderMainContent()}
-        leftSidebar={renderFilterRow()}
+        leftSidebar={renderCategoryCollabibles()}
       />
     </Suspense>
   );

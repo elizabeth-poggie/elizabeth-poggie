@@ -1,9 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from "../notes";
-import {
-  getPaginatedNotesForCategories,
-  getPaginatedNotesForCategory,
-} from "../../src/services/noteService";
+import { getPaginatedNotesForCategory } from "../../src/services/noteService";
 import { FOLDER_STRUCTURE } from "../../src/constants/folderStructure";
 
 const getSingleValue = (value: string | string[]): string => {
@@ -14,18 +10,28 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // Query extraction
   const {
     page = "1",
     pageSize = "10",
     category = FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES.WEB_PROGRAMMING,
+    base = FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE,
   } = req.query;
 
-  // Param checks
+  // preprocessing
   const validCategories = [
     ...Object.values(FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES),
     ...Object.values(FOLDER_STRUCTURE.PORTFOLIO.CATEGORIES),
     ...Object.values(FOLDER_STRUCTURE.RECIPES.CATEGORIES),
   ];
+  const validBases = [
+    FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE,
+    FOLDER_STRUCTURE.RECIPES.BASE,
+    FOLDER_STRUCTURE.PORTFOLIO.BASE,
+  ];
+
+  // Param checks
+  const baseValue = getSingleValue(base);
   const categoryValue = getSingleValue(category);
   const pageNumber = Number(page);
   const pageSizeNumber = Number(pageSize);
@@ -42,9 +48,13 @@ export default async function handler(
     return res.status(400).json({ error: "❌ Invalid category parameter" });
   }
 
+  if (!validBases.includes(baseValue)) {
+    return res.status(400).json({ error: "❌ Invalid category parameter" });
+  }
+
   try {
     const { notes, total } = await getPaginatedNotesForCategory(
-      FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE,
+      baseValue,
       categoryValue,
       pageNumber,
       pageSizeNumber
