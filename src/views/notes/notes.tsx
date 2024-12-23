@@ -10,12 +10,7 @@ import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
 import { Link } from "../../components/navigation/link/link";
-import {
-  formatDate,
-  pluralToSingular,
-  replaceHyphensWithSpaces,
-} from "../../utils/textFormatters";
-import { NOTES_CATEGORIES } from "../../../pages/notes";
+import { formatDate, pluralToSingular } from "../../utils/textFormatters";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
 import { sortByCreatedDescending } from "../../utils/noteHelpers";
@@ -25,54 +20,48 @@ import {
   CollapsibleList,
 } from "../../components/layout/collapsible/collapsible";
 
-interface IProps {}
-
-export function Notes({}: IProps) {
-  const [notes, setNotes] = useState<INote[]>([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const loaderRef = useRef<HTMLDivElement | null>(null);
-  const [cap, setCap] = useState<number>(100); // TODO - idk if this is fine lol
+export function Notes() {
   const [currentCategory, setCurrentCategory] = useState<string>(
     FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES.WEB_PROGRAMMING
-  ); // TODO - default web?
+  );
   const [currentBase, setCurrentBase] = useState<string>(
     FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE
-  ); // TODO - default JAC?
+  );
+  const [notes, setNotes] = useState<{ [key: string]: INote[] }>({});
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const loaderRef = useRef<HTMLDivElement | null>(null);
+  const [cap, setCap] = useState<number>(100);
+
+  const [loading, setLoading] = useState(false);
 
   const fetchNotes = async (page: number) => {
     try {
       setLoading(true);
       const response = await fetch(
-        `/api/notes?page=${page}&pageSize=${10}&category=${currentCategory}&base=${currentBase}`
+        `/api/notes?page=${page}&pageSize=10&category=${currentCategory}&base=${currentBase}`
       );
       const data = await response.json();
 
-      if (data.notes.length === 0) {
+      if (!data.notes.length) {
         console.warn("❌ No more notes to fetch");
-        return; // Stop fetching if no new notes are returned
+        return;
       }
 
-      console.log({
-        currentPage,
-        currentlyFetchedNotes: data.notes,
-        cap,
-        isLoading: loading,
-        combinedNotes: notes,
-      });
-
-      // Filter out duplicates
       const newNotes = data.notes.filter(
-        (newNote) =>
-          !notes.some((existingNote) => existingNote.slug === newNote.slug)
+        (newNote: INote) =>
+          !notes[currentBase]?.some((note) => note.slug === newNote.slug)
       );
 
-      // ! sort again is _important_ for new notes !
-      const combinedNotes = sortByCreatedDescending([...notes, ...newNotes]);
+      const updatedNotes = {
+        ...notes,
+        [currentBase]: sortByCreatedDescending([
+          ...(notes[currentBase] || []),
+          ...newNotes,
+        ]),
+      };
 
-      // Updates
-      setNotes(combinedNotes);
-      localStorage.setItem("cachedNotes", JSON.stringify(combinedNotes));
+      setNotes(updatedNotes);
+      localStorage.setItem("cachedNotes", JSON.stringify(updatedNotes));
       setCap(data.total);
     } catch (error) {
       console.error("Error fetching notes:", error);
@@ -86,25 +75,27 @@ export function Notes({}: IProps) {
       if (
         entries[0].isIntersecting &&
         !loading &&
-        notes.length < cap && // Don't get more notes than within capacity
-        currentPage * 10 < cap // Ensure current page is within bounds
+        (notes[currentBase]?.length || 0) < cap &&
+        currentPage * 10 < cap
       ) {
-        const nextPage = currentPage + 1;
-        setCurrentPage(nextPage);
-        fetchNotes(nextPage);
+        setCurrentPage((prevPage) => {
+          const nextPage = prevPage + 1;
+          fetchNotes(nextPage);
+          return nextPage;
+        });
       }
     },
-    [loading, notes.length, cap, currentPage]
+    [loading, notes, cap, currentPage, currentBase]
   );
 
   useEffect(() => {
     const cachedNotes = localStorage.getItem("cachedNotes");
-    if (cachedNotes && cachedNotes.length > 0) {
+    if (cachedNotes) {
       setNotes(JSON.parse(cachedNotes));
     } else {
       fetchNotes(0);
     }
-  }, []);
+  }, [currentBase, currentCategory]);
 
   useEffect(() => {
     if (!loaderRef.current) return;
@@ -119,31 +110,27 @@ export function Notes({}: IProps) {
     return () => observer.disconnect();
   }, [handleObserver]);
 
-  const renderLoading = () => (
-    <Text variant="subheading" style="italics">
-      Loading more notes...
-    </Text>
-  );
+  const handleCollapsibleClick = (base: string, category: string) => {
+    setCurrentBase(base);
+    setCurrentCategory(category);
+    setCurrentPage(0);
+    fetchNotes(0); // Fetch notes for the new base and category
+  };
 
   const renderCategoryCollabibles = () => {
-    // titles of the collapsibles is dependent on the available folders
     const collapsibles = Object.values([
       FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE,
     ]).map((folder) => {
-      // Extract categories
       const items = Object.values(folder.CATEGORIES).map((category) => ({
         text: category,
         href: "",
+        handleOnClick: () => handleCollapsibleClick(folder.BASE, category),
       }));
 
       return {
         title: folder.BASE,
         content: (
-          <CollapsibleLinkList
-            links={items}
-            selectedText={currentCategory}
-            handleOnClick={() => {}}
-          />
+          <CollapsibleLinkList links={items} selectedText={currentCategory} />
         ),
       };
     });
@@ -196,26 +183,30 @@ export function Notes({}: IProps) {
     );
   };
 
+  const renderMainContent = () => (
+    <div className={styles.mainContent}>
+      <HorizontalLine />
+      <section className={styles.content}>
+        {notes[currentBase]?.map((note) => renderListItem(note)) || null}
+      </section>
+      <div ref={loaderRef} style={{ height: "50px", textAlign: "center" }}>
+        {loading && (
+          <Text variant="subheading" style="italics">
+            Loading more notes...
+          </Text>
+        )}
+      </div>
+    </div>
+  );
+
   const renderTitle = () => (
     <header className={styles.titleWrapper}>
       <Text variant="title">Notes</Text>
     </header>
   );
 
-  const renderMainContent = () => (
-    <div className={styles.mainContent}>
-      <HorizontalLine />
-      <section className={styles.content}>
-        {notes.map((note: INote) => renderListItem(note))}
-      </section>
-      <div ref={loaderRef} style={{ height: "50px", textAlign: "center" }}>
-        {loading && renderLoading()}
-      </div>
-    </div>
-  );
-
   return (
-    <Suspense fallback={renderLoading()}>
+    <Suspense fallback={<Text variant="subheading">Loading...</Text>}>
       <ThreeColumnTemplate
         header={renderTitle()}
         rightSidebar={null}
