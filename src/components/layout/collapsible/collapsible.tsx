@@ -39,7 +39,7 @@ export function Collapsible({
 interface ICollapsibleLinkListProps {
   links: ILink[];
   selectedText?: string;
-  handleOnClick?: () => void;
+  handleOnClick?: (selectedText: string) => void;
 }
 
 export const CollapsibleLinkList = ({
@@ -57,7 +57,7 @@ export const CollapsibleLinkList = ({
               variant="subheading"
               color={isSelected ? "white" : "grey"}
               href={link.href}
-              onClick={() => handleOnClick()}
+              onClick={() => handleOnClick(selectedText)}
             >
               {replaceHyphensWithSpaces(link.text)}
             </TextLink>

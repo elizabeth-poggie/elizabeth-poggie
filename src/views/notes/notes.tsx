@@ -28,10 +28,11 @@ export function Notes() {
     FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE
   );
   const [notes, setNotes] = useState<{ [key: string]: INote[] }>({});
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [currentPages, setCurrentPages] = useState<{ [key: string]: number }>({
+    [currentCategory]: 0,
+  }); // Track the current page for each category
+  const [caps, setCaps] = useState<{ [key: string]: number }>({});
   const loaderRef = useRef<HTMLDivElement | null>(null);
-  const [cap, setCap] = useState<number>(100);
-
   const [loading, setLoading] = useState(false);
 
   const fetchNotes = async (page: number) => {
@@ -52,6 +53,7 @@ export function Notes() {
           !notes[currentBase]?.some((note) => note.slug === newNote.slug)
       );
 
+      // Update the current states
       const updatedNotes = {
         ...notes,
         [currentBase]: sortByCreatedDescending([
@@ -59,10 +61,16 @@ export function Notes() {
           ...newNotes,
         ]),
       };
-
+      const updatedCaps = {
+        ...caps,
+        [currentCategory]: data.total,
+      };
       setNotes(updatedNotes);
+      setCaps(updatedCaps);
+
+      // update cache
       localStorage.setItem("cachedNotes", JSON.stringify(updatedNotes));
-      setCap(data.total);
+      localStorage.setItem("cachedCaps", JSON.stringify(updatedCaps));
     } catch (error) {
       console.error("Error fetching notes:", error);
     } finally {
@@ -75,25 +83,40 @@ export function Notes() {
       if (
         entries[0].isIntersecting &&
         !loading &&
-        (notes[currentBase]?.length || 0) < cap &&
-        currentPage * 10 < cap
+        (notes[currentBase]?.length || 0) < (caps[currentCategory] || 0) &&
+        currentPages[currentCategory] * 10 < (caps[currentCategory] || 0)
       ) {
-        setCurrentPage((prevPage) => {
-          const nextPage = prevPage + 1;
+        setCurrentPages((prevPages) => {
+          const nextPage = (prevPages[currentCategory] || 0) + 1;
           fetchNotes(nextPage);
-          return nextPage;
+          return {
+            ...prevPages,
+            [currentCategory]: nextPage,
+          };
         });
       }
     },
-    [loading, notes, cap, currentPage, currentBase]
+    [loading, notes, caps, currentPages, currentCategory, currentBase]
   );
 
+  // grab default state from the cache
   useEffect(() => {
     const cachedNotes = localStorage.getItem("cachedNotes");
+    const cachedCaps = localStorage.getItem("cachedCaps");
+    const cachedPages = localStorage.getItem("cachedPages");
+
     if (cachedNotes) {
       setNotes(JSON.parse(cachedNotes));
     } else {
       fetchNotes(0);
+    }
+
+    if (cachedCaps) {
+      setCaps(JSON.parse(cachedCaps));
+    }
+
+    if (cachedPages) {
+      setCurrentPages(JSON.parse(cachedPages));
     }
   }, [currentBase, currentCategory]);
 
@@ -110,11 +133,18 @@ export function Notes() {
     return () => observer.disconnect();
   }, [handleObserver]);
 
-  const handleCollapsibleClick = (base: string, category: string) => {
-    setCurrentBase(base);
-    setCurrentCategory(category);
-    setCurrentPage(0);
-    fetchNotes(0); // Fetch notes for the new base and category
+  const handleCollapsibleClick = (
+    base: string,
+    category: string,
+    selectedCategory: string
+  ) => {
+    setCurrentBase(base); // TODO - this should be related to the selected Category
+    setCurrentCategory(selectedCategory);
+    setCurrentPages((prevPages) => ({
+      ...prevPages,
+      [category]: currentPages[selectedCategory] || 0, // cur page or reset to 0
+    }));
+    fetchNotes(currentPages[selectedCategory]); // Fetch notes for the new base and category
   };
 
   const renderCategoryCollabibles = () => {
@@ -124,13 +154,18 @@ export function Notes() {
       const items = Object.values(folder.CATEGORIES).map((category) => ({
         text: category,
         href: "",
-        handleOnClick: () => handleCollapsibleClick(folder.BASE, category),
       }));
 
       return {
         title: folder.BASE,
         content: (
-          <CollapsibleLinkList links={items} selectedText={currentCategory} />
+          <CollapsibleLinkList
+            links={items}
+            selectedText={currentCategory}
+            handleOnClick={(selectedText) =>
+              handleCollapsibleClick(folder.BASE, currentCategory, selectedText)
+            }
+          />
         ),
       };
     });
