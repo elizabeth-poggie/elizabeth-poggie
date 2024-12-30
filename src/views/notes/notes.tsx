@@ -140,6 +140,11 @@ export function Notes() {
     return () => observer.disconnect();
   }, [handleObserver]);
 
+  // Run whenever currentCategory ORRRRR currentBase changes
+  useEffect(() => {
+    fetchNotes(currentPages[currentCategory] || 1);
+  }, [currentCategory, currentBase]);
+
   const handleCollapsibleClick = (base: string, selectedCategory: string) => {
     setCurrentBase(base);
     setCurrentCategory(selectedCategory);
@@ -149,10 +154,6 @@ export function Notes() {
       ...prevPages,
       [selectedCategory]: prevPages[selectedCategory] || 1,
     }));
-
-    // Use a fallback if shits wonky
-    const page = currentPages[selectedCategory] || 1;
-    fetchNotes(page);
   };
 
   const renderCategoryCollabibles = () => {
