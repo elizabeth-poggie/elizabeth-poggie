@@ -30,7 +30,7 @@ export function Notes() {
   const [notes, setNotes] = useState<{ [key: string]: INote[] }>({});
   const [currentPages, setCurrentPages] = useState<{ [key: string]: number }>({
     [currentCategory]: 1,
-  }); // Track the current page for each category
+  });
   const [caps, setCaps] = useState<{ [key: string]: number }>({});
   const loaderRef = useRef<HTMLDivElement | null>(null);
   const [loading, setLoading] = useState(false);
@@ -56,14 +56,13 @@ export function Notes() {
 
       const newNotes = data.notes.filter(
         (newNote: INote) =>
-          !notes[currentBase]?.some((note) => note.slug === newNote.slug)
+          !notes[currentCategory]?.some((note) => note.slug === newNote.slug)
       );
 
-      // Update the current states
       const updatedNotes = {
         ...notes,
-        [currentBase]: sortByCreatedDescending([
-          ...(notes[currentBase] || []),
+        [currentCategory]: sortByCreatedDescending([
+          ...(notes[currentCategory] || []),
           ...newNotes,
         ]),
       };
@@ -74,7 +73,6 @@ export function Notes() {
       setNotes(updatedNotes);
       setCaps(updatedCaps);
 
-      // update cache
       localStorage.setItem("cachedNotes", JSON.stringify(updatedNotes));
       localStorage.setItem("cachedCaps", JSON.stringify(updatedCaps));
     } catch (error) {
@@ -105,7 +103,6 @@ export function Notes() {
     [loading, notes, caps, currentPages, currentCategory, currentBase]
   );
 
-  // grab default state from the cache
   useEffect(() => {
     const cachedNotes = localStorage.getItem("cachedNotes");
     const cachedCaps = localStorage.getItem("cachedCaps");
@@ -140,14 +137,12 @@ export function Notes() {
   }, [handleObserver]);
 
   const handleCollapsibleClick = (base: string, selectedCategory: string) => {
-    // Set the current base and category
     setCurrentBase(base);
     setCurrentCategory(selectedCategory);
 
-    // Reset the page to 1 for the new category (or use the existing page if available)
     setCurrentPages((prevPages) => ({
       ...prevPages,
-      [selectedCategory]: prevPages[selectedCategory] || 1, // Set to 1 or maintain the existing page
+      [selectedCategory]: prevPages[selectedCategory] || 1,
     }));
 
     fetchNotes(currentPages[selectedCategory]);
@@ -228,7 +223,7 @@ export function Notes() {
     <div className={styles.mainContent}>
       <HorizontalLine />
       <section className={styles.content}>
-        {notes[currentBase]?.map((note) => renderListItem(note)) || null}
+        {notes[currentCategory]?.map((note) => renderListItem(note)) || null}
       </section>
       <div ref={loaderRef} style={{ height: "50px", textAlign: "center" }}>
         {loading && (
