@@ -29,7 +29,7 @@ export function Notes() {
   );
   const [notes, setNotes] = useState<{ [key: string]: INote[] }>({});
   const [currentPages, setCurrentPages] = useState<{ [key: string]: number }>({
-    [currentCategory]: 0,
+    [currentCategory]: 1,
   }); // Track the current page for each category
   const [caps, setCaps] = useState<{ [key: string]: number }>({});
   const loaderRef = useRef<HTMLDivElement | null>(null);
@@ -41,10 +41,16 @@ export function Notes() {
       const response = await fetch(
         `/api/notes?page=${page}&pageSize=10&category=${currentCategory}&base=${currentBase}`
       );
+
       const data = await response.json();
 
-      if (!data.notes.length) {
-        console.warn("❌ No more notes to fetch");
+      if (!response.ok) {
+        console.warn(data.error);
+        return;
+      }
+
+      if (!data.notes?.length) {
+        console.warn("❌ No notes were fetched");
         return;
       }
 
@@ -108,7 +114,7 @@ export function Notes() {
     if (cachedNotes) {
       setNotes(JSON.parse(cachedNotes));
     } else {
-      fetchNotes(0);
+      fetchNotes(1);
     }
 
     if (cachedCaps) {
