@@ -111,16 +111,20 @@ export function Notes() {
     if (cachedNotes) {
       setNotes(JSON.parse(cachedNotes));
     } else {
-      fetchNotes(1);
+      fetchNotes(1); // Start from page 1 if there's no cached data
     }
 
     if (cachedCaps) {
       setCaps(JSON.parse(cachedCaps));
     }
 
-    if (cachedPages) {
-      setCurrentPages(JSON.parse(cachedPages));
-    }
+    // Ensure the pages are set correctly
+    setCurrentPages((prevPages) => ({
+      ...prevPages,
+      [currentCategory]: cachedPages
+        ? JSON.parse(cachedPages)[currentCategory] || 1
+        : 1,
+    }));
   }, [currentBase, currentCategory]);
 
   useEffect(() => {
@@ -140,12 +144,15 @@ export function Notes() {
     setCurrentBase(base);
     setCurrentCategory(selectedCategory);
 
+    // we start from page 1 if undefined
     setCurrentPages((prevPages) => ({
       ...prevPages,
       [selectedCategory]: prevPages[selectedCategory] || 1,
     }));
 
-    fetchNotes(currentPages[selectedCategory]);
+    // Use a fallback if shits wonky
+    const page = currentPages[selectedCategory] || 1;
+    fetchNotes(page);
   };
 
   const renderCategoryCollabibles = () => {
