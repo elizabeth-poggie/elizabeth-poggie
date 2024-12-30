@@ -37,11 +37,15 @@ export default async function handler(
   const pageSizeNumber = Number(pageSize);
 
   if (isNaN(pageNumber) || pageNumber <= 0) {
-    return res.status(400).json({ error: "❌ Invalid page parameter" });
+    return res
+      .status(400)
+      .json({ error: "❌ Invalid page parameter. This should be above 0." });
   }
 
   if (isNaN(pageSizeNumber) || pageSizeNumber <= 0) {
-    return res.status(400).json({ error: "❌ Invalid pageSize" });
+    return res
+      .status(400)
+      .json({ error: "❌ Invalid pageSize. This should be above 0." });
   }
 
   if (!validCategories.includes(categoryValue)) {
