@@ -57,7 +57,7 @@ export const CollapsibleLinkList = ({
               variant="subheading"
               color={isSelected ? "white" : "grey"}
               href={link.href}
-              onClick={() => handleOnClick(selectedText)}
+              onClick={() => handleOnClick(link.text)}
             >
               {replaceHyphensWithSpaces(link.text)}
             </TextLink>

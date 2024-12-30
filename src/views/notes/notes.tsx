@@ -139,18 +139,18 @@ export function Notes() {
     return () => observer.disconnect();
   }, [handleObserver]);
 
-  const handleCollapsibleClick = (
-    base: string,
-    category: string,
-    selectedCategory: string
-  ) => {
-    setCurrentBase(base); // TODO - this should be related to the selected Category
+  const handleCollapsibleClick = (base: string, selectedCategory: string) => {
+    // Set the current base and category
+    setCurrentBase(base);
     setCurrentCategory(selectedCategory);
+
+    // Reset the page to 1 for the new category (or use the existing page if available)
     setCurrentPages((prevPages) => ({
       ...prevPages,
-      [category]: currentPages[selectedCategory] || 0, // cur page or reset to 0
+      [selectedCategory]: prevPages[selectedCategory] || 1, // Set to 1 or maintain the existing page
     }));
-    fetchNotes(currentPages[selectedCategory]); // Fetch notes for the new base and category
+
+    fetchNotes(currentPages[selectedCategory]);
   };
 
   const renderCategoryCollabibles = () => {
@@ -169,7 +169,7 @@ export function Notes() {
             links={items}
             selectedText={currentCategory}
             handleOnClick={(selectedText) =>
-              handleCollapsibleClick(folder.BASE, currentCategory, selectedText)
+              handleCollapsibleClick(folder.BASE, selectedText)
             }
           />
         ),
