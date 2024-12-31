@@ -1,4 +1,3 @@
-import { MDXProps } from "../../../../pages/recipes/[slug]";
 import { MDXRemote } from "next-mdx-remote";
 import {
   MDHeader,
@@ -15,6 +14,7 @@ import styles from "./mdx-note-content.module.scss";
 import { Link } from "../../navigation/link/link";
 import { Text } from "../../typography/text/text";
 import { HorizontalLine } from "../horizontal-line/horizontal-line";
+import { MDXProps } from "../../../../pages";
 
 export function MDXNoteContent({ source, baseFolder }: MDXProps) {
   return (
