@@ -1,16 +1,8 @@
 {
   "functions": {
     "api/notes.js": {
-      "includeFiles": ["_content/**/*.mdx", "_content/**/*.md"],
-      "excludeFiles": [
-        "_content/**/assets/*",
-        "_content/**/excels/*",
-        "_content/**/demos/*",
-        "*.log",
-        "node_modules",
-        ".vscode",
-        ".git"
-      ]
+      "includeFiles": "_content/**/*.{mdx,md}",
+      "excludeFiles": "_content/**/assets/*,_content/**/excels/*,_content/**/demos/*,*.log,node_modules,.vscode,.git"
     }
   }
 }
