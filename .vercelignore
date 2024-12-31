@@ -1,1 +1,9 @@
 _content/**/assets/
+_content/**/excels/
+_content/**/demos/
+.git
+node_modules
+.next
+.vscode
+logs/
+temp/
