@@ -5,5 +5,8 @@ _content/**/demos/
 node_modules
 .next
 .vscode
-logs/
+.next/cache/
 temp/
+logs/
+*.log
+*.bak
