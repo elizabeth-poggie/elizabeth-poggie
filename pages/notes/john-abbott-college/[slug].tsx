@@ -1,11 +1,10 @@
 import Head from "next/head";
 import Meta from "../../../src/views/meta/meta";
 import Burger from "../../../src/components/navigation/burger/Burger";
-import { navItems } from "../..";
+import { MDXProps, navItems } from "../..";
 import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from "..";
 import { GetStaticPropsContext } from "next";
 import { MdxNoteDetails } from "../../../src/views/mdx-note-details/mdx-note-details";
-import { MDXProps } from "../../recipes/[slug]";
 import {
   getNotePaths,
   getNoteProps,

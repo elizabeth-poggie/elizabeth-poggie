@@ -1,9 +1,15 @@
 import Head from "next/head";
 import Meta from "../src/views/meta/meta";
-import { ILink, INote } from "../src/interfaces/note";
+import {
+  CategoryToLinkMap,
+  Frontmatter,
+  ILink,
+  INote,
+} from "../src/interfaces/note";
 import { getAllNotes } from "../src/utils/api";
 import Burger from "../src/components/navigation/burger/Burger";
 import { Home } from "../src/views/home/home";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 export const navItems: ILink[] = [
   {
     href: "/",
@@ -18,6 +24,25 @@ export const navItems: ILink[] = [
     text: "Portfolio",
   },
 ];
+
+// TODO - maybe move this to live only in the relevant components
+export interface MDXProps {
+  /**
+   * Note Content
+   */
+  source: MDXRemoteSerializeResult<Record<string, unknown>> & {
+    frontmatter: Frontmatter;
+  };
+  /**
+   * Base URL of where the images are located in the public && content folders
+   * Used to enable relative linking for static website generators
+   */
+  baseFolder?: string;
+  /**
+   * Show relatedNotes on the page?
+   */
+  relatedNotes?: CategoryToLinkMap;
+}
 
 interface IProps {
   allNotes: INote[];
