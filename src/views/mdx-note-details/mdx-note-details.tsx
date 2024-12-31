@@ -4,7 +4,6 @@ import {
   Toc,
   TOC_NOTE_DETAILS_OPTIONS,
 } from "../../components/navigation/toc/toc";
-import { MDXProps } from "../../../pages/recipes/[slug]";
 import { MDXNoteContent } from "../../components/display/mdx-note-content/mdx-note-content";
 import styles from "./mdx-note-details.module.scss";
 import {
@@ -15,6 +14,7 @@ import { pluralToSingular } from "../../utils/textFormatters";
 import tocbot from "tocbot";
 import { useRouter } from "next/router";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
+import { MDXProps } from "../../../pages";
 
 export function MdxNoteDetails(props: MDXProps) {
   const { title, type, number } = props.source.frontmatter;

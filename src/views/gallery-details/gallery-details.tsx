@@ -1,4 +1,4 @@
-import { MDXProps } from "../../../pages/recipes/[slug]";
+import { MDXProps } from "../../../pages";
 import {
   MDXImage,
   MDXNoteContent,
