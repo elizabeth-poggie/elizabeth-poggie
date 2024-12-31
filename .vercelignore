@@ -1,6 +1,11 @@
 _content/**/assets/
 _content/**/excels/
 _content/**/demos/
+_content/recipes/
+_content/notes/
+_content/art/
+_content/projects/
+_content/back-burner/
 .git
 node_modules
 .next
