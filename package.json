@@ -12,6 +12,7 @@
   "dependencies": {
     "@next/mdx": "^14.2.3",
     "@types/mdx": "^2.0.13",
+    "better-sqlite3": "^11.7.0",
     "classnames": "^2.3.2",
     "date-fns": "^2.28.0",
     "gray-matter": "^4.0.3",
@@ -32,6 +33,7 @@
     "remark-html": "^15.0.1",
     "sass": "^1.56.1",
     "sharp": "^0.33.1",
+    "sqlite3": "^5.1.7",
     "tocbot": "^4.25.0",
     "typescript": "^4.7.4"
   },
@@ -42,6 +44,7 @@
     "autoprefixer": "^10.4.7",
     "eslint": "^8.28.0",
     "postcss": "^8.4.14",
+    "prisma": "^6.1.0",
     "tailwindcss": "^3.1.4"
   }
 }
