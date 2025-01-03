@@ -15,7 +15,7 @@ datasource db {
 
 model Note {
   id            Int    @id @default(autoincrement())
-  slug          String
+  slug          String // slugs r special and built dynamically
   collection    String // e.g. John Abbott College
   category      String // e.g. Web 1
   subcategory   String? // e.g. Lecture

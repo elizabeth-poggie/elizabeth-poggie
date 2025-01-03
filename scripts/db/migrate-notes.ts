@@ -87,7 +87,9 @@ const migrateNotes = async (categories, baseFolder) => {
     ...Object.values(JOHN_ABBOTT_FOLDERS.CATEGORIES),
   ];
   const baseFolder = JOHN_ABBOTT_FOLDERS.BASE;
+
   await migrateNotes(categories, baseFolder);
-  console.log("Migration donions 🧅✅");
+
+  console.log("✅🧅 Migration donions 🧅✅");
   await prisma.$disconnect();
 })();
