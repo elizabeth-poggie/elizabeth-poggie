@@ -8,31 +8,15 @@ import {
 import { Frontmatter } from "../../src/interfaces/note";
 import { replaceHyphensWithSpaces } from "../../src/utils/textFormatters";
 
+// init important shit lol
 const fs = require("fs");
 const path = require("path");
 const { PrismaClient } = require("@prisma/client");
 
+// idk what this does tbh
 const prisma = new PrismaClient();
 
-const extractMetadata = (content) => {
-  const metadataMatch = content.match(/---\n([\s\S]*?)\n---/);
-  if (!metadataMatch) return null;
-
-  const metadata = metadataMatch[1].split("\n").reduce((acc, line) => {
-    const [key, value] = line.split(": ");
-    acc[key.trim()] = value?.replace(/"/g, "").trim();
-    return acc;
-  }, {});
-
-  return metadata;
-};
-
-const migrateNotes = async () => {
-  const categories: string[] = [
-    ...Object.values(JOHN_ABBOTT_FOLDERS.CATEGORIES),
-  ];
-  const baseFolder = JOHN_ABBOTT_FOLDERS.BASE;
-
+const migrateNotes = async (categories, baseFolder) => {
   // loop over sub cats in each cat
   for (const category of categories) {
     const subcategories = getSubcategories("_content", baseFolder);
@@ -98,7 +82,12 @@ const migrateNotes = async () => {
 };
 
 (async () => {
-  await migrateNotes();
-  console.log("Migration complete!");
+  // TODO - probs need to do other shit soon lol
+  const categories: string[] = [
+    ...Object.values(JOHN_ABBOTT_FOLDERS.CATEGORIES),
+  ];
+  const baseFolder = JOHN_ABBOTT_FOLDERS.BASE;
+  await migrateNotes(categories, baseFolder);
+  console.log("Migration donions 🧅✅");
   await prisma.$disconnect();
 })();
