@@ -14,13 +14,14 @@ datasource db {
 }
 
 model Note {
-  id       Int    @id @default(autoincrement())
-  collection String // e.g. John Abbott College
-  category String // e.g. Web 1
-  subcategory String // e.g. Lecture
-  title    String // e.g. Intro to Web Development
-  created  DateTime
-  number   Int
-  coverSrc String
-  assetPath String // e.g. where in /public the assets are located
+  id            Int    @id @default(autoincrement())
+  slug          String
+  collection    String // e.g. John Abbott College
+  category      String // e.g. Web 1
+  subcategory   String? // e.g. Lecture
+  title         String // e.g. Intro to Web Development
+  created       DateTime
+  number        Int
+  coverSrc      String?
+  assetPath     String // e.g. where in /public the assets are located
 }

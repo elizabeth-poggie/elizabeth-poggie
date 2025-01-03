@@ -1,4 +1,4 @@
-const JOHN_ABBOTT_FOLDERS = {
+export const JOHN_ABBOTT_FOLDERS = {
   BASE: "john-abbott-college",
   CATEGORIES: {
     WEB_PROGRAMMING: "web-programming-i",
@@ -7,7 +7,7 @@ const JOHN_ABBOTT_FOLDERS = {
   },
 };
 
-const RECIPE_FOLDERS = {
+export const RECIPE_FOLDERS = {
   BASE: "recipes",
   CATEGORIES: {
     MEALS: "meals",
@@ -15,7 +15,7 @@ const RECIPE_FOLDERS = {
   },
 };
 
-const PORTFOLIO_FOLDERS = {
+export const PORTFOLIO_FOLDERS = {
   BASE: "portfolio",
   CATEGORIES: {
     MANAGEMENT: "management",
