@@ -1,10 +1,12 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc",
+    "yeet": "node ./scripts/db/migrate-notes.js",
     "note": "./scripts/generate-mdx.sh",
     "make": "./scripts/generate-component.sh",
     "snoopy": "./scripts/duplicate-assets.sh"

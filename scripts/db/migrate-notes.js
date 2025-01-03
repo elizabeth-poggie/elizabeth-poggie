@@ -1,3 +1,4 @@
+// i'm sad this cant b typescript
 import { serialize } from "next-mdx-remote/serialize";
 import { JOHN_ABBOTT_FOLDERS } from "../../src/constants/folderStructure";
 import {
@@ -5,7 +6,6 @@ import {
   getSubcategories,
   readFileContent,
 } from "../../src/utils/fileHelpers";
-import { Frontmatter } from "../../src/interfaces/note";
 import { replaceHyphensWithSpaces } from "../../src/utils/textFormatters";
 
 // init important shit lol
@@ -31,13 +31,13 @@ const migrateNotes = async (categories, baseFolder) => {
       }
 
       // Read files in the subcategory folder
-      const filePaths: string[] = await findMdxFiles(fullPath);
+      const filePaths = await findMdxFiles(fullPath);
 
       // Extract meta data from the note
       for (const filePath of filePaths) {
         const source = readFileContent(filePath);
         const mdxSource = await serialize(source, { parseFrontmatter: true });
-        const frontmatter = mdxSource.frontmatter as Frontmatter;
+        const frontmatter = mdxSource.frontmatter;
 
         // Extract the file name without the extension
         const fileName = filePath.split("/").pop().replace(".mdx", "");
@@ -83,9 +83,7 @@ const migrateNotes = async (categories, baseFolder) => {
 
 (async () => {
   // TODO - probs need to do other shit soon lol
-  const categories: string[] = [
-    ...Object.values(JOHN_ABBOTT_FOLDERS.CATEGORIES),
-  ];
+  const categories = [...Object.values(JOHN_ABBOTT_FOLDERS.CATEGORIES)];
   const baseFolder = JOHN_ABBOTT_FOLDERS.BASE;
 
   await migrateNotes(categories, baseFolder);
