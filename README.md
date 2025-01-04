@@ -5,3 +5,25 @@ I’m currently a lecturer at John Abbott College and also manage various events
 ## Contact
 
 [elizabethpoggie@gmail.com](mailto:elizabethpoggie@gmail.com)
+
+# Repo FAQ
+
+## Getting started
+
+```bash
+yarn
+```
+
+## Migrations
+
+Ensure the Prisma client is initialized
+
+```bash
+npx prisma generate
+```
+
+Ensure the Prisma schema is valid
+
+```bash
+npx prisma migrate dev
+```
