@@ -27,3 +27,17 @@ Ensure the Prisma schema is valid
 ```bash
 npx prisma migrate dev
 ```
+
+Run the migration script
+
+```bash
+yarn yeet
+```
+
+## Databases
+
+View && edit records with a GUI
+
+```bash
+yarn db
+```

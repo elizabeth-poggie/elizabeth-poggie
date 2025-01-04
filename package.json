@@ -6,10 +6,11 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc",
-    "yeet": "node ./scripts/db/migrate-notes.js",
     "note": "./scripts/generate-mdx.sh",
     "make": "./scripts/generate-component.sh",
-    "snoopy": "./scripts/duplicate-assets.sh"
+    "snoopy": "./scripts/duplicate-assets.sh",
+    "yeet": "node ./scripts/db/migrate-notes.js",
+    "db": "npx prisma studio"
   },
   "dependencies": {
     "@next/mdx": "^14.2.3",

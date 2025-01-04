@@ -147,13 +147,13 @@ const migrateNotes = async (categories, baseFolder) => {
 
         await prisma.note.create({
           data: {
-            collection: replaceHyphensWithSpaces(baseFolder) || "",
-            category: replaceHyphensWithSpaces(category) || "",
-            subcategory: replaceHyphensWithSpaces(subcategory) || "",
+            collection: replaceHyphensWithSpaces(baseFolder) || null,
+            category: replaceHyphensWithSpaces(category) || null,
+            subcategory: replaceHyphensWithSpaces(subcategory) || null,
             title: frontmatter.title,
             created: frontmatter.created || new Date(),
-            number: frontmatter.number ?? 0,
-            coverSrc: frontmatter.coverSrc ?? "",
+            number: frontmatter.number || 0,
+            coverSrc: frontmatter.coverSrc || null,
             assetPath,
             slug,
           },
