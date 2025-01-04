@@ -1,13 +1,8 @@
 // i'm sad this cant b typescript
-const fs = require("fs");
-const path = require("path");
-const { PrismaClient } = require("@prisma/client");
-
-// Dynamic import for ES Module
-let serialize;
-(async () => {
-  ({ serialize } = await import("next-mdx-remote/serialize"));
-})();
+import fs from "fs";
+import path from "path";
+import { PrismaClient } from "@prisma/client";
+import { serialize } from "next-mdx-remote/serialize";
 
 // helpers cause import is broken
 const readFileContent = (filePath) => {
