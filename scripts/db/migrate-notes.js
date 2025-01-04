@@ -50,20 +50,13 @@ const getSubcategories = (baseFolder, category) => {
     );
 };
 
-const replaceHyphensWithSpaces = (input) => {
-  if (!input) {
-    return null;
-  }
-  return input.replace(/-/g, " ");
-};
-
 // folders
 const JOHN_ABBOTT_FOLDERS = {
   BASE: "john-abbott-college",
   CATEGORIES: {
     WEB_PROGRAMMING: "web-programming-i",
-    // USER_INTERFACES: "user-interfaces",
-    // COMPUTERIZED_SYSTEMS: "computerized-systems",
+    USER_INTERFACES: "user-interfaces",
+    COMPUTERIZED_SYSTEMS: "computerized-systems",
   },
 };
 
@@ -147,9 +140,9 @@ const migrateNotes = async (categories, baseFolder) => {
 
         await prisma.note.create({
           data: {
-            collection: replaceHyphensWithSpaces(baseFolder) || null,
-            category: replaceHyphensWithSpaces(category) || null,
-            subcategory: replaceHyphensWithSpaces(subcategory) || null,
+            collection: baseFolder || null,
+            category: category || null,
+            subcategory: subcategory || null,
             title: frontmatter.title,
             created: frontmatter.created || new Date(),
             number: frontmatter.number || 0,

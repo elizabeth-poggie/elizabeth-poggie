@@ -20,7 +20,7 @@ model Note {
   category      String // e.g. Web 1
   subcategory   String? // e.g. Lecture
   title         String // e.g. Intro to Web Development
-  created       String
+  created       String // e.g. 2025-01-04
   number        Int
   coverSrc      String?
   assetPath     String // e.g. where in /public the assets are located

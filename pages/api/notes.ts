@@ -1,7 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getPaginatedNotesForCategory } from "../../src/services/noteService";
 import { FOLDER_STRUCTURE } from "../../src/constants/folderStructure";
+import { PrismaClient } from "@prisma/client";
 
+// init client
+const prisma = new PrismaClient();
+
+// Helper incase multiple params supplied
 const getSingleValue = (value: string | string[]): string => {
   return Array.isArray(value) ? value[0] : value;
 };
@@ -11,27 +16,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   // Query extraction
-  const {
-    page = "1",
-    pageSize = "10",
-    category = FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES.WEB_PROGRAMMING,
-    base = FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE,
-  } = req.query;
-
-  // preprocessing
-  const validCategories = [
-    ...Object.values(FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES),
-    ...Object.values(FOLDER_STRUCTURE.PORTFOLIO.CATEGORIES),
-    ...Object.values(FOLDER_STRUCTURE.RECIPES.CATEGORIES),
-  ];
-  const validBases = [
-    FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE,
-    FOLDER_STRUCTURE.RECIPES.BASE,
-    FOLDER_STRUCTURE.PORTFOLIO.BASE,
-  ];
+  const { page = "1", pageSize = "10", category, collection } = req.query;
 
   // Param checks
-  const baseValue = getSingleValue(base);
+  const collectionValue = getSingleValue(collection);
   const categoryValue = getSingleValue(category);
   const pageNumber = Number(page);
   const pageSizeNumber = Number(pageSize);
@@ -48,21 +36,35 @@ export default async function handler(
       .json({ error: "❌ Invalid pageSize. This should be above 0." });
   }
 
-  if (!validCategories.includes(categoryValue)) {
-    return res.status(400).json({ error: "❌ Invalid category parameter" });
-  }
-
-  if (!validBases.includes(baseValue)) {
-    return res.status(400).json({ error: "❌ Invalid category parameter" });
-  }
-
   try {
-    const { notes, total } = await getPaginatedNotesForCategory(
-      baseValue,
-      categoryValue,
-      pageNumber,
-      pageSizeNumber
-    );
+    // Get notes
+    const notes = await prisma.note.findMany({
+      where: {
+        collection: collectionValue,
+        OR: [{ category: categoryValue }],
+      },
+      orderBy: {
+        created: "desc", // Sort by creation date
+      },
+      skip: (pageNumber - 1) * pageSizeNumber, // Skip records for pagination
+      take: pageSizeNumber, // Limit results to page size
+    });
+
+    // Get total count for pagination
+    const total = await prisma.note.count({
+      where: {
+        collection: collectionValue,
+        OR: [{ category: categoryValue }],
+      },
+    });
+
+    if (notes?.length <= 0 || total <= 0) {
+      return res.status(400).json({
+        error: `❌ Invalid params. No notes found for ${collectionValue}, ${categoryValue}`,
+      });
+    }
+
+    console.log(`🤖 ${total} notes fetched: ${notes}`);
 
     res.status(200).json({ notes, total });
   } catch (error) {

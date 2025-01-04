@@ -39,7 +39,7 @@ export function Notes() {
     try {
       setLoading(true);
       const response = await fetch(
-        `/api/notes?page=${page}&pageSize=10&category=${currentCategory}&base=${currentBase}`
+        `/api/notes?page=${page}&pageSize=10&category=${currentCategory}&collection=${currentBase}`
       );
 
       const data = await response.json();
