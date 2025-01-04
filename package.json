@@ -1,6 +1,5 @@
 {
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -13,6 +12,7 @@
   },
   "dependencies": {
     "@next/mdx": "^14.2.3",
+    "@prisma/client": "^6.1.0",
     "@types/mdx": "^2.0.13",
     "better-sqlite3": "^11.7.0",
     "classnames": "^2.3.2",

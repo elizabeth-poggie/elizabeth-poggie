@@ -1,28 +1,119 @@
 // i'm sad this cant b typescript
-import { serialize } from "next-mdx-remote/serialize";
-import { JOHN_ABBOTT_FOLDERS } from "../../src/constants/folderStructure";
-import {
-  findMdxFiles,
-  getSubcategories,
-  readFileContent,
-} from "../../src/utils/fileHelpers";
-import { replaceHyphensWithSpaces } from "../../src/utils/textFormatters";
-
-// init important shit lol
 const fs = require("fs");
 const path = require("path");
 const { PrismaClient } = require("@prisma/client");
 
+// Dynamic import for ES Module
+let serialize;
+(async () => {
+  ({ serialize } = await import("next-mdx-remote/serialize"));
+})();
+
+// helpers cause import is broken
+const readFileContent = (filePath) => {
+  return fs.readFileSync(filePath, "utf8");
+};
+
+async function findMdxFiles(dirPath) {
+  let mdxFiles = [];
+
+  // Read the contents of the directory
+  const items = await fs.promises.readdir(dirPath, { withFileTypes: true });
+
+  for (const item of items) {
+    const fullPath = path.join(dirPath, item.name);
+
+    if (item.isDirectory()) {
+      // Recursively search in subdirectories
+      const subDirFiles = await findMdxFiles(fullPath);
+      mdxFiles = mdxFiles.concat(subDirFiles);
+    } else if (item.isFile() && item.name.endsWith(".mdx")) {
+      // Add the MDX file to the result array
+      mdxFiles.push(fullPath);
+    }
+  }
+
+  return mdxFiles;
+}
+
+const getSubcategories = (baseFolder, category) => {
+  const categoryPath = path.join(
+    process.cwd(),
+    FOLDER_STRUCTURE.BASE_CONTENT,
+    baseFolder,
+    category
+  );
+
+  // Check if directory exists
+  if (!fs.existsSync(categoryPath)) return [];
+
+  // Fetch subdirectories dynamically
+  return fs
+    .readdirSync(categoryPath)
+    .filter((item) =>
+      fs.lstatSync(path.join(categoryPath, item)).isDirectory()
+    );
+};
+
+const replaceHyphensWithSpaces = (input) => {
+  if (!input) {
+    return null;
+  }
+  return input.replace(/-/g, " ");
+};
+
+// folders
+const JOHN_ABBOTT_FOLDERS = {
+  BASE: "john-abbott-college",
+  CATEGORIES: {
+    WEB_PROGRAMMING: "web-programming-i",
+    // USER_INTERFACES: "user-interfaces",
+    // COMPUTERIZED_SYSTEMS: "computerized-systems",
+  },
+};
+
+const RECIPE_FOLDERS = {
+  BASE: "recipes",
+  CATEGORIES: {
+    MEALS: "meals",
+    CARBS: "carbs",
+  },
+};
+
+const PORTFOLIO_FOLDERS = {
+  BASE: "portfolio",
+  CATEGORIES: {
+    MANAGEMENT: "management",
+    ART: "art",
+    HACKATHON: "hackathon",
+  },
+};
+
+const FOLDER_STRUCTURE = {
+  BASE_CONTENT: "_content",
+  JOHN_ABBOTT_COLLEGE: JOHN_ABBOTT_FOLDERS,
+  RECIPES: RECIPE_FOLDERS,
+  PORTFOLIO: PORTFOLIO_FOLDERS,
+};
+
 // idk what this does tbh
 const prisma = new PrismaClient();
 
+// migration function lol
 const migrateNotes = async (categories, baseFolder) => {
   // loop over sub cats in each cat
   for (const category of categories) {
-    const subcategories = getSubcategories("_content", baseFolder);
+    const subcategories = getSubcategories(
+      FOLDER_STRUCTURE.BASE_CONTENT,
+      baseFolder
+    );
     for (const subcategory of subcategories) {
       const subcategoryPath = path.join(baseFolder, category, subcategory);
-      const fullPath = path.join(process.cwd(), "_content", subcategoryPath);
+      const fullPath = path.join(
+        process.cwd(),
+        FOLDER_STRUCTURE.BASE_CONTENT,
+        subcategoryPath
+      );
 
       // Check if the folder exists
       if (!fs.existsSync(fullPath)) {
