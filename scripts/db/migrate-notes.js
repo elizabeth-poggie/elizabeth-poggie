@@ -103,10 +103,8 @@ const prisma = new PrismaClient();
 const migrateNotes = async (categories, baseFolder) => {
   // loop over sub cats in each cat
   for (const category of categories) {
-    const subcategories = getSubcategories(
-      FOLDER_STRUCTURE.BASE_CONTENT,
-      baseFolder
-    );
+    const subcategories = getSubcategories(baseFolder, category);
+    console.log(`🤖 processing these sub-categories: [${subcategories}]`);
     for (const subcategory of subcategories) {
       const subcategoryPath = path.join(baseFolder, category, subcategory);
       const fullPath = path.join(
