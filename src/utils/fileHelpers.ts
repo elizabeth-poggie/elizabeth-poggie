@@ -109,3 +109,32 @@ export const getSubcategories = (
       fs.lstatSync(path.join(categoryPath, item)).isDirectory()
     );
 };
+
+/**
+ * Save to bootleg DB JSON file
+ *
+ * @param jsonFile
+ * @param metadata
+ */
+export const saveMetadataToJson = (jsonFile, metadata) => {
+  const outputPath = path.join(process.cwd(), jsonFile);
+
+  // Check if the folder exists, if not create it
+  if (!fs.existsSync(path.dirname(outputPath))) {
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  }
+
+  let existingData = [];
+
+  // Try to read the existing metadata file, if it exists
+  if (fs.existsSync(outputPath)) {
+    const rawData = fs.readFileSync(outputPath, "utf8");
+    existingData = JSON.parse(rawData);
+  }
+
+  // Append the new metadata to the existing data
+  existingData.push(metadata);
+
+  // Write the updated metadata back to the file
+  fs.writeFileSync(outputPath, JSON.stringify(existingData, null, 2), "utf8");
+};

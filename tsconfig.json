@@ -21,6 +21,6 @@
     "**/*.ts",
     "**/*.tsx",
     "next.config.js",
-    "scripts/db/migrate-notes.js"
+    "src/db/migrate-notes.js"
   ]
 }
