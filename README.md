@@ -10,34 +10,8 @@ I’m currently a lecturer at John Abbott College and also manage various events
 
 ## Getting started
 
+Make sure you are on like node 20 or sass will be angry at you. Next, install the deps:
+
 ```bash
 yarn
-```
-
-## Migrations
-
-Ensure the Prisma client is initialized
-
-```bash
-npx prisma generate
-```
-
-Ensure the Prisma schema is valid
-
-```bash
-npx prisma migrate dev
-```
-
-Run the migration script
-
-```bash
-yarn yeet
-```
-
-## Databases
-
-View && edit records with a GUI
-
-```bash
-yarn db
 ```
