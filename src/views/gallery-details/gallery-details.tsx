@@ -9,7 +9,6 @@ import styles from "./gallery-details.module.scss";
 
 export function GalleryDetails(props: MDXProps) {
   const { coverSrc, title, subtitle, created } = props.source.frontmatter;
-  const { baseFolder } = props;
   const year = created.split("-")[0];
   return (
     <div className={styles.container}>
@@ -23,7 +22,7 @@ export function GalleryDetails(props: MDXProps) {
         </div>
         <MDXImage
           src={coverSrc}
-          baseFolder={baseFolder}
+          assetPath={props.assetPath}
           variant="galleryDetailsItem"
         />
       </div>
