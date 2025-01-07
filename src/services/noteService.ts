@@ -240,7 +240,7 @@ export const getNoteProps = async (
       const mdxSource = await serialize(source, { parseFrontmatter: true });
 
       // Construct the image path
-      const fullBaseFolderPath = `/${baseFolder}/${subCategoryPath.join("/")}`;
+      const assetPath = `/${baseFolder}/${subCategoryPath.join("/")}`;
 
       return {
         props: {
@@ -249,10 +249,10 @@ export const getNoteProps = async (
             scope: mdxSource.scope,
             frontmatter: {
               ...(mdxSource.frontmatter as Frontmatter),
-              type: replaceHyphensWithSpaces(type) || null,
+              subCategory: replaceHyphensWithSpaces(type) || null,
             },
           },
-          baseFolder: fullBaseFolderPath,
+          assetPath,
         },
       };
     }
@@ -267,11 +267,11 @@ export const getNoteProps = async (
         scope: {},
         frontmatter: {
           title: "404 Note not found",
-          type: null,
           category: null,
+          subCategory: null,
         },
       },
-      baseFolder: "",
+      assetPath: "",
     },
   };
 };
