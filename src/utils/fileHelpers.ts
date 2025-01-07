@@ -109,3 +109,20 @@ export const getSubcategories = (
       fs.lstatSync(path.join(categoryPath, item)).isDirectory()
     );
 };
+
+/**
+ * Get notes from bootleg JSON :^)
+ *
+ * @returns {Promise<INote[]>} jsonNotes
+ */
+export const getNotesFromJSON = async (): Promise<INote[]> => {
+  // Resolve the path to the JSON file
+  const filePath = path.join(process.cwd(), "db", "notes-metadata.json");
+
+  // Read and parse the JSON file
+  const fileContents = fs.readFileSync(filePath, "utf8");
+  const jsonNotes: INote[] = JSON.parse(fileContents);
+
+  // yeet
+  return jsonNotes;
+};

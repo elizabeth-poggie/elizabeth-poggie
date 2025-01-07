@@ -1,10 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getPaginatedNotesForCategory } from "../../src/services/noteService";
-import { FOLDER_STRUCTURE } from "../../src/constants/folderStructure";
-import { PrismaClient } from "@prisma/client";
-
-// init client
-const prisma = new PrismaClient();
+import { getNotesFromJSON } from "../../src/utils/fileHelpers";
 
 // Helper incase multiple params supplied
 const getSingleValue = (value: string | string[]): string => {
@@ -37,26 +32,25 @@ export default async function handler(
   }
 
   try {
-    // Get notes
-    const notes = await prisma.note.findMany({
-      where: {
-        collection: collectionValue,
-        OR: [{ category: categoryValue }],
-      },
-      orderBy: {
-        created: "desc", // Sort by creation date
-      },
-      skip: (pageNumber - 1) * pageSizeNumber, // Skip records for pagination
-      take: pageSizeNumber, // Limit results to page size
-    });
+    // bootleg DB lmao
+    const jsonNotes = await getNotesFromJSON();
+
+    // Filter, sort, and paginate the notes
+    const notes = jsonNotes
+      .filter(
+        (note) =>
+          note.collection === collectionValue && note.category === categoryValue
+      )
+      .sort(
+        (a, b) => new Date(b.created).getTime() - new Date(a.created).getTime()
+      )
+      .slice((pageNumber - 1) * pageSizeNumber, pageNumber * pageSizeNumber);
 
     // Get total count for pagination
-    const total = await prisma.note.count({
-      where: {
-        collection: collectionValue,
-        OR: [{ category: categoryValue }],
-      },
-    });
+    const total = jsonNotes.filter(
+      (note) =>
+        note.collection === collectionValue && note.category === categoryValue
+    ).length;
 
     if (notes?.length <= 0 || total <= 0) {
       return res.status(400).json({
