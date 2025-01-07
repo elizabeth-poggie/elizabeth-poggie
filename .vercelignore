@@ -1,7 +1,7 @@
 # Ignore everything under _content
 _content/**/*
 
-# Common ignores
+# General ignores
 .git
 node_modules
 .next
@@ -11,3 +11,4 @@ temp/
 logs/
 *.log
 *.bak
+_next/
