@@ -3595,7 +3595,7 @@ to-space-case@^1.0.0:
   dependencies:
     to-no-case "^1.0.0"
 
-tocbot@^4.25.0:
+tocbot@^4.32.2:
   version "4.32.2"
   resolved "https://registry.yarnpkg.com/tocbot/-/tocbot-4.32.2.tgz#24d178e5f13b8fea7aeb5393522b67d718e5083c"
   integrity sha512-UbVZNXX79LUqMzsnSTwE/YF/PYc2pg3G77D/jcolHd6lmw+oklzfcLtHSsmWBhOf1wfWD1HfYzdjGQef1VcQgg==
