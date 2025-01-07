@@ -20,58 +20,37 @@ import {
   CollapsibleList,
 } from "../../components/layout/collapsible/collapsible";
 
-export function Notes() {
-  const [currentCategory, setCurrentCategory] = useState<string>(
-    FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES.WEB_PROGRAMMING
-  );
-  const [currentBase, setCurrentBase] = useState<string>(
-    FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE
-  );
-  const [notes, setNotes] = useState<{ [key: string]: INote[] }>({});
-  const [currentPages, setCurrentPages] = useState<{ [key: string]: number }>({
-    [currentCategory]: 1,
-  });
-  const [caps, setCaps] = useState<{ [key: string]: number }>({});
-  const loaderRef = useRef<HTMLDivElement | null>(null);
+// Custom hook to manage notes state and fetching logic
+const useNotes = (initialCategory, initialBase) => {
+  const [currentCategory, setCurrentCategory] = useState(initialCategory);
+  const [currentBase, setCurrentBase] = useState(initialBase);
+  const [notes, setNotes] = useState({});
+  const [caps, setCaps] = useState({});
+  const [currentPages, setCurrentPages] = useState({ [initialCategory]: 1 });
   const [loading, setLoading] = useState(false);
 
-  const fetchNotes = async (page: number) => {
+  const fetchNotes = async (page) => {
     try {
       setLoading(true);
       const response = await fetch(
         `/api/notes?page=${page}&pageSize=10&category=${currentCategory}&collection=${currentBase}`
       );
-
       const data = await response.json();
 
-      if (!response.ok) {
-        console.warn(data.error);
-        return;
-      }
+      if (!response.ok || !data.notes?.length) return;
 
-      if (!data.notes?.length) {
-        console.warn("❌ No notes were fetched");
-        return;
-      }
-
-      const newNotes = data.notes.filter(
-        (newNote: INote) =>
-          !notes[currentCategory]?.some((note) => note.slug === newNote.slug)
-      );
-
-      const updatedNotes = {
-        ...notes,
+      setNotes((prev) => ({
+        ...prev,
         [currentCategory]: sortByCreatedDescending([
-          ...(notes[currentCategory] || []),
-          ...newNotes,
+          ...(prev[currentCategory] || []),
+          ...data.notes.filter(
+            (newNote) =>
+              !prev[currentCategory]?.some((note) => note.slug === newNote.slug)
+          ),
         ]),
-      };
-      const updatedCaps = {
-        ...caps,
-        [currentCategory]: data.total,
-      };
-      setNotes(updatedNotes);
-      setCaps(updatedCaps);
+      }));
+      setCaps((prev) => ({ ...prev, [currentCategory]: data.total }));
+      setCurrentPages((prev) => ({ ...prev, [currentCategory]: page }));
     } catch (error) {
       console.error("Error fetching notes:", error);
     } finally {
@@ -79,30 +58,57 @@ export function Notes() {
     }
   };
 
+  const changeCategory = (base, category) => {
+    setCurrentBase(base);
+    setCurrentCategory(category);
+    setCurrentPages((prev) => ({ ...prev, [category]: 1 }));
+  };
+
+  return {
+    currentCategory,
+    currentBase,
+    notes,
+    caps,
+    currentPages,
+    loading,
+    fetchNotes,
+    changeCategory,
+  };
+};
+
+export function Notes() {
+  const loaderRef = useRef(null);
+  const {
+    currentCategory,
+    currentBase,
+    notes,
+    caps,
+    currentPages,
+    loading,
+    fetchNotes,
+    changeCategory,
+  } = useNotes(
+    FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES.WEB_PROGRAMMING,
+    FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE
+  );
+
   const handleObserver = useCallback(
-    (entries: IntersectionObserverEntry[]) => {
+    (entries) => {
       if (
         entries[0].isIntersecting &&
         !loading &&
-        (notes[currentBase]?.length || 0) < (caps[currentCategory] || 0) &&
-        currentPages[currentCategory] * 10 < (caps[currentCategory] || 0)
+        (notes[currentCategory]?.length || 0) < (caps[currentCategory] || 0)
       ) {
-        setCurrentPages((prevPages) => {
-          const nextPage = (prevPages[currentCategory] || 0) + 1;
-          fetchNotes(nextPage);
-          return {
-            ...prevPages,
-            [currentCategory]: nextPage,
-          };
-        });
+        const nextPage = currentPages[currentCategory] + 1;
+        fetchNotes(nextPage);
       }
     },
-    [loading, notes, caps, currentPages, currentCategory, currentBase]
+    [loading, notes, caps, currentCategory, currentPages, fetchNotes]
   );
 
   useEffect(() => {
-    fetchNotes(1); // Start from page 1 every time
-  }, [currentBase, currentCategory]);
+    fetchNotes(1);
+  }, [currentCategory, currentBase]);
 
   useEffect(() => {
     if (!loaderRef.current) return;
@@ -117,18 +123,7 @@ export function Notes() {
     return () => observer.disconnect();
   }, [handleObserver]);
 
-  const handleCollapsibleClick = (base: string, selectedCategory: string) => {
-    setCurrentBase(base);
-    setCurrentCategory(selectedCategory);
-
-    // Reset to page 1
-    setCurrentPages((prevPages) => ({
-      ...prevPages,
-      [selectedCategory]: 1,
-    }));
-  };
-
-  const renderCategoryCollabibles = () => {
+  const renderCategoryCollapsibles = () => {
     const collapsibles = Object.values([
       FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE,
     ]).map((folder) => {
@@ -144,7 +139,7 @@ export function Notes() {
             links={items}
             selectedText={currentCategory}
             handleOnClick={(selectedText) =>
-              handleCollapsibleClick(folder.BASE, selectedText)
+              changeCategory(folder.BASE, selectedText)
             }
           />
         ),
@@ -161,49 +156,44 @@ export function Notes() {
     );
   };
 
-  const renderListItem = (note: INote) => {
-    const {
-      slug,
-      title,
-      coverSrc,
-      assetPath,
-      category,
-      subcategory,
-      created,
-      updated,
-    } = note;
-    const currentDate = formatDate(updated ?? created);
-
-    return (
-      <Link href={`/notes/${slug}`}>
-        <div className={styles.listItem}>
-          <Text color="grey">{currentDate}</Text>
-          <Text variant="h2" gutterBottom={2} color="white">
-            {title}
-          </Text>
-          <Text
-            variant="subheading"
-            gutterBottom={coverSrc ? 6 : 1}
-            style="italics"
-            color="grey"
-          >
-            {subcategory ? `${pluralToSingular(subcategory)}, ` : null}
-            {category}
-          </Text>
-          {coverSrc && (
-            <MDXImage src={coverSrc} alt={title} assetPath={assetPath} />
-          )}
-        </div>
-        <HorizontalLine />
-      </Link>
-    );
-  };
+  const renderListItem = ({
+    slug,
+    title,
+    coverSrc,
+    assetPath,
+    category,
+    subcategory,
+    created,
+    updated,
+  }) => (
+    <Link href={`/notes/${slug}`} key={slug}>
+      <div className={styles.listItem}>
+        <Text color="grey">{formatDate(updated || created)}</Text>
+        <Text variant="h2" gutterBottom={2} color="white">
+          {title}
+        </Text>
+        <Text
+          variant="subheading"
+          gutterBottom={coverSrc ? 6 : 1}
+          style="italics"
+          color="grey"
+        >
+          {subcategory ? `${pluralToSingular(subcategory)}, ` : null}
+          {category}
+        </Text>
+        {coverSrc && (
+          <MDXImage src={coverSrc} alt={title} assetPath={assetPath} />
+        )}
+      </div>
+      <HorizontalLine />
+    </Link>
+  );
 
   const renderMainContent = () => (
     <div className={styles.mainContent}>
       <HorizontalLine />
       <section className={styles.content}>
-        {notes[currentCategory]?.map((note) => renderListItem(note)) || null}
+        {notes[currentCategory]?.map(renderListItem) || null}
       </section>
       <div ref={loaderRef} style={{ height: "50px", textAlign: "center" }}>
         {loading && (
@@ -227,7 +217,7 @@ export function Notes() {
         header={renderTitle()}
         rightSidebar={null}
         mainContent={renderMainContent()}
-        leftSidebar={renderCategoryCollabibles()}
+        leftSidebar={renderCategoryCollapsibles()}
       />
     </Suspense>
   );
