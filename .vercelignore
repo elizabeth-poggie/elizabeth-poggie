@@ -4,9 +4,7 @@
 \_content/**/excels/
 \_content/\*\*/demos/
 
-# Keep only required files for `public/`
-
-# Ignore large or non-critical public assets
+# Keep only required files for `public/` and ignore large or non-critical public assets
 
 public/**/\*.bak
 public/**/_.tmp
@@ -24,12 +22,12 @@ public/assets/art
 # Ignore local configuration and temp files
 
 .git
-node_modules
+node*modules
 .vscode
 logs/
 temp/
-_.log
-_.bak
+*.log
+\_.bak
 
 # Dynamic build files (default handled by Next.js)
 
