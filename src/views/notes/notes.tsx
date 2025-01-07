@@ -72,9 +72,6 @@ export function Notes() {
       };
       setNotes(updatedNotes);
       setCaps(updatedCaps);
-
-      localStorage.setItem("cachedNotes", JSON.stringify(updatedNotes));
-      localStorage.setItem("cachedCaps", JSON.stringify(updatedCaps));
     } catch (error) {
       console.error("Error fetching notes:", error);
     } finally {
@@ -104,27 +101,7 @@ export function Notes() {
   );
 
   useEffect(() => {
-    const cachedNotes = localStorage.getItem("cachedNotes");
-    const cachedCaps = localStorage.getItem("cachedCaps");
-    const cachedPages = localStorage.getItem("cachedPages");
-
-    if (cachedNotes) {
-      setNotes(JSON.parse(cachedNotes));
-    } else {
-      fetchNotes(1); // Start from page 1 if there's no cached data
-    }
-
-    if (cachedCaps) {
-      setCaps(JSON.parse(cachedCaps));
-    }
-
-    // Ensure the pages are set correctly
-    setCurrentPages((prevPages) => ({
-      ...prevPages,
-      [currentCategory]: cachedPages
-        ? JSON.parse(cachedPages)[currentCategory] || 1
-        : 1,
-    }));
+    fetchNotes(1); // Start from page 1 every time
   }, [currentBase, currentCategory]);
 
   useEffect(() => {
@@ -140,19 +117,14 @@ export function Notes() {
     return () => observer.disconnect();
   }, [handleObserver]);
 
-  // Run whenever currentCategory ORRRRR currentBase changes
-  useEffect(() => {
-    fetchNotes(currentPages[currentCategory] || 1);
-  }, [currentCategory, currentBase]);
-
   const handleCollapsibleClick = (base: string, selectedCategory: string) => {
     setCurrentBase(base);
     setCurrentCategory(selectedCategory);
 
-    // we start from page 1 if undefined
+    // Reset to page 1
     setCurrentPages((prevPages) => ({
       ...prevPages,
-      [selectedCategory]: prevPages[selectedCategory] || 1,
+      [selectedCategory]: 1,
     }));
   };
 
