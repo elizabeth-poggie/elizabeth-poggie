@@ -37,7 +37,7 @@ export interface MDXProps {
    * Base URL of where the images are located in the public && content folders
    * Used to enable relative linking for static website generators
    */
-  baseFolder?: string;
+  assetPath?: string;
   /**
    * Show relatedNotes on the page?
    */

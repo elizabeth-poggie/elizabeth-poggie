@@ -194,9 +194,9 @@ export function Notes() {
       slug,
       title,
       coverSrc,
-      baseFolder,
+      assetPath,
       category,
-      type,
+      subcategory,
       created,
       updated,
     } = note;
@@ -215,11 +215,11 @@ export function Notes() {
             style="italics"
             color="grey"
           >
-            {type ? `${pluralToSingular(type)}, ` : null}
+            {subcategory ? `${pluralToSingular(subcategory)}, ` : null}
             {category}
           </Text>
           {coverSrc && (
-            <MDXImage src={coverSrc} alt={title} baseFolder={baseFolder} />
+            <MDXImage src={coverSrc} alt={title} assetPath={assetPath} />
           )}
         </div>
         <HorizontalLine />

@@ -87,18 +87,13 @@ export const MDParagraph = ({ children }) => {
 
 interface IMDLinkProps extends NextLinkProps {
   children: React.ReactNode;
-  baseFolder?: string;
+  assetPath?: string;
 }
 
-export const MDLink = ({ children, href, baseFolder }: IMDLinkProps) => {
-  const reformatedLink =
-    baseFolder && href.toString().includes("./assets")
-      ? `${baseFolder}/${href}`
-      : href;
-
+export const MDLink = ({ children, href }: IMDLinkProps) => {
   return (
     <TextLink
-      href={reformatedLink}
+      href={href}
       color="green" // TODO - maybe come up with a stronger brand lol
       decoration="underline"
     >
