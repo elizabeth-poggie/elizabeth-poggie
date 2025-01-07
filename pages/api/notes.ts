@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getNotesFromJSON } from "../../src/utils/fileHelpers";
+import path from "path";
+import fs from "fs"; // Cannot be used directly in Next.js code that runs in the browser
+import { INote } from "../../src/interfaces/note";
 
 // Helper incase multiple params supplied
 const getSingleValue = (value: string | string[]): string => {
@@ -33,7 +35,12 @@ export default async function handler(
 
   try {
     // bootleg DB lmao
-    const jsonNotes = await getNotesFromJSON();
+    // Resolve the path to the JSON file
+    const filePath = path.join(process.cwd(), "db", "notes-metadata.json");
+
+    // Read and parse the JSON file
+    const fileContents = fs.readFileSync(filePath, "utf8");
+    const jsonNotes: INote[] = JSON.parse(fileContents);
 
     // Filter, sort, and paginate the notes
     const notes = jsonNotes
