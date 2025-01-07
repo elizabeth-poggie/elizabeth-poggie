@@ -1,17 +1,5 @@
-# Ignore everything under _content except john-abbott-college notes
+# Ignore everything under _content
 _content/**/*
-!_content/notes/john-abbott-college/**
-
-# Ignore heavy assets
-_content/**/assets/
-_content/**/excels/
-_content/**/demos/
-
-# Ignore other irrelevant folders
-_content/recipes/
-_content/art/
-_content/projects/
-_content/back-burner/
 
 # Common ignores
 .git
