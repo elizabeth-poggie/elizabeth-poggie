@@ -12,7 +12,7 @@ public/**/\*.bak
 public/**/_.tmp
 public/\*\*/_.log
 !public/john-abbott-college/computerized-systems
-!public/portfolio
+public/portfolio/management
 !public/john-abbott-college/web-programming-i
 public/assets/notes
 public/assets/art
