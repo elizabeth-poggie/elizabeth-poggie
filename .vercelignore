@@ -1,30 +1,37 @@
 # Ignore unnecessary build-time files
-_content/**/assets/
-_content/**/excels/
-_content/**/demos/
+
+\_content/**/assets/
+\_content/**/excels/
+\_content/\*\*/demos/
 
 # Keep only required files for `public/` and ignore large or non-critical public assets
-public/**/*.bak
-public/**/*.tmp
-public/**/*.log
-public/john-abbott-college/computerized-systems
-public/portfolio/management
-public/john-abbott-college/web-programming-i
+
+## Except some important ones lol
+
+public/**/\*.bak
+public/**/_.tmp
+public/\*\*/_.log
+!public/john-abbott-college/computerized-systems
+!public/portfolio
+!public/john-abbott-college/web-programming-i
 public/assets/notes
 public/assets/art
 
 # Vercel build cache (shouldn't be deployed)
+
 .next/cache/
 
 # Ignore local configuration and temp files
+
 .git
-node_modules
+node*modules
 .vscode
 logs/
 temp/
 *.log
-*.bak
+\_.bak
 
 # Dynamic build files (default handled by Next.js)
+
 .next
-_next/
+\_next/
