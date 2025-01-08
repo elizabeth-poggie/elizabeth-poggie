@@ -30,6 +30,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
 }
 
 export async function getStaticPaths() {
+  // TODO - #124 - this probably doesnt work lmao
   return getNotePaths(
     FOLDER_STRUCTURE.PORTFOLIO.BASE,
     Object.values(FOLDER_STRUCTURE.PORTFOLIO.CATEGORIES)
