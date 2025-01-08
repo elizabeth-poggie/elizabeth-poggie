@@ -2,65 +2,10 @@
   {
     "collection": "john-abbott-college",
     "category": "web-programming-i",
-    "subcategory": "assignments",
-    "title": "Functions & Objects",
-    "created": "2024-09-08",
-    "number": 1,
-    "coverSrc": null,
-    "assetPath": "john-abbott-college/web-programming-i/assignments/01-functions-and-objects",
-    "slug": "john-abbott-college/web-programming-i_assignments_01-functions-and-objects"
-  },
-  {
-    "collection": "john-abbott-college",
-    "category": "web-programming-i",
-    "subcategory": "assignments",
-    "title": "HTML Forms",
-    "created": "2024-09-27",
-    "number": 2,
-    "coverSrc": null,
-    "assetPath": "john-abbott-college/web-programming-i/assignments/02-htm-forms",
-    "slug": "john-abbott-college/web-programming-i_assignments_02-htm-forms"
-  },
-  {
-    "collection": "john-abbott-college",
-    "category": "web-programming-i",
-    "subcategory": "assignments",
-    "title": "Intersection Observer API",
-    "created": "2024-10-18",
-    "number": 3,
-    "coverSrc": null,
-    "assetPath": "john-abbott-college/web-programming-i/assignments/03-intersection-observer-api",
-    "slug": "john-abbott-college/web-programming-i_assignments_03-intersection-observer-api"
-  },
-  {
-    "collection": "john-abbott-college",
-    "category": "web-programming-i",
-    "subcategory": "assignments",
-    "title": "APIs",
-    "created": "2024-10-31",
-    "number": 4,
-    "coverSrc": null,
-    "assetPath": "john-abbott-college/web-programming-i/assignments/04-apis",
-    "slug": "john-abbott-college/web-programming-i_assignments_04-apis"
-  },
-  {
-    "collection": "john-abbott-college",
-    "category": "web-programming-i",
-    "subcategory": "assignments",
-    "title": "Final Project",
-    "created": "2024-11-24",
-    "number": 5,
-    "coverSrc": null,
-    "assetPath": "john-abbott-college/web-programming-i/assignments/05-final-project",
-    "slug": "john-abbott-college/web-programming-i_assignments_05-final-project"
-  },
-  {
-    "collection": "john-abbott-college",
-    "category": "web-programming-i",
     "subcategory": "lectures",
     "title": "Intro to Web Dev",
     "created": "2024-08-21",
-    "number": 0,
+    "number": 1,
     "coverSrc": null,
     "assetPath": "john-abbott-college/web-programming-i/lectures/01-intro-to-web-dev",
     "slug": "john-abbott-college/web-programming-i_lectures_01-intro-to-web-dev"
@@ -71,7 +16,7 @@
     "subcategory": "lectures",
     "title": "JavaScript Recap",
     "created": "2024-08-23",
-    "number": 0,
+    "number": 2,
     "coverSrc": "./assets/stats.png",
     "assetPath": "john-abbott-college/web-programming-i/lectures/02-intro-to-javascript",
     "slug": "john-abbott-college/web-programming-i_lectures_02-intro-to-javascript"
@@ -82,7 +27,7 @@
     "subcategory": "lectures",
     "title": "More on Functions",
     "created": "2024-08-25",
-    "number": 0,
+    "number": 3,
     "coverSrc": null,
     "assetPath": "john-abbott-college/web-programming-i/lectures/03-more-on-objects",
     "slug": "john-abbott-college/web-programming-i_lectures_03-more-on-objects"
@@ -93,7 +38,7 @@
     "subcategory": "lectures",
     "title": "More on Syntax",
     "created": "2024-08-26",
-    "number": 0,
+    "number": 4,
     "coverSrc": null,
     "assetPath": "john-abbott-college/web-programming-i/lectures/04-more-on-syntax",
     "slug": "john-abbott-college/web-programming-i_lectures_04-more-on-syntax"
@@ -104,7 +49,7 @@
     "subcategory": "lectures",
     "title": "Hoisting, Objects, and Scope",
     "created": "2024-08-30",
-    "number": 0,
+    "number": 5,
     "coverSrc": null,
     "assetPath": "john-abbott-college/web-programming-i/lectures/05-more-on-variable-declaration",
     "slug": "john-abbott-college/web-programming-i_lectures_05-more-on-variable-declaration"
@@ -115,7 +60,7 @@
     "subcategory": "lectures",
     "title": "Objects & Functions",
     "created": "2024-09-02",
-    "number": 0,
+    "number": 6,
     "coverSrc": null,
     "assetPath": "john-abbott-college/web-programming-i/lectures/06-more-on-arrays",
     "slug": "john-abbott-college/web-programming-i_lectures_06-more-on-arrays"
@@ -126,7 +71,7 @@
     "subcategory": "lectures",
     "title": "Arrays and Equality",
     "created": "2024-09-06",
-    "number": 0,
+    "number": 7,
     "coverSrc": null,
     "assetPath": "john-abbott-college/web-programming-i/lectures/07-arrays-and-equality",
     "slug": "john-abbott-college/web-programming-i_lectures_07-arrays-and-equality"
@@ -137,7 +82,7 @@
     "subcategory": "lectures",
     "title": "Functional JS & The DOM",
     "created": "2024-09-08",
-    "number": 0,
+    "number": 8,
     "coverSrc": null,
     "assetPath": "john-abbott-college/web-programming-i/lectures/08-functional-js-and-the-dom",
     "slug": "john-abbott-college/web-programming-i_lectures_08-functional-js-and-the-dom"
@@ -148,7 +93,7 @@
     "subcategory": "lectures",
     "title": "The DOM & Adding Elements",
     "created": "2024-09-10",
-    "number": 0,
+    "number": 9,
     "coverSrc": null,
     "assetPath": "john-abbott-college/web-programming-i/lectures/09-the-dom-and-events",
     "slug": "john-abbott-college/web-programming-i_lectures_09-the-dom-and-events"
@@ -159,7 +104,7 @@
     "subcategory": "lectures",
     "title": "Events & Event Listeners & jQuery",
     "created": "2024-09-13",
-    "number": 0,
+    "number": 10,
     "coverSrc": null,
     "assetPath": "john-abbott-college/web-programming-i/lectures/10-events",
     "slug": "john-abbott-college/web-programming-i_lectures_10-events"
@@ -170,7 +115,7 @@
     "subcategory": "lectures",
     "title": "jQuery & Event Listeners",
     "created": "2024-09-15",
-    "number": 0,
+    "number": 11,
     "coverSrc": "./assets/6.png",
     "assetPath": "john-abbott-college/web-programming-i/lectures/11-jquery",
     "slug": "john-abbott-college/web-programming-i_lectures_11-jquery"
@@ -181,7 +126,7 @@
     "subcategory": "lectures",
     "title": "Form Validation",
     "created": "2024-09-17",
-    "number": 0,
+    "number": 12,
     "coverSrc": null,
     "assetPath": "john-abbott-college/web-programming-i/lectures/12-form-validation",
     "slug": "john-abbott-college/web-programming-i_lectures_12-form-validation"
@@ -486,6 +431,61 @@
   {
     "collection": "john-abbott-college",
     "category": "web-programming-i",
+    "subcategory": "assignments",
+    "title": "Functions & Objects",
+    "created": "2024-09-08",
+    "number": 1,
+    "coverSrc": null,
+    "assetPath": "john-abbott-college/web-programming-i/assignments/01-functions-and-objects",
+    "slug": "john-abbott-college/web-programming-i_assignments_01-functions-and-objects"
+  },
+  {
+    "collection": "john-abbott-college",
+    "category": "web-programming-i",
+    "subcategory": "assignments",
+    "title": "HTML Forms",
+    "created": "2024-09-27",
+    "number": 2,
+    "coverSrc": null,
+    "assetPath": "john-abbott-college/web-programming-i/assignments/02-htm-forms",
+    "slug": "john-abbott-college/web-programming-i_assignments_02-htm-forms"
+  },
+  {
+    "collection": "john-abbott-college",
+    "category": "web-programming-i",
+    "subcategory": "assignments",
+    "title": "Intersection Observer API",
+    "created": "2024-10-18",
+    "number": 3,
+    "coverSrc": null,
+    "assetPath": "john-abbott-college/web-programming-i/assignments/03-intersection-observer-api",
+    "slug": "john-abbott-college/web-programming-i_assignments_03-intersection-observer-api"
+  },
+  {
+    "collection": "john-abbott-college",
+    "category": "web-programming-i",
+    "subcategory": "assignments",
+    "title": "APIs",
+    "created": "2024-10-31",
+    "number": 4,
+    "coverSrc": null,
+    "assetPath": "john-abbott-college/web-programming-i/assignments/04-apis",
+    "slug": "john-abbott-college/web-programming-i_assignments_04-apis"
+  },
+  {
+    "collection": "john-abbott-college",
+    "category": "web-programming-i",
+    "subcategory": "assignments",
+    "title": "Final Project",
+    "created": "2024-11-24",
+    "number": 5,
+    "coverSrc": null,
+    "assetPath": "john-abbott-college/web-programming-i/assignments/05-final-project",
+    "slug": "john-abbott-college/web-programming-i_assignments_05-final-project"
+  },
+  {
+    "collection": "john-abbott-college",
+    "category": "web-programming-i",
     "subcategory": "quiz-answers",
     "title": "JavaScript Recap",
     "created": "2024-09-02",
@@ -581,105 +581,6 @@
     "coverSrc": null,
     "assetPath": "john-abbott-college/web-programming-i/quiz-answers/q9-promises",
     "slug": "john-abbott-college/web-programming-i_quiz-answers_q9-promises"
-  },
-  {
-    "collection": "john-abbott-college",
-    "category": "user-interfaces",
-    "subcategory": "lectures",
-    "title": "Introduction to User Interfaces",
-    "created": "2024-01-29",
-    "number": 1,
-    "coverSrc": null,
-    "assetPath": "john-abbott-college/user-interfaces/lectures/lecture-01",
-    "slug": "john-abbott-college/user-interfaces_lectures_lecture-01"
-  },
-  {
-    "collection": "john-abbott-college",
-    "category": "user-interfaces",
-    "subcategory": "lectures",
-    "title": "Basic HTML Elements",
-    "created": "2024-01-30",
-    "number": 2,
-    "coverSrc": null,
-    "assetPath": "john-abbott-college/user-interfaces/lectures/lecture-02",
-    "slug": "john-abbott-college/user-interfaces_lectures_lecture-02"
-  },
-  {
-    "collection": "john-abbott-college",
-    "category": "user-interfaces",
-    "subcategory": "lectures",
-    "title": "HTML Structure & Intro to CSS",
-    "created": "2024-02-02",
-    "number": 3,
-    "coverSrc": null,
-    "assetPath": "john-abbott-college/user-interfaces/lectures/lecture-03",
-    "slug": "john-abbott-college/user-interfaces_lectures_lecture-03"
-  },
-  {
-    "collection": "john-abbott-college",
-    "category": "user-interfaces",
-    "subcategory": "lectures",
-    "title": "The DOM & Dev Tools",
-    "created": "2024-02-05",
-    "number": 4,
-    "coverSrc": null,
-    "assetPath": "john-abbott-college/user-interfaces/lectures/lecture-04",
-    "slug": "john-abbott-college/user-interfaces_lectures_lecture-04"
-  },
-  {
-    "collection": "john-abbott-college",
-    "category": "computerized-systems",
-    "subcategory": "assignments",
-    "title": "Folder Structure & Compression",
-    "created": "2024-09-04",
-    "number": 1,
-    "coverSrc": null,
-    "assetPath": "john-abbott-college/computerized-systems/assignments/a1-assignment-1-folder-structure-and-compression",
-    "slug": "john-abbott-college/computerized-systems_assignments_a1-assignment-1-folder-structure-and-compression"
-  },
-  {
-    "collection": "john-abbott-college",
-    "category": "computerized-systems",
-    "subcategory": "assignments",
-    "title": "Document Formatting and Citation",
-    "created": "2024-09-17",
-    "number": 2,
-    "coverSrc": null,
-    "assetPath": "john-abbott-college/computerized-systems/assignments/a2-word-for-biopharma",
-    "slug": "john-abbott-college/computerized-systems_assignments_a2-word-for-biopharma"
-  },
-  {
-    "collection": "john-abbott-college",
-    "category": "computerized-systems",
-    "subcategory": "assignments",
-    "title": "Hurricane Watch",
-    "created": "2024-10-10",
-    "number": 3,
-    "coverSrc": null,
-    "assetPath": "john-abbott-college/computerized-systems/assignments/a3-excel-for-biopharma",
-    "slug": "john-abbott-college/computerized-systems_assignments_a3-excel-for-biopharma"
-  },
-  {
-    "collection": "john-abbott-college",
-    "category": "computerized-systems",
-    "subcategory": "assignments",
-    "title": "What is the cost?",
-    "created": "2024-11-05",
-    "number": 4,
-    "coverSrc": null,
-    "assetPath": "john-abbott-college/computerized-systems/assignments/a4-excel-but-better",
-    "slug": "john-abbott-college/computerized-systems_assignments_a4-excel-but-better"
-  },
-  {
-    "collection": "john-abbott-college",
-    "category": "computerized-systems",
-    "subcategory": "assignments",
-    "title": "A Matter of Profits",
-    "created": "2024-11-19",
-    "number": 5,
-    "coverSrc": "./assets/money.jpg",
-    "assetPath": "john-abbott-college/computerized-systems/assignments/a5-final-excel",
-    "slug": "john-abbott-college/computerized-systems_assignments_a5-final-excel"
   },
   {
     "collection": "john-abbott-college",
@@ -911,5 +812,104 @@
     "coverSrc": "./assets/fish.png",
     "assetPath": "john-abbott-college/computerized-systems/lectures/21-technical-health",
     "slug": "john-abbott-college/computerized-systems_lectures_21-technical-health"
+  },
+  {
+    "collection": "john-abbott-college",
+    "category": "computerized-systems",
+    "subcategory": "assignments",
+    "title": "Folder Structure & Compression",
+    "created": "2024-09-04",
+    "number": 1,
+    "coverSrc": null,
+    "assetPath": "john-abbott-college/computerized-systems/assignments/a1-assignment-1-folder-structure-and-compression",
+    "slug": "john-abbott-college/computerized-systems_assignments_a1-assignment-1-folder-structure-and-compression"
+  },
+  {
+    "collection": "john-abbott-college",
+    "category": "computerized-systems",
+    "subcategory": "assignments",
+    "title": "Document Formatting and Citation",
+    "created": "2024-09-17",
+    "number": 2,
+    "coverSrc": null,
+    "assetPath": "john-abbott-college/computerized-systems/assignments/a2-word-for-biopharma",
+    "slug": "john-abbott-college/computerized-systems_assignments_a2-word-for-biopharma"
+  },
+  {
+    "collection": "john-abbott-college",
+    "category": "computerized-systems",
+    "subcategory": "assignments",
+    "title": "Hurricane Watch",
+    "created": "2024-10-10",
+    "number": 3,
+    "coverSrc": null,
+    "assetPath": "john-abbott-college/computerized-systems/assignments/a3-excel-for-biopharma",
+    "slug": "john-abbott-college/computerized-systems_assignments_a3-excel-for-biopharma"
+  },
+  {
+    "collection": "john-abbott-college",
+    "category": "computerized-systems",
+    "subcategory": "assignments",
+    "title": "What is the cost?",
+    "created": "2024-11-05",
+    "number": 4,
+    "coverSrc": null,
+    "assetPath": "john-abbott-college/computerized-systems/assignments/a4-excel-but-better",
+    "slug": "john-abbott-college/computerized-systems_assignments_a4-excel-but-better"
+  },
+  {
+    "collection": "john-abbott-college",
+    "category": "computerized-systems",
+    "subcategory": "assignments",
+    "title": "A Matter of Profits",
+    "created": "2024-11-19",
+    "number": 5,
+    "coverSrc": "./assets/money.jpg",
+    "assetPath": "john-abbott-college/computerized-systems/assignments/a5-final-excel",
+    "slug": "john-abbott-college/computerized-systems_assignments_a5-final-excel"
+  },
+  {
+    "collection": "john-abbott-college",
+    "category": "user-interfaces",
+    "subcategory": "lectures",
+    "title": "Introduction to User Interfaces",
+    "created": "2024-01-29",
+    "number": 1,
+    "coverSrc": null,
+    "assetPath": "john-abbott-college/user-interfaces/lectures/lecture-01",
+    "slug": "john-abbott-college/user-interfaces_lectures_lecture-01"
+  },
+  {
+    "collection": "john-abbott-college",
+    "category": "user-interfaces",
+    "subcategory": "lectures",
+    "title": "Basic HTML Elements",
+    "created": "2024-01-30",
+    "number": 2,
+    "coverSrc": null,
+    "assetPath": "john-abbott-college/user-interfaces/lectures/lecture-02",
+    "slug": "john-abbott-college/user-interfaces_lectures_lecture-02"
+  },
+  {
+    "collection": "john-abbott-college",
+    "category": "user-interfaces",
+    "subcategory": "lectures",
+    "title": "HTML Structure & Intro to CSS",
+    "created": "2024-02-02",
+    "number": 3,
+    "coverSrc": null,
+    "assetPath": "john-abbott-college/user-interfaces/lectures/lecture-03",
+    "slug": "john-abbott-college/user-interfaces_lectures_lecture-03"
+  },
+  {
+    "collection": "john-abbott-college",
+    "category": "user-interfaces",
+    "subcategory": "lectures",
+    "title": "The DOM & Dev Tools",
+    "created": "2024-02-05",
+    "number": 4,
+    "coverSrc": null,
+    "assetPath": "john-abbott-college/user-interfaces/lectures/lecture-04",
+    "slug": "john-abbott-college/user-interfaces_lectures_lecture-04"
   }
 ]

@@ -9,17 +9,15 @@
   },
   "portfolio": {
     "categories": {
-      "Art": [],
-      "Branding": [],
-      "Management": [],
-      "Hackathon": []
+      "art": [],
+      "management": [],
+      "hackathon": []
     }
   },
   "recipes": {
     "categories": {
-      "Bread": [],
-      "Dessert": [],
-      "Snack": []
+      "carbs": ["bread", "dessert"],
+      "meal": ["breakfast", "lunch", "diner"]
     }
   }
 }

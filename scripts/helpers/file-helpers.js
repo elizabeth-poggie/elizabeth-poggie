@@ -60,7 +60,6 @@ export const readFileContent = (filePath) => {
 
 /**
  * Save to bootleg DB JSON file cause i dont wanna spend money lmao
- *
  * @param jsonFile
  * @param metadata
  */
@@ -85,4 +84,19 @@ export const saveMetadataToJson = (jsonFile, metadata) => {
 
   // Write the updated metadata back to the file
   fs.writeFileSync(outputPath, JSON.stringify(existingData, null, 2), "utf8");
+};
+
+/**
+ * Load folder structure from JSON file
+ * @param {*} configPath
+ * @returns
+ */
+export const loadFolderStructure = (configPath) => {
+  try {
+    const configContent = fs.readFileSync(configPath, "utf-8");
+    return JSON.parse(configContent);
+  } catch (error) {
+    console.error(`❌ Failed to load config from ${configPath}:`, error);
+    process.exit(1);
+  }
 };
