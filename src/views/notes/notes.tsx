@@ -174,20 +174,17 @@ export function Notes() {
         </Text>
         <Text
           variant="subheading"
-          gutterBottom={coverSrc ? 6 : 1}
+          gutterBottom={1}
           style="italics"
           color="grey"
         >
           {subcategory ? `${pluralToSingular(subcategory)}, ` : null}
           {category}
         </Text>
-        {coverSrc && (
-          <MDXImage src={coverSrc} alt={title} assetPath={assetPath} />
-        )}
       </div>
       <HorizontalLine />
     </Link>
-  );
+  ); // TODO - #109 -  <MDXImage src={coverSrc} alt={title} assetPath={assetPath} />
 
   const renderMainContent = () => (
     <div className={styles.mainContent}>
