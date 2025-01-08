@@ -19,7 +19,6 @@ export const PORTFOLIO_FOLDERS = {
   BASE: "portfolio",
   CATEGORIES: {
     MANAGEMENT: "management",
-    ART: "art",
     HACKATHON: "hackathon",
   },
 };
