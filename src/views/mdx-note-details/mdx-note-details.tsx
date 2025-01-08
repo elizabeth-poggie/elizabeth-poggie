@@ -52,14 +52,14 @@ export function MdxNoteDetails(props: MDXProps) {
       return null;
     }
 
-    const collapsibles = Object.keys(relatedNotes).map((noteType) => {
-      const links = relatedNotes[noteType].map((note) => ({
+    const collapsibles = Object.keys(relatedNotes).map((subcategory) => {
+      const links = relatedNotes[subcategory].map((note) => ({
         text: note.text,
         href: note.href,
       }));
 
       return {
-        title: noteType,
+        title: subcategory,
         content: (
           <CollapsibleLinkList
             links={links}
@@ -76,10 +76,7 @@ export function MdxNoteDetails(props: MDXProps) {
 
     return (
       <section className={styles.collapsibleInSideBar}>
-        <CollapsibleList
-          collapsibles={collapsibles}
-          currentType={subcategory}
-        />
+        <CollapsibleList collapsibles={collapsibles} selected={subcategory} />
       </section>
     );
   };

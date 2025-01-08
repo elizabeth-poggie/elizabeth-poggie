@@ -70,15 +70,15 @@ export const CollapsibleLinkList = ({
 
 interface ICollapsibleListProps {
   collapsibles: { title: string; content: React.ReactNode }[];
-  currentType?: string;
+  selected?: string;
 }
 
 export function CollapsibleList({
   collapsibles,
-  currentType,
+  selected,
 }: ICollapsibleListProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(
-    collapsibles.findIndex((collapsible) => collapsible.title === currentType)
+    collapsibles.findIndex((collapsible) => collapsible.title === selected)
   );
 
   const handleToggle = (index: number) => {

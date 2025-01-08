@@ -148,10 +148,7 @@ export function Notes() {
 
     return (
       <nav className={styles.nav}>
-        <CollapsibleList
-          collapsibles={collapsibles}
-          currentType={currentBase}
-        />
+        <CollapsibleList collapsibles={collapsibles} selected={currentBase} />
       </nav>
     );
   };

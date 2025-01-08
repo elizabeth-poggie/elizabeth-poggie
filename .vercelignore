@@ -4,9 +4,7 @@
 \_content/**/excels/
 \_content/\*\*/demos/
 
-# Keep only required files for `public/` and ignore large or non-critical public assets
-
-## Except some important ones lol
+# TODO - #109 - Fix the asset management system here lol
 
 public/**/\*.bak
 public/**/_.tmp

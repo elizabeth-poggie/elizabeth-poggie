@@ -2,7 +2,6 @@ import Head from "next/head";
 import Meta from "../../../src/views/meta/meta";
 import Burger from "../../../src/components/navigation/burger/Burger";
 import { MDXProps, navItems } from "../..";
-import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from "..";
 import { GetStaticPropsContext } from "next";
 import { MdxNoteDetails } from "../../../src/views/mdx-note-details/mdx-note-details";
 import {
@@ -53,6 +52,6 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
 export async function getStaticPaths() {
   return getNotePaths(
     FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE,
-    NOTES_CATEGORIES
+    Object.values(FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES)
   );
 }

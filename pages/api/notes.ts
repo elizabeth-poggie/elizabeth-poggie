@@ -1,6 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import path from "path";
-import fs from "fs"; // Cannot be used directly in Next.js code that runs in the browser
 import { INote } from "../../src/interfaces/note";
 import { getPaginatedNotesFromBootlegJSON } from "../../src/services/noteService";
 
