@@ -4,9 +4,6 @@ if (typeof window === "undefined") {
 }
 import path from "path";
 import { INote } from "../interfaces/note";
-import { parseNoteContent } from "./noteHelpers";
-import { filterTypeCandidates } from "./categoryHelpers";
-import { replaceHyphensWithSpaces } from "./textFormatters";
 import { FOLDER_STRUCTURE } from "../constants/folderStructure";
 
 // Check if a path exists

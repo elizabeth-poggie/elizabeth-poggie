@@ -1,173 +1,12 @@
-import {
-  parseNoteContent,
-  constructNoteSlug,
-  sortByCreatedDescending,
-  paginateNotes,
-} from "../utils/noteHelpers";
+import { constructNoteSlug } from "../utils/noteHelpers";
 import { filterTypeCandidates } from "../utils/categoryHelpers";
-import {
-  fileExists,
-  readDirectory,
-  isDirectory,
-  findFileInDirectory,
-  findMdxFiles,
-  getSubcategories,
-} from "../utils/fileHelpers";
+import { findFileInDirectory } from "../utils/fileHelpers";
 import { CategoryToLinkMap, Frontmatter, INote } from "../interfaces/note";
 import path from "path";
 import fs from "fs"; // Cannot be used directly in Next.js code that runs in the browser
 import { replaceHyphensWithSpaces } from "../utils/textFormatters";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";
-import { FOLDER_STRUCTURE } from "../constants/folderStructure";
-
-export const getPaginatedNotesForCategory = async (
-  baseFolder: string,
-  category: string,
-  page: number,
-  pageSize: number
-): Promise<{ notes: INote[]; total: number }> => {
-  const subcategories = getSubcategories(baseFolder, category);
-
-  // aggregate notes
-  let allNotes: INote[] = [];
-
-  // Fetch notes for subcategories
-  for (const subcategory of subcategories) {
-    const subcategoryPath = path.join(baseFolder, category, subcategory);
-    const fullPath = path.join(
-      process.cwd(),
-      FOLDER_STRUCTURE.BASE_CONTENT,
-      subcategoryPath
-    );
-
-    // Check if the folder exists
-    if (!fs.existsSync(fullPath)) {
-      console.warn(`❌ Folder does not exist: ${fullPath}`);
-      continue; // to the next subcategory
-    }
-
-    // Read files in the subcategory folder
-    const filePaths: string[] = await findMdxFiles(fullPath);
-
-    // Fetch notes for each file
-    const notePromises: Promise<INote>[] = filePaths.map((filePath) =>
-      parseNoteContent(filePath, baseFolder)
-    );
-
-    const notes = await Promise.all(notePromises);
-    allNotes = allNotes.concat(notes); // Accumulate notes
-  }
-
-  // Sort notes by creation date (descending)
-  const sortedNotes = sortByCreatedDescending(allNotes);
-  return paginateNotes(sortedNotes, page, pageSize);
-};
-
-const getNotesFromFolder = async (
-  baseFolder: string,
-  categoryPath: string,
-  category: string
-): Promise<INote[]> => {
-  if (!fileExists(categoryPath)) {
-    console.error(
-      `❌ Can't find this category path "${categoryPath}" for this category "${category}"`
-    );
-    return [];
-  }
-
-  const filesAndFolders = readDirectory(categoryPath);
-  const notesInCategory: INote[] = [];
-
-  for (const item of filesAndFolders) {
-    const fullPath = path.join(categoryPath, item);
-
-    if (isDirectory(fullPath)) {
-      const subCategoryNotes = await getNotesFromFolder(
-        baseFolder,
-        fullPath,
-        `${category}_${item}`
-      );
-      notesInCategory.push(...subCategoryNotes);
-    } else if (item.endsWith(".mdx")) {
-      const aNote = await parseNoteContent(fullPath, baseFolder);
-      notesInCategory.push(aNote);
-    }
-  }
-
-  return notesInCategory;
-};
-
-const fetchNotesForCategories = async (
-  baseFolder: string,
-  categories: string[]
-): Promise<INote[]> => {
-  const uniqueNotes = new Map<string, INote>();
-
-  for (const category of categories) {
-    const categoryPath = path.join(
-      process.cwd(),
-      `_content/${baseFolder}/${category}`
-    );
-    const categoryNotes = await getNotesFromFolder(
-      baseFolder,
-      categoryPath,
-      category
-    );
-
-    for (const note of categoryNotes) {
-      if (!uniqueNotes.has(note.slug)) {
-        uniqueNotes.set(note.slug, note);
-      }
-    }
-  }
-
-  return Array.from(uniqueNotes.values());
-};
-
-export const getPaginatedNotesForCategories = async (
-  baseFolder: string,
-  categories: string[] = [],
-  page = 1,
-  pageSize = 10
-): Promise<{ notes: INote[]; total: number }> => {
-  const notes = await fetchNotesForCategories(baseFolder, categories);
-  const sortedNotes = sortByCreatedDescending(notes);
-  return paginateNotes(sortedNotes, page, pageSize);
-};
-
-export const getNotesForCategory = async (
-  baseFolder: string,
-  category: string
-): Promise<CategoryToLinkMap> => {
-  const notes = await fetchNotesForCategories(baseFolder, [category]);
-
-  if (!notes.length) {
-    console.warn(`👀 No notes found for category: ${category}`);
-    return {};
-  }
-
-  // Group notes by their type
-  const categoryMap: CategoryToLinkMap = notes.reduce((acc, note) => {
-    const { type } = note;
-
-    if (!type) {
-      return acc;
-    }
-
-    if (!acc[type]) {
-      acc[type] = [];
-    }
-
-    acc[type].push({
-      text: `${acc[type].length + 1}. ${note.title}`,
-      href: `/notes/${note.slug}`,
-    });
-
-    return acc;
-  }, {} as CategoryToLinkMap);
-  return categoryMap;
-};
 
 export const getNotePaths = (baseFolder: string, categories: string[]) => {
   const paths: { params: { slug: string } }[] = [];
@@ -215,7 +54,7 @@ export const getNoteProps = async (
   const parts = slug.split("_");
   const fileName = parts.slice(-1)[0];
   const subCategoryPath = parts;
-  const type = filterTypeCandidates(
+  const subcategory = filterTypeCandidates(
     subCategoryPath,
     baseFolder,
     categories,
@@ -249,7 +88,7 @@ export const getNoteProps = async (
             scope: mdxSource.scope,
             frontmatter: {
               ...(mdxSource.frontmatter as Frontmatter),
-              subCategory: replaceHyphensWithSpaces(type) || null,
+              subCategory: replaceHyphensWithSpaces(subcategory) || null,
             },
           },
           assetPath,

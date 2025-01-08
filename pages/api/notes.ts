@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { INote } from "../../src/interfaces/note";
 import { getPaginatedNotesFromBootlegJSON } from "../../src/services/noteService";
 
 // Helper incase multiple params supplied

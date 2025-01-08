@@ -2,8 +2,6 @@ import React, { useEffect, useState, useRef, lazy } from "react";
 import Head from "next/head";
 import Meta from "../../src/views/meta/meta";
 import { navItems } from "..";
-import { getPaginatedNotesForCategories } from "../../src/services/noteService";
-import { Text } from "../../src/components/typography/text/text";
 import { INote } from "../../src/interfaces/note";
 import { Notes } from "../../src/views/notes/notes";
 

@@ -8,10 +8,8 @@ import { Gallery } from "../../src/views/gallery/gallery";
 import { ILazyLoadProps } from "../notes";
 import { useEffect, useRef, useState } from "react";
 import { Text } from "../../src/components/typography/text/text";
-import { getPaginatedNotesForCategories } from "../../src/services/noteService";
-
-export const PORTFOLIO_CATEGORIES = ["management", "hackathon"];
-export const PORTFOLIO_BASE_FOLDER = "portfolio";
+import { getPaginatedNotesFromBootlegJSON } from "../../src/services/noteService";
+import { FOLDER_STRUCTURE } from "../../src/constants/folderStructure";
 
 export default function PortfolioPage({
   initialNotes,
@@ -89,9 +87,9 @@ export default function PortfolioPage({
 export async function getStaticProps(ctx: GetStaticPropsContext) {
   const pageSize = 10;
 
-  const { notes, total } = await getPaginatedNotesForCategories(
-    PORTFOLIO_BASE_FOLDER,
-    PORTFOLIO_CATEGORIES,
+  const { notes, total } = await getPaginatedNotesFromBootlegJSON(
+    FOLDER_STRUCTURE.PORTFOLIO.BASE,
+    FOLDER_STRUCTURE.PORTFOLIO.CATEGORIES.MANAGEMENT, // TODO - #124 - Maybe should be multiple categories here?
     1,
     pageSize
   );
