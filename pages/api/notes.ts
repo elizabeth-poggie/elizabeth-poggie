@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import path from "path";
 import fs from "fs"; // Cannot be used directly in Next.js code that runs in the browser
 import { INote } from "../../src/interfaces/note";
+import { getPaginatedNotesFromBootlegJSON } from "../../src/services/noteService";
 
 // Helper incase multiple params supplied
 const getSingleValue = (value: string | string[]): string => {
@@ -34,30 +35,12 @@ export default async function handler(
   }
 
   try {
-    // bootleg DB lmao
-    // Resolve the path to the JSON file
-    const filePath = path.join(process.cwd(), "db", "notes-metadata.json");
-
-    // Read and parse the JSON file
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const jsonNotes: INote[] = JSON.parse(fileContents);
-
-    // Filter, sort, and paginate the notes
-    const notes = jsonNotes
-      .filter(
-        (note) =>
-          note.collection === collectionValue && note.category === categoryValue
-      )
-      .sort(
-        (a, b) => new Date(b.created).getTime() - new Date(a.created).getTime()
-      )
-      .slice((pageNumber - 1) * pageSizeNumber, pageNumber * pageSizeNumber);
-
-    // Get total count for pagination
-    const total = jsonNotes.filter(
-      (note) =>
-        note.collection === collectionValue && note.category === categoryValue
-    ).length;
+    const { notes, total } = await getPaginatedNotesFromBootlegJSON(
+      collectionValue,
+      categoryValue,
+      pageNumber,
+      pageSizeNumber
+    );
 
     if (notes?.length <= 0 || total <= 0) {
       return res.status(400).json({

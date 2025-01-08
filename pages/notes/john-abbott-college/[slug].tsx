@@ -8,7 +8,7 @@ import { MdxNoteDetails } from "../../../src/views/mdx-note-details/mdx-note-det
 import {
   getNotePaths,
   getNoteProps,
-  getNotesForCategory,
+  getRelatedNotesFromBootlegJSON,
 } from "../../../src/services/noteService";
 import { FOLDER_STRUCTURE } from "../../../src/constants/folderStructure";
 
@@ -34,11 +34,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
       : ctx.params.slug.split("_")[0]
     : "";
 
-  // Fetch notes for the given category
-  const relatedNotes = await getNotesForCategory(
-    FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE,
-    category
-  );
+  const relatedNotes = await getRelatedNotesFromBootlegJSON(category);
 
   const noteProps = await getNoteProps(
     ctx,
