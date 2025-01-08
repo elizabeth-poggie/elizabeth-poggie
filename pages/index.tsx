@@ -18,11 +18,11 @@ export const navItems: ILink[] = [
   {
     href: "/notes",
     text: "Notes",
-  },
-  {
-    href: "/portfolio",
-    text: "Portfolio",
-  },
+  }, // TODO - #109 - add portfolio back lol
+  // {
+  //   href: "/portfolio",
+  //   text: "Portfolio",
+  // },
 ];
 
 // TODO - maybe move this to live only in the relevant components
