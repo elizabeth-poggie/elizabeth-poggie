@@ -1,10 +1,9 @@
 {
   "john-abbott-college": {
     "categories": {
-      "Web Programming I": ["lectures", "assignments", "quiz-answers"],
-      "Computerized Systems": ["lectures", "assignments"],
-      "Admin": ["instructor-info", "schedules"],
-      "User Interfaces": ["lectures", "assignments"],
+      "web-programming-i": ["lectures", "assignments", "quiz-answers"],
+      "computerized-systems": ["lectures", "assignments"],
+      "user-interfaces": ["lectures", "assignments"],
       "Intro to Programming": []
     }
   },

@@ -584,47 +584,47 @@
   },
   {
     "collection": "john-abbott-college",
-    "category": "john-abbott-college",
-    "subcategory": "user-interfaces",
+    "category": "user-interfaces",
+    "subcategory": "lectures",
     "title": "Introduction to User Interfaces",
     "created": "2024-01-29",
-    "number": 0,
+    "number": 1,
     "coverSrc": null,
-    "assetPath": "john-abbott-college/john-abbott-college/user-interfaces/lecture-01",
-    "slug": "john-abbott-college/john-abbott-college_user-interfaces_lecture-01"
+    "assetPath": "john-abbott-college/user-interfaces/lectures/lecture-01",
+    "slug": "john-abbott-college/user-interfaces_lectures_lecture-01"
   },
   {
     "collection": "john-abbott-college",
-    "category": "john-abbott-college",
-    "subcategory": "user-interfaces",
+    "category": "user-interfaces",
+    "subcategory": "lectures",
     "title": "Basic HTML Elements",
     "created": "2024-01-30",
-    "number": 0,
+    "number": 2,
     "coverSrc": null,
-    "assetPath": "john-abbott-college/john-abbott-college/user-interfaces/lecture-02",
-    "slug": "john-abbott-college/john-abbott-college_user-interfaces_lecture-02"
+    "assetPath": "john-abbott-college/user-interfaces/lectures/lecture-02",
+    "slug": "john-abbott-college/user-interfaces_lectures_lecture-02"
   },
   {
     "collection": "john-abbott-college",
-    "category": "john-abbott-college",
-    "subcategory": "user-interfaces",
+    "category": "user-interfaces",
+    "subcategory": "lectures",
     "title": "HTML Structure & Intro to CSS",
     "created": "2024-02-02",
-    "number": 0,
+    "number": 3,
     "coverSrc": null,
-    "assetPath": "john-abbott-college/john-abbott-college/user-interfaces/lecture-03",
-    "slug": "john-abbott-college/john-abbott-college_user-interfaces_lecture-03"
+    "assetPath": "john-abbott-college/user-interfaces/lectures/lecture-03",
+    "slug": "john-abbott-college/user-interfaces_lectures_lecture-03"
   },
   {
     "collection": "john-abbott-college",
-    "category": "john-abbott-college",
-    "subcategory": "user-interfaces",
+    "category": "user-interfaces",
+    "subcategory": "lectures",
     "title": "The DOM & Dev Tools",
     "created": "2024-02-05",
-    "number": 0,
+    "number": 4,
     "coverSrc": null,
-    "assetPath": "john-abbott-college/john-abbott-college/user-interfaces/lecture-04",
-    "slug": "john-abbott-college/john-abbott-college_user-interfaces_lecture-04"
+    "assetPath": "john-abbott-college/user-interfaces/lectures/lecture-04",
+    "slug": "john-abbott-college/user-interfaces_lectures_lecture-04"
   },
   {
     "collection": "john-abbott-college",
