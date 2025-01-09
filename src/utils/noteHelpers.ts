@@ -67,8 +67,8 @@ export const parseNoteContent = async (
     created: frontmatter.created,
     coverSrc: frontmatter.coverSrc ?? null,
     category: frontmatter.category,
-    baseFolder: fullBaseFolderPath,
-    type: replaceHyphensWithSpaces(subcategory) || null,
+    assetPath: fullBaseFolderPath,
+    subcategory: replaceHyphensWithSpaces(subcategory) || null,
   };
 };
 
