@@ -80,21 +80,3 @@ export const constructNoteSlug = (
   currentSlug.endsWith(fileNameWithoutExtension)
     ? `${currentSlug}`
     : `${currentSlug}_${fileNameWithoutExtension}`;
-
-/**
- *
- * @param notes
- * @param page
- * @param pageSize
- * @returns
- */
-export const paginateNotes = (
-  notes: INote[],
-  page: number,
-  pageSize: number
-): { notes: INote[]; total: number } => {
-  const total = notes.length;
-  const startIndex = (page - 1) * pageSize;
-  const paginated = notes.slice(startIndex, startIndex + pageSize);
-  return { notes: paginated, total };
-};
