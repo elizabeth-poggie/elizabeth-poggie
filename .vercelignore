@@ -4,10 +4,6 @@
 \_content/**/excels/
 \_content/\*\*/demos/
 
-# Ignore all assets
-
-public
-
 # Vercel build cache (shouldn't be deployed)
 
 .next/cache/
