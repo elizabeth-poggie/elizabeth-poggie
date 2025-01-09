@@ -1,8 +1,8 @@
 # Ignore unnecessary build-time files
 
-\_content/**/assets/
-\_content/**/excels/
-\_content/**/demos/
+_content/**/assets/
+_content/**/excels/
+_content/**/demos/
 
 # Vercel build cache (shouldn't be deployed)
 
@@ -16,9 +16,9 @@ node*modules
 logs/
 temp/
 *.log
-\_.bak
+_.bak
 
 # Dynamic build files (default handled by Next.js)
 
 .next
-\_next/
+_next/
