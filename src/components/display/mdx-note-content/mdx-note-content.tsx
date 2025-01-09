@@ -41,7 +41,6 @@ interface IMDXImageProps extends IImageProps {
 }
 
 export const MDXImage = ({ src, alt, assetPath, ...props }: IMDXImageProps) => {
-  // custom loader - kinda hacky but works lol
   const customImageLoader = ({ src }: { src: string }) => {
     return `${assetPath}/${src}`;
   };
