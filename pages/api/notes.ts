@@ -1,21 +1,55 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from "../notes";
-import { getPaginatedNotesForCategories } from "../../src/services/noteService";
+import { getPaginatedNotesFromBootlegJSON } from "../../src/services/noteService";
+
+// Helper incase multiple params supplied
+const getSingleValue = (value: string | string[]): string => {
+  return Array.isArray(value) ? value[0] : value;
+};
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { page = 1, pageSize = 10 } = req.query;
-  const pageNumber = parseInt(page as string, 10);
-  const pageSizeNumber = parseInt(pageSize as string, 10);
+  // Query extraction
+  const { page = "1", pageSize = "10", category, collection } = req.query;
 
-  const { notes, total } = await getPaginatedNotesForCategories(
-    NOTES_BASE_FOLDER,
-    NOTES_CATEGORIES,
-    pageNumber,
-    pageSizeNumber
-  );
+  // Param checks
+  const collectionValue = getSingleValue(collection);
+  const categoryValue = getSingleValue(category);
+  const pageNumber = Number(page);
+  const pageSizeNumber = Number(pageSize);
 
-  res.status(200).json({ notes, total });
+  if (isNaN(pageNumber) || pageNumber <= 0) {
+    return res
+      .status(400)
+      .json({ error: "❌ Invalid page parameter. This should be above 0." });
+  }
+
+  if (isNaN(pageSizeNumber) || pageSizeNumber <= 0) {
+    return res
+      .status(400)
+      .json({ error: "❌ Invalid pageSize. This should be above 0." });
+  }
+
+  try {
+    const { notes, total } = await getPaginatedNotesFromBootlegJSON(
+      collectionValue,
+      categoryValue,
+      pageNumber,
+      pageSizeNumber
+    );
+
+    if (notes?.length <= 0 || total <= 0) {
+      return res.status(400).json({
+        error: `❌ Invalid params. No notes found for ${collectionValue}, ${categoryValue}`,
+      });
+    }
+
+    console.log(`🤖 ${total} notes fetched: ${notes}`);
+
+    res.status(200).json({ notes, total });
+  } catch (error) {
+    console.error("❌ Error fetching notes:", error);
+    res.status(500).json({ error: "AHHHHH 🔥🖥️🥲" });
+  }
 }

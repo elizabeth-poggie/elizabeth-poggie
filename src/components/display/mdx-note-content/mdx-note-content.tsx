@@ -1,4 +1,3 @@
-import { MDXProps } from "../../../../pages/recipes/[slug]";
 import { MDXRemote } from "next-mdx-remote";
 import {
   MDHeader,
@@ -15,8 +14,9 @@ import styles from "./mdx-note-content.module.scss";
 import { Link } from "../../navigation/link/link";
 import { Text } from "../../typography/text/text";
 import { HorizontalLine } from "../horizontal-line/horizontal-line";
+import { MDXProps } from "../../../../pages";
 
-export function MDXNoteContent({ source, baseFolder }: MDXProps) {
+export function MDXNoteContent({ source, assetPath }: MDXProps) {
   return (
     <div className="js-toc-content">
       <MDXRemote
@@ -26,8 +26,8 @@ export function MDXNoteContent({ source, baseFolder }: MDXProps) {
           h2: MDSubHeader,
           p: MDParagraph,
           ul: MDUnorderedList,
-          a: ({ children, href }) => MDLink({ children, href, baseFolder }),
-          img: (props) => <MDXImage {...props} baseFolder={baseFolder} />,
+          a: ({ children, href }) => MDLink({ children, href }),
+          img: (props) => <></>, // TODO - #109 - <MDXImage {...props} assetPath={assetPath} />
           code: ({ className, children, ...props }) =>
             mdxCode({ className, children, ...props }),
         }}
@@ -37,18 +37,13 @@ export function MDXNoteContent({ source, baseFolder }: MDXProps) {
 }
 
 interface IMDXImageProps extends IImageProps {
-  baseFolder: string;
+  assetPath: string;
 }
 
-export const MDXImage = ({
-  src,
-  alt,
-  baseFolder,
-  ...props
-}: IMDXImageProps) => {
+export const MDXImage = ({ src, alt, assetPath, ...props }: IMDXImageProps) => {
   // custom loader - kinda hacky but works lol
   const customImageLoader = ({ src }: { src: string }) => {
-    return `${baseFolder}/${src}`;
+    return `${assetPath}/${src}`;
   };
 
   return (

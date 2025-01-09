@@ -1,110 +1,218 @@
-import React from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  Suspense,
+  useCallback,
+} from "react";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import { Text } from "../../components/typography/text/text";
 import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
-import { TextButton } from "../../components/inputs/text-button/text-button";
-import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 import { Link } from "../../components/navigation/link/link";
-import {
-  formatDate,
-  pluralToSingular,
-  replaceHyphensWithSpaces,
-} from "../../utils/textFormatters";
+import { formatDate, pluralToSingular } from "../../utils/textFormatters";
+import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
 import { MDXImage } from "../../components/display/mdx-note-content/mdx-note-content";
-import { NOTES_CATEGORIES } from "../../../pages/notes";
+import { sortByCreatedDescending } from "../../utils/noteHelpers";
+import { FOLDER_STRUCTURE } from "../../constants/folderStructure";
+import {
+  CollapsibleLinkList,
+  CollapsibleList,
+} from "../../components/layout/collapsible/collapsible";
 
-interface IProps {
-  allNotes: INote[];
-}
+// Custom hook to manage notes state and fetching logic
+const useNotes = (initialCategory, initialBase) => {
+  const [currentCategory, setCurrentCategory] = useState(initialCategory);
+  const [currentBase, setCurrentBase] = useState(initialBase);
+  const [notes, setNotes] = useState({});
+  const [caps, setCaps] = useState({});
+  const [currentPages, setCurrentPages] = useState({ [initialCategory]: 1 });
+  const [loading, setLoading] = useState(false);
 
-export function Notes({ allNotes }: IProps) {
-  const renderFilterRow = () => {
-    const filters: string[] = NOTES_CATEGORIES.map((category) =>
-      replaceHyphensWithSpaces(category)
-    );
+  const fetchNotes = async (page) => {
+    try {
+      setLoading(true);
+      const response = await fetch(
+        `/api/notes?page=${page}&pageSize=10&category=${currentCategory}&collection=${currentBase}`
+      );
+      const data = await response.json();
+
+      if (!response.ok || !data.notes?.length) return;
+
+      setNotes((prev) => ({
+        ...prev,
+        [currentCategory]: sortByCreatedDescending([
+          ...(prev[currentCategory] || []),
+          ...data.notes.filter(
+            (newNote) =>
+              !prev[currentCategory]?.some((note) => note.slug === newNote.slug)
+          ),
+        ]),
+      }));
+      setCaps((prev) => ({ ...prev, [currentCategory]: data.total }));
+      setCurrentPages((prev) => ({ ...prev, [currentCategory]: page }));
+    } catch (error) {
+      console.error("Error fetching notes:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const changeCategory = (base, category) => {
+    setCurrentBase(base);
+    setCurrentCategory(category);
+    setCurrentPages((prev) => ({ ...prev, [category]: 1 }));
+  };
+
+  return {
+    currentCategory,
+    currentBase,
+    notes,
+    caps,
+    currentPages,
+    loading,
+    fetchNotes,
+    changeCategory,
+  };
+};
+
+export function Notes() {
+  const loaderRef = useRef(null);
+  const {
+    currentCategory,
+    currentBase,
+    notes,
+    caps,
+    currentPages,
+    loading,
+    fetchNotes,
+    changeCategory,
+  } = useNotes(
+    FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES.WEB_PROGRAMMING,
+    FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE
+  );
+
+  const handleObserver = useCallback(
+    (entries) => {
+      if (
+        entries[0].isIntersecting &&
+        !loading &&
+        (notes[currentCategory]?.length || 0) < (caps[currentCategory] || 0)
+      ) {
+        const nextPage = currentPages[currentCategory] + 1;
+        fetchNotes(nextPage);
+      }
+    },
+    [loading, notes, caps, currentCategory, currentPages, fetchNotes]
+  );
+
+  useEffect(() => {
+    fetchNotes(1);
+  }, [currentCategory, currentBase]);
+
+  useEffect(() => {
+    if (!loaderRef.current) return;
+
+    const observer = new IntersectionObserver(handleObserver, {
+      threshold: 0.5,
+      rootMargin: "60% 0px",
+    });
+
+    observer.observe(loaderRef.current);
+
+    return () => observer.disconnect();
+  }, [handleObserver]);
+
+  const renderCategoryCollapsibles = () => {
+    const collapsibles = Object.values([
+      FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE,
+    ]).map((folder) => {
+      const items = Object.values(folder.CATEGORIES).map((category) => ({
+        text: category,
+        href: "",
+      }));
+
+      return {
+        title: folder.BASE,
+        content: (
+          <CollapsibleLinkList
+            links={items}
+            selectedText={currentCategory}
+            handleOnClick={(selectedText) =>
+              changeCategory(folder.BASE, selectedText)
+            }
+          />
+        ),
+      };
+    });
 
     return (
       <nav className={styles.nav}>
-        <header>
-          <Text color="white">John Abbott College</Text>
-        </header>
-        {filters.map((filter: string) => (
-          <div key={filter}>
-            <Text variant="subheading" style="capitalize" color="grey">
-              {filter}
-            </Text>
-          </div>
-        ))}
+        <CollapsibleList collapsibles={collapsibles} selected={currentBase} />
       </nav>
     );
   };
 
-  const renderListItem = (note: INote) => {
-    const {
-      slug,
-      title,
-      coverSrc,
-      baseFolder,
-      category,
-      type,
-      created,
-      updated,
-    } = note;
-    const currentDate = formatDate(updated ?? created);
-
-    return (
-      <Link href={`/notes/${slug}`}>
-        <div className={styles.listItem}>
-          <Text color="grey">{currentDate}</Text>
-          <Text variant="h2" gutterBottom={2} color="white">
-            {title}
-          </Text>
-          <Text
-            variant="subheading"
-            gutterBottom={coverSrc ? 6 : 1}
-            style="italics"
-            color="grey"
-          >
-            {type ? `${pluralToSingular(type)}, ` : null}
-            {category}
-          </Text>
-          {coverSrc ? (
-            <MDXImage baseFolder={baseFolder} src={coverSrc} alt={title} />
-          ) : null}
-        </div>
-        <HorizontalLine />
-      </Link>
-    );
-  };
-
-  const renderTitle = () => {
-    return (
-      <header className={styles.titleWrapper}>
-        <Text variant="title">Notes</Text>
-      </header>
-    );
-  };
-
-  const renderMainContent = () => {
-    return (
-      <div className={styles.mainContent}>
-        <HorizontalLine />
-        <section className={styles.content}>
-          <>{allNotes.map((note: INote) => renderListItem(note))}</>
-        </section>
+  const renderListItem = ({
+    slug,
+    title,
+    coverSrc,
+    assetPath,
+    category,
+    subcategory,
+    created,
+    updated,
+  }) => (
+    <Link href={`/notes/${slug}`} key={slug}>
+      <div className={styles.listItem}>
+        <Text color="grey">{formatDate(updated || created)}</Text>
+        <Text variant="h2" gutterBottom={2} color="white">
+          {title}
+        </Text>
+        <Text
+          variant="subheading"
+          gutterBottom={1}
+          style="italics"
+          color="grey"
+        >
+          {subcategory ? `${pluralToSingular(subcategory)}, ` : null}
+          {category}
+        </Text>
       </div>
-    );
-  };
+      <HorizontalLine />
+    </Link>
+  ); // TODO - #109 -  <MDXImage src={coverSrc} alt={title} assetPath={assetPath} />
+
+  const renderMainContent = () => (
+    <div className={styles.mainContent}>
+      <HorizontalLine />
+      <section className={styles.content}>
+        {notes[currentCategory]?.map(renderListItem) || null}
+      </section>
+      <div ref={loaderRef} style={{ height: "50px", textAlign: "center" }}>
+        {loading && (
+          <Text variant="subheading" style="italics">
+            Loading more notes...
+          </Text>
+        )}
+      </div>
+    </div>
+  );
+
+  const renderTitle = () => (
+    <header className={styles.titleWrapper}>
+      <Text variant="title">Notes</Text>
+    </header>
+  );
 
   return (
-    <>
+    <Suspense fallback={<Text variant="subheading">Loading...</Text>}>
       <ThreeColumnTemplate
         header={renderTitle()}
-        rightSidebar={""}
+        rightSidebar={null}
         mainContent={renderMainContent()}
-        leftSidebar={renderFilterRow()}
+        leftSidebar={renderCategoryCollapsibles()}
       />
-    </>
+    </Suspense>
   );
 }

@@ -1,164 +1,12 @@
-import {
-  parseNoteContent,
-  constructNoteSlug,
-  sortByCreatedDescending,
-} from "../utils/noteHelpers";
-import {
-  buildCategoryPath,
-  filterTypeCandidates,
-} from "../utils/categoryHelpers";
-import {
-  fileExists,
-  readDirectory,
-  isDirectory,
-  findFileInDirectory,
-} from "../utils/fileHelpers";
+import { constructNoteSlug } from "../utils/noteHelpers";
+import { filterTypeCandidates } from "../utils/categoryHelpers";
+import { findFileInDirectory } from "../utils/fileHelpers";
 import { CategoryToLinkMap, Frontmatter, INote } from "../interfaces/note";
 import path from "path";
 import fs from "fs"; // Cannot be used directly in Next.js code that runs in the browser
 import { replaceHyphensWithSpaces } from "../utils/textFormatters";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPropsContext } from "next";
-
-const getNotesFromFolder = async (
-  baseFolder: string,
-  categoryPath: string,
-  category: string
-): Promise<INote[]> => {
-  if (!fileExists(categoryPath)) {
-    console.error(
-      `❌ Can't find this category path "${categoryPath}" for this category "${category}"`
-    );
-    return [];
-  }
-
-  const filesAndFolders = readDirectory(categoryPath);
-  const notesInCategory: INote[] = [];
-
-  for (const item of filesAndFolders) {
-    const fullPath = path.join(categoryPath, item);
-
-    if (isDirectory(fullPath)) {
-      const subCategoryNotes = await getNotesFromFolder(
-        baseFolder,
-        fullPath,
-        `${category}_${item}`
-      );
-      notesInCategory.push(...subCategoryNotes);
-    } else if (item.endsWith(".mdx")) {
-      const { mdxSource, frontmatter } = await parseNoteContent(fullPath);
-      const slug = `${baseFolder}/${category}`;
-      const fullBaseFolderPath = path
-        .join(baseFolder, category)
-        .replace(/_/g, "/");
-
-      // Split slug to handle nested structure
-      const parts = slug.split("_");
-      const fileName = parts.slice(-1)[0];
-      const subCategoryPath = parts;
-      const type = filterTypeCandidates(
-        subCategoryPath,
-        baseFolder,
-        [category],
-        fileName
-      );
-
-      notesInCategory.push({
-        title: frontmatter.title,
-        slug,
-        created: frontmatter.created,
-        coverSrc: frontmatter.coverSrc ?? null,
-        category: frontmatter.category,
-        baseFolder: fullBaseFolderPath,
-        type: replaceHyphensWithSpaces(type) || null,
-      });
-    }
-  }
-
-  return notesInCategory;
-};
-
-const fetchNotesForCategories = async (
-  baseFolder: string,
-  categories: string[]
-): Promise<INote[]> => {
-  const uniqueNotes = new Map<string, INote>();
-
-  for (const category of categories) {
-    const categoryPath = path.join(
-      process.cwd(),
-      `_content/${baseFolder}/${category}`
-    );
-    const categoryNotes = await getNotesFromFolder(
-      baseFolder,
-      categoryPath,
-      category
-    );
-
-    for (const note of categoryNotes) {
-      if (!uniqueNotes.has(note.slug)) {
-        uniqueNotes.set(note.slug, note);
-      }
-    }
-  }
-
-  return Array.from(uniqueNotes.values());
-};
-
-const paginateNotes = (
-  notes: INote[],
-  page: number,
-  pageSize: number
-): { notes: INote[]; total: number } => {
-  const total = notes.length;
-  const startIndex = (page - 1) * pageSize;
-  const paginated = notes.slice(startIndex, startIndex + pageSize);
-  return { notes: paginated, total };
-};
-
-export const getPaginatedNotesForCategories = async (
-  baseFolder: string,
-  categories: string[],
-  page = 1,
-  pageSize = 10
-): Promise<{ notes: INote[]; total: number }> => {
-  const notes = await fetchNotesForCategories(baseFolder, categories);
-  const sortedNotes = sortByCreatedDescending(notes);
-  return paginateNotes(sortedNotes, page, pageSize);
-};
-
-export const getNotesForCategory = async (
-  baseFolder: string,
-  category: string
-): Promise<CategoryToLinkMap> => {
-  const notes = await fetchNotesForCategories(baseFolder, [category]);
-
-  if (!notes.length) {
-    console.warn(`👀 No notes found for category: ${category}`);
-    return {};
-  }
-
-  // Group notes by their type
-  const categoryMap: CategoryToLinkMap = notes.reduce((acc, note) => {
-    const { type } = note;
-
-    if (!type) {
-      return acc;
-    }
-
-    if (!acc[type]) {
-      acc[type] = [];
-    }
-
-    acc[type].push({
-      text: `${acc[type].length + 1}. ${note.title}`,
-      href: `/notes/${note.slug}`,
-    });
-
-    return acc;
-  }, {} as CategoryToLinkMap);
-  return categoryMap;
-};
 
 export const getNotePaths = (baseFolder: string, categories: string[]) => {
   const paths: { params: { slug: string } }[] = [];
@@ -206,7 +54,7 @@ export const getNoteProps = async (
   const parts = slug.split("_");
   const fileName = parts.slice(-1)[0];
   const subCategoryPath = parts;
-  const type = filterTypeCandidates(
+  const subcategory = filterTypeCandidates(
     subCategoryPath,
     baseFolder,
     categories,
@@ -231,7 +79,7 @@ export const getNoteProps = async (
       const mdxSource = await serialize(source, { parseFrontmatter: true });
 
       // Construct the image path
-      const fullBaseFolderPath = `/${baseFolder}/${subCategoryPath.join("/")}`;
+      const assetPath = `/${baseFolder}/${subCategoryPath.join("/")}`;
 
       return {
         props: {
@@ -240,10 +88,10 @@ export const getNoteProps = async (
             scope: mdxSource.scope,
             frontmatter: {
               ...(mdxSource.frontmatter as Frontmatter),
-              type: replaceHyphensWithSpaces(type) || null,
+              subCategory: replaceHyphensWithSpaces(subcategory) || null,
             },
           },
-          baseFolder: fullBaseFolderPath,
+          assetPath,
         },
       };
     }
@@ -258,11 +106,83 @@ export const getNoteProps = async (
         scope: {},
         frontmatter: {
           title: "404 Note not found",
-          type: null,
           category: null,
+          subCategory: null,
         },
       },
-      baseFolder: "",
+      assetPath: "",
     },
   };
+};
+
+export const getRelatedNotesFromBootlegJSON = (
+  category: string
+): CategoryToLinkMap => {
+  // Resolve the path to the JSON file
+  const filePath = path.join(process.cwd(), "db", "notes-metadata.json");
+
+  // Read and parse the JSON file
+  const fileContents = fs.readFileSync(filePath, "utf8");
+  const jsonNotes: INote[] = JSON.parse(fileContents);
+
+  // Filter notes by the specified category
+  const notes = jsonNotes.filter((note) => note.category === category);
+
+  if (!notes.length) {
+    console.warn(`👀 No notes found for category: ${category}`);
+    return {};
+  }
+
+  // Group notes by their subcategory
+  const categoryMap: CategoryToLinkMap = notes.reduce((acc, note) => {
+    const { subcategory } = note;
+
+    if (!subcategory) {
+      return acc;
+    }
+
+    if (!acc[subcategory]) {
+      acc[subcategory] = [];
+    }
+
+    acc[subcategory].push({
+      text: `${note.number}. ${note.title}`,
+      href: `/notes/${note.slug}`,
+    });
+
+    return acc;
+  }, {} as CategoryToLinkMap);
+
+  return categoryMap;
+};
+
+export const getPaginatedNotesFromBootlegJSON = async (
+  collection: string,
+  category: string,
+  page = 1,
+  pageSize = 10
+): Promise<{ notes: INote[]; total: number }> => {
+  // Resolve the path to the JSON file
+  const filePath = path.join(process.cwd(), "db", "notes-metadata.json");
+
+  // Read and parse the JSON file
+  const fileContents = fs.readFileSync(filePath, "utf8");
+  const jsonNotes: INote[] = JSON.parse(fileContents);
+
+  // Filter, sort, and paginate the notes
+  const notes = jsonNotes
+    .filter(
+      (note) => note.collection === collection && note.category === category
+    )
+    .sort(
+      (a, b) => new Date(b.created).getTime() - new Date(a.created).getTime()
+    )
+    .slice((page - 1) * pageSize, page * pageSize);
+
+  // Get total count for pagination
+  const total = jsonNotes.filter(
+    (note) => note.collection === collection && note.category === category
+  ).length;
+
+  return { notes, total };
 };

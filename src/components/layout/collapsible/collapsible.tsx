@@ -3,6 +3,7 @@ import { Text } from "../../typography/text/text";
 import styles from "./collapsible.module.scss";
 import { ILink } from "../../../interfaces/note";
 import { TextLink } from "../../navigation/link/link";
+import { replaceHyphensWithSpaces } from "../../../utils/textFormatters";
 
 interface IProps {
   title: string;
@@ -24,7 +25,7 @@ export function Collapsible({
         onClick={onClick}
       >
         <Text variant="h3" gutterBottom={1} style="capitalize">
-          {title}
+          {replaceHyphensWithSpaces(title)}
         </Text>
         <div className={styles.arrow}>
           <ArrowIcon />
@@ -38,7 +39,7 @@ export function Collapsible({
 interface ICollapsibleLinkListProps {
   links: ILink[];
   selectedText?: string;
-  handleOnClick?: () => void;
+  handleOnClick?: (selectedText: string) => void;
 }
 
 export const CollapsibleLinkList = ({
@@ -56,9 +57,9 @@ export const CollapsibleLinkList = ({
               variant="subheading"
               color={isSelected ? "white" : "grey"}
               href={link.href}
-              onClick={() => handleOnClick()}
+              onClick={() => handleOnClick(link.text)}
             >
-              {link.text}
+              {replaceHyphensWithSpaces(link.text)}
             </TextLink>
           </div>
         );
@@ -69,15 +70,15 @@ export const CollapsibleLinkList = ({
 
 interface ICollapsibleListProps {
   collapsibles: { title: string; content: React.ReactNode }[];
-  currentType?: string;
+  selected?: string;
 }
 
 export function CollapsibleList({
   collapsibles,
-  currentType,
+  selected,
 }: ICollapsibleListProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(
-    collapsibles.findIndex((collapsible) => collapsible.title === currentType)
+    collapsibles.findIndex((collapsible) => collapsible.title === selected)
   );
 
   const handleToggle = (index: number) => {

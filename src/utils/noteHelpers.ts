@@ -1,6 +1,9 @@
 import { INote, Frontmatter } from "../interfaces/note";
 import { serialize } from "next-mdx-remote/serialize";
 import { readFileContent } from "./fileHelpers";
+import path from "path";
+import { filterTypeCandidates } from "./categoryHelpers";
+import { replaceHyphensWithSpaces } from "./textFormatters";
 
 /**
  *
@@ -34,11 +37,39 @@ export const sortByCreatedDescending = (notes: INote[]): INote[] => {
  * @returns - object containing mdxSource and frontmatter
  */
 export const parseNoteContent = async (
-  filePath: string
-): Promise<{ mdxSource: any; frontmatter: Frontmatter }> => {
+  filePath: string,
+  baseFolder: string
+): Promise<INote> => {
+  // Extract meta data from the note
   const source = readFileContent(filePath);
   const mdxSource = await serialize(source, { parseFrontmatter: true });
-  return { mdxSource, frontmatter: mdxSource.frontmatter as Frontmatter };
+  const frontmatter = mdxSource.frontmatter as Frontmatter;
+
+  // Extract the file name without the extension
+  const fileName = filePath.split("/").pop().replace(".mdx", "");
+
+  // Extract the category (e.g. web-programming-i)
+  const pathParts = filePath.split("/");
+  const category = pathParts[pathParts.length - 4];
+
+  // Extract the subcategory (e.g. quiz-answers)
+  const subcategory = pathParts[pathParts.length - 3];
+
+  // Dynamically construct slug for deeply nested hierarchy
+  const slug = `${baseFolder}/${category}_${subcategory}_${fileName}`;
+  const fullBaseFolderPath = path
+    .join(baseFolder, category, subcategory, fileName)
+    .replace(/_/g, "/");
+
+  return {
+    title: frontmatter.title,
+    slug,
+    created: frontmatter.created,
+    coverSrc: frontmatter.coverSrc ?? null,
+    category: frontmatter.category,
+    assetPath: fullBaseFolderPath,
+    subcategory: replaceHyphensWithSpaces(subcategory) || null,
+  };
 };
 
 // Avoid adding the file name twice if it's the same as the last folder name

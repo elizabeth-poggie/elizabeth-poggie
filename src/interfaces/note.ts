@@ -10,16 +10,6 @@ export type CategoryToLinkMap = {
 /**
  * Note
  * @interface INote
- * @member {string} slug point of access
- * @member {string} title header
- * @member {string} subtitle subheader
- * @member {string} category group of belonging
- * @member {string} label type of content
- * @member {string} number number in series
- * @member {string} created date of creation
- * @member {string} updated date of update
- * @member {string} coverSrc path to cover image
- * @member {ILink} link link to related content
  */
 export interface INote {
   /**
@@ -39,21 +29,24 @@ export interface INote {
    */
   subtitle?: string;
   /**
-   * Group of belonging, Sorting relies on this member
-   * @example "User Interfaces"
+   * Contains a selection of related categories
+   * @example "John Abbott College" "Recipes"
+   */
+  collection?: string;
+  /**
+   * Group of belonging
+   * @example "User Interfaces" "Web 1"
    */
   category: string;
   /**
-   * Type of content, Sorting relies on this member
-   * @example "Lecture"
-   * @example "Strategy"
+   * Type of content
+   * @example "Lecture" "Quiz Answers" "Assignment"
+   */
+  subcategory?: string;
+  /**
+   * @deprecated use subcategory instead
    */
   type?: string;
-  /**
-   * Type of content, Filtering relies on this member
-   * @example ["Project Management", "Public speaking"]
-   */
-  tags?: string[];
   /**
    * Date of creation in UTC
    */
@@ -72,20 +65,17 @@ export interface INote {
    */
   gallerySrc?: string[];
   /**
-   * Link to related content
-   * @type ILink
-   * @example {text: "slides", href: "path/to/slides.pdf"}
-   * @deprecated students don't like slides
-   */
-  link?: ILink;
-  /**
    * Markdown
    * @deprecated creating a brand strategy, colours will be handled differently
    */
   color?: string;
   /**
-   * Base URL of where the images are located in the public && content folders
-   * Used to enable relative linking for static website generators
+   * Filepath of where a given notes images are located in the /public
+   * Used to enable relative linking while keeping notes organized in a component driven style
+   */
+  assetPath?: string;
+  /**
+   * @deprecated use assetPath instead
    */
   baseFolder?: string;
   /**

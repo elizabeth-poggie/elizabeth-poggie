@@ -62,7 +62,7 @@ export function Gallery({ allNotes }: IProps) {
                   </div>
                   <MDXImage
                     src={note.coverSrc}
-                    baseFolder={note.baseFolder}
+                    assetPath={note.assetPath}
                     variant="galleryItem"
                   />
                 </div>

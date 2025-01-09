@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./toc.module.scss";
-import tocbot from "tocbot";
+import * as tocbot from "tocbot";
 
 interface IProps {}
 

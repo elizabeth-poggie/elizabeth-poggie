@@ -1,16 +1,15 @@
 import Head from "next/head";
 import Meta from "../../../src/views/meta/meta";
-import { Burger } from "../../../src/components/navigation/burger/Burger";
-import { navItems } from "../..";
-import { NOTES_BASE_FOLDER, NOTES_CATEGORIES } from "..";
+import Burger from "../../../src/components/navigation/burger/Burger";
+import { MDXProps, navItems } from "../..";
 import { GetStaticPropsContext } from "next";
 import { MdxNoteDetails } from "../../../src/views/mdx-note-details/mdx-note-details";
-import { MDXProps } from "../../recipes/[slug]";
 import {
   getNotePaths,
   getNoteProps,
-  getNotesForCategory,
+  getRelatedNotesFromBootlegJSON,
 } from "../../../src/services/noteService";
+import { FOLDER_STRUCTURE } from "../../../src/constants/folderStructure";
 
 export default function NoteDetailsPage(props: MDXProps) {
   const title = props.source.frontmatter.title;
@@ -34,13 +33,12 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
       : ctx.params.slug.split("_")[0]
     : "";
 
-  // Fetch notes for the given category
-  const relatedNotes = await getNotesForCategory(NOTES_BASE_FOLDER, category);
+  const relatedNotes = await getRelatedNotesFromBootlegJSON(category);
 
   const noteProps = await getNoteProps(
     ctx,
-    NOTES_BASE_FOLDER,
-    NOTES_CATEGORIES
+    FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE,
+    Object.values(FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES)
   );
 
   return {
@@ -52,5 +50,8 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
 }
 
 export async function getStaticPaths() {
-  return getNotePaths(NOTES_BASE_FOLDER, NOTES_CATEGORIES);
+  return getNotePaths(
+    FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE,
+    Object.values(FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES)
+  );
 }
