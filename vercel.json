@@ -1,7 +1,7 @@
 {
   "cleanUrls": true,
   "functions": {
-    "api/notes": {
+    "pages/api/**/*.js": {
       "excludeFiles": "public/**/*"
     }
   }

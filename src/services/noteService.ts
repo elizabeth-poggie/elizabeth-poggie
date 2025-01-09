@@ -155,34 +155,3 @@ export const getRelatedNotesFromBootlegJSON = (
 
   return categoryMap;
 };
-
-export const getPaginatedNotesFromBootlegJSON = async (
-  collection: string,
-  category: string,
-  page = 1,
-  pageSize = 10
-): Promise<{ notes: INote[]; total: number }> => {
-  // Resolve the path to the JSON file
-  const filePath = path.join(process.cwd(), "db", "notes-metadata.json");
-
-  // Read and parse the JSON file
-  const fileContents = fs.readFileSync(filePath, "utf8");
-  const jsonNotes: INote[] = JSON.parse(fileContents);
-
-  // Filter, sort, and paginate the notes
-  const notes = jsonNotes
-    .filter(
-      (note) => note.collection === collection && note.category === category
-    )
-    .sort(
-      (a, b) => new Date(b.created).getTime() - new Date(a.created).getTime()
-    )
-    .slice((page - 1) * pageSize, page * pageSize);
-
-  // Get total count for pagination
-  const total = jsonNotes.filter(
-    (note) => note.collection === collection && note.category === category
-  ).length;
-
-  return { notes, total };
-};
