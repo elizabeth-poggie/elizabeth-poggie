@@ -27,7 +27,7 @@ export function MDXNoteContent({ source, assetPath }: MDXProps) {
           p: MDParagraph,
           ul: MDUnorderedList,
           a: ({ children, href }) => MDLink({ children, href }),
-          img: (props) => <></>, // TODO - #109 - <MDXImage {...props} assetPath={assetPath} />
+          img: (props) => <MDXImage {...props} assetPath={assetPath} />,
           code: ({ className, children, ...props }) =>
             mdxCode({ className, children, ...props }),
         }}
