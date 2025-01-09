@@ -4,16 +4,9 @@
 \_content/**/excels/
 \_content/\*\*/demos/
 
-# TODO - #109 - Fix the asset management system here lol
+# Ignore all assets
 
-# public/**/\*.bak
-# public/**/_.tmp
-# public/\*\*/_.log
-# public/john-abbott-college/computerized-systems
-# public/portfolio/management
-# public/john-abbott-college/web-programming-i
-# public/assets/notes
-# public/assets/art
+public
 
 # Vercel build cache (shouldn't be deployed)
 
