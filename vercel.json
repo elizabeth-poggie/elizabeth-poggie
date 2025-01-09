@@ -1,7 +1,7 @@
 {
   "cleanUrls": true,
   "functions": {
-    "api/notes.js": {
+    "api/notes": {
       "excludeFiles": ["public/**", "_content/**", ".next/cache/**"]
     }
   }
