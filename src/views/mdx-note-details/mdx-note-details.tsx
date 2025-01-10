@@ -17,8 +17,8 @@ import { ThreeColumnTemplate } from "../../components/templates/three-collumn-te
 import { MDXProps } from "../../../pages";
 
 export function MdxNoteDetails(props: MDXProps) {
-  const { title, subcategory, number } = props.source.frontmatter;
-  const relatedNotes = props.relatedNotes;
+  const { title, subcategory, number } = props?.source?.frontmatter;
+  const relatedNotes = props?.relatedNotes;
   const router = useRouter();
 
   const refreshToc = () => {
