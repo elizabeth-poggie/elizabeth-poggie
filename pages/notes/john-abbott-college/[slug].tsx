@@ -42,7 +42,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
       Object.values(FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES)
     );
 
-    if (!noteProps || !noteProps?.props?.source?.frontmatter) {
+    if (!noteProps || !noteProps.props.source.frontmatter) {
       return {
         notFound: true,
       };
