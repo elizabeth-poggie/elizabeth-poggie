@@ -1,7 +1,7 @@
 {
   "cleanUrls": true,
   "functions": {
-    "pages/api/**/*.js": {
+    "*.js": {
       "excludeFiles": "public/**/* _content/**/* .next/cache/**/*"
     }
   }
