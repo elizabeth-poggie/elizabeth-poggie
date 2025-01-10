@@ -3,9 +3,6 @@
   "functions": {
     "pages/api/**/*.js": {
       "excludeFiles": "public/**/* _content/**/* .next/cache/**/*"
-    },
-    "_next/data/**/*.json": {
-      "excludeFiles": "public/**/* _content/**/* .next/cache/**/*"
     }
   }
 }
