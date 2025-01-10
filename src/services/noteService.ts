@@ -40,7 +40,7 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
     );
   });
 
-  return { paths, fallback: true };
+  return { paths, fallback: "blocking" };
 };
 
 export const getNoteProps = async (
@@ -80,6 +80,11 @@ export const getNoteProps = async (
 
       // Construct the image path
       const assetPath = `/${baseFolder}/${subCategoryPath.join("/")}`;
+
+      if (!mdxSource.frontmatter) {
+        console.error(`❌ Fontmatter is broken for this file: `, filePath);
+        return null;
+      }
 
       return {
         props: {

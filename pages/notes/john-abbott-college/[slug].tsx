@@ -12,7 +12,7 @@ import {
 import { FOLDER_STRUCTURE } from "../../../src/constants/folderStructure";
 
 export default function NoteDetailsPage(props: MDXProps) {
-  const title = props.source.frontmatter.title;
+  const title = props.source?.frontmatter?.title || "Notes";
   return (
     <>
       <Meta />
