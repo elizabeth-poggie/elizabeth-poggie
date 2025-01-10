@@ -40,7 +40,7 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
     );
   });
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 
 export const getNoteProps = async (
@@ -100,18 +100,7 @@ export const getNoteProps = async (
   // If no matching file is found, handle it gracefully
   console.error(`❌ Can't find the notes you are looking for`);
   return {
-    props: {
-      source: {
-        compiledSource: "",
-        scope: {},
-        frontmatter: {
-          title: "404 Note not found",
-          category: null,
-          subCategory: null,
-        },
-      },
-      assetPath: "",
-    },
+    notFound: true,
   };
 };
 

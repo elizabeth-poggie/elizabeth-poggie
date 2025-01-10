@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "functions": {
     "pages/api/**/*.js": {
-      "excludeFiles": "public/**/* _content/**/* .next/cache/**/* _next/data/**/*"
+      "excludeFiles": "public/**/* _content/**/* .next/cache/**/*"
     }
   }
 }
