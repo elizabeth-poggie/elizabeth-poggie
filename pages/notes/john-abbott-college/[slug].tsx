@@ -26,27 +26,40 @@ export default function NoteDetailsPage(props: MDXProps) {
 }
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  // Extract the note category (the first segment after "notes/")
-  const category = ctx.params?.slug
-    ? Array.isArray(ctx.params.slug)
-      ? ctx.params.slug[0]
-      : ctx.params.slug.split("_")[0]
-    : "";
+  try {
+    // Extract the note category (the first segment after "notes/")
+    const category = ctx.params?.slug
+      ? Array.isArray(ctx.params.slug)
+        ? ctx.params.slug[0]
+        : ctx.params.slug.split("_")[0]
+      : "";
 
-  const relatedNotes = await getRelatedNotesFromBootlegJSON(category);
+    const relatedNotes = await getRelatedNotesFromBootlegJSON(category);
 
-  const noteProps = await getNoteProps(
-    ctx,
-    FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE,
-    Object.values(FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES)
-  );
+    const noteProps = await getNoteProps(
+      ctx,
+      FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.BASE,
+      Object.values(FOLDER_STRUCTURE.JOHN_ABBOTT_COLLEGE.CATEGORIES)
+    );
 
-  return {
-    props: {
-      ...noteProps.props,
-      relatedNotes,
-    },
-  };
+    if (!noteProps || !noteProps?.props?.source?.frontmatter) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        ...noteProps.props,
+        relatedNotes,
+      },
+    };
+  } catch (error) {
+    console.error("🔥🖥️🥲 AHHHHH: ", error);
+    return {
+      notFound: true,
+    };
+  }
 }
 
 export async function getStaticPaths() {
