@@ -40,7 +40,10 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
     );
   });
 
-  return { paths, fallback: "blocking" };
+  return {
+    paths,
+    fallback: "blocking", // if a page is not pre-rendered, it will be generated on the first req
+  };
 };
 
 export const getNoteProps = async (

@@ -53,6 +53,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
         ...noteProps.props,
         relatedNotes,
       },
+      revalidate: 60, // Rebuild the page at most every 60 seconds
     };
   } catch (error) {
     console.error("🔥🖥️🥲 AHHHHH: ", error);
