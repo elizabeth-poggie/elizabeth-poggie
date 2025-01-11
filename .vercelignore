@@ -11,7 +11,7 @@ _content/**/demos/
 # Ignore local configuration and temp files
 
 .git
-node*modules
+node_modules
 .vscode
 logs/
 temp/

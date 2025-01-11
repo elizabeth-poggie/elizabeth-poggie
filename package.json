@@ -9,9 +9,7 @@
     "note": "./scripts/generate-mdx.sh",
     "make": "./scripts/generate-component.sh",
     "snoopy": "./scripts/duplicate-assets.sh",
-    "yeet": "node ./scripts/db/migrate-notes.js",
-    "prod": "vercel build",
-    "prod-init": "vercel login"
+    "yeet": "node ./scripts/db/migrate-notes.js"
   },
   "dependencies": {
     "@next/mdx": "^14.2.3",
