@@ -62,11 +62,10 @@ export const useNoteDetails = (
   return { ...data, loading, error };
 };
 
-export function getSlugParams() {
-  const router = useRouter();
-  const { slug } = router.query;
-
+export function getSlugParams(slug) {
+  console.log(slug);
   if (!slug || typeof slug !== "string") {
+    console.error("Something has gone terribly wrong");
     return {
       currentFileName: null,
       currentSubCategory: null,
@@ -75,17 +74,12 @@ export function getSlugParams() {
     };
   }
 
-  // Split the slug by "/" to extract collection and the rest
-  const slugParts = slug.split("/");
-  const currentCollection = slugParts[0] || null; // First part is the collection
-  const rest = slugParts.slice(1).join("_"); // Combine the remaining parts with "_"
-
   // Split the remaining slug by "_"
-  const parts = rest.split("_");
-  const currentFileName = parts.pop() || null; // Last part is the file name
-  const currentSubCategory = parts.pop() || null; // Second last part is the subCategory
-  const currentCategory = parts.join("-") || null; // Combine remaining parts as category
-
+  const parts = slug.split("_");
+  const currentFileName = parts.pop() || null;
+  const currentSubCategory = parts.pop() || null;
+  const currentCategory = parts.pop() || null;
+  const currentCollection = "john-abbott-college"; // TODO - this should not be hard coded lol
   return {
     currentFileName,
     currentSubCategory,
@@ -104,7 +98,7 @@ export function MdxNoteDetails() {
     currentSubCategory,
     currentCategory,
     currentCollection,
-  } = getSlugParams();
+  } = getSlugParams(slug);
 
   const { noteProps, relatedNotes, loading, error } = useNoteDetails(
     currentCollection,

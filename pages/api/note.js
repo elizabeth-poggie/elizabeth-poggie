@@ -105,6 +105,10 @@ export const getRelatedNotesFromBootlegJSON = (category) => {
 export default async function handler(req, res) {
   const { category, collection, subcategory, filename } = req.query;
 
+  console.log(
+    `🤖 Processing: ${collection} ${category} ${subcategory} ${filename}`
+  );
+
   try {
     const relatedNotes = await getRelatedNotesFromBootlegJSON(category);
 
