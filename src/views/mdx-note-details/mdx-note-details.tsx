@@ -14,11 +14,15 @@ import { pluralToSingular } from "../../utils/textFormatters";
 import * as tocbot from "tocbot";
 import { useRouter } from "next/router";
 import { ThreeColumnTemplate } from "../../components/templates/three-collumn-template/three-collumn-template";
-import { MDXProps } from "../../../pages";
 
-export function MdxNoteDetails(props: MDXProps) {
-  const { title, subcategory, number } = props?.source?.frontmatter;
-  const relatedNotes = props?.relatedNotes;
+export function MdxNoteDetails() {
+  const title = "Yeet";
+  const subcategory = "Sub yeet";
+  const number = 42;
+  const source = null;
+  const assetPath = null;
+  const relatedNotes = [];
+
   const router = useRouter();
 
   const refreshToc = () => {
@@ -92,7 +96,7 @@ export function MdxNoteDetails(props: MDXProps) {
   const renderNotes = () => {
     return (
       <div className={styles.mainContent}>
-        <MDXNoteContent {...props} />;
+        <MDXNoteContent source={source} assetPath={assetPath} />
       </div>
     );
   };

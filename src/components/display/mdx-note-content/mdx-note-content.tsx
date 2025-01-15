@@ -17,6 +17,14 @@ import { HorizontalLine } from "../horizontal-line/horizontal-line";
 import { MDXProps } from "../../../../pages";
 
 export function MDXNoteContent({ source, assetPath }: MDXProps) {
+  if (!source || !assetPath) {
+    return (
+      <div className={styles.error}>
+        <Text variant="p">This is broken lol, please complain to Poggie</Text>
+      </div>
+    );
+  }
+
   return (
     <div className="js-toc-content">
       <MDXRemote

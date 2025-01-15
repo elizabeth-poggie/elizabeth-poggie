@@ -7,7 +7,6 @@ import React, {
 } from "react";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import { Text } from "../../components/typography/text/text";
-import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
 import { Link } from "../../components/navigation/link/link";
 import { formatDate, pluralToSingular } from "../../utils/textFormatters";

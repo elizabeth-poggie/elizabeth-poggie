@@ -51,6 +51,13 @@ const getPaginatedNotesFromBootlegJSON = async (
   return { notes, total };
 };
 
+/**
+ * Enabling lazy loading, pagination, and faster page load times
+ *
+ * @example /api/notes?page=1&pageSize=10&category=user-interfaces&collection=john-abbott-college
+ * @param {*} req
+ * @returns res
+ */
 export default async function handler(req, res) {
   // Query extraction
   const { page = "1", pageSize = "10", category, collection } = req.query;
