@@ -1,12 +1,10 @@
 import { MDXRemote } from "next-mdx-remote";
 import {
-  MDHeader,
   MDLink,
   MDParagraph,
   MDSubHeader,
   MDUnorderedList,
 } from "../md-note-content/md-note-content";
-import rehypeSlug from "rehype-slug";
 import { IImageProps, Image } from "../image/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
@@ -17,6 +15,16 @@ import { HorizontalLine } from "../horizontal-line/horizontal-line";
 import { MDXProps } from "../../../../pages";
 
 export function MDXNoteContent({ source, assetPath }: MDXProps) {
+  if (!source) {
+    return (
+      <div className={styles.error}>
+        <Text variant="p">
+          Something is broken lol, please complain to Poggie
+        </Text>
+      </div>
+    );
+  }
+
   return (
     <div className="js-toc-content">
       <MDXRemote
@@ -27,7 +35,7 @@ export function MDXNoteContent({ source, assetPath }: MDXProps) {
           p: MDParagraph,
           ul: MDUnorderedList,
           a: ({ children, href }) => MDLink({ children, href }),
-          img: (props) => <></>, // TODO - #109 - <MDXImage {...props} assetPath={assetPath} />
+          img: (props) => <MDXImage {...props} assetPath={assetPath} />,
           code: ({ className, children, ...props }) =>
             mdxCode({ className, children, ...props }),
         }}
@@ -41,7 +49,6 @@ interface IMDXImageProps extends IImageProps {
 }
 
 export const MDXImage = ({ src, alt, assetPath, ...props }: IMDXImageProps) => {
-  // custom loader - kinda hacky but works lol
   const customImageLoader = ({ src }: { src: string }) => {
     return `${assetPath}/${src}`;
   };

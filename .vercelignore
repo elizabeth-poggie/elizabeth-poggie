@@ -1,19 +1,8 @@
 # Ignore unnecessary build-time files
 
-\_content/**/assets/
-\_content/**/excels/
-\_content/\*\*/demos/
-
-# TODO - #109 - Fix the asset management system here lol
-
-public/**/\*.bak
-public/**/_.tmp
-public/\*\*/_.log
-public/john-abbott-college/computerized-systems
-public/portfolio/management
-public/john-abbott-college/web-programming-i
-public/assets/notes
-public/assets/art
+_content/**/assets/
+_content/**/excels/
+_content/**/demos/
 
 # Vercel build cache (shouldn't be deployed)
 
@@ -22,14 +11,14 @@ public/assets/art
 # Ignore local configuration and temp files
 
 .git
-node*modules
+node_modules
 .vscode
 logs/
 temp/
 *.log
-\_.bak
+_.bak
 
 # Dynamic build files (default handled by Next.js)
 
 .next
-\_next/
+_next/

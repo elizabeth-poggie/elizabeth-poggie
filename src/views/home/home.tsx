@@ -37,11 +37,11 @@ export function Home() {
         {renderNavBar()}
         <div className={styles.coolText}>
           <Text variant="p" align="center" gutterBottom={8}>
-            ⚠️ This site is undergoing major transitions and will be functional
-            in 1 - 2 business weeks 👩‍🔧🔥🖥️
+            I’m currently a lecturer at John Abbott College and manage various
+            events throughout Montreal.
           </Text>
           <Link href="mailto:elizabethpoggie@gmail.com">
-            <PillButton onClick={() => null} title="Complain here" />
+            <PillButton onClick={() => null} title="Contact me" />
           </Link>
         </div>
       </section>

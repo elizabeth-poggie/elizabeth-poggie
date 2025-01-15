@@ -40,7 +40,10 @@ export const getNotePaths = (baseFolder: string, categories: string[]) => {
     );
   });
 
-  return { paths, fallback: false };
+  return {
+    paths,
+    fallback: "blocking", // if a page is not pre-rendered, it will be generated on the first req
+  };
 };
 
 export const getNoteProps = async (
@@ -81,6 +84,11 @@ export const getNoteProps = async (
       // Construct the image path
       const assetPath = `/${baseFolder}/${subCategoryPath.join("/")}`;
 
+      if (!mdxSource.frontmatter) {
+        console.error(`❌ Fontmatter is broken for this file: `, filePath);
+        return null;
+      }
+
       return {
         props: {
           source: {
@@ -100,18 +108,7 @@ export const getNoteProps = async (
   // If no matching file is found, handle it gracefully
   console.error(`❌ Can't find the notes you are looking for`);
   return {
-    props: {
-      source: {
-        compiledSource: "",
-        scope: {},
-        frontmatter: {
-          title: "404 Note not found",
-          category: null,
-          subCategory: null,
-        },
-      },
-      assetPath: "",
-    },
+    notFound: true,
   };
 };
 
@@ -154,35 +151,4 @@ export const getRelatedNotesFromBootlegJSON = (
   }, {} as CategoryToLinkMap);
 
   return categoryMap;
-};
-
-export const getPaginatedNotesFromBootlegJSON = async (
-  collection: string,
-  category: string,
-  page = 1,
-  pageSize = 10
-): Promise<{ notes: INote[]; total: number }> => {
-  // Resolve the path to the JSON file
-  const filePath = path.join(process.cwd(), "db", "notes-metadata.json");
-
-  // Read and parse the JSON file
-  const fileContents = fs.readFileSync(filePath, "utf8");
-  const jsonNotes: INote[] = JSON.parse(fileContents);
-
-  // Filter, sort, and paginate the notes
-  const notes = jsonNotes
-    .filter(
-      (note) => note.collection === collection && note.category === category
-    )
-    .sort(
-      (a, b) => new Date(b.created).getTime() - new Date(a.created).getTime()
-    )
-    .slice((page - 1) * pageSize, page * pageSize);
-
-  // Get total count for pagination
-  const total = jsonNotes.filter(
-    (note) => note.collection === collection && note.category === category
-  ).length;
-
-  return { notes, total };
 };

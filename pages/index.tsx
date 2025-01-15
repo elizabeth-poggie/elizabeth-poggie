@@ -18,7 +18,7 @@ export const navItems: ILink[] = [
   {
     href: "/notes",
     text: "Notes",
-  }, // TODO - #109 - add portfolio back lol
+  }, // TODO - #124 - add portfolio back lol
   // {
   //   href: "/portfolio",
   //   text: "Portfolio",

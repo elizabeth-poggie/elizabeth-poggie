@@ -7,7 +7,6 @@ import React, {
 } from "react";
 import { HorizontalLine } from "../../components/display/horizontal-line/horizontal-line";
 import { Text } from "../../components/typography/text/text";
-import { INote } from "../../interfaces/note";
 import styles from "./notes.module.scss";
 import { Link } from "../../components/navigation/link/link";
 import { formatDate, pluralToSingular } from "../../utils/textFormatters";
@@ -171,17 +170,20 @@ export function Notes() {
         </Text>
         <Text
           variant="subheading"
-          gutterBottom={1}
+          gutterBottom={coverSrc ? 6 : 1}
           style="italics"
           color="grey"
         >
           {subcategory ? `${pluralToSingular(subcategory)}, ` : null}
           {category}
         </Text>
+        {coverSrc ? (
+          <MDXImage src={coverSrc} alt={title} assetPath={assetPath} />
+        ) : null}
       </div>
       <HorizontalLine />
     </Link>
-  ); // TODO - #109 -  <MDXImage src={coverSrc} alt={title} assetPath={assetPath} />
+  );
 
   const renderMainContent = () => (
     <div className={styles.mainContent}>
