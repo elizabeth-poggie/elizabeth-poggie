@@ -1,12 +1,10 @@
 import { MDXRemote } from "next-mdx-remote";
 import {
-  MDHeader,
   MDLink,
   MDParagraph,
   MDSubHeader,
   MDUnorderedList,
 } from "../md-note-content/md-note-content";
-import rehypeSlug from "rehype-slug";
 import { IImageProps, Image } from "../image/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
@@ -17,10 +15,12 @@ import { HorizontalLine } from "../horizontal-line/horizontal-line";
 import { MDXProps } from "../../../../pages";
 
 export function MDXNoteContent({ source, assetPath }: MDXProps) {
-  if (!source || !assetPath) {
+  if (!source) {
     return (
       <div className={styles.error}>
-        <Text variant="p">This is broken lol, please complain to Poggie</Text>
+        <Text variant="p">
+          Something is broken lol, please complain to Poggie
+        </Text>
       </div>
     );
   }
